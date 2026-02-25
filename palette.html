@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate beautiful color palettes with our free online palette generator. Lock colors, export to CSS/JSON, and save your favorites.">
+  <meta name="keywords" content="palette generator, color palette, color scheme generator, design tools">
+  <meta name="author" content="ColorPallates">
+  
+  <title>Palette Generator - Create Beautiful Color Palettes | ColorPallates</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-24 pb-12 min-h-screen">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header -->
+      <div class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Color Palette Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400">
+          Press <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate • Click colors to copy • Lock colors to keep them
+        </p>
+      </div>
+      
+      <!-- Palette Display -->
+      <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8" style="min-height: 60vh;">
+        <!-- Colors rendered by JS -->
+      </div>
+      
+      <!-- Controls -->
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+        <button id="generate-btn" class="btn-primary text-lg px-8 py-4">
+          <i class="fas fa-sync-alt"></i>
+          Generate
+        </button>
+        <button id="add-color-btn" class="btn-secondary" title="Add color">
+          <i class="fas fa-plus"></i>
+          Add Color
+        </button>
+        <button id="remove-color-btn" class="btn-secondary" title="Remove color">
+          <i class="fas fa-minus"></i>
+          Remove Color
+        </button>
+      </div>
+      
+      <!-- Export Options -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <button id="export-css-btn" class="btn-secondary text-sm">
+          <i class="fas fa-code"></i>
+          Copy CSS
+        </button>
+        <button id="export-json-btn" class="btn-secondary text-sm">
+          <i class="fas fa-file-code"></i>
+          Copy JSON
+        </button>
+        <button id="export-png-btn" class="btn-secondary text-sm">
+          <i class="fas fa-image"></i>
+          Export PNG
+        </button>
+        <button id="save-palette-btn" class="btn-secondary text-sm">
+          <i class="fas fa-bookmark"></i>
+          Save Palette
+        </button>
+      </div>
+      
+      <!-- Saved Palettes -->
+      <div id="saved-palettes-section" class="hidden">
+        <h2 class="text-xl font-bold mb-4">Saved Palettes</h2>
+        <div id="saved-palettes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Saved palettes rendered by JS -->
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <!-- Export Modal -->
+  <div id="export-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-lg w-full max-h-[80vh] overflow-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-lg font-bold">Export CSS Variables</h3>
+        <button id="close-modal-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <pre id="export-code" class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg overflow-x-auto text-sm font-mono"></pre>
+      <button id="copy-export-btn" class="btn-primary w-full mt-4 justify-center">
+        <i class="fas fa-copy"></i>
+        Copy to Clipboard
+      </button>
+    </div>
+  </div>
+  
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/palette.js"></script>
+</body>
+</html>

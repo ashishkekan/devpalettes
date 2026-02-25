@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online color converter. Convert between HEX, RGB, and HSL color formats instantly. Real-time preview included.">
+  <meta name="keywords" content="color converter, hex to rgb, rgb to hex, hsl converter, color format converter">
+  <meta name="author" content="ColorPallates">
+  
+  <title>Color Converter - HEX, RGB, HSL | ColorPallates</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-24 pb-12 min-h-screen">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Color Converter</h1>
+        <p class="text-slate-600 dark:text-slate-400">Convert between HEX, RGB, and HSL formats in real-time</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Color Preview -->
+        <div class="order-2 md:order-1">
+          <div id="color-preview" class="w-full aspect-square rounded-2xl shadow-2xl mb-6 transition-all" style="background-color: #10b981;"></div>
+          
+          <!-- Color Picker -->
+          <div class="text-center">
+            <label class="block text-sm font-semibold mb-2">Pick a Color</label>
+            <input type="color" id="color-picker" value="#10b981" class="w-24 h-24 rounded-xl cursor-pointer border-4 border-slate-200 dark:border-slate-700">
+          </div>
+        </div>
+        
+        <!-- Input Fields -->
+        <div class="order-1 md:order-2 space-y-6">
+          
+          <!-- HEX -->
+          <div class="glass-card p-6">
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-hashtag text-emerald-500 mr-1"></i>
+              HEX
+            </label>
+            <input type="text" id="hex-input" value="#10b981" class="input-field font-mono text-lg" placeholder="#000000" maxlength="7">
+            <button id="copy-hex" class="text-sm text-emerald-500 hover:text-emerald-600 mt-2">
+              <i class="fas fa-copy mr-1"></i>Copy
+            </button>
+          </div>
+          
+          <!-- RGB -->
+          <div class="glass-card p-6">
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-palette text-orange-500 mr-1"></i>
+              RGB
+            </label>
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label class="text-xs text-slate-500">Red</label>
+                <input type="number" id="rgb-r" value="16" min="0" max="255" class="input-field text-center">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Green</label>
+                <input type="number" id="rgb-g" value="185" min="0" max="255" class="input-field text-center">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Blue</label>
+                <input type="number" id="rgb-b" value="129" min="0" max="255" class="input-field text-center">
+              </div>
+            </div>
+            <p id="rgb-output" class="font-mono text-sm text-slate-500 mt-2">rgb(16, 185, 129)</p>
+            <button id="copy-rgb" class="text-sm text-emerald-500 hover:text-emerald-600 mt-1">
+              <i class="fas fa-copy mr-1"></i>Copy
+            </button>
+          </div>
+          
+          <!-- HSL -->
+          <div class="glass-card p-6">
+            <label class="block text-sm font-semibold mb-2">
+              <i class="fas fa-circle-half-stroke text-blue-500 mr-1"></i>
+              HSL
+            </label>
+            <div class="grid grid-cols-3 gap-3">
+              <div>
+                <label class="text-xs text-slate-500">Hue</label>
+                <input type="number" id="hsl-h" value="160" min="0" max="360" class="input-field text-center">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Saturation</label>
+                <input type="number" id="hsl-s" value="84" min="0" max="100" class="input-field text-center">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500">Lightness</label>
+                <input type="number" id="hsl-l" value="39" min="0" max="100" class="input-field text-center">
+              </div>
+            </div>
+            <p id="hsl-output" class="font-mono text-sm text-slate-500 mt-2">hsl(160, 84%, 39%)</p>
+            <button id="copy-hsl" class="text-sm text-emerald-500 hover:text-emerald-600 mt-1">
+              <i class="fas fa-copy mr-1"></i>Copy
+            </button>
+          </div>
+          
+        </div>
+      </div>
+      
+      <!-- Color Harmonies -->
+      <div class="mt-12">
+        <h2 class="text-xl font-bold mb-4">Color Harmonies</h2>
+        <div id="harmonies" class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/converter.js"></script>
+</body>
+</html>
