@@ -394,9 +394,9 @@ function renderNavbar() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   const navHTML = `
-    <nav class="navbar glass">
+    <nav class="navbar glass shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.4)]">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+        <div class="flex items-center justify-between h-12">
           <!-- Logo -->
           <a href="index.html" class="flex items-center gap-2 group">
             <div class="flex items-center gap-3 group cursor-pointer">
