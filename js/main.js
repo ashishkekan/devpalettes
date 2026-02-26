@@ -468,7 +468,7 @@ function renderNavbar() {
 function renderFooter() {
   const footerHTML = `
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <!-- Product -->
           <div>
