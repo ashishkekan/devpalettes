@@ -413,6 +413,8 @@ function renderNavbar() {
             <a href="pastel-color-palettes.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'pastel-color-palettes.html' ? 'text-emerald-500' : ''}">Explore</a>
             <a href="gradient.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'gradient.html' ? 'text-emerald-500' : ''}">Gradients</a>
             <a href="converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Converter</a>
+            <a href="rgb-hex-converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'rgb-hex-converter.html' ? 'text-emerald-500' : ''}">Conversion</a>
+            <a href="color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Color Chart</a>
           </div>
           
           <!-- Right side -->
