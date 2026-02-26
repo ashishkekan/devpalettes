@@ -399,12 +399,16 @@ function renderNavbar() {
         <div class="flex items-center justify-between h-16">
           <!-- Logo -->
           <a href="index.html" class="flex items-center gap-2 group">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-orange-400 flex items-center justify-center text-white font-bold text-xl transform group-hover:rotate-6 transition-transform">
-              C
+            <div class="flex items-center gap-3 group cursor-pointer">
+              <div class="w-11 h-11 rounded-xl bg-black
+                flex items-center justify-center text-cyan-400 font-bold text-xl
+                shadow-[0_0_15px_rgba(34,211,238,0.6)]
+                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+              </div>
+              <span class="text-2xl font-bold text-cyan-400">
+                Color Palettes
+              </span>
             </div>
-            <span class="text-xl font-bold">
-              <span class="logo-gradient">Color</span><span class="dark:text-white">Pallates</span>
-            </span>
           </a>
           
           <!-- Desktop Nav -->
@@ -464,7 +468,7 @@ function renderNavbar() {
 function renderFooter() {
   const footerHTML = `
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
           <!-- Product -->
           <div>
