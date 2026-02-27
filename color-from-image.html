@@ -33,48 +33,23 @@
   <!-- Navbar -->
   <div id="navbar-container"></div>
   
-  <!-- Hero Section (matched with index.html style) -->
-  <section class="relative min-h-[50vh] flex items-center pt-20 overflow-hidden">
-    <div class="hero-pattern"></div>
-    <div class="grid-pattern"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-      <div class="text-center max-w-4xl mx-auto">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-6">
-          <i class="fas fa-image"></i>
-          <span>Viral Tool - 10K+ Daily Users</span>
-        </div>
-        
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
-          Extract Colors From
-          <span class="block bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 bg-clip-text text-transparent">
-            Any Image
-          </span>
-        </h1>
-        
-        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-          Upload any photo and instantly generate beautiful color palettes. 
-          Perfect for designers, artists, and content creators.
-        </p>
-      </div>
-    </div>
-  </section>
-  
-  <!-- Main Tool Section (matched layout with converter & gradient pages) -->
-  <section class="py-12">
+  <!-- Main Content (matched with gradient.html - no section tags) -->
+  <main class="pt-24 pb-12 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Hero-like heading (matched gradient style) -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color From Image</h1>
+        <p class="text-slate-600 dark:text-slate-400">Extract beautiful palettes from any photo instantly</p>
+      </div>
+      
       <div class="grid lg:grid-cols-2 gap-8">
         
-        <!-- Upload & Controls (left side - glass card) -->
+        <!-- Left: Upload & Controls (glass card like gradient preview area) -->
         <div class="glass-card p-8">
-          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-              <i class="fas fa-cloud-upload-alt text-emerald-500 text-xl"></i>
-            </div>
-            Upload Image
-          </h2>
+          <h2 class="text-2xl font-bold mb-6">Upload Image</h2>
           
-          <div id="drop-zone" class="upload-zone rounded-2xl p-12 text-center cursor-pointer mb-6 border-3 border-dashed border-emerald-500/40 hover:border-emerald-500 hover:bg-emerald-500/5 transition-all">
+          <div id="drop-zone" class="rounded-2xl p-12 text-center cursor-pointer border-3 border-dashed border-emerald-500/40 hover:border-emerald-500 hover:bg-emerald-500/5 transition-all">
             <input type="file" id="file-input" accept="image/*" class="hidden">
             <div id="upload-content">
               <div class="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
@@ -82,24 +57,23 @@
               </div>
               <p class="text-lg font-semibold mb-2">Drop your image here</p>
               <p class="text-slate-500 dark:text-slate-400 mb-4">or click to browse</p>
-              <p class="text-sm text-slate-400">Supports: JPG, PNG, WebP, GIF</p>
+              <p class="text-sm text-slate-400">JPG, PNG, WebP, GIF</p>
             </div>
             <div id="preview-content" class="hidden">
-              <img id="image-preview" class="image-preview w-full rounded-xl shadow-2xl mx-auto" alt="Preview">
+              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview">
               <p class="text-sm text-slate-500 mt-4">Click to change image</p>
             </div>
           </div>
           
-          <div class="mb-6">
+          <div class="mt-6">
             <div class="flex justify-between items-center mb-2">
               <label class="font-medium">Number of Colors</label>
               <span id="color-count-value" class="text-emerald-600 dark:text-emerald-400 font-bold">6</span>
             </div>
-            <input type="range" id="color-count" min="3" max="10" value="6" 
-                   class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+            <input type="range" id="color-count" min="3" max="10" value="6" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
           </div>
           
-          <div class="mb-6">
+          <div class="mt-6">
             <label class="font-medium mb-3 block">Extraction Method</label>
             <div class="grid grid-cols-2 gap-3">
               <button class="method-btn active px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium transition-all" data-method="dominant">
@@ -111,13 +85,13 @@
             </div>
           </div>
           
-          <button id="extract-btn" class="w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl" disabled>
+          <button id="extract-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl" disabled>
             <i class="fas fa-magic mr-2"></i>
             Extract Colors
           </button>
           
           <div class="mt-8">
-            <p class="text-sm text-slate-500 mb-3">Try with sample images:</p>
+            <p class="text-sm text-slate-500 mb-3">Try sample images:</p>
             <div class="flex gap-2 flex-wrap">
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset">
                 <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover">
@@ -135,14 +109,9 @@
           </div>
         </div>
         
-        <!-- Results Section (right side - glass card) -->
+        <!-- Right: Results (glass card like gradient CSS output) -->
         <div class="glass-card p-8">
-          <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 flex items-center justify-center">
-              <i class="fas fa-swatchbook text-cyan-500"></i>
-            </div>
-            Extracted Palette
-          </h2>
+          <h2 class="text-2xl font-bold mb-6">Extracted Palette</h2>
           
           <div id="empty-state" class="text-center py-16">
             <div class="w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-6">
@@ -156,7 +125,7 @@
             <div id="color-swatches" class="grid grid-cols-3 gap-4 mb-6"></div>
             
             <div id="color-details" class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 mb-6">
-              <p class="text-sm text-slate-500 mb-2">Click a color to see details</p>
+              <p class="text-sm text-slate-500 mb-2">Click a color for details</p>
               <div id="selected-color-info" class="hidden">
                 <div class="flex items-center gap-4">
                   <div id="selected-color-preview" class="w-16 h-16 rounded-xl shadow-lg"></div>
@@ -180,16 +149,13 @@
             
             <div class="flex flex-wrap gap-3">
               <button id="copy-all-btn" class="btn-primary flex-1 justify-center">
-                <i class="fas fa-copy"></i>
-                Copy All
+                <i class="fas fa-copy"></i> Copy All
               </button>
               <button id="export-css-btn" class="btn-secondary flex-1 justify-center">
-                <i class="fas fa-code"></i>
-                Export CSS
+                <i class="fas fa-code"></i> Export CSS
               </button>
               <button id="export-json-btn" class="btn-secondary flex-1 justify-center">
-                <i class="fas fa-file-code"></i>
-                JSON
+                <i class="fas fa-file-code"></i> JSON
               </button>
             </div>
             
@@ -197,7 +163,7 @@
               <div class="flex items-center justify-between">
                 <div>
                   <p class="font-semibold text-emerald-600 dark:text-emerald-400">Love this palette?</p>
-                  <p class="text-sm text-slate-500">Share it with your friends</p>
+                  <p class="text-sm text-slate-500">Share it with friends</p>
                 </div>
                 <div class="flex gap-2">
                   <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter">
@@ -216,15 +182,10 @@
         </div>
       </div>
       
-      <!-- Color Picker Section (matched with converter style) -->
+      <!-- Color Picker (matched with gradient controls area) -->
       <div class="glass-card p-8 mt-8">
-        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">
-            <i class="fas fa-eye-dropper text-orange-500"></i>
-          </div>
-          Color Picker Tool
-          <span class="ml-auto text-sm font-normal text-slate-500">Click on image to pick exact colors</span>
-        </h2>
+        <h2 class="text-2xl font-bold mb-6">Color Picker Tool</h2>
+        <p class="text-sm text-slate-500 mb-4">Click on image to pick exact colors</p>
         
         <div class="grid lg:grid-cols-3 gap-6">
           <div class="lg:col-span-2">
@@ -251,7 +212,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </main>
   
   <!-- Footer -->
   <div id="footer-container"></div>
