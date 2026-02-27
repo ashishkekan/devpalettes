@@ -407,13 +407,13 @@ function renderNavbar() {
           
           <!-- Desktop Nav -->
           <div class="nav-links hidden md:flex items-center gap-8">
-            <a href="palette.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generator</a>
+            <a href="palette.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generate</a>
             <a href="pastel-color-palettes.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'pastel-color-palettes.html' ? 'text-emerald-500' : ''}">Explore</a>
             <a href="gradient.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'gradient.html' ? 'text-emerald-500' : ''}">Gradients</a>
-            <a href="converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Converter</a>
-            <a href="color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Color Chart</a>
-            <a href="color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Simulator</a>
-            <a href="color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">From Image</a>
+            <a href="converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Convert</a>
+            <a href="color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Colors</a>
+            <a href="color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
+            <a href="color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
           </div>
           
           <!-- Right side -->
@@ -439,10 +439,10 @@ function renderNavbar() {
     <!-- Mobile Menu -->
     <div class="mobile-menu md:hidden">
       <div class="flex flex-col gap-6">
-        <a href="palette.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Generator</a>
-        <a href="pastel-color-palettes.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Explore Palettes</a>
+        <a href="palette.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Generate</a>
+        <a href="pastel-color-palettes.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Explore</a>
         <a href="gradient.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Gradients</a>
-        <a href="converter.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Converter</a>
+        <a href="converter.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Convert</a>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">About</a>
         <a href="contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Contact</a>
@@ -527,7 +527,7 @@ function renderFooter() {
             &copy; ${new Date().getFullYear()} ColorPallates. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
-            <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
+            <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
               <i class="fab fa-twitter text-xl"></i>
             </a>
             <a href="https://github.com/ashishkekan" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
