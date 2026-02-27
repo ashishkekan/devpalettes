@@ -400,7 +400,7 @@ function renderNavbar() {
           <!-- Logo -->
           <a href="index.html" class="flex items-center gap-2 group">
             <div class="flex items-center gap-3 group cursor-pointer">
-              <div class="w-11 h-11 rounded-xl bg-black
+              <div class="w-9 h-9 rounded-xl bg-black
                 flex items-center justify-center text-cyan-400 font-bold text-xl
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
@@ -516,12 +516,18 @@ function renderFooter() {
         </div>
         
         <div class="border-t border-slate-200 dark:border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-orange-400 flex items-center justify-center text-white font-bold text-sm">
-              C
+          <a href="index.html" class="flex items-center gap-2 group">
+            <div class="flex items-center gap-3 group cursor-pointer">
+              <div class="w-8 h-8 rounded-xl bg-black
+                flex items-center justify-center text-cyan-400 font-bold text-xl
+                shadow-[0_0_15px_rgba(34,211,238,0.6)]
+                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+              </div>
+              <span class="text-2xl font-bold text-cyan-400">
+                Color Palettes
+              </span>
             </div>
-            <span class="font-semibold">ColorPallates</span>
-          </div>
+          </a>
           <p class="text-sm text-slate-500">
             &copy; ${new Date().getFullYear()} ColorPallates. All rights reserved.
           </p>
@@ -529,11 +535,11 @@ function renderFooter() {
             <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
               <i class="fab fa-twitter text-xl"></i>
             </a>
-            <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+            <a href="https://github.com/ashishkekan" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
               <i class="fab fa-github text-xl"></i>
             </a>
-            <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Dribbble">
-              <i class="fab fa-dribbble text-xl"></i>
+            <a href="https://www.instagram.com/ashkingtechiez/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
+              <i class="fab fa-instagram text-xl"></i>
             </a>
           </div>
         </div>
