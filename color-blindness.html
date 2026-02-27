@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online color blindness simulator. See how your colors appear to people with Protanopia, Deuteranopia, Tritanopia, and Achromatopsia. WCAG accessibility checker.">
+  <meta name="keywords" content="color blindness simulator, protanopia simulator, deuteranopia, tritanopia, wcag accessibility, color contrast checker, accessible colors">
+  <meta name="author" content="ColorPallates">
+  
+  <title>Color Blindness Simulator - Free Accessibility Checker | ColorPallates</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Hero Section (matched style) -->
+  <section class="relative min-h-[50vh] flex items-center pt-20 overflow-hidden">
+    <div class="hero-pattern"></div>
+    <div class="grid-pattern"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
+      <div class="text-center max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-600 dark:text-orange-400 text-sm font-medium mb-6">
+          <i class="fas fa-universal-access"></i>
+          <span>Accessibility Tool - WCAG Compliant</span>
+        </div>
+        
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6">
+          Color Blindness
+          <span class="block bg-gradient-to-r from-orange-400 via-rose-400 to-purple-400 bg-clip-text text-transparent">
+            Simulator
+          </span>
+        </h1>
+        
+        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          See your designs through the eyes of 300 million people with color vision deficiency. 
+          Test accessibility instantly.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Tool Section (matched layout) -->
+  <section class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Color Input Card -->
+      <div class="glass-card p-8 mb-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <i class="fas fa-palette text-blue-500"></i>
+          </div>
+          Enter Your Colors
+        </h2>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
+          <div class="color-input-wrapper relative">
+            <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Color 1</label>
+            <input type="text" class="color-input w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent focus:border-blue-500 outline-none transition-colors font-mono" placeholder="#264653" value="#264653">
+            <div class="color-input-preview absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #264653;"></div>
+          </div>
+          <!-- Repeat for Color 2 to 5 with same structure -->
+          <div class="color-input-wrapper relative">
+            <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Color 2</label>
+            <input type="text" class="color-input w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent focus:border-blue-500 outline-none transition-colors font-mono" placeholder="#2a9d8f" value="#2a9d8f">
+            <div class="color-input-preview absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #2a9d8f;"></div>
+          </div>
+          <div class="color-input-wrapper relative">
+            <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Color 3</label>
+            <input type="text" class="color-input w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent focus:border-blue-500 outline-none transition-colors font-mono" placeholder="#e9c46a" value="#e9c46a">
+            <div class="color-input-preview absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #e9c46a;"></div>
+          </div>
+          <div class="color-input-wrapper relative">
+            <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Color 4</label>
+            <input type="text" class="color-input w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent focus:border-blue-500 outline-none transition-colors font-mono" placeholder="#f4a261" value="#f4a261">
+            <div class="color-input-preview absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #f4a261;"></div>
+          </div>
+          <div class="color-input-wrapper relative">
+            <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Color 5</label>
+            <input type="text" class="color-input w-full px-4 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 border-2 border-transparent focus:border-blue-500 outline-none transition-colors font-mono" placeholder="#e76f51" value="#e76f51">
+            <div class="color-input-preview absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #e76f51;"></div>
+          </div>
+        </div>
+        
+        <div class="flex flex-wrap gap-4">
+          <button id="simulate-btn" class="btn-primary px-8 py-3">
+            <i class="fas fa-eye mr-2"></i>
+            Simulate
+          </button>
+          <button id="random-palette-btn" class="btn-secondary px-6 py-3">
+            <i class="fas fa-random mr-2"></i>
+            Random Palette
+          </button>
+          <button id="load-example-btn" class="btn-secondary px-6 py-3">
+            <i class="fas fa-lightbulb mr-2"></i>
+            Load Example
+          </button>
+        </div>
+      </div>
+      
+      <!-- Severity Selector (glass card) -->
+      <div class="glass-card p-6 mb-8">
+        <h3 class="font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-sliders-h text-slate-400"></i>
+          Vision Deficiency Severity
+        </h3>
+        <div class="flex flex-wrap gap-3">
+          <button class="severity-badge severity-btn px-5 py-2.5 rounded-full bg-emerald-500/10 border-2 border-emerald-500 text-emerald-600 dark:text-emerald-400 font-medium transition-all active" data-severity="normal">Normal Vision</button>
+          <button class="severity-badge severity-btn px-5 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-severity="mild">Mild (70%)</button>
+          <button class="severity-badge severity-btn px-5 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-severity="moderate">Moderate (50%)</button>
+          <button class="severity-badge severity-btn px-5 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-severity="severe">Severe (100%)</button>
+        </div>
+      </div>
+      
+      <!-- Simulation Results (grid of glass cards) -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <div class="sim-card glass-card overflow-hidden hover:shadow-xl transition-all">
+          <div class="simulation-preview h-32 flex items-center justify-center p-6" id="sim-normal" style="background: linear-gradient(135deg, #264653, #2a9d8f, #e9c46a, #f4a261, #e76f51);"></div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-lg">Normal Vision</h3>
+              <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">Trichromacy</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Standard color perception. ~92% of population.</p>
+          </div>
+        </div>
+        
+        <!-- Protanopia, Deuteranopia, Tritanopia, Achromatopsia cards follow same structure -->
+        <div class="sim-card glass-card overflow-hidden hover:shadow-xl transition-all">
+          <div class="simulation-preview h-32 flex items-center justify-center p-6" id="sim-protanopia"></div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-lg">Protanopia</h3>
+              <span class="text-xs px-3 py-1 rounded-full bg-red-500/10 text-red-600 dark:text-red-400">No Red</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Red-green blindness. ~1% of males. Red appears dark.</p>
+          </div>
+        </div>
+        
+        <div class="sim-card glass-card overflow-hidden hover:shadow-xl transition-all">
+          <div class="simulation-preview h-32 flex items-center justify-center p-6" id="sim-deuteranopia"></div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-lg">Deuteranopia</h3>
+              <span class="text-xs px-3 py-1 rounded-full bg-green-500/10 text-green-600 dark:text-green-400">No Green</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Most common form. ~6% of males. Green appears brown.</p>
+          </div>
+        </div>
+        
+        <div class="sim-card glass-card overflow-hidden hover:shadow-xl transition-all">
+          <div class="simulation-preview h-32 flex items-center justify-center p-6" id="sim-tritanopia"></div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-lg">Tritanopia</h3>
+              <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400">No Blue</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Blue-yellow blindness. Very rare. ~0.01% of population.</p>
+          </div>
+        </div>
+        
+        <div class="sim-card glass-card overflow-hidden hover:shadow-xl transition-all">
+          <div class="simulation-preview h-32 flex items-center justify-center p-6" id="sim-achromatopsia"></div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-2">
+              <h3 class="font-bold text-lg">Achromatopsia</h3>
+              <span class="text-xs px-3 py-1 rounded-full bg-slate-500/10 text-slate-600 dark:text-slate-400">Grayscale</span>
+            </div>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Complete color blindness. Only grayscale. Very rare.</p>
+          </div>
+        </div>
+        
+        <!-- Contrast Checker Card -->
+        <div class="sim-card glass-card overflow-hidden hover:shadow-xl transition-all">
+          <div class="simulation-preview h-32 p-6 flex flex-col items-center justify-center gap-4" id="contrast-checker">
+            <div class="flex gap-6">
+              <div id="contrast-fg" class="w-16 h-16 rounded-xl shadow-lg" style="background-color: #264653;"></div>
+              <div class="flex items-center">
+                <i class="fas fa-arrows-alt-h text-3xl text-slate-400"></i>
+              </div>
+              <div id="contrast-bg" class="w-16 h-16 rounded-xl shadow-lg border border-slate-200 dark:border-slate-700" style="background-color: #ffffff;"></div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold" id="contrast-ratio">12.63:1</div>
+              <div class="text-sm text-slate-500">Contrast Ratio</div>
+            </div>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-lg">Contrast Checker</h3>
+              <div id="wcag-badge" class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">AAA Pass</div>
+            </div>
+            <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-emerald-500" id="wcag-aa"></i>
+                <span>AA (4.5:1)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <i class="fas fa-check-circle text-emerald-500" id="wcag-aaa"></i>
+                <span>AAA (7:1)</span>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <input type="text" id="contrast-fg-input" value="#264653" class="flex-1 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-sm border border-transparent focus:border-blue-500">
+              <input type="text" id="contrast-bg-input" value="#ffffff" class="flex-1 px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 font-mono text-sm border border-transparent focus:border-blue-500">
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Comparison Table (glass card) -->
+      <div class="glass-card p-8 overflow-hidden">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <i class="fas fa-table text-purple-500"></i>
+          </div>
+          Detailed Color Comparison
+        </h2>
+        
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-700">
+                <th class="text-left py-4 px-4 font-semibold">Original</th>
+                <th class="text-left py-4 px-4 font-semibold">Protanopia</th>
+                <th class="text-left py-4 px-4 font-semibold">Deuteranopia</th>
+                <th class="text-left py-4 px-4 font-semibold">Tritanopia</th>
+                <th class="text-left py-4 px-4 font-semibold">Achromatopsia</th>
+              </tr>
+            </thead>
+            <tbody id="comparison-table">
+              <!-- Rows inserted by JS - unchanged -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Info Section (matched with index.html features section) -->
+  <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold mb-4">Understanding Color Blindness</h2>
+        <p class="text-slate-600 dark:text-slate-400">Design for everyone with accessible color choices</p>
+      </div>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-card p-6 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-eye text-3xl text-red-500"></i>
+          </div>
+          <h3 class="font-bold mb-2">Protanopia</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Missing L-cones. Reds appear dark or blackish. About 1% of males.</p>
+        </div>
+        
+        <div class="glass-card p-6 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-green-500/10 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-eye text-3xl text-green-500"></i>
+          </div>
+          <h3 class="font-bold mb-2">Deuteranopia</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Missing M-cones. Most common type. ~6% of males. Greens appear brownish tan.</p>
+        </div>
+        
+        <div class="glass-card p-6 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-eye text-3xl text-blue-500"></i>
+          </div>
+          <h3 class="font-bold mb-2">Tritanopia</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">Missing S-cones. Blues appear greenish. Extremely rare condition.</p>
+        </div>
+        
+        <div class="glass-card p-6 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-slate-500/10 flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-eye text-3xl text-slate-500"></i>
+          </div>
+          <h3 class="font-bold mb-2">Achromatopsia</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400">No color cones. Complete grayscale vision. Affects 1 in 30,000.</p>
+        </div>
+      </div>
+      
+      <div class="mt-12 glass-card p-8">
+        <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+          <i class="fas fa-lightbulb text-yellow-500"></i>
+          Accessibility Tips
+        </h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-emerald-500 mt-1 text-xl"></i>
+            <p class="text-slate-600 dark:text-slate-400">Use patterns or textures in addition to colors for data visualization</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-emerald-500 mt-1 text-xl"></i>
+            <p class="text-slate-600 dark:text-slate-400">Ensure 4.5:1 contrast ratio for normal text (WCAG AA)</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-emerald-500 mt-1 text-xl"></i>
+            <p class="text-slate-600 dark:text-slate-400">Avoid red-green combinations as primary indicators</p>
+          </div>
+          <div class="flex items-start gap-3">
+            <i class="fas fa-check-circle text-emerald-500 mt-1 text-xl"></i>
+            <p class="text-slate-600 dark:text-slate-400">Add text labels alongside color-coded elements</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/color-blindness.js"></script>
+</body>
+</html>
