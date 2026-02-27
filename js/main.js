@@ -443,6 +443,9 @@ function renderNavbar() {
         <a href="pastel-color-palettes.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Explore</a>
         <a href="gradient.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Gradients</a>
         <a href="converter.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Convert</a>
+        <a href="color-names-chart.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Colors</a>
+        <a href="color-blindness.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Vision</a>
+        <a href="color-from-image.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Image</a>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">About</a>
         <a href="contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Contact</a>
