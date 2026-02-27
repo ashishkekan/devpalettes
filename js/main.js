@@ -424,7 +424,6 @@ function renderNavbar() {
           <!-- Right side -->
           <div class="flex items-center gap-4">
             <button id="theme-toggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
-              <i class="fas fa-moon text-xl dark:hidden"></i>
               <i class="fas fa-sun text-xl hidden dark:block"></i>
             </button>
             <a href="palette.html" class="hidden sm:flex btn-primary text-sm">
