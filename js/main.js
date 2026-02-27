@@ -34,14 +34,8 @@ const ThemeManager = {
   },
   
   updateToggleIcon() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
-    
-    const isDark = document.documentElement.classList.contains('dark');
-    const icon = toggleBtn.querySelector('i');
-    if (icon) {
-      icon.className = isDark ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
-    }
+    // Icons are handled by Tailwind classes (dark:hidden / dark:block)
+    // No JS changes needed
   }
 };
 
@@ -424,6 +418,7 @@ function renderNavbar() {
           <!-- Right side -->
           <div class="flex items-center gap-4">
             <button id="theme-toggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+              <i class="fas fa-moon text-xl dark:hidden"></i>
               <i class="fas fa-sun text-xl hidden dark:block"></i>
             </button>
             <a href="palette.html" class="hidden sm:flex btn-primary text-sm">
