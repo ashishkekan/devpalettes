@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free online color converter. Convert between HEX, RGB, and HSL color formats instantly. Real-time preview included.">
   <meta name="keywords" content="color converter, hex to rgb, rgb to hex, hsl converter, color format converter">
-  <meta name="author" content="ColorPallates">
-  
-  <title>Color Converter - HEX, RGB, HSL | ColorPallates</title>
-  
+  <meta name="author" content="ColorPalettesHub">
+  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
+  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  <meta name="author" content="Color Palettes Hub">
+  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
+  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com">
+  <title>Color Converter - HEX, RGB, HSL | ColorPalettesHub</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -31,46 +34,36 @@
       },
     }
   </script>
-  
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
   <!-- Main Content -->
   <main class="pt-24 pb-12 min-h-screen">
     <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-      
       <div class="text-center mb-10">
         <h1 class="text-4xl font-bold mb-3">Color Converter</h1>
         <p class="text-slate-600 dark:text-slate-400">HEX ↔ RGB ↔ HSL • Live preview & harmonies</p>
       </div>
-
       <div class="grid md:grid-cols-2 gap-8">
-        
         <!-- Left: Preview -->
         <div class="glass-card p-8 text-center">
           <div id="color-preview" class="w-full aspect-square rounded-2xl shadow-2xl mb-8 transition-all" style="background-color: #10b981;"></div>
           <input type="color" id="color-picker" value="#10b981" class="w-28 h-28 rounded-xl cursor-pointer border-4 border-white dark:border-slate-800 shadow">
         </div>
-
         <!-- Right: Controls -->
         <div class="space-y-8">
-          
           <!-- HEX -->
           <div class="glass-card p-6">
             <label class="block text-sm font-semibold mb-2">HEX Code</label>
             <div class="flex gap-3">
-              <input type="text" id="hex-input" value="#10B981" maxlength="7"
-                     class="input-field font-mono text-2xl text-center uppercase flex-1">
+              <input type="text" id="hex-input" value="#10B981" maxlength="7" class="input-field font-mono text-2xl text-center uppercase flex-1">
               <button id="copy-hex" class="btn-secondary px-6">
                 <i class="fas fa-copy"></i>
               </button>
             </div>
           </div>
-
           <!-- RGB -->
           <div class="glass-card p-6">
             <label class="block text-sm font-semibold mb-4">RGB Values</label>
@@ -95,7 +88,6 @@
               </button>
             </div>
           </div>
-
           <!-- HSL -->
           <div class="glass-card p-6">
             <label class="block text-sm font-semibold mb-4">HSL Values</label>
@@ -120,10 +112,8 @@
               </button>
             </div>
           </div>
-
         </div>
       </div>
-      
       <!-- Color Harmonies -->
       <div class="mt-12">
         <h2 class="text-xl font-bold mb-4 text-center md:text-left">Color Harmonies</h2>
@@ -131,13 +121,10 @@
           <!-- Rendered by JS -->
         </div>
       </div>
-      
     </div>
   </main>
-  
   <!-- Footer -->
   <div id="footer-container"></div>
-  
   <script src="js/main.js"></script>
   <script src="js/converter.js"></script>
 </body>

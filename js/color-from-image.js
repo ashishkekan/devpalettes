@@ -1,6 +1,6 @@
 /**
  * Color From Image - Image Color Extraction Tool
- * ColorPallates.com
+ * ColorPalettesHub.com
  */
 
 (function() {

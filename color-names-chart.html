@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HTML Color Names Chart | ColorPallates</title>
+  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
+  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  <meta name="author" content="Color Palettes Hub">
+  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
+  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com">
+  <title>HTML Color Names Chart | ColorPalettesHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,24 +22,19 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-
   <div id="navbar-container"></div>
-
   <main class="pt-24 pb-16">
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
       <div class="text-center mb-12">
         <h1 class="text-4xl font-bold mb-3">HTML Color Names Chart</h1>
         <p class="text-slate-600 dark:text-slate-400">148 standard named colors • Click any color to copy HEX</p>
       </div>
-
       <div id="color-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
         <!-- All 148 colors will be injected by JS -->
       </div>
     </div>
   </main>
-
   <div id="footer-container"></div>
-
   <script src="js/main.js"></script>
   <script>
     const colors = [
@@ -108,7 +110,6 @@
       {name:"WhiteSmoke",hex:"#F5F5F5",rgb:"245,245,245"},{name:"Yellow",hex:"#FFFF00",rgb:"255,255,0"},
       {name:"YellowGreen",hex:"#9ACD32",rgb:"154,205,50"}
     ];
-
     document.addEventListener('DOMContentLoaded', () => {
       const grid = document.getElementById('color-grid');
       colors.forEach(c => {
@@ -123,7 +124,7 @@
         `;
         card.onclick = () => {
           navigator.clipboard.writeText(c.hex);
-          window.ColorPallates.Toast.show(`Copied ${c.hex}`, 'success');
+          window.ColorPalettesHub.Toast.show(`Copied ${c.hex}`, 'success');
         };
         grid.appendChild(card);
       });

@@ -5,18 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Generate beautiful color palettes with our free online palette generator. Lock colors, export to CSS/JSON, and save your favorites.">
   <meta name="keywords" content="palette generator, color palette, color scheme generator, design tools">
-  <meta name="author" content="ColorPallates">
-  
-  <title>Palette Generator - Create Beautiful Color Palettes | ColorPallates</title>
-  
+  <meta name="author" content="ColorPalettesHub">
+  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
+  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  <meta name="author" content="Color Palettes Hub">
+  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
+  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com">
+  <title>Palette Generator - Create Beautiful Color Palettes | ColorPalettesHub</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -31,19 +34,15 @@
       },
     }
   </script>
-  
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
   <!-- Main Content -->
   <main class="pt-24 pb-12 min-h-screen">
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      
       <!-- Header -->
       <div class="text-center mb-8">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">Color Palette Generator</h1>
@@ -51,12 +50,10 @@
           Press <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate • Click colors to copy • Lock colors to keep them
         </p>
       </div>
-      
       <!-- Palette Display -->
       <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8" style="min-height: 60vh;">
         <!-- Colors rendered by JS -->
       </div>
-      
       <!-- Controls -->
       <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
         <button id="generate-btn" class="btn-primary text-lg px-8 py-4">
@@ -72,7 +69,6 @@
           Remove Color
         </button>
       </div>
-      
       <!-- Export Options -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
         <button id="export-css-btn" class="btn-secondary text-sm">
@@ -92,7 +88,6 @@
           Save Palette
         </button>
       </div>
-      
       <!-- Saved Palettes -->
       <div id="saved-palettes-section" class="hidden">
         <h2 class="text-xl font-bold mb-4">Saved Palettes</h2>
@@ -100,13 +95,10 @@
           <!-- Saved palettes rendered by JS -->
         </div>
       </div>
-      
     </div>
   </main>
-  
   <!-- Footer -->
   <div id="footer-container"></div>
-  
   <!-- Export Modal -->
   <div id="export-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50">
     <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-lg w-full max-h-[80vh] overflow-auto">
@@ -123,7 +115,6 @@
       </button>
     </div>
   </div>
-  
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script src="js/palette.js"></script>

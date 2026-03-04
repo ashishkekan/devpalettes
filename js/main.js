@@ -1,5 +1,5 @@
 /* ============================================
-   ColorPallates - Main JavaScript
+   ColorPalettesHub - Main JavaScript
    Shared functionality across all pages
    ============================================ */
 
@@ -400,7 +400,7 @@ function renderNavbar() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-2xl font-bold text-cyan-400">
-                Color Palettes
+                ColorPalettesHub
               </span>
             </div>
           </a>
@@ -485,7 +485,7 @@ function renderFooter() {
             <ul class="space-y-3">
               <li><a href="about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
               <li><a href="contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
-              <li><a href="#" class="hover:text-emerald-500 transition-colors">Blog</a></li>
+              <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
               <li><a href="#" class="hover:text-emerald-500 transition-colors">Tutorials</a></li>
             </ul>
           </div>
@@ -522,12 +522,12 @@ function renderFooter() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-2xl font-bold text-cyan-400">
-                Color Palettes
+                ColorPalettesHub
               </span>
             </div>
           </a>
           <p class="text-sm text-slate-500">
-            &copy; ${new Date().getFullYear()} ColorPallates. All rights reserved.
+            &copy; ${new Date().getFullYear()} ColorPalettesHub. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
             <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
@@ -579,11 +579,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('ColorPallates initialized successfully');
+  console.log('ColorPalettesHub initialized successfully');
 });
 
 // Export utilities for use in other scripts
-window.ColorPallates = {
+window.ColorPalettesHub = {
   ThemeManager,
   Toast,
   ColorUtils,

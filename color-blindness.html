@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Free online color blindness simulator. See how your colors appear to people with Protanopia, Deuteranopia, Tritanopia, and Achromatopsia. WCAG accessibility checker.">
   <meta name="keywords" content="color blindness simulator, protanopia simulator, deuteranopia, tritanopia, wcag accessibility, color contrast checker, accessible colors">
-  <meta name="author" content="ColorPallates">
-  
-  <title>Color Blindness Simulator - Free Accessibility Checker | ColorPallates</title>
-  
+  <meta name="author" content="ColorPalettesHub">
+  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
+  <meta name="author" content="Color Palettes Hub">
+  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
+  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com">
+  <title>Color Blindness Simulator - Free Accessibility Checker | ColorPalettesHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -29,27 +32,21 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
   <!-- Main Content -->
   <main class="pt-24 pb-12 min-h-screen">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
       <!-- Heading -->
       <div class="text-center mb-12">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color Blindness Simulator</h1>
         <p class="text-slate-600 dark:text-slate-400">Test how your colors appear to people with color vision deficiencies</p>
       </div>
-      
       <!-- Input & Simulation Grid -->
       <div class="grid lg:grid-cols-2 gap-8">
-        
         <!-- Left: Inputs (6 colors - 3 per row) -->
         <div class="glass-card p-8">
           <h2 class="text-2xl font-bold mb-6">Your Colors</h2>
-          
           <!-- Row 1: Colors 1-3 -->
           <div class="grid md:grid-cols-3 gap-4 mb-6">
             <div class="relative">
@@ -68,7 +65,6 @@
               <div class="absolute right-3 top-10 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #e9c46a;"></div>
             </div>
           </div>
-          
           <!-- Row 2: Colors 4-6 -->
           <div class="grid md:grid-cols-3 gap-4 mb-6">
             <div class="relative">
@@ -87,7 +83,6 @@
               <div class="absolute right-3 top-10 w-6 h-6 rounded-md border-2 border-white shadow" style="background-color: #06d6a0;"></div>
             </div>
           </div>
-          
           <div class="flex flex-wrap gap-4 mt-6">
             <button id="simulate-btn" class="btn-primary px-8 py-3">
               <i class="fas fa-eye mr-2"></i>Simulate
@@ -100,7 +95,6 @@
             </button>
           </div>
         </div>
-        
         <!-- Right: Simulations -->
         <div class="space-y-6">
           <!-- Severity Selector -->
@@ -116,7 +110,6 @@
               <button class="severity-btn px-5 py-2.5 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-severity="severe">Severe</button>
             </div>
           </div>
-          
           <!-- Simulations Grid -->
           <div class="grid md:grid-cols-2 gap-6">
             <div class="glass-card overflow-hidden">
@@ -126,7 +119,6 @@
                 <p class="text-sm text-slate-500">Standard perception</p>
               </div>
             </div>
-            
             <div class="glass-card overflow-hidden">
               <div class="h-32 flex items-center justify-center p-6" id="sim-protanopia"></div>
               <div class="p-5">
@@ -134,7 +126,6 @@
                 <p class="text-sm text-slate-500">No red cones</p>
               </div>
             </div>
-            
             <div class="glass-card overflow-hidden">
               <div class="h-32 flex items-center justify-center p-6" id="sim-deuteranopia"></div>
               <div class="p-5">
@@ -142,7 +133,6 @@
                 <p class="text-sm text-slate-500">No green cones</p>
               </div>
             </div>
-            
             <div class="glass-card overflow-hidden">
               <div class="h-32 flex items-center justify-center p-6" id="sim-tritanopia"></div>
               <div class="p-5">
@@ -150,7 +140,6 @@
                 <p class="text-sm text-slate-500">No blue cones</p>
               </div>
             </div>
-            
             <div class="glass-card overflow-hidden">
               <div class="h-32 flex items-center justify-center p-6" id="sim-achromatopsia"></div>
               <div class="p-5">
@@ -161,7 +150,6 @@
           </div>
         </div>
       </div>
-      
       <!-- Comparison Table -->
       <div class="glass-card p-8 mt-8 overflow-hidden">
         <h2 class="text-2xl font-bold mb-6">Color Comparison</h2>
@@ -182,16 +170,12 @@
       </div>
     </div>
   </main>
-  
   <!-- Footer -->
   <div id="footer-container"></div>
-  
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
   <script src="js/main.js"></script>
   <script src="js/color-blindness.js"></script>
-  
   <!-- Fix: Ensure simulate button works even if DOM timing issue -->
   <script>
     // Extra safeguard: Re-attach simulate button click (runs after everything loads)
