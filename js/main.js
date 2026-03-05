@@ -449,6 +449,7 @@ function renderNavbar() {
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="/about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">About</a>
         <a href="/contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Contact</a>
+        <a href="/blog/index.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Blog</a>
         <a href="/palette.html" class="btn-primary text-center mt-4">
           <i class="fas fa-palette"></i>
           Create Free Palette
@@ -486,7 +487,6 @@ function renderFooter() {
               <li><a href="/about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
               <li><a href="/contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
               <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
-              <li><a href="#" class="hover:text-emerald-500 transition-colors">Tutorials</a></li>
             </ul>
           </div>
           
@@ -496,7 +496,7 @@ function renderFooter() {
             <ul class="space-y-3">
               <li><a href="/privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
               <li><a href="/terms.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
-              <li><a href="#" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
+              <li><a href="/cookie-policy.html" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
             </ul>
           </div>
           
@@ -533,7 +533,7 @@ function renderFooter() {
             <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
               <i class="fab fa-twitter text-xl"></i>
             </a>
-            <a href="https://github.com/ashishkekan" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+            <a href="https://github.com/ashishkekan/ColorPaletteHub" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
               <i class="fab fa-github text-xl"></i>
             </a>
             <a href="https://www.instagram.com/ashkingtechiez/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
@@ -551,6 +551,36 @@ function renderFooter() {
   }
 }
 
+function renderAuthorBio(author = 'ColorPalettesHub Team', date = null) {
+  const container = document.getElementById('author-bio-container');
+  if (!container) return;
+
+  const displayDate = date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  container.innerHTML = `
+    <div class="glass-card p-6 flex flex-col sm:flex-row items-center gap-6 mt-8 not-prose">
+      <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg flex-shrink-0">
+        CPH
+      </div>
+      <div class="flex-1 text-center sm:text-left">
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Written by</p>
+        <h4 class="text-lg font-bold text-slate-900 dark:text-white">${author}</h4>
+        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center sm:justify-start gap-2">
+          <i class="far fa-calendar-alt"></i>
+          Updated on ${displayDate}
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mt-2">
+          ColorPalettesHub Team creates tools and resources for designers and developers worldwide.
+        </p>
+      </div>
+      <div class="flex gap-3">
+         <a href="https://x.com/AshishKekaan99" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-twitter text-xl"></i></a>
+         <a href="https://github.com/ashishkekan/ColorPaletteHub" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-github text-xl"></i></a>
+      </div>
+    </div>
+  `;
+}
+
 // ==========================================
 // Initialize Everything
 // ==========================================
@@ -565,6 +595,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Render navbar and footer
   renderNavbar();
   renderFooter();
+  
+  // Render Author Bio if container exists (for blog pages)
+  renderAuthorBio();
   
   // Initialize navbar
   Navbar.init();
