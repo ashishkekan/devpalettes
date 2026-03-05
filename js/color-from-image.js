@@ -6,6 +6,9 @@
 (function() {
   'use strict';
   
+  // Get global utilities (Same as gradient.js)
+  const { Toast, Clipboard } = window.ColorPalettesHub || {};
+  
   // ========== Color Extraction Algorithms ==========
   const ColorExtractor = {
     /**
@@ -395,7 +398,9 @@
       }));
       
       this.renderResults();
-      this.showToast('Colors extracted successfully!', 'success');
+      
+      // Use Global Toast
+      if (Toast) Toast.show('Colors extracted successfully!', 'success');
     }
     
     renderResults() {
@@ -432,7 +437,7 @@
       document.getElementById('selected-rgb').textContent = `rgb(${color.rgb.r}, ${color.rgb.g}, ${color.rgb.b})`;
       document.getElementById('selected-hsl').textContent = `hsl(${color.hsl.h}, ${color.hsl.s}%, ${color.hsl.l}%)`;
       
-      // Copy to clipboard
+      // Copy to clipboard using Global Clipboard utility
       this.copyToClipboard(color.hex, `${color.hex} copied!`);
     }
     
@@ -465,7 +470,7 @@
       }
       
       this.pickedColorsContainer.innerHTML = this.pickedColors.map(color => `
-        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer transition-colors" onclick="navigator.clipboard.writeText('${color.hex}')">
+        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer transition-colors" onclick="if(window.ColorPalettesHub && window.ColorPalettesHub.Clipboard) window.ColorPalettesHub.Clipboard.copy('${color.hex}', '${color.hex} copied!')">
           <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${color.hex}"></div>
           <div class="flex-1">
             <p class="font-mono text-sm font-semibold">${color.hex}</p>
@@ -512,37 +517,16 @@
       return luminance > 0.5 ? '#1e293b' : '#f8fafc';
     }
     
+    // Updated to use Global Clipboard utility (Same as gradient.js)
     copyToClipboard(text, message) {
-      navigator.clipboard.writeText(text).then(() => {
-        this.showToast(message, 'success');
-      });
-    }
-    
-    showToast(message, type = 'info') {
-      const container = document.getElementById('toast-container');
-      const toast = document.createElement('div');
-      
-      const bgColor = type === 'success' ? 'bg-emerald-500' : 
-                      type === 'error' ? 'bg-red-500' : 'bg-blue-500';
-      
-      toast.className = `${bgColor} text-white px-6 py-3 rounded-xl shadow-lg transform transition-all duration-300 translate-x-full`;
-      toast.innerHTML = `
-        <div class="flex items-center gap-3">
-          <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-          <span>${message}</span>
-        </div>
-      `;
-      
-      container.appendChild(toast);
-      
-      requestAnimationFrame(() => {
-        toast.classList.remove('translate-x-full');
-      });
-      
-      setTimeout(() => {
-        toast.classList.add('translate-x-full', 'opacity-0');
-        setTimeout(() => toast.remove(), 300);
-      }, 3000);
+      if (Clipboard) {
+        Clipboard.copy(text, message);
+      } else {
+        // Fallback if global utility not found
+        navigator.clipboard.writeText(text).then(() => {
+          if (Toast) Toast.show(message, 'success');
+        });
+      }
     }
   }
   
