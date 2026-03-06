@@ -2,50 +2,46 @@
    ColorPalettesHub - Main JavaScript
    Shared functionality across all pages
    ============================================ */
-
 // ==========================================
 // Theme Management
 // ==========================================
-
 const ThemeManager = {
   init() {
     // Check for saved preference or system preference
     const savedTheme = localStorage.getItem('colorpallates-theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    
+   
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
       document.documentElement.classList.add('dark');
     }
-    
+   
     // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('colorpallates-theme')) {
         document.documentElement.classList.toggle('dark', e.matches);
       }
     });
-    
+   
     this.updateToggleIcon();
   },
-  
+ 
   toggle() {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('colorpallates-theme', isDark ? 'dark' : 'light');
     this.updateToggleIcon();
   },
-  
+ 
   updateToggleIcon() {
     // Icons are handled by Tailwind classes (dark:hidden / dark:block)
     // No JS changes needed
   }
 };
-
 // ==========================================
 // Toast Notifications
 // ==========================================
-
 const Toast = {
   container: null,
-  
+ 
   init() {
     // Create container if it doesn't exist
     if (!document.querySelector('.toast-container')) {
@@ -56,23 +52,23 @@ const Toast = {
       this.container = document.querySelector('.toast-container');
     }
   },
-  
+ 
   show(message, type = 'success', duration = 3000) {
     if (!this.container) this.init();
-    
+   
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
-    
+   
     const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
     const iconColor = type === 'success' ? 'text-emerald-400' : 'text-red-400';
-    
+   
     toast.innerHTML = `
       <i class="fas ${icon} ${iconColor}"></i>
       <span>${message}</span>
     `;
-    
+   
     this.container.appendChild(toast);
-    
+   
     // Remove toast after duration
     setTimeout(() => {
       if (toast.parentNode) {
@@ -81,11 +77,9 @@ const Toast = {
     }, duration);
   }
 };
-
 // ==========================================
 // Color Utilities
 // ==========================================
-
 const ColorUtils = {
   // Generate random hex color
   randomHex() {
@@ -96,7 +90,7 @@ const ColorUtils = {
     }
     return color;
   },
-  
+ 
   // Generate random HSL (better for pleasing colors)
   randomHSL(saturation = null, lightness = null) {
     const h = Math.floor(Math.random() * 360);
@@ -104,7 +98,7 @@ const ColorUtils = {
     const l = lightness ?? Math.floor(Math.random() * 30) + 40; // 40-70%
     return { h, s, l };
   },
-  
+ 
   // HSL to HEX
   hslToHex(h, s, l) {
     l /= 100;
@@ -116,7 +110,7 @@ const ColorUtils = {
     };
     return `#${f(0)}${f(8)}${f(4)}`;
   },
-  
+ 
   // HEX to RGB
   hexToRgb(hex) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
@@ -126,7 +120,7 @@ const ColorUtils = {
       b: parseInt(result[3], 16)
     } : null;
   },
-  
+ 
   // RGB to HEX
   rgbToHex(r, g, b) {
     return '#' + [r, g, b].map(x => {
@@ -134,45 +128,45 @@ const ColorUtils = {
       return hex.length === 1 ? '0' + hex : hex;
     }).join('');
   },
-  
+ 
   // RGB to HSL
   rgbToHsl(r, g, b) {
     r /= 255;
     g /= 255;
     b /= 255;
-    
+   
     const max = Math.max(r, g, b);
     const min = Math.min(r, g, b);
     let h, s, l = (max + min) / 2;
-    
+   
     if (max === min) {
       h = s = 0;
     } else {
       const d = max - min;
       s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-      
+     
       switch (max) {
         case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
         case g: h = ((b - r) / d + 2) / 6; break;
         case b: h = ((r - g) / d + 4) / 6; break;
       }
     }
-    
+   
     return {
       h: Math.round(h * 360),
       s: Math.round(s * 100),
       l: Math.round(l * 100)
     };
   },
-  
+ 
   // HSL to RGB
   hslToRgb(h, s, l) {
     h /= 360;
     s /= 100;
     l /= 100;
-    
+   
     let r, g, b;
-    
+   
     if (s === 0) {
       r = g = b = l;
     } else {
@@ -184,48 +178,48 @@ const ColorUtils = {
         if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
         return p;
       };
-      
+     
       const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
       const p = 2 * l - q;
-      
+     
       r = hue2rgb(p, q, h + 1/3);
       g = hue2rgb(p, q, h);
       b = hue2rgb(p, q, h - 1/3);
     }
-    
+   
     return {
       r: Math.round(r * 255),
       g: Math.round(g * 255),
       b: Math.round(b * 255)
     };
   },
-  
+ 
   // Calculate contrast color (black or white)
   getContrastColor(hex) {
     const rgb = this.hexToRgb(hex);
     if (!rgb) return '#000000';
-    
+   
     // Calculate relative luminance
     const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
-    
+   
     return luminance > 0.5 ? '#000000' : '#ffffff';
   },
-  
+ 
   // Get color name (simplified)
   getColorName(hex) {
     const rgb = this.hexToRgb(hex);
     if (!rgb) return 'Unknown';
-    
+   
     const hsl = this.rgbToHsl(rgb.r, rgb.g, rgb.b);
-    
+   
     if (hsl.s < 10) {
       if (hsl.l < 20) return 'Black';
       if (hsl.l > 80) return 'White';
       return 'Gray';
     }
-    
+   
     const hue = hsl.h;
-    
+   
     if (hue < 15 || hue >= 345) return 'Red';
     if (hue < 45) return 'Orange';
     if (hue < 75) return 'Yellow';
@@ -234,15 +228,13 @@ const ColorUtils = {
     if (hue < 255) return 'Blue';
     if (hue < 285) return 'Purple';
     if (hue < 345) return 'Pink';
-    
+   
     return 'Unknown';
   }
 };
-
 // ==========================================
 // Clipboard
 // ==========================================
-
 const Clipboard = {
   async copy(text, message = 'Copied to clipboard!') {
     try {
@@ -257,7 +249,7 @@ const Clipboard = {
       textarea.style.opacity = '0';
       document.body.appendChild(textarea);
       textarea.select();
-      
+     
       try {
         document.execCommand('copy');
         Toast.show(message, 'success');
@@ -271,43 +263,41 @@ const Clipboard = {
     }
   }
 };
-
 // ==========================================
 // Navbar & Mobile Menu
 // ==========================================
-
 const Navbar = {
   init() {
     this.navbar = document.querySelector('.navbar');
     this.hamburger = document.querySelector('.hamburger');
     this.mobileMenu = document.querySelector('.mobile-menu');
-    
+   
     // Scroll effect
     window.addEventListener('scroll', () => this.handleScroll());
-    
+   
     // Mobile menu toggle
     if (this.hamburger && this.mobileMenu) {
       this.hamburger.addEventListener('click', () => this.toggleMobile());
-      
+     
       // Close on link click
       this.mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => this.closeMobile());
       });
     }
   },
-  
+ 
   handleScroll() {
     if (this.navbar) {
       this.navbar.classList.toggle('scrolled', window.scrollY > 20);
     }
   },
-  
+ 
   toggleMobile() {
     this.hamburger.classList.toggle('active');
     this.mobileMenu.classList.toggle('active');
     document.body.style.overflow = this.mobileMenu.classList.contains('active') ? 'hidden' : '';
   },
-  
+ 
   closeMobile() {
     if (this.hamburger && this.mobileMenu) {
       this.hamburger.classList.remove('active');
@@ -316,26 +306,24 @@ const Navbar = {
     }
   }
 };
-
 // ==========================================
 // Keyboard Shortcuts
 // ==========================================
-
 const KeyboardShortcuts = {
   callbacks: {},
-  
+ 
   init() {
     document.addEventListener('keydown', (e) => {
       // Check if user is typing in an input
-      const isTyping = ['INPUT', 'TEXTAREA'].includes(e.target.tagName) || 
+      const isTyping = ['INPUT', 'TEXTAREA'].includes(e.target.tagName) ||
                        e.target.isContentEditable;
-      
+     
       // Spacebar shortcut
       if (e.code === 'Space' && !isTyping && this.callbacks.space) {
         e.preventDefault();
         this.callbacks.space();
       }
-      
+     
       // Other shortcuts
       if (!isTyping) {
         Object.entries(this.callbacks).forEach(([key, callback]) => {
@@ -346,16 +334,14 @@ const KeyboardShortcuts = {
       }
     });
   },
-  
+ 
   on(key, callback) {
     this.callbacks[key] = callback;
   }
 };
-
 // ==========================================
 // Local Storage Helpers
 // ==========================================
-
 const Storage = {
   get(key, defaultValue = null) {
     try {
@@ -365,7 +351,7 @@ const Storage = {
       return defaultValue;
     }
   },
-  
+ 
   set(key, value) {
     try {
       localStorage.setItem(`colorpallates-${key}`, JSON.stringify(value));
@@ -374,19 +360,17 @@ const Storage = {
       return false;
     }
   },
-  
+ 
   remove(key) {
     localStorage.removeItem(`colorpallates-${key}`);
   }
 };
-
 // ==========================================
 // Render Shared Components
 // ==========================================
-
 function renderNavbar() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  
+ 
   const navHTML = `
     <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
@@ -404,7 +388,7 @@ function renderNavbar() {
               </span>
             </div>
           </a>
-          
+         
           <!-- Desktop Nav -->
           <div class="nav-links hidden md:flex items-center gap-8">
             <a href="/palette.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generate</a>
@@ -415,7 +399,7 @@ function renderNavbar() {
             <a href="/color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
             <a href="/color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
           </div>
-          
+         
           <!-- Right side -->
           <div class="flex items-center gap-4">
             <button id="theme-toggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
@@ -435,7 +419,7 @@ function renderNavbar() {
         </div>
       </div>
     </nav>
-    
+   
     <!-- Mobile Menu -->
     <div class="mobile-menu md:hidden">
       <div class="flex flex-col gap-6">
@@ -457,13 +441,12 @@ function renderNavbar() {
       </div>
     </div>
   `;
-  
+ 
   const navbarContainer = document.getElementById('navbar-container');
   if (navbarContainer) {
     navbarContainer.innerHTML = navHTML;
   }
 }
-
 function renderFooter() {
   const footerHTML = `
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
@@ -479,7 +462,7 @@ function renderFooter() {
               <li><a href="/pastel-color-palettes.html" class="hover:text-emerald-500 transition-colors">Browse Palettes</a></li>
             </ul>
           </div>
-          
+         
           <!-- Resources -->
           <div>
             <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Resources</h3>
@@ -489,7 +472,7 @@ function renderFooter() {
               <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
             </ul>
           </div>
-          
+         
           <!-- Legal -->
           <div>
             <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Legal</h3>
@@ -499,7 +482,7 @@ function renderFooter() {
               <li><a href="/cookie-policy.html" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
             </ul>
           </div>
-          
+         
           <!-- Newsletter -->
           <div>
             <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Stay Updated</h3>
@@ -512,7 +495,7 @@ function renderFooter() {
             </form>
           </div>
         </div>
-        
+       
         <div class="border-t border-slate-200 dark:border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <a href="/" class="flex items-center gap-2 group">
             <div class="flex items-center gap-3 group cursor-pointer">
@@ -544,19 +527,16 @@ function renderFooter() {
       </div>
     </footer>
   `;
-  
+ 
   const footerContainer = document.getElementById('footer-container');
   if (footerContainer) {
     footerContainer.innerHTML = footerHTML;
   }
 }
-
 function renderAuthorBio(author = 'ColorPalettesHub Team', date = null) {
   const container = document.getElementById('author-bio-container');
   if (!container) return;
-
   const displayDate = date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
-
   container.innerHTML = `
     <div class="glass-card p-6 flex flex-col sm:flex-row items-center gap-6 mt-8 not-prose">
       <div class="w-20 h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-2xl font-bold shadow-lg flex-shrink-0">
@@ -580,41 +560,38 @@ function renderAuthorBio(author = 'ColorPalettesHub Team', date = null) {
     </div>
   `;
 }
-
 // ==========================================
 // Initialize Everything
 // ==========================================
-
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize theme
   ThemeManager.init();
-  
+ 
   // Initialize toast
   Toast.init();
-  
+ 
   // Render navbar and footer
   renderNavbar();
   renderFooter();
-  
+ 
   // Render Author Bio if container exists (for blog pages)
   renderAuthorBio();
-  
+ 
   // Initialize navbar
   Navbar.init();
-  
+ 
   // Initialize keyboard shortcuts
   KeyboardShortcuts.init();
-  
+ 
   // Theme toggle button
   document.addEventListener('click', (e) => {
     if (e.target.closest('#theme-toggle')) {
       ThemeManager.toggle();
     }
   });
-  
+ 
   console.log('ColorPalettesHub initialized successfully');
 });
-
 // Export utilities for use in other scripts
 window.ColorPalettesHub = {
   ThemeManager,

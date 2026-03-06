@@ -35,11 +35,22 @@
   </script>
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Theme Flash Prevention Script -->
+  <script>
+    (function() {
+      // Apply saved or system theme immediately to prevent flash
+      const savedTheme = localStorage.getItem('colorpallates-theme');
+      const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
+ 
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
     <div class="hero-pattern"></div>
@@ -61,7 +72,7 @@
         </h1>
         <!-- Subtext -->
         <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
-          The professional color palette and gradient generator trusted by designers and developers worldwide. 
+          The professional color palette and gradient generator trusted by designers and developers worldwide.
           Generate, convert, and export beautiful colors instantly.
         </p>
         <!-- CTAs -->
@@ -102,7 +113,6 @@
       </div>
     </div>
   </section>
-
   <!-- Live Generator Section -->
   <section id="generator" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -135,7 +145,6 @@
       </div>
     </div>
   </section>
-
   <!-- Trending Palettes Section -->
   <section id="explore" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -161,7 +170,7 @@
             </div>
           </div>
         </div>
-        
+       
         <!-- Palette Card 2 -->
         <div class="glass-card p-4">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
@@ -205,7 +214,6 @@
       </div>
     </div>
   </section>
-
   <!-- Gradient Preview Section -->
   <section id="gradients" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -213,7 +221,7 @@
         <div>
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">Gradient Generator</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-6">
-            Create stunning linear and radial gradients with multiple color stops. 
+            Create stunning linear and radial gradients with multiple color stops.
             Preview in real-time and export CSS instantly.
           </p>
           <ul class="space-y-3 mb-8">
@@ -248,7 +256,6 @@
       </div>
     </div>
   </section>
-
   <!-- Features Section -->
   <section id="features" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -264,7 +271,7 @@
           </div>
           <h3 class="text-xl font-bold mb-3">Accessibility First</h3>
           <p class="text-slate-600 dark:text-slate-400">
-            Automatic contrast checking ensures your colors are accessible. 
+            Automatic contrast checking ensures your colors are accessible.
             Get WCAG compliance scores instantly.
           </p>
         </div>
@@ -275,7 +282,7 @@
           </div>
           <h3 class="text-xl font-bold mb-3">Developer Ready</h3>
           <p class="text-slate-600 dark:text-slate-400">
-            Export palettes to CSS, SCSS, JSON, or Tailwind config. 
+            Export palettes to CSS, SCSS, JSON, or Tailwind config.
             Copy with a single click.
           </p>
         </div>
@@ -286,16 +293,15 @@
           </div>
           <h3 class="text-xl font-bold mb-3">Image Picker</h3>
           <p class="text-slate-600 dark:text-slate-400">
-            Extract dominant colors from any image. 
+            Extract dominant colors from any image.
             Upload and generate palettes automatically.
           </p>
         </div>
       </div>
     </div>
   </section>
-
   <!-- ==========================================
-       BLOG SECTION ADDED FOR ADSENSE 
+       BLOG SECTION ADDED FOR ADSENSE
        ========================================== -->
   <section id="blog" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -304,7 +310,7 @@
         <p class="text-slate-600 dark:text-slate-400">Tips, trends, and tutorials for designers and developers.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
-        
+       
         <!-- Blog Card 1 -->
         <a href="/blog/color-psychology.html" class="glass-card overflow-hidden group block">
           <div class="h-48 bg-gradient-to-br from-emerald-400 to-cyan-500 relative flex items-center justify-center">
@@ -317,7 +323,6 @@
             <span class="text-emerald-500 font-medium text-sm">Read More →</span>
           </div>
         </a>
-
         <!-- Blog Card 2 -->
         <a href="/blog/best-color-combinations.html" class="glass-card overflow-hidden group block">
           <div class="h-48 bg-gradient-to-br from-orange-400 to-pink-500 relative flex items-center justify-center">
@@ -330,7 +335,6 @@
             <span class="text-emerald-500 font-medium text-sm">Read More →</span>
           </div>
         </a>
-
         <!-- Blog Card 3 -->
         <a href="/blog/ui-color-trends-2026.html" class="glass-card overflow-hidden group block">
           <div class="h-48 bg-gradient-to-br from-violet-400 to-purple-600 relative flex items-center justify-center">
@@ -343,9 +347,8 @@
             <span class="text-emerald-500 font-medium text-sm">Read More →</span>
           </div>
         </a>
-
       </div>
-      
+     
       <div class="text-center mt-10">
         <a href="/blog/index.html" class="btn-secondary">
           <i class="fas fa-newspaper"></i>
@@ -354,16 +357,15 @@
       </div>
     </div>
   </section>
-
   <!-- SEO Content Section -->
   <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="prose prose-slate dark:prose-invert max-w-none">
         <h2 class="text-2xl font-bold mb-6">Why Use a Color Palette Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
-          Color is one of the most powerful tools in design. Whether you're building a website, 
-          creating a brand identity, or designing a mobile app, choosing the right colors can 
-          make or break your project. ColorPalettesHub provides professional-grade tools to help 
+          Color is one of the most powerful tools in design. Whether you're building a website,
+          creating a brand identity, or designing a mobile app, choosing the right colors can
+          make or break your project. ColorPalettesHub provides professional-grade tools to help
           you create harmonious color schemes effortlessly.
         </p>
         <h3 class="text-xl font-bold mb-4">Benefits of Using ColorPalettesHub</h3>
@@ -375,14 +377,13 @@
           <li>Export your palettes in multiple formats for development</li>
         </ul>
         <p class="text-slate-600 dark:text-slate-400">
-          Our tools are used by over 50,000 designers and developers worldwide. 
-          From indie creators to enterprise teams, ColorPalettesHub helps everyone 
+          Our tools are used by over 50,000 designers and developers worldwide.
+          From indie creators to enterprise teams, ColorPalettesHub helps everyone
           work with colors more efficiently.
         </p>
       </div>
     </div>
   </section>
-
   <!-- CTA Section -->
   <section class="py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -396,10 +397,9 @@
       </a>
     </div>
   </section>
-
   <!-- Footer -->
   <div id="footer-container"></div>
-  
+ 
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script>
@@ -451,7 +451,7 @@
       const exportBtn = document.getElementById('export-css-btn');
       if (exportBtn) {
         exportBtn.addEventListener('click', () => {
-          const css = `:root {\n${currentColors.map((c, i) => `  --color-${i + 1}: ${c};`).join('\n')}\n}`;
+          const css = `:root {\n${currentColors.map((c, i) => ` --color-${i + 1}: ${c};`).join('\n')}\n}`;
           ColorPalettesHub.Clipboard.copy(css, 'CSS copied to clipboard!');
         });
       }
