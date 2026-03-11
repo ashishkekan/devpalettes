@@ -22,6 +22,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -40,7 +47,7 @@
   <!-- Navbar -->
   <div id="navbar-container"></div>
   <!-- Main Content -->
-  <main class="pt-24 pb-12 min-h-screen">
+  <main class="pt-10 pb-12 min-h-screen">
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
       <div class="grid lg:grid-cols-2 gap-8">
         <!-- Preview Panel -->
