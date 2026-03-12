@@ -1,8 +1,3 @@
-/* ============================================
-   ColorPallates - Custom Styles
-   A professional color palette & gradient tool
-   ============================================ */
-
 /* CSS Variables for theming */
 :root {
   --bg-primary: #f8fafc;
@@ -57,6 +52,7 @@ body {
   line-height: 1.6;
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Custom Scrollbar */
@@ -100,6 +96,7 @@ body {
   border: 1px solid var(--glass-border);
   border-radius: 16px;
   transition: all 0.3s ease;
+  margin: 5px;
 }
 
 .glass-card:hover {
@@ -114,12 +111,12 @@ body {
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   transition: all 0.3s ease;
 }
 
 .navbar.scrolled {
-  padding: 0.5rem 0;
+  padding: 0.25rem 0;
   box-shadow: 0 4px 30px var(--shadow-color);
 }
 
@@ -196,6 +193,8 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  width: auto;
+  max-width: 90vw;
 }
 
 .toast {
@@ -209,6 +208,7 @@ body {
   gap: 0.75rem;
   animation: slideUp 0.3s ease, fadeOut 0.3s ease 2.7s forwards;
   border-left: 4px solid var(--accent);
+  white-space: nowrap;
 }
 
 .toast.success {
@@ -332,7 +332,7 @@ body {
 /* Gradient preview */
 .gradient-preview {
   border-radius: 16px;
-  min-height: 300px;
+  min-height: 200px;
   transition: all 0.3s ease;
 }
 
@@ -362,6 +362,7 @@ input[type="range"] {
   background: var(--bg-tertiary);
   border-radius: 4px;
   outline: none;
+  transition: all 0.3s ease;
 }
 
 input[type="range"]::-webkit-slider-thumb {
@@ -381,20 +382,10 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 /* Mobile menu */
 .mobile-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--bg-primary);
-  z-index: 999;
-  padding: 6rem 2rem 2rem;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-}
-
-.mobile-menu.active {
-  transform: translateX(0);
+  /* Base styling handled by Tailwind in JS, but adding fallback/transition support */
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Force hardware acceleration */
+  will-change: transform;
 }
 
 /* Hamburger */
@@ -504,19 +495,107 @@ input[type="range"]::-webkit-slider-thumb:hover {
   animation: shimmer 2s infinite;
 }
 
-/* Responsive */
+/* ==========================================
+   RESPONSIVE STYLES (Mobile First)
+   ========================================== */
+
 @media (max-width: 768px) {
+  /* Layout Adjustments */
+  body {
+    font-size: 15px;
+  }
+
+  /* Navbar Mobile */
+  .navbar {
+    padding: 0.25rem 0;
+  }
+
   .hamburger {
     display: block;
+    z-index: 1001;
   }
   
   .nav-links {
     display: none;
   }
-  
+
+  /* Buttons Mobile */
+  .btn-primary, .btn-secondary, .btn-coral {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Cards Mobile */
+  .glass-card {
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+  }
+
+  .glass-card:hover {
+    transform: none; /* Disable hover lift on mobile for better scroll performance */
+  }
+
+  /* Hero Section Mobile */
+  .hero-pattern, .grid-pattern {
+    background-size: 100% 100%, 100% 100%; /* Simplify gradients */
+    opacity: 0.8;
+  }
+
+  /* Toast Mobile */
+  .toast-container {
+    bottom: 1rem;
+    width: 95%;
+    max-width: unset;
+  }
+
   .toast {
     padding: 0.75rem 1rem;
-    font-size: 0.875rem;
+    font-size: 0.8rem;
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Color Blocks Mobile */
+  .color-block::after {
+    content: 'Tap to copy';
+    font-size: 0.65rem;
+    padding: 0.25rem;
+  }
+
+  /* Inputs Mobile */
+  .input-field {
+    font-size: 16px; /* Prevents iOS zoom on focus */
+    padding: 0.6rem 0.8rem;
+  }
+
+  /* Gradient Preview Mobile */
+  .gradient-preview {
+    min-height: 180px;
+    border-radius: 12px;
+  }
+
+  /* Mobile Menu Overlay (Tailwind handles most, these are backups) */
+  .mobile-menu {
+    padding-top: 5rem; /* Space for navbar */
+    padding-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra small devices */
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .btn-primary, .btn-secondary {
+    font-size: 0.85rem;
   }
 }
 

@@ -5,20 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Create stunning CSS gradients with our free online gradient generator. Linear and radial gradients with unlimited color stops.">
   <meta name="keywords" content="gradient generator, css gradient, linear gradient, radial gradient, background gradient">
-  <meta name="author" content="ColorPallates">
-  
-  <title>Gradient Generator - Create Beautiful CSS Gradients | ColorPallates</title>
-  
+  <meta name="author" content="ColorPalettesHub">
+  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
+  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  <meta name="author" content="Color Palettes Hub">
+  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
+  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com">
+  <title>Gradient Generator - Create Beautiful CSS Gradients | ColorPalettesHub</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -31,25 +41,19 @@
       },
     }
   </script>
-  
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
   <!-- Main Content -->
-  <main class="pt-24 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+  <main class="pt-10 pb-12 min-h-screen">
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
       <div class="grid lg:grid-cols-2 gap-8">
-        
         <!-- Preview Panel -->
         <div class="order-2 lg:order-1">
           <div id="gradient-preview" class="w-full aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl shadow-2xl transition-all duration-300" style="background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);">
           </div>
-          
           <!-- CSS Output -->
           <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
             <div class="flex justify-between items-center mb-2">
@@ -63,11 +67,9 @@
             </code>
           </div>
         </div>
-        
         <!-- Controls Panel -->
         <div class="order-1 lg:order-2">
           <h1 class="text-3xl font-bold mb-6">Gradient Generator</h1>
-          
           <!-- Gradient Type -->
           <div class="mb-6">
             <label class="block text-sm font-semibold mb-2">Type</label>
@@ -80,7 +82,6 @@
               </button>
             </div>
           </div>
-          
           <!-- Angle (for linear) -->
           <div id="angle-control" class="mb-6">
             <label class="block text-sm font-semibold mb-2">Angle: <span id="angle-value">135</span>deg</label>
@@ -91,7 +92,6 @@
               <span>360deg</span>
             </div>
           </div>
-          
           <!-- Color Stops -->
           <div class="mb-6">
             <div class="flex justify-between items-center mb-2">
@@ -104,7 +104,6 @@
               <!-- Color stops rendered by JS -->
             </div>
           </div>
-          
           <!-- Presets -->
           <div class="mb-6">
             <label class="block text-sm font-semibold mb-2">Quick Presets</label>
@@ -119,7 +118,6 @@
               <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)"></button>
             </div>
           </div>
-          
           <!-- Actions -->
           <div class="flex gap-3">
             <button id="random-gradient-btn" class="btn-secondary flex-1 justify-center">
@@ -133,13 +131,10 @@
           </div>
         </div>
       </div>
-      
     </div>
   </main>
-  
   <!-- Footer -->
   <div id="footer-container"></div>
-  
   <script src="js/main.js"></script>
   <script src="js/gradient.js"></script>
 </body>

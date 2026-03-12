@@ -1,5 +1,5 @@
 /* ============================================
-   ColorPallates - Main JavaScript
+   ColorPalettesHub - Main JavaScript
    Shared functionality across all pages
    ============================================ */
 
@@ -34,14 +34,8 @@ const ThemeManager = {
   },
   
   updateToggleIcon() {
-    const toggleBtn = document.getElementById('theme-toggle');
-    if (!toggleBtn) return;
-    
-    const isDark = document.documentElement.classList.contains('dark');
-    const icon = toggleBtn.querySelector('i');
-    if (icon) {
-      icon.className = isDark ? 'fas fa-sun text-xl' : 'fas fa-moon text-xl';
-    }
+    // Icons are handled by Tailwind classes (dark:hidden / dark:block)
+    // No JS changes needed
   }
 };
 
@@ -309,15 +303,26 @@ const Navbar = {
   },
   
   toggleMobile() {
+    const isOpen = !this.mobileMenu.classList.contains('translate-x-0');
+    
+    if (isOpen) {
+        this.mobileMenu.classList.remove('translate-x-full');
+        this.mobileMenu.classList.add('translate-x-0');
+        document.body.style.overflow = 'hidden';
+    } else {
+        this.mobileMenu.classList.remove('translate-x-0');
+        this.mobileMenu.classList.add('translate-x-full');
+        document.body.style.overflow = '';
+    }
+    
     this.hamburger.classList.toggle('active');
-    this.mobileMenu.classList.toggle('active');
-    document.body.style.overflow = this.mobileMenu.classList.contains('active') ? 'hidden' : '';
   },
   
   closeMobile() {
     if (this.hamburger && this.mobileMenu) {
+      this.mobileMenu.classList.remove('translate-x-0');
+      this.mobileMenu.classList.add('translate-x-full');
       this.hamburger.classList.remove('active');
-      this.mobileMenu.classList.remove('active');
       document.body.style.overflow = '';
     }
   }
@@ -394,41 +399,48 @@ function renderNavbar() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   
   const navHTML = `
-    <nav class="navbar glass">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
+    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)] sticky top-0 z-50">
+      <div class="mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-14 sm:h-16">
           <!-- Logo -->
-          <a href="index.html" class="flex items-center gap-2 group">
-            <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-orange-400 flex items-center justify-center text-white font-bold text-xl transform group-hover:rotate-6 transition-transform">
-              C
+          <a href="/" class="flex items-center gap-2 group">
+            <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-black
+                flex items-center justify-center text-cyan-400 font-bold text-lg sm:text-xl
+                shadow-[0_0_15px_rgba(34,211,238,0.6)]
+                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+              </div>
+              <span class="text-lg sm:text-2xl font-bold text-cyan-400">
+                ColorPalettesHub
+              </span>
             </div>
-            <span class="text-xl font-bold">
-              <span class="logo-gradient">Color</span><span class="dark:text-white">Pallates</span>
-            </span>
           </a>
           
           <!-- Desktop Nav -->
-          <div class="nav-links hidden md:flex items-center gap-8">
-            <a href="palette.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generator</a>
-            <a href="pastel-color-palettes.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'pastel-color-palettes.html' ? 'text-emerald-500' : ''}">Explore</a>
-            <a href="gradient.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'gradient.html' ? 'text-emerald-500' : ''}">Gradients</a>
-            <a href="converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Converter</a>
+          <div class="nav-links hidden md:flex items-center gap-6 lg:gap-8">
+            <a href="/palette.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generate</a>
+            <a href="/pastel-color-palettes.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'pastel-color-palettes.html' ? 'text-emerald-500' : ''}">Explore</a>
+            <a href="/gradient.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'gradient.html' ? 'text-emerald-500' : ''}">Gradients</a>
+            <a href="/converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Convert</a>
+            <a href="/color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Colors</a>
+            <a href="/color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
+            <a href="/color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
           </div>
           
           <!-- Right side -->
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2 sm:gap-4">
             <button id="theme-toggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
-              <i class="fas fa-moon text-xl dark:hidden"></i>
-              <i class="fas fa-sun text-xl hidden dark:block"></i>
+              <i class="fas fa-moon text-lg sm:text-xl dark:hidden"></i>
+              <i class="fas fa-sun text-lg sm:text-xl hidden dark:block"></i>
             </button>
-            <a href="palette.html" class="hidden sm:flex btn-primary text-sm">
+            <a href="/palette.html" class="hidden sm:flex btn-primary text-sm">
               <i class="fas fa-palette"></i>
               Create Free
             </a>
-            <div class="hamburger md:hidden">
-              <span></span>
-              <span></span>
-              <span></span>
+            <div class="hamburger md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+              <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
+              <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
+              <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white transition-all"></span>
             </div>
           </div>
         </div>
@@ -436,19 +448,25 @@ function renderNavbar() {
     </nav>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu md:hidden">
-      <div class="flex flex-col gap-6">
-        <a href="palette.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Generator</a>
-        <a href="pastel-color-palettes.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Explore Palettes</a>
-        <a href="gradient.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Gradients</a>
-        <a href="converter.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Converter</a>
+    <div class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
+      <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
+        <a href="/palette.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Generate</a>
+        <a href="/pastel-color-palettes.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Explore</a>
+        <a href="/gradient.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradients</a>
+        <a href="/converter.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Convert</a>
+        <a href="/color-names-chart.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
+        <a href="/color-blindness.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
+        <a href="/color-from-image.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
-        <a href="about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">About</a>
-        <a href="contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors">Contact</a>
-        <a href="palette.html" class="btn-primary text-center mt-4">
-          <i class="fas fa-palette"></i>
-          Create Free Palette
-        </a>
+        <a href="/about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
+        <a href="/contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
+        <a href="/blog/index.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
+        <div class="mt-auto pb-8">
+          <a href="/palette.html" class="btn-primary text-center mt-4 w-full justify-center">
+            <i class="fas fa-palette"></i>
+            Create Free Palette
+          </a>
+        </div>
       </div>
     </div>
   `;
@@ -462,72 +480,80 @@ function renderNavbar() {
 function renderFooter() {
   const footerHTML = `
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           <!-- Product -->
           <div>
-            <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Product</h3>
-            <ul class="space-y-3">
-              <li><a href="palette.html" class="hover:text-emerald-500 transition-colors">Palette Generator</a></li>
-              <li><a href="gradient.html" class="hover:text-emerald-500 transition-colors">Gradient Builder</a></li>
-              <li><a href="converter.html" class="hover:text-emerald-500 transition-colors">Color Converter</a></li>
-              <li><a href="pastel-color-palettes.html" class="hover:text-emerald-500 transition-colors">Browse Palettes</a></li>
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <li><a href="/palette.html" class="hover:text-emerald-500 transition-colors">Palette Generator</a></li>
+              <li><a href="/gradient.html" class="hover:text-emerald-500 transition-colors">Gradient Builder</a></li>
+              <li><a href="/converter.html" class="hover:text-emerald-500 transition-colors">Color Converter</a></li>
+              <li><a href="/pastel-color-palettes.html" class="hover:text-emerald-500 transition-colors">Browse Palettes</a></li>
             </ul>
           </div>
           
           <!-- Resources -->
           <div>
-            <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Resources</h3>
-            <ul class="space-y-3">
-              <li><a href="about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-              <li><a href="contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
-              <li><a href="#" class="hover:text-emerald-500 transition-colors">Blog</a></li>
-              <li><a href="#" class="hover:text-emerald-500 transition-colors">Tutorials</a></li>
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <li><a href="/about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
+              <li><a href="/contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
+              <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
             </ul>
           </div>
           
           <!-- Legal -->
           <div>
-            <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Legal</h3>
-            <ul class="space-y-3">
-              <li><a href="privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="terms.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
-              <li><a href="#" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Legal</h3>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <li><a href="/privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
+              <li><a href="/cookie-policy.html" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
             </ul>
           </div>
           
           <!-- Newsletter -->
-          <div>
-            <h3 class="font-bold text-sm uppercase tracking-wider text-slate-500 mb-4">Stay Updated</h3>
-            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4">Get the latest color trends and updates.</p>
-            <form class="flex gap-2" onsubmit="event.preventDefault(); Toast.show('Thanks for subscribing!');">
-              <input type="email" placeholder="Your email" class="input-field text-sm flex-1" required>
+          <div class="col-span-2 md:col-span-1">
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Stay Updated</h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 sm:mb-4">Get the latest color trends and updates.</p>
+            <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex gap-2">
+              <input type="email" name="email" placeholder="Your email"
+              class="input-field text-sm flex-1" required>
+              <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
+              <input type="hidden" name="_captcha" value="false">
               <button type="submit" class="btn-primary text-sm px-4">
-                <i class="fas fa-arrow-right"></i>
+              <i class="fas fa-arrow-right"></i>
               </button>
             </form>
           </div>
         </div>
         
-        <div class="border-t border-slate-200 dark:border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-400 to-orange-400 flex items-center justify-center text-white font-bold text-sm">
-              C
+        <div class="border-t border-slate-200 dark:border-slate-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <a href="/" class="flex items-center gap-2 group mb-4 sm:mb-0">
+            <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
+                flex items-center justify-center text-cyan-400 font-bold text-lg sm:text-xl
+                shadow-[0_0_15px_rgba(34,211,238,0.6)]
+                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+              </div>
+              <span class="text-xl sm:text-2xl font-bold text-cyan-400">
+                ColorPalettesHub
+              </span>
             </div>
-            <span class="font-semibold">ColorPallates</span>
-          </div>
-          <p class="text-sm text-slate-500">
-            &copy; ${new Date().getFullYear()} ColorPallates. All rights reserved.
+          </a>
+          <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
+            &copy; ${new Date().getFullYear()} ColorPalettesHub. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
-            <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
-              <i class="fab fa-twitter text-xl"></i>
+            <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
+              <i class="fab fa-twitter text-lg sm:text-xl"></i>
             </a>
-            <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
-              <i class="fab fa-github text-xl"></i>
+            <a href="https://github.com/ashishkekan/ColorPaletteHub" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+              <i class="fab fa-github text-lg sm:text-xl"></i>
             </a>
-            <a href="#" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Dribbble">
-              <i class="fab fa-dribbble text-xl"></i>
+            <a href="https://www.instagram.com/ashkingtechiez/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
+              <i class="fab fa-instagram text-lg sm:text-xl"></i>
             </a>
           </div>
         </div>
@@ -539,6 +565,36 @@ function renderFooter() {
   if (footerContainer) {
     footerContainer.innerHTML = footerHTML;
   }
+}
+
+function renderAuthorBio(author = 'ColorPalettesHub Team', date = null) {
+  const container = document.getElementById('author-bio-container');
+  if (!container) return;
+
+  const displayDate = date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+  container.innerHTML = `
+    <div class="glass-card p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-6 sm:mt-8 not-prose">
+      <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg flex-shrink-0">
+        CPH
+      </div>
+      <div class="flex-1 text-center sm:text-left">
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1">Written by</p>
+        <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">${author}</h4>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center sm:justify-start gap-2">
+          <i class="far fa-calendar-alt"></i>
+          Updated on ${displayDate}
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
+          ColorPalettesHub Team creates tools and resources for designers and developers worldwide.
+        </p>
+      </div>
+      <div class="flex gap-3">
+         <a href="https://x.com/AshishKekaan99" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-twitter text-lg sm:text-xl"></i></a>
+         <a href="https://github.com/ashishkekan/ColorPaletteHub" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-github text-lg sm:text-xl"></i></a>
+      </div>
+    </div>
+  `;
 }
 
 // ==========================================
@@ -556,6 +612,9 @@ document.addEventListener('DOMContentLoaded', () => {
   renderNavbar();
   renderFooter();
   
+  // Render Author Bio if container exists (for blog pages)
+  renderAuthorBio();
+  
   // Initialize navbar
   Navbar.init();
   
@@ -569,11 +628,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('ColorPallates initialized successfully');
+  console.log('ColorPalettesHub initialized successfully');
 });
 
 // Export utilities for use in other scripts
-window.ColorPallates = {
+window.ColorPalettesHub = {
   ThemeManager,
   Toast,
   ColorUtils,

@@ -3,15 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact ColorPallates team. Get help, report issues, or share feedback about our color tools.">
-  
-  <title>Contact Us - ColorPallates</title>
-  
+  <meta name="description" content="Contact ColorPalettesHub team. Get help, report issues, or share feedback about our color tools.">
+  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
+  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  <meta name="author" content="Color Palettes Hub">
+  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
+  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com">
+  <title>Contact Us - ColorPalettesHub</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
+   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -21,23 +33,17 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <div id="navbar-container"></div>
-  
-  <main class="pt-24 pb-12 min-h-screen">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      
+  <main class="pt-10 pb-12 min-h-screen">
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
         <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
         <p class="text-xl text-slate-600 dark:text-slate-400">We'd love to hear from you</p>
       </div>
-      
       <div class="grid md:grid-cols-2 gap-8">
-        
         <!-- Contact Form -->
         <div class="glass-card p-8">
           <h2 class="text-xl font-bold mb-6">Send us a message</h2>
-          
           <form id="contact-form" class="space-y-4">
             <div>
               <label class="block text-sm font-medium mb-2">Name</label>
@@ -67,7 +73,6 @@
             </button>
           </form>
         </div>
-        
         <!-- Contact Info -->
         <div class="space-y-6">
           <div class="glass-card p-6">
@@ -77,11 +82,10 @@
               </div>
               <div>
                 <h3 class="font-semibold">Email</h3>
-                <p class="text-slate-600 dark:text-slate-400">hello@colorpallates.com</p>
+                <p class="text-slate-600 dark:text-slate-400">hello@colorpaletteshub.com</p>
               </div>
             </div>
           </div>
-          
           <div class="glass-card p-6">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
@@ -93,7 +97,6 @@
               </div>
             </div>
           </div>
-          
           <div class="glass-card p-6">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-xl bg-slate-500/10 flex items-center justify-center">
@@ -105,7 +108,6 @@
               </div>
             </div>
           </div>
-          
           <div class="glass-card p-6">
             <h3 class="font-semibold mb-3">Response Time</h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
@@ -114,19 +116,15 @@
             </p>
           </div>
         </div>
-        
       </div>
-      
     </div>
   </main>
-  
   <div id="footer-container"></div>
-  
   <script src="js/main.js"></script>
   <script>
     document.getElementById('contact-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
-      ColorPallates.Toast.show('Message sent! We\'ll get back to you soon.');
+      ColorPalettesHub.Toast.show('Message sent! We\'ll get back to you soon.');
       this.reset();
     });
   </script>

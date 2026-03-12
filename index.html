@@ -3,27 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ColorPallates - Create beautiful color palettes and gradients for your designs. Free online color palette generator, gradient builder, and color converter tool.">
+  <meta name="description" content="ColorPalettesHub - Create beautiful color palettes and gradients for your designs. Free online color palette generator, gradient builder, and color converter tool.">
   <meta name="keywords" content="color palette generator, gradient generator, color converter, hex to rgb, color picker, design tools">
-  <meta name="author" content="ColorPallates">
+  <meta name="author" content="ColorPalettesHub">
   <meta name="robots" content="index, follow">
-  
   <!-- Open Graph -->
-  <meta property="og:title" content="ColorPallates - Professional Color Palette & Gradient Generator">
+  <meta property="og:title" content="ColorPalettesHub - Professional Color Palette & Gradient Generator">
   <meta property="og:description" content="Create beautiful color palettes and gradients for your designs. Free online tools for designers and developers.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpallates.com">
-  
-  <title>ColorPallates - Free Color Palette & Gradient Generator Tool</title>
-  
+  <title>ColorPalettesHub - Free Color Palette & Gradient Generator Tool</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -38,28 +33,35 @@
       },
     }
   </script>
-  
   <!-- Custom Styles -->
   <link rel="stylesheet" href="css/styles.css">
+  <!-- Theme Flash Prevention Script -->
+  <script>
+    (function() {
+      // Apply saved or system theme immediately to prevent flash
+      const savedTheme = localStorage.getItem('colorpallates-theme');
+      const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
+ 
   <!-- Hero Section -->
-  <section class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+  <section class="relative min-h-screen flex items-center pt-10 overflow-hidden">
     <div class="hero-pattern"></div>
     <div class="grid-pattern"></div>
-    
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-4xl mx-auto">
         <!-- Badge -->
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-8">
           <i class="fas fa-sparkles"></i>
           <span>Trusted by 50,000+ designers</span>
         </div>
-        
         <!-- Headline -->
         <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
           Create Stunning
@@ -68,13 +70,11 @@
           </span>
           <span class="block">in Seconds</span>
         </h1>
-        
         <!-- Subtext -->
         <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
-          The professional color palette and gradient generator trusted by designers and developers worldwide. 
+          The professional color palette and gradient generator trusted by designers and developers worldwide.
           Generate, convert, and export beautiful colors instantly.
         </p>
-        
         <!-- CTAs -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a href="#generator" class="btn-primary text-lg px-8 py-4 w-full sm:w-auto justify-center">
@@ -86,7 +86,6 @@
             Explore Trends
           </a>
         </div>
-        
         <!-- Trust Badges -->
         <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm">
           <div class="flex items-center gap-2">
@@ -103,7 +102,6 @@
           </div>
         </div>
       </div>
-      
       <!-- Mini Live Palette Preview -->
       <div class="mt-16 max-w-3xl mx-auto">
         <p class="text-center text-sm text-slate-500 mb-4">
@@ -115,7 +113,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Live Generator Section -->
   <section id="generator" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -125,13 +122,11 @@
           Press spacebar or click generate to create beautiful color combinations. Click any color to copy.
         </p>
       </div>
-      
       <!-- Generator UI -->
       <div class="max-w-5xl mx-auto">
         <div id="main-palette" class="grid grid-cols-5 gap-0 rounded-2xl overflow-hidden shadow-2xl mb-6" style="min-height: 300px;">
           <!-- Colors inserted by JS -->
         </div>
-        
         <!-- Controls -->
         <div class="flex flex-wrap items-center justify-center gap-4">
           <button id="generate-btn" class="btn-primary text-lg px-8 py-4">
@@ -150,7 +145,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Trending Palettes Section -->
   <section id="explore" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -158,16 +152,15 @@
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Trending Palettes</h2>
         <p class="text-slate-600 dark:text-slate-400">Click any color to copy. Curated by our community.</p>
       </div>
-      
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Palette Card 1 -->
         <div class="glass-card p-4">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #264653;" onclick="ColorPallates.Clipboard.copy('#264653', 'Copied #264653')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #2a9d8f;" onclick="ColorPallates.Clipboard.copy('#2a9d8f', 'Copied #2a9d8f')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #e9c46a;" onclick="ColorPallates.Clipboard.copy('#e9c46a', 'Copied #e9c46a')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #f4a261;" onclick="ColorPallates.Clipboard.copy('#f4a261', 'Copied #f4a261')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #e76f51;" onclick="ColorPallates.Clipboard.copy('#e76f51', 'Copied #e76f51')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #264653;" onclick="ColorPalettesHub.Clipboard.copy('#264653', 'Copied #264653')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #2a9d8f;" onclick="ColorPalettesHub.Clipboard.copy('#2a9d8f', 'Copied #2a9d8f')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #e9c46a;" onclick="ColorPalettesHub.Clipboard.copy('#e9c46a', 'Copied #e9c46a')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #f4a261;" onclick="ColorPalettesHub.Clipboard.copy('#f4a261', 'Copied #f4a261')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #e76f51;" onclick="ColorPalettesHub.Clipboard.copy('#e76f51', 'Copied #e76f51')"></div>
           </div>
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Earthy Sunset</h3>
@@ -177,15 +170,15 @@
             </div>
           </div>
         </div>
-        
+       
         <!-- Palette Card 2 -->
         <div class="glass-card p-4">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #003049;" onclick="ColorPallates.Clipboard.copy('#003049', 'Copied #003049')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #d62828;" onclick="ColorPallates.Clipboard.copy('#d62828', 'Copied #d62828')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #f77f00;" onclick="ColorPallates.Clipboard.copy('#f77f00', 'Copied #f77f00')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #fcbf49;" onclick="ColorPallates.Clipboard.copy('#fcbf49', 'Copied #fcbf49')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #eae2b7;" onclick="ColorPallates.Clipboard.copy('#eae2b7', 'Copied #eae2b7')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #003049;" onclick="ColorPalettesHub.Clipboard.copy('#003049', 'Copied #003049')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #d62828;" onclick="ColorPalettesHub.Clipboard.copy('#d62828', 'Copied #d62828')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #f77f00;" onclick="ColorPalettesHub.Clipboard.copy('#f77f00', 'Copied #f77f00')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #fcbf49;" onclick="ColorPalettesHub.Clipboard.copy('#fcbf49', 'Copied #fcbf49')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #eae2b7;" onclick="ColorPalettesHub.Clipboard.copy('#eae2b7', 'Copied #eae2b7')"></div>
           </div>
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Vibrant Retro</h3>
@@ -195,15 +188,14 @@
             </div>
           </div>
         </div>
-        
         <!-- Palette Card 3 -->
         <div class="glass-card p-4">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #606c38;" onclick="ColorPallates.Clipboard.copy('#606c38', 'Copied #606c38')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #283618;" onclick="ColorPallates.Clipboard.copy('#283618', 'Copied #283618')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #fefae0;" onclick="ColorPallates.Clipboard.copy('#fefae0', 'Copied #fefae0')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #dda15e;" onclick="ColorPallates.Clipboard.copy('#dda15e', 'Copied #dda15e')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #bc6c25;" onclick="ColorPallates.Clipboard.copy('#bc6c25', 'Copied #bc6c25')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #606c38;" onclick="ColorPalettesHub.Clipboard.copy('#606c38', 'Copied #606c38')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #283618;" onclick="ColorPalettesHub.Clipboard.copy('#283618', 'Copied #283618')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #fefae0;" onclick="ColorPalettesHub.Clipboard.copy('#fefae0', 'Copied #fefae0')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #dda15e;" onclick="ColorPalettesHub.Clipboard.copy('#dda15e', 'Copied #dda15e')"></div>
+            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #bc6c25;" onclick="ColorPalettesHub.Clipboard.copy('#bc6c25', 'Copied #bc6c25')"></div>
           </div>
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Forest Glow</h3>
@@ -214,7 +206,6 @@
           </div>
         </div>
       </div>
-      
       <div class="text-center mt-8">
         <a href="pastel-color-palettes.html" class="btn-secondary">
           <i class="fas fa-th-large"></i>
@@ -223,7 +214,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Gradient Preview Section -->
   <section id="gradients" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -231,7 +221,7 @@
         <div>
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">Gradient Generator</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-6">
-            Create stunning linear and radial gradients with multiple color stops. 
+            Create stunning linear and radial gradients with multiple color stops.
             Preview in real-time and export CSS instantly.
           </p>
           <ul class="space-y-3 mb-8">
@@ -257,7 +247,6 @@
             Create Gradient
           </a>
         </div>
-        
         <div class="relative">
           <div class="gradient-preview w-full aspect-video rounded-2xl shadow-2xl" style="background: linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #8b5cf6 100%);"></div>
           <div class="absolute -bottom-4 -right-4 bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg font-mono text-sm">
@@ -267,7 +256,6 @@
       </div>
     </div>
   </section>
-  
   <!-- Features Section -->
   <section id="features" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -275,7 +263,6 @@
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Powerful Features</h2>
         <p class="text-slate-600 dark:text-slate-400">Everything you need to work with colors professionally.</p>
       </div>
-      
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Feature 1 -->
         <div class="glass-card p-8 text-center">
@@ -284,11 +271,10 @@
           </div>
           <h3 class="text-xl font-bold mb-3">Accessibility First</h3>
           <p class="text-slate-600 dark:text-slate-400">
-            Automatic contrast checking ensures your colors are accessible. 
+            Automatic contrast checking ensures your colors are accessible.
             Get WCAG compliance scores instantly.
           </p>
         </div>
-        
         <!-- Feature 2 -->
         <div class="glass-card p-8 text-center">
           <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-6">
@@ -296,11 +282,10 @@
           </div>
           <h3 class="text-xl font-bold mb-3">Developer Ready</h3>
           <p class="text-slate-600 dark:text-slate-400">
-            Export palettes to CSS, SCSS, JSON, or Tailwind config. 
+            Export palettes to CSS, SCSS, JSON, or Tailwind config.
             Copy with a single click.
           </p>
         </div>
-        
         <!-- Feature 3 -->
         <div class="glass-card p-8 text-center">
           <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6">
@@ -308,26 +293,82 @@
           </div>
           <h3 class="text-xl font-bold mb-3">Image Picker</h3>
           <p class="text-slate-600 dark:text-slate-400">
-            Extract dominant colors from any image. 
+            Extract dominant colors from any image.
             Upload and generate palettes automatically.
           </p>
         </div>
       </div>
     </div>
   </section>
-  
+  <!-- ==========================================
+       BLOG SECTION ADDED FOR ADSENSE
+       ========================================== -->
+  <section id="blog" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Latest from the Blog</h2>
+        <p class="text-slate-600 dark:text-slate-400">Tips, trends, and tutorials for designers and developers.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+       
+        <!-- Blog Card 1 -->
+        <a href="/blog/color-psychology.html" class="glass-card overflow-hidden group block">
+          <div class="h-48 bg-gradient-to-br from-emerald-400 to-cyan-500 relative flex items-center justify-center">
+             <i class="fas fa-brain text-white/20 text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-emerald-500 uppercase tracking-wider">Color Theory</span>
+            <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-emerald-500 transition-colors">The Psychology of Colors in UI Design</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">Learn how different colors affect user emotions and behavior in digital products.</p>
+            <span class="text-emerald-500 font-medium text-sm">Read More →</span>
+          </div>
+        </a>
+        <!-- Blog Card 2 -->
+        <a href="/blog/best-color-combinations.html" class="glass-card overflow-hidden group block">
+          <div class="h-48 bg-gradient-to-br from-orange-400 to-pink-500 relative flex items-center justify-center">
+             <i class="fas fa-eye text-white/20 text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-orange-500 uppercase tracking-wider">Tutorial</span>
+            <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-emerald-500 transition-colors">How to Create Accessible Color Palettes</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">A step-by-step guide to ensuring your designs meet WCAG standards.</p>
+            <span class="text-emerald-500 font-medium text-sm">Read More →</span>
+          </div>
+        </a>
+        <!-- Blog Card 3 -->
+        <a href="/blog/ui-color-trends-2026.html" class="glass-card overflow-hidden group block">
+          <div class="h-48 bg-gradient-to-br from-violet-400 to-purple-600 relative flex items-center justify-center">
+             <i class="fas fa-chart-line text-white/20 text-6xl"></i>
+          </div>
+          <div class="p-6">
+            <span class="text-xs font-semibold text-violet-500 uppercase tracking-wider">Trends</span>
+            <h3 class="text-xl font-bold mt-2 mb-3 group-hover:text-emerald-500 transition-colors">Top Web Design Color Trends for 2025</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">Stay ahead of the curve with the latest color trends shaping the web.</p>
+            <span class="text-emerald-500 font-medium text-sm">Read More →</span>
+          </div>
+        </a>
+      </div>
+     
+      <div class="text-center mt-10">
+        <a href="/blog/index.html" class="btn-secondary">
+          <i class="fas fa-newspaper"></i>
+          View All Articles
+        </a>
+      </div>
+    </div>
+  </section>
   <!-- SEO Content Section -->
   <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="prose prose-slate dark:prose-invert max-w-none">
         <h2 class="text-2xl font-bold mb-6">Why Use a Color Palette Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
-          Color is one of the most powerful tools in design. Whether you're building a website, 
-          creating a brand identity, or designing a mobile app, choosing the right colors can 
-          make or break your project. ColorPallates provides professional-grade tools to help 
+          Color is one of the most powerful tools in design. Whether you're building a website,
+          creating a brand identity, or designing a mobile app, choosing the right colors can
+          make or break your project. ColorPalettesHub provides professional-grade tools to help
           you create harmonious color schemes effortlessly.
         </p>
-        <h3 class="text-xl font-bold mb-4">Benefits of Using ColorPallates</h3>
+        <h3 class="text-xl font-bold mb-4">Benefits of Using ColorPalettesHub</h3>
         <ul class="text-slate-600 dark:text-slate-400 space-y-2 mb-6">
           <li>Generate unique color palettes with a single click</li>
           <li>Convert between HEX, RGB, and HSL formats instantly</li>
@@ -336,14 +377,13 @@
           <li>Export your palettes in multiple formats for development</li>
         </ul>
         <p class="text-slate-600 dark:text-slate-400">
-          Our tools are used by over 50,000 designers and developers worldwide. 
-          From indie creators to enterprise teams, ColorPallates helps everyone 
+          Our tools are used by over 50,000 designers and developers worldwide.
+          From indie creators to enterprise teams, ColorPalettesHub helps everyone
           work with colors more efficiently.
         </p>
       </div>
     </div>
   </section>
-  
   <!-- CTA Section -->
   <section class="py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -357,10 +397,9 @@
       </a>
     </div>
   </section>
-  
   <!-- Footer -->
   <div id="footer-container"></div>
-  
+ 
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script>
@@ -369,67 +408,55 @@
       // Initialize hero palette
       const heroPalette = document.getElementById('hero-palette');
       const mainPalette = document.getElementById('main-palette');
-      
       let currentColors = [];
-      
       function generateColors() {
         const colors = [];
         for (let i = 0; i < 5; i++) {
-          const hsl = ColorPallates.ColorUtils.randomHSL();
-          colors.push(ColorPallates.ColorUtils.hslToHex(hsl.h, hsl.s, hsl.l));
+          const hsl = ColorPalettesHub.ColorUtils.randomHSL();
+          colors.push(ColorPalettesHub.ColorUtils.hslToHex(hsl.h, hsl.s, hsl.l));
         }
         return colors;
       }
-      
       function renderPalette(container, colors) {
         if (!container) return;
         container.innerHTML = '';
-        
         colors.forEach((color, index) => {
           const block = document.createElement('div');
           block.className = 'color-block flex items-end justify-center p-4 cursor-pointer transition-all';
           block.style.backgroundColor = color;
-          block.style.color = ColorPallates.ColorUtils.getContrastColor(color);
+          block.style.color = ColorPalettesHub.ColorUtils.getContrastColor(color);
           block.style.minHeight = container.id === 'main-palette' ? '300px' : '80px';
-          
           block.innerHTML = `
             <span class="font-mono text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">${color}</span>
           `;
-          
           block.addEventListener('click', () => {
-            ColorPallates.Clipboard.copy(color, `Copied ${color}`);
+            ColorPalettesHub.Clipboard.copy(color, `Copied ${color}`);
           });
-          
           container.appendChild(block);
         });
       }
-      
       function refreshPalettes() {
         currentColors = generateColors();
         renderPalette(heroPalette, currentColors);
         renderPalette(mainPalette, currentColors);
       }
-      
       // Initial render
       refreshPalettes();
-      
       // Generate button
       const generateBtn = document.getElementById('generate-btn');
       if (generateBtn) {
         generateBtn.addEventListener('click', refreshPalettes);
       }
-      
       // Export CSS button
       const exportBtn = document.getElementById('export-css-btn');
       if (exportBtn) {
         exportBtn.addEventListener('click', () => {
-          const css = `:root {\n${currentColors.map((c, i) => `  --color-${i + 1}: ${c};`).join('\n')}\n}`;
-          ColorPallates.Clipboard.copy(css, 'CSS copied to clipboard!');
+          const css = `:root {\n${currentColors.map((c, i) => ` --color-${i + 1}: ${c};`).join('\n')}\n}`;
+          ColorPalettesHub.Clipboard.copy(css, 'CSS copied to clipboard!');
         });
       }
-      
       // Spacebar shortcut
-      ColorPallates.KeyboardShortcuts.on('space', refreshPalettes);
+      ColorPalettesHub.KeyboardShortcuts.on('space', refreshPalettes);
     });
   </script>
 </body>
