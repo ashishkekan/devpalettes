@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Discover if your color is warm or cool. Analyze RGB values and generate beautiful variations instantly with our Color Temperature tool.">
+  <meta name="keywords" content="color temperature, warm colors, cool colors, color analyzer, color theory">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Color Temperature Analyzer - Warm & Cool | ColorPalettesHub</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        },
+      },
+    }
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Common Visual Enhancement Styles -->
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Page Specific Styles */
+    input[type="color"] {
+        -webkit-appearance: none;
+        border: none;
+        width: 100%;
+        height: 100%; /* Fill parent height */
+        cursor: pointer;
+        background: transparent;
+    }
+    input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+    input[type="color"]::-webkit-color-swatch { 
+        border: none; 
+        border-radius: 12px; 
+    }
+
+    .result-box {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .temp-badge {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-temperature-half mr-2"></i>Color Analysis
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Color Temperature Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          Discover if your color is <span class="text-rose-500 font-medium">Warm</span> or <span class="text-sky-500 font-medium">Cool</span>. Analyze RGB values instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-5 gap-8">
+        
+        <!-- Left: Preview -->
+        <div class="lg:col-span-3 space-y-6 animate-on-scroll">
+          
+          <!-- Main Preview Card -->
+          <div class="glass-card p-8 shimmer-card">
+             <div class="flex flex-col items-center">
+                <!-- Main Color Display -->
+                <div class="w-full aspect-video rounded-2xl shadow-inner overflow-hidden mb-6 relative" style="background-color: #FF5733;">
+                   <input type="color" id="colorPicker" value="#FF5733" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" aria-label="Select Color">
+                   <div id="main-preview" class="w-full h-full flex items-center justify-center transition-colors duration-300 pointer-events-none">
+                      <span id="hex-display" class="text-3xl font-mono font-bold text-white mix-blend-difference">#FF5733</span>
+                   </div>
+                </div>
+                
+                <!-- Palette Grid -->
+                <div class="w-full">
+                   <h3 class="text-sm font-semibold text-slate-500 mb-3">Generated Tints & Shades</h3>
+                   <div id="palette" class="grid grid-cols-5 gap-2">
+                      <!-- Palette items generated by JS -->
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Result Card -->
+          <div id="result-container" class="glass-card p-6 shimmer-card hidden">
+             <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="text-center md:text-left">
+                   <h3 class="text-xs uppercase tracking-wider text-slate-500 mb-1">Analysis Result</h3>
+                   <div id="result-text" class="text-2xl font-bold"></div>
+                </div>
+                <div class="flex gap-4 w-full md:w-auto">
+                   <div class="flex-1 md:w-20 p-3 rounded-xl bg-red-500/10 text-center">
+                      <span class="block text-xs text-slate-500">Red</span>
+                      <span id="val-r" class="font-bold text-lg text-red-500">0</span>
+                   </div>
+                   <div class="flex-1 md:w-20 p-3 rounded-xl bg-green-500/10 text-center">
+                      <span class="block text-xs text-slate-500">Green</span>
+                      <span id="val-g" class="font-bold text-lg text-green-500">0</span>
+                   </div>
+                   <div class="flex-1 md:w-20 p-3 rounded-xl bg-blue-500/10 text-center">
+                      <span class="block text-xs text-slate-500">Blue</span>
+                      <span id="val-b" class="font-bold text-lg text-blue-500">0</span>
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Controls -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 flex items-center gap-2 text-lg">
+                <i class="fas fa-sliders text-emerald-500"></i>
+                Color Input
+             </h3>
+             
+             <!-- Color Input Wrapper -->
+             <div class="relative w-full h-40 rounded-xl overflow-hidden border-2 border-dashed border-slate-200 dark:border-slate-700 hover:border-emerald-500 transition-colors mb-6">
+                <input type="color" id="colorPickerControls" value="#FF5733" class="absolute inset-0 w-full h-full cursor-pointer">
+                <div class="absolute bottom-2 right-2 bg-black/30 backdrop-blur-sm text-white text-xs font-mono px-2 py-1 rounded pointer-events-none z-10">
+                   <span id="picker-hex-label">#FF5733</span>
+                </div>
+             </div>
+             
+             <button onclick="analyzeColor()" class="btn-primary btn-glow w-full justify-center text-lg py-4">
+                <i class="fas fa-temperature-half mr-2"></i>
+                Analyze Temperature
+             </button>
+          </div>
+          
+          <!-- Info Card -->
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-3 text-sm uppercase tracking-wider text-slate-500">How it works</h3>
+             <p class="text-slate-600 dark:text-slate-400 text-sm mb-3">
+                Colors with dominant Red values are considered <span class="text-rose-500 font-medium">Warm</span>, while dominant Blue values are considered <span class="text-sky-500 font-medium">Cool</span>.
+             </p>
+             <ul class="space-y-2 text-sm text-slate-500">
+                <li class="flex items-center gap-2">
+                   <i class="fas fa-circle text-rose-500 text-xs"></i>
+                   <span>High Red = Warm</span>
+                </li>
+                <li class="flex items-center gap-2">
+                   <i class="fas fa-circle text-sky-500 text-xs"></i>
+                   <span>High Blue = Cool</span>
+                </li>
+                <li class="flex items-center gap-2">
+                   <i class="fas fa-circle text-purple-500 text-xs"></i>
+                   <span>Balanced = Neutral</span>
+                </li>
+             </ul>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+        // --- DOM Elements ---
+        const pickerMain = document.getElementById('colorPicker');
+        const pickerControls = document.getElementById('colorPickerControls');
+        const label = document.getElementById('picker-hex-label');
+        const mainPreview = document.getElementById('main-preview');
+        const hexDisplay = document.getElementById('hex-display');
+        
+        // --- Helper Functions ---
+        function hexToRgb(hex) {
+            hex = hex.replace("#", "");
+            let r = parseInt(hex.substring(0, 2), 16);
+            let g = parseInt(hex.substring(2, 4), 16);
+            let b = parseInt(hex.substring(4, 6), 16);
+            return { r, g, b };
+        }
+
+        function rgbToHex(r, g, b) {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
+        }
+
+        function getContrastYIQ(r, g, b) {
+            return ((r * 299) + (g * 587) + (b * 114)) / 1000 >= 128 ? '#000000' : '#FFFFFF';
+        }
+
+        // --- Sync Inputs ---
+        function syncPickers(sourceVal) {
+            const val = sourceVal.toUpperCase();
+            if(pickerMain) pickerMain.value = sourceVal;
+            if(pickerControls) pickerControls.value = sourceVal;
+            
+            if(label) label.textContent = val;
+            if(hexDisplay) hexDisplay.textContent = val;
+            if(mainPreview) mainPreview.style.backgroundColor = sourceVal;
+        }
+        
+        if(pickerMain) {
+            pickerMain.addEventListener('input', (e) => syncPickers(e.target.value));
+        }
+        
+        if(pickerControls) {
+            pickerControls.addEventListener('input', (e) => syncPickers(e.target.value));
+        }
+
+        // --- Main Analysis Logic ---
+        window.analyzeColor = function() {
+            let hex = pickerMain ? pickerMain.value : '#FF5733';
+            let rgb = hexToRgb(hex);
+
+            // Update RGB Stats
+            document.getElementById('val-r').textContent = rgb.r;
+            document.getElementById('val-g').textContent = rgb.g;
+            document.getElementById('val-b').textContent = rgb.b;
+
+            // Determine Temperature
+            let temperature;
+            let detailHtml;
+
+            if (rgb.r > rgb.b) {
+                temperature = "Warm Color";
+                detailHtml = `<span class="temp-badge bg-rose-100 text-rose-700 dark:bg-rose-900/50 dark:text-rose-300">🔥 ${temperature}</span>`;
+            } else if (rgb.b > rgb.r) {
+                temperature = "Cool Color";
+                detailHtml = `<span class="temp-badge bg-sky-100 text-sky-700 dark:bg-sky-900/50 dark:text-sky-300">❄️ ${temperature}</span>`;
+            } else {
+                temperature = "Neutral";
+                detailHtml = `<span class="temp-badge bg-purple-100 text-purple-700 dark:bg-purple-900/50 dark:text-purple-300">⚖️ ${temperature}</span>`;
+            }
+
+            // Update Result UI
+            const resultContainer = document.getElementById('result-container');
+            const resultText = document.getElementById('result-text');
+            
+            resultContainer.classList.remove('hidden');
+            resultText.innerHTML = detailHtml;
+
+            // Generate Palette
+            generatePalette(rgb);
+        };
+
+        // --- Palette Generation Logic ---
+        function generatePalette(rgb) {
+            const paletteContainer = document.getElementById('palette');
+            paletteContainer.innerHTML = ""; 
+
+            // 5 variations: 2 Lighter, Original, 2 Darker
+            const steps = [50, 25, 0, -25, -50];
+
+            steps.forEach((step) => {
+                let r = Math.max(0, Math.min(255, rgb.r + step));
+                let g = Math.max(0, Math.min(255, rgb.g + step));
+                let b = Math.max(0, Math.min(255, rgb.b + step));
+
+                if (step === 0) { r = rgb.r; g = rgb.g; b = rgb.b; }
+
+                const colorHex = rgbToHex(r, g, b);
+                const textColor = getContrastYIQ(r, g, b);
+
+                const div = document.createElement("div");
+                div.className = "aspect-square rounded-xl shadow flex items-center justify-center cursor-pointer transition-transform hover:scale-105 relative group overflow-hidden";
+                div.style.background = `rgb(${r},${g},${b})`;
+                
+                div.innerHTML = `
+                    <span class="font-mono text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" style="color:${textColor}">${colorHex}</span>
+                `;
+
+                div.onclick = () => {
+                    navigator.clipboard.writeText(colorHex);
+                    if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+                        window.ColorPalettesHub.Toast.show(`Copied ${colorHex}`, 'success');
+                    } else {
+                        // Fallback tooltip
+                        const tooltip = document.createElement('span');
+                        tooltip.className = "absolute inset-0 flex items-center justify-center bg-black/60 text-white text-xs font-bold z-20";
+                        tooltip.textContent = "Copied!";
+                        div.appendChild(tooltip);
+                        setTimeout(() => tooltip.remove(), 800);
+                    }
+                };
+
+                paletteContainer.appendChild(div);
+            });
+        }
+        
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            analyzeColor();
+        });
+        
+    })();
+  </script>
+</body>
+</html>

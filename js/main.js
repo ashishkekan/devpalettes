@@ -426,6 +426,7 @@ function renderNavbar() {
             <a href="/color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
             <a href="/color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
             <a href="/color-wheel.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-wheel.html' ? 'text-emerald-500' : ''}">Wheels</a>
+            <a href="/color-temperature.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-temperature.html' ? 'text-emerald-500' : ''}">Temperature</a>
            </div>
           
           <!-- Right side -->
@@ -459,6 +460,7 @@ function renderNavbar() {
         <a href="/color-blindness.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
         <a href="/color-from-image.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
         <a href="/color-wheel.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Wheels</a>
+        <a href="/color-temperature.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Temperature</a>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="/about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
         <a href="/contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
