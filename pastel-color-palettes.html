@@ -32,17 +32,26 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-6 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      <div class="text-center mb-12">
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Pastel Color Palettes</h1>
-        <p class="text-xl text-slate-600 dark:text-slate-400">Soft, soothing colors perfect for modern designs</p>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">Soft, soothing colors perfect for modern designs</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <!-- Filter Tags -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
         <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">All Pastels</span>
         <a href="dark-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Dark</a>
         <a href="neon-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Neon</a>
@@ -50,7 +59,7 @@
       <!-- Palettes Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Palette 1 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFB5BA;" onclick="ColorPalettesHub.Clipboard.copy('#FFB5BA')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFDAC1;" onclick="ColorPalettesHub.Clipboard.copy('#FFDAC1')"></div>
@@ -64,7 +73,7 @@
           </div>
         </div>
         <!-- Palette 2 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A8D8EA;" onclick="ColorPalettesHub.Clipboard.copy('#A8D8EA')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #AA96DA;" onclick="ColorPalettesHub.Clipboard.copy('#AA96DA')"></div>
@@ -78,7 +87,7 @@
           </div>
         </div>
         <!-- Palette 3 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D4E4F7;" onclick="ColorPalettesHub.Clipboard.copy('#D4E4F7')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0E6EF;" onclick="ColorPalettesHub.Clipboard.copy('#F0E6EF')"></div>
@@ -92,7 +101,7 @@
           </div>
         </div>
         <!-- Palette 4 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFDAC1;" onclick="ColorPalettesHub.Clipboard.copy('#FFDAC1')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFB7B2;" onclick="ColorPalettesHub.Clipboard.copy('#FFB7B2')"></div>
@@ -106,7 +115,7 @@
           </div>
         </div>
         <!-- Palette 5 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C9E4CA;" onclick="ColorPalettesHub.Clipboard.copy('#C9E4CA')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #DEE5E5;" onclick="ColorPalettesHub.Clipboard.copy('#DEE5E5')"></div>
@@ -120,7 +129,7 @@
           </div>
         </div>
         <!-- Palette 6 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F3E5F5;" onclick="ColorPalettesHub.Clipboard.copy('#F3E5F5')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E1BEE7;" onclick="ColorPalettesHub.Clipboard.copy('#E1BEE7')"></div>
@@ -135,7 +144,7 @@
         </div>
       </div>
       <!-- SEO Content -->
-      <div class="glass-card p-8 mb-8">
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-4">What Are Pastel Colors?</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
           Pastel colors are soft, pale shades of colors created by adding white to pure hues. They have high lightness and low to medium saturation, giving them a gentle, soothing appearance.
@@ -152,8 +161,8 @@
           <li>Minimalist web design backgrounds</li>
         </ul>
       </div>
-      <div class="text-center">
-        <a href="palette.html" class="btn-primary inline-flex">
+      <div class="text-center animate-on-scroll">
+        <a href="palette.html" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-palette"></i>
           Create Your Own Palette
         </a>
@@ -162,5 +171,7 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

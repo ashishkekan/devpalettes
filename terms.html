@@ -31,31 +31,40 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Terms of Service</h1>
-        <p class="text-slate-600 dark:text-slate-400">Last updated: March 2026</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Last updated: March 2026</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <div class="prose prose-slate dark:prose-invert max-w-none">
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">1. Acceptance of Terms</h2>
           <p class="text-slate-600 dark:text-slate-400">
             By accessing and using ColorPalettesHub, you accept and agree to be bound by these 
             Terms of Service. If you do not agree to these terms, please do not use our service.
           </p>
         </div>
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">2. Description of Service</h2>
           <p class="text-slate-600 dark:text-slate-400">
             ColorPalettesHub provides free online tools for generating color palettes, gradients, 
             and converting color formats. The service is provided "as is" without warranty of any kind.
           </p>
         </div>
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">3. Use of Service</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4">You agree to use ColorPalettesHub only for lawful purposes. You may not:</p>
           <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
@@ -64,7 +73,7 @@
             <li>Reproduce, duplicate, or redistribute our content without attribution</li>
           </ul>
         </div>
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">4. Intellectual Property</h2>
           <p class="text-slate-600 dark:text-slate-400">
             The ColorPalettesHub website, including its design, code, and original content, is 
@@ -72,14 +81,14 @@
             personal and commercial projects.
           </p>
         </div>
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">5. Limitation of Liability</h2>
           <p class="text-slate-600 dark:text-slate-400">
             ColorPalettesHub is not liable for any damages arising from the use of our service, 
             including but not limited to direct, indirect, incidental, or consequential damages.
           </p>
         </div>
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">6. Modifications</h2>
           <p class="text-slate-600 dark:text-slate-400">
             We reserve the right to modify or discontinue the service at any time without notice. 
@@ -87,7 +96,7 @@
             of updated terms.
           </p>
         </div>
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">7. Contact</h2>
           <p class="text-slate-600 dark:text-slate-400">
             For questions about these terms, please contact us at 
@@ -99,5 +108,7 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

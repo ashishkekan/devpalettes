@@ -401,7 +401,7 @@ function renderNavbar() {
   const navHTML = `
     <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)] sticky top-0 z-50">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-14 sm:h-16">
+        <div class="flex items-center justify-between h-14 sm:h-12">
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2 group">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
@@ -425,7 +425,8 @@ function renderNavbar() {
             <a href="/color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Colors</a>
             <a href="/color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
             <a href="/color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
-          </div>
+            <a href="/color-wheel.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-wheel.html' ? 'text-emerald-500' : ''}">Wheels</a>
+           </div>
           
           <!-- Right side -->
           <div class="flex items-center gap-2 sm:gap-4">
@@ -457,6 +458,7 @@ function renderNavbar() {
         <a href="/color-names-chart.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
         <a href="/color-blindness.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
         <a href="/color-from-image.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
+        <a href="/color-wheel.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Wheels</a>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="/about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
         <a href="/contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>

@@ -32,17 +32,26 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-6 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      <div class="text-center mb-12">
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Dark Color Palettes</h1>
-        <p class="text-xl text-slate-600 dark:text-slate-400">Sophisticated dark themes for modern interfaces</p>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">Sophisticated dark themes for modern interfaces</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <!-- Filter Tags -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
         <a href="pastel-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Pastel</a>
         <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">Dark</span>
         <a href="neon-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Neon</a>
@@ -50,7 +59,7 @@
       <!-- Palettes Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Palette 1 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0F0F0F;" onclick="ColorPalettesHub.Clipboard.copy('#0F0F0F')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #232323;" onclick="ColorPalettesHub.Clipboard.copy('#232323')"></div>
@@ -64,7 +73,7 @@
           </div>
         </div>
         <!-- Palette 2 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0D1117;" onclick="ColorPalettesHub.Clipboard.copy('#0D1117')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #161B22;" onclick="ColorPalettesHub.Clipboard.copy('#161B22')"></div>
@@ -78,7 +87,7 @@
           </div>
         </div>
         <!-- Palette 3 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1A1A2E;" onclick="ColorPalettesHub.Clipboard.copy('#1A1A2E')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #16213E;" onclick="ColorPalettesHub.Clipboard.copy('#16213E')"></div>
@@ -92,7 +101,7 @@
           </div>
         </div>
         <!-- Palette 4 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1B1B1B;" onclick="ColorPalettesHub.Clipboard.copy('#1B1B1B')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #2D2D2D;" onclick="ColorPalettesHub.Clipboard.copy('#2D2D2D')"></div>
@@ -106,7 +115,7 @@
           </div>
         </div>
         <!-- Palette 5 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0B0C10;" onclick="ColorPalettesHub.Clipboard.copy('#0B0C10')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1F2833;" onclick="ColorPalettesHub.Clipboard.copy('#1F2833')"></div>
@@ -120,7 +129,7 @@
           </div>
         </div>
         <!-- Palette 6 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #121212;" onclick="ColorPalettesHub.Clipboard.copy('#121212')"></div>
             <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1E1E1E;" onclick="ColorPalettesHub.Clipboard.copy('#1E1E1E')"></div>
@@ -135,7 +144,7 @@
         </div>
       </div>
       <!-- SEO Content -->
-      <div class="glass-card p-8 mb-8">
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-4">Designing with Dark Palettes</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
           Dark color schemes have become increasingly popular in modern UI design. They reduce eye strain in low-light conditions, save battery on OLED screens, and provide a sleek, professional appearance.
@@ -148,8 +157,8 @@
           <li>Use elevation shadows subtly to indicate hierarchy</li>
         </ul>
       </div>
-      <div class="text-center">
-        <a href="palette.html" class="btn-primary inline-flex">
+      <div class="text-center animate-on-scroll">
+        <a href="palette.html" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-palette"></i>
           Create Your Own Palette
         </a>
@@ -158,5 +167,7 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

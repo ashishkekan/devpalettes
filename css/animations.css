@@ -1,0 +1,187 @@
+/**
+ * Visual Enhancement Styles
+ * ColorPalettesHub.com
+ * Contains: Blobs, Particles, Spectrum Line, Scroll Animations, Shimmer Effects
+ */
+
+/* --- Hero Visualizer Canvas --- */
+#hero-visualizer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.dark #hero-visualizer {
+  opacity: 0.4;
+}
+
+/* --- Floating Gradient Blobs --- */
+.gradient-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+  will-change: transform;
+}
+.dark .gradient-blob {
+  opacity: 0.3;
+}
+
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(135deg, #10b981, #14b8a6);
+  top: -100px;
+  left: -100px;
+  animation: blobFloat1 25s ease-in-out infinite;
+}
+.blob-2 {
+  width: 350px;
+  height: 350px;
+  background: linear-gradient(135deg, #f97316, #ec4899);
+  top: 20%;
+  right: -80px;
+  animation: blobFloat2 28s ease-in-out infinite;
+}
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+  bottom: 10%;
+  left: 10%;
+  animation: blobFloat3 22s ease-in-out infinite;
+}
+
+@keyframes blobFloat1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  25% { transform: translate(100px, 50px) scale(1.1) rotate(45deg); }
+  50% { transform: translate(50px, 100px) scale(0.9) rotate(90deg); }
+  75% { transform: translate(-30px, 60px) scale(1.05) rotate(135deg); }
+}
+@keyframes blobFloat2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  33% { transform: translate(-80px, 80px) scale(1.15) rotate(-60deg); }
+  66% { transform: translate(-40px, -40px) scale(0.85) rotate(-120deg); }
+}
+@keyframes blobFloat3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, -60px) scale(1.2); }
+}
+
+/* --- Color Spectrum Glow Line --- */
+.spectrum-line {
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #10b981 0%, #06b6d4 16%, #8b5cf6 32%, #ec4899 48%, #f97316 64%, #fbbf24 80%, #10b981 100%);
+  background-size: 200% 100%;
+  animation: spectrumShift 4s linear infinite;
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(6, 182, 212, 0.3);
+  position: relative;
+}
+@keyframes spectrumShift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* --- Floating Particles --- */
+#particles-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: particleFloat linear infinite;
+}
+@keyframes particleFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+/* --- Scroll Reveal Animations --- */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Shimmer Effect --- */
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: shimmerEffect 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+@keyframes shimmerEffect {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(100%); }
+}
+
+/* --- Neon Button Glow --- */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #10b981, #14b8a6, #10b981);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: blur(10px);
+}
+.btn-glow:hover::before {
+  opacity: 0.7;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* --- Responsive & Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .gradient-blob, .spectrum-line, .particle, .shimmer-card::before, .btn-glow::before {
+    animation: none !important;
+  }
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .gradient-blob {
+    filter: blur(60px);
+    opacity: 0.4;
+  }
+  .blob-1 { width: 250px; height: 250px; }
+  .blob-2 { width: 200px; height: 200px; }
+  .blob-3 { width: 180px; height: 180px; }
+}

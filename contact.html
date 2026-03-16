@@ -31,18 +31,27 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
-        <p class="text-xl text-slate-600 dark:text-slate-400">We'd love to hear from you</p>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">We'd love to hear from you</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Contact Form -->
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-6">Send us a message</h2>
           <form id="contact-form" class="space-y-4">
             <div>
@@ -67,7 +76,7 @@
               <label class="block text-sm font-medium mb-2">Message</label>
               <textarea name="message" rows="5" required class="input-field resize-none" placeholder="Your message..."></textarea>
             </div>
-            <button type="submit" class="btn-primary w-full justify-center">
+            <button type="submit" class="btn-primary btn-glow w-full justify-center">
               <i class="fas fa-paper-plane"></i>
               Send Message
             </button>
@@ -75,7 +84,7 @@
         </div>
         <!-- Contact Info -->
         <div class="space-y-6">
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center">
                 <i class="fas fa-envelope text-xl text-emerald-500"></i>
@@ -86,7 +95,7 @@
               </div>
             </div>
           </div>
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center">
                 <i class="fab fa-twitter text-xl text-blue-500"></i>
@@ -97,7 +106,7 @@
               </div>
             </div>
           </div>
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <div class="flex items-center gap-4">
               <div class="w-12 h-12 rounded-xl bg-slate-500/10 flex items-center justify-center">
                 <i class="fab fa-github text-xl text-slate-500"></i>
@@ -108,7 +117,7 @@
               </div>
             </div>
           </div>
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <h3 class="font-semibold mb-3">Response Time</h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm">
               We typically respond within 24-48 hours on business days. For urgent matters, 
@@ -128,5 +137,7 @@
       this.reset();
     });
   </script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

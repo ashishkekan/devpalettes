@@ -37,22 +37,31 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
   <!-- Main Content -->
-  <main class="pt-8 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Heading -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color Blindness Simulator</h1>
-        <p class="text-slate-600 dark:text-slate-400">Test how your colors appear to people with color vision deficiencies</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Test how your colors appear to people with color vision deficiencies</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <!-- Input & Simulation Grid -->
       <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Left: Inputs (6 colors - 3 per row) -->
-        <div class="glass-card p-8">
+        <!-- Left: Inputs -->
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-2xl font-bold mb-6">Your Colors</h2>
           <!-- Row 1: Colors 1-3 -->
           <div class="grid md:grid-cols-3 gap-4 mb-6">
@@ -91,7 +100,7 @@
             </div>
           </div>
           <div class="flex flex-wrap gap-4 mt-6">
-            <button id="simulate-btn" class="btn-primary px-8 py-3">
+            <button id="simulate-btn" class="btn-primary btn-glow px-8 py-3">
               <i class="fas fa-eye mr-2"></i>Simulate
             </button>
             <button id="random-palette-btn" class="btn-secondary px-6 py-3">
@@ -105,7 +114,7 @@
         <!-- Right: Simulations -->
         <div class="space-y-6">
           <!-- Severity Selector -->
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll">
             <h3 class="font-bold mb-4 flex items-center gap-2">
               <i class="fas fa-sliders-h text-slate-400"></i>
               Severity
@@ -119,35 +128,35 @@
           </div>
           <!-- Simulations Grid -->
           <div class="grid md:grid-cols-2 gap-6">
-            <div class="glass-card overflow-hidden">
+            <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
               <div class="h-32 flex items-center justify-center p-6 bg-gradient-to-br from-[#264653] via-[#2a9d8f] to-[#e9c46a]" id="sim-normal"></div>
               <div class="p-5">
                 <h3 class="font-bold mb-1">Normal Vision</h3>
                 <p class="text-sm text-slate-500">Standard perception</p>
               </div>
             </div>
-            <div class="glass-card overflow-hidden">
+            <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
               <div class="h-32 flex items-center justify-center p-6" id="sim-protanopia"></div>
               <div class="p-5">
                 <h3 class="font-bold mb-1">Protanopia</h3>
                 <p class="text-sm text-slate-500">No red cones</p>
               </div>
             </div>
-            <div class="glass-card overflow-hidden">
+            <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
               <div class="h-32 flex items-center justify-center p-6" id="sim-deuteranopia"></div>
               <div class="p-5">
                 <h3 class="font-bold mb-1">Deuteranopia</h3>
                 <p class="text-sm text-slate-500">No green cones</p>
               </div>
             </div>
-            <div class="glass-card overflow-hidden">
+            <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
               <div class="h-32 flex items-center justify-center p-6" id="sim-tritanopia"></div>
               <div class="p-5">
                 <h3 class="font-bold mb-1">Tritanopia</h3>
                 <p class="text-sm text-slate-500">No blue cones</p>
               </div>
             </div>
-            <div class="glass-card overflow-hidden">
+            <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
               <div class="h-32 flex items-center justify-center p-6" id="sim-achromatopsia"></div>
               <div class="p-5">
                 <h3 class="font-bold mb-1">Achromatopsia</h3>
@@ -158,7 +167,7 @@
         </div>
       </div>
       <!-- Comparison Table -->
-      <div class="glass-card p-8 mt-8 overflow-hidden">
+      <div class="glass-card p-8 mt-8 overflow-hidden animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-6">Color Comparison</h2>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
@@ -183,25 +192,7 @@
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
   <script src="js/main.js"></script>
   <script src="js/color-blindness.js"></script>
-  <!-- Fix: Ensure simulate button works even if DOM timing issue -->
-  <script>
-    // Extra safeguard: Re-attach simulate button click (runs after everything loads)
-    document.addEventListener('DOMContentLoaded', () => {
-      const simulateBtn = document.getElementById('simulate-btn');
-      if (simulateBtn) {
-        simulateBtn.addEventListener('click', () => {
-          // Call the simulation function from your main JS
-          if (window.ColorBlindnessSimulator && window.ColorBlindnessSimulator.prototype.updateAllSimulations) {
-            // If class instance exists
-            document.querySelector('.ColorBlindnessSimulator')?.updateAllSimulations?.();
-          } else {
-            // Fallback: directly call the function if it's global
-            window.updateAllSimulations?.();
-          }
-          console.log('Simulate button clicked - should now work!');
-        });
-      }
-    });
-  </script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>
