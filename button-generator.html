@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom CSS buttons with live preview. Create gradient, glassmorphism, neumorphism, and neon buttons easily.">
+  <meta name="keywords" content="button generator, css button, css button generator, web design tool, neumorphism button">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Button Generator - Create Custom CSS Buttons | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Button Base Styles for Preview */
+    .btn-preview {
+       transition: all 0.3s ease;
+       font-family: 'Inter', sans-serif;
+       cursor: pointer;
+       outline: none;
+    }
+    
+    /* Specific Button Types Logic handled by JS, but base classes here */
+    .btn-neumorphism {
+       background: #e0e0e0;
+       box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+    }
+    .dark .btn-neumorphism {
+       background: #2c2c2c;
+       box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #3e3e3e;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-hand-pointer mr-2"></i>CSS Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Button Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Design and export beautiful CSS buttons with live preview.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i>
+                Configuration
+             </h3>
+             
+             <!-- Button Text -->
+             <div class="mb-4">
+                <label class="block text-sm font-medium mb-2 text-slate-500">Button Text</label>
+                <input type="text" id="btn-text" value="Click Me" class="w-full bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+             </div>
+             
+             <!-- Button Style -->
+             <div class="mb-4">
+                <label class="block text-sm font-medium mb-2 text-slate-500">Style</label>
+                <div class="grid grid-cols-3 gap-2">
+                   <button onclick="setStyle('gradient')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors active">Gradient</button>
+                   <button onclick="setStyle('glass')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Glass</button>
+                   <button onclick="setStyle('neumorphism')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Neumorphic</button>
+                   <button onclick="setStyle('neon')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Neon</button>
+                   <button onclick="setStyle('outline')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Outline</button>
+                   <button onclick="setStyle('3d')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">3D</button>
+                </div>
+             </div>
+             
+             <!-- Colors -->
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-500">Primary Color</label>
+                   <input type="color" id="color-primary" value="#6366f1" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-500">Text Color</label>
+                   <input type="color" id="color-text" value="#ffffff" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+             <!-- Radius & Padding -->
+             <div class="mb-4">
+                <label class="block text-sm font-medium mb-2 text-slate-500">Border Radius: <span id="radius-val">8</span>px</label>
+                <input type="range" id="radius-slider" min="0" max="50" value="8" class="w-full accent-emerald-500">
+             </div>
+             
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-500">Padding: <span id="padding-val">12</span>px</label>
+                <input type="range" id="padding-slider" min="5" max="40" value="12" class="w-full accent-emerald-500">
+             </div>
+             
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <!-- Preview Card -->
+          <div class="glass-card p-8 shimmer-card min-h-[250px] flex flex-col items-center justify-center">
+             <h3 class="text-sm font-semibold text-slate-500 mb-6 uppercase tracking-wider">Live Preview</h3>
+             <button id="preview-btn" class="btn-preview">
+                Click Me
+             </button>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <span class="text-sm font-semibold text-slate-500">CSS Code</span>
+                <button onclick="copyCSS()" class="text-emerald-500 text-sm font-medium"><i class="fas fa-copy mr-1"></i>Copy CSS</button>
+             </div>
+             <pre id="css-output" class="bg-slate-100 dark:bg-slate-800 p-4 rounded-xl text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-60"></pre>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const btnText = document.getElementById('btn-text');
+      const colorPrimary = document.getElementById('color-primary');
+      const colorText = document.getElementById('color-text');
+      const radiusSlider = document.getElementById('radius-slider');
+      const paddingSlider = document.getElementById('padding-slider');
+      const previewBtn = document.getElementById('preview-btn');
+      const cssOutput = document.getElementById('css-output');
+      const radiusVal = document.getElementById('radius-val');
+      const paddingVal = document.getElementById('padding-val');
+      
+      let currentStyle = 'gradient';
+      
+      // --- Logic ---
+      
+      function getSecondaryColor(hex) {
+         // Simple function to darken/lighten hex for gradient
+         // For simplicity in this demo, we'll just return a slightly adjusted color or use parent logic
+         return adjustBrightness(hex, -20);
+      }
+      
+      function adjustBrightness(hex, percent) {
+         const num = parseInt(hex.replace("#",""),16);
+         const amt = Math.round(2.55 * percent);
+         const R = (num >> 16) + amt;
+         const G = (num >> 8 & 0x00FF) + amt;
+         const B = (num & 0x0000FF) + amt;
+         return "#" + (0x1000000 + 
+            (R<255?R<1?0:R:255)*0x10000 + 
+            (G<255?G<1?0:G:255)*0x100 + 
+            (B<255?B<1?0:B:255)
+         ).toString(16).slice(1);
+      }
+      
+      window.setStyle = function(style) {
+         currentStyle = style;
+         document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active', 'bg-emerald-500', 'text-white'));
+         event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+         updateButton();
+      };
+      
+      window.updateButton = function() {
+         const text = btnText.value || "Button";
+         const primary = colorPrimary.value;
+         const txtColor = colorText.value;
+         const radius = radiusSlider.value;
+         const padding = paddingSlider.value;
+         
+         radiusVal.textContent = radius;
+         paddingVal.textContent = padding;
+         
+         previewBtn.textContent = text;
+         
+         let css = "";
+         
+         // Base Styles
+         const base = `
+  padding: ${padding}px 24px;
+  border-radius: ${radius}px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+         `;
+         
+         if (currentStyle === 'gradient') {
+            const secondary = getSecondaryColor(primary);
+            previewBtn.style.background = `linear-gradient(135deg, ${primary}, ${secondary})`;
+            previewBtn.style.color = txtColor;
+            previewBtn.style.boxShadow = 'none';
+            previewBtn.style.border = 'none';
+            previewBtn.style.backdropFilter = 'none';
+            
+            css = `.btn-gradient {
+  ${base}
+  background: linear-gradient(135deg, ${primary}, ${secondary});
+  color: ${txtColor};
+}
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}`;
+         } 
+         else if (currentStyle === 'glass') {
+            previewBtn.style.background = 'rgba(255, 255, 255, 0.15)';
+            previewBtn.style.backdropFilter = 'blur(10px)';
+            previewBtn.style.color = txtColor;
+            previewBtn.style.border = `1px solid rgba(255, 255, 255, 0.2)`;
+            previewBtn.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
+            
+            css = `.btn-glass {
+  ${base}
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: ${txtColor};
+}`;
+         }
+         else if (currentStyle === 'neumorphism') {
+            // Neumorphism works best on a specific background
+            const isDark = document.documentElement.classList.contains('dark');
+            const bgColor = isDark ? '#2c2c2c' : '#e0e0e0';
+            const shadowDark = isDark ? '#1a1a1a' : '#bebebe';
+            const shadowLight = isDark ? '#3e3e3e' : '#ffffff';
+            
+            previewBtn.style.background = bgColor;
+            previewBtn.style.boxShadow = `8px 8px 16px ${shadowDark}, -8px -8px 16px ${shadowLight}`;
+            previewBtn.style.color = txtColor;
+            previewBtn.style.border = 'none';
+            previewBtn.style.backdropFilter = 'none';
+            
+            css = `.btn-neumorphic {
+  ${base}
+  background: ${bgColor};
+  box-shadow: 8px 8px 16px ${shadowDark}, -8px -8px 16px ${shadowLight};
+  color: ${txtColor};
+}`;
+         }
+         else if (currentStyle === 'neon') {
+            previewBtn.style.background = 'transparent';
+            previewBtn.style.color = primary;
+            previewBtn.style.border = `2px solid ${primary}`;
+            previewBtn.style.boxShadow = `0 0 10px ${primary}80, 0 0 20px ${primary}40, inset 0 0 10px ${primary}20`;
+            
+            css = `.btn-neon {
+  ${base}
+  background: transparent;
+  color: ${primary};
+  border: 2px solid ${primary};
+  box-shadow: 0 0 10px ${primary}80;
+}
+.btn-neon:hover {
+  background: ${primary};
+  color: ${txtColor};
+}`;
+         }
+         else if (currentStyle === 'outline') {
+            previewBtn.style.background = 'transparent';
+            previewBtn.style.color = primary;
+            previewBtn.style.border = `2px solid ${primary}`;
+            previewBtn.style.boxShadow = 'none';
+            
+            css = `.btn-outline {
+  ${base}
+  background: transparent;
+  color: ${primary};
+  border: 2px solid ${primary};
+}
+.btn-outline:hover {
+  background: ${primary};
+  color: ${txtColor};
+}`;
+         }
+         else if (currentStyle === '3d') {
+            const darker = adjustBrightness(primary, -30);
+            previewBtn.style.background = primary;
+            previewBtn.style.color = txtColor;
+            previewBtn.style.border = 'none';
+            previewBtn.style.boxShadow = 'none';
+            previewBtn.style.borderBottom = `4px solid ${darker}`;
+            previewBtn.style.transform = 'translateY(0)';
+            
+            css = `.btn-3d {
+  ${base}
+  background: ${primary};
+  color: ${txtColor};
+  border-bottom: 4px solid ${darker};
+  transform: translateY(0);
+}
+.btn-3d:hover {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}`;
+         }
+         
+         cssOutput.textContent = css;
+      };
+      
+      window.copyCSS = function() {
+         const text = cssOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+               window.ColorPalettesHub.Toast.show('CSS Copied!', 'success');
+             } else {
+               alert('CSS Copied!');
+             }
+         });
+      };
+      
+      // Event Listeners
+      btnText.addEventListener('input', updateButton);
+      colorPrimary.addEventListener('input', updateButton);
+      colorText.addEventListener('input', updateButton);
+      radiusSlider.addEventListener('input', updateButton);
+      paddingSlider.addEventListener('input', updateButton);
+      
+      // Init
+      updateButton();
+      
+    })();
+  </script>
+</body>
+</html>
