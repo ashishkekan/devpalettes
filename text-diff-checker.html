@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Find duplicate colors in your lists or CSS code instantly. Clean up your palettes and remove redundant hex codes.">
-  <meta name="keywords" content="duplicate color finder, find duplicate hex, clean css, remove duplicate colors, color tool">
+  <meta name="description" content="Compare two texts side-by-side and highlight differences instantly. Added and removed words are clearly marked.">
+  <meta name="keywords" content="text diff checker, compare text side by side, diff tool, text difference highlighter">
   <meta name="author" content="ColorPalettesHub">
   
-  <title>Duplicate Color Finder - Clean Your Palettes | ColorPalettesHub</title>
+  <title>Text Diff Checker - Side by Side Comparison | ColorPalettesHub</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,39 @@
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Diff Highlight Styles */
+    .diff-added {
+       background-color: rgba(34, 197, 94, 0.2);
+       color: #166534;
+       text-decoration: none;
+       border-radius: 3px;
+       padding: 0 2px;
+    }
+    .dark .diff-added {
+       background-color: rgba(34, 197, 94, 0.15);
+       color: #86efac;
+    }
+    
+    .diff-removed {
+       background-color: rgba(239, 68, 68, 0.2);
+       color: #991b1b;
+       text-decoration: line-through;
+       border-radius: 3px;
+       padding: 0 2px;
+    }
+    .dark .diff-removed {
+       background-color: rgba(239, 68, 68, 0.15);
+       color: #fca5a5;
+    }
+    
+    /* Textarea Custom Scrollbar */
+    textarea::-webkit-scrollbar { width: 8px; height: 8px; }
+    textarea::-webkit-scrollbar-track { background: transparent; }
+    textarea::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+    .dark textarea::-webkit-scrollbar-thumb { background: #475569; }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   
@@ -44,78 +77,80 @@
     <div class="gradient-blob blob-3"></div>
     <div id="particles-container"></div>
     
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Header -->
       <div class="text-center mb-10 animate-on-scroll">
-        <span class="inline-block px-4 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-medium rounded-full mb-4">
-          <i class="fas fa-broom mr-2"></i>Cleanup Tool
+        <span class="inline-block px-4 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-columns mr-2"></i>Comparison Tool
         </span>
-        <h1 class="text-4xl font-bold mb-4">Duplicate Color Finder</h1>
+        <h1 class="text-4xl font-bold mb-4">Text Diff Checker</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
-          Paste your CSS, list of colors, or palette codes below. We'll find and highlight duplicates instantly.
+          Enter text in the Left Pane (Original) and Right Pane (Modified) to compare.
         </p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
-      <!-- Input Card -->
-      <div class="glass-card p-6 shimmer-card mb-6 animate-on-scroll">
-        <div class="flex justify-between items-center mb-2">
-           <label class="text-sm font-semibold text-slate-500">Paste Colors / CSS</label>
-           <button onclick="clearInput()" class="text-xs text-slate-400 hover:text-red-500 transition-colors"><i class="fas fa-times mr-1"></i>Clear</button>
-        </div>
-        <textarea 
-           id="input-area" 
-           rows="6" 
-           class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl p-4 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
-           placeholder="Example:&#10;#FF5733, #00FF00, #ff5733&#10;var(--primary: #FFF);&#10;#FFF"></textarea>
+      <!-- Split Input Panes -->
+      <div class="grid md:grid-cols-2 gap-6 mb-6 animate-on-scroll">
         
-        <div class="flex gap-3 mt-4">
-           <button onclick="findDuplicates()" class="btn-primary btn-glow flex-1 justify-center">
-              <i class="fas fa-search mr-2"></i>Find Duplicates
-           </button>
+        <!-- Left Pane: Original -->
+        <div class="glass-card p-0 shimmer-card overflow-hidden flex flex-col">
+           <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+              <h3 class="font-bold text-sm text-red-500 uppercase tracking-wider flex items-center gap-2">
+                 <i class="fas fa-file-alt"></i> Original Text
+              </h3>
+              <button onclick="clearPane('a')" class="text-xs text-slate-400 hover:text-red-500 transition-colors">Clear</button>
+           </div>
+           <textarea id="text-a" class="flex-1 w-full p-4 bg-transparent resize-none focus:outline-none text-sm font-mono min-h-[300px]" placeholder="Paste your original text here..."></textarea>
         </div>
+        
+        <!-- Right Pane: Modified -->
+        <div class="glass-card p-0 shimmer-card overflow-hidden flex flex-col">
+           <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+              <h3 class="font-bold text-sm text-emerald-500 uppercase tracking-wider flex items-center gap-2">
+                 <i class="fas fa-edit"></i> Modified Text
+              </h3>
+              <button onclick="clearPane('b')" class="text-xs text-slate-400 hover:text-red-500 transition-colors">Clear</button>
+           </div>
+           <textarea id="text-b" class="flex-1 w-full p-4 bg-transparent resize-none focus:outline-none text-sm font-mono min-h-[300px]" placeholder="Paste the changed text here..."></textarea>
+        </div>
+        
       </div>
       
-      <!-- Results Card -->
-      <div id="results-section" class="glass-card p-6 shimmer-card mb-8 animate-on-scroll hidden">
-         <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
-            <i class="fas fa-clone text-red-500"></i>
-            Found <span id="count-badge" class="px-2 py-0.5 bg-red-100 dark:bg-red-900/30 text-red-500 text-sm rounded-full ml-1">0</span> Duplicates
-         </h3>
-         
-         <div id="results-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            <!-- Results injected by JS -->
-         </div>
-         
-         <div id="no-results" class="text-center py-8 hidden">
-            <i class="fas fa-check-circle text-4xl text-emerald-500 mb-3"></i>
-            <p class="text-slate-500 font-medium">No duplicate colors found!</p>
-         </div>
+      <!-- Controls -->
+      <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10 animate-on-scroll">
+         <button onclick="compareTexts()" class="btn-primary btn-glow text-lg px-10 py-4">
+            <i class="fas fa-code-compare mr-2"></i>Compare Texts
+         </button>
+         <button onclick="loadSamples()" class="btn-secondary text-lg px-8 py-4">
+            <i class="fas fa-flask mr-2"></i>Load Sample
+         </button>
       </div>
       
-      <!-- Why Clean Up? -->
+      <!-- Result Area -->
       <div class="glass-card p-6 shimmer-card animate-on-scroll">
-         <h3 class="font-bold mb-3 flex items-center gap-2">
-            <i class="fas fa-info-circle text-sky-500"></i>
-            Why Remove Duplicate Colors?
-         </h3>
-         <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600 dark:text-slate-400">
-            <div class="flex gap-3 items-start">
-               <i class="fas fa-file-code text-slate-400 mt-1"></i>
-               <div>
-                  <strong class="text-slate-700 dark:text-slate-200">Cleaner Code</strong>
-                  <p>Reduces CSS file size and improves maintainability.</p>
-               </div>
+        
+         <!-- Stats Bar -->
+         <div class="flex flex-wrap justify-between items-center mb-4 pb-4 border-b border-slate-100 dark:border-slate-700 gap-4">
+            <div class="flex items-center gap-6">
+               <span class="flex items-center gap-2 text-sm font-medium">
+                  <span class="w-3 h-3 rounded-full bg-red-500"></span> Removed: <span id="removed-count" class="font-bold text-red-500">0</span>
+               </span>
+               <span class="flex items-center gap-2 text-sm font-medium">
+                  <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Added: <span id="added-count" class="font-bold text-emerald-500">0</span>
+               </span>
             </div>
-            <div class="flex gap-3 items-start">
-               <i class="fas fa-palette text-slate-400 mt-1"></i>
-               <div>
-                  <strong class="text-slate-700 dark:text-slate-200">Design Consistency</strong>
-                  <p>Ensures you are using a limited, consistent color palette.</p>
-               </div>
-            </div>
+            <button onclick="copyResult()" class="text-sm text-slate-500 hover:text-emerald-500 font-medium transition-colors">
+               <i class="fas fa-copy mr-1"></i> Copy Result
+            </button>
          </div>
+         
+         <!-- Output Box -->
+         <div id="result-output" class="min-h-[150px] p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl font-mono text-sm leading-loose text-slate-700 dark:text-slate-300 whitespace-pre-wrap break-words">
+            Click "Compare Texts" to see the highlighted difference.
+         </div>
+         
       </div>
       
     </div>
@@ -128,104 +163,116 @@
   
   <script>
     (function() {
-      const inputArea = document.getElementById('input-area');
-      const resultsSection = document.getElementById('results-section');
-      const resultsGrid = document.getElementById('results-grid');
-      const noResults = document.getElementById('no-results');
-      const countBadge = document.getElementById('count-badge');
+      const textA = document.getElementById('text-a');
+      const textB = document.getElementById('text-b');
+      const resultOutput = document.getElementById('result-output');
+      const addedCountEl = document.getElementById('added-count');
+      const removedCountEl = document.getElementById('removed-count');
       
-      window.clearInput = function() {
-        inputArea.value = '';
-        resultsSection.classList.add('hidden');
-      };
+      // --- LCS Diff Logic ---
       
-      window.findDuplicates = function() {
-        const text = inputArea.value;
-        
-        // Regex to find HEX colors (#RGB or #RRGGBB)
-        // Matches #FFF or #FFFFFF case insensitive
-        const hexRegex = /#([A-Fa-f0-9]{3}){1,2}\b/g;
-        const matches = text.match(hexRegex);
-        
-        if (!matches || matches.length === 0) {
-           resultsSection.classList.remove('hidden');
-           resultsGrid.innerHTML = '';
-           noResults.classList.remove('hidden');
-           countBadge.textContent = '0';
-           // Show "no valid colors" message
-           noResults.innerHTML = `<i class="fas fa-exclamation-triangle text-4xl text-yellow-500 mb-3"></i><p class="text-slate-500 font-medium">No valid HEX colors found.</p>`;
-           return;
-        }
-        
-        // Normalize colors (uppercase #FF00FF)
-        const normalizedColors = matches.map(c => c.toUpperCase());
-        
-        // Count occurrences
-        const counts = {};
-        normalizedColors.forEach(color => {
-           counts[color] = (counts[color] || 0) + 1;
-        });
-        
-        // Filter duplicates
-        const duplicates = Object.entries(counts)
-           .filter(([color, count]) => count > 1)
-           .sort((a, b) => b[1] - a[1]); // Sort by count descending
-        
-        // Update UI
-        resultsSection.classList.remove('hidden');
-        
-        if (duplicates.length === 0) {
-           resultsGrid.innerHTML = '';
-           noResults.classList.remove('hidden');
-           noResults.innerHTML = `<i class="fas fa-check-circle text-4xl text-emerald-500 mb-3"></i><p class="text-slate-500 font-medium">No duplicate colors found!</p>`;
-           countBadge.textContent = '0';
-        } else {
-           noResults.classList.add('hidden');
-           countBadge.textContent = duplicates.length;
-           resultsGrid.innerHTML = '';
-           
-           duplicates.forEach(([color, count]) => {
-              const textColor = getContrastYIQ(color);
-              const card = document.createElement('div');
-              card.className = "p-3 rounded-lg flex items-center gap-3 cursor-pointer hover:scale-105 transition-transform";
-              card.style.backgroundColor = color;
-              card.style.color = textColor;
-              card.innerHTML = `
-                <div class="flex-1">
-                   <div class="font-mono text-xs font-bold">${color}</div>
-                   <div class="text-xs opacity-80">${count} times</div>
-                </div>
-                <i class="fas fa-copy text-xs opacity-70"></i>
-              `;
-              
-              card.onclick = () => {
-                 navigator.clipboard.writeText(color);
-                 if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
-                    window.ColorPalettesHub.Toast.show(`Copied ${color}`, 'success');
-                 }
-              };
-              
-              resultsGrid.appendChild(card);
-           });
-        }
-      };
-      
-      // Helper: Contrast
-      function hexToRgb(hex) {
-        hex = hex.replace("#", "");
-        if(hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
-        return {
-          r: parseInt(hex.substring(0, 2), 16),
-          g: parseInt(hex.substring(2, 4), 16),
-          b: parseInt(hex.substring(4, 6), 16)
-        };
+      function escapeHtml(text) {
+         if (!text) return '';
+         return text
+             .replace(/&/g, "&amp;")
+             .replace(/</g, "&lt;")
+             .replace(/>/g, "&gt;")
+             .replace(/"/g, "&quot;")
+             .replace(/'/g, "&#039;");
       }
       
-      function getContrastYIQ(hex) {
-        const rgb = hexToRgb(hex);
-        const yiq = ((rgb.r * 299) + (rgb.g * 587) + (rgb.b * 114)) / 1000;
-        return (yiq >= 128) ? '#000000' : '#FFFFFF';
+      function diff(oldText, newText) {
+        // Split by word (keeping spaces logic simple: split by space)
+        // For a more robust version, you might use regex to keep punctuation attached.
+        const oldWords = oldText.split(/(\s+)/); // Keep delimiters
+        const newWords = newText.split(/(\s+)/);
+        
+        // Create matrix for LCS
+        const m = oldWords.length;
+        const n = newWords.length;
+        const dp = [];
+        for(let i=0; i<=m; i++){
+           dp[i] = [];
+           for(let j=0; j<=n; j++){
+              if(i===0) dp[i][j] = 0;
+              else if(j===0) dp[i][j] = 0;
+              else if(oldWords[i-1] === newWords[j-1]) dp[i][j] = dp[i-1][j-1] + 1;
+              else dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+           }
+        }
+        
+        // Backtrack to generate diff
+        let i = m, j = n;
+        let result = [];
+        let added = 0;
+        let removed = 0;
+        
+        while(i > 0 || j > 0){
+           if (i > 0 && j > 0 && oldWords[i-1] === newWords[j-1]){
+              result.unshift(escapeHtml(oldWords[i-1]));
+              i--; j--;
+           } else if (j > 0 && (i === 0 || dp[i][j-1] >= dp[i-1][j])){
+              // Added word
+              let word = escapeHtml(newWords[j-1]);
+              if(!/^\s+$/.test(word)) { // Ignore pure whitespace for counting
+                 result.unshift(`<span class="diff-added">${word}</span>`);
+                 added++;
+              } else {
+                 result.unshift(word); // Just whitespace
+              }
+              j--;
+           } else if (i > 0 && (j === 0 || dp[i-1][j] > dp[i][j-1])){
+              // Removed word
+              let word = escapeHtml(oldWords[i-1]);
+              if(!/^\s+$/.test(word)) {
+                 result.unshift(`<span class="diff-removed">${word}</span>`);
+                 removed++;
+              } else {
+                 result.unshift(word);
+              }
+              i--;
+           }
+        }
+        
+        return { html: result.join(''), added, removed };
       }
+      
+      window.compareTexts = function() {
+         const valA = textA.value;
+         const valB = textB.value;
+         
+         if (!valA && !valB) {
+            resultOutput.innerHTML = '<span class="text-slate-400">No text to compare.</span>';
+            return;
+         }
+         
+         const res = diff(valA, valB);
+         
+         resultOutput.innerHTML = res.html || '<span class="text-slate-400">Texts are identical.</span>';
+         addedCountEl.textContent = res.added;
+         removedCountEl.textContent = res.removed;
+      };
+      
+      window.clearPane = function(id) {
+         if(id === 'a') textA.value = '';
+         else textB.value = '';
+      };
+      
+      window.copyResult = function() {
+         const text = resultOutput.innerText;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+               window.ColorPalettesHub.Toast.show('Result Copied!', 'success');
+             } else {
+               alert('Result Copied!');
+             }
+         });
+      };
+      
+      window.loadSamples = function() {
+         textA.value = "The quick brown fox jumps over the lazy dog. This is a sample text for testing the diff checker. It works perfectly.";
+         textB.value = "The fast brown fox jumped over the lazy cat. This is an example text for testing the diff checker. It works perfectly now!";
+      };
       
     })();
   </script>
