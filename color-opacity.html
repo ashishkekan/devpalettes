@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online Color Opacity Generator. Adjust color transparency easily and get RGBA codes with instant preview.">
+  <meta name="keywords" content="color opacity, rgba generator, transparency tool, css opacity, alpha channel">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Color Opacity Generator - RGBA & Transparency | ColorPalettesHub</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] }
+        },
+      },
+    }
+  </script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Common Visual Enhancement Styles -->
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Checkerboard Background for Opacity Preview */
+    .checker-bg {
+      background-color: #fff;
+      background-image: 
+        linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+        linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      background-size: 20px 20px;
+    }
+    
+    .dark .checker-bg {
+      background-color: #1e293b; /* slate-800 */
+      background-image: 
+        linear-gradient(45deg, #334155 25%, transparent 25%), 
+        linear-gradient(-45deg, #334155 25%, transparent 25%), 
+        linear-gradient(45deg, transparent 75%, #334155 75%), 
+        linear-gradient(-45deg, transparent 75%, #334155 75%);
+    }
+
+    /* Slider Styles */
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(to right, transparent, currentColor);
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .dark input[type=range]::-webkit-slider-runnable-track {
+       border-color: rgba(255,255,255,0.1);
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -4px;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: currentColor;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    input[type=range]::-moz-range-track {
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(to right, transparent, currentColor);
+    }
+    input[type=range]::-moz-range-thumb {
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: currentColor;
+      border: 2px solid white;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-droplet mr-2"></i>Transparency Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Color Opacity Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          Adjust color transparency and get RGBA codes instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-5 gap-8">
+        
+        <!-- Left: Preview -->
+        <div class="lg:col-span-3 space-y-6 animate-on-scroll">
+          
+          <!-- Main Preview Card -->
+          <div class="glass-card p-8 shimmer-card">
+             <!-- Checkerboard container -->
+             <div class="checker-bg rounded-2xl overflow-hidden shadow-inner">
+                <div id="color-preview" class="w-full aspect-video transition-colors duration-150" style="background-color: rgba(52, 152, 219, 1);"></div>
+             </div>
+             
+             <!-- RGBA Output -->
+             <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 flex items-center justify-between">
+                <div>
+                   <span class="text-xs text-slate-500 block mb-1">RGBA Code</span>
+                   <code id="rgba-text" class="font-mono text-sm text-slate-700 dark:text-slate-300">rgba(52, 152, 219, 1)</code>
+                </div>
+                <button onclick="copyRGBA()" class="text-emerald-500 hover:text-emerald-600 text-sm font-medium">
+                   <i class="fas fa-copy mr-1"></i> Copy
+                </button>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Controls -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-fill-drip text-emerald-500"></i>
+                Controls
+             </h3>
+             
+             <!-- Color Picker -->
+             <div class="mb-6">
+                <label class="block text-sm font-medium mb-2 text-slate-500">Base Color</label>
+                <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                   <input type="color" id="color-picker" value="#3498db" class="absolute inset-0 w-full h-full cursor-pointer">
+                   <div class="absolute bottom-2 right-2 bg-black/30 text-white text-xs font-mono px-2 py-1 rounded pointer-events-none z-10">
+                      <span id="hex-label">#3498DB</span>
+                   </div>
+                </div>
+             </div>
+             
+             <!-- Opacity Slider -->
+             <div class="mb-6">
+                <div class="flex justify-between items-center mb-2">
+                   <label class="font-medium text-sm text-slate-500">Opacity</label>
+                   <span id="opacity-value" class="font-mono text-sm bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded">100%</span>
+                </div>
+                <!-- Slider color is set via JS to match base color -->
+                <input type="range" id="opacity-slider" min="0" max="100" value="100" class="text-slate-500 focus:outline-none">
+             </div>
+             
+             <!-- CSS Output Box -->
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 mb-6">
+                <span class="text-xs text-slate-500 block mb-1">CSS Background</span>
+                <code id="css-text" class="font-mono text-xs break-all text-slate-600 dark:text-slate-400">background-color: rgba(52, 152, 219, 1);</code>
+             </div>
+             
+             <!-- Actions -->
+             <div class="grid grid-cols-2 gap-3">
+                <button onclick="randomColor()" class="btn-secondary w-full justify-center">
+                   <i class="fas fa-random mr-1"></i> Random
+                </button>
+                <button onclick="copyCSS()" class="btn-primary btn-glow w-full justify-center">
+                   <i class="fas fa-code mr-1"></i> Copy CSS
+                </button>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      // Elements
+      const picker = document.getElementById('color-picker');
+      const slider = document.getElementById('opacity-slider');
+      const preview = document.getElementById('color-preview');
+      const hexLabel = document.getElementById('hex-label');
+      const opacityVal = document.getElementById('opacity-value');
+      const rgbaText = document.getElementById('rgba-text');
+      const cssText = document.getElementById('css-text');
+      
+      // Helper: HEX to RGB object
+      function hexToRgb(hex) {
+        hex = hex.replace("#", "");
+        let r = parseInt(hex.substring(0, 2), 16);
+        let g = parseInt(hex.substring(2, 4), 16);
+        let b = parseInt(hex.substring(4, 6), 16);
+        return { r, g, b };
+      }
+      
+      // Update Logic
+      function updateColor() {
+        const hex = picker.value;
+        const opacity = slider.value / 100; // Convert 0-100 to 0-1
+        
+        const rgb = hexToRgb(hex);
+        const rgbaString = `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${opacity.toFixed(2)})`;
+        
+        // Update UI Labels
+        hexLabel.textContent = hex.toUpperCase();
+        opacityVal.textContent = `${slider.value}%`;
+        
+        // Update Preview
+        preview.style.backgroundColor = rgbaString;
+        
+        // Update Code Outputs
+        rgbaText.textContent = rgbaString;
+        cssText.textContent = `background-color: ${rgbaString};`;
+        
+        // Update Slider Track Color dynamically
+        // This sets the 'color' property of the slider which is used by CSS 'currentColor'
+        slider.style.color = hex;
+      }
+      
+      // Global Functions
+      window.copyRGBA = function() {
+        const text = rgbaText.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+             window.ColorPalettesHub.Toast.show(`Copied ${text}`, 'success');
+           } else {
+             alert(`Copied: ${text}`);
+           }
+        });
+      };
+      
+      window.copyCSS = function() {
+        const text = cssText.textContent;
+        navigator.clipboard.writeText(text).then(() => {
+           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+             window.ColorPalettesHub.Toast.show('CSS Copied!', 'success');
+           } else {
+             alert('CSS Copied!');
+           }
+        });
+      };
+      
+      window.randomColor = function() {
+         // Generate random hex
+         const randomHex = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+         picker.value = randomHex;
+         // Optional: Random opacity
+         // slider.value = Math.floor(Math.random() * 100);
+         updateColor();
+      };
+      
+      // Event Listeners
+      picker.addEventListener('input', updateColor);
+      slider.addEventListener('input', updateColor);
+      
+      // Init
+      updateColor();
+      
+    })();
+  </script>
+</body>
+</html>

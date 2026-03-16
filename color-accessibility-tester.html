@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Test color readability based on brightness difference. Ensure your text is legible against its background.">
+  <meta name="keywords" content="color accessibility, brightness difference, readability test, color vision, accessible design">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Color Accessibility Tester - Readability Check | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-eye mr-2"></i>Vision Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Color Accessibility Tester</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          Check brightness difference to ensure text readability for all users.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+            <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+              <i class="fas fa-sliders-h text-emerald-500"></i>
+              Color Inputs
+            </h3>
+            
+            <div class="grid grid-cols-2 gap-6 mb-6">
+               <!-- Text Color -->
+               <div>
+                  <label class="block text-sm font-semibold mb-2 text-slate-500">Text Color</label>
+                  <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                     <input type="color" id="text-color" value="#000000" class="absolute inset-0 w-full h-full cursor-pointer">
+                     <div class="absolute bottom-1 right-1 bg-black/30 text-white text-xs font-mono px-2 py-0.5 rounded pointer-events-none">
+                        <span id="text-label">#000000</span>
+                     </div>
+                  </div>
+               </div>
+               
+               <!-- Background Color -->
+               <div>
+                  <label class="block text-sm font-semibold mb-2 text-slate-500">Background</label>
+                  <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
+                     <input type="color" id="bg-color" value="#ffffff" class="absolute inset-0 w-full h-full cursor-pointer">
+                     <div class="absolute bottom-1 right-1 bg-black/30 text-white text-xs font-mono px-2 py-0.5 rounded pointer-events-none">
+                        <span id="bg-label">#FFFFFF</span>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            
+            <div class="flex gap-3">
+               <button onclick="switchColors()" class="btn-secondary flex-1 justify-center">
+                  <i class="fas fa-exchange-alt mr-2"></i>Switch
+               </button>
+               <button onclick="randomTest()" class="btn-primary btn-glow flex-1 justify-center">
+                  <i class="fas fa-random mr-2"></i>Random
+               </button>
+            </div>
+          </div>
+          
+          <!-- Info Card -->
+          <div class="glass-card p-6 shimmer-card text-sm text-slate-500 dark:text-slate-400">
+             <div class="flex items-start gap-3">
+                <i class="fas fa-info-circle text-indigo-500 mt-1"></i>
+                <div>
+                   <strong class="text-slate-700 dark:text-slate-200">Brightness Difference Method:</strong>
+                   <p class="mt-1">This tool calculates the brightness difference between text and background. A difference greater than 125 is recommended for good readability.</p>
+                </div>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Results & Preview -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <!-- Live Preview -->
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="text-xs font-semibold text-slate-500 mb-3 uppercase tracking-wider">Live Preview</h3>
+             <div id="preview-box" class="p-8 rounded-xl transition-colors text-center" style="background-color: #ffffff; color: #000000;">
+                <h2 class="text-2xl font-bold mb-2">Readability Sample</h2>
+                <p class="text-sm opacity-80">The quick brown fox jumps over the lazy dog.</p>
+             </div>
+          </div>
+          
+          <!-- Score Card -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-end mb-4">
+                <div>
+                   <span class="text-xs text-slate-500 block uppercase font-semibold">Brightness Difference</span>
+                   <div id="score-value" class="text-4xl font-extrabold text-slate-800 dark:text-white">255</div>
+                </div>
+                <div id="status-badge" class="px-3 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">
+                   Good Readability
+                </div>
+             </div>
+             
+             <!-- Progress Bar -->
+             <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-4 overflow-hidden">
+                <div id="progress-bar" class="h-full rounded-full transition-all duration-500 bg-emerald-500" style="width: 100%"></div>
+             </div>
+             <div class="flex justify-between text-xs text-slate-400 mt-1">
+                <span>0 (Poor)</span>
+                <span>125 (Min)</span>
+                <span>255 (Best)</span>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const textInput = document.getElementById('text-color');
+      const bgInput = document.getElementById('bg-color');
+      const textLabel = document.getElementById('text-label');
+      const bgLabel = document.getElementById('bg-label');
+      const previewBox = document.getElementById('preview-box');
+      const scoreValue = document.getElementById('score-value');
+      const statusBar = document.getElementById('progress-bar');
+      const statusBadge = document.getElementById('status-badge');
+      
+      // --- Logic ---
+      
+      function hexToRgb(hex) {
+        hex = hex.replace("#", "");
+        return {
+          r: parseInt(hex.substring(0, 2), 16),
+          g: parseInt(hex.substring(2, 4), 16),
+          b: parseInt(hex.substring(4, 6), 16)
+        };
+      }
+      
+      // Calculate Brightness (YIQ equation)
+      function getBrightness(r, g, b) {
+        return (r * 299 + g * 587 + b * 114) / 1000;
+      }
+      
+      // Main Test Function
+      window.testAccessibility = function() {
+        const tRgb = hexToRgb(textInput.value);
+        const bRgb = hexToRgb(bgInput.value);
+        
+        const tBrightness = getBrightness(tRgb.r, tRgb.g, tRgb.b);
+        const bBrightness = getBrightness(bRgb.r, bRgb.g, bRgb.b);
+        
+        // Calculate absolute difference (0-255)
+        const difference = Math.abs(tBrightness - bBrightness);
+        
+        // Update UI
+        updateUI(difference);
+      };
+      
+      function updateUI(diff) {
+         // Update Preview
+         previewBox.style.backgroundColor = bgInput.value;
+         previewBox.style.color = textInput.value;
+         
+         // Update Labels
+         textLabel.textContent = textInput.value.toUpperCase();
+         bgLabel.textContent = bgInput.value.toUpperCase();
+         
+         // Update Score
+         scoreValue.textContent = Math.round(diff);
+         
+         // Update Progress Bar (Max diff is 255)
+         const percentage = (diff / 255) * 100;
+         statusBar.style.width = percentage + "%";
+         
+         // Update Status Color/Text
+         if (diff >= 125) {
+            statusBar.className = "h-full rounded-full transition-all duration-500 bg-emerald-500";
+            statusBadge.textContent = "Good Readability";
+            statusBadge.className = "px-3 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300";
+         } else {
+            statusBar.className = "h-full rounded-full transition-all duration-500 bg-red-500";
+            statusBadge.textContent = "Low Readability";
+            statusBadge.className = "px-3 py-1 rounded-full text-sm font-bold bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-300";
+         }
+      }
+      
+      window.switchColors = function() {
+         const temp = textInput.value;
+         textInput.value = bgInput.value;
+         bgInput.value = temp;
+         testAccessibility();
+      };
+      
+      window.randomTest = function() {
+         textInput.value = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+         bgInput.value = '#' + Math.floor(Math.random()*16777215).toString(16).padStart(6, '0');
+         testAccessibility();
+      };
+      
+      // Event Listeners
+      textInput.addEventListener('input', testAccessibility);
+      bgInput.addEventListener('input', testAccessibility);
+      
+      // Init
+      testAccessibility();
+      
+    })();
+  </script>
+</body>
+</html>
