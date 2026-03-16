@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online Slug Generator tool. Convert titles and text into URL-friendly slugs for SEO.">
+  <meta name="keywords" content="slug generator, url generator, seo slug, clean url, permalink generator">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Slug Generator - URL Friendly Links | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-link mr-2"></i>SEO Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Slug Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Convert your titles into clean, URL-friendly slugs instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <!-- Input Section -->
+      <div class="glass-card p-6 mb-6 shimmer-card animate-on-scroll">
+        <div class="flex justify-between items-center mb-2">
+           <label class="text-sm font-semibold text-slate-500">Enter Text</label>
+           <button onclick="clearInput()" class="text-xs text-slate-400 hover:text-red-500 transition-colors">Clear</button>
+        </div>
+        <textarea 
+           id="input-text" 
+           rows="4" 
+           class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl p-4 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+           placeholder="e.g., My First Blog Post! (Best practices)"
+           oninput="generateSlug()"></textarea>
+      </div>
+      
+      <!-- Options -->
+      <div class="glass-card p-6 mb-6 shimmer-card animate-on-scroll">
+         <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+               <span class="text-sm text-slate-500">Separator:</span>
+               <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="separator" value="-" checked onchange="generateSlug()" class="accent-emerald-500">
+                  <span class="text-sm">Hyphen (-)</span>
+               </label>
+               <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="separator" value="_" onchange="generateSlug()" class="accent-emerald-500">
+                  <span class="text-sm">Underscore (_)</span>
+               </label>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer">
+               <input type="checkbox" id="lowercase-check" checked onchange="generateSlug()" class="accent-emerald-500 rounded">
+               <span class="text-sm">Lowercase</span>
+            </label>
+         </div>
+      </div>
+      
+      <!-- Output Section -->
+      <div class="glass-card p-6 mb-8 shimmer-card animate-on-scroll">
+         <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-lg text-slate-700 dark:text-slate-200">Generated Slug</h3>
+            <button onclick="copySlug()" class="btn-secondary text-xs py-2 px-4">
+               <i class="fas fa-copy mr-1"></i>Copy
+            </button>
+         </div>
+         <div id="output-slug" class="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl font-mono text-lg text-emerald-600 dark:text-emerald-400 break-all min-h-[60px] flex items-center">
+            Enter text to generate slug...
+         </div>
+      </div>
+      
+      <!-- Info -->
+      <div class="glass-card p-6 shimmer-card animate-on-scroll">
+        <h3 class="font-bold mb-3 text-lg flex items-center gap-2">
+           <i class="fas fa-info-circle text-sky-500"></i>
+           What is a Slug?
+        </h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+           A slug is the part of a URL that identifies a particular page on a website in an easy-to-read form. Slugs are an important part of SEO because they help search engines understand the content of the page.
+        </p>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg text-sm font-mono text-left">
+           <span class="text-slate-500">https://example.com/blog/</span><span class="text-emerald-500 font-bold">my-first-post</span>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const inputText = document.getElementById('input-text');
+    const outputSlug = document.getElementById('output-slug');
+    
+    window.generateSlug = function() {
+       let text = inputText.value;
+       
+       // Get separator
+       let separator = "-";
+       if(document.querySelector('input[name="separator"]:checked')) {
+          separator = document.querySelector('input[name="separator"]:checked').value;
+       }
+       
+       // Trim
+       text = text.trim();
+       
+       // Lowercase (optional)
+       if(document.getElementById('lowercase-check').checked) {
+          text = text.toLowerCase();
+       }
+       
+       // Remove accents (e.g., é -> e)
+       text = text.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+       
+       // Replace spaces and underscores with separator
+       text = text.replace(/[\s_]+/g, separator);
+       
+       // Remove all non-alphanumeric except separator
+       const escapedSep = separator === '-' ? '\\-' : '_';
+       const regex = new RegExp(`[^a-zA-Z0-9${escapedSep}]`, "g");
+       text = text.replace(regex, "");
+       
+       // Remove multiple separators
+       const multiSep = new RegExp(`${escapedSep}+`, "g");
+       text = text.replace(multiSep, separator);
+       
+       // Remove leading/trailing separators
+       const trimSep = new RegExp(`^${escapedSep}+|${escapedSep}+$`, "g");
+       text = text.replace(trimSep, "");
+       
+       if (!text) {
+          outputSlug.textContent = "Enter text to generate slug...";
+          outputSlug.classList.remove('text-emerald-600', 'dark:text-emerald-400');
+          outputSlug.classList.add('text-slate-400');
+       } else {
+          outputSlug.textContent = text;
+          outputSlug.classList.add('text-emerald-600', 'dark:text-emerald-400');
+          outputSlug.classList.remove('text-slate-400');
+       }
+    };
+    
+    window.copySlug = function() {
+       const text = outputSlug.textContent;
+       if(text && text !== "Enter text to generate slug...") {
+          navigator.clipboard.writeText(text);
+          if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+             window.ColorPalettesHub.Toast.show('Slug Copied!', 'success');
+          } else {
+             alert('Slug Copied!');
+          }
+       }
+    };
+    
+    window.clearInput = function() {
+       inputText.value = '';
+       generateSlug();
+    };
+  </script>
+</body>
+</html>
