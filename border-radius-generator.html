@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate complex CSS border-radius values. Create blob shapes and organic layouts.">
+  <meta name="keywords" content="border radius generator, css blob generator, css shape generator">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Border Radius Generator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-shapes mr-2"></i>CSS Layout
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Border Radius Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create organic shapes and blobs with individual corner control.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Corner Radius</h3>
+             
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Top Left</label>
+                   <input type="number" id="r-tl" value="50" onchange="updateShape()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm text-center">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Top Right</label>
+                   <input type="number" id="r-tr" value="50" onchange="updateShape()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm text-center">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Bottom Right</label>
+                   <input type="number" id="r-br" value="50" onchange="updateShape()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm text-center">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Bottom Left</label>
+                   <input type="number" id="r-bl" value="50" onchange="updateShape()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm text-center">
+                </div>
+             </div>
+             
+             <button onclick="randomize()" class="btn-secondary w-full py-2 text-sm"><i class="fas fa-random mr-1"></i>Random Blob</button>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center">
+             <div id="shape-preview" class="w-64 h-64 bg-gradient-to-br from-indigo-500 to-purple-600 transition-all duration-300 shadow-xl"></div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('shape-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateShape = function() {
+       const tl = document.getElementById('r-tl').value;
+       const tr = document.getElementById('r-tr').value;
+       const br = document.getElementById('r-br').value;
+       const bl = document.getElementById('r-bl').value;
+       
+       const radius = `${tl}% ${tr}% ${br}% ${bl}%`;
+       preview.style.borderRadius = radius;
+       
+       generateCode(radius);
+    };
+    
+    function generateCode(r) {
+       const css = `.shape {
+  border-radius: ${r};
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.randomize = function() {
+       const rand = () => Math.floor(Math.random() * 100);
+       document.getElementById('r-tl').value = rand();
+       document.getElementById('r-tr').value = rand();
+       document.getElementById('r-br').value = rand();
+       document.getElementById('r-bl').value = rand();
+       updateShape();
+    };
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+    };
+    
+    updateShape();
+  </script>
+</body>
+</html>

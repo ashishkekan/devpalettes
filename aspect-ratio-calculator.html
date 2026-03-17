@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate aspect ratios for images and videos. Convert dimensions to ratio and vice versa.">
+  <meta name="keywords" content="aspect ratio calculator, image size calculator, video ratio, css aspect ratio">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Aspect Ratio Calculator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    .ratio-box {
+       transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-expand-arrows-alt mr-2"></i>Layout Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Aspect Ratio Calculator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Calculate dimensions for images, videos, and containers.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Common Ratios</h3>
+             <div class="grid grid-cols-4 gap-2">
+                <button onclick="setRatio(16,9)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">16:9</button>
+                <button onclick="setRatio(1,1)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">1:1</button>
+                <button onclick="setRatio(4,3)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">4:3</button>
+                <button onclick="setRatio(21,9)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">21:9</button>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Custom Dimensions</h3>
+             
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Width (px)</label>
+                   <input type="number" id="ctrl-w" value="1920" onchange="calc()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Height (px)</label>
+                   <input type="number" id="ctrl-h" value="1080" onchange="calc()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2">
+                </div>
+             </div>
+             
+             <div class="mt-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                <div class="flex justify-between text-sm mb-1">
+                   <span class="text-slate-500">Ratio:</span>
+                   <span id="result-ratio" class="font-bold text-emerald-500">16:9</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                   <span class="text-slate-500">Total Pixels:</span>
+                   <span id="result-pixels" class="font-bold">2,073,600</span>
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Resize to New Width</h3>
+             <div class="flex gap-2">
+                <input type="number" id="new-w" value="1280" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-3 py-2">
+                <button onclick="resize()" class="btn-primary px-4 py-2">Resize</button>
+             </div>
+             <div class="mt-2 text-right text-sm">
+                New Height: <span id="new-h" class="font-bold text-cyan-500">720px</span>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Visual Preview</h3>
+             
+             <div class="bg-slate-100 dark:bg-slate-800 p-10 flex items-center justify-center min-h-[400px] rounded-xl">
+                <div id="ratio-box" class="ratio-box bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-lg flex items-center justify-center text-white text-xs font-bold">
+                   16:9
+                </div>
+             </div>
+             
+             <div class="mt-4 text-center text-xs text-slate-500">
+                Actual displayed size is scaled to fit.
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-32"></pre>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const box = document.getElementById('ratio-box');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.setRatio = function(w, h) {
+       document.getElementById('ctrl-w').value = w * 120;
+       document.getElementById('ctrl-h').value = h * 120;
+       calc();
+    };
+    
+    window.calc = function() {
+       const w = parseInt(document.getElementById('ctrl-w').value) || 1;
+       const h = parseInt(document.getElementById('ctrl-h').value) || 1;
+       
+       // Calculate GCD for Ratio
+       const gcd = (a, b) => b ? gcd(b, a % b) : a;
+       const d = gcd(w, h);
+       const ratioW = w / d;
+       const ratioH = h / d;
+       
+       document.getElementById('result-ratio').textContent = `${ratioW}:${ratioH}`;
+       document.getElementById('result-pixels').textContent = (w * h).toLocaleString();
+       
+       // Visual Update
+       const maxDisplaySize = 300;
+       let displayW, displayH;
+       
+       if(w > h) {
+          displayW = maxDisplaySize;
+          displayH = (h / w) * maxDisplaySize;
+       } else {
+          displayH = maxDisplaySize;
+          displayW = (w / h) * maxDisplaySize;
+       }
+       
+       box.style.width = `${displayW}px`;
+       box.style.height = `${displayH}px`;
+       box.textContent = `${ratioW}:${ratioH}`;
+       
+       generateCode(ratioW, ratioH);
+    };
+    
+    window.resize = function() {
+       const origW = parseInt(document.getElementById('ctrl-w').value) || 1;
+       const origH = parseInt(document.getElementById('ctrl-h').value) || 1;
+       const newW = parseInt(document.getElementById('new-w').value) || 1;
+       
+       const newH = Math.round((origH / origW) * newW);
+       document.getElementById('new-h').textContent = newH + 'px';
+    };
+    
+    function generateCode(rw, rh) {
+       const css = `.aspect-container {
+  aspect-ratio: ${rw} / ${rh}; /* Modern way */
+  width: 100%;
+}
+
+/* Fallback for older browsers */
+.aspect-container::before {
+  content: "";
+  display: block;
+  padding-top: ${(rh / rw) * 100}%;
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+    };
+    
+    calc();
+  </script>
+</body>
+</html>
