@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate CSS clip-path shapes. Create polygons, circles, and custom shapes.">
+  <meta name="keywords" content="css clip-path, shape generator, css polygon, image mask">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Clip Path Generator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-cut mr-2"></i>CSS Masking
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Clip Path Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create modern CSS shapes for images and containers.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Shape Presets</h3>
+             <div class="grid grid-cols-2 gap-2">
+                <button onclick="setShape('circle(50%)')" class="shape-btn active px-2 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700">Circle</button>
+                <button onclick="setShape('ellipse(25% 40% at 50% 50%)')" class="shape-btn px-2 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700">Ellipse</button>
+                <button onclick="setShape('polygon(50% 0%, 0% 100%, 100% 100%)')" class="shape-btn px-2 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700">Triangle</button>
+                <button onclick="setShape('polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)')" class="shape-btn px-2 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700">Hexagon</button>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center bg-slate-200 dark:bg-slate-800">
+             <div id="clip-preview" class="w-64 h-64 bg-gradient-to-br from-pink-500 to-orange-400 transition-all duration-500 shadow-2xl"></div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('clip-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.setShape = function(shape) {
+       document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active', 'bg-emerald-500', 'text-white'));
+       event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+       
+       preview.style.clipPath = shape;
+       generateCode(shape);
+    };
+    
+    function generateCode(shape) {
+       const css = `.clipped-element {
+  clip-path: ${shape};
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+    };
+    
+    // Init
+    setShape('circle(50%)');
+  </script>
+</body>
+</html>
