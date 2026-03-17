@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate CSS Tooltips with arrows. Customize colors and positions.">
+  <meta name="keywords" content="tooltip generator, css tooltip, hover tooltip, ui tooltip">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Tooltip Generator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+     /* Tooltip Logic handled by JS injection for preview */
+     .tooltip-container {
+        position: relative;
+        display: inline-block;
+     }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-comment-alt mr-2"></i>UI Component
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Tooltip Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create pure CSS tooltips with custom positions.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Settings</h3>
+             <div class="space-y-3">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Position</label>
+                   <select id="tt-pos" onchange="updateTooltip()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                      <option value="top">Top</option>
+                      <option value="bottom">Bottom</option>
+                      <option value="left">Left</option>
+                      <option value="right">Right</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
+                   <input type="color" id="tt-bg" value="#0f172a" onchange="updateTooltip()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Text Color</label>
+                   <input type="color" id="tt-text" value="#ffffff" onchange="updateTooltip()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Text Content</label>
+                   <input type="text" id="tt-textval" value="I am a tooltip" oninput="updateTooltip()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center">
+             <div class="tooltip-container">
+                <button class="px-6 py-3 bg-indigo-500 text-white rounded-lg font-bold">Hover Me</button>
+                <div id="tt-preview" class="absolute w-max max-w-xs p-2 text-sm rounded shadow-lg text-center transition-opacity duration-300 opacity-0 pointer-events-none z-10">
+                   Tooltip text
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('tt-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateTooltip = function() {
+       const pos = document.getElementById('tt-pos').value;
+       const bg = document.getElementById('tt-bg').value;
+       const color = document.getElementById('tt-text').value;
+       const text = document.getElementById('tt-textval').value || "Tooltip";
+       
+       // Apply styles to preview
+       preview.textContent = text;
+       preview.style.backgroundColor = bg;
+       preview.style.color = color;
+       
+       // Positioning Logic
+       preview.style.top = 'auto';
+       preview.style.bottom = 'auto';
+       preview.style.left = 'auto';
+       preview.style.right = 'auto';
+       preview.style.transform = '';
+       
+       if(pos === 'top') { preview.style.bottom = '100%'; preview.style.left = '50%'; preview.style.transform = 'translateX(-50%)'; preview.style.marginBottom = '10px'; }
+       if(pos === 'bottom') { preview.style.top = '100%'; preview.style.left = '50%'; preview.style.transform = 'translateX(-50%)'; preview.style.marginTop = '10px'; }
+       if(pos === 'left') { preview.style.right = '100%'; preview.style.top = '50%'; preview.style.transform = 'translateY(-50%)'; preview.style.marginRight = '10px'; }
+       if(pos === 'right') { preview.style.left = '100%'; preview.style.top = '50%'; preview.style.transform = 'translateY(-50%)'; preview.style.marginLeft = '10px'; }
+       
+       // Show on hover via JS for demo (CSS handles actual logic)
+       const container = document.querySelector('.tooltip-container');
+       container.onmouseenter = () => preview.style.opacity = '1';
+       container.onmouseleave = () => preview.style.opacity = '0';
+       
+       generateCode(pos, bg, color);
+    };
+    
+    function generateCode(p, bg, color) {
+       const css = `/* Container needs position: relative */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: ${bg};
+  color: ${color};
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+/* Position Logic */
+.tooltip.${p} {
+  ${p === 'top' ? 'bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 10px;' : ''}
+  ${p === 'bottom' ? 'top: 100%; left: 50%; transform: translateX(-50%); margin-top: 10px;' : ''}
+  ${p === 'left' ? 'right: 100%; top: 50%; transform: translateY(-50%); margin-right: 10px;' : ''}
+  ${p === 'right' ? 'left: 100%; top: 50%; transform: translateY(-50%); margin-left: 10px;' : ''}
+}
+
+.tooltip-container:hover .tooltip {
+  opacity: 1;
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+    };
+    
+    updateTooltip();
+  </script>
+</body>
+</html>
