@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free online Color Opacity Generator. Adjust color transparency easily and get RGBA codes with instant preview.">
   <meta name="keywords" content="color opacity, rgba generator, transparency tool, css opacity, alpha channel">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   
-  <title>Color Opacity Generator - RGBA & Transparency | ColorPalettesHub</title>
+  <title>Color Opacity Generator - RGBA & Transparency | Devpalettes</title>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -267,8 +267,8 @@
       window.copyRGBA = function() {
         const text = rgbaText.textContent;
         navigator.clipboard.writeText(text).then(() => {
-           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
-             window.ColorPalettesHub.Toast.show(`Copied ${text}`, 'success');
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show(`Copied ${text}`, 'success');
            } else {
              alert(`Copied: ${text}`);
            }
@@ -278,8 +278,8 @@
       window.copyCSS = function() {
         const text = cssText.textContent;
         navigator.clipboard.writeText(text).then(() => {
-           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
-             window.ColorPalettesHub.Toast.show('CSS Copied!', 'success');
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('CSS Copied!', 'success');
            } else {
              alert('CSS Copied!');
            }

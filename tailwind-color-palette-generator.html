@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Generate Tailwind CSS color palettes from a single base color. Get shades 50-900 instantly for your config.">
   <meta name="keywords" content="tailwind color generator, tailwind css palette, tailwind shades, tailwind config">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   
-  <title>Tailwind Color Palette Generator | ColorPalettesHub</title>
+  <title>Tailwind Color Palette Generator | Devpalettes</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -190,7 +190,7 @@
            
            card.onclick = () => {
               navigator.clipboard.writeText(hexVal);
-              if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show(`${hexVal} copied!`);
+              if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show(`${hexVal} copied!`);
            };
            
            container.appendChild(card);
@@ -206,8 +206,8 @@
       window.copyConfig = function() {
         const text = document.getElementById('config-output').textContent;
         navigator.clipboard.writeText(text).then(() => {
-           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
-             window.ColorPalettesHub.Toast.show('Tailwind Config Copied!', 'success');
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('Tailwind Config Copied!', 'success');
            } else {
              alert('Copied!');
            }

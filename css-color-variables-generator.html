@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Generate CSS custom properties (variables) from a single base color. Get ready-to-use :root code for your stylesheets.">
   <meta name="keywords" content="css variables generator, css custom properties, design tokens, css theme generator">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   
-  <title>CSS Variables Generator - Custom Properties | ColorPalettesHub</title>
+  <title>CSS Variables Generator - Custom Properties | Devpalettes</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -243,7 +243,7 @@
            div.innerHTML = `<span class="text-[9px] font-mono font-bold" style="color:${textColor}">${item.name.replace('--color-', '')}</span>`;
            div.onclick = () => {
               navigator.clipboard.writeText(varHex);
-              if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show(`Copied ${varHex}`);
+              if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show(`Copied ${varHex}`);
            };
            swatchContainer.appendChild(div);
         });
@@ -262,8 +262,8 @@
       window.copyVariables = function() {
         const text = cssOutput.textContent;
         navigator.clipboard.writeText(text).then(() => {
-           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
-             window.ColorPalettesHub.Toast.show('CSS Variables Copied!', 'success');
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('CSS Variables Copied!', 'success');
            } else {
              alert('Copied!');
            }

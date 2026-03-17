@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Generate Bootstrap 5 color themes from a single primary color. Get SCSS variables and CSS variables instantly.">
   <meta name="keywords" content="bootstrap color generator, bootstrap theme, bootstrap 5 colors, scss variables">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   
-  <title>Bootstrap Color Palette Generator | ColorPalettesHub</title>
+  <title>Bootstrap Color Palette Generator | Devpalettes</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,7 +230,7 @@
            
            card.onclick = () => {
               navigator.clipboard.writeText(item.color);
-              if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show(`${item.color} copied!`);
+              if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show(`${item.color} copied!`);
            };
            
            container.appendChild(card);
@@ -248,8 +248,8 @@
       window.copyConfig = function() {
         const text = document.getElementById('config-output').textContent;
         navigator.clipboard.writeText(text).then(() => {
-           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
-             window.ColorPalettesHub.Toast.show('SCSS Variables Copied!', 'success');
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('SCSS Variables Copied!', 'success');
            } else {
              alert('Copied!');
            }
