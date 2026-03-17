@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom animated CSS cursors. Create dot, ring, trailing, and glowing cursor effects.">
+  <meta name="keywords" content="cursor effect generator, custom cursor css, animated cursor, mouse effect">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Animated Cursor Generator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    .cursor-dot { 
+       width: 10px; height: 10px; background-color: #000; 
+       position: fixed; pointer-events: none; border-radius: 50%; z-index: 9999;
+       transform: translate(-50%, -50%);
+    }
+    .dark .cursor-dot { background-color: #fff; }
+    
+    .cursor-ring {
+       width: 40px; height: 40px; border: 2px solid #000;
+       position: fixed; pointer-events: none; border-radius: 50%; z-index: 9998;
+       transition: width 0.2s, height 0.2s; transform: translate(-50%, -50%);
+    }
+    .dark .cursor-ring { border-color: #fff; }
+    
+    .cursor-trail {
+       width: 8px; height: 8px; background-color: rgba(0,0,0,0.5);
+       position: fixed; pointer-events: none; border-radius: 50%; z-index: 9998;
+       transform: translate(-50%, -50%); transition: opacity 0.5s;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-mouse-pointer mr-2"></i>Interactive Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Animated Cursor Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create stunning custom cursors. Move your mouse in the preview area to test.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Cursor Type</h3>
+             <div class="grid grid-cols-2 gap-2">
+                <button onclick="setCursor('dot')" class="type-btn active px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Dot</button>
+                <button onclick="setCursor('ring')" class="type-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Ring</button>
+                <button onclick="setCursor('both')" class="type-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Both</button>
+                <button onclick="setCursor('trail')" class="type-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Trail</button>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="mb-3">
+                <label class="block text-xs font-semibold mb-1 text-slate-500">Size</label>
+                <input type="range" id="ctrl-size" min="5" max="50" value="10" onchange="updateSettings()" class="w-full accent-emerald-500">
+             </div>
+             <div>
+                <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                <input type="color" id="ctrl-color" value="#000000" onchange="updateSettings()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <!-- Preview Area -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview Sandbox</h3>
+                <span class="text-xs text-slate-400">Move mouse here</span>
+             </div>
+             
+             <div id="preview-area" class="relative h-96 bg-slate-100 dark:bg-slate-800 cursor-none overflow-hidden" onmousemove="moveCursor(event)">
+                <!-- Cursor Elements injected here -->
+                <div id="c-dot" class="cursor-dot hidden"></div>
+                <div id="c-ring" class="cursor-ring hidden"></div>
+                <div id="c-trail-container"></div>
+                
+                <!-- Dummy Content -->
+                <div class="p-10 relative z-10 pointer-events-none select-none">
+                   <h2 class="text-2xl font-bold mb-4">Test Area</h2>
+                   <p class="text-slate-600 dark:text-slate-300">Move your mouse around this box to see the custom cursor in action. Try different styles!</p>
+                   <div class="flex gap-4 mt-6 pointer-events-auto">
+                      <button class="px-4 py-2 bg-emerald-500 text-white rounded">Hover Me</button>
+                      <a href="#" class="text-emerald-500 underline">Link Hover</a>
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-48">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const previewArea = document.getElementById('preview-area');
+    const dot = document.getElementById('c-dot');
+    const ring = document.getElementById('c-ring');
+    const trailCont = document.getElementById('c-trail-container');
+    const codeOutput = document.getElementById('code-output');
+    
+    let currentType = 'dot';
+    let trailElements = [];
+    
+    window.setCursor = function(type) {
+       currentType = type;
+       // Reset
+       dot.classList.add('hidden');
+       ring.classList.add('hidden');
+       trailCont.innerHTML = '';
+       trailElements = [];
+       
+       document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active', 'bg-emerald-500', 'text-white'));
+       event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+       
+       if(type === 'trail') {
+          // Create 10 trail dots
+          for(let i=0; i<10; i++) {
+             const d = document.createElement('div');
+             d.className = 'cursor-trail';
+             d.style.opacity = (1 - i/10);
+             trailCont.appendChild(d);
+             trailElements.push(d);
+          }
+       }
+       
+       updateSettings();
+    };
+    
+    window.updateSettings = function() {
+       const size = document.getElementById('ctrl-size').value;
+       const color = document.getElementById('ctrl-color').value;
+       
+       // Apply to Dot
+       dot.style.width = size + 'px';
+       dot.style.height = size + 'px';
+       dot.style.backgroundColor = color;
+       if(currentType === 'dot' || currentType === 'both') dot.classList.remove('hidden');
+       
+       // Apply to Ring
+       ring.style.width = (size * 4) + 'px';
+       ring.style.height = (size * 4) + 'px';
+       ring.style.borderColor = color;
+       if(currentType === 'ring' || currentType === 'both') ring.classList.remove('hidden');
+       
+       // Apply to Trail
+       trailElements.forEach(d => {
+          d.style.width = size + 'px';
+          d.style.height = size + 'px';
+          d.style.backgroundColor = color;
+       });
+       
+       generateCode();
+    };
+    
+    let mouseX = 0, mouseY = 0;
+    
+    window.moveCursor = function(e) {
+       const rect = previewArea.getBoundingClientRect();
+       mouseX = e.clientX - rect.left;
+       mouseY = e.clientY - rect.top;
+       
+       // Update Main Dot & Ring immediately
+       if(currentType === 'dot' || currentType === 'both') {
+          dot.style.left = mouseX + 'px';
+          dot.style.top = mouseY + 'px';
+       }
+       
+       if(currentType === 'ring' || currentType === 'both') {
+          ring.style.left = mouseX + 'px';
+          ring.style.top = mouseY + 'px';
+       }
+    };
+    
+    // Animation loop for smooth trail
+    function animateTrail() {
+       let x = mouseX, y = mouseY;
+       trailElements.forEach((d, i) => {
+          const nextX = x, nextY = y;
+          // Move current to next
+          d.style.left = x + 'px';
+          d.style.top = y + 'px';
+          // Update next position for lag
+          // Simple lag effect (could be improved)
+       });
+       requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+    
+    // Simple trail logic
+    let lastX = 0, lastY = 0;
+    setInterval(() => {
+       if(currentType !== 'trail') return;
+       trailElements.forEach((d, i) => {
+          const target = trailElements[i-1] || { style: { left: mouseX+'px', top: mouseY+'px' } };
+          // Basic interpolation for demo
+          const currX = parseFloat(d.style.left || 0);
+          const currY = parseFloat(d.style.top || 0);
+          const tx = mouseX;
+          const ty = mouseY;
+          d.style.left = (currX + (tx - currX) * 0.3) + 'px';
+          d.style.top = (currY + (ty - currY) * 0.3) + 'px';
+       });
+    }, 20);
+    
+    
+    window.generateCode = function() {
+       const size = document.getElementById('ctrl-size').value;
+       const color = document.getElementById('ctrl-color').value;
+       
+       const css = `.cursor-dot {
+  width: ${size}px; height: ${size}px; background-color: ${color}; 
+  position: fixed; pointer-events: none; border-radius: 50%; z-index: 9999;
+  transform: translate(-50%, -50%);
+}`;
+       
+       const js = `const cursor = document.querySelector('.cursor-dot');
+document.addEventListener('mousemove', e => {
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+});`;
+       
+       codeOutput.textContent = `<!-- HTML -->
+<div class="cursor-dot"></div>
+
+/* CSS */
+ ${css}
+
+/* JavaScript */
+ ${js}`;
+    };
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text).then(() => {
+           if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+             window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+           } else {
+             alert('Copied!');
+           }
+       });
+    };
+    
+    // Init
+    setCursor('dot');
+  </script>
+</body>
+</html>
