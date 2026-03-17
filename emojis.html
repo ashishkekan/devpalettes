@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert text to interactive emojis. Choose themes like Food, Animals, Nature and generate fun emoji text.">
+  <meta name="keywords" content="emoji converter, text to emoji, emoji generator, fun text tool, interactive emojis">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Interactive Text to Emoji Generator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    .emoji-box {
+       transition: all 0.2s ease;
+       cursor: pointer;
+    }
+    .emoji-box:hover {
+       transform: scale(1.2);
+       z-index: 10;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-smile-beam mr-2"></i>Fun Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Interactive Emoji Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Transform your text into fun emojis. Choose a theme or randomize!
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-5 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-keyboard text-emerald-500"></i>
+                Input Text
+             </h3>
+             
+             <textarea 
+                id="text-input" 
+                rows="4" 
+                class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl p-4 text-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+                placeholder="Type something... e.g. Hello World"></textarea>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-pink-500"></i>
+                Theme Settings
+             </h3>
+             
+             <div class="mb-4">
+                <label class="block text-sm font-medium mb-2 text-slate-500">Select Theme</label>
+                <div class="grid grid-cols-2 gap-2">
+                   <button onclick="setTheme('food')" class="theme-btn active px-3 py-2 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 transition-colors">🍔 Food</button>
+                   <button onclick="setTheme('animals')" class="theme-btn px-3 py-2 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 transition-colors">🐱 Animals</button>
+                   <button onclick="setTheme('nature')" class="theme-btn px-3 py-2 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 transition-colors">🌲 Nature</button>
+                   <button onclick="setTheme('shapes')" class="theme-btn px-3 py-2 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 transition-colors">🔷 Shapes</button>
+                </div>
+             </div>
+             
+             <div class="flex gap-3 mt-4">
+                <button onclick="randomize()" class="flex-1 btn-secondary text-sm py-2">
+                   <i class="fas fa-random mr-1"></i> Shuffle
+                </button>
+                <button onclick="clearAll()" class="flex-1 btn-secondary text-sm py-2 bg-red-100 dark:bg-red-900/30 text-red-500 hover:bg-red-200">
+                   <i class="fas fa-trash-alt mr-1"></i> Clear
+                </button>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Output -->
+        <div class="lg:col-span-3 space-y-6 animate-on-scroll">
+          
+          <!-- Output Display -->
+          <div class="glass-card p-6 shimmer-card min-h-[300px]">
+             <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold text-lg">Converted Emojis</h3>
+                <button onclick="copyAll()" class="btn-primary text-xs py-2 px-4">
+                   <i class="fas fa-copy mr-1"></i>Copy All
+                </button>
+             </div>
+             
+             <div id="emoji-output" class="flex flex-wrap gap-2 justify-center items-center content-center min-h-[200px] bg-slate-50 dark:bg-slate-800/50 rounded-xl p-4">
+                <span class="text-slate-400 text-sm">Type something to see magic...</span>
+             </div>
+          </div>
+          
+          <!-- Stats -->
+          <div class="glass-card p-4 shimmer-card flex justify-between items-center text-sm">
+             <span class="text-slate-500">Emojis Generated: <span id="emoji-count" class="font-bold text-emerald-500">0</span></span>
+             <span class="text-slate-500">Theme: <span id="theme-name" class="font-bold text-pink-500">Food</span></span>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const textInput = document.getElementById('text-input');
+      const emojiOutput = document.getElementById('emoji-output');
+      const emojiCount = document.getElementById('emoji-count');
+      const themeName = document.getElementById('theme-name');
+      
+      // Emoji Dictionaries
+      const maps = {
+        food: {
+          'a': '🍎', 'b': '🍌', 'c': '🍪', 'd': '🍩', 'e': '🥚',
+          'f': '🍟', 'g': '🍇', 'h': '🍔', 'i': '🍦', 'j': '🧃',
+          'k': '🥝', 'l': '🍋', 'm': '🥛', 'n': '🥜', 'o': '🍊',
+          'p': '🍕', 'q': '🥐', 'r': '🍚', 's': '🍝', 't': '🌮',
+          'u': '🥣', 'v': '🧇', 'w': '🥞', 'x': '🥢', 'y': '🧀',
+          'z': '🥪',
+          '0': '0️⃣', '1': '1️⃣', '2': '2️⃣', '3': '3️⃣', '4': '4️⃣',
+          '5': '5️⃣', '6': '6️⃣', '7': '7️⃣', '8': '8️⃣', '9': '9️⃣',
+          ' ': '⬜', '.': '🔵', '!': '❗', '?': '❓'
+        },
+        animals: {
+          'a': '🐜', 'b': '🐻', 'c': '🐱', 'd': '🐶', 'e': '🐘',
+          'f': '🦊', 'g': '🦒', 'h': '🦛', 'i': '🦋', 'j': '🦆',
+          'k': '🦘', 'l': '🦁', 'm': '🐒', 'n': '🦉', 'o': '🐙',
+          'p': '🐼', 'q': '🦜', 'r': '🦏', 's': '🐍', 't': '🐯',
+          'u': '🦄', 'v': '🦇', 'w': '🐺', 'x': '🦀', 'y': '🦓',
+          'z': '🦓',
+          '0': '0️⃣', '1': '1️⃣', '2': '2️⃣', '3': '3️⃣', '4': '4️⃣',
+          '5': '5️⃣', '6': '6️⃣', '7': '7️⃣', '8': '8️⃣', '9': '9️⃣',
+          ' ': '🌿', '.': '🐾', '!': '⚠️', '?': '❓'
+        },
+        nature: {
+          'a': '🌊', 'b': '🌸', 'c': '☁️', 'd': '🌵', 'e': '🌍',
+          'f': '🍂', 'g': '🌾', 'h': '🌻', 'i': '❄️', 'j': '☘️',
+          'k': '🥥', 'l': '🍀', 'm': '🌙', 'n': '🌰', 'o': '🌞',
+          'p': '🥀', 'q': '⛰️', 'r': '🌈', 's': '⭐', 't': '🌴',
+          'u': '☂️', 'v': '🌋', 'w': '💧', 'x': '❌', 'y': '🌠',
+          'z': '⚡',
+          '0': '0️⃣', '1': '1️⃣', '2': '2️⃣', '3': '3️⃣', '4': '4️⃣',
+          '5': '5️⃣', '6': '6️⃣', '7': '7️⃣', '8': '8️⃣', '9': '9️⃣',
+          ' ': '🟩', '.': '⚪', '!': '⚡', '?': '🌪️'
+        },
+        shapes: {
+          'a': '🔴', 'b': '🟠', 'c': '🟡', 'd': '🟢', 'e': '🔵',
+          'f': '🟣', 'g': '🟤', 'h': '⚫', 'i': '⚪', 'j': '🔷',
+          'k': '🔶', 'l': '🔸', 'm': '🔹', 'n': '🔻', 'o': '⭕',
+          'p': '🟥', 'q': '🟧', 'r': '🟨', 's': '🟩', 't': '🟦',
+          'u': '🟪', 'v': '🔻', 'w': '💎', 'x': '❌', 'y': '🔺',
+          'z': '💠',
+          '0': '0️⃣', '1': '1️⃣', '2': '2️⃣', '3': '3️⃣', '4': '4️⃣',
+          '5': '5️⃣', '6': '6️⃣', '7': '7️⃣', '8': '8️⃣', '9': '9️⃣',
+          ' ': '⬜', '.': '🔘', '!': '‼️', '?': '❔'
+        }
+      };
+      
+      let currentMap = maps.food;
+      let currentThemeName = "Food";
+      
+      window.setTheme = function(theme) {
+         currentMap = maps[theme];
+         currentThemeName = theme.charAt(0).toUpperCase() + theme.slice(1);
+         themeName.textContent = currentThemeName;
+         
+         document.querySelectorAll('.theme-btn').forEach(b => {
+            b.classList.remove('active', 'bg-emerald-500', 'text-white');
+         });
+         event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+         
+         convertText();
+      };
+      
+      window.convertText = function() {
+         const text = textInput.value;
+         emojiOutput.innerHTML = '';
+         
+         if (!text) {
+            emojiOutput.innerHTML = '<span class="text-slate-400 text-sm">Type something to see magic...</span>';
+            emojiCount.textContent = '0';
+            return;
+         }
+         
+         let count = 0;
+         const chars = text.split('');
+         
+         chars.forEach(char => {
+            const lower = char.toLowerCase();
+            const emoji = currentMap[lower] || char;
+            
+            const span = document.createElement('span');
+            span.className = 'emoji-box inline-block text-3xl p-1 select-none';
+            span.textContent = emoji;
+            span.title = `Click to copy: ${emoji}`;
+            
+            // Click to copy individual emoji
+            span.onclick = () => {
+               navigator.clipboard.writeText(emoji);
+               if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+                  window.ColorPalettesHub.Toast.show(`Copied ${emoji}`, 'success');
+               } else {
+                  // Fallback visual feedback
+                  span.style.transform = 'scale(1.5)';
+                  setTimeout(() => span.style.transform = '', 200);
+               }
+            };
+            
+            emojiOutput.appendChild(span);
+            count++;
+         });
+         
+         emojiCount.textContent = count;
+      };
+      
+      window.randomize = function() {
+         // Shuffle the current map keys for fun
+         const keys = Object.keys(currentMap);
+         textInput.value = textInput.value.split('').sort(() => 0.5 - Math.random()).join('');
+         convertText();
+      };
+      
+      window.copyAll = function() {
+         const text = emojiOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+               window.ColorPalettesHub.Toast.show('All Emojis Copied!', 'success');
+             } else {
+               alert('Copied!');
+             }
+         });
+      };
+      
+      window.clearAll = function() {
+         textInput.value = '';
+         convertText();
+      };
+      
+      // Event Listener
+      textInput.addEventListener('input', convertText);
+      
+    })();
+  </script>
+</body>
+</html>
