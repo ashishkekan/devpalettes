@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Preview Lottie animations instantly. Drag and drop JSON files, control speed, loop, and export code.">
+  <meta name="keywords" content="lottie preview, json animation viewer, bodymovin player, lottie viewer">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Lottie Preview Tool - JSON Animation Viewer | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"></script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Checkerboard background for transparency view */
+    .checker-bg {
+       background-color: #fff;
+       background-image: linear-gradient(45deg, #e2e8f0 25%, transparent 25%), 
+                         linear-gradient(-45deg, #e2e8f0 25%, transparent 25%), 
+                         linear-gradient(45deg, transparent 75%, #e2e8f0 75%), 
+                         linear-gradient(-45deg, transparent 75%, #e2e8f0 75%);
+       background-size: 20px 20px;
+       background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+    }
+    .dark .checker-bg {
+       background-color: #020617;
+       background-image: linear-gradient(45deg, #1e293b 25%, transparent 25%), 
+                         linear-gradient(-45deg, #1e293b 25%, transparent 25%), 
+                         linear-gradient(45deg, transparent 75%, #1e293b 75%), 
+                         linear-gradient(-45deg, transparent 75%, #1e293b 75%);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-film mr-2"></i>Animation Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Lottie Preview Tool</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Drag and drop your Lottie JSON files to preview animations instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-4 animate-on-scroll">
+           
+           <!-- Dropzone -->
+           <div class="glass-card p-6 shimmer-card">
+              <div id="drop-zone" class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl p-6 text-center cursor-pointer hover:border-emerald-500 transition-colors">
+                 <i class="fas fa-cloud-upload-alt text-4xl text-slate-400 mb-3"></i>
+                 <p class="text-sm text-slate-500 mb-2">Drag & Drop JSON here</p>
+                 <input type="file" id="file-input" accept=".json" class="hidden">
+                 <button onclick="document.getElementById('file-input').click()" class="btn-secondary text-xs py-2 px-4">Browse Files</button>
+              </div>
+           </div>
+           
+           <!-- Settings -->
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                 <i class="fas fa-sliders-h text-emerald-500"></i>
+                 Controls
+              </h3>
+              
+              <div class="space-y-4">
+                 <!-- Speed -->
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Speed: <span id="speed-val">1</span>x</label>
+                    <input type="range" id="speed-slider" min="0.1" max="3" step="0.1" value="1" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <!-- Background -->
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Background</label>
+                    <div class="flex gap-2">
+                       <button onclick="setBg('#ffffff')" class="w-8 h-8 rounded bg-white border border-slate-200"></button>
+                       <button onclick="setBg('#000000')" class="w-8 h-8 rounded bg-black border border-slate-700"></button>
+                       <button onclick="setBg('transparent')" class="w-8 h-8 rounded checker-bg border border-slate-200"></button>
+                    </div>
+                 </div>
+                 
+                 <!-- Toggles -->
+                 <div class="flex items-center justify-between">
+                    <span class="text-sm text-slate-500">Loop</span>
+                    <input type="checkbox" id="loop-check" checked class="accent-emerald-500 w-5 h-5 rounded">
+                 </div>
+                 
+                 <div class="flex gap-2">
+                    <button onclick="playAnim()" class="flex-1 btn-primary text-sm py-2"><i class="fas fa-play mr-1"></i>Play</button>
+                    <button onclick="pauseAnim()" class="flex-1 btn-secondary text-sm py-2"><i class="fas fa-pause mr-1"></i>Pause</button>
+                 </div>
+              </div>
+           </div>
+           
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <!-- Preview Area -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+                <div class="flex items-center gap-2">
+                   <span class="text-xs text-slate-400">Size:</span>
+                   <input type="number" id="size-input" value="400" class="w-16 bg-slate-100 dark:bg-slate-800 rounded px-2 py-1 text-xs text-center">
+                </div>
+             </div>
+             
+             <div class="preview-container p-4 flex items-center justify-center min-h-[500px]" id="preview-wrapper">
+                <div id="preview-canvas" class="transition-all duration-300" style="width: 400px; height: 400px; background: transparent;"></div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Embed Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-40">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300">Load an animation to get code.</pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const dropZone = document.getElementById('drop-zone');
+      const fileInput = document.getElementById('file-input');
+      const previewCanvas = document.getElementById('preview-canvas');
+      const previewWrapper = document.getElementById('preview-wrapper');
+      const speedSlider = document.getElementById('speed-slider');
+      const speedVal = document.getElementById('speed-val');
+      const loopCheck = document.getElementById('loop-check');
+      const sizeInput = document.getElementById('size-input');
+      const codeOutput = document.getElementById('code-output');
+      
+      let anim = null;
+      let currentPath = '';
+      
+      // Drag & Drop Events
+      dropZone.addEventListener('dragover', (e) => {
+         e.preventDefault();
+         dropZone.classList.add('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-900/20');
+      });
+      
+      dropZone.addEventListener('dragleave', () => {
+         dropZone.classList.remove('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-900/20');
+      });
+      
+      dropZone.addEventListener('drop', (e) => {
+         e.preventDefault();
+         dropZone.classList.remove('border-emerald-500', 'bg-emerald-50', 'dark:bg-emerald-900/20');
+         const file = e.dataTransfer.files[0];
+         if (file) handleFile(file);
+      });
+      
+      fileInput.addEventListener('change', (e) => {
+         if (e.target.files[0]) handleFile(e.target.files[0]);
+      });
+      
+      function handleFile(file) {
+         if (file.type !== 'application/json') {
+            alert('Please upload a valid JSON file.');
+            return;
+         }
+         
+         const reader = new FileReader();
+         reader.onload = function(e) {
+            try {
+               const data = JSON.parse(e.target.result);
+               loadAnimation(data);
+               currentPath = 'data:application/json;base64,' + btoa(unescape(encodeURIComponent(e.target.result)));
+               generateCode();
+            } catch (err) {
+               alert('Invalid JSON file.');
+            }
+         };
+         reader.readAsText(file);
+      }
+      
+      function loadAnimation(data) {
+         if (anim) anim.destroy();
+         
+         anim = lottie.loadAnimation({
+            container: previewCanvas,
+            renderer: 'svg',
+            loop: loopCheck.checked,
+            autoplay: true,
+            animationData: data
+         });
+      }
+      
+      window.setBg = function(color) {
+         previewWrapper.style.backgroundColor = color === 'transparent' ? '' : color;
+         if (color === 'transparent') {
+            previewWrapper.classList.add('checker-bg');
+         } else {
+            previewWrapper.classList.remove('checker-bg');
+         }
+      };
+      
+      speedSlider.addEventListener('input', () => {
+         speedVal.textContent = speedSlider.value;
+         if (anim) anim.setSpeed(speedSlider.value);
+      });
+      
+      sizeInput.addEventListener('input', () => {
+         const size = sizeInput.value + 'px';
+         previewCanvas.style.width = size;
+         previewCanvas.style.height = size;
+      });
+      
+      window.playAnim = function() { if(anim) anim.play(); };
+      window.pauseAnim = function() { if(anim) anim.pause(); };
+      
+      function generateCode() {
+         const code = `<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.10.2/lottie.min.js"><\/script>
+
+<div id="lottie-container" style="width: 300px; height: 300px;"></div>
+
+<script>
+  lottie.loadAnimation({
+    container: document.getElementById('lottie-container'),
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    path: 'YOUR_JSON_FILE_URL.json' // Replace with your hosted path
+  });
+<\/script>`;
+         codeOutput.textContent = code;
+      }
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+               window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+             } else {
+               alert('Code Copied!');
+             }
+         });
+      };
+      
+    })();
+  </script>
+</body>
+</html>

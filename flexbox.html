@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive Flexbox Playground. Learn CSS Flexbox by adjusting properties visually with live preview and code generation.">
+  <meta name="keywords" content="flexbox playground, css flexbox, flexbox generator, css layout tool, flexbox guide">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Flexbox Playground - Interactive CSS Guide | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Checkerboard background for preview to visualize stretch */
+    .preview-bg-grid {
+       background-color: #ffffff;
+       background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+       background-size: 15px 15px;
+    }
+    .dark .preview-bg-grid {
+       background-color: #1e293b;
+       background-image: radial-gradient(#334155 1px, transparent 1px);
+    }
+    
+    .flex-item {
+       transition: all 0.3s ease;
+       min-width: 60px;
+       min-height: 60px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-th-large mr-2"></i>CSS Layout
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Flexbox Playground</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Interactive tool to master CSS Flexbox. Adjust properties and see the layout change instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-1 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i>
+                Container Properties
+             </h3>
+             
+             <div class="space-y-4">
+                <!-- Flex Direction -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Flex Direction</label>
+                   <select id="ctrl-direction" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="row">row</option>
+                      <option value="row-reverse">row-reverse</option>
+                      <option value="column">column</option>
+                      <option value="column-reverse">column-reverse</option>
+                   </select>
+                </div>
+                
+                <!-- Justify Content -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Justify Content</label>
+                   <select id="ctrl-justify" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                      <option value="space-evenly">space-evenly</option>
+                   </select>
+                </div>
+                
+                <!-- Align Items -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Align Items</label>
+                   <select id="ctrl-align-items" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="stretch">stretch</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="baseline">baseline</option>
+                   </select>
+                </div>
+                
+                <!-- Flex Wrap -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Flex Wrap</label>
+                   <select id="ctrl-wrap" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="nowrap">nowrap</option>
+                      <option value="wrap">wrap</option>
+                      <option value="wrap-reverse">wrap-reverse</option>
+                   </select>
+                </div>
+                
+                <!-- Align Content (Only visible on wrap) -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Align Content</label>
+                   <select id="ctrl-align-content" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="stretch">stretch</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                   </select>
+                </div>
+                
+                <!-- Gap -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Gap: <span id="gap-val">10</span>px</label>
+                   <input type="range" id="ctrl-gap" min="0" max="50" value="10" onchange="updateFlex()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <!-- Item Controls -->
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-md flex items-center gap-2">
+                <i class="fas fa-shapes text-cyan-500"></i>
+                Items Control
+             </h3>
+             <div class="flex gap-3">
+                <button onclick="addItem()" class="flex-1 btn-secondary text-sm justify-center py-2">
+                   <i class="fas fa-plus mr-1"></i> Add
+                </button>
+                <button onclick="removeItem()" class="flex-1 btn-secondary text-sm justify-center py-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 text-red-600">
+                   <i class="fas fa-minus mr-1"></i> Remove
+                </button>
+             </div>
+             <p class="text-xs text-slate-400 mt-3 text-center">Total Items: <span id="item-count" class="font-bold text-slate-700 dark:text-white">0</span></p>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <!-- Preview Area -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview Area</h3>
+                <span class="text-xs text-slate-400">Resize window to test responsiveness</span>
+             </div>
+             
+             <!-- The Flex Container -->
+             <div class="preview-bg-grid p-4 min-h-[400px]">
+                <div id="flex-container" class="w-full h-full border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl transition-all duration-300 relative overflow-hidden">
+                   <!-- Items injected by JS -->
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated CSS</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4">
+                   <i class="fas fa-copy mr-1"></i>Copy Code
+                </button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-48">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const container = document.getElementById('flex-container');
+      const itemCountEl = document.getElementById('item-count');
+      const gapValEl = document.getElementById('gap-val');
+      const codeOutput = document.getElementById('code-output');
+      
+      // Inputs
+      const ctrlDir = document.getElementById('ctrl-direction');
+      const ctrlJust = document.getElementById('ctrl-justify');
+      const ctrlAlignItems = document.getElementById('ctrl-align-items');
+      const ctrlWrap = document.getElementById('ctrl-wrap');
+      const ctrlAlignContent = document.getElementById('ctrl-align-content');
+      const ctrlGap = document.getElementById('ctrl-gap');
+      
+      let itemColors = [
+         'bg-red-500', 'bg-blue-500', 'bg-green-500', 'bg-yellow-500', 
+         'bg-purple-500', 'bg-pink-500', 'bg-indigo-500', 'bg-teal-500', 
+         'bg-orange-500', 'bg-cyan-500'
+      ];
+      
+      window.addItem = function() {
+         if(container.children.length >= 10) return;
+         const div = document.createElement('div');
+         const index = container.children.length;
+         div.className = `flex-item flex items-center justify-center text-white font-bold rounded-lg cursor-pointer hover:opacity-80 ${itemColors[index % itemColors.length]}`;
+         div.style.width = '80px';
+         div.style.height = '80px';
+         div.textContent = index + 1;
+         div.onclick = () => {
+            // Optional: Click to toggle flex-grow for this item
+            if(div.classList.contains('flex-grow')) {
+               div.classList.remove('flex-grow');
+               div.style.flexGrow = '0';
+            } else {
+               div.classList.add('flex-grow');
+               div.style.flexGrow = '1';
+            }
+            updateCode();
+         };
+         container.appendChild(div);
+         updateItemCounts();
+         updateCode();
+      };
+      
+      window.removeItem = function() {
+         if(container.children.length > 0) {
+            container.lastChild.remove();
+            updateItemCounts();
+            updateCode();
+         }
+      };
+      
+      window.updateFlex = function() {
+         const dir = ctrlDir.value;
+         const just = ctrlJust.value;
+         const align = ctrlAlignItems.value;
+         const wrap = ctrlWrap.value;
+         const alignCont = ctrlAlignContent.value;
+         const gap = ctrlGap.value;
+         
+         gapValEl.textContent = gap;
+         
+         container.style.flexDirection = dir;
+         container.style.justifyContent = just;
+         container.style.alignItems = align;
+         container.style.flexWrap = wrap;
+         container.style.alignContent = alignCont;
+         container.style.gap = `${gap}px`;
+         
+         // Important: Display flex
+         container.style.display = 'flex';
+         
+         updateCode();
+      };
+      
+      function updateItemCounts() {
+         itemCountEl.textContent = container.children.length;
+      };
+      
+      window.updateCode = function() {
+         const dir = ctrlDir.value;
+         const just = ctrlJust.value;
+         const align = ctrlAlignItems.value;
+         const wrap = ctrlWrap.value;
+         const alignCont = ctrlAlignContent.value;
+         const gap = ctrlGap.value;
+         
+         let code = `.container {
+  display: flex;
+  flex-direction: ${dir};
+  justify-content: ${just};
+  align-items: ${align};
+  flex-wrap: ${wrap};
+  align-content: ${alignCont};
+  gap: ${gap}px;
+}`;
+         
+         // Check if any item has flex-grow
+         const items = container.querySelectorAll('.flex-item');
+         let grownItems = [];
+         items.forEach((item, i) => {
+            if(item.style.flexGrow === '1') {
+               grownItems.push(`.item-${i+1} { flex-grow: 1; }`);
+            }
+         });
+         
+         if(grownItems.length > 0) {
+            code += `\n\n/* Clicked Items (Grow enabled) */\n${grownItems.join('\n')}`;
+         }
+         
+         codeOutput.textContent = code;
+      };
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) {
+               window.ColorPalettesHub.Toast.show('CSS Copied!', 'success');
+             } else {
+               alert('CSS Copied!');
+             }
+         });
+      };
+      
+      // Init with 3 items
+      addItem(); addItem(); addItem();
+      updateFlex();
+      
+    })();
+  </script>
+</body>
+</html>
