@@ -3,11 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate CSS Text Shadow effects. Create glowing, outlined, or 3D text shadows.">
-  <meta name="keywords" content="text shadow generator, css text effect, neon text css, long shadow">
-  <meta name="author" content="ColorPalettesHub">
   
-  <title>Text Shadow Generator | ColorPalettesHub</title>
+  <!-- SEO Meta Tags -->
+  <title>Text Shadow Generator - Create CSS Text Effects Online | ColorPalettesHub</title>
+  <meta name="description" content="Generate CSS text shadows instantly. Create glow, neon, long, and soft shadow effects with our easy-to-use text shadow generator tool.">
+  <meta name="keywords" content="text shadow generator, css text effect, neon text css, long shadow, css glow effect, typography generator">
+  <meta name="author" content="ColorPalettesHub">
+  <link rel="canonical" href="https://colorpaletteshub.com/text-shadow-generator.html" />
+  
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="CSS Text Shadow Generator">
+  <meta property="og:description" content="Create stunning text effects with our free CSS text shadow generator.">
+  <meta property="og:type" content="website">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,6 +29,23 @@
   
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "CSS Text Shadow Generator",
+    "operatingSystem": "Any",
+    "applicationCategory": "DesignApplication",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "description": "A free online tool to generate CSS text-shadow properties for web design."
+  }
+  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
@@ -34,16 +58,20 @@
     
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
+      <!-- Header -->
       <div class="text-center mb-10 animate-on-scroll">
         <span class="inline-block px-4 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">
           <i class="fas fa-italic mr-2"></i>CSS Effect
         </span>
         <h1 class="text-4xl font-bold mb-4">Text Shadow Generator</h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Add depth and style to your typography.</p>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Add depth and style to your typography with custom CSS text shadows.
+        </p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
-      <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Tool Interface -->
+      <div class="grid lg:grid-cols-3 gap-8 mb-12">
         <!-- Controls -->
         <div class="space-y-4 animate-on-scroll">
           <div class="glass-card p-6 shimmer-card">
@@ -74,10 +102,10 @@
              <div class="mt-4">
                 <label class="block text-xs font-semibold text-slate-500 mb-1">Presets</label>
                 <div class="grid grid-cols-2 gap-2">
-                   <button onclick="setPreset(0, 0, 20)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white">Glow</button>
-                   <button onclick="setPreset(4, 4, 0)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white">Hard</button>
-                   <button onclick="setPreset(1, 1, 2)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white">Soft</button>
-                   <button onclick="setPreset(0, 0, 0)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white">Reset</button>
+                   <button onclick="setPreset(0, 0, 20)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Glow</button>
+                   <button onclick="setPreset(4, 4, 0)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Hard</button>
+                   <button onclick="setPreset(1, 1, 2)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Soft</button>
+                   <button onclick="setPreset(0, 0, 0)" class="px-2 py-1 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Reset</button>
                 </div>
              </div>
           </div>
@@ -92,12 +120,95 @@
           <div class="glass-card p-6 shimmer-card">
              <div class="flex justify-between items-center mb-2">
                 <h3 class="font-bold text-lg">CSS Code</h3>
-                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+                <div class="flex gap-2">
+                   <button onclick="shareTwitter()" class="btn-secondary text-xs py-2 px-3"><i class="fab fa-twitter"></i></button>
+                   <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+                </div>
              </div>
              <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
           </div>
         </div>
       </div>
+      
+      <!-- SEO Content Section -->
+      <div id="seo-content" class="space-y-12 animate-on-scroll">
+         
+         <!-- Intro -->
+         <div class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is a CSS Text Shadow?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The CSS <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">text-shadow</code> property adds shadows to text. It accepts a list of shadows to apply to the text of the element. Each shadow is described by some combination of X and Y offsets from the element, blur radius, and color.
+            </p>
+         </div>
+         
+         <!-- Use Cases / Benefits -->
+         <div>
+            <h2 class="text-2xl font-bold mb-6 text-center">Common Text Shadow Effects</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+               <div class="glass-card p-6 text-center">
+                  <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-emerald-500">
+                     <i class="fas fa-sun"></i>
+                  </div>
+                  <h3 class="font-bold mb-2">Glow Effect</h3>
+                  <p class="text-xs text-slate-500">Create neon-like text effects with 0 offset and high blur radius. Perfect for dark mode UIs.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-blue-500">
+                     <i class="fas fa-cube"></i>
+                  </div>
+                  <h3 class="font-bold mb-2">3D Depth</h3>
+                  <p class="text-xs text-slate-500">Use hard shadows with no blur to create a retro 3D extrusion effect on headings.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-rose-500">
+                     <i class="fas fa-feather-alt"></i>
+                  </div>
+                  <h3 class="font-bold mb-2">Soft Elegance</h3>
+                  <p class="text-xs text-slate-500">Subtle, soft shadows improve readability on colorful backgrounds without being distracting.</p>
+               </div>
+            </div>
+         </div>
+         
+         <!-- How to Use -->
+         <div class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Generator</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Enter Text:</strong> Type the text you want to style in the input field.</li>
+               <li><strong>Adjust Offsets:</strong> Move the X and Y sliders to position the shadow. Positive values move it right/down, negative values move it left/up.</li>
+               <li><strong>Set Blur:</strong> Increase blur for a soft glow, or keep it at 0 for a sharp, hard shadow.</li>
+               <li><strong>Pick Color:</strong> Choose a shadow color that contrasts well with your text color.</li>
+               <li><strong>Copy Code:</strong> Click the copy button to get the CSS snippet and paste it into your stylesheet.</li>
+            </ol>
+         </div>
+         
+         <!-- Code Examples -->
+         <div>
+            <h2 class="text-2xl font-bold mb-4">Example Code Snippets</h2>
+            <div class="space-y-4">
+               <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
+                  <span class="text-xs font-bold text-slate-500 block mb-2">Neon Glow Effect:</span>
+                  <code class="text-sm text-pink-500">text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073;</code>
+               </div>
+               <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
+                  <span class="text-xs font-bold text-slate-500 block mb-2">Long Shadow Effect:</span>
+                  <code class="text-sm text-blue-500">text-shadow: 1px 1px 0 #444, 2px 2px 0 #444, 3px 3px 0 #444;</code>
+               </div>
+            </div>
+         </div>
+         
+         <!-- Related Tools / Internal Links -->
+         <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Explore More CSS Tools</h2>
+            <p class="text-slate-500 mb-4 text-sm">Enhance your design workflow with these related generators:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="box-shadow-generator.html" class="btn-secondary text-xs py-2 px-4">Box Shadow Generator</a>
+               <a href="gradient-text-generator.html" class="btn-secondary text-xs py-2 px-4">Gradient Text</a>
+               <a href="glassmorphism-generator.html" class="btn-secondary text-xs py-2 px-4">Glassmorphism</a>
+            </div>
+         </div>
+         
+      </div>
+      
     </div>
   </main>
   
@@ -143,6 +254,12 @@
        const text = codeOutput.textContent;
        navigator.clipboard.writeText(text);
        if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+    };
+    
+    window.shareTwitter = function() {
+       const text = encodeURIComponent("Check out this cool Text Shadow Generator tool!");
+       const url = encodeURIComponent(window.location.href);
+       window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank');
     };
     
     updateShadow();
