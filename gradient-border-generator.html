@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate gradient borders for containers and buttons using CSS.">
+  <meta name="keywords" content="gradient border, css border gradient, animated border, css trick">
+  <meta name="author" content="ColorPalettesHub">
+  
+  <title>Gradient Border Generator | ColorPalettesHub</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-border-style mr-2"></i>CSS Effect
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Gradient Border Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create beautiful gradient borders for cards and buttons.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Colors</h3>
+             <div class="space-y-3">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Start Color</label>
+                   <input type="color" id="c-start" value="#f43f5e" onchange="updateBorder()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">End Color</label>
+                   <input type="color" id="c-end" value="#3b82f6" onchange="updateBorder()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Inside Color</label>
+                   <input type="color" id="c-bg" value="#ffffff" onchange="updateBorder()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+             <div class="mt-4 space-y-3">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Border Width: <span id="v-w">4</span>px</label>
+                   <input type="range" id="ctrl-w" min="1" max="12" value="4" onchange="updateBorder()" class="w-full accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Radius: <span id="v-r">12</span>px</label>
+                   <input type="range" id="ctrl-r" min="0" max="50" value="12" onchange="updateBorder()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center bg-slate-100 dark:bg-slate-800">
+             <!-- The trick: A wrapper with gradient background, and an inner box with padding matching border width -->
+             <div id="border-wrapper" class="p-1 rounded-xl transition-all duration-300" style="background: linear-gradient(90deg, #f43f5e, #3b82f6);">
+                <div id="border-inner" class="w-64 h-64 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300 transition-colors duration-300" style="background-color: #ffffff; border-radius: 8px;">
+                   Content Box
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const wrapper = document.getElementById('border-wrapper');
+    const inner = document.getElementById('border-inner');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateBorder = function() {
+       const start = document.getElementById('c-start').value;
+       const end = document.getElementById('c-end').value;
+       const bg = document.getElementById('c-bg').value;
+       const w = document.getElementById('ctrl-w').value;
+       const r = document.getElementById('ctrl-r').value;
+       
+       document.getElementById('v-w').textContent = w;
+       document.getElementById('v-r').textContent = r;
+       
+       // Apply Gradient to Wrapper
+       wrapper.style.background = `linear-gradient(90deg, ${start}, ${end})`;
+       wrapper.style.borderRadius = `${r}px`;
+       wrapper.style.padding = `${w}px`;
+       
+       // Apply Background to Inner
+       inner.style.backgroundColor = bg;
+       inner.style.borderRadius = `${r - w < 0 ? 0 : r - w}px`;
+       
+       generateCode(start, end, bg, w, r);
+    };
+    
+    function generateCode(s, e, bg, w, r) {
+       const css = `.gradient-border-box {
+  background: linear-gradient(90deg, ${s}, ${e});
+  padding: ${w}px;
+  border-radius: ${r}px;
+}
+
+.gradient-border-inner {
+  background: ${bg};
+  border-radius: ${r - 4 < 0 ? 0 : r - 4}px;
+  height: 100%;
+  width: 100%;
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.ColorPalettesHub && window.ColorPalettesHub.Toast) window.ColorPalettesHub.Toast.show('Code Copied!', 'success');
+    };
+    
+    updateBorder();
+  </script>
+</body>
+</html>
