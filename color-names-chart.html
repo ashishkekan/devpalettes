@@ -10,7 +10,7 @@
   <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>HTML Color Names Chart | ColorPalettesHub</title>
+  <title>HTML Color Names Chart | Devpalettes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -27,16 +27,25 @@
     tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-8 pb-16">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      <div class="text-center mb-12">
+  <main class="pt-8 pb-16 relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-3">HTML Color Names Chart</h1>
-        <p class="text-slate-600 dark:text-slate-400">148 standard named colors • Click any color to copy HEX</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">148 standard named colors • Click any color to copy HEX</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
-      <div id="color-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
+      <div id="color-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4 animate-on-scroll">
         <!-- All 148 colors will be injected by JS -->
       </div>
     </div>
@@ -121,7 +130,8 @@
       const grid = document.getElementById('color-grid');
       colors.forEach(c => {
         const card = document.createElement('div');
-        card.className = `group relative glass-card overflow-hidden aspect-square flex flex-col cursor-pointer hover:ring-2 hover:ring-emerald-500 transition-all`;
+        // Added shimmer-card class
+        card.className = `group relative glass-card shimmer-card overflow-hidden aspect-square flex flex-col cursor-pointer hover:ring-2 hover:ring-emerald-500 transition-all`;
         card.innerHTML = `
           <div class="flex-1" style="background-color: ${c.hex}"></div>
           <div class="p-3 text-center">
@@ -131,11 +141,13 @@
         `;
         card.onclick = () => {
           navigator.clipboard.writeText(c.hex);
-          window.ColorPalettesHub.Toast.show(`Copied ${c.hex}`, 'success');
+          window.Devpalettes.Toast.show(`Copied ${c.hex}`, 'success');
         };
         grid.appendChild(card);
       });
     });
   </script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

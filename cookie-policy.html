@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ColorPalettesHub Cookie Policy. Understand how we use cookies and local storage to enhance your experience.">
+  <meta name="description" content="Devpalettes Cookie Policy. Understand how we use cookies and local storage to enhance your experience.">
   <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
   <meta name="author" content="Color Palettes Hub">
   <meta property="og:title" content="Cookie Policy - Color Palettes Hub">
   <meta property="og:description" content="Learn about how we use cookies and local storage.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Cookie Policy - ColorPalettesHub</title>
+  <title>Cookie Policy - Devpalettes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -30,33 +30,42 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
   
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Cookie Policy</h1>
-        <p class="text-slate-600 dark:text-slate-400">Last updated: March 2026</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Last updated: March 2026</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
       <div class="prose prose-slate dark:prose-invert max-w-none">
         
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">What Are Cookies?</h2>
           <p class="text-slate-600 dark:text-slate-400">
             Cookies are small text files that are stored on your computer or mobile device when you visit a website. 
             They are widely used to make websites work more efficiently and provide information to the website owners.
-            At ColorPalettesHub, we use "Cookies" and similar technologies like "Local Storage" to provide you with a seamless experience.
+            At Devpalettes, we use "Cookies" and similar technologies like "Local Storage" to provide you with a seamless experience.
           </p>
         </div>
 
         <!-- Local Storage Section specific to your main.js -->
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Local Storage (Strictly Necessary)</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4">
-            To ensure ColorPalettesHub functions correctly without requiring user accounts, we utilize your browser's 
+            To ensure Devpalettes functions correctly without requiring user accounts, we utilize your browser's 
             <strong>Local Storage</strong>. This data stays entirely on your device and is not sent to our servers. 
             Based on our site functionality, we store the following:
           </p>
@@ -77,7 +86,7 @@
         </div>
 
         <!-- AdSense Section -->
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Advertising Cookies (Google AdSense)</h2>
           <p class="text-slate-600 dark:text-slate-400">
             We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to this or other websites. 
@@ -90,7 +99,7 @@
         </div>
 
         <!-- Third Party Services -->
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Third-Party Services</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-2">
             We use third-party services that may also set cookies on your device:
@@ -103,7 +112,7 @@
         </div>
 
         <!-- How to Manage -->
-        <div class="glass-card p-8 mb-6">
+        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">How to Manage Cookies</h2>
           <p class="text-slate-600 dark:text-slate-400">
             Most web browsers allow you to control cookies through their settings. You can:
@@ -114,11 +123,11 @@
             <li>Block cookies from specific sites or all sites.</li>
           </ul>
           <p class="text-slate-600 dark:text-slate-400 mt-4">
-            Please note that blocking or deleting cookies, especially Local Storage data, may impact your experience on ColorPalettesHub (e.g., your saved palettes or theme settings may be lost).
+            Please note that blocking or deleting cookies, especially Local Storage data, may impact your experience on Devpalettes (e.g., your saved palettes or theme settings may be lost).
           </p>
         </div>
 
-        <div class="glass-card p-8">
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Changes to This Policy</h2>
           <p class="text-slate-600 dark:text-slate-400">
             We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated revision date. Continued use of the site after changes implies acceptance of the new policy.
@@ -130,5 +139,7 @@
 
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

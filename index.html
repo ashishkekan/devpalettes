@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ColorPalettesHub - Create beautiful color palettes and gradients for your designs. Free online color palette generator, gradient builder, and color converter tool.">
+  <meta name="description" content="Devpalettes - Create beautiful color palettes and gradients for your designs. Free online color palette generator, gradient builder, and color converter tool.">
   <meta name="keywords" content="color palette generator, gradient generator, color converter, hex to rgb, color picker, design tools">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
-  <meta property="og:title" content="ColorPalettesHub - Professional Color Palette & Gradient Generator">
+  <meta property="og:title" content="Devpalettes - Professional Color Palette & Gradient Generator">
   <meta property="og:description" content="Create beautiful color palettes and gradients for your designs. Free online tools for designers and developers.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpallates.com">
-  <title>ColorPalettesHub - Free Color Palette & Gradient Generator Tool</title>
+  <title>Devpalettes - Free Color Palette & Gradient Generator Tool</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,6 @@
   <!-- Theme Flash Prevention Script -->
   <script>
     (function() {
-      // Apply saved or system theme immediately to prevent flash
       const savedTheme = localStorage.getItem('colorpallates-theme');
       const systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
@@ -46,6 +45,379 @@
       }
     })();
   </script>
+  <style>
+    /* ==========================================
+       ANIMATION ENHANCEMENT STYLES
+       ========================================== */
+    
+    /* Hero Visualizer Canvas */
+    #hero-visualizer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    
+    .dark #hero-visualizer {
+      opacity: 0.4;
+    }
+    
+    /* Floating Gradient Blobs */
+    .gradient-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 1;
+      will-change: transform;
+    }
+    
+    .dark .gradient-blob {
+      opacity: 0.3;
+    }
+    
+    .blob-1 {
+      width: 400px;
+      height: 400px;
+      background: linear-gradient(135deg, #10b981, #14b8a6);
+      top: -100px;
+      left: -100px;
+      animation: blobFloat1 25s ease-in-out infinite;
+    }
+    
+    .blob-2 {
+      width: 350px;
+      height: 350px;
+      background: linear-gradient(135deg, #f97316, #ec4899);
+      top: 20%;
+      right: -80px;
+      animation: blobFloat2 28s ease-in-out infinite;
+    }
+    
+    .blob-3 {
+      width: 300px;
+      height: 300px;
+      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
+      bottom: 10%;
+      left: 10%;
+      animation: blobFloat3 22s ease-in-out infinite;
+    }
+    
+    .blob-4 {
+      width: 250px;
+      height: 250px;
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      bottom: -50px;
+      right: 20%;
+      animation: blobFloat4 30s ease-in-out infinite;
+    }
+    
+    @keyframes blobFloat1 {
+      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      25% { transform: translate(100px, 50px) scale(1.1) rotate(45deg); }
+      50% { transform: translate(50px, 100px) scale(0.9) rotate(90deg); }
+      75% { transform: translate(-30px, 60px) scale(1.05) rotate(135deg); }
+    }
+    
+    @keyframes blobFloat2 {
+      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      33% { transform: translate(-80px, 80px) scale(1.15) rotate(-60deg); }
+      66% { transform: translate(-40px, -40px) scale(0.85) rotate(-120deg); }
+    }
+    
+    @keyframes blobFloat3 {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(80px, -60px) scale(1.2); }
+    }
+    
+    @keyframes blobFloat4 {
+      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+      25% { transform: translate(-60px, -40px) scale(1.1) rotate(30deg); }
+      50% { transform: translate(30px, -80px) scale(0.95) rotate(60deg); }
+      75% { transform: translate(60px, -20px) scale(1.05) rotate(90deg); }
+    }
+    
+    /* Color Spectrum Glow Line */
+    .spectrum-line {
+      height: 4px;
+      border-radius: 2px;
+      background: linear-gradient(
+        90deg,
+        #10b981 0%,
+        #06b6d4 16%,
+        #8b5cf6 32%,
+        #ec4899 48%,
+        #f97316 64%,
+        #fbbf24 80%,
+        #10b981 100%
+      );
+      background-size: 200% 100%;
+      animation: spectrumShift 4s linear infinite;
+      box-shadow: 
+        0 0 20px rgba(16, 185, 129, 0.5),
+        0 0 40px rgba(6, 182, 212, 0.3),
+        0 0 60px rgba(139, 92, 246, 0.2);
+      position: relative;
+    }
+    
+    .spectrum-line::after {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: inherit;
+      filter: blur(8px);
+      opacity: 0.6;
+      border-radius: inherit;
+    }
+    
+    @keyframes spectrumShift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    
+    /* Enhanced Palette Block Effects */
+    .palette-block-enhanced {
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: hidden;
+    }
+    
+    .palette-block-enhanced::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.3) 0%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.1) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .palette-block-enhanced:hover::before {
+      opacity: 1;
+    }
+    
+    .palette-block-enhanced::after {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(255, 255, 255, 0.4) 50%,
+        transparent 60%
+      );
+      transition: all 0.6s ease;
+      pointer-events: none;
+    }
+    
+    .palette-block-enhanced:hover::after {
+      animation: lightReflection 1s ease forwards;
+    }
+    
+    @keyframes lightReflection {
+      0% { transform: translate(-100%, -100%); }
+      100% { transform: translate(100%, 100%); }
+    }
+    
+    .palette-block-enhanced:hover {
+      transform: scale(1.05) translateY(-4px);
+      z-index: 10;
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 30px var(--block-glow-color, rgba(16, 185, 129, 0.4));
+    }
+    
+    /* Generate Animation */
+    .palette-generating .palette-block-enhanced {
+      animation: paletteSlideUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    
+    .palette-generating .palette-block-enhanced:nth-child(1) { animation-delay: 0s; }
+    .palette-generating .palette-block-enhanced:nth-child(2) { animation-delay: 0.05s; }
+    .palette-generating .palette-block-enhanced:nth-child(3) { animation-delay: 0.1s; }
+    .palette-generating .palette-block-enhanced:nth-child(4) { animation-delay: 0.15s; }
+    .palette-generating .palette-block-enhanced:nth-child(5) { animation-delay: 0.2s; }
+    
+    @keyframes paletteSlideUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    
+    /* Floating Particles Container */
+    #particles-container {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+    
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: particleFloat linear infinite;
+    }
+    
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Scroll Animations */
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .animate-on-scroll.animate-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .animate-on-scroll.animate-in:nth-child(1) { transition-delay: 0s; }
+    .animate-on-scroll.animate-in:nth-child(2) { transition-delay: 0.1s; }
+    .animate-on-scroll.animate-in:nth-child(3) { transition-delay: 0.2s; }
+    .animate-on-scroll.animate-in:nth-child(4) { transition-delay: 0.3s; }
+    .animate-on-scroll.animate-in:nth-child(5) { transition-delay: 0.4s; }
+    .animate-on-scroll.animate-in:nth-child(6) { transition-delay: 0.5s; }
+    
+    /* Shimmer Effect for Palette Cards */
+    .shimmer-card {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .shimmer-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.08) 50%,
+        transparent 100%
+      );
+      transform: translateX(-100%);
+      animation: shimmerEffect 3s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 10;
+    }
+    
+    @keyframes shimmerEffect {
+      0% { transform: translateX(-100%); }
+      50%, 100% { transform: translateX(100%); }
+    }
+    
+    /* Neon Button Glow */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn-glow::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(135deg, #10b981, #14b8a6, #10b981);
+      border-radius: inherit;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      filter: blur(10px);
+    }
+    
+    .btn-glow:hover::before {
+      opacity: 0.7;
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes glowPulse {
+      0%, 100% { 
+        opacity: 0.5;
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 0.8;
+        transform: scale(1.05);
+      }
+    }
+    
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      .gradient-blob,
+      .spectrum-line,
+      .particle,
+      .shimmer-card::before,
+      .btn-glow::before {
+        animation: none !important;
+      }
+      
+      .animate-on-scroll {
+        opacity: 1;
+        transform: none;
+      }
+      
+      .palette-block-enhanced:hover {
+        transform: none;
+      }
+    }
+    
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .gradient-blob {
+        filter: blur(60px);
+        opacity: 0.4;
+      }
+      
+      .blob-1 { width: 250px; height: 250px; }
+      .blob-2 { width: 200px; height: 200px; }
+      .blob-3 { width: 180px; height: 180px; }
+      .blob-4 { width: 150px; height: 150px; }
+      
+      .spectrum-line {
+        height: 3px;
+      }
+      
+      .palette-block-enhanced:hover {
+        transform: scale(1.02);
+      }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
@@ -53,31 +425,47 @@
  
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center pt-10 overflow-hidden">
+    <!-- Hero Visualizer Canvas -->
+    <canvas id="hero-visualizer"></canvas>
+    
+    <!-- Floating Gradient Blobs -->
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div class="gradient-blob blob-4"></div>
+    
+    <!-- Floating Particles Container -->
+    <div id="particles-container"></div>
+    
     <div class="hero-pattern"></div>
     <div class="grid-pattern"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center max-w-4xl mx-auto">
         <!-- Badge -->
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-8 animate-on-scroll">
           <i class="fas fa-sparkles"></i>
           <span>Trusted by 50,000+ designers</span>
         </div>
         <!-- Headline -->
-        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6 animate-on-scroll">
           Create Stunning
           <span class="block bg-gradient-to-r from-emerald-400 via-teal-400 to-orange-400 bg-clip-text text-transparent">
             Color Palettes
           </span>
           <span class="block">in Seconds</span>
         </h1>
+        
+        <!-- Color Spectrum Glow Line -->
+        <div class="spectrum-line max-w-md mx-auto mb-6 animate-on-scroll"></div>
+        
         <!-- Subtext -->
-        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
+        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 animate-on-scroll">
           The professional color palette and gradient generator trusted by designers and developers worldwide.
           Generate, convert, and export beautiful colors instantly.
         </p>
         <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-          <a href="#generator" class="btn-primary text-lg px-8 py-4 w-full sm:w-auto justify-center">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-on-scroll">
+          <a href="#generator" class="btn-primary btn-glow text-lg px-8 py-4 w-full sm:w-auto justify-center">
             <i class="fas fa-palette"></i>
             Generate Palette
           </a>
@@ -87,7 +475,7 @@
           </a>
         </div>
         <!-- Trust Badges -->
-        <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm">
+        <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm animate-on-scroll">
           <div class="flex items-center gap-2">
             <i class="fas fa-check-circle text-emerald-500"></i>
             <span>100% Free</span>
@@ -103,7 +491,7 @@
         </div>
       </div>
       <!-- Mini Live Palette Preview -->
-      <div class="mt-16 max-w-3xl mx-auto">
+      <div class="mt-16 max-w-3xl mx-auto animate-on-scroll">
         <p class="text-center text-sm text-slate-500 mb-4">
           <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate new colors
         </p>
@@ -116,20 +504,20 @@
   <!-- Live Generator Section -->
   <section id="generator" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-on-scroll">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Palette Generator</h2>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
           Press spacebar or click generate to create beautiful color combinations. Click any color to copy.
         </p>
       </div>
       <!-- Generator UI -->
-      <div class="max-w-5xl mx-auto">
+      <div class="max-w-5xl mx-auto animate-on-scroll">
         <div id="main-palette" class="grid grid-cols-5 gap-0 rounded-2xl overflow-hidden shadow-2xl mb-6" style="min-height: 300px;">
           <!-- Colors inserted by JS -->
         </div>
         <!-- Controls -->
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <button id="generate-btn" class="btn-primary text-lg px-8 py-4">
+        <div class="flex flex-wrap items-center justify-center gap-4 animate-on-scroll">
+          <button id="generate-btn" class="btn-primary btn-glow text-lg px-8 py-4">
             <i class="fas fa-sync-alt"></i>
             Generate Palette
           </button>
@@ -148,19 +536,19 @@
   <!-- Trending Palettes Section -->
   <section id="explore" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-on-scroll">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Trending Palettes</h2>
         <p class="text-slate-600 dark:text-slate-400">Click any color to copy. Curated by our community.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Palette Card 1 -->
-        <div class="glass-card p-4">
+        <div class="glass-card shimmer-card p-4 animate-on-scroll">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #264653;" onclick="ColorPalettesHub.Clipboard.copy('#264653', 'Copied #264653')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #2a9d8f;" onclick="ColorPalettesHub.Clipboard.copy('#2a9d8f', 'Copied #2a9d8f')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #e9c46a;" onclick="ColorPalettesHub.Clipboard.copy('#e9c46a', 'Copied #e9c46a')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #f4a261;" onclick="ColorPalettesHub.Clipboard.copy('#f4a261', 'Copied #f4a261')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #e76f51;" onclick="ColorPalettesHub.Clipboard.copy('#e76f51', 'Copied #e76f51')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #264653; --block-glow-color: rgba(38, 70, 83, 0.5);" onclick="Devpalettes.Clipboard.copy('#264653', 'Copied #264653')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #2a9d8f; --block-glow-color: rgba(42, 157, 143, 0.5);" onclick="Devpalettes.Clipboard.copy('#2a9d8f', 'Copied #2a9d8f')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #e9c46a; --block-glow-color: rgba(233, 196, 106, 0.5);" onclick="Devpalettes.Clipboard.copy('#e9c46a', 'Copied #e9c46a')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #f4a261; --block-glow-color: rgba(244, 162, 97, 0.5);" onclick="Devpalettes.Clipboard.copy('#f4a261', 'Copied #f4a261')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #e76f51; --block-glow-color: rgba(231, 111, 81, 0.5);" onclick="Devpalettes.Clipboard.copy('#e76f51', 'Copied #e76f51')"></div>
           </div>
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Earthy Sunset</h3>
@@ -172,13 +560,13 @@
         </div>
        
         <!-- Palette Card 2 -->
-        <div class="glass-card p-4">
+        <div class="glass-card shimmer-card p-4 animate-on-scroll">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #003049;" onclick="ColorPalettesHub.Clipboard.copy('#003049', 'Copied #003049')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #d62828;" onclick="ColorPalettesHub.Clipboard.copy('#d62828', 'Copied #d62828')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #f77f00;" onclick="ColorPalettesHub.Clipboard.copy('#f77f00', 'Copied #f77f00')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #fcbf49;" onclick="ColorPalettesHub.Clipboard.copy('#fcbf49', 'Copied #fcbf49')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #eae2b7;" onclick="ColorPalettesHub.Clipboard.copy('#eae2b7', 'Copied #eae2b7')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #003049; --block-glow-color: rgba(0, 48, 73, 0.5);" onclick="Devpalettes.Clipboard.copy('#003049', 'Copied #003049')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #d62828; --block-glow-color: rgba(214, 40, 40, 0.5);" onclick="Devpalettes.Clipboard.copy('#d62828', 'Copied #d62828')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #f77f00; --block-glow-color: rgba(247, 127, 0, 0.5);" onclick="Devpalettes.Clipboard.copy('#f77f00', 'Copied #f77f00')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #fcbf49; --block-glow-color: rgba(252, 191, 73, 0.5);" onclick="Devpalettes.Clipboard.copy('#fcbf49', 'Copied #fcbf49')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #eae2b7; --block-glow-color: rgba(234, 226, 183, 0.5);" onclick="Devpalettes.Clipboard.copy('#eae2b7', 'Copied #eae2b7')"></div>
           </div>
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Vibrant Retro</h3>
@@ -189,13 +577,13 @@
           </div>
         </div>
         <!-- Palette Card 3 -->
-        <div class="glass-card p-4">
+        <div class="glass-card shimmer-card p-4 animate-on-scroll">
           <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4">
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #606c38;" onclick="ColorPalettesHub.Clipboard.copy('#606c38', 'Copied #606c38')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #283618;" onclick="ColorPalettesHub.Clipboard.copy('#283618', 'Copied #283618')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #fefae0;" onclick="ColorPalettesHub.Clipboard.copy('#fefae0', 'Copied #fefae0')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #dda15e;" onclick="ColorPalettesHub.Clipboard.copy('#dda15e', 'Copied #dda15e')"></div>
-            <div class="color-block aspect-square cursor-pointer hover:scale-105 transition-transform" style="background: #bc6c25;" onclick="ColorPalettesHub.Clipboard.copy('#bc6c25', 'Copied #bc6c25')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #606c38; --block-glow-color: rgba(96, 108, 56, 0.5);" onclick="Devpalettes.Clipboard.copy('#606c38', 'Copied #606c38')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #283618; --block-glow-color: rgba(40, 54, 24, 0.5);" onclick="Devpalettes.Clipboard.copy('#283618', 'Copied #283618')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #fefae0; --block-glow-color: rgba(254, 250, 224, 0.5);" onclick="Devpalettes.Clipboard.copy('#fefae0', 'Copied #fefae0')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #dda15e; --block-glow-color: rgba(221, 161, 94, 0.5);" onclick="Devpalettes.Clipboard.copy('#dda15e', 'Copied #dda15e')"></div>
+            <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background: #bc6c25; --block-glow-color: rgba(188, 108, 37, 0.5);" onclick="Devpalettes.Clipboard.copy('#bc6c25', 'Copied #bc6c25')"></div>
           </div>
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Forest Glow</h3>
@@ -206,7 +594,7 @@
           </div>
         </div>
       </div>
-      <div class="text-center mt-8">
+      <div class="text-center mt-8 animate-on-scroll">
         <a href="pastel-color-palettes.html" class="btn-secondary">
           <i class="fas fa-th-large"></i>
           Browse All Palettes
@@ -218,7 +606,7 @@
   <section id="gradients" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <div>
+        <div class="animate-on-scroll">
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">Gradient Generator</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-6">
             Create stunning linear and radial gradients with multiple color stops.
@@ -242,12 +630,12 @@
               <span>One-click CSS export</span>
             </li>
           </ul>
-          <a href="gradient.html" class="btn-coral">
+          <a href="gradient.html" class="btn-coral btn-glow">
             <i class="fas fa-wand-magic-sparkles"></i>
             Create Gradient
           </a>
         </div>
-        <div class="relative">
+        <div class="relative animate-on-scroll">
           <div class="gradient-preview w-full aspect-video rounded-2xl shadow-2xl" style="background: linear-gradient(135deg, #10b981 0%, #0ea5e9 50%, #8b5cf6 100%);"></div>
           <div class="absolute -bottom-4 -right-4 bg-white dark:bg-slate-800 rounded-xl p-3 shadow-lg font-mono text-sm">
             <code class="text-emerald-600 dark:text-emerald-400">linear-gradient(135deg, ...)</code>
@@ -259,13 +647,13 @@
   <!-- Features Section -->
   <section id="features" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-on-scroll">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Powerful Features</h2>
         <p class="text-slate-600 dark:text-slate-400">Everything you need to work with colors professionally.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Feature 1 -->
-        <div class="glass-card p-8 text-center">
+        <div class="glass-card p-8 text-center animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-6">
             <i class="fas fa-universal-access text-3xl text-emerald-500"></i>
           </div>
@@ -276,7 +664,7 @@
           </p>
         </div>
         <!-- Feature 2 -->
-        <div class="glass-card p-8 text-center">
+        <div class="glass-card p-8 text-center animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-6">
             <i class="fas fa-code text-3xl text-orange-500"></i>
           </div>
@@ -287,7 +675,7 @@
           </p>
         </div>
         <!-- Feature 3 -->
-        <div class="glass-card p-8 text-center">
+        <div class="glass-card p-8 text-center animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6">
             <i class="fas fa-image text-3xl text-blue-500"></i>
           </div>
@@ -300,19 +688,17 @@
       </div>
     </div>
   </section>
-  <!-- ==========================================
-       BLOG SECTION ADDED FOR ADSENSE
-       ========================================== -->
+  <!-- Blog Section -->
   <section id="blog" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+      <div class="text-center mb-12 animate-on-scroll">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Latest from the Blog</h2>
         <p class="text-slate-600 dark:text-slate-400">Tips, trends, and tutorials for designers and developers.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
        
         <!-- Blog Card 1 -->
-        <a href="/blog/color-psychology.html" class="glass-card overflow-hidden group block">
+        <a href="/blog/color-psychology.html" class="glass-card shimmer-card overflow-hidden group block animate-on-scroll">
           <div class="h-48 bg-gradient-to-br from-emerald-400 to-cyan-500 relative flex items-center justify-center">
              <i class="fas fa-brain text-white/20 text-6xl"></i>
           </div>
@@ -324,7 +710,7 @@
           </div>
         </a>
         <!-- Blog Card 2 -->
-        <a href="/blog/best-color-combinations.html" class="glass-card overflow-hidden group block">
+        <a href="/blog/best-color-combinations.html" class="glass-card shimmer-card overflow-hidden group block animate-on-scroll">
           <div class="h-48 bg-gradient-to-br from-orange-400 to-pink-500 relative flex items-center justify-center">
              <i class="fas fa-eye text-white/20 text-6xl"></i>
           </div>
@@ -336,7 +722,7 @@
           </div>
         </a>
         <!-- Blog Card 3 -->
-        <a href="/blog/ui-color-trends-2026.html" class="glass-card overflow-hidden group block">
+        <a href="/blog/ui-color-trends-2026.html" class="glass-card shimmer-card overflow-hidden group block animate-on-scroll">
           <div class="h-48 bg-gradient-to-br from-violet-400 to-purple-600 relative flex items-center justify-center">
              <i class="fas fa-chart-line text-white/20 text-6xl"></i>
           </div>
@@ -349,7 +735,7 @@
         </a>
       </div>
      
-      <div class="text-center mt-10">
+      <div class="text-center mt-10 animate-on-scroll">
         <a href="/blog/index.html" class="btn-secondary">
           <i class="fas fa-newspaper"></i>
           View All Articles
@@ -360,15 +746,15 @@
   <!-- SEO Content Section -->
   <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="prose prose-slate dark:prose-invert max-w-none">
+      <div class="prose prose-slate dark:prose-invert max-w-none animate-on-scroll">
         <h2 class="text-2xl font-bold mb-6">Why Use a Color Palette Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
           Color is one of the most powerful tools in design. Whether you're building a website,
           creating a brand identity, or designing a mobile app, choosing the right colors can
-          make or break your project. ColorPalettesHub provides professional-grade tools to help
+          make or break your project. Devpalettes provides professional-grade tools to help
           you create harmonious color schemes effortlessly.
         </p>
-        <h3 class="text-xl font-bold mb-4">Benefits of Using ColorPalettesHub</h3>
+        <h3 class="text-xl font-bold mb-4">Benefits of Using Devpalettes</h3>
         <ul class="text-slate-600 dark:text-slate-400 space-y-2 mb-6">
           <li>Generate unique color palettes with a single click</li>
           <li>Convert between HEX, RGB, and HSL formats instantly</li>
@@ -378,7 +764,7 @@
         </ul>
         <p class="text-slate-600 dark:text-slate-400">
           Our tools are used by over 50,000 designers and developers worldwide.
-          From indie creators to enterprise teams, ColorPalettesHub helps everyone
+          From indie creators to enterprise teams, Devpalettes helps everyone
           work with colors more efficiently.
         </p>
       </div>
@@ -386,12 +772,12 @@
   </section>
   <!-- CTA Section -->
   <section class="py-20">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-on-scroll">
       <h2 class="text-3xl sm:text-4xl font-bold mb-4">Ready to Create?</h2>
       <p class="text-slate-600 dark:text-slate-400 mb-8">
         Start generating beautiful color palettes in seconds. No sign-up required.
       </p>
-      <a href="palette.html" class="btn-primary text-lg px-12 py-4 inline-flex">
+      <a href="palette.html" class="btn-primary btn-glow text-lg px-12 py-4 inline-flex">
         <i class="fas fa-palette"></i>
         Start Creating for Free
       </a>
@@ -403,7 +789,365 @@
   <!-- Scripts -->
   <script src="js/main.js"></script>
   <script>
-    // Home page specific logic
+    // ==========================================
+    // VISUAL ENHANCEMENT SCRIPTS
+    // ==========================================
+    
+    (function() {
+      'use strict';
+      
+      // Check for reduced motion preference
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      
+      // ==========================================
+      // 1. HERO VISUALIZER (Canvas Waves)
+      // ==========================================
+      
+      function initHeroVisualizer() {
+        const canvas = document.getElementById('hero-visualizer');
+        if (!canvas || prefersReducedMotion) return;
+        
+        const ctx = canvas.getContext('2d');
+        let animationId = null;
+        let time = 0;
+        
+        function resize() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        
+        resize();
+        window.addEventListener('resize', resize);
+        
+        const waves = [
+          { y: 0.3, amplitude: 50, frequency: 0.01, speed: 0.02, color: 'rgba(16, 185, 129, 0.15)' },
+          { y: 0.5, amplitude: 40, frequency: 0.015, speed: 0.025, color: 'rgba(6, 182, 212, 0.12)' },
+          { y: 0.7, amplitude: 60, frequency: 0.008, speed: 0.018, color: 'rgba(139, 92, 246, 0.1)' },
+          { y: 0.4, amplitude: 35, frequency: 0.012, speed: 0.022, color: 'rgba(249, 115, 22, 0.08)' },
+          { y: 0.6, amplitude: 45, frequency: 0.01, speed: 0.028, color: 'rgba(236, 72, 153, 0.1)' }
+        ];
+        
+        function drawWave(wave, t) {
+          ctx.beginPath();
+          ctx.moveTo(0, canvas.height);
+          
+          for (let x = 0; x <= canvas.width; x += 3) {
+            const y = canvas.height * wave.y + 
+                      Math.sin(x * wave.frequency + t * wave.speed) * wave.amplitude +
+                      Math.sin(x * wave.frequency * 0.5 + t * wave.speed * 1.5) * wave.amplitude * 0.5;
+            ctx.lineTo(x, y);
+          }
+          
+          ctx.lineTo(canvas.width, canvas.height);
+          ctx.closePath();
+          ctx.fillStyle = wave.color;
+          ctx.fill();
+        }
+        
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          waves.forEach(wave => drawWave(wave, time));
+          
+          time++;
+          animationId = requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Cleanup on page hide
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            cancelAnimationFrame(animationId);
+          } else {
+            animate();
+          }
+        });
+      }
+      
+      // ==========================================
+      // 2. FLOATING PARTICLES
+      // ==========================================
+      
+      function initParticles() {
+        const container = document.getElementById('particles-container');
+        if (!container || prefersReducedMotion) return;
+        
+        const particleColors = [
+          '#10b981', '#06b6d4', '#8b5cf6', '#f97316', '#ec4899', '#fbbf24'
+        ];
+        
+        const particleCount = Math.min(25, Math.floor(window.innerWidth / 60));
+        
+        for (let i = 0; i < particleCount; i++) {
+          createParticle(container, particleColors, i);
+        }
+      }
+      
+      function createParticle(container, colors, index) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 6 + 3;
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const left = Math.random() * 100;
+        const duration = Math.random() * 15 + 20;
+        const delay = Math.random() * 10;
+        
+        particle.style.cssText = `
+          width: ${size}px;
+          height: ${size}px;
+          background: ${color};
+          left: ${left}%;
+          animation-duration: ${duration}s;
+          animation-delay: ${delay}s;
+          opacity: ${Math.random() * 0.5 + 0.3};
+          box-shadow: 0 0 ${size * 2}px ${color};
+        `;
+        
+        container.appendChild(particle);
+      }
+      
+      // ==========================================
+      // 3. SCROLL ANIMATIONS
+      // ==========================================
+      
+      function initScrollAnimations() {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px 0px -50px 0px',
+          threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('animate-in');
+              
+              // Stagger children
+              const children = entry.target.parentElement.querySelectorAll('.animate-on-scroll');
+              children.forEach((child, index) => {
+                if (child === entry.target) {
+                  child.style.transitionDelay = `${index * 0.1}s`;
+                }
+              });
+            }
+          });
+        }, observerOptions);
+        
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+          observer.observe(el);
+        });
+      }
+      
+      // ==========================================
+      // 4. PALETTE GENERATION ANIMATION
+      // ==========================================
+      
+      function initPaletteAnimations() {
+        const originalRefresh = window.refreshPalettes;
+        
+        window.refreshPalettes = function() {
+          const mainPalette = document.getElementById('main-palette');
+          const heroPalette = document.getElementById('hero-palette');
+          
+          // Add animation class
+          [mainPalette, heroPalette].forEach(palette => {
+            if (palette) {
+              palette.classList.add('palette-generating');
+            }
+          });
+          
+          // Call original function
+          if (typeof originalRefresh === 'function') {
+            originalRefresh();
+          }
+          
+          // Remove animation class after animation completes
+          setTimeout(() => {
+            [mainPalette, heroPalette].forEach(palette => {
+              if (palette) {
+                palette.classList.remove('palette-generating');
+              }
+            });
+          }, 600);
+        };
+        
+        // Enhance palette blocks with enhanced class
+        function enhancePaletteBlocks() {
+          document.querySelectorAll('#hero-palette > div, #main-palette > div').forEach(block => {
+            if (!block.classList.contains('palette-block-enhanced')) {
+              block.classList.add('palette-block-enhanced');
+              
+              // Get background color for glow
+              const bgColor = block.style.backgroundColor;
+              if (bgColor) {
+                block.style.setProperty('--block-glow-color', bgColor.replace(')', ', 0.5)').replace('rgb', 'rgba'));
+              }
+            }
+          });
+        }
+        
+        // Run enhancement after palette renders
+        const mainPalette = document.getElementById('main-palette');
+        if (mainPalette) {
+          const observer = new MutationObserver(enhancePaletteBlocks);
+          observer.observe(mainPalette, { childList: true, subtree: true });
+        }
+        
+        const heroPalette = document.getElementById('hero-palette');
+        if (heroPalette) {
+          const observer = new MutationObserver(enhancePaletteBlocks);
+          observer.observe(heroPalette, { childList: true, subtree: true });
+        }
+        
+        // Initial enhancement
+        setTimeout(enhancePaletteBlocks, 100);
+      }
+      
+      // ==========================================
+      // 5. BUTTON RIPPLE EFFECT
+      // ==========================================
+      
+      function initButtonEffects() {
+        document.querySelectorAll('.btn-primary, .btn-coral').forEach(btn => {
+          btn.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+              position: absolute;
+              width: ${size}px;
+              height: ${size}px;
+              left: ${x}px;
+              top: ${y}px;
+              background: rgba(255, 255, 255, 0.3);
+              border-radius: 50%;
+              transform: scale(0);
+              animation: rippleEffect 0.6s ease-out;
+              pointer-events: none;
+            `;
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+          });
+        });
+        
+        // Add ripple keyframes
+        if (!document.getElementById('ripple-style')) {
+          const style = document.createElement('style');
+          style.id = 'ripple-style';
+          style.textContent = `
+            @keyframes rippleEffect {
+              to {
+                transform: scale(4);
+                opacity: 0;
+              }
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      }
+      
+      // ==========================================
+      // 6. SPECTRUM LINE ANIMATION ENHANCEMENT
+      // ==========================================
+      
+      function initSpectrumEnhancement() {
+        const spectrumLine = document.querySelector('.spectrum-line');
+        if (!spectrumLine || prefersReducedMotion) return;
+        
+        // Add mouse move effect
+        document.addEventListener('mousemove', (e) => {
+          const rect = spectrumLine.getBoundingClientRect();
+          const x = (e.clientX - rect.left) / rect.width;
+          
+          if (x >= 0 && x <= 1) {
+            const hue = x * 360;
+            spectrumLine.style.boxShadow = `
+              0 0 20px hsla(${hue}, 70%, 50%, 0.5),
+              0 0 40px hsla(${hue + 30}, 70%, 50%, 0.3),
+              0 0 60px hsla(${hue + 60}, 70%, 50%, 0.2)
+            `;
+          }
+        });
+      }
+      
+      // ==========================================
+      // 7. GRADIENT PREVIEW HOVER EFFECT
+      // ==========================================
+      
+      function initGradientEffects() {
+        document.querySelectorAll('.gradient-preview').forEach(preview => {
+          preview.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+            this.style.transition = 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+          });
+          
+          preview.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+          });
+        });
+      }
+      
+      // ==========================================
+      // 8. PARALLAX EFFECT FOR BLOBS
+      // ==========================================
+      
+      function initParallaxBlobs() {
+        if (prefersReducedMotion) return;
+        
+        const blobs = document.querySelectorAll('.gradient-blob');
+        
+        document.addEventListener('mousemove', (e) => {
+          const x = (e.clientX / window.innerWidth - 0.5) * 20;
+          const y = (e.clientY / window.innerHeight - 0.5) * 20;
+          
+          blobs.forEach((blob, index) => {
+            const factor = (index + 1) * 0.5;
+            blob.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+          });
+        });
+      }
+      
+      // ==========================================
+      // INITIALIZE ALL
+      // ==========================================
+      
+      function init() {
+        // Wait for DOM to be fully ready
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', initAll);
+        } else {
+          initAll();
+        }
+      }
+      
+      function initAll() {
+        initHeroVisualizer();
+        initParticles();
+        initScrollAnimations();
+        initPaletteAnimations();
+        initButtonEffects();
+        initSpectrumEnhancement();
+        initGradientEffects();
+        initParallaxBlobs();
+        
+        console.log('Visual enhancements initialized');
+      }
+      
+      init();
+      
+    })();
+  </script>
+  <script>
+    // Home page specific logic (PRESERVED FROM ORIGINAL)
     document.addEventListener('DOMContentLoaded', () => {
       // Initialize hero palette
       const heroPalette = document.getElementById('hero-palette');
@@ -412,8 +1156,8 @@
       function generateColors() {
         const colors = [];
         for (let i = 0; i < 5; i++) {
-          const hsl = ColorPalettesHub.ColorUtils.randomHSL();
-          colors.push(ColorPalettesHub.ColorUtils.hslToHex(hsl.h, hsl.s, hsl.l));
+          const hsl = Devpalettes.ColorUtils.randomHSL();
+          colors.push(Devpalettes.ColorUtils.hslToHex(hsl.h, hsl.s, hsl.l));
         }
         return colors;
       }
@@ -422,15 +1166,16 @@
         container.innerHTML = '';
         colors.forEach((color, index) => {
           const block = document.createElement('div');
-          block.className = 'color-block flex items-end justify-center p-4 cursor-pointer transition-all';
+          block.className = 'color-block palette-block-enhanced flex items-end justify-center p-4 cursor-pointer transition-all';
           block.style.backgroundColor = color;
-          block.style.color = ColorPalettesHub.ColorUtils.getContrastColor(color);
+          block.style.color = Devpalettes.ColorUtils.getContrastColor(color);
+          block.style.setProperty('--block-glow-color', color + '80');
           block.style.minHeight = container.id === 'main-palette' ? '300px' : '80px';
           block.innerHTML = `
             <span class="font-mono text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">${color}</span>
           `;
           block.addEventListener('click', () => {
-            ColorPalettesHub.Clipboard.copy(color, `Copied ${color}`);
+            Devpalettes.Clipboard.copy(color, `Copied ${color}`);
           });
           container.appendChild(block);
         });
@@ -452,11 +1197,11 @@
       if (exportBtn) {
         exportBtn.addEventListener('click', () => {
           const css = `:root {\n${currentColors.map((c, i) => ` --color-${i + 1}: ${c};`).join('\n')}\n}`;
-          ColorPalettesHub.Clipboard.copy(css, 'CSS copied to clipboard!');
+          Devpalettes.Clipboard.copy(css, 'CSS copied to clipboard!');
         });
       }
       // Spacebar shortcut
-      ColorPalettesHub.KeyboardShortcuts.on('space', refreshPalettes);
+      Devpalettes.KeyboardShortcuts.on('space', refreshPalettes);
     });
   </script>
 </body>

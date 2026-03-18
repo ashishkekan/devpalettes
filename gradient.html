@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Create stunning CSS gradients with our free online gradient generator. Linear and radial gradients with unlimited color stops.">
   <meta name="keywords" content="gradient generator, css gradient, linear gradient, radial gradient, background gradient">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
   <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
   <meta name="author" content="Color Palettes Hub">
@@ -13,7 +13,7 @@
   <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Gradient Generator - Create Beautiful CSS Gradients | ColorPalettesHub</title>
+  <title>Gradient Generator - Create Beautiful CSS Gradients | Devpalettes</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,20 +42,28 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
   <!-- Main Content -->
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       <div class="grid lg:grid-cols-2 gap-8">
         <!-- Preview Panel -->
-        <div class="order-2 lg:order-1">
+        <div class="order-2 lg:order-1 animate-on-scroll">
           <div id="gradient-preview" class="w-full aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl shadow-2xl transition-all duration-300" style="background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);">
           </div>
           <!-- CSS Output -->
-          <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
+          <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 shimmer-card">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-semibold">CSS Code</span>
               <button id="copy-css-btn" class="text-sm text-emerald-500 hover:text-emerald-600">
@@ -69,9 +77,11 @@
         </div>
         <!-- Controls Panel -->
         <div class="order-1 lg:order-2">
-          <h1 class="text-3xl font-bold mb-6">Gradient Generator</h1>
+          <h1 class="text-3xl font-bold mb-6 animate-on-scroll">Gradient Generator</h1>
+          <div class="spectrum-line max-w-xs mb-6 animate-on-scroll"></div>
+          
           <!-- Gradient Type -->
-          <div class="mb-6">
+          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Type</label>
             <div class="flex gap-2">
               <button class="gradient-type-btn flex-1 py-3 rounded-xl font-medium transition-all bg-emerald-500 text-white" data-type="linear">
@@ -83,7 +93,7 @@
             </div>
           </div>
           <!-- Angle (for linear) -->
-          <div id="angle-control" class="mb-6">
+          <div id="angle-control" class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Angle: <span id="angle-value">135</span>deg</label>
             <input type="range" id="angle-slider" min="0" max="360" value="135" class="w-full">
             <div class="flex justify-between text-xs text-slate-500 mt-1">
@@ -93,7 +103,7 @@
             </div>
           </div>
           <!-- Color Stops -->
-          <div class="mb-6">
+          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <div class="flex justify-between items-center mb-2">
               <label class="text-sm font-semibold">Color Stops</label>
               <button id="add-stop-btn" class="text-sm text-emerald-500 hover:text-emerald-600">
@@ -105,7 +115,7 @@
             </div>
           </div>
           <!-- Presets -->
-          <div class="mb-6">
+          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Quick Presets</label>
             <div class="grid grid-cols-4 gap-2">
               <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></button>
@@ -119,12 +129,12 @@
             </div>
           </div>
           <!-- Actions -->
-          <div class="flex gap-3">
+          <div class="flex gap-3 animate-on-scroll">
             <button id="random-gradient-btn" class="btn-secondary flex-1 justify-center">
               <i class="fas fa-random"></i>
               Random
             </button>
-            <button id="copy-gradient-btn" class="btn-primary flex-1 justify-center">
+            <button id="copy-gradient-btn" class="btn-primary btn-glow flex-1 justify-center">
               <i class="fas fa-copy"></i>
               Copy CSS
             </button>
@@ -137,5 +147,7 @@
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
   <script src="js/gradient.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

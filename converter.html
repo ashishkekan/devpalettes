@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Free online color converter. Convert between HEX, RGB, and HSL color formats instantly. Real-time preview included.">
   <meta name="keywords" content="color converter, hex to rgb, rgb to hex, hsl converter, color format converter">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
   <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
   <meta name="author" content="Color Palettes Hub">
@@ -13,7 +13,7 @@
   <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Color Converter - HEX, RGB, HSL | ColorPalettesHub</title>
+  <title>Color Converter - HEX, RGB, HSL | Devpalettes</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,37 +42,46 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
   <!-- Main Content -->
-  <main class="pb-12 min-h-screen">
-    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
+  <main class="pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-10 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-3">Color Converter</h1>
-        <p class="text-slate-600 dark:text-slate-400">HEX ↔ RGB ↔ HSL • Live preview & harmonies</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">HEX ↔ RGB ↔ HSL • Live preview & harmonies</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Left: Preview -->
-        <div class="glass-card p-8 text-center">
+        <div class="glass-card p-8 text-center animate-on-scroll shimmer-card">
           <div id="color-preview" class="w-full aspect-square rounded-2xl shadow-2xl mb-8 transition-all" style="background-color: #10b981;"></div>
           <input type="color" id="color-picker" value="#10b981" class="w-28 h-28 rounded-xl cursor-pointer border-4 border-white dark:border-slate-800 shadow">
         </div>
         <!-- Right: Controls -->
         <div class="space-y-8">
           <!-- HEX -->
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <label class="block text-sm font-semibold mb-2">HEX Code</label>
             <div class="flex gap-3">
               <input type="text" id="hex-input" value="#10B981" maxlength="7" class="input-field font-mono text-2xl text-center uppercase flex-1">
-              <button id="copy-hex" class="btn-secondary px-6">
+              <button id="copy-hex" class="btn-secondary btn-glow px-6 btn-size">
                 <i class="fas fa-copy"></i>
               </button>
             </div>
           </div>
           <!-- RGB -->
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <label class="block text-sm font-semibold mb-4">RGB Values</label>
             <div class="grid grid-cols-3 gap-4">
               <div>
@@ -90,13 +99,13 @@
             </div>
             <div class="mt-6 flex items-center justify-between bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
               <code id="rgb-output" class="font-mono text-lg">rgb(16, 185, 129)</code>
-              <button id="copy-rgb" class="btn-secondary text-sm px-4">
+              <button id="copy-rgb" class="btn-secondary btn-glow text-sm px-4">
                 <i class="fas fa-copy mr-1"></i> Copy
               </button>
             </div>
           </div>
           <!-- HSL -->
-          <div class="glass-card p-6">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
             <label class="block text-sm font-semibold mb-4">HSL Values</label>
             <div class="grid grid-cols-3 gap-4">
               <div>
@@ -114,7 +123,7 @@
             </div>
             <div class="mt-6 flex items-center justify-between bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
               <code id="hsl-output" class="font-mono text-lg">hsl(160, 84%, 39%)</code>
-              <button id="copy-hsl" class="btn-secondary text-sm px-4">
+              <button id="copy-hsl" class="btn-secondary btn-glow text-sm px-4">
                 <i class="fas fa-copy mr-1"></i> Copy
               </button>
             </div>
@@ -122,7 +131,7 @@
         </div>
       </div>
       <!-- Color Harmonies -->
-      <div class="mt-12">
+      <div class="mt-12 animate-on-scroll">
         <h2 class="text-xl font-bold mb-4 text-center md:text-left">Color Harmonies</h2>
         <div id="harmonies" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
           <!-- Rendered by JS -->
@@ -134,5 +143,7 @@
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
   <script src="js/converter.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

@@ -1,11 +1,11 @@
 /* ============================================
-   ColorPalettesHub - Gradient Generator
+   Devpalettes - Gradient Generator
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!window.ColorPalettesHub) return;
+  if (!window.Devpalettes) return;
   
-  const { ColorUtils, Clipboard, Toast } = window.ColorPalettesHub;
+  const { ColorUtils, Clipboard, Toast } = window.Devpalettes;
   
   // State
   let gradientType = 'linear';
