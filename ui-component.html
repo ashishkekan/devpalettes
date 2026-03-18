@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build and customize UI components with CSS. Preview buttons, cards, alerts in real-time.">
+  <meta name="keywords" content="ui component generator, css button generator, card generator, css tool">
+  <meta name="author" content="Devpalettes">
+  
+  <title>UI Component Builder | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-puzzle-piece mr-2"></i>CSS Builder
+        </span>
+        <h1 class="text-4xl font-bold mb-4">UI Component Builder</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Design and export beautiful CSS components with ease.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-5 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+           
+           <!-- Component Selector -->
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg">Select Component</h3>
+              <div class="grid grid-cols-3 gap-2">
+                 <button onclick="setComp('button')" class="comp-btn active px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Button</button>
+                 <button onclick="setComp('card')" class="comp-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Card</button>
+                 <button onclick="setComp('alert')" class="comp-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Alert</button>
+              </div>
+           </div>
+           
+           <!-- Styling Controls -->
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg">Style Settings</h3>
+              
+              <div class="space-y-4">
+                 <div class="grid grid-cols-2 gap-3">
+                    <div>
+                       <label class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
+                       <input type="color" id="ctrl-bg" value="#3b82f6" onchange="updateComp()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                    </div>
+                    <div>
+                       <label class="block text-xs font-semibold text-slate-500 mb-1">Text Color</label>
+                       <input type="color" id="ctrl-text" value="#ffffff" onchange="updateComp()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                    </div>
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">Border Radius: <span id="val-rad">8</span>px</label>
+                    <input type="range" id="ctrl-rad" min="0" max="50" value="8" onchange="updateComp()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">Padding: <span id="val-pad">10</span>px</label>
+                    <input type="range" id="ctrl-pad" min="5" max="40" value="10" onchange="updateComp()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold text-slate-500 mb-1">Shadow</label>
+                    <select id="ctrl-shadow" onchange="updateComp()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                       <option value="none">None</option>
+                       <option value="sm">Small</option>
+                       <option value="md" selected>Medium</option>
+                       <option value="lg">Large</option>
+                    </select>
+                 </div>
+              </div>
+           </div>
+           
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-3 space-y-6 animate-on-scroll">
+          
+          <!-- Preview -->
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center">
+             <div id="comp-preview" class="transition-all duration-300">
+                <!-- Component renders here -->
+             </div>
+          </div>
+          
+          <!-- Code -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-primary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-48"></pre>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('comp-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    let currentComp = 'button';
+    
+    window.setComp = function(type) {
+       currentComp = type;
+       document.querySelectorAll('.comp-btn').forEach(b => {
+          b.classList.remove('active', 'bg-emerald-500', 'text-white');
+       });
+       event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+       updateComp();
+    };
+    
+    window.updateComp = function() {
+       const bg = document.getElementById('ctrl-bg').value;
+       const text = document.getElementById('ctrl-text').value;
+       const rad = document.getElementById('ctrl-rad').value;
+       const pad = document.getElementById('ctrl-pad').value;
+       const shadow = document.getElementById('ctrl-shadow').value;
+       
+       document.getElementById('val-rad').textContent = rad;
+       document.getElementById('val-pad').textContent = pad;
+       
+       // Shadow Logic
+       let shadowStyle = 'none';
+       if(shadow === 'sm') shadowStyle = '0 1px 2px rgba(0,0,0,0.05)';
+       if(shadow === 'md') shadowStyle = '0 4px 6px rgba(0,0,0,0.1)';
+       if(shadow === 'lg') shadowStyle = '0 10px 15px rgba(0,0,0,0.1)';
+       
+       // Render Component
+       if(currentComp === 'button') {
+          preview.innerHTML = `<button style="
+             background-color: ${bg};
+             color: ${text};
+             padding: ${pad}px ${pad * 2}px;
+             border-radius: ${rad}px;
+             border: none;
+             font-size: 14px;
+             font-weight: 600;
+             box-shadow: ${shadowStyle};
+             cursor: pointer;
+          ">Button Text</button>`;
+       } else if(currentComp === 'card') {
+          preview.innerHTML = `<div style="
+             background-color: white;
+             width: 200px;
+             padding: ${pad}px;
+             border-radius: ${rad}px;
+             box-shadow: ${shadowStyle};
+             border: 1px solid #e2e8f0;
+             text-align: center;
+          ">
+             <div style="width: 100%; height: 60px; background-color: ${bg}; border-radius: ${rad/2}px; margin-bottom: 10px;"></div>
+             <h4 style="color: #111; font-weight: bold; margin-bottom: 5px;">Card Title</h4>
+             <p style="color: #888; font-size: 12px;">Card description goes here.</p>
+          </div>`;
+       } else if(currentComp === 'alert') {
+          preview.innerHTML = `<div style="
+             background-color: ${bg};
+             color: ${text};
+             padding: ${pad}px ${pad * 2}px;
+             border-radius: ${rad}px;
+             box-shadow: ${shadowStyle};
+             font-size: 14px;
+             width: 100%;
+             max-width: 300px;
+          ">This is an important alert message.</div>`;
+       }
+       
+       // Generate Code
+       const css = `.component {
+  background-color: ${bg};
+  color: ${text};
+  padding: ${pad}px;
+  border-radius: ${rad}px;
+  box-shadow: ${shadowStyle};
+}`;
+       codeOutput.textContent = css;
+    };
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateComp();
+  </script>
+</body>
+</html>

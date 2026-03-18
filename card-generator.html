@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom CSS cards with live preview. Create glassmorphism, neumorphism, and gradient cards easily.">
+  <meta name="keywords" content="card generator, css card, ui card design, neumorphism card, glassmorphism card">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Card Generator - UI Component Builder | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Specific styles for card preview area */
+    .preview-container {
+       background-color: #f1f5f9;
+       background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+       background-size: 20px 20px;
+       transition: background-color 0.3s;
+    }
+    .dark .preview-container {
+       background-color: #1e293b;
+       background-image: radial-gradient(#334155 1px, transparent 1px);
+    }
+    
+    .generated-card {
+       transition: all 0.3s ease;
+       width: 100%;
+       max-width: 320px;
+       border-radius: 16px;
+       overflow: hidden;
+    }
+    
+    /* Neumorphism specific shadows */
+    .shadow-neumorphic {
+       box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+    }
+    .dark .shadow-neumorphic {
+       box-shadow: 8px 8px 16px #1a1a1a, -8px -8px 16px #3e3e3e;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-th-large mr-2"></i>UI Builder
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Card Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Design beautiful CSS cards with live preview. Customize styles, colors, and content.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-5 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-2 space-y-4 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i>
+                Configuration
+             </h3>
+             
+             <!-- Style Selector -->
+             <div class="mb-4">
+                <label class="block text-sm font-semibold mb-2 text-slate-500">Card Style</label>
+                <div class="grid grid-cols-2 gap-2">
+                   <button onclick="setCardStyle('standard')" class="style-btn active px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 transition-colors">Standard</button>
+                   <button onclick="setCardStyle('glass')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 transition-colors">Glass</button>
+                   <button onclick="setCardStyle('gradient')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 transition-colors">Gradient</button>
+                   <button onclick="setCardStyle('neumorphic')" class="style-btn px-3 py-2 rounded-lg text-xs font-bold bg-slate-200 dark:bg-slate-700 transition-colors">Neumorphic</button>
+                </div>
+             </div>
+             
+             <!-- Content Inputs -->
+             <div class="space-y-3 mb-4">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Image URL</label>
+                   <input type="text" id="input-img" value="https://source.unsplash.com/random/400x200?nature" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Title</label>
+                   <input type="text" id="input-title" value="Beautiful Sunset" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Description</label>
+                   <textarea id="input-desc" rows="2" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500">A stunning view of the horizon.</textarea>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Button Text</label>
+                   <input type="text" id="input-btn" value="Explore" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                </div>
+             </div>
+             
+             <!-- Colors -->
+             <div class="grid grid-cols-2 gap-3">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Card BG</label>
+                   <input type="color" id="color-bg" value="#ffffff" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Button Color</label>
+                   <input type="color" id="color-btn" value="#10b981" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-3 space-y-6 animate-on-scroll">
+          
+          <!-- Live Preview -->
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-sm uppercase tracking-wider text-slate-500">Live Preview</h3>
+             
+             <div class="preview-container rounded-xl p-10 flex items-center justify-center min-h-[400px]">
+                <div id="card-preview" class="generated-card">
+                   <!-- Card content injected by JS -->
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4">
+                   <i class="fas fa-copy mr-1"></i>Copy Code
+                </button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-60">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+      
+      <!-- Tips Section -->
+      <div class="glass-card p-6 mt-8 shimmer-card animate-on-scroll">
+         <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+            <i class="fas fa-lightbulb text-yellow-500"></i>
+            Card Design Tips
+         </h3>
+         <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-600 dark:text-slate-400">
+            <div class="flex gap-3 items-start">
+               <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+               <div>
+                  <strong class="text-slate-700 dark:text-white">Padding Matters</strong>
+                  <p>Ensure enough padding inside the card so content doesn't feel cramped.</p>
+               </div>
+            </div>
+            <div class="flex gap-3 items-start">
+               <i class="fas fa-check-circle text-emerald-500 mt-1"></i>
+               <div>
+                  <strong class="text-slate-700 dark:text-white">Visual Hierarchy</strong>
+                  <p>Use font sizes and weights to guide the user's eye through the card content.</p>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const inputImg = document.getElementById('input-img');
+      const inputTitle = document.getElementById('input-title');
+      const inputDesc = document.getElementById('input-desc');
+      const inputBtn = document.getElementById('input-btn');
+      const colorBg = document.getElementById('color-bg');
+      const colorBtn = document.getElementById('color-btn');
+      const cardPreview = document.getElementById('card-preview');
+      const codeOutput = document.getElementById('code-output');
+      
+      let currentStyle = 'standard';
+      
+      // Helper to darken/lighten
+      function adjustColor(hex, amount) {
+         const num = parseInt(hex.replace("#",""),16);
+         const r = Math.min(255, Math.max(0, (num >> 16) + amount));
+         const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amount));
+         const b = Math.min(255, Math.max(0, (num & 0x0000FF) + amount));
+         return "#" + (0x1000000 + r*0x10000 + g*0x100 + b).toString(16).slice(1);
+      }
+      
+      window.setCardStyle = function(style) {
+         currentStyle = style;
+         document.querySelectorAll('.style-btn').forEach(b => {
+            b.classList.remove('active', 'bg-emerald-500', 'text-white');
+         });
+         event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+         updateCard();
+      };
+      
+      window.updateCard = function() {
+         const img = inputImg.value;
+         const title = inputTitle.value;
+         const desc = inputDesc.value;
+         const btnText = inputBtn.value;
+         const bg = colorBg.value;
+         const btn = colorBtn.value;
+         
+         let cardStyles = '';
+         let cssCode = '';
+         
+         // Base Styles
+         const baseStyle = `
+   width: 100%;
+   border-radius: 16px;
+   overflow: hidden;
+   font-family: 'Inter', sans-serif;
+         `;
+         
+         // Logic for Styles
+         if (currentStyle === 'standard') {
+            cardStyles = `background-color: ${bg}; box-shadow: 0 10px 25px rgba(0,0,0,0.1);`;
+            cssCode = `.card-standard { ${baseStyle} ${cardStyles} }`;
+         } 
+         else if (currentStyle === 'glass') {
+            const isDark = document.documentElement.classList.contains('dark');
+            cardStyles = `background: ${isDark ? 'rgba(30, 41, 59, 0.4)' : 'rgba(255, 255, 255, 0.4)'}; backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2);`;
+            cssCode = `.card-glass { ${baseStyle} ${cardStyles} }`;
+         }
+         else if (currentStyle === 'gradient') {
+            const grad2 = adjustColor(btn, 40);
+            cardStyles = `background: linear-gradient(135deg, ${btn}, ${grad2}); color: white;`;
+            cssCode = `.card-gradient { ${baseStyle} ${cardStyles} }`;
+         }
+         else if (currentStyle === 'neumorphic') {
+            const isDark = document.documentElement.classList.contains('dark');
+            cardStyles = `background: ${isDark ? '#2c2c2c' : '#e0e0e0'}; box-shadow: ${isDark ? '8px 8px 16px #1a1a1a, -8px -8px 16px #3e3e3e' : '8px 8px 16px #bebebe, -8px -8px 16px #ffffff'};`;
+            cssCode = `.card-neumorphic { ${baseStyle} ${cardStyles} }`;
+         }
+         
+         // Construct HTML
+         const htmlContent = `
+<div class="generated-card" style="${cardStyles}">
+   ${img ? `<img src="${img}" style="width:100%; height: 180px; object-fit: cover;">` : ''}
+   <div style="padding: 20px;">
+      <h3 style="font-size: 18px; font-weight: bold; margin-bottom: 8px;">${title}</h3>
+      <p style="font-size: 14px; opacity: 0.8; margin-bottom: 16px;">${desc}</p>
+      <button style="background: ${currentStyle === 'gradient' ? 'rgba(255,255,255,0.2)' : btn}; color: white; padding: 8px 16px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;">
+         ${btnText}
+      </button>
+   </div>
+</div>`;
+         
+         cardPreview.innerHTML = htmlContent;
+         
+         // Output Code
+         codeOutput.textContent = `<!-- HTML -->
+ ${htmlContent}
+
+<!-- CSS -->
+<style>
+ ${cssCode}
+</style>`;
+      };
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.Devpalettes && window.Devpalettes.Toast) {
+               window.Devpalettes.Toast.show('Code Copied!', 'success');
+             } else {
+               alert('Code Copied!');
+             }
+         });
+      };
+      
+      // Event Listeners
+      [inputImg, inputTitle, inputDesc, inputBtn, colorBg, colorBtn].forEach(el => {
+         el.addEventListener('input', updateCard);
+      });
+      
+      // Init
+      updateCard();
+      
+    })();
+  </script>
+</body>
+</html>

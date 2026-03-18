@@ -12,7 +12,7 @@
   <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Pastel Color Palettes - Soft & Beautiful Color Schemes | ColorPalettesHub</title>
+  <title>Pastel Color Palettes - Soft & Beautiful Color Schemes | Devpalettes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -32,17 +32,26 @@
     }
   </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-6 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      <div class="text-center mb-12">
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Pastel Color Palettes</h1>
-        <p class="text-xl text-slate-600 dark:text-slate-400">Soft, soothing colors perfect for modern designs</p>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">Soft, soothing colors perfect for modern designs</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       <!-- Filter Tags -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
         <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">All Pastels</span>
         <a href="dark-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Dark</a>
         <a href="neon-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Neon</a>
@@ -50,13 +59,13 @@
       <!-- Palettes Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Palette 1 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFB5BA;" onclick="ColorPalettesHub.Clipboard.copy('#FFB5BA')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFDAC1;" onclick="ColorPalettesHub.Clipboard.copy('#FFDAC1')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2F0CB;" onclick="ColorPalettesHub.Clipboard.copy('#E2F0CB')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B5EAD7;" onclick="ColorPalettesHub.Clipboard.copy('#B5EAD7')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C7CEEA;" onclick="ColorPalettesHub.Clipboard.copy('#C7CEEA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFB5BA;" onclick="Devpalettes.Clipboard.copy('#FFB5BA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFDAC1;" onclick="Devpalettes.Clipboard.copy('#FFDAC1')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2F0CB;" onclick="Devpalettes.Clipboard.copy('#E2F0CB')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B5EAD7;" onclick="Devpalettes.Clipboard.copy('#B5EAD7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C7CEEA;" onclick="Devpalettes.Clipboard.copy('#C7CEEA')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Macaron Dream</h3>
@@ -64,13 +73,13 @@
           </div>
         </div>
         <!-- Palette 2 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A8D8EA;" onclick="ColorPalettesHub.Clipboard.copy('#A8D8EA')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #AA96DA;" onclick="ColorPalettesHub.Clipboard.copy('#AA96DA')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FCBAD3;" onclick="ColorPalettesHub.Clipboard.copy('#FCBAD3')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFFD2;" onclick="ColorPalettesHub.Clipboard.copy('#FFFFD2')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFC7F7;" onclick="ColorPalettesHub.Clipboard.copy('#FFC7F7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A8D8EA;" onclick="Devpalettes.Clipboard.copy('#A8D8EA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #AA96DA;" onclick="Devpalettes.Clipboard.copy('#AA96DA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FCBAD3;" onclick="Devpalettes.Clipboard.copy('#FCBAD3')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFFD2;" onclick="Devpalettes.Clipboard.copy('#FFFFD2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFC7F7;" onclick="Devpalettes.Clipboard.copy('#FFC7F7')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Cotton Candy Clouds</h3>
@@ -78,13 +87,13 @@
           </div>
         </div>
         <!-- Palette 3 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D4E4F7;" onclick="ColorPalettesHub.Clipboard.copy('#D4E4F7')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0E6EF;" onclick="ColorPalettesHub.Clipboard.copy('#F0E6EF')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2D4F0;" onclick="ColorPalettesHub.Clipboard.copy('#E2D4F0')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D4F0E6;" onclick="ColorPalettesHub.Clipboard.copy('#D4F0E6')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0F0D4;" onclick="ColorPalettesHub.Clipboard.copy('#F0F0D4')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D4E4F7;" onclick="Devpalettes.Clipboard.copy('#D4E4F7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0E6EF;" onclick="Devpalettes.Clipboard.copy('#F0E6EF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2D4F0;" onclick="Devpalettes.Clipboard.copy('#E2D4F0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D4F0E6;" onclick="Devpalettes.Clipboard.copy('#D4F0E6')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0F0D4;" onclick="Devpalettes.Clipboard.copy('#F0F0D4')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Morning Mist</h3>
@@ -92,13 +101,13 @@
           </div>
         </div>
         <!-- Palette 4 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFDAC1;" onclick="ColorPalettesHub.Clipboard.copy('#FFDAC1')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFB7B2;" onclick="ColorPalettesHub.Clipboard.copy('#FFB7B2')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2F0CB;" onclick="ColorPalettesHub.Clipboard.copy('#E2F0CB')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B5EAD7;" onclick="ColorPalettesHub.Clipboard.copy('#B5EAD7')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C7CEEA;" onclick="ColorPalettesHub.Clipboard.copy('#C7CEEA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFDAC1;" onclick="Devpalettes.Clipboard.copy('#FFDAC1')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFB7B2;" onclick="Devpalettes.Clipboard.copy('#FFB7B2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2F0CB;" onclick="Devpalettes.Clipboard.copy('#E2F0CB')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B5EAD7;" onclick="Devpalettes.Clipboard.copy('#B5EAD7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C7CEEA;" onclick="Devpalettes.Clipboard.copy('#C7CEEA')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Sunrise Sorbet</h3>
@@ -106,13 +115,13 @@
           </div>
         </div>
         <!-- Palette 5 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C9E4CA;" onclick="ColorPalettesHub.Clipboard.copy('#C9E4CA')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #DEE5E5;" onclick="ColorPalettesHub.Clipboard.copy('#DEE5E5')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0E2D0;" onclick="ColorPalettesHub.Clipboard.copy('#F0E2D0')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2D0F0;" onclick="ColorPalettesHub.Clipboard.copy('#E2D0F0')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D0E2F0;" onclick="ColorPalettesHub.Clipboard.copy('#D0E2F0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C9E4CA;" onclick="Devpalettes.Clipboard.copy('#C9E4CA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #DEE5E5;" onclick="Devpalettes.Clipboard.copy('#DEE5E5')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F0E2D0;" onclick="Devpalettes.Clipboard.copy('#F0E2D0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E2D0F0;" onclick="Devpalettes.Clipboard.copy('#E2D0F0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D0E2F0;" onclick="Devpalettes.Clipboard.copy('#D0E2F0')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Minimalist Garden</h3>
@@ -120,13 +129,13 @@
           </div>
         </div>
         <!-- Palette 6 -->
-        <div class="glass-card overflow-hidden">
+        <div class="glass-card overflow-hidden animate-on-scroll shimmer-card">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F3E5F5;" onclick="ColorPalettesHub.Clipboard.copy('#F3E5F5')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E1BEE7;" onclick="ColorPalettesHub.Clipboard.copy('#E1BEE7')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #CE93D8;" onclick="ColorPalettesHub.Clipboard.copy('#CE93D8')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #BA68C8;" onclick="ColorPalettesHub.Clipboard.copy('#BA68C8')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #AB47BC;" onclick="ColorPalettesHub.Clipboard.copy('#AB47BC')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F3E5F5;" onclick="Devpalettes.Clipboard.copy('#F3E5F5')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E1BEE7;" onclick="Devpalettes.Clipboard.copy('#E1BEE7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #CE93D8;" onclick="Devpalettes.Clipboard.copy('#CE93D8')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #BA68C8;" onclick="Devpalettes.Clipboard.copy('#BA68C8')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #AB47BC;" onclick="Devpalettes.Clipboard.copy('#AB47BC')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Lavender Fields</h3>
@@ -135,7 +144,7 @@
         </div>
       </div>
       <!-- SEO Content -->
-      <div class="glass-card p-8 mb-8">
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-4">What Are Pastel Colors?</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
           Pastel colors are soft, pale shades of colors created by adding white to pure hues. They have high lightness and low to medium saturation, giving them a gentle, soothing appearance.
@@ -152,8 +161,8 @@
           <li>Minimalist web design backgrounds</li>
         </ul>
       </div>
-      <div class="text-center">
-        <a href="palette.html" class="btn-primary inline-flex">
+      <div class="text-center animate-on-scroll">
+        <a href="palette.html" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-palette"></i>
           Create Your Own Palette
         </a>
@@ -162,5 +171,7 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

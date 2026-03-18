@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate animated hamburger menu icons for mobile navigation.">
+  <meta name="keywords" content="hamburger menu generator, css menu icon, mobile menu, responsive menu">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Hamburger Menu Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode:  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+     .hamburger-line {
+        transition: all 0.3s ease;
+     }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-bars mr-2"></i>UI Component
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Hamburger Menu Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create animated hamburger icons for mobile menus.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Animation Type</h3>
+             <div class="grid grid-cols-1 gap-2 mb-4">
+                <button onclick="setAnim('spin')" class="anim-btn active px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 text-left">Rotate Spin</button>
+                <button onclick="setAnim('squeeze')" class="anim-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 text-left">Squeeze (X)</button>
+                <button onclick="setAnim('collapse')" class="anim-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 text-left">Collapse</button>
+             </div>
+             
+             <div class="space-y-3 mt-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Color</label>
+                   <input type="color" id="h-color" value="#0f172a" onchange="updateHamb()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Thickness: <span id="v-t">3</span>px</label>
+                   <input type="range" id="h-thick" min="2" max="6" value="3" onchange="updateHamb()" class="w-full accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Size: <span id="v-s">30</span>px</label>
+                   <input type="range" id="h-size" min="20" max="50" value="30" onchange="updateHamb()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center">
+             <div class="text-center">
+                <button id="hamb-btn" onclick="toggleMenu()" class="flex flex-col justify-center items-center w-12 h-12 focus:outline-none group">
+                   <span id="line1" class="hamburger-line block absolute h-1 w-8 rounded-full" style="background-color: #0f172a;"></span>
+                   <span id="line2" class="hamburger-line block absolute h-1 w-8 rounded-full" style="background-color: #0f172a;"></span>
+                   <span id="line3" class="hamburger-line block absolute h-1 w-8 rounded-full" style="background-color: #0f172a;"></span>
+                </button>
+                <p class="mt-8 text-xs text-slate-400">Click Icon</p>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const l1 = document.getElementById('line1');
+    const l2 = document.getElementById('line2');
+    const l3 = document.getElementById('line3');
+    const codeOutput = document.getElementById('code-output');
+    
+    let isOpen = false;
+    let animType = 'spin';
+    
+    window.setAnim = function(type) {
+       animType = type;
+       document.querySelectorAll('.anim-btn').forEach(b => b.classList.remove('active', 'bg-emerald-500', 'text-white'));
+       event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+       
+       // Reset
+       isOpen = false;
+       applyStyles(false);
+    };
+    
+    window.updateHamb = function() {
+       const color = document.getElementById('h-color').value;
+       const thick = document.getElementById('h-thick').value;
+       const size = document.getElementById('h-size').value;
+       
+       document.getElementById('v-t').textContent = thick;
+       document.getElementById('v-s').textContent = size;
+       
+       // Base Styles
+       [l1, l2, l3].forEach(l => {
+          l.style.height = `${thick}px`;
+          l.style.width = `${size}px`;
+          l.style.backgroundColor = color;
+       });
+       
+       generateCode(color, thick, size);
+    };
+    
+    window.toggleMenu = function() {
+       isOpen = !isOpen;
+       applyStyles(isOpen);
+    };
+    
+    function applyStyles(open) {
+       if(animType === 'spin') {
+          if(open) {
+             l2.style.opacity = '0';
+             l1.style.transform = 'rotate(45deg)';
+             l3.style.transform = 'rotate(-45deg)';
+          } else {
+             l2.style.opacity = '1';
+             l1.style.transform = 'rotate(0)';
+             l3.style.transform = 'rotate(0)';
+          }
+          // Positions for spin
+          l1.style.top = open ? '50%' : 'calc(50% - 8px)';
+          l3.style.top = open ? '50%' : 'calc(50% + 8px)';
+          l2.style.top = '50%';
+       } 
+       else if (animType === 'squeeze') {
+          if(open) {
+             l2.style.opacity = '0';
+             l1.style.transform = 'rotate(45deg) translateY(6px)';
+             l3.style.transform = 'rotate(-45deg) translateY(-6px)';
+          } else {
+             l2.style.opacity = '1';
+             l1.style.transform = 'rotate(0) translateY(0)';
+             l3.style.transform = 'rotate(0) translateY(0)';
+          }
+       }
+       else if (animType === 'collapse') {
+          if(open) {
+             l2.style.opacity = '0';
+             l1.style.transform = 'rotate(45deg)';
+             l3.style.transform = 'rotate(-45deg)';
+          } else {
+             l2.style.opacity = '1';
+             l1.style.transform = 'rotate(0)';
+             l3.style.transform = 'rotate(0)';
+          }
+       }
+    }
+    
+    function generateCode(c, t, s) {
+       const css = `.hamburger-btn {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  cursor: pointer;
+}
+
+.line {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: ${t}px;
+  width: ${s}px;
+  background-color: ${c};
+  transition: all 0.3s ease;
+}
+
+/* Positions */
+.line-1 { top: 35%; }
+.line-2 { top: 50%; transform: translate(-50%, -50%); }
+.line-3 { bottom: 35%; }
+
+/* Active State (JS toggles .active class) */
+.hamburger-btn.active .line-1 {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.hamburger-btn.active .line-2 { opacity: 0; }
+.hamburger-btn.active .line-3 {
+  bottom: 50%;
+  transform: translate(-50%, 50%) rotate(-45deg);
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
+    };
+    
+    updateHamb();
+  </script>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom scroll progress bars for your website. Customize colors, size, and position.">
+  <meta name="keywords" content="scroll progress generator, reading indicator, scroll bar css, website progress bar">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Scroll Progress Bar Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-arrows-alt-v mr-2"></i>CSS Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Scroll Progress Bar Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create beautiful reading progress indicators. Customize style, position, and colors.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i>
+                Configuration
+             </h3>
+             
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-500">Position</label>
+                   <select id="ctrl-pos" onchange="updateBar()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="top">Top</option>
+                      <option value="bottom">Bottom</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-500">Height</label>
+                   <select id="ctrl-height" onchange="updateBar()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="4px">Thin (4px)</option>
+                      <option value="8px" selected>Normal (8px)</option>
+                      <option value="12px">Thick (12px)</option>
+                   </select>
+                </div>
+             </div>
+             
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-500">Bar Color</label>
+                   <input type="color" id="ctrl-color" value="#10b981" onchange="updateBar()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-500">Background</label>
+                   <input type="color" id="ctrl-bg" value="#e2e8f0" onchange="updateBar()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-500">Simulate Scroll</label>
+                <input type="range" id="ctrl-simulate" min="0" max="100" value="30" onchange="updateBar()" class="w-full accent-emerald-500">
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <!-- Preview -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+             </div>
+             
+             <!-- Mock Browser -->
+             <div class="relative h-96 bg-white dark:bg-slate-800 overflow-hidden">
+                <!-- The Generated Bar -->
+                <div id="preview-container" class="absolute left-0 w-full z-10 transition-all duration-300" style="top: 0; height: 8px; background-color: #e2e8f0;">
+                   <div id="preview-bar" class="h-full transition-all duration-150" style="width: 30%; background-color: #10b981;"></div>
+                </div>
+                
+                <!-- Fake Content -->
+                <div class="p-6 pt-16 space-y-4 opacity-50">
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-3/4"></div>
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-full"></div>
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-1/2"></div>
+                   <div class="h-20 bg-slate-100 dark:bg-slate-700 rounded w-full mt-4"></div>
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-5/6"></div>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy JS</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-40">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const previewContainer = document.getElementById('preview-container');
+    const previewBar = document.getElementById('preview-bar');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateBar = function() {
+       const pos = document.getElementById('ctrl-pos').value;
+       const height = document.getElementById('ctrl-height').value;
+       const color = document.getElementById('ctrl-color').value;
+       const bg = document.getElementById('ctrl-bg').value;
+       const progress = document.getElementById('ctrl-simulate').value;
+       
+       // Apply Styles
+       previewContainer.style.top = pos === 'top' ? '0' : 'auto';
+       previewContainer.style.bottom = pos === 'bottom' ? '0' : 'auto';
+       previewContainer.style.height = height;
+       previewContainer.style.backgroundColor = bg;
+       
+       previewBar.style.width = progress + '%';
+       previewBar.style.backgroundColor = color;
+       
+       // Generate Code
+       const css = `/* CSS */
+#progress-container {
+  position: fixed;
+  ${pos}: 0;
+  left: 0;
+  width: 100%;
+  height: ${height};
+  background-color: ${bg};
+  z-index: 9999;
+  transition: opacity 0.3s;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: ${color};
+}`;
+       
+       const js = `/* JavaScript */
+const progressBar = document.getElementById('progress-bar');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.body.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  progressBar.style.width = scrollPercent + '%';
+});`;
+       
+       codeOutput.textContent = `<!-- HTML -->
+<div id="progress-container"><div id="progress-bar"></div></div>
+
+ ${css}
+
+ ${js}`;
+    };
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text).then(() => {
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('Code Copied!', 'success');
+           } else {
+             alert('Copied!');
+           }
+       });
+    };
+    
+    updateBar();
+  </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find the perfect font combinations. Preview Google Fonts side by side with live customization.">
+  <meta name="keywords" content="font pairing, google fonts, typography, font combination, design tools">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Font Pairing Tool - Find Perfect Combinations | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Loading popular fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:ital,wght@0,400;0,700;1,400&family=Montserrat:ital,wght@0,400;0,700;1,400&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@400;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&family=Oswald:wght@400;700&family=Raleway:ital,wght@0,400;0,700;1,400&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-font mr-2"></i>Typography Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Font Pairing Tool</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Find the perfect font combination for your project. Preview and customize live.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-4 animate-on-scroll">
+           
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                 <i class="fas fa-text-height text-emerald-500"></i>
+                 Headings
+              </h3>
+              
+              <div class="mb-3">
+                 <label class="block text-xs font-semibold mb-1 text-slate-500">Font Family</label>
+                 <select id="font-heading" onchange="updateFonts()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none">
+                    <option value="'Playfair Display', serif">Playfair Display</option>
+                    <option value="'Montserrat', sans-serif">Montserrat</option>
+                    <option value="'Merriweather', serif">Merriweather</option>
+                    <option value="'Oswald', sans-serif">Oswald</option>
+                    <option value="'Roboto Slab', serif">Roboto Slab</option>
+                    <option value="'Poppins', sans-serif">Poppins</option>
+                    <option value="'Raleway', sans-serif">Raleway</option>
+                 </select>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-3 mb-3">
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Size</label>
+                    <input type="number" id="size-heading" value="48" onchange="updateFonts()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-2 py-2 text-sm text-center">
+                 </div>
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Weight</label>
+                    <select id="weight-heading" onchange="updateFonts()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-2 py-2 text-sm">
+                       <option value="400">Regular</option>
+                       <option value="700" selected>Bold</option>
+                    </select>
+                 </div>
+              </div>
+              
+              <div>
+                 <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                 <input type="color" id="color-heading" value="#1e293b" onchange="updateFonts()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+              </div>
+           </div>
+           
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                 <i class="fas fa-paragraph text-cyan-500"></i>
+                 Body Text
+              </h3>
+              
+              <div class="mb-3">
+                 <label class="block text-xs font-semibold mb-1 text-slate-500">Font Family</label>
+                 <select id="font-body" onchange="updateFonts()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none">
+                    <option value="'Inter', sans-serif">Inter</option>
+                    <option value="'Lato', sans-serif">Lato</option>
+                    <option value="'Open Sans', sans-serif">Open Sans</option>
+                    <option value="'Poppins', sans-serif">Poppins</option>
+                    <option value="'Montserrat', sans-serif">Montserrat</option>
+                 </select>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-3 mb-3">
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Size</label>
+                    <input type="number" id="size-body" value="18" onchange="updateFonts()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-2 py-2 text-sm text-center">
+                 </div>
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Line Height</label>
+                    <input type="number" id="line-body" value="1.6" step="0.1" onchange="updateFonts()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-2 py-2 text-sm text-center">
+                 </div>
+              </div>
+              
+              <div>
+                 <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                 <input type="color" id="color-body" value="#64748b" onchange="updateFonts()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+              </div>
+           </div>
+           
+           <button onclick="randomize()" class="btn-primary btn-glow w-full justify-center py-3">
+              <i class="fas fa-random mr-2"></i>Randomize Pair
+           </button>
+           
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <!-- Preview Area -->
+          <div class="glass-card p-8 shimmer-card min-h-[400px]">
+             <div class="preview-content" id="preview-box">
+                <h2 id="preview-heading" class="mb-4 transition-all duration-300">The Art of Typography</h2>
+                <p id="preview-body" class="transition-all duration-300">
+                   Good typography is invisible. It guides the reader through the content without drawing attention to itself. Great typography enhances the reading experience while supporting the overall design aesthetic.
+                </p>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated CSS</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-40">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const fontHeading = document.getElementById('font-heading');
+      const fontBody = document.getElementById('font-body');
+      const sizeHeading = document.getElementById('size-heading');
+      const sizeBody = document.getElementById('size-body');
+      const weightHeading = document.getElementById('weight-heading');
+      const lineBody = document.getElementById('line-body');
+      const colorHeading = document.getElementById('color-heading');
+      const colorBody = document.getElementById('color-body');
+      
+      const previewHeading = document.getElementById('preview-heading');
+      const previewBody = document.getElementById('preview-body');
+      const codeOutput = document.getElementById('code-output');
+      
+      window.updateFonts = function() {
+         // Apply Heading Styles
+         previewHeading.style.fontFamily = fontHeading.value;
+         previewHeading.style.fontSize = sizeHeading.value + 'px';
+         previewHeading.style.fontWeight = weightHeading.value;
+         previewHeading.style.color = colorHeading.value;
+         
+         // Apply Body Styles
+         previewBody.style.fontFamily = fontBody.value;
+         previewBody.style.fontSize = sizeBody.value + 'px';
+         previewBody.style.lineHeight = lineBody.value;
+         previewBody.style.color = colorBody.value;
+         
+         generateCode();
+      };
+      
+      function generateCode() {
+         const css = `h1, h2, h3 {
+   font-family: ${fontHeading.value};
+   font-weight: ${weightHeading.value};
+   color: ${colorHeading.value};
+   font-size: ${sizeHeading.value}px;
+}
+
+body, p {
+   font-family: ${fontBody.value};
+   font-size: ${sizeBody.value}px;
+   line-height: ${lineBody.value};
+   color: ${colorBody.value};
+}`;
+         codeOutput.textContent = css;
+      }
+      
+      window.randomize = function() {
+         const fontsH = ["'Playfair Display', serif", "'Montserrat', sans-serif", "'Oswald', sans-serif", "'Poppins', sans-serif"];
+         const fontsB = ["'Inter', sans-serif", "'Lato', sans-serif", "'Open Sans', sans-serif", "'Raleway', sans-serif"];
+         
+         fontHeading.value = fontsH[Math.floor(Math.random() * fontsH.length)];
+         fontBody.value = fontsB[Math.floor(Math.random() * fontsB.length)];
+         
+         updateFonts();
+      };
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.Devpalettes && window.Devpalettes.Toast) {
+               window.Devpalettes.Toast.show('CSS Copied!', 'success');
+             } else {
+               alert('CSS Copied!');
+             }
+         });
+      };
+      
+      // Init
+      updateFonts();
+      
+    })();
+  </script>
+</body>
+</html>

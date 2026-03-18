@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom CSS animations with live preview. Create keyframes for move, rotate, scale, pulse, and more.">
+  <meta name="keywords" content="css animation generator, css keyframes, animation creator, web animation tool">
+  <meta name="author" content="Devpalettes">
+  
+  <title>CSS Animation Generator - Create Keyframes | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+  
+  <style>
+    /* Preview Background Pattern */
+    .preview-bg {
+       background-color: #e2e8f0;
+       background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+       background-size: 20px 20px;
+    }
+    .dark .preview-bg {
+       background-color: #1e293b;
+       background-image: radial-gradient(#475569 1px, transparent 1px);
+    }
+    
+    /* The Box to be animated */
+    .anim-box {
+       width: 80px;
+       height: 80px;
+       background: #3b82f6;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: white;
+       font-weight: bold;
+       font-size: 12px;
+       will-change: transform;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-fuchsia-100 dark:bg-fuchsia-900/30 text-fuchsia-600 dark:text-fuchsia-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-magic mr-2"></i>CSS Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Animation Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create and export custom CSS animations with a live preview. Choose presets or customize timing.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i>
+                Configuration
+             </h3>
+             
+             <!-- Animation Type -->
+             <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2 text-slate-500">Animation Type</label>
+                <select id="anim-type" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                   <option value="moveRight">Move Right</option>
+                   <option value="moveLeft">Move Left</option>
+                   <option value="rotate">Rotate</option>
+                   <option value="scaleUp">Scale Up</option>
+                   <option value="pulse">Pulse</option>
+                   <option value="shake">Shake</option>
+                   <option value="bounce">Bounce</option>
+                   <option value="flip">Flip</option>
+                   <option value="swing">Swing</option>
+                   <option value="fade">Fade Out/In</option>
+                </select>
+             </div>
+             
+             <!-- Duration & Timing -->
+             <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Duration (s)</label>
+                   <input type="number" id="anim-duration" value="1" step="0.1" min="0.1" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Timing Function</label>
+                   <select id="anim-timing" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="linear">Linear</option>
+                      <option value="ease">Ease</option>
+                      <option value="ease-in">Ease In</option>
+                      <option value="ease-out">Ease Out</option>
+                      <option value="ease-in-out">Ease In Out</option>
+                   </select>
+                </div>
+             </div>
+             
+             <!-- Iteration & Direction -->
+             <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Iteration Count</label>
+                   <select id="anim-iter" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="infinite">Infinite</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Direction</label>
+                   <select id="anim-dir" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="normal">Normal</option>
+                      <option value="reverse">Reverse</option>
+                      <option value="alternate">Alternate</option>
+                   </select>
+                </div>
+             </div>
+             
+             <!-- Style -->
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Shape</label>
+                   <select id="anim-shape" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="16px">Rounded</option>
+                      <option value="50%">Circle</option>
+                      <option value="0px">Square</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                   <input type="color" id="anim-color" value="#3b82f6" onchange="updateAll()" class="w-full h-9 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+          </div>
+          
+          <!-- Action Buttons -->
+          <div class="flex gap-3 animate-on-scroll">
+             <button onclick="playAnim()" class="btn-primary btn-glow flex-1 justify-center">
+                <i class="fas fa-play mr-2"></i>Play
+             </button>
+             <button onclick="stopAnim()" class="btn-secondary flex-1 justify-center">
+                <i class="fas fa-stop mr-2"></i>Stop
+             </button>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <!-- Preview -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+             </div>
+             <div class="preview-bg h-72 flex items-center justify-center overflow-hidden relative">
+                <!-- We use a wrapper to allow movement outside the box a bit -->
+                <div class="w-full h-full flex items-center justify-center">
+                   <div id="preview-box" class="anim-box">
+                      Hi
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated CSS</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4">
+                   <i class="fas fa-copy mr-1"></i>Copy
+                </button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-60">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const box = document.getElementById('preview-box');
+      const typeSelect = document.getElementById('anim-type');
+      const durationInput = document.getElementById('anim-duration');
+      const timingSelect = document.getElementById('anim-timing');
+      const iterSelect = document.getElementById('anim-iter');
+      const dirSelect = document.getElementById('anim-dir');
+      const shapeSelect = document.getElementById('anim-shape');
+      const colorInput = document.getElementById('anim-color');
+      const codeOutput = document.getElementById('code-output');
+      
+      // --- Animation Keyframes Definitions ---
+      const animations = {
+         moveRight: `0% { transform: translateX(0); }
+   100% { transform: translateX(100px); }`,
+         moveLeft: `0% { transform: translateX(0); }
+   100% { transform: translateX(-100px); }`,
+         rotate: `0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }`,
+         scaleUp: `0% { transform: scale(1); }
+   100% { transform: scale(1.5); }`,
+         pulse: `0% { transform: scale(1); opacity: 1; }
+   50% { transform: scale(1.2); opacity: 0.7; }
+   100% { transform: scale(1); opacity: 1; }`,
+         shake: `0%, 100% { transform: translateX(0); }
+   25% { transform: translateX(-10px); }
+   75% { transform: translateX(10px); }`,
+         bounce: `0%, 100% { transform: translateY(0); }
+   50% { transform: translateY(-30px); }`,
+         flip: `0% { transform: perspective(400px) rotateY(0); }
+   100% { transform: perspective(400px) rotateY(180deg); }`,
+         swing: `20% { transform: rotate(15deg); }
+   40% { transform: rotate(-10deg); }
+   60% { transform: rotate(5deg); }
+   80% { transform: rotate(-5deg); }
+   100% { transform: rotate(0deg); }`,
+         fade: `0%, 100% { opacity: 1; }
+   50% { opacity: 0; }`
+      };
+      
+      window.updateAll = function() {
+         const type = typeSelect.value;
+         const dur = durationInput.value;
+         const timing = timingSelect.value;
+         const iter = iterSelect.value;
+         const dir = dirSelect.value;
+         const shape = shapeSelect.value;
+         const color = colorInput.value;
+         
+         // Update Box Styles
+         box.style.borderRadius = shape;
+         box.style.backgroundColor = color;
+         
+         // Update Code
+         const keyframes = animations[type] || '';
+         const animName = `anim_${type}`;
+         
+         const cssCode = `/* Element Style */
+.animated-box {
+  width: 80px;
+  height: 80px;
+  background-color: ${color};
+  border-radius: ${shape};
+  animation: ${animName} ${dur}s ${timing} ${iter} ${dir};
+}
+
+/* Keyframes */
+@keyframes ${animName} {
+  ${keyframes}
+}`;
+         
+         codeOutput.textContent = cssCode;
+      };
+      
+      window.playAnim = function() {
+         const type = typeSelect.value;
+         const dur = durationInput.value;
+         const timing = timingSelect.value;
+         const iter = iterSelect.value;
+         const dir = dirSelect.value;
+         
+         const animName = `anim_${type}`;
+         
+         // Inject keyframes dynamically if not already present (simplified approach)
+         // For this tool, we just apply the style directly using the generated string
+         
+         // Reset animation
+         box.style.animation = 'none';
+         void box.offsetWidth; // Trigger reflow
+         
+         // Apply animation
+         box.style.animation = `${animName} ${dur}s ${timing} ${iter} ${dir}`;
+         
+         // Inject style tag if needed (simple logic)
+         let styleTag = document.getElementById('dynamic-styles');
+         if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.id = 'dynamic-styles';
+            document.head.appendChild(styleTag);
+         }
+         
+         // Update style tag content
+         const keyframes = animations[type];
+         styleTag.textContent = `@keyframes ${animName} { ${keyframes} }`;
+      };
+      
+      window.stopAnim = function() {
+         box.style.animation = 'none';
+      };
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.Devpalettes && window.Devpalettes.Toast) {
+               window.Devpalettes.Toast.show('CSS Copied!', 'success');
+             } else {
+               alert('CSS Copied!');
+             }
+         });
+      };
+      
+      // Init
+      updateAll();
+      
+    })();
+  </script>
+</body>
+</html>

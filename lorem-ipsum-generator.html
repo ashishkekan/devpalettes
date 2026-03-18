@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate Lorem Ipsum placeholder text for design and development.">
+  <meta name="keywords" content="lorem ipsum generator, placeholder text, dummy text">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Lorem Ipsum Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-paragraph mr-2"></i>Content Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Lorem Ipsum Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Generate placeholder text for your mockups.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-6 shimmer-card mb-6 animate-on-scroll">
+         <div class="flex flex-wrap gap-4 items-center justify-center mb-6">
+            <div>
+               <label class="block text-xs font-semibold text-slate-500 mb-1">Paragraphs: <span id="v-count">2</span></label>
+               <input type="range" id="ctrl-count" min="1" max="10" value="2" onchange="updateVal()" class="w-32 accent-emerald-500">
+            </div>
+            <button onclick="generate()" class="btn-primary btn-glow"><i class="fas fa-sync-alt mr-1"></i>Generate</button>
+         </div>
+         
+         <div id="output-box" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-6 text-sm text-slate-600 dark:text-slate-300 leading-relaxed space-y-4">
+            <!-- Text generated here -->
+         </div>
+         
+         <button onclick="copyText()" class="btn-secondary w-full mt-4 py-3 justify-center"><i class="fas fa-copy mr-1"></i>Copy Text</button>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const outputBox = document.getElementById('output-box');
+    const countSlider = document.getElementById('ctrl-count');
+    
+    const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+    
+    window.updateVal = function() {
+       document.getElementById('v-count').textContent = countSlider.value;
+    };
+    
+    window.generate = function() {
+       const count = parseInt(countSlider.value);
+       let html = "";
+       for(let i=0; i<count; i++) {
+          html += `<p>${lorem}</p>`;
+       }
+       outputBox.innerHTML = html;
+    };
+    
+    window.copyText = function() {
+       const text = outputBox.innerText;
+       navigator.clipboard.writeText(text);
+       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Text Copied!', 'success');
+    };
+    
+    generate();
+  </script>
+</body>
+</html>

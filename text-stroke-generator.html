@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate CSS Text Stroke effects (Outline Text). Create hollow text for headings.">
+  <meta name="keywords" content="css text stroke, outline text generator, text border css, text effect">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Text Stroke Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py- bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-font mr-2"></i>CSS Effect
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Text Stroke Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create beautiful outlined text effects for modern web design.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Settings</h3>
+             <div class="space-y-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Text Content</label>
+                   <input type="text" id="ctrl-text" value="STROKE" oninput="updateStroke()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm font-bold">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Stroke Color</label>
+                   <input type="color" id="ctrl-color" value="#10b981" onchange="updateStroke()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Fill Color</label>
+                   <input type="color" id="ctrl-fill" value="#000000" onchange="updateStroke()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Width: <span id="v-w">2</span>px</label>
+                   <input type="range" id="ctrl-w" min="0" max="6" step="0.5" value="2" onchange="updateStroke()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center">
+             <h1 id="stroke-preview" class="text-7xl font-black transition-all duration-300">STROKE</h1>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('stroke-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateStroke = function() {
+       const text = document.getElementById('ctrl-text').value || "TEXT";
+       const color = document.getElementById('ctrl-color').value;
+       const fill = document.getElementById('ctrl-fill').value;
+       const w = document.getElementById('ctrl-w').value;
+       
+       document.getElementById('v-w').textContent = w;
+       
+       preview.textContent = text;
+       preview.style.webkitTextStroke = `${w}px ${color}`;
+       preview.style.color = fill; // Fill color
+       
+       generateCode(color, fill, w);
+    };
+    
+    function generateCode(c, f, w) {
+       const css = `.text-stroke {
+  color: ${f}; /* Fill color */
+  -webkit-text-stroke: ${w}px ${c}; /* Stroke */
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
+    };
+    
+    updateStroke();
+  </script>
+</body>
+</html>

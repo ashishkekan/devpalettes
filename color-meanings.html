@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the meanings and symbolism of colors. Understand how different colors evoke emotions and influence design psychology.">
+  <meta name="keywords" content="color meanings, color symbolism, color psychology, design theory, color emotions">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Color Meanings & Symbolism - Design Psychology | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-brain mr-2"></i>Color Psychology
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Color Meanings & Symbolism</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto mb-6">
+          Colors are a universal language. They evoke emotions, influence decisions, and carry cultural symbolism. Understanding color meanings is essential for effective design.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <!-- Colors Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        
+        <!-- Red -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #FF0000;" onclick="copyColor('#FF0000')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Red</h3>
+                 <span class="text-xs font-mono text-slate-500">#FF0000</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">The most intense color, evoking strong emotions.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-medium">Energy</span>
+                 <span class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-medium">Passion</span>
+                 <span class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-medium">Danger</span>
+                 <span class="px-2 py-1 rounded bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-xs font-medium">Love</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Green -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #00FF00;" onclick="copyColor('#00FF00')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Green</h3>
+                 <span class="text-xs font-mono text-slate-500">#00FF00</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Nature’s primary color, symbolizing growth.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-medium">Nature</span>
+                 <span class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-medium">Growth</span>
+                 <span class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-medium">Health</span>
+                 <span class="px-2 py-1 rounded bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-xs font-medium">Success</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Blue -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #0000FF;" onclick="copyColor('#0000FF')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Blue</h3>
+                 <span class="text-xs font-mono text-slate-500">#0000FF</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">The color of trust and professionalism.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium">Trust</span>
+                 <span class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium">Calm</span>
+                 <span class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium">Loyalty</span>
+                 <span class="px-2 py-1 rounded bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-xs font-medium">Intelligence</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Yellow -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #FFFF00;" onclick="copyColor('#FFFF00')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Yellow</h3>
+                 <span class="text-xs font-mono text-slate-500">#FFFF00</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Bright and attention-grabbing.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs font-medium">Happiness</span>
+                 <span class="px-2 py-1 rounded bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs font-medium">Optimism</span>
+                 <span class="px-2 py-1 rounded bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs font-medium">Caution</span>
+                 <span class="px-2 py-1 rounded bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400 text-xs font-medium">Warmth</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Orange -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #FFA500;" onclick="copyColor('#FFA500')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Orange</h3>
+                 <span class="text-xs font-mono text-slate-500">#FFA500</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">A blend of red's energy and yellow's joy.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-medium">Creativity</span>
+                 <span class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-medium">Enthusiasm</span>
+                 <span class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-medium">Adventure</span>
+                 <span class="px-2 py-1 rounded bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-xs font-medium">Affordability</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Purple -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #800080;" onclick="copyColor('#800080')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Purple</h3>
+                 <span class="text-xs font-mono text-slate-500">#800080</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Associated with royalty and mystery.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs font-medium">Luxury</span>
+                 <span class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs font-medium">Royalty</span>
+                 <span class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs font-medium">Mystery</span>
+                 <span class="px-2 py-1 rounded bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-xs font-medium">Magic</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Pink -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #FFC0CB;" onclick="copyColor('#FFC0CB')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Pink</h3>
+                 <span class="text-xs font-mono text-slate-500">#FFC0CB</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">A softer, playful side of red.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-xs font-medium">Romance</span>
+                 <span class="px-2 py-1 rounded bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-xs font-medium">Femininity</span>
+                 <span class="px-2 py-1 rounded bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-xs font-medium">Playfulness</span>
+                 <span class="px-2 py-1 rounded bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-xs font-medium">Compassion</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Brown -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #964B00;" onclick="copyColor('#964B00')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Brown</h3>
+                 <span class="text-xs font-mono text-slate-500">#964B00</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Earthiness and natural stability.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">Stability</span>
+                 <span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">Earthiness</span>
+                 <span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">Reliability</span>
+                 <span class="px-2 py-1 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-medium">Comfort</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Black -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg border border-slate-200 dark:border-slate-700" style="background-color: #000000;" onclick="copyColor('#000000')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Black</h3>
+                 <span class="text-xs font-mono text-slate-500">#000000</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Absence of color, denoting power.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Elegance</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Power</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Mystery</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Formality</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- White -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg border border-slate-200 dark:border-slate-700" style="background-color: #FFFFFF;" onclick="copyColor('#FFFFFF')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">White</h3>
+                 <span class="text-xs font-mono text-slate-500">#FFFFFF</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">Total reflection, purity, and light.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Purity</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Simplicity</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Cleanliness</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Innocence</span>
+              </div>
+           </div>
+        </div>
+
+        <!-- Grey -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll flex flex-col">
+           <div class="flex items-center gap-4 mb-4">
+              <div class="w-16 h-16 rounded-xl cursor-pointer hover:scale-110 transition-transform shadow-lg" style="background-color: #808080;" onclick="copyColor('#808080')"></div>
+              <div>
+                 <h3 class="text-xl font-bold">Grey</h3>
+                 <span class="text-xs font-mono text-slate-500">#808080</span>
+              </div>
+           </div>
+           <div class="flex-1">
+              <p class="text-sm text-slate-600 dark:text-slate-400 mb-3">The neutral, timeless middle ground.</p>
+              <div class="flex flex-wrap gap-2">
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Neutrality</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Balance</span>
+                 <span class="px-2 py-1 rounded bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium">Sophistication</span>
+              </div>
+           </div>
+        </div>
+
+      </div>
+      
+      <!-- Tips Section -->
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">How to Use Color Meanings in Design</h2>
+        <div class="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-400">
+           <p>Understanding color meanings isn't just about aesthetics; it's a strategic tool for communication.</p>
+           <div class="grid md:grid-cols-2 gap-6 mt-4">
+              <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg">
+                 <h4 class="font-bold text-slate-800 dark:text-white mb-2">Brand Identity</h4>
+                 <p class="text-sm">Choose colors that align with your brand's core values. Blue for trust (Banks), Red for energy (Food), Green for health.</p>
+              </div>
+              <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg">
+                 <h4 class="font-bold text-slate-800 dark:text-white mb-2">Call to Action</h4>
+                 <p class="text-sm">Use high-contrast, energetic colors like Orange or Red for buttons to grab attention immediately.</p>
+              </div>
+           </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
+  
+  <script>
+    function copyColor(hex) {
+       navigator.clipboard.writeText(hex).then(() => {
+          if(window.Devpalettes && window.Devpalettes.Toast) {
+            window.Devpalettes.Toast.show(`Copied ${hex}`, 'success');
+          } else {
+            alert(`Copied: ${hex}`);
+          }
+       });
+    }
+  </script>
+</body>
+</html>
