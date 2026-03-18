@@ -3,37 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore vibrant neon color palettes for bold designs. High-energy, glowing color schemes perfect for cyberpunk and futuristic themes.">
-  <meta name="keywords" content="neon color palettes, cyberpunk colors, glowing colors, vibrant color schemes, neon themes">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
-  <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  
+  <!-- Primary Meta Tags -->
+  <title>Neon Color Palettes - Vibrant & Bold Color Schemes | Dev Palettes</title>
+  <meta name="title" content="Neon Color Palettes - Vibrant & Bold Color Schemes">
+  <meta name="description" content="Explore vibrant neon color palettes for bold designs. High-energy, glowing color schemes perfect for cyberpunk, gaming, and futuristic themes.">
+  <meta name="keywords" content="neon color palettes, cyberpunk colors, glowing colors, vibrant color schemes, neon themes, retro wave">
+  <meta name="author" content="Dev Palettes">
+  <link rel="canonical" href="https://colorpaletteshub.com/neon-color-palettes.html" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Neon Color Palettes - Vibrant & Bold Color Schemes | ColorPalettesHub</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/neon-color-palettes.html">
+  <meta property="og:title" content="Neon Color Palettes">
+  <meta property="og:description" content="High-energy colors for bold, futuristic designs.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Neon Color Palettes",
+    "description": "A collection of vibrant neon color palettes.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Cyber Rave" },
+        { "@type": "ListItem", "position": 2, "name": "Blade Runner" }
+      ]
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
-  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
   <style>
-    /* Neon glow effect for cards */
+    /* Neon glow effect for cards - PRESERVED */
     .neon-card:hover {
       box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
     }
@@ -41,28 +55,38 @@
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-6 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      <div class="text-center mb-12">
+  
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Neon Color Palettes</h1>
-        <p class="text-xl text-slate-600 dark:text-slate-400">High-energy colors for bold, futuristic designs</p>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">High-energy colors for bold, futuristic designs</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
       <!-- Filter Tags -->
-      <div class="flex flex-wrap justify-center gap-2 mb-8">
+      <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
         <a href="pastel-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Pastel</a>
         <a href="dark-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Dark</a>
         <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">Neon</span>
       </div>
+
       <!-- Palettes Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Palette 1 -->
-        <div class="glass-card neon-card overflow-hidden">
+        <div class="glass-card neon-card shimmer-card overflow-hidden animate-on-scroll">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF00FF;" onclick="ColorPalettesHub.Clipboard.copy('#FF00FF')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00FFFF;" onclick="ColorPalettesHub.Clipboard.copy('#00FFFF')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF00AA;" onclick="ColorPalettesHub.Clipboard.copy('#FF00AA')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00FF00;" onclick="ColorPalettesHub.Clipboard.copy('#00FF00')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFF00;" onclick="ColorPalettesHub.Clipboard.copy('#FFFF00')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF00FF;" onclick="Devpalettes.Clipboard.copy('#FF00FF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00FFFF;" onclick="Devpalettes.Clipboard.copy('#00FFFF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF00AA;" onclick="Devpalettes.Clipboard.copy('#FF00AA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00FF00;" onclick="Devpalettes.Clipboard.copy('#00FF00')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFF00;" onclick="Devpalettes.Clipboard.copy('#FFFF00')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Cyber Rave</h3>
@@ -70,13 +94,13 @@
           </div>
         </div>
         <!-- Palette 2 -->
-        <div class="glass-card neon-card overflow-hidden">
+        <div class="glass-card neon-card shimmer-card overflow-hidden animate-on-scroll">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0D0221;" onclick="ColorPalettesHub.Clipboard.copy('#0D0221')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0F4C5C;" onclick="ColorPalettesHub.Clipboard.copy('#0F4C5C')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF00FF;" onclick="ColorPalettesHub.Clipboard.copy('#FF00FF')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00F0FF;" onclick="ColorPalettesHub.Clipboard.copy('#00F0FF')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFF00;" onclick="ColorPalettesHub.Clipboard.copy('#FFFF00')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0D0221;" onclick="Devpalettes.Clipboard.copy('#0D0221')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0F4C5C;" onclick="Devpalettes.Clipboard.copy('#0F4C5C')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF00FF;" onclick="Devpalettes.Clipboard.copy('#FF00FF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00F0FF;" onclick="Devpalettes.Clipboard.copy('#00F0FF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFF00;" onclick="Devpalettes.Clipboard.copy('#FFFF00')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Blade Runner</h3>
@@ -84,13 +108,13 @@
           </div>
         </div>
         <!-- Palette 3 -->
-        <div class="glass-card neon-card overflow-hidden">
+        <div class="glass-card neon-card shimmer-card overflow-hidden animate-on-scroll">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF2A6D;" onclick="ColorPalettesHub.Clipboard.copy('#FF2A6D')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #05D9E8;" onclick="ColorPalettesHub.Clipboard.copy('#05D9E8')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D1F7FF;" onclick="ColorPalettesHub.Clipboard.copy('#D1F7FF')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #005678;" onclick="ColorPalettesHub.Clipboard.copy('#005678')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #01012E;" onclick="ColorPalettesHub.Clipboard.copy('#01012E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF2A6D;" onclick="Devpalettes.Clipboard.copy('#FF2A6D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #05D9E8;" onclick="Devpalettes.Clipboard.copy('#05D9E8')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D1F7FF;" onclick="Devpalettes.Clipboard.copy('#D1F7FF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #005678;" onclick="Devpalettes.Clipboard.copy('#005678')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #01012E;" onclick="Devpalettes.Clipboard.copy('#01012E')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Neon Noir</h3>
@@ -98,13 +122,13 @@
           </div>
         </div>
         <!-- Palette 4 -->
-        <div class="glass-card neon-card overflow-hidden">
+        <div class="glass-card neon-card shimmer-card overflow-hidden animate-on-scroll">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #7B2D8E;" onclick="ColorPalettesHub.Clipboard.copy('#7B2D8E')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B537F2;" onclick="ColorPalettesHub.Clipboard.copy('#B537F2')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F2B7E6;" onclick="ColorPalettesHub.Clipboard.copy('#F2B7E6')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #05F2F2;" onclick="ColorPalettesHub.Clipboard.copy('#05F2F2')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1EF2F2;" onclick="ColorPalettesHub.Clipboard.copy('#1EF2F2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #7B2D8E;" onclick="Devpalettes.Clipboard.copy('#7B2D8E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B537F2;" onclick="Devpalettes.Clipboard.copy('#B537F2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F2B7E6;" onclick="Devpalettes.Clipboard.copy('#F2B7E6')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #05F2F2;" onclick="Devpalettes.Clipboard.copy('#05F2F2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1EF2F2;" onclick="Devpalettes.Clipboard.copy('#1EF2F2')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Synthwave Sunset</h3>
@@ -112,13 +136,13 @@
           </div>
         </div>
         <!-- Palette 5 -->
-        <div class="glass-card neon-card overflow-hidden">
+        <div class="glass-card neon-card shimmer-card overflow-hidden animate-on-scroll">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #000000;" onclick="ColorPalettesHub.Clipboard.copy('#000000')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00FF41;" onclick="ColorPalettesHub.Clipboard.copy('#00FF41')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #008F11;" onclick="ColorPalettesHub.Clipboard.copy('#008F11')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #003B00;" onclick="ColorPalettesHub.Clipboard.copy('#003B00')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFFFF;" onclick="ColorPalettesHub.Clipboard.copy('#FFFFFF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #000000;" onclick="Devpalettes.Clipboard.copy('#000000')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00FF41;" onclick="Devpalettes.Clipboard.copy('#00FF41')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #008F11;" onclick="Devpalettes.Clipboard.copy('#008F11')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #003B00;" onclick="Devpalettes.Clipboard.copy('#003B00')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFFFF;" onclick="Devpalettes.Clipboard.copy('#FFFFFF')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Matrix Code</h3>
@@ -126,13 +150,13 @@
           </div>
         </div>
         <!-- Palette 6 -->
-        <div class="glass-card neon-card overflow-hidden">
+        <div class="glass-card neon-card shimmer-card overflow-hidden animate-on-scroll">
           <div class="flex">
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF6B6B;" onclick="ColorPalettesHub.Clipboard.copy('#FF6B6B')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFE66D;" onclick="ColorPalettesHub.Clipboard.copy('#FFE66D')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #4ECDC4;" onclick="ColorPalettesHub.Clipboard.copy('#4ECDC4')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1A535C;" onclick="ColorPalettesHub.Clipboard.copy('#1A535C')"></div>
-            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F7FFF7;" onclick="ColorPalettesHub.Clipboard.copy('#F7FFF7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF6B6B;" onclick="Devpalettes.Clipboard.copy('#FF6B6B')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFE66D;" onclick="Devpalettes.Clipboard.copy('#FFE66D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #4ECDC4;" onclick="Devpalettes.Clipboard.copy('#4ECDC4')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1A535C;" onclick="Devpalettes.Clipboard.copy('#1A535C')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F7FFF7;" onclick="Devpalettes.Clipboard.copy('#F7FFF7')"></div>
           </div>
           <div class="p-4">
             <h3 class="font-semibold mb-1">Miami Vice</h3>
@@ -140,23 +164,25 @@
           </div>
         </div>
       </div>
+
       <!-- SEO Content -->
-      <div class="glass-card p-8 mb-8">
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-4">Using Neon Colors in Design</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
-          Neon colors are highly saturated, bright hues that mimic the glow of neon lights. They're perfect for creating bold, attention-grabbing designs with a futuristic or retro vibe.
+          Neon colors are highly saturated, bright hues that mimic the glow of neon lights. They are perfect for creating bold, attention-grabbing designs with a futuristic or retro vibe.
         </p>
         <h3 class="text-xl font-bold mb-2">Best Practices for Neon Palettes</h3>
         <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
-          <li>Pair neon colors with dark backgrounds for maximum impact</li>
-          <li>Use sparingly as accents to avoid overwhelming users</li>
-          <li>Consider adding glow effects in CSS for authenticity</li>
-          <li>Test accessibility carefully—neon colors can be hard to read</li>
-          <li>Perfect for gaming, music, and tech brand identities</li>
+          <li><strong>Dark Backgrounds:</strong> Pair neon colors with dark backgrounds for maximum impact and readability.</li>
+          <li><strong>Use as Accents:</strong> Use sparingly to highlight key elements; too much neon can overwhelm users.</li>
+          <li><strong>Add Glow Effects:</strong> Use CSS box-shadow to create authentic neon glow effects.</li>
+          <li><strong>Accessibility:</strong> Test contrast carefully; neon colors can sometimes fail WCAG standards for text.</li>
+          <li><strong>Genre Fit:</strong> Perfect for gaming, music festivals, tech startups, and cyberpunk themes.</li>
         </ul>
       </div>
-      <div class="text-center">
-        <a href="palette.html" class="btn-coral inline-flex">
+      
+      <div class="text-center animate-on-scroll">
+        <a href="palette.html" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-bolt"></i>
           Create Neon Palette
         </a>
@@ -165,5 +191,6 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

@@ -3,26 +3,58 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Create stunning CSS gradients with our free online gradient generator. Linear and radial gradients with unlimited color stops.">
-  <meta name="keywords" content="gradient generator, css gradient, linear gradient, radial gradient, background gradient">
-  <meta name="author" content="ColorPalettesHub">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
-  <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Gradient Generator - Create Linear & Radial Gradients | Dev Palettes</title>
+  <meta name="title" content="CSS Gradient Generator - Create Linear & Radial Gradients">
+  <meta name="description" content="Generate beautiful CSS gradients for free. Create linear and radial gradients with multiple color stops. Copy CSS code instantly.">
+  <meta name="keywords" content="gradient generator, css gradient, linear gradient, radial gradient, background gradient, css gradient generator">
+  <meta name="author" content="Dev Palettes">
+  <link rel="canonical" href="https://colorpaletteshub.com/gradient.html" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Gradient Generator - Create Beautiful CSS Gradients | ColorPalettesHub</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/gradient.html">
+  <meta property="og:title" content="CSS Gradient Generator">
+  <meta property="og:description" content="Create stunning linear and radial CSS gradients with our free online tool.">
+  <meta property="og:image" content="https://colorpaletteshub.com/images/og-gradient.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://colorpaletteshub.com/gradient.html">
+  <meta property="twitter:title" content="CSS Gradient Generator">
+  <meta property="twitter:description" content="Create stunning linear and radial CSS gradients with our free online tool.">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Gradient Generator",
+    "url": "https://colorpaletteshub.com/gradient.html",
+    "description": "A free online tool to generate CSS linear and radial gradients with multiple color stops.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+   
+  <!-- Theme Initialization -->
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -41,24 +73,44 @@
       },
     }
   </script>
+  
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
+  
   <!-- Main Content -->
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <!-- Header -->
+      <div class="text-center mb-8 animate-on-scroll">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Gradient Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          Create stunning CSS gradients with ease • Copy code instantly
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
       <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Preview Panel -->
-        <div class="order-2 lg:order-1">
+        <!-- Preview Panel (Left Side) -->
+        <div class="order-2 lg:order-1 animate-on-scroll">
           <div id="gradient-preview" class="w-full aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl shadow-2xl transition-all duration-300" style="background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);">
           </div>
+          
           <!-- CSS Output -->
-          <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
+          <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 shimmer-card">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-semibold">CSS Code</span>
-              <button id="copy-css-btn" class="text-sm text-emerald-500 hover:text-emerald-600">
+              <button id="copy-css-btn" class="text-sm text-emerald-500 hover:text-emerald-600 font-medium">
                 <i class="fas fa-copy mr-1"></i>Copy
               </button>
             </div>
@@ -67,11 +119,11 @@
             </code>
           </div>
         </div>
-        <!-- Controls Panel -->
+        
+        <!-- Controls Panel (Right Side) -->
         <div class="order-1 lg:order-2">
-          <h1 class="text-3xl font-bold mb-6">Gradient Generator</h1>
           <!-- Gradient Type -->
-          <div class="mb-6">
+          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Type</label>
             <div class="flex gap-2">
               <button class="gradient-type-btn flex-1 py-3 rounded-xl font-medium transition-all bg-emerald-500 text-white" data-type="linear">
@@ -82,21 +134,23 @@
               </button>
             </div>
           </div>
+          
           <!-- Angle (for linear) -->
-          <div id="angle-control" class="mb-6">
+          <div id="angle-control" class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Angle: <span id="angle-value">135</span>deg</label>
-            <input type="range" id="angle-slider" min="0" max="360" value="135" class="w-full">
+            <input type="range" id="angle-slider" min="0" max="360" value="135" class="w-full accent-emerald-500">
             <div class="flex justify-between text-xs text-slate-500 mt-1">
-              <span>0deg</span>
-              <span>180deg</span>
-              <span>360deg</span>
+              <span>0°</span>
+              <span>180°</span>
+              <span>360°</span>
             </div>
           </div>
+          
           <!-- Color Stops -->
-          <div class="mb-6">
+          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <div class="flex justify-between items-center mb-2">
               <label class="text-sm font-semibold">Color Stops</label>
-              <button id="add-stop-btn" class="text-sm text-emerald-500 hover:text-emerald-600">
+              <button id="add-stop-btn" class="text-sm text-emerald-500 hover:text-emerald-600 font-medium">
                 <i class="fas fa-plus mr-1"></i>Add Stop
               </button>
             </div>
@@ -104,38 +158,104 @@
               <!-- Color stops rendered by JS -->
             </div>
           </div>
+          
           <!-- Presets -->
-          <div class="mb-6">
+          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Quick Presets</label>
             <div class="grid grid-cols-4 gap-2">
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);" data-gradient="linear-gradient(135deg, #ff0844 0%, #ffb199 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);" data-gradient="linear-gradient(135deg, #ff0844 0%, #ffb199 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)"></button>
             </div>
           </div>
+          
           <!-- Actions -->
-          <div class="flex gap-3">
+          <div class="flex gap-3 animate-on-scroll">
             <button id="random-gradient-btn" class="btn-secondary flex-1 justify-center">
               <i class="fas fa-random"></i>
               Random
             </button>
-            <button id="copy-gradient-btn" class="btn-primary flex-1 justify-center">
+            <button id="copy-gradient-btn" class="btn-primary btn-glow flex-1 justify-center">
               <i class="fas fa-copy"></i>
               Copy CSS
             </button>
           </div>
         </div>
       </div>
+      
+      <!-- ==========================================
+           SEO CONTENT SECTION (Starts Here)
+           ========================================== -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is a CSS Gradient?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               A CSS gradient allows you to display smooth transitions between two or more specified colors. CSS gradients let you display smooth transitions between specified colors, rather than using a single solid color. They are defined by the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">background-image</code> property.
+            </p>
+         </section>
+
+         <!-- Linear vs Radial -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Linear vs. Radial Gradients</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 flex items-center gap-2">
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">L</span>
+                     Linear Gradient
+                  </h3>
+                  <p class="text-xs text-slate-500">Goes down/up/left/right/diagonally. You define the direction (angle) and the color stops.</p>
+                  <div class="h-24 mt-3 rounded" style="background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);"></div>
+               </div>
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 flex items-center gap-2">
+                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">R</span>
+                     Radial Gradient
+                  </h3>
+                  <p class="text-xs text-slate-500">Defined by their center. Colors emanate outward from a central point in a circular or elliptical shape.</p>
+                  <div class="h-24 mt-3 rounded" style="background: radial-gradient(circle, #f093fb 0%, #f5576c 100%);"></div>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Generator</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Select Type:</strong> Choose between Linear or Radial gradient.</li>
+               <li><strong>Set Angle:</strong> For linear gradients, adjust the angle slider to change direction.</li>
+               <li><strong>Manage Stops:</strong> Click on color stops to change colors. Drag sliders to adjust position.</li>
+               <li><strong>Add/Remove:</strong> Add more colors or remove existing ones to create complex gradients.</li>
+               <li><strong>Copy:</strong> Click "Copy CSS" to grab the code for your stylesheet.</li>
+            </ol>
+         </section>
+         
+         <!-- Related Tools -->
+         <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Related Design Tools</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="palette.html" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="text-shadow-generator.html" class="btn-secondary text-xs py-2 px-4">Text Shadow</a>
+            </div>
+         </div>
+         
+      </div>
+      <!-- End SEO Content -->
+
     </div>
   </main>
+  
   <!-- Footer -->
   <div id="footer-container"></div>
+  
   <script src="js/main.js"></script>
   <script src="js/gradient.js"></script>
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

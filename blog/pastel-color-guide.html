@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Complete guide to pastel colors in design. Learn how to use soft, muted colors effectively in your projects with practical tips and examples.">
   <meta name="keywords" content="pastel colors, pastel color guide, soft colors, muted colors, pastel palette, pastel design">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   
-  <meta property="og:title" content="Pastel Color Guide - Master Soft Colors | Color Palettes Hub">
+  <meta property="og:title" content="Pastel Color Guide - Master Soft Colors | Dev Palettes">
   <meta property="og:description" content="Complete guide to pastel colors in design. Learn how to use soft, muted colors effectively.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://colorpaletteshub.com/pastel-color-guide">
   
-  <title>Pastel Color Guide - Master Soft Colors | ColorPalettesHub</title>
+  <title>Pastel Color Guide - Master Soft Colors | Devpalettes</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -35,26 +42,35 @@
   </script>
   
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   
-  <!-- Navbar – same as gradient.html -->
+  <!-- Navbar -->
   <div id="navbar-container"></div>
   
-  <!-- Main Content – same structure as gradient.html -->
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <!-- Main Content -->
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <!-- Heading – same as gradient -->
-      <div class="text-center mb-12">
+      <!-- Heading -->
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-3xl font-bold mb-6">Pastel Color Guide</h1>
-        <p class="text-slate-600 dark:text-slate-400">
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
           Complete guide to pastel colors in design. Learn how to use soft, muted colors effectively in your projects with practical tips and examples.
         </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
-      <!-- Single glass card – same as gradient -->
-      <div class="glass-card p-8">
+      <!-- Single glass card -->
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
         <div class="prose dark:prose-invert max-w-none">
           
           <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
@@ -132,9 +148,11 @@
     </div>
   </main>
   
-  <!-- Footer – same as gradient.html -->
+  <!-- Footer -->
   <div id="footer-container"></div>
   
   <script src="../js/main.js"></script>
+  
+  <script src="../js/enhancements.js"></script>
 </body>
 </html>

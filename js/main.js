@@ -1,5 +1,5 @@
 /* ============================================
-   ColorPalettesHub - Main JavaScript
+   Devpalettes - Main JavaScript
    Shared functionality across all pages
    ============================================ */
 
@@ -401,7 +401,7 @@ function renderNavbar() {
   const navHTML = `
     <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)] sticky top-0 z-50">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-14 sm:h-16">
+        <div class="flex items-center justify-between h-14 sm:h-12">
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2 group">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
@@ -411,7 +411,7 @@ function renderNavbar() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
-                ColorPalettesHub
+                Devpalettes
               </span>
             </div>
           </a>
@@ -425,7 +425,7 @@ function renderNavbar() {
             <a href="/color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Colors</a>
             <a href="/color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
             <a href="/color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
-          </div>
+           </div>
           
           <!-- Right side -->
           <div class="flex items-center gap-2 sm:gap-4">
@@ -522,7 +522,7 @@ function renderFooter() {
               class="input-field text-sm flex-1" required>
               <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
               <input type="hidden" name="_captcha" value="false">
-              <button type="submit" class="btn-primary text-sm px-4">
+              <button type="submit" class="btn-primary text-sm px-4 btn-size">
               <i class="fas fa-arrow-right"></i>
               </button>
             </form>
@@ -538,12 +538,12 @@ function renderFooter() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
-                ColorPalettesHub
+                Devpalettes
               </span>
             </div>
           </a>
           <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
-            &copy; ${new Date().getFullYear()} ColorPalettesHub. All rights reserved.
+            &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
             <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
@@ -567,7 +567,7 @@ function renderFooter() {
   }
 }
 
-function renderAuthorBio(author = 'ColorPalettesHub Team', date = null) {
+function renderAuthorBio(author = 'Devpalettes Team', date = null) {
   const container = document.getElementById('author-bio-container');
   if (!container) return;
 
@@ -586,7 +586,7 @@ function renderAuthorBio(author = 'ColorPalettesHub Team', date = null) {
           Updated on ${displayDate}
         </p>
         <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
-          ColorPalettesHub Team creates tools and resources for designers and developers worldwide.
+          Devpalettes Team creates tools and resources for designers and developers worldwide.
         </p>
       </div>
       <div class="flex gap-3">
@@ -628,11 +628,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('ColorPalettesHub initialized successfully');
+  console.log('Devpalettes initialized successfully');
 });
 
 // Export utilities for use in other scripts
-window.ColorPalettesHub = {
+window.Devpalettes = {
   ThemeManager,
   Toast,
   ColorUtils,

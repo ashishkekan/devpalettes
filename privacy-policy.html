@@ -3,21 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ColorPalettesHub Privacy Policy. Learn how we handle your data and protect your privacy.">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
-  <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  
+  <!-- Primary Meta Tags -->
+  <title>Privacy Policy - Your Data & Security | Dev Palettes</title>
+  <meta name="title" content="Privacy Policy - Dev Palettes">
+  <meta name="description" content="Privacy Policy for Dev Palettes. We respect your privacy and store all data locally on your device.">
+  <meta name="keywords" content="privacy policy, data protection, user privacy, color tools security, local storage privacy">
+  <meta name="author" content="Dev Palettes">
+  <link rel="canonical" href="https://colorpaletteshub.com/privacy-policy.html" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Privacy Policy - ColorPalettesHub</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/privacy-policy.html">
+  <meta property="og:title" content="Privacy Policy">
+  <meta property="og:description" content="Learn how we handle your data and protect your privacy.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Privacy Policy",
+    "description": "Privacy Policy regarding data handling on Dev Palettes.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Dev Palettes",
+      "url": "https://colorpaletteshub.com"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -30,95 +51,91 @@
       theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
     }
   </script>
+  
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8">
-      <div class="text-center mb-12">
+  
+  <main class="pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-4">Privacy Policy</h1>
-        <p class="text-slate-600 dark:text-slate-400">Last updated: March 2026</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Last updated: March 2026</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
-      <div class="prose prose-slate dark:prose-invert max-w-none">
-        <div class="glass-card p-8 mb-6">
+      
+      <div class="prose prose-slate dark:prose-invert max-w-none space-y-8">
+        
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Introduction</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            ColorPalettesHub ("we", "our", or "us") respects your privacy and is committed to protecting 
-            your personal data. This privacy policy explains how we collect, use, and safeguard your 
-            information when you use our service.
+            Dev Palettes ("we", "our", or "us") respects your privacy. This policy explains how we handle your information when you use our free color tools.
           </p>
         </div>
-        <div class="glass-card p-8 mb-6">
+        
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Information We Collect</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4">
-            ColorPalettesHub is designed with privacy in mind. We minimize data collection:
+            Our site is designed to minimize data collection. We primarily use <strong>Local Storage</strong> to save your settings directly on your browser. This data is never transmitted to our servers.
           </p>
-          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
-            <li><strong>Local Storage:</strong> Your saved palettes are stored locally in your browser. We do not have access to this data.</li>
-            <li><strong>Theme Preference:</strong> Your dark/light mode preference is stored locally.</li>
-            <li><strong>Analytics:</strong> We may use anonymous analytics to understand how our tools are used.</li>
-          </ul>
+          <div class="grid md:grid-cols-2 gap-4 text-sm">
+             <div class="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <h4 class="font-bold mb-1"><i class="fas fa-check-circle text-emerald-500 mr-1"></i> What We Store</h4>
+                <p class="text-slate-500">Theme preferences, saved palettes, gradient settings.</p>
+             </div>
+             <div class="p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <h4 class="font-bold mb-1"><i class="fas fa-times-circle text-rose-500 mr-1"></i> What We DON'T Store</h4>
+                <p class="text-slate-500">Personal names, emails, passwords, tracking IDs.</p>
+             </div>
+          </div>
         </div>
-        <div class="glass-card p-8 mb-6">
-          <h2 class="text-xl font-bold mb-4">Information We Do NOT Collect</h2>
-          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
-            <li>Personal identification information</li>
-            <li>Email addresses (unless you contact us)</li>
-            <li>Your color palettes or designs</li>
-            <li>Cookies for tracking purposes</li>
-          </ul>
-        </div>
-        <div class="glass-card p-8 mb-6">
+        
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Third-Party Services</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            We use the following third-party services:
+            We use trusted third-party services to deliver content:
           </p>
           <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2 mt-2">
-            <li>Google Fonts - for typography</li>
-            <li>Font Awesome - for icons</li>
-            <li>Tailwind CSS CDN - for styling</li>
+            <li><strong>Google Fonts:</strong> For typography (Inter).</li>
+            <li><strong>Font Awesome:</strong> For icons.</li>
+            <li><strong>Google AdSense:</strong> For advertisements. Google may use cookies for ad personalization.</li>
           </ul>
         </div>
-        <div class="glass-card p-8 mb-6">
-          <h2 class="text-xl font-bold mb-4">Cookies</h2>
-          <p class="text-slate-600 dark:text-slate-400">
-            We use localStorage to save your preferences (theme, saved palettes). This data stays 
-            on your device and is not transmitted to our servers.
-          </p>
-        </div>
-        <div class="glass-card p-8 mb-6">
+        
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Children's Privacy</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            Our service is suitable for all ages. We do not knowingly collect any information 
-            from children or adults.
+            Our service is suitable for all ages. We do not knowingly collect any information from children.
           </p>
         </div>
-        <div class="glass-card p-8 mb-6">
-          <h2 class="text-xl font-bold mb-4">Changes to This Policy</h2>
-          <p class="text-slate-600 dark:text-slate-400">
-            We may update this privacy policy from time to time. Any changes will be posted on 
-            this page with an updated revision date.
-          </p>
-        </div>
-        <div class="glass-card p-8 mb-6">
-          <h2 class="text-xl font-bold mb-4">Google Adsense</h2>
-          <p class="text-slate-600 dark:text-slate-400">
-            We use Google AdSense to serve ads. Google may use cookies to personalize ads.
-            We do not share any personal information with advertisers.
-          </p>
-        </div>
-        <div class="glass-card p-8">
+        
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-xl font-bold mb-4">Contact Us</h2>
           <p class="text-slate-600 dark:text-slate-400">
-            If you have questions about this privacy policy, please contact us at 
-            <a href="mailto:privacy@colorpaletteshub.com" class="text-emerald-500 hover:underline">privacy@colorpaletteshub.com</a>.
+            If you have questions, please contact us at 
+            <a href="mailto:privacy@colorpaletteshub.com" class="text-emerald-500 hover:underline font-medium">privacy@colorpaletteshub.com</a>.
           </p>
         </div>
+        
+        <!-- Internal Links for SEO -->
+        <div class="text-center mt-8 animate-on-scroll">
+           <p class="text-sm text-slate-500">Also read our <a href="cookie-policy.html" class="text-emerald-500 hover:underline font-medium">Cookie Policy</a>.</p>
+        </div>
+        
       </div>
     </div>
   </main>
+  
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
+  <script src="js/enhancements.js"></script>
 </body>
 </html>

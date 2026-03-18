@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Explore expert guides on color psychology, UI trends, best color combinations, and design tips. Learn how to use colors effectively in your projects.">
   <meta name="keywords" content="color guides, design resources, color psychology, UI color trends, pastel colors, dark mode colors">
-  <meta name="author" content="ColorPalettesHub">
+  <meta name="author" content="Devpalettes">
   
-  <meta property="og:title" content="Design Guides & Color Resources | Color Palettes Hub">
+  <meta property="og:title" content="Design Guides & Color Resources | Dev Palettes">
   <meta property="og:description" content="Expert guides on color psychology, UI trends, and best color combinations for designers.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com/blog/">
   
-  <title>Design Guides & Color Resources | ColorPalettesHub</title>
+  <title>Design Guides & Color Resources | Devpalettes</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,6 +21,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -35,30 +42,70 @@
   </script>
   
   <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <!-- ANIMATION ENHANCEMENT STYLES -->
+  <style>
+    #hero-visualizer { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; opacity: 0.6; pointer-events: none; }
+    .dark #hero-visualizer { opacity: 0.4; }
+    
+    .gradient-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.5; pointer-events: none; z-index: 1; will-change: transform; }
+    .dark .gradient-blob { opacity: 0.3; }
+    
+    .blob-1 { width: 400px; height: 400px; background: linear-gradient(135deg, #10b981, #14b8a6); top: -100px; left: -100px; animation: blobFloat1 25s ease-in-out infinite; }
+    .blob-2 { width: 350px; height: 350px; background: linear-gradient(135deg, #f97316, #ec4899); top: 20%; right: -80px; animation: blobFloat2 28s ease-in-out infinite; }
+    .blob-3 { width: 300px; height: 300px; background: linear-gradient(135deg, #06b6d4, #8b5cf6); bottom: 10%; left: 10%; animation: blobFloat3 22s ease-in-out infinite; }
+    
+    @keyframes blobFloat1 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 25% { transform: translate(100px, 50px) scale(1.1) rotate(45deg); } 50% { transform: translate(50px, 100px) scale(0.9) rotate(90deg); } 75% { transform: translate(-30px, 60px) scale(1.05) rotate(135deg); } }
+    @keyframes blobFloat2 { 0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); } 33% { transform: translate(-80px, 80px) scale(1.15) rotate(-60deg); } 66% { transform: translate(-40px, -40px) scale(0.85) rotate(-120deg); } }
+    @keyframes blobFloat3 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(80px, -60px) scale(1.2); } }
+    
+    .spectrum-line { height: 4px; border-radius: 2px; background: linear-gradient(90deg, #10b981 0%, #06b6d4 16%, #8b5cf6 32%, #ec4899 48%, #f97316 64%, #fbbf24 80%, #10b981 100%); background-size: 200% 100%; animation: spectrumShift 4s linear infinite; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(6, 182, 212, 0.3); position: relative; }
+    @keyframes spectrumShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+    
+    #particles-container { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 2; }
+    .particle { position: absolute; border-radius: 50%; pointer-events: none; animation: particleFloat linear infinite; }
+    @keyframes particleFloat { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
+    
+    .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .animate-on-scroll.animate-in { opacity: 1; transform: translateY(0); }
+    
+    .shimmer-card { position: relative; overflow: hidden; }
+    .shimmer-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%); transform: translateX(-100%); animation: shimmerEffect 3s ease-in-out infinite; pointer-events: none; z-index: 10; }
+    @keyframes shimmerEffect { 0% { transform: translateX(-100%); } 50%, 100% { transform: translateX(100%); } }
+    
+    @media (prefers-reduced-motion: reduce) { .gradient-blob, .spectrum-line, .particle, .shimmer-card::before { animation: none !important; } .animate-on-scroll { opacity: 1; transform: none; } }
+    @media (max-width: 768px) { .gradient-blob { filter: blur(60px); opacity: 0.4; } .blob-1 { width: 250px; height: 250px; } .blob-2 { width: 200px; height: 200px; } .blob-3 { width: 180px; height: 180px; } }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   
   <div id="navbar-container"></div>
   
-  <main class="pt-10 pb-12 min-h-screen">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Page Header -->
-      <div class="text-center mb-12">
-        <span class="inline-block px-4 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-sm font-medium rounded-full mb-4">
-          <i class="fas fa-book-open mr-2"></i>Design Resources
-        </span>
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl sm:text-5xl font-bold mb-4 bg-gradient-to-r from-emerald-500 via-cyan-500 to-purple-500 bg-clip-text text-transparent">
           Design Guides & Color Resources
         </h1>
-        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
           Expert guides on color psychology, UI trends, and best practices for using colors effectively in your design projects.
         </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
       <!-- Featured Article -->
-      <div class="mb-12">
-        <a href="best-color-combinations.html" class="block bg-white dark:bg-slate-800/50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group">
+      <div class="mb-12 animate-on-scroll">
+        <a href="best-color-combinations.html" class="block bg-white dark:bg-slate-800/50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group shimmer-card">
           <div class="grid lg:grid-cols-2 gap-0">
             <div class="h-64 lg:h-auto relative" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent lg:bg-gradient-to-r"></div>
@@ -90,7 +137,7 @@
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Article Card 1 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
           <a href="ui-color-trends-2026.html" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -110,7 +157,7 @@
         </article>
         
         <!-- Article Card 2 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
           <a href="pastel-color-guide.html" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -130,7 +177,7 @@
         </article>
         
         <!-- Article Card 3 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
           <a href="dark-mode-color-guide.html" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #0c0f14 0%, #1a1a2e 50%, #0f3460 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -150,7 +197,7 @@
         </article>
         
         <!-- Article Card 4 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
           <a href="color-psychology.html" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -170,7 +217,7 @@
         </article>
         
         <!-- Article Card 5 - Coming Soon -->
-        <article class="bg-slate-100 dark:bg-slate-800/30 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 overflow-hidden">
+        <article class="bg-slate-100 dark:bg-slate-800/30 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 overflow-hidden animate-on-scroll">
           <div class="p-5 text-center py-12">
             <div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <i class="fas fa-pen-nib text-2xl text-slate-400"></i>
@@ -185,7 +232,7 @@
       </div>
       
       <!-- Newsletter Section -->
-      <div class="mt-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl p-8 text-center text-white">
+      <div class="mt-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl p-8 text-center text-white animate-on-scroll">
         <h2 class="text-2xl font-bold mb-2">Stay Updated</h2>
         <p class="mb-6 text-white/90">Get the latest color tips and design guides delivered to your inbox.</p>
         <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -202,5 +249,7 @@
   <div id="footer-container"></div>
   
   <script src="../js/main.js"></script>
+  
+  <script src="../js/enhancements.js"></script>
 </body>
 </html>

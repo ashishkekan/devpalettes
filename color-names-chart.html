@@ -3,20 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
-  <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  
+  <!-- Primary Meta Tags -->
+  <title>HTML Color Names Chart - Complete List of 140+ Named Colors | Dev Palettes</title>
+  <meta name="title" content="HTML Color Names Chart - Complete List of 140+ Named Colors">
+  <meta name="description" content="Explore the complete list of 148 standard HTML color names with HEX and RGB values. Click any color to copy the code instantly.">
+  <meta name="keywords" content="html color names, css color names, color names chart, html color codes, web color names, x11 color names">
+  <meta name="author" content="Dev Palettes">
+  <link rel="canonical" href="https://colorpaletteshub.com/color-names-chart.html" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>HTML Color Names Chart | ColorPalettesHub</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/color-names-chart.html">
+  <meta property="og:title" content="HTML Color Names Chart">
+  <meta property="og:description" content="Complete list of 148 standard HTML color names. Click to copy.">
+  <meta property="og:image" content="https://colorpaletteshub.com/images/og-colors.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://colorpaletteshub.com/color-names-chart.html">
+  <meta property="twitter:title" content="HTML Color Names Chart">
+  <meta property="twitter:description" content="Complete list of 148 standard HTML color names. Click to copy.">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "HTML Color Names",
+    "description": "A list of standard HTML color names.",
+    "numberOfItems": 148,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "AliceBlue",
+        "description": "HEX #F0F8FF"
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -26,23 +59,98 @@
   <script>
     tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
   </script>
+  
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
-  <main class="pt-8 pb-16">
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8" style="padding: 5px;">
-      <div class="text-center mb-12">
+  
+  <main class="pt-8 pb-16 relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
         <h1 class="text-4xl font-bold mb-3">HTML Color Names Chart</h1>
-        <p class="text-slate-600 dark:text-slate-400">148 standard named colors • Click any color to copy HEX</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">148 standard named colors • Click any color to copy HEX</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
-      <div id="color-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4">
+      
+      <div id="color-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-8 gap-4 animate-on-scroll">
         <!-- All 148 colors will be injected by JS -->
       </div>
+      
+      <!-- ==========================================
+           SEO CONTENT SECTION (Starts Here)
+           ========================================== -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What are HTML Color Names?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               HTML Color Names are predefined keywords that represent specific colors in web design. Instead of using numeric values like HEX codes (<code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#FF0000</code>), developers can simply use the name <strong>Red</strong>. There are currently <strong>148 standard color names</strong> supported by all major browsers, originally derived from the X11 color names.
+            </p>
+         </section>
+
+         <!-- Usage Tips -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">How to Use This Chart</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 flex items-center gap-2">
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">1</span>
+                     Identify Colors
+                  </h3>
+                  <p class="text-sm text-slate-500">Browse the visual grid to find the perfect color name for your project.</p>
+               </div>
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 flex items-center gap-2">
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">2</span>
+                     Click to Copy
+                  </h3>
+                  <p class="text-sm text-slate-500">Click on any color card to instantly copy its HEX code to your clipboard.</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- Why Use Named Colors -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Why Use Named Colors?</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Readability:</strong> Code like <code>color: Tomato;</code> is easier to understand than <code>color: #FF6347;</code>.</li>
+               <li><strong>Memorability:</strong> It's easier to remember names like "SkyBlue" or "Chocolate" than hex codes.</li>
+               <li><strong>Speed:</strong> Faster to type common names during rapid prototyping.</li>
+               <li><strong>Transparency:</strong> You know exactly what color you are using just by reading the name.</li>
+            </ul>
+         </section>
+         
+         <!-- Related Tools -->
+         <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Related Design Tools</h2>
+            <p class="text-slate-500 mb-4 text-sm">Found a color you like? Try these tools next:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="converter.html" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="palette.html" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+            </div>
+         </div>
+         
+      </div>
+      <!-- End SEO Content -->
+      
     </div>
   </main>
+  
   <div id="footer-container"></div>
+  
   <script src="js/main.js"></script>
+  
+  <!-- JS Logic Preserved Exactly as Provided -->
   <script>
     const colors = [
       {name:"AliceBlue",hex:"#F0F8FF",rgb:"240,248,255"},{name:"AntiqueWhite",hex:"#FAEBD7",rgb:"250,235,215"},
@@ -121,7 +229,8 @@
       const grid = document.getElementById('color-grid');
       colors.forEach(c => {
         const card = document.createElement('div');
-        card.className = `group relative glass-card overflow-hidden aspect-square flex flex-col cursor-pointer hover:ring-2 hover:ring-emerald-500 transition-all`;
+        // Applied consistent styling classes
+        card.className = `group relative glass-card shimmer-card overflow-hidden aspect-square flex flex-col cursor-pointer hover:ring-2 hover:ring-emerald-500 transition-all`;
         card.innerHTML = `
           <div class="flex-1" style="background-color: ${c.hex}"></div>
           <div class="p-3 text-center">
@@ -131,11 +240,13 @@
         `;
         card.onclick = () => {
           navigator.clipboard.writeText(c.hex);
-          window.ColorPalettesHub.Toast.show(`Copied ${c.hex}`, 'success');
+          window.Devpalettes.Toast.show(`Copied ${c.hex}`, 'success');
         };
         grid.appendChild(card);
       });
     });
   </script>
+  
+  <script src="js/enhancements.js"></script>
 </body>
 </html>
