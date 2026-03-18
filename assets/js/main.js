@@ -418,16 +418,8 @@ function renderNavbar() {
           
           <!-- Desktop Nav -->
           <div class="nav-links hidden md:flex items-center gap-6 lg:gap-8">
-            <a href="/pages/tools/palette.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generate</a>
-            <a href="/pages/palettes/pastel-color-palettes.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'pastel-color-palettes.html' ? 'text-emerald-500' : ''}">Explore</a>
-            <a href="/pages/tools/gradient.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'gradient.html' ? 'text-emerald-500' : ''}">Gradients</a>
-            <a href="/pages/tools/converter.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Convert</a>
-            <a href="/pages/learn/color-names-chart.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Colors</a>
-            <a href="/pages/checkers/color-blindness.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
-            <a href="/pages/tools/color-from-image.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
-            <a href="/pages/tools/color-wheel.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-wheel.html' ? 'text-emerald-500' : ''}">Wheels</a>
-            <a href="/pages/learn/color-temperature.html" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-temperature.html' ? 'text-emerald-500' : ''}">Temperature</a>
-           </div>
+            <div id="dynamic-pages-desktop" class="flex items-center gap-4"></div>
+          </div>
           
           <!-- Right side -->
           <div class="flex items-center gap-2 sm:gap-4">
@@ -452,15 +444,10 @@ function renderNavbar() {
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
       <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
-        <a href="/pages/tools/palette.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Generate</a>
-        <a href="/pages/palettes/pastel-color-palettes.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Explore</a>
-        <a href="/pages/tools/gradient.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradients</a>
-        <a href="/pages/tools/converter.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Convert</a>
-        <a href="/pages/learn/color-names-chart.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
-        <a href="/pages/checkers/color-blindness.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
-        <a href="/pages/tools/color-from-image.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
-        <a href="/pages/tools/color-wheel.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Wheels</a>
-        <a href="/pages/learn/color-temperature.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Temperature</a>
+        <div class="pt-2">
+          <p class="text-xs uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">Browse Pages</p>
+          <div id="dynamic-pages-mobile" class="flex flex-col gap-2"></div>
+        </div>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="/pages/site/about.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
         <a href="/pages/site/contact.html" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
@@ -480,6 +467,153 @@ function renderNavbar() {
     navbarContainer.innerHTML = navHTML;
   }
 }
+
+// ==========================================
+// Dynamic Pages Navbar (manifest-driven)
+// ==========================================
+
+const DynamicPagesNav = {
+  manifestUrl: '/assets/pages-manifest.json',
+  clickBound: false,
+
+  async init() {
+    const desktopHost = document.getElementById('dynamic-pages-desktop');
+    const mobileHost = document.getElementById('dynamic-pages-mobile');
+    if (!desktopHost && !mobileHost) return;
+
+    const manifest = await this.fetchManifest();
+    if (!manifest || !manifest.folders || !manifest.basePath) return;
+
+    if (desktopHost) {
+      desktopHost.innerHTML = '';
+      desktopHost.appendChild(this.buildDesktopMenus(manifest));
+    }
+
+    if (mobileHost) {
+      mobileHost.innerHTML = '';
+      mobileHost.appendChild(this.buildMobileMenus(manifest));
+    }
+
+    this.bindClickHandler();
+  },
+
+  async fetchManifest() {
+    try {
+      const res = await fetch(this.manifestUrl, { cache: 'no-store' });
+      if (!res.ok) return null;
+      return await res.json();
+    } catch {
+      return null;
+    }
+  },
+
+  bindClickHandler() {
+    if (this.clickBound) return;
+    this.clickBound = true;
+
+    document.addEventListener('click', (e) => {
+      const link = e.target.closest('a[data-dynamic-page]');
+      if (!link) return;
+
+      // Close dropdown (optional) and allow normal navigation to the page.
+      const parentDetails = link.closest('details');
+      if (parentDetails) parentDetails.open = false;
+    });
+  },
+
+  buildDesktopMenus(manifest) {
+    const frag = document.createDocumentFragment();
+    const folders = Object.keys(manifest.folders).sort((a, b) => a.localeCompare(b));
+
+    folders.forEach((folder) => {
+      const files = (manifest.folders[folder] || []).slice().sort((a, b) => a.localeCompare(b));
+      if (!files.length) return;
+
+      const details = document.createElement('details');
+      details.className = 'relative';
+
+      const summary = document.createElement('summary');
+      summary.className = 'list-none cursor-pointer text-sm font-medium hover:text-emerald-500 transition-colors flex items-center gap-1 select-none';
+      summary.innerHTML = `<span>${this.titleFromSlug(folder)}</span><i class="fas fa-chevron-down text-[10px] opacity-70"></i>`;
+
+      const menu = document.createElement('div');
+      menu.className = 'absolute left-0 mt-2 w-64 max-h-[70vh] overflow-auto rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl p-2 z-50';
+
+      files.forEach((file) => {
+        const a = document.createElement('a');
+        a.href = `${manifest.basePath}/${folder}/${file}`;
+        a.setAttribute('data-dynamic-page', '1');
+        a.className = 'block px-3 py-2 rounded-lg text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors';
+        a.textContent = this.labelFromFilename(file);
+        menu.appendChild(a);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(menu);
+
+      details.addEventListener('toggle', () => {
+        if (!details.open) return;
+        const host = details.parentElement;
+        if (!host) return;
+        host.querySelectorAll('details').forEach((d) => {
+          if (d !== details) d.open = false;
+        });
+      });
+
+      frag.appendChild(details);
+    });
+
+    return frag;
+  },
+
+  buildMobileMenus(manifest) {
+    const frag = document.createDocumentFragment();
+    const folders = Object.keys(manifest.folders).sort((a, b) => a.localeCompare(b));
+
+    folders.forEach((folder) => {
+      const files = (manifest.folders[folder] || []).slice().sort((a, b) => a.localeCompare(b));
+      if (!files.length) return;
+
+      const details = document.createElement('details');
+      details.className = 'rounded-xl border border-slate-200 dark:border-slate-700 bg-white/60 dark:bg-slate-900/40';
+
+      const summary = document.createElement('summary');
+      summary.className = 'list-none cursor-pointer px-3 py-2 flex items-center justify-between text-sm font-semibold';
+      summary.innerHTML = `<span>${this.titleFromSlug(folder)}</span><i class="fas fa-chevron-down text-[10px] opacity-70"></i>`;
+
+      const list = document.createElement('div');
+      list.className = 'px-2 pb-2 flex flex-col gap-1';
+
+      files.forEach((file) => {
+        const a = document.createElement('a');
+        a.href = `${manifest.basePath}/${folder}/${file}`;
+        a.setAttribute('data-dynamic-page', '1');
+        a.className = 'block px-3 py-2 rounded-lg text-sm hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors';
+        a.textContent = this.labelFromFilename(file);
+        list.appendChild(a);
+      });
+
+      details.appendChild(summary);
+      details.appendChild(list);
+      frag.appendChild(details);
+    });
+
+    return frag;
+  },
+
+  titleFromSlug(slug) {
+    return String(slug)
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  },
+
+  labelFromFilename(filename) {
+    return String(filename)
+      .replace(/\.html$/i, '')
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+  },
+};
 
 function renderFooter() {
   const footerHTML = `
@@ -605,7 +739,7 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
 // Initialize Everything
 // ==========================================
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   // Initialize theme
   ThemeManager.init();
   
@@ -618,6 +752,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Render Author Bio if container exists (for blog pages)
   renderAuthorBio();
+
+  // Dynamic pages dropdowns (manifest-driven)
+  await DynamicPagesNav.init();
   
   // Initialize navbar
   Navbar.init();
