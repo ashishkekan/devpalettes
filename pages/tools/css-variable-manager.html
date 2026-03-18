@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Variables Manager - Theme Builder & Code Generator</title>
+  <meta name="title" content="CSS Variables Manager - Theme Builder">
+  <meta name="description" content="Manage CSS variables visually. Create theme files, customize colors, spacing, and export clean CSS code.">
+  <meta name="keywords" content="css variables manager, theme builder, css root variables, css theme generator, design tokens">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/css-variables-manager.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/css-variables-manager.html">
+  <meta property="og:title" content="CSS Variables Manager">
+  <meta property="og:description" content="Manage CSS variables visually and export theme code.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Variables Manager",
+    "url": "https://colorpaletteshub.com/css-variables-manager.html",
+    "description": "A tool to visually manage and export CSS variables.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    /* Local styles for the preview box to reflect CSS vars */
+    .preview-card {
+      background-color: var(--preview-bg);
+      color: var(--preview-text);
+      border-radius: var(--preview-radius);
+      border: 1px solid var(--preview-border);
+      transition: all 0.3s ease;
+    }
+    .preview-btn-primary {
+      background-color: var(--preview-primary);
+      color: white;
+      border-radius: var(--preview-radius);
+    }
+    .preview-btn-secondary {
+      background-color: var(--preview-secondary);
+      color: white;
+      border-radius: var(--preview-radius);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-code mr-2"></i>Dev Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Variables Manager</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Visually manage your design tokens and export CSS.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-emerald-500"></i> Colors
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Primary</label>
+                   <div class="flex gap-2">
+                     <input type="color" id="var-primary" value="#4f46e5" onchange="updateVars()" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                     <input type="text" value="#4f46e5" id="txt-primary" oninput="syncVar('primary', this.value)" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono">
+                   </div>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Secondary</label>
+                   <div class="flex gap-2">
+                     <input type="color" id="var-secondary" value="#64748b" onchange="updateVars()" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                     <input type="text" value="#64748b" id="txt-secondary" oninput="syncVar('secondary', this.value)" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono">
+                   </div>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
+                   <div class="flex gap-2">
+                     <input type="color" id="var-bg" value="#ffffff" onchange="updateVars()" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                     <input type="text" value="#ffffff" id="txt-bg" oninput="syncVar('bg', this.value)" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono">
+                   </div>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Text Color</label>
+                   <div class="flex gap-2">
+                     <input type="color" id="var-text" value="#1e293b" onchange="updateVars()" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                     <input type="text" value="#1e293b" id="txt-text" oninput="syncVar('text', this.value)" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono">
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-ruler-combined text-emerald-500"></i> Spacing & Radius
+             </h3>
+             <div class="space-y-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Border Radius: <span id="v-radius">8</span>px</label>
+                   <input type="range" id="var-radius" min="0" max="24" value="8" onchange="updateVars()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Padding: <span id="v-padding">16</span>px</label>
+                   <input type="range" id="var-padding" min="0" max="64" value="16" onchange="updateVars()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+              </div>
+              
+              <div class="min-h-[300px] p-8 flex items-center justify-center bg-slate-200 dark:bg-slate-900 transition-colors duration-300" id="preview-container">
+                 <!-- The preview element uses the defined CSS variables -->
+                 <div class="preview-card w-full max-w-xs p-4 shadow-lg" style="padding: var(--preview-padding);">
+                    <h4 class="text-xl font-bold mb-2">Card Title</h4>
+                    <p class="text-sm opacity-80 mb-4">This is a live preview of your theme settings.</p>
+                    <div class="flex gap-2">
+                       <button class="preview-btn-primary px-4 py-2 text-sm font-bold">Primary</button>
+                       <button class="preview-btn-secondary px-4 py-2 text-sm font-bold">Secondary</button>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Export Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy Root</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">What are CSS Variables?</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            CSS Variables (Custom Properties) allow you to store values for reuse in your stylesheet. They make it easy to maintain themes, switch between dark/light modes, and keep your code DRY (Don't Repeat Yourself).
+         </p>
+         <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg mt-4 font-mono text-xs text-slate-500">
+            <code>:root { --main-color: #333; }<br>body { color: var(--main-color); }</code>
+         </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    // State object to store current values
+    const state = {
+      primary: '#4f46e5',
+      secondary: '#64748b',
+      bg: '#ffffff',
+      text: '#1e293b',
+      radius: 8,
+      padding: 16
+    };
+    
+    const codeOutput = document.getElementById('code-output');
+    
+    // Sync input fields and update
+    window.syncVar = function(key, value) {
+       // Basic validation for hex
+       if(value.match(/^#[0-9A-Fa-f]{6}$/)) {
+          state[key] = value;
+          document.getElementById(`var-${key}`).value = value;
+          updateVars();
+       }
+    };
+    
+    window.updateVars = function() {
+        // Read from Controls
+        state.primary = document.getElementById('var-primary').value;
+        state.secondary = document.getElementById('var-secondary').value;
+        state.bg = document.getElementById('var-bg').value;
+        state.text = document.getElementById('var-text').value;
+        state.radius = document.getElementById('var-radius').value;
+        state.padding = document.getElementById('var-padding').value;
+        
+        // Sync Text Inputs
+        document.getElementById('txt-primary').value = state.primary;
+        document.getElementById('txt-secondary').value = state.secondary;
+        document.getElementById('txt-bg').value = state.bg;
+        document.getElementById('txt-text').value = state.text;
+        
+        // Update Value Labels
+        document.getElementById('v-radius').textContent = state.radius;
+        document.getElementById('v-padding').textContent = state.padding;
+        
+        // Apply to Preview Container (so preview-card can use them)
+        const container = document.getElementById('preview-container');
+        container.style.setProperty('--preview-bg', state.bg);
+        container.style.setProperty('--preview-text', state.text);
+        container.style.setProperty('--preview-primary', state.primary);
+        container.style.setProperty('--preview-secondary', state.secondary);
+        container.style.setProperty('--preview-radius', `${state.radius}px`);
+        container.style.setProperty('--preview-padding', `${state.padding}px`);
+        
+        // Update Container BG for contrast
+        // If background is light, keep container slightly gray. If dark, keep dark.
+        const brightness = getBrightness(state.bg);
+        if(brightness > 128) {
+           container.classList.remove('bg-slate-900');
+           container.classList.add('bg-slate-200');
+        } else {
+           container.classList.remove('bg-slate-200');
+           container.classList.add('bg-slate-900');
+        }
+        
+        generateCode();
+    };
+    
+    function getBrightness(hex) {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return (r * 299 + g * 587 + b * 114) / 1000;
+    }
+    
+    function generateCode() {
+        const css = `:root {
+  --primary: ${state.primary};
+  --secondary: ${state.secondary};
+  --background: ${state.bg};
+  --text: ${state.text};
+  --radius: ${state.radius}px;
+  --padding: ${state.padding}px;
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        const text = codeOutput.value;
+        navigator.clipboard.writeText(text);
+        if (window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Variables Copied!', 'success');
+    };
+    
+    // Initialize
+    updateVars();
+  </script>
+</body>
+</html>
