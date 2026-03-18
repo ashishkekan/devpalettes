@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Theme Builder - Create Custom Website Themes Online</title>
+  <meta name="title" content="Theme Builder - Create Custom Website Themes">
+  <meta name="description" content="Build and export custom CSS themes visually. Adjust colors, fonts, and border radius to create the perfect look for your website.">
+  <meta name="keywords" content="theme builder, css theme generator, website theme creator, color scheme generator, ui theme builder">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/theme-builder.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/theme-builder.html">
+  <meta property="og:title" content="Theme Builder">
+  <meta property="og:description" content="Build and export custom CSS themes visually.">
+  <meta property="og:image" content="https://colorpaletteshub.com/images/og-theme.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Theme Builder",
+    "url": "https://colorpaletteshub.com/theme-builder.html",
+    "description": "Visual tool for building and exporting CSS themes.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    /* Custom properties for the theme preview context */
+    #preview-context {
+      --theme-bg: #f8f9fa;
+      --theme-text: #212529;
+      --theme-primary: #007bff;
+      --theme-secondary: #6c757d;
+      --theme-card-bg: #ffffff;
+      --theme-radius: 8px;
+      background-color: var(--theme-bg);
+      color: var(--theme-text);
+      transition: all 0.3s ease;
+    }
+    
+    /* Preview specific styles */
+    .preview-card {
+      background-color: var(--theme-card-bg);
+      border-radius: var(--theme-radius);
+    }
+    
+    .preview-btn-primary {
+      background-color: var(--theme-primary);
+      color: white;
+      border-radius: var(--theme-radius);
+    }
+    
+    .preview-btn-secondary {
+      background-color: var(--theme-secondary);
+      color: white;
+      border-radius: var(--theme-radius);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-paint-brush mr-2"></i>Design Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Theme Builder</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create, customize, and export complete website themes visually.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-magic text-emerald-500"></i> Presets
+             </h3>
+             <div class="flex gap-2">
+                <button onclick="setPreset('light')" class="preset-btn flex-1 py-2 rounded-xl font-medium transition-all bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500">Light</button>
+                <button onclick="setPreset('dark')" class="preset-btn flex-1 py-2 rounded-xl font-medium transition-all bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500">Dark</button>
+                <button onclick="setPreset('nature')" class="preset-btn flex-1 py-2 rounded-xl font-medium transition-all bg-slate-100 dark:bg-slate-800 border-2 border-slate-200 dark:border-slate-700 hover:border-emerald-500">Nature</button>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-emerald-500"></i> Colors
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
+                   <input type="color" id="ctrl-bg" value="#f8f9fa" onchange="updateTheme()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Text Color</label>
+                   <input type="color" id="ctrl-text" value="#212529" onchange="updateTheme()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Primary</label>
+                   <input type="color" id="ctrl-primary" value="#007bff" onchange="updateTheme()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Secondary</label>
+                   <input type="color" id="ctrl-secondary" value="#6c757d" onchange="updateTheme()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-shapes text-emerald-500"></i> Shapes
+             </h3>
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Border Radius: <span id="v-radius">8</span>px</label>
+                <input type="range" id="ctrl-radius" min="0" max="24" value="8" onchange="updateTheme()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Live Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+              </div>
+              
+              <!-- The Context where variables apply -->
+              <div id="preview-context" class="p-8 min-h-[300px] transition-colors duration-300">
+                 <div class="preview-card p-6 shadow-lg mb-6">
+                    <h4 class="text-xl font-bold mb-2">Card Title</h4>
+                    <p class="text-sm opacity-80 mb-4">This is how your components look with the current theme settings.</p>
+                    <div class="flex gap-2">
+                       <button class="preview-btn-primary px-4 py-2 text-sm font-bold">Primary</button>
+                       <button class="preview-btn-secondary px-4 py-2 text-sm font-bold">Secondary</button>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Export Theme</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy CSS</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-40 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 space-y-12 animate-on-scroll">
+         <div class="glass-card p-8">
+            <h2 class="text-2xl font-bold mb-4">How to Use the Theme Builder</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The Theme Builder allows you to visually create a consistent design system for your website. By adjusting the variables above, you can instantly see how colors and shapes affect your UI components.
+            </p>
+         </div>
+         
+         <div class="grid md:grid-cols-2 gap-6">
+            <div class="glass-card p-6">
+               <h3 class="font-bold mb-2 text-emerald-500"><i class="fas fa-check mr-1"></i> Consistency</h3>
+               <p class="text-sm text-slate-500">Using CSS variables ensures your entire website follows the same design rules.</p>
+            </div>
+            <div class="glass-card p-6">
+               <h3 class="font-bold mb-2 text-blue-500"><i class="fas fa-sync mr-1"></i> Easy Updates</h3>
+               <p class="text-sm text-slate-500">Change your site's look by updating just one file (the root variables).</p>
+            </div>
+         </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    // State object
+    const state = {
+      bg: '#f8f9fa',
+      text: '#212529',
+      primary: '#007bff',
+      secondary: '#6c757d',
+      card: '#ffffff',
+      radius: 8
+    };
+    
+    const previewContext = document.getElementById('preview-context');
+    const codeOutput = document.getElementById('code-output');
+    
+    // Presets Logic
+    const presets = {
+      light: { bg: '#f8f9fa', text: '#212529', primary: '#007bff', secondary: '#6c757d', card: '#ffffff', radius: 8 },
+      dark: { bg: '#121212', text: '#e0e0e0', primary: '#90caf9', secondary: '#757575', card: '#1e1e1e', radius: 8 },
+      nature: { bg: '#f0f4f0', text: '#2e4a3d', primary: '#4caf50', secondary: '#8bc34a', card: '#ffffff', radius: 16 }
+    };
+    
+    window.setPreset = function(name) {
+       const p = presets[name];
+       if(!p) return;
+       
+       document.getElementById('ctrl-bg').value = p.bg;
+       document.getElementById('ctrl-text').value = p.text;
+       document.getElementById('ctrl-primary').value = p.primary;
+       document.getElementById('ctrl-secondary').value = p.secondary;
+       document.getElementById('ctrl-radius').value = p.radius;
+       
+       updateTheme();
+    };
+    
+    window.updateTheme = function() {
+        // Read inputs
+        state.bg = document.getElementById('ctrl-bg').value;
+        state.text = document.getElementById('ctrl-text').value;
+        state.primary = document.getElementById('ctrl-primary').value;
+        state.secondary = document.getElementById('ctrl-secondary').value;
+        state.radius = document.getElementById('ctrl-radius').value;
+        
+        document.getElementById('v-radius').textContent = state.radius;
+        
+        // Apply to Preview Context
+        previewContext.style.setProperty('--theme-bg', state.bg);
+        previewContext.style.setProperty('--theme-text', state.text);
+        previewContext.style.setProperty('--theme-primary', state.primary);
+        previewContext.style.setProperty('--theme-secondary', state.secondary);
+        previewContext.style.setProperty('--theme-radius', `${state.radius}px`);
+        
+        // Logic for card background: usually lighter or slightly off-bg
+        // For simplicity in this tool, we keep card-bg derived or static white/transparent based on brightness
+        // Let's just apply a hardcoded white card for light themes and dark gray for dark themes for better preview
+        
+        generateCode();
+    };
+    
+    function generateCode() {
+        const css = `:root {
+  --background-color: ${state.bg};
+  --text-color: ${state.text};
+  --primary-color: ${state.primary};
+  --secondary-color: ${state.secondary};
+  --border-radius: ${state.radius}px;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: var(--border-radius);
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        const text = codeOutput.value;
+        navigator.clipboard.writeText(text);
+        if (window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Theme CSS Copied!', 'success');
+    };
+    
+    // Initialize
+    updateTheme();
+  </script>
+</body>
+</html>
