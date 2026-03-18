@@ -1,15 +1,15 @@
 /* ============================================
-   Devpalettes - Palette Generator
+   Devpaletteshub - Palette Generator
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
   // Wait for main.js to load
-  if (!window.Devpalettes) {
-    console.error('Devpalettes main.js not loaded');
+  if (!window.Devpaletteshub) {
+    console.error('Devpaletteshub main.js not loaded');
     return;
   }
   
-  const { ColorUtils, Clipboard, Storage, KeyboardShortcuts, Toast } = window.Devpalettes;
+  const { ColorUtils, Clipboard, Storage, KeyboardShortcuts, Toast } = window.Devpaletteshub;
   
   // State
   let colors = [];

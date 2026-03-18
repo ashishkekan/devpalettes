@@ -1,13 +1,13 @@
 /**
  * Color From Image - Image Color Extraction Tool
- * Devpalettes.com
+ * Devpaletteshub.com
  */
 
 (function() {
   'use strict';
   
   // Get global utilities (Same as gradient.js)
-  const { Toast, Clipboard } = window.Devpalettes || {};
+  const { Toast, Clipboard } = window.Devpaletteshub || {};
   
   // ========== Color Extraction Algorithms ==========
   const ColorExtractor = {
@@ -470,7 +470,7 @@
       }
       
       this.pickedColorsContainer.innerHTML = this.pickedColors.map(color => `
-        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer transition-colors" onclick="if(window.Devpalettes && window.Devpalettes.Clipboard) window.Devpalettes.Clipboard.copy('${color.hex}', '${color.hex} copied!')">
+        <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 cursor-pointer transition-colors" onclick="if(window.Devpaletteshub && window.Devpaletteshub.Clipboard) window.Devpaletteshub.Clipboard.copy('${color.hex}', '${color.hex} copied!')">
           <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${color.hex}"></div>
           <div class="flex-1">
             <p class="font-mono text-sm font-semibold">${color.hex}</p>
