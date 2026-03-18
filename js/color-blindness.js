@@ -1,6 +1,6 @@
 /**
  * Color Blindness Simulator
- * Devpalettes.com
+ * Devpaletteshub.com
  * 
  * Uses Brettel, Viénot, Mollon algorithm for accurate simulation
  */
