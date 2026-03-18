@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate percentages and ratios instantly. Solve X% of Y, Ratio A:B = C:?, and percentage difference.">
+  <meta name="keywords" content="percentage calculator, ratio calculator, math calculator, percentage difference, online calculator">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Ratio & Percentage Calculator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-calculator mr-2"></i>Math Tools
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Ratio & Percentage Calculator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Fast, accurate calculations for percentages, ratios, and differences.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Percentage Calculator -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll">
+           <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center">
+                 <i class="fas fa-percent text-blue-500"></i>
+              </div>
+              <h3 class="font-bold text-lg">Percentage Calculator</h3>
+           </div>
+           
+           <p class="text-sm text-slate-500 mb-4">Find X% of a number Y.</p>
+           
+           <div class="space-y-3">
+              <input type="number" id="perc-val" placeholder="Percentage (%)" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              <div class="flex items-center gap-2 text-slate-400 text-sm"><span>of</span></div>
+              <input type="number" id="perc-num" placeholder="Number" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              
+              <button onclick="calcPercentage()" class="w-full btn-primary justify-center py-3 mt-2">
+                 Calculate
+              </button>
+           </div>
+           
+           <div id="perc-result" class="mt-4 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl text-center text-lg font-bold text-blue-500">
+              Result: -
+           </div>
+        </div>
+
+        <!-- Ratio Calculator -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll">
+           <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-purple-500/10 flex items-center justify-center">
+                 <i class="fas fa-divide text-purple-500"></i>
+              </div>
+              <h3 class="font-bold text-lg">Ratio Solver</h3>
+           </div>
+           
+           <p class="text-sm text-slate-500 mb-4">Solve A : B = C : X</p>
+           
+           <div class="flex items-center gap-2 mb-3">
+              <input type="number" id="ratio-a" placeholder="A" class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center">
+              <span class="font-bold text-slate-400">:</span>
+              <input type="number" id="ratio-b" placeholder="B" class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center">
+           </div>
+           
+           <div class="flex items-center gap-2">
+              <input type="number" id="ratio-c" placeholder="C" class="flex-1 bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center">
+              <span class="font-bold text-slate-400">:</span>
+              <div class="flex-1 bg-slate-200 dark:bg-slate-700 rounded-lg px-4 py-3 text-center font-bold text-slate-400">X = ?</div>
+           </div>
+           
+           <button onclick="calcRatio()" class="w-full btn-primary justify-center py-3 mt-4 bg-purple-500 hover:bg-purple-600">
+              Calculate
+           </button>
+           
+           <div id="ratio-result" class="mt-4 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl text-center text-lg font-bold text-purple-500">
+              Result: -
+           </div>
+        </div>
+
+        <!-- Percentage Difference -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll md:col-span-2">
+           <div class="flex items-center gap-3 mb-6">
+              <div class="w-10 h-10 rounded-lg bg-rose-500/10 flex items-center justify-center">
+                 <i class="fas fa-not-equal text-rose-500"></i>
+              </div>
+              <h3 class="font-bold text-lg">Percentage Difference</h3>
+           </div>
+           
+           <p class="text-sm text-slate-500 mb-4">Calculate the difference between two numbers as a percentage.</p>
+           
+           <div class="grid md:grid-cols-3 gap-4 items-end">
+              <input type="number" id="diff-a" placeholder="Number 1" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+              <input type="number" id="diff-b" placeholder="Number 2" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-rose-500">
+              <button onclick="calcDiff()" class="w-full btn-primary justify-center py-3 bg-rose-500 hover:bg-rose-600">
+                 Calculate Difference
+              </button>
+           </div>
+           
+           <div id="diff-result" class="mt-4 p-4 bg-slate-100 dark:bg-slate-800/50 rounded-xl text-center text-lg font-bold text-rose-500">
+              Difference: -
+           </div>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    // Percentage
+    window.calcPercentage = function() {
+       const val = parseFloat(document.getElementById('perc-val').value);
+       const num = parseFloat(document.getElementById('perc-num').value);
+       const resEl = document.getElementById('perc-result');
+       
+       if (isNaN(val) || isNaN(num)) {
+          resEl.textContent = "Please enter valid numbers";
+          return;
+       }
+       
+       const result = (num * val / 100).toFixed(2);
+       resEl.textContent = `${val}% of ${num} = ${result}`;
+    };
+    
+    // Ratio
+    window.calcRatio = function() {
+       const A = parseFloat(document.getElementById('ratio-a').value);
+       const B = parseFloat(document.getElementById('ratio-b').value);
+       const C = parseFloat(document.getElementById('ratio-c').value);
+       const resEl = document.getElementById('ratio-result');
+       
+       if (isNaN(A) || isNaN(B) || isNaN(C) || A === 0) {
+          resEl.textContent = "Invalid input (A cannot be 0)";
+          return;
+       }
+       
+       const X = ((C * B) / A).toFixed(2);
+       resEl.textContent = `X = ${X}`;
+    };
+    
+    // Difference
+    window.calcDiff = function() {
+       const A = parseFloat(document.getElementById('diff-a').value);
+       const B = parseFloat(document.getElementById('diff-b').value);
+       const resEl = document.getElementById('diff-result');
+       
+       if (isNaN(A) || isNaN(B) || (A + B) === 0) {
+          resEl.textContent = "Invalid input";
+          return;
+       }
+       
+       const diff = Math.abs(A - B);
+       const avg = (A + B) / 2;
+       const perc = ((diff / avg) * 100).toFixed(2);
+       
+       resEl.textContent = `Difference: ${perc}%`;
+    };
+  </script>
+</body>
+</html>

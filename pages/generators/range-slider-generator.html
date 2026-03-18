@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Style HTML range input sliders with CSS. Cross-browser support.">
+  <meta name="keywords" content="range slider generator, css range input, style input range, custom slider">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Range Slider Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-sliders-h mr-2"></i>Form Styling
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Range Slider Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Style custom input range sliders.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Settings</h3>
+             <div class="space-y-3">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Track Color</label>
+                   <input type="color" id="r-track" value="#e2e8f0" onchange="updateSlider()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Thumb Color</label>
+                   <input type="color" id="r-thumb" value="#10b981" onchange="updateSlider()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Thumb Size: <span id="v-s">20</span>px</label>
+                   <input type="range" id="r-size" min="10" max="40" value="20" onchange="updateSlider()" class="w-full accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Track Height: <span id="v-h">6</span>px</label>
+                   <input type="range" id="r-height" min="2" max="16" value="6" onchange="updateSlider()" class="w-full accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Radius: <span id="v-r">999</span>px</label>
+                   <input type="range" id="r-rad" min="0" max="999" value="999" onchange="updateSlider()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card min-h-[200px] flex items-center justify-center">
+             <input type="range" id="range-preview" class="w-full max-w-md transition-all duration-300" min="0" max="100" value="50">
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('range-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateSlider = function() {
+       const track = document.getElementById('r-track').value;
+       const thumb = document.getElementById('r-thumb').value;
+       const size = document.getElementById('r-size').value;
+       const height = document.getElementById('r-height').value;
+       const rad = document.getElementById('r-rad').value;
+       
+       document.getElementById('v-s').textContent = size;
+       document.getElementById('v-h').textContent = height;
+       document.getElementById('v-r').textContent = rad;
+       
+       // Apply via Style Tag
+       let styleTag = document.getElementById('range-style');
+       if(!styleTag) {
+          styleTag = document.createElement('style');
+          styleTag.id = 'range-style';
+          document.head.appendChild(styleTag);
+       }
+       
+       const css = `#range-preview {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+#range-preview::-webkit-slider-runnable-track {
+  width: 100%;
+  height: ${height}px;
+  background: ${track};
+  border-radius: ${rad}px;
+}
+
+#range-preview::-webkit-slider-thumb {
+  height: ${size}px;
+  width: ${size}px;
+  border-radius: ${rad}px;
+  background: ${thumb};
+  -webkit-appearance: none;
+  margin-top: -${(size-height)/2}px;
+  cursor: pointer;
+}`;
+       styleTag.textContent = css;
+       
+       generateCode(track, thumb, size, height, rad);
+    };
+    
+    function generateCode(t, th, s, h, r) {
+       const css = `/* The Track */
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: ${h}px;
+  background: ${t};
+  border-radius: ${r}px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: ${s}px;
+  width: ${s}px;
+  border-radius: ${r}px;
+  background: ${th};
+  -webkit-appearance: none;
+  margin-top: -${(s-h)/2}px;
+  cursor: pointer;
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
+    };
+    
+    updateSlider();
+  </script>
+</body>
+</html>

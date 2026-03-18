@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Interactive 3D CSS Transform Generator. Visualize perspective, rotate, scale, and translate in real-time.">
+  <meta name="keywords" content="3d transform generator, css perspective, css 3d rotate, interactive css tool">
+  <meta name="author" content="Devpalettes">
+  
+  <title>3D Transform Studio - Interactive CSS Tool | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    /* Range Input Styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 100%;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 3px;
+      background: #cbd5e1;
+    }
+    .dark input[type=range]::-webkit-slider-runnable-track {
+      background: #334155;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -5px;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* 3D Scene Setup */
+    .scene-container {
+       perspective: 800px;
+       perspective-origin: 50% 50%;
+       transition: perspective 0.3s ease;
+    }
+    
+    .transform-box {
+       width: 150px;
+       height: 150px;
+       transition: transform 0.1s ease-out;
+       transform-style: preserve-3d;
+       cursor: grab;
+    }
+    .transform-box:active {
+       cursor: grabbing;
+    }
+    
+    /* Custom scrollbar for code */
+    .code-block::-webkit-scrollbar { width: 6px; height: 6px; }
+    .code-block::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-cube mr-2"></i>CSS 3D Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">3D Transform Studio</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Interact with the box or use sliders. Generate CSS for complex 3D effects instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+          
+          <!-- Transform Controls -->
+          <div class="glass-card p-5 shimmer-card">
+            <h3 class="font-bold mb-4 text-lg flex items-center gap-2 text-indigo-500">
+               <i class="fas fa-sync-alt"></i> Rotation
+            </h3>
+            <div class="space-y-3">
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>X Axis</span><span id="val-rx" class="font-mono font-bold">0°</span></div>
+                  <input type="range" id="ctrl-rx" min="-180" max="180" value="0" class="w-full">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Y Axis</span><span id="val-ry" class="font-mono font-bold">0°</span></div>
+                  <input type="range" id="ctrl-ry" min="-180" max="180" value="0" class="w-full">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Z Axis</span><span id="val-rz" class="font-mono font-bold">0°</span></div>
+                  <input type="range" id="ctrl-rz" min="-180" max="180" value="0" class="w-full">
+               </div>
+            </div>
+          </div>
+          
+          <div class="glass-card p-5 shimmer-card">
+            <h3 class="font-bold mb-4 text-lg flex items-center gap-2 text-emerald-500">
+               <i class="fas fa-expand-arrows-alt"></i> Position & Scale
+            </h3>
+            <div class="space-y-3">
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Perspective</span><span id="val-p" class="font-mono font-bold">800px</span></div>
+                  <input type="range" id="ctrl-p" min="100" max="2000" value="800" class="w-full">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Scale</span><span id="val-s" class="font-mono font-bold">1.0</span></div>
+                  <input type="range" id="ctrl-s" min="0.1" max="3" step="0.1" value="1" class="w-full">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Translate Z</span><span id="val-tz" class="font-mono font-bold">0px</span></div>
+                  <input type="range" id="ctrl-tz" min="-200" max="200" value="0" class="w-full">
+               </div>
+            </div>
+          </div>
+          
+          <!-- Presets -->
+          <div class="glass-card p-5 shimmer-card">
+             <h3 class="font-bold mb-3 text-sm uppercase tracking-wider text-slate-500">Presets</h3>
+             <div class="grid grid-cols-2 gap-2">
+                <button onclick="setPreset(0,0,0,800,1,0)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Reset</button>
+                <button onclick="setPreset(0,180,0,1000,1,0)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Flip Y</button>
+                <button onclick="setPreset(45,45,0,1000,1,50)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Cube</button>
+                <button onclick="setPreset(-20,0,0,500,1.2,0)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Float</button>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Center: Preview -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+          
+          <div class="glass-card p-0 shimmer-card overflow-hidden h-[400px] flex items-center justify-center relative">
+             <!-- Background Grid -->
+             <div class="absolute inset-0 bg-slate-100 dark:bg-slate-800 opacity-50" style="background-image: linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
+             
+             <div id="scene" class="scene-container relative w-full h-full flex items-center justify-center">
+                <div id="box" class="transform-box bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-2xl flex items-center justify-center text-white font-bold text-xl border border-white/20">
+                   <span>BOX</span>
+                </div>
+             </div>
+          </div>
+          
+          <p class="text-center text-xs text-slate-400 animate-on-scroll">
+             <i class="fas fa-hand-pointer mr-1"></i> Drag the box to rotate manually
+          </p>
+          
+        </div>
+        
+        <!-- Right: Style & Code -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+           
+           <!-- Style Controls -->
+           <div class="glass-card p-5 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg flex items-center gap-2 text-pink-500">
+                 <i class="fas fa-paint-brush"></i> Style Box
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                    <input type="color" id="ctrl-color" value="#6366f1" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                 </div>
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Border Radius</label>
+                    <input type="range" id="ctrl-radius" min="0" max="75" value="12" class="w-full">
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-5 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-primary text-xs py-2 px-3"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <div class="bg-slate-900 rounded-lg p-3 code-block overflow-auto max-h-64">
+                <pre id="code-output" class="text-xs text-emerald-400 font-mono whitespace-pre-wrap"></pre>
+             </div>
+           </div>
+           
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const box = document.getElementById('box');
+      const scene = document.getElementById('scene');
+      const codeOutput = document.getElementById('code-output');
+      
+      // Inputs
+      const ctrlRx = document.getElementById('ctrl-rx');
+      const ctrlRy = document.getElementById('ctrl-ry');
+      const ctrlRz = document.getElementById('ctrl-rz');
+      const ctrlP = document.getElementById('ctrl-p');
+      const ctrlS = document.getElementById('ctrl-s');
+      const ctrlTz = document.getElementById('ctrl-tz');
+      const ctrlColor = document.getElementById('ctrl-color');
+      const ctrlRadius = document.getElementById('ctrl-radius');
+      
+      // Values
+      const valRx = document.getElementById('val-rx');
+      const valRy = document.getElementById('val-ry');
+      const valRz = document.getElementById('val-rz');
+      const valP = document.getElementById('val-p');
+      const valS = document.getElementById('val-s');
+      const valTz = document.getElementById('val-tz');
+      
+      // Drag State
+      let isDragging = false;
+      let startX, startY;
+      
+      window.updateTransform = function() {
+         const rx = ctrlRx.value;
+         const ry = ctrlRy.value;
+         const rz = ctrlRz.value;
+         const p = ctrlP.value;
+         const s = ctrlS.value;
+         const tz = ctrlTz.value;
+         const color = ctrlColor.value;
+         const radius = ctrlRadius.value;
+         
+         // Update Values Display
+         valRx.textContent = rx + '°';
+         valRy.textContent = ry + '°';
+         valRz.textContent = rz + '°';
+         valP.textContent = p + 'px';
+         valS.textContent = s;
+         valTz.textContent = tz + 'px';
+         
+         // Apply Styles
+         scene.style.perspective = `${p}px`;
+         box.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) translateZ(${tz}px) scale(${s})`;
+         box.style.backgroundColor = color;
+         box.style.borderRadius = `${radius}%`;
+         
+         generateCode();
+      };
+      
+      function generateCode() {
+         const rx = ctrlRx.value;
+         const ry = ctrlRy.value;
+         const rz = ctrlRz.value;
+         const p = ctrlP.value;
+         const s = ctrlS.value;
+         const tz = ctrlTz.value;
+         const color = ctrlColor.value;
+         const radius = ctrlRadius.value;
+         
+         const css = `.parent {
+  perspective: ${p}px;
+}
+
+.box {
+  width: 150px;
+  height: 150px;
+  background-color: ${color};
+  border-radius: ${radius}%;
+  transform: rotateX(${rx}deg) rotateY(${ry}deg) rotateZ(${rz}deg) translateZ(${tz}px) scale(${s});
+}`;
+         codeOutput.textContent = css;
+      }
+      
+      // Presets
+      window.setPreset = function(rx, ry, rz, p, s, tz) {
+         ctrlRx.value = rx;
+         ctrlRy.value = ry;
+         ctrlRz.value = rz;
+         ctrlP.value = p;
+         ctrlS.value = s;
+         ctrlTz.value = tz;
+         updateTransform();
+      };
+      
+      // Drag Logic
+      box.addEventListener('mousedown', (e) => {
+         isDragging = true;
+         startX = e.clientX;
+         startY = e.clientY;
+         box.style.cursor = 'grabbing';
+      });
+      
+      window.addEventListener('mousemove', (e) => {
+         if (!isDragging) return;
+         
+         const deltaX = e.clientX - startX;
+         const deltaY = e.clientY - startY;
+         
+         // Update Sliders based on drag
+         ctrlRy.value = parseFloat(ctrlRy.value) + deltaX * 0.5;
+         ctrlRx.value = parseFloat(ctrlRx.value) - deltaY * 0.5;
+         
+         // Clamp values
+         ctrlRy.value = Math.min(180, Math.max(-180, ctrlRy.value));
+         ctrlRx.value = Math.min(180, Math.max(-180, ctrlRx.value));
+         
+         startX = e.clientX;
+         startY = e.clientY;
+         
+         updateTransform();
+      });
+      
+      window.addEventListener('mouseup', () => {
+         isDragging = false;
+         box.style.cursor = 'grab';
+      });
+      
+      // Event Listeners
+      [ctrlRx, ctrlRy, ctrlRz, ctrlP, ctrlS, ctrlTz, ctrlColor, ctrlRadius].forEach(el => {
+         el.addEventListener('input', updateTransform);
+      });
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.Devpalettes && window.Devpalettes.Toast) {
+               window.Devpalettes.Toast.show('CSS Copied!', 'success');
+             } else {
+               alert('CSS Copied!');
+             }
+         });
+      };
+      
+      // Init
+      updateTransform();
+      
+    })();
+  </script>
+</body>
+</html>
