@@ -3,34 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore vibrant neon color palettes for bold designs. High-energy, glowing color schemes perfect for cyberpunk and futuristic themes.">
-  <meta name="keywords" content="neon color palettes, cyberpunk colors, glowing colors, vibrant color schemes, neon themes">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  
+  <!-- Primary Meta Tags -->
+  <title>Neon Color Palettes - Vibrant & Bold Color Schemes | Color Palettes Hub</title>
+  <meta name="title" content="Neon Color Palettes - Vibrant & Bold Color Schemes">
+  <meta name="description" content="Explore vibrant neon color palettes for bold designs. High-energy, glowing color schemes perfect for cyberpunk, gaming, and futuristic themes.">
+  <meta name="keywords" content="neon color palettes, cyberpunk colors, glowing colors, vibrant color schemes, neon themes, retro wave">
   <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <link rel="canonical" href="https://colorpaletteshub.com/neon-color-palettes.html" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Neon Color Palettes - Vibrant & Bold Color Schemes | Devpalettes</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/neon-color-palettes.html">
+  <meta property="og:title" content="Neon Color Palettes">
+  <meta property="og:description" content="High-energy colors for bold, futuristic designs.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Neon Color Palettes",
+    "description": "A collection of vibrant neon color palettes.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Cyber Rave" },
+        { "@type": "ListItem", "position": 2, "name": "Blade Runner" }
+      ]
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
-  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
   <style>
@@ -42,8 +55,8 @@
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
+  
   <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -52,16 +65,19 @@
     
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">Vibrant</span>
         <h1 class="text-4xl font-bold mb-4">Neon Color Palettes</h1>
         <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">High-energy colors for bold, futuristic designs</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
       <!-- Filter Tags -->
       <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
         <a href="pastel-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Pastel</a>
         <a href="dark-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Dark</a>
         <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">Neon</span>
       </div>
+
       <!-- Palettes Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Palette 1 -->
@@ -149,23 +165,25 @@
           </div>
         </div>
       </div>
+
       <!-- SEO Content -->
       <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-4">Using Neon Colors in Design</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
-          Neon colors are highly saturated, bright hues that mimic the glow of neon lights. They're perfect for creating bold, attention-grabbing designs with a futuristic or retro vibe.
+          Neon colors are highly saturated, bright hues that mimic the glow of neon lights. They are perfect for creating bold, attention-grabbing designs with a futuristic or retro vibe.
         </p>
         <h3 class="text-xl font-bold mb-2">Best Practices for Neon Palettes</h3>
         <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
-          <li>Pair neon colors with dark backgrounds for maximum impact</li>
-          <li>Use sparingly as accents to avoid overwhelming users</li>
-          <li>Consider adding glow effects in CSS for authenticity</li>
-          <li>Test accessibility carefully—neon colors can be hard to read</li>
-          <li>Perfect for gaming, music, and tech brand identities</li>
+          <li><strong>Dark Backgrounds:</strong> Pair neon colors with dark backgrounds for maximum impact and readability.</li>
+          <li><strong>Use as Accents:</strong> Use sparingly to highlight key elements; too much neon can overwhelm users.</li>
+          <li><strong>Add Glow Effects:</strong> Use CSS box-shadow to create authentic neon glow effects.</li>
+          <li><strong>Accessibility:</strong> Test contrast carefully; neon colors can sometimes fail WCAG standards for text.</li>
+          <li><strong>Genre Fit:</strong> Perfect for gaming, music festivals, tech startups, and cyberpunk themes.</li>
         </ul>
       </div>
+      
       <div class="text-center animate-on-scroll">
-        <a href="palette.html" class="btn-coral btn-glow inline-flex">
+        <a href="palette.html" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-bolt"></i>
           Create Neon Palette
         </a>
@@ -174,7 +192,6 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
-  
   <script src="js/enhancements.js"></script>
 </body>
 </html>

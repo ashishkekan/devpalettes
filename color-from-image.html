@@ -3,23 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Extract colors from any image. Free online image color picker tool to generate beautiful color palettes from photos.">
-  <meta name="keywords" content="image color picker, extract colors from image, color palette from photo, image to palette, color extraction tool">
-  <meta name="author" content="Devpalettes">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  
+  <!-- Primary Meta Tags -->
+  <title>Color From Image - Extract Palettes From Photos | Color Palettes Hub</title>
+  <meta name="title" content="Color From Image - Extract Palettes From Photos">
+  <meta name="description" content="Extract beautiful color palettes from any image. Free online image color picker tool to get HEX, RGB, and HSL values instantly.">
+  <meta name="keywords" content="image color picker, extract colors from image, color palette from photo, image to palette, color extraction tool, get colors from image">
   <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <link rel="canonical" href="https://colorpaletteshub.com/color-from-image.html" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Color From Image - Extract Palettes From Photos | Devpalettes</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/color-from-image.html">
+  <meta property="og:title" content="Color From Image - Extract Palettes">
+  <meta property="og:description" content="Extract beautiful color palettes from any image.">
+  <meta property="og:image" content="https://colorpaletteshub.com/images/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://colorpaletteshub.com/color-from-image.html">
+  <meta property="twitter:title" content="Color From Image - Extract Palettes">
+  <meta property="twitter:description" content="Extract beautiful color palettes from any image.">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color From Image Extractor",
+    "url": "https://colorpaletteshub.com/color-from-image.html",
+    "description": "A tool to extract dominant and vibrant colors from uploaded images.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -38,12 +67,14 @@
       },
     }
   </script>
+  
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
+  
   <!-- Main Content -->
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
     <!-- Visualizer Background -->
@@ -56,10 +87,14 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Hero-like heading -->
       <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-image mr-2"></i>Design Tool
+        </span>
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color From Image</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Extract beautiful palettes from any photo instantly</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+      
       <div class="grid lg:grid-cols-2 gap-8">
         <!-- Left: Upload & Controls -->
         <div class="glass-card p-8 animate-on-scroll shimmer-card">
@@ -119,6 +154,7 @@
             </div>
           </div>
         </div>
+        
         <!-- Right: Results -->
         <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-2xl font-bold mb-6">Extracted Palette</h2>
@@ -186,6 +222,7 @@
           </div>
         </div>
       </div>
+      
       <!-- Color Picker -->
       <div class="glass-card p-8 mt-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-6">Color Picker Tool</h2>
@@ -213,13 +250,71 @@
           </div>
         </div>
       </div>
+      
+      <!-- ==========================================
+           SEO CONTENT SECTION (Starts Here)
+           ========================================== -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is Color Extraction?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Color extraction is the process of analyzing an image to identify its most prominent or visually significant colors. This helps designers create cohesive color palettes based on real-world inspiration, ensuring their designs match the mood and tone of the source image.
+            </p>
+         </section>
+
+         <!-- Methods -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Extraction Methods</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-emerald-500">Dominant Colors</h3>
+                  <p class="text-sm text-slate-500">Finds the colors that cover the most area in the image. Perfect for understanding the overall color composition.</p>
+               </div>
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-blue-500">Vibrant Colors</h3>
+                  <p class="text-sm text-slate-500">Prioritizes highly saturated colors. Best for extracting punchy, eye-catching accents from photos.</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Upload:</strong> Drag and drop an image or click to browse files.</li>
+               <li><strong>Configure:</strong> Choose the number of colors and extraction method.</li>
+               <li><strong>Extract:</strong> Click "Extract Colors" to generate your palette.</li>
+               <li><strong>Pick (Optional):</strong> Use the Color Picker tool to manually select specific pixels from the image.</li>
+               <li><strong>Export:</strong> Copy individual colors or export as CSS/JSON.</li>
+            </ol>
+         </section>
+         
+         <!-- Internal Links -->
+         <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Related Tools</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="palette.html" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="gradient.html" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="contrast-checker.html" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
+            </div>
+         </div>
+         
+      </div>
+      <!-- End SEO Content -->
+      
     </div>
   </main>
+  
   <!-- Footer -->
   <div id="footer-container"></div>
+  
+  <!-- Toast Container (Preserved for JS functionality) -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
   <script src="js/main.js"></script>
   <script src="js/color-from-image.js"></script>
-  
   <script src="js/enhancements.js"></script>
 </body>
 </html>

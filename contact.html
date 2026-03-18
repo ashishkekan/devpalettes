@@ -3,21 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact Devpalettes team. Get help, report issues, or share feedback about our color tools.">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  
+  <!-- Primary Meta Tags -->
+  <title>Contact Us - Get in Touch | Color Palettes Hub</title>
+  <meta name="title" content="Contact Us - Get in Touch">
+  <meta name="description" content="Have a question or feedback? Contact the Color Palettes Hub team. We respond to inquiries within 24-48 hours.">
+  <meta name="keywords" content="contact color palettes hub, feedback, support, color tools help">
   <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <link rel="canonical" href="https://colorpaletteshub.com/contact.html" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Contact Us - Devpalettes</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/contact.html">
+  <meta property="og:title" content="Contact Us - Color Palettes Hub">
+  <meta property="og:description" content="Get in touch with our team for support or feedback.">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Color Palettes Hub",
+    "description": "Contact page for support and inquiries.",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Color Palettes Hub",
+      "url": "https://colorpaletteshub.com",
+      "email": "hello@colorpaletteshub.com",
+      "sameAs": [
+        "https://twitter.com/colorpallates",
+        "https://github.com/colorpallates"
+      ]
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -30,13 +56,14 @@
       theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
     }
   </script>
+  
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
+  
   <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -45,10 +72,14 @@
     
     <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-envelope mr-2"></i>Support
+        </span>
         <h1 class="text-4xl font-bold mb-4">Contact Us</h1>
         <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">We'd love to hear from you</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+      
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Contact Form -->
         <div class="glass-card p-8 animate-on-scroll shimmer-card">
@@ -82,6 +113,7 @@
             </button>
           </form>
         </div>
+        
         <!-- Contact Info -->
         <div class="space-y-6">
           <div class="glass-card p-6 animate-on-scroll shimmer-card">
@@ -126,18 +158,38 @@
           </div>
         </div>
       </div>
+      
+      <!-- SEO Content: FAQ -->
+      <div class="mt-16 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+         <div class="grid md:grid-cols-2 gap-4">
+            <div class="glass-card p-5">
+               <h3 class="font-bold mb-2">Is this service free?</h3>
+               <p class="text-sm text-slate-500">Yes! All our color tools are 100% free to use.</p>
+            </div>
+            <div class="glass-card p-5">
+               <h3 class="font-bold mb-2">Can I suggest a new feature?</h3>
+               <p class="text-sm text-slate-500">Absolutely. Use the form above and select "Feature Request".</p>
+            </div>
+         </div>
+      </div>
     </div>
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
   <script>
+    // PRESERVED LOGIC: Exact same functionality as requested
     document.getElementById('contact-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
-      Devpalettes.Toast.show('Message sent! We\'ll get back to you soon.');
+      // Using window.Devpalettes if available, else alert
+      if(window.Devpalettes && window.Devpalettes.Toast) {
+         window.Devpalettes.Toast.show("Message sent! We'll get back to you soon.", 'success');
+      } else {
+         alert("Message sent! We'll get back to you soon.");
+      }
       this.reset();
     });
   </script>
-  
   <script src="js/enhancements.js"></script>
 </body>
 </html>

@@ -3,41 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Explore beautiful pastel color palettes for your designs. Soft, soothing color combinations perfect for web design, branding, and more.">
-  <meta name="keywords" content="pastel color palettes, soft colors, light color schemes, pastel colors for design">
-  <meta name="description" content="Generate beautiful color palettes, gradients, and convert HEX to RGB instantly. Free online color tools for designers and developers.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  
+  <!-- Primary Meta Tags -->
+  <title>Pastel Color Palettes - Soft & Gentle Color Schemes | Color Palettes Hub</title>
+  <meta name="title" content="Pastel Color Palettes - Soft & Gentle Color Schemes">
+  <meta name="description" content="Explore beautiful pastel color palettes. Soft, soothing color combinations perfect for weddings, baby products, and spring designs.">
+  <meta name="keywords" content="pastel color palettes, soft colors, light color schemes, pastel hex codes, baby colors, spring colors">
   <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Color Palettes Hub - Free Online Color Tools">
-  <meta property="og:description" content="Generate palettes, gradients, and convert colors instantly.">
+  <link rel="canonical" href="https://colorpaletteshub.com/pastel-color-palettes.html" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Pastel Color Palettes - Soft & Beautiful Color Schemes | Devpalettes</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/pastel-color-palettes.html">
+  <meta property="og:title" content="Pastel Color Palettes">
+  <meta property="og:description" content="Soft, soothing color combinations perfect for modern designs.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Pastel Color Palettes",
+    "description": "A collection of soft and gentle color palettes.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Macaron Dream" },
+        { "@type": "ListItem", "position": 2, "name": "Cotton Candy Clouds" }
+      ]
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
-  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
+  
   <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -46,16 +59,19 @@
     
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 text-sm font-medium rounded-full mb-4">Soft Aesthetic</span>
         <h1 class="text-4xl font-bold mb-4">Pastel Color Palettes</h1>
         <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">Soft, soothing colors perfect for modern designs</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
       <!-- Filter Tags -->
       <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
         <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">All Pastels</span>
         <a href="dark-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Dark</a>
         <a href="neon-color-palettes.html" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Neon</a>
       </div>
+
       <!-- Palettes Grid -->
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
         <!-- Palette 1 -->
@@ -143,24 +159,23 @@
           </div>
         </div>
       </div>
+
       <!-- SEO Content -->
       <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-4">What Are Pastel Colors?</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
-          Pastel colors are soft, pale shades of colors created by adding white to pure hues. They have high lightness and low to medium saturation, giving them a gentle, soothing appearance.
+          Pastel colors are soft, pale shades of colors created by adding significant amounts of white to pure hues. They have <strong>high lightness</strong> and <strong>low to medium saturation</strong>, giving them a gentle, soothing appearance that is easy on the eyes.
         </p>
-        <p class="text-slate-600 dark:text-slate-400 mb-4">
-          These colors are perfect for creating calm, welcoming atmospheres in design. They're widely used in baby products, wedding invitations, spring-themed designs, and modern minimalist websites.
-        </p>
-        <h3 class="text-xl font-bold mb-2">Popular Uses for Pastel Palettes</h3>
+        <h3 class="text-xl font-bold mb-2">Best Uses for Pastel Palettes</h3>
         <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-1">
-          <li>Wedding and event stationery</li>
-          <li>Children's product packaging</li>
-          <li>Beauty and cosmetic branding</li>
-          <li>Spring and Easter marketing campaigns</li>
-          <li>Minimalist web design backgrounds</li>
+          <li><strong>Wedding & Event Stationery:</strong> Elegant and romantic themes.</li>
+          <li><strong>Baby Products:</strong> Gentle colors for nurseries and clothing.</li>
+          <li><strong>Spring Marketing:</strong> Fresh, seasonal campaigns.</li>
+          <li><strong>Beauty & Cosmetics:</strong> Soft, feminine branding.</li>
+          <li><strong>UI Backgrounds:</strong> Calm, non-distracting interfaces.</li>
         </ul>
       </div>
+      
       <div class="text-center animate-on-scroll">
         <a href="palette.html" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-palette"></i>
@@ -171,7 +186,6 @@
   </main>
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
-  
   <script src="js/enhancements.js"></script>
 </body>
 </html>

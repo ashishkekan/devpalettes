@@ -3,20 +3,42 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Devpalettes Cookie Policy. Understand how we use cookies and local storage to enhance your experience.">
-  <meta name="keywords" content="color palette generator, gradient generator, hex to rgb converter, pastel colors, neon colors">
+  
+  <!-- Primary Meta Tags -->
+  <title>Cookie Policy - How We Use Data | Color Palettes Hub</title>
+  <meta name="title" content="Cookie Policy - Color Palettes Hub">
+  <meta name="description" content="Cookie Policy for Color Palettes Hub. Learn how we use cookies and local storage to save your themes and palettes.">
+  <meta name="keywords" content="cookie policy, local storage usage, gdpr, privacy, color palettes hub cookies">
   <meta name="author" content="Color Palettes Hub">
-  <meta property="og:title" content="Cookie Policy - Color Palettes Hub">
-  <meta property="og:description" content="Learn about how we use cookies and local storage.">
+  <link rel="canonical" href="https://colorpaletteshub.com/cookie-policy.html" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://colorpaletteshub.com">
-  <title>Cookie Policy - Devpalettes</title>
+  <meta property="og:url" content="https://colorpaletteshub.com/cookie-policy.html">
+  <meta property="og:title" content="Cookie Policy">
+  <meta property="og:description" content="Learn how we use cookies and local storage.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Cookie Policy",
+    "description": "Policy regarding the use of cookies and local storage on Color Palettes Hub.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Color Palettes Hub",
+      "url": "https://colorpaletteshub.com"
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-   <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -29,6 +51,7 @@
       theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
     }
   </script>
+  
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/animations.css">
 </head>
@@ -36,7 +59,6 @@
   <div id="navbar-container"></div>
   
   <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -45,101 +67,78 @@
     
     <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-cookie-bite mr-2"></i>Legal
+        </span>
         <h1 class="text-4xl font-bold mb-4">Cookie Policy</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Last updated: March 2026</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
-      <div class="prose prose-slate dark:prose-invert max-w-none">
+      <div class="prose prose-slate dark:prose-invert max-w-none space-y-8">
         
-        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
-          <h2 class="text-xl font-bold mb-4">What Are Cookies?</h2>
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-question-circle text-slate-400"></i> What Are Cookies?</h2>
           <p class="text-slate-600 dark:text-slate-400">
             Cookies are small text files that are stored on your computer or mobile device when you visit a website. 
             They are widely used to make websites work more efficiently and provide information to the website owners.
-            At Devpalettes, we use "Cookies" and similar technologies like "Local Storage" to provide you with a seamless experience.
-          </p>
-        </div>
-
-        <!-- Local Storage Section specific to your main.js -->
-        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
-          <h2 class="text-xl font-bold mb-4">Local Storage (Strictly Necessary)</h2>
-          <p class="text-slate-600 dark:text-slate-400 mb-4">
-            To ensure Devpalettes functions correctly without requiring user accounts, we utilize your browser's 
-            <strong>Local Storage</strong>. This data stays entirely on your device and is not sent to our servers. 
-            Based on our site functionality, we store the following:
-          </p>
-          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
-            <li>
-              <strong>Theme Preference (<code>colorpallates-theme</code>):</strong> 
-              We store your preference for "Dark" or "Light" mode so the site remembers your choice the next time you visit.
-            </li>
-            <li>
-              <strong>Saved Palettes & Settings (<code>colorpallates-*</code>):</strong> 
-              If you save a color palette or custom settings, this is stored locally so you don't lose your work when you refresh the page.
-            </li>
-          </ul>
-          <p class="text-slate-600 dark:text-slate-400 mt-4 text-sm italic">
-            <i class="fas fa-shield-halved text-emerald-500 mr-1"></i>
-            Note: Since this data is stored locally on your browser, clearing your browser cache will remove these settings.
-          </p>
-        </div>
-
-        <!-- AdSense Section -->
-        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
-          <h2 class="text-xl font-bold mb-4">Advertising Cookies (Google AdSense)</h2>
-          <p class="text-slate-600 dark:text-slate-400">
-            We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits to this or other websites. 
-            These cookies allow Google and its partners to serve ads to you based on your interests (Interest-Based Advertising).
-          </p>
-          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2 mt-2">
-            <li>These cookies track your visit and interaction with ads.</li>
-            <li>You can opt-out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" class="text-emerald-500 hover:underline">Google Ads Settings</a>.</li>
-          </ul>
-        </div>
-
-        <!-- Third Party Services -->
-        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
-          <h2 class="text-xl font-bold mb-4">Third-Party Services</h2>
-          <p class="text-slate-600 dark:text-slate-400 mb-2">
-            We use third-party services that may also set cookies on your device:
-          </p>
-          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
-            <li><strong>Google Fonts:</strong> Used for delivering fonts (Inter).</li>
-            <li><strong>Font Awesome:</strong> Used for icons on the site.</li>
-            <li><strong>CDN Services:</strong> Used to deliver scripts (Tailwind CSS) efficiently.</li>
-          </ul>
-        </div>
-
-        <!-- How to Manage -->
-        <div class="glass-card p-8 mb-6 animate-on-scroll shimmer-card">
-          <h2 class="text-xl font-bold mb-4">How to Manage Cookies</h2>
-          <p class="text-slate-600 dark:text-slate-400">
-            Most web browsers allow you to control cookies through their settings. You can:
-          </p>
-          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2 mt-2">
-            <li>View what cookies are stored on your device.</li>
-            <li>Delete all or specific cookies.</li>
-            <li>Block cookies from specific sites or all sites.</li>
-          </ul>
-          <p class="text-slate-600 dark:text-slate-400 mt-4">
-            Please note that blocking or deleting cookies, especially Local Storage data, may impact your experience on Devpalettes (e.g., your saved palettes or theme settings may be lost).
+            At Color Palettes Hub, we use "Cookies" and similar technologies like "Local Storage" to provide you with a seamless experience.
           </p>
         </div>
 
         <div class="glass-card p-8 animate-on-scroll shimmer-card">
-          <h2 class="text-xl font-bold mb-4">Changes to This Policy</h2>
-          <p class="text-slate-600 dark:text-slate-400">
-            We may update this Cookie Policy from time to time. Any changes will be posted on this page with an updated revision date. Continued use of the site after changes implies acceptance of the new policy.
+          <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-database text-emerald-500"></i> Local Storage (Strictly Necessary)</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">
+            To ensure our tools function correctly without requiring user accounts, we utilize your browser's 
+            <strong>Local Storage</strong>. This data stays entirely on your device and is not sent to our servers. 
+            Based on our site functionality, we store the following:
+          </p>
+          <div class="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg space-y-3 text-sm">
+             <div class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                <span class="font-mono text-rose-500">colorpallates-theme</span>
+                <span class="text-slate-500">Stores Dark/Light mode preference.</span>
+             </div>
+             <div class="flex justify-between border-b border-slate-200 dark:border-slate-700 pb-2">
+                <span class="font-mono text-rose-500">saved-palettes</span>
+                <span class="text-slate-500">Saves user-generated color palettes.</span>
+             </div>
+             <div class="flex justify-between">
+                <span class="font-mono text-rose-500">gradient-state</span>
+                <span class="text-slate-500">Saves current gradient settings.</span>
+             </div>
+          </div>
+          <p class="text-slate-500 dark:text-slate-500 mt-4 text-xs italic">
+            <i class="fas fa-shield-halved mr-1"></i>
+            Note: Clearing your browser cache will remove these settings.
           </p>
         </div>
+
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-ad text-blue-500"></i> Advertising Cookies (Google AdSense)</h2>
+          <p class="text-slate-600 dark:text-slate-400">
+            We use Google AdSense to display advertisements. Google may use cookies to serve ads based on your prior visits. 
+            You can opt-out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" class="text-emerald-500 hover:underline">Google Ads Settings</a>.
+          </p>
+        </div>
+
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-xl font-bold mb-4">Managing Cookies</h2>
+          <p class="text-slate-600 dark:text-slate-400">
+            Most web browsers allow you to control cookies through their settings. Blocking cookies may impact your experience (e.g., your saved palettes may be lost).
+          </p>
+        </div>
+        
+        <!-- Internal Links for SEO -->
+        <div class="text-center mt-8 animate-on-scroll">
+           <p class="text-sm text-slate-500">Also read our <a href="privacy-policy.html" class="text-emerald-500 hover:underline font-medium">Privacy Policy</a>.</p>
+        </div>
+        
       </div>
     </div>
   </main>
 
   <div id="footer-container"></div>
   <script src="js/main.js"></script>
-  
   <script src="js/enhancements.js"></script>
 </body>
 </html>
