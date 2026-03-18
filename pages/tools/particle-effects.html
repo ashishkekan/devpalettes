@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Particle Effect Generator - Create Animated Backgrounds</title>
+  <meta name="title" content="CSS Particle Effect Generator">
+  <meta name="description" content="Generate CSS particle effects for your website backgrounds. Customize count, size, speed, and color.">
+  <meta name="keywords" content="css particle generator, background animation, floating particles, css animation, website background effects">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/particle-effect-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/particle-effect-generator.html">
+  <meta property="og:title" content="CSS Particle Effect Generator">
+  <meta property="og:description" content="Create floating particle backgrounds with CSS and JS.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Particle Effect Generator",
+    "url": "https://colorpaletteshub.com/particle-effect-generator.html",
+    "description": "A tool to generate customizable particle background effects.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    /* Dedicated style for the preview container to ensure particles are visible */
+    #particle-preview-container {
+      position: relative;
+      overflow: hidden;
+      background-color: #0d0d0d; /* Dark bg for contrast */
+      background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+    }
+    
+    .preview-particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) translateX(0); opacity: 0.8; }
+      100% { transform: translateY(-100%) translateX(20px); opacity: 0; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-sparkles mr-2"></i>Animation Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Particle Effect Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create floating particle backgrounds for your website.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i> Settings
+             </h3>
+             <div class="space-y-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Count: <span id="v-count">30</span></label>
+                   <input type="range" id="ctrl-count" min="10" max="100" value="30" onchange="updateParticles()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Size: <span id="v-size">5</span>px</label>
+                   <input type="range" id="ctrl-size" min="2" max="15" value="5" onchange="updateParticles()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Speed: <span id="v-speed">10</span>s</label>
+                   <input type="range" id="ctrl-speed" min="3" max="20" value="10" onchange="updateParticles()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-emerald-500"></i> Appearance
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Particle Color</label>
+                   <input type="color" id="c-particle" value="#ffffff" onchange="updateParticles()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Shape</label>
+                   <select id="ctrl-shape" onchange="updateParticles()" class="w-full h-10 bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm border-2 border-transparent focus:border-emerald-500 outline-none">
+                      <option value="circle">Circle</option>
+                      <option value="square">Square</option>
+                   </select>
+                </div>
+             </div>
+          </div>
+          
+          <button onclick="updateParticles()" class="btn-primary btn-glow w-full py-3 justify-center">
+             <i class="fas fa-sync-alt mr-2"></i> Regenerate
+          </button>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div id="particle-preview-container" class="w-full h-[350px] relative">
+                 <!-- Particles injected here by JS -->
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Code Snippet</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy Code</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">How to Add Particles to Your Website</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Particle effects add a dynamic, modern feel to landing pages and portfolios. This generator creates pure CSS/JS particles without heavy libraries, ensuring fast load times.
+         </p>
+         <ol class="list-decimal list-inside text-slate-600 dark:text-slate-400 space-y-2 mt-4">
+            <li>Adjust the sliders to set the count, size, and speed.</li>
+            <li>Choose a color that matches your brand.</li>
+            <li>Copy the generated HTML, CSS, and JS code.</li>
+            <li>Paste it into your project file.</li>
+         </ol>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    // State
+    let settings = {
+        count: 30,
+        size: 5,
+        speed: 10,
+        color: '#ffffff',
+        shape: 'circle'
+    };
+    
+    const previewContainer = document.getElementById('particle-preview-container');
+    const codeOutput = document.getElementById('code-output');
+    
+    // Read values from inputs
+    function readInputs() {
+        settings.count = document.getElementById('ctrl-count').value;
+        settings.size = document.getElementById('ctrl-size').value;
+        settings.speed = document.getElementById('ctrl-speed').value;
+        settings.color = document.getElementById('c-particle').value;
+        settings.shape = document.getElementById('ctrl-shape').value;
+        
+        document.getElementById('v-count').textContent = settings.count;
+        document.getElementById('v-size').textContent = settings.size;
+        document.getElementById('v-speed').textContent = settings.speed;
+    }
+    
+    window.updateParticles = function() {
+        readInputs();
+        
+        // 1. Clear existing particles
+        previewContainer.innerHTML = '';
+        
+        // 2. Generate new particles
+        for (let i = 0; i < settings.count; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'preview-particle';
+            
+            // Random variation for natural look
+            const sizeVar = Math.random() * 4 + parseInt(settings.size);
+            const leftPos = Math.random() * 100;
+            const delay = Math.random() * 5;
+            const duration = Math.random() * 5 + parseInt(settings.speed);
+            
+            // Styles
+            particle.style.width = `${sizeVar}px`;
+            particle.style.height = `${sizeVar}px`;
+            particle.style.background = settings.color;
+            particle.style.left = `${leftPos}%`;
+            particle.style.top = `110%`; // Start below view
+            particle.style.animationDuration = `${duration}s`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.opacity = Math.random() * 0.5 + 0.3;
+            
+            if (settings.shape === 'square') {
+                particle.style.borderRadius = '0';
+            }
+            
+            previewContainer.appendChild(particle);
+        }
+        
+        generateCode();
+    };
+    
+    function generateCode() {
+        // Generate clean code for the user
+        const html = `<div id="particle-container"></div>`;
+        
+        const css = `#particle-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.particle {
+  position: absolute;
+  width: ${settings.size}px;
+  height: ${settings.size}px;
+  background: ${settings.color};
+  border-radius: ${settings.shape === 'circle' ? '50%' : '0'};
+  animation: float ${settings.speed}s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}`;
+        
+        const js = `const container = document.getElementById('particle-container');
+const count = ${settings.count};
+
+for (let i = 0; i < count; i++) {
+  const p = document.createElement('div');
+  p.classList.add('particle');
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 5 + 's';
+  p.style.animationDuration = (Math.random() * 5 + ${settings.speed}) + 's';
+  container.appendChild(p);
+}`;
+
+        codeOutput.value = `<!-- HTML -->\n${html}\n\n/* CSS */\n${css}\n\n// JavaScript\n${js}`;
+    }
+    
+    window.copyCode = function() {
+        const text = codeOutput.value;
+        navigator.clipboard.writeText(text);
+        if (window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
+    };
+    
+    // Initialize
+    updateParticles();
+  </script>
+</body>
+</html>
