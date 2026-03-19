@@ -178,9 +178,9 @@
     // PRESERVED LOGIC: Exact same functionality as requested
     document.getElementById('contact-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
-      // Using window.Devpaletteshub if available, else alert
-      if(window.Devpaletteshub && window.Devpaletteshub.Toast) {
-         window.Devpaletteshub.Toast.show("Message sent! We'll get back to you soon.", 'success');
+      // Using window.Devpalettes if available, else alert
+      if(window.Devpalettes && window.Devpalettes.Toast) {
+         window.Devpalettes.Toast.show("Message sent! We'll get back to you soon.", 'success');
       } else {
          alert("Message sent! We'll get back to you soon.");
       }

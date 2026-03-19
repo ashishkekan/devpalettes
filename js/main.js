@@ -1,5 +1,5 @@
 /* ============================================
-   Devpaletteshub - Main JavaScript
+   Devpalettes - Main JavaScript
    Shared functionality across all pages
    ============================================ */
 
@@ -411,7 +411,7 @@ function renderNavbar() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
-                Devpaletteshub
+                Devpalettes
               </span>
             </div>
           </a>
@@ -538,12 +538,12 @@ function renderFooter() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
-                Devpaletteshub
+                Devpalettes
               </span>
             </div>
           </a>
           <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
-            &copy; ${new Date().getFullYear()} Devpaletteshub. All rights reserved.
+            &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
             <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
@@ -567,7 +567,7 @@ function renderFooter() {
   }
 }
 
-function renderAuthorBio(author = 'Devpaletteshub Team', date = null) {
+function renderAuthorBio(author = 'Devpalettes Team', date = null) {
   const container = document.getElementById('author-bio-container');
   if (!container) return;
 
@@ -586,7 +586,7 @@ function renderAuthorBio(author = 'Devpaletteshub Team', date = null) {
           Updated on ${displayDate}
         </p>
         <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
-          Devpaletteshub Team creates tools and resources for designers and developers worldwide.
+          Devpalettes Team creates tools and resources for designers and developers worldwide.
         </p>
       </div>
       <div class="flex gap-3">
@@ -628,11 +628,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('Devpaletteshub initialized successfully');
+  console.log('Devpalettes initialized successfully');
 });
 
 // Export utilities for use in other scripts
-window.Devpaletteshub = {
+window.Devpalettes = {
   ThemeManager,
   Toast,
   ColorUtils,
