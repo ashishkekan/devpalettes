@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Understand the differences between HEX, RGB, and HSL color formats. Learn when to use each format in web development.">
+  <meta name="keywords" content="hex vs rgb, hsl color, color formats css, color codes explained, web design color codes">
+  <meta name="author" content="Devpalettes">
+  
+  <meta property="og:title" content="HEX vs RGB vs HSL - Color Formats Explained">
+  <meta property="og:description" content="Understand the differences between HEX, RGB, and HSL color formats.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://colorpaletteshub.com/blog/hex-rgb-hsl.html">
+  
+  <title>HEX vs RGB vs HSL - Color Formats Explained | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium rounded-full mb-4">Technical</span>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-6">HEX vs RGB vs HSL Explained</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-3xl mx-auto">Demystifying the three main color formats used in CSS.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            When writing CSS, you have several options for defining colors. The three most common are HEX, RGB, and HSL. While they all result in the same screen color, they offer different advantages for developers and designers.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">HEX (Hexadecimal)</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            HEX codes are six-digit combinations of numbers and letters (e.g., #FF5733) representing the Red, Green, and Blue components. They are compact and widely used in design software like Photoshop. They are the standard for copying colors from design tools to code.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">RGB (Red, Green, Blue)</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            RGB defines colors by their Red, Green, and Blue intensity values (0-255). The main advantage of RGB is the ability to add an Alpha channel (RGBA) for transparency. This makes it superior for overlay effects where opacity is needed.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">HSL (Hue, Saturation, Lightness)</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            HSL is often the most intuitive for developers. Hue is the color (0-360 degrees), Saturation is the intensity (0-100%), and Lightness is the brightness (0-100%). HSL makes it easy to create variations of a color—e.g., to create a lighter version, you just increase the lightness percentage. This is ideal for dynamic CSS systems.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Which Should You Use?</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Use HEX for static colors in your stylesheets. Use RGBA when you need transparency. Use HSL when building theme systems or generating color scales programmatically. Our converter tool makes switching between formats instant.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/enhancements.js"></script>
+</body>
+</html>
