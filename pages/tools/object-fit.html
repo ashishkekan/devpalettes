@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Object-Fit Generator - Responsive Image Fit Tool</title>
+  <meta name="title" content="CSS Object-Fit Generator">
+  <meta name="description" content="Visualize CSS object-fit and object-position properties. Learn how to fit images inside containers without distortion.">
+  <meta name="keywords" content="css object fit generator, object fit cover, css object position, image fit container, responsive image css">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/object-fit-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/object-fit-generator.html">
+  <meta property="og:title" content="CSS Object-Fit Generator">
+  <meta property="og:description" content="Visualize how images fit inside containers.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Object-Fit Generator",
+    "url": "https://colorpaletteshub.com/object-fit-generator.html",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    .container-box {
+      background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2394a3b8' fill-opacity='0.2'%3E%3Crect width='10' height='10' /%3E%3Crect x='10' y='10' width='10' height='10' /%3E%3C/g%3E%3C/svg%3E");
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py- bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-image mr-2"></i>Image Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Object-Fit Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Control how images fit inside containers.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-crop text-emerald-500"></i> Fit Mode
+             </h3>
+             <select id="of-fit" onchange="updateObjectFit()" class="w-full bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-3 text-sm border-2 border-transparent focus:border-emerald-500 outline-none">
+                <option value="fill">fill (Stretch to fill)</option>
+                <option value="contain">contain (Fit inside)</option>
+                <option value="cover" selected>cover (Fill container)</option>
+                <option value="none">none (Original size)</option>
+                <option value="scale-down">scale-down (Smallest)</option>
+             </select>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-arrows-alt text-emerald-500"></i> Position
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Horizontal: <span id="v-x">50</span>%</label>
+                   <input type="range" id="of-x" min="0" max="100" value="50" onchange="updateObjectFit()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Vertical: <span id="v-y">50</span>%</label>
+                   <input type="range" id="of-y" min="0" max="100" value="50" onchange="updateObjectFit()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-expand text-emerald-500"></i> Container Size
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Width: <span id="v-w">300</span>px</label>
+                   <input type="range" id="of-w" min="100" max="500" value="300" onchange="updateObjectFit()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Height: <span id="v-h">200</span>px</label>
+                   <input type="range" id="of-h" min="100" max="500" value="200" onchange="updateObjectFit()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview (Container)</h3>
+              </div>
+              
+              <div class="p-8 min-h-[300px] flex items-center justify-center bg-slate-200 dark:bg-slate-900">
+                 <div id="of-container" class="container-box border-4 border-slate-400 dark:border-slate-600 overflow-hidden transition-all duration-300">
+                    <img id="of-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Preview" class="transition-all duration-300">
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">Understanding Object-Fit</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            The <code>object-fit</code> CSS property sets how the content of a replaced element, such as an <code>&lt;img&gt;</code> or <code>&lt;video&gt;</code>, should be resized to fit its container. It works similarly to `background-size` but for HTML elements.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const container = document.getElementById('of-container');
+    const img = document.getElementById('of-img');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateObjectFit = function() {
+        const fit = document.getElementById('of-fit').value;
+        const x = document.getElementById('of-x').value;
+        const y = document.getElementById('of-y').value;
+        const w = document.getElementById('of-w').value;
+        const h = document.getElementById('of-h').value;
+        
+        document.getElementById('v-x').textContent = x;
+        document.getElementById('v-y').textContent = y;
+        document.getElementById('v-w').textContent = w;
+        document.getElementById('v-h').textContent = h;
+        
+        container.style.width = `${w}px`;
+        container.style.height = `${h}px`;
+        
+        img.style.objectFit = fit;
+        img.style.objectPosition = `${x}% ${y}%`;
+        img.style.width = '100%';
+        img.style.height = '100%';
+        
+        generateCode(fit, x, y);
+    };
+    
+    function generateCode(fit, x, y) {
+        const css = `.responsive-image {
+  width: 100%;
+  height: 100%;
+  object-fit: ${fit};
+  object-position: ${x}% ${y}%;
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateObjectFit();
+  </script>
+</body>
+</html>
