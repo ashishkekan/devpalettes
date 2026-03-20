@@ -14,13 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -176,8 +170,8 @@
        document.getElementById('val-rad').textContent = rad;
        
        // Calculate Shadow Colors
-       const darkColor = adjustColor(bg, -int);
-       const lightColor = adjustColor(bg, int);
+       const darkColor = ColorUtils.adjustColor(bg, -int);
+       const lightColor = ColorUtils.adjustColor(bg, int);
        
        // Apply to Preview Background
        previewBg.style.backgroundColor = bg;
@@ -198,14 +192,6 @@
        generateCode(bg, dist, blur, darkColor, lightColor, inset, rad);
     };
     
-    function adjustColor(hex, percent) {
-       const num = parseInt(hex.slice(1), 16);
-       const amt = Math.round(2.55 * percent);
-       const R = Math.min(255, Math.max(0, (num >> 16) + amt));
-       const G = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amt));
-       const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
-       return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
-    }
     
     function generateCode(bg, dist, blur, dark, light, inset, rad) {
        const insetStr = inset ? 'inset ' : '';
@@ -222,7 +208,7 @@
     
     window.copyCode = function() {
        const text = codeOutput.textContent;
-       navigator.clipboard.writeText(text);
+       Clipboard.writeText(text);
        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
     };
     

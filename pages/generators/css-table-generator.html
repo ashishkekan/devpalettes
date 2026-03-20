@@ -14,10 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
   
   <link rel="stylesheet" href="../../assets/css/styles.css">
@@ -128,10 +125,10 @@
        
        const rows = table.querySelectorAll('tbody tr');
        rows.forEach((r, i) => {
-          r.style.backgroundColor = i % 2 === 0 ? row : (striped ? adjustColor(row, -5) : row);
+          r.style.backgroundColor = i % 2 === 0 ? row : (striped ? ColorUtils.adjustColor(row, -5) : row);
           if(hover) {
-             r.onmouseenter = () => r.style.backgroundColor = adjustColor(row, -15);
-             r.onmouseleave = () => r.style.backgroundColor = i % 2 === 0 ? row : (striped ? adjustColor(row, -5) : row);
+             r.onmouseenter = () => r.style.backgroundColor = ColorUtils.adjustColor(row, -15);
+             r.onmouseleave = () => r.style.backgroundColor = i % 2 === 0 ? row : (striped ? ColorUtils.adjustColor(row, -5) : row);
           } else {
              r.onmouseenter = null;
              r.onmouseleave = null;
@@ -146,14 +143,6 @@
        generateCode(head, row, border, striped, hover);
     };
     
-    function adjustColor(hex, percent) {
-       const num = parseInt(hex.slice(1), 16);
-       const amt = Math.round(2.55 * percent);
-       const R = Math.min(255, Math.max(0, (num >> 16) + amt));
-       const G = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amt));
-       const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
-       return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
-    }
     
     function generateCode(h, r, b, s, hov) {
        const css = `.styled-table {
@@ -184,11 +173,11 @@
 }
 
  ${s ? `.styled-table tbody tr:nth-of-type(even) {
-    background-color: ${adjustColor(r, -5)};
+    background-color: ${ColorUtils.adjustColor(r, -5)};
 }` : ''}
 
  ${hov ? `.styled-table tbody tr:hover {
-    background-color: ${adjustColor(r, -15)};
+    background-color: ${ColorUtils.adjustColor(r, -15)};
     cursor: pointer;
 }` : ''}`;
        codeOutput.textContent = css;
@@ -196,7 +185,7 @@
     
     window.copyCode = function() {
        const text = codeOutput.textContent;
-       navigator.clipboard.writeText(text);
+       Clipboard.writeText(text);
        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
     };
     
