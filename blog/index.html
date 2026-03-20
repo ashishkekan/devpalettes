@@ -235,8 +235,10 @@
       <div class="mt-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl p-8 text-center text-white animate-on-scroll">
         <h2 class="text-2xl font-bold mb-2">Stay Updated</h2>
         <p class="mb-6 text-white/90">Get the latest color tips and design guides delivered to your inbox.</p>
-        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-xl bg-white/20 backdrop-blur border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-white/50">
+        <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" id="newsletter-form">
+          <input type="email" name="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-xl bg-white/20 backdrop-blur border border-white/30 placeholder-white/70 text-white focus:outline-none focus:ring-2 focus:ring-white/50" required>
+          <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
+          <input type="hidden" name="_captcha" value="false">
           <button type="submit" class="px-6 py-3 bg-white text-emerald-600 font-semibold rounded-xl hover:bg-slate-100 transition-colors">
             Subscribe
           </button>
