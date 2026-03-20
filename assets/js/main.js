@@ -638,6 +638,16 @@ function renderFooter() {
               <li><a href="/pages/site/about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
               <li><a href="/pages/site/contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
               <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
+              <li><a href="/sitemap.html" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
+            </ul>
+          </div>
+          
+          <!-- Support (New Section) -->
+          <div>
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Support</h3>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <li><a href="/pages/support/faq.html" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
+              <li><a href="/pages/support/help-center.html" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
             </ul>
           </div>
           
@@ -648,23 +658,26 @@ function renderFooter() {
               <li><a href="/pages/legal/privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
               <li><a href="/pages/legal/terms.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
               <li><a href="/pages/legal/cookie-policy.html" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
+              <li><a href="/pages/legal/disclaimer.html" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
             </ul>
           </div>
-          
-          <!-- Newsletter -->
-          <div class="col-span-2 md:col-span-1">
-            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Stay Updated</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 sm:mb-4">Get the latest color trends and updates.</p>
-            <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex gap-2">
-              <input type="email" name="email" placeholder="Your email"
-              class="input-field text-sm flex-1" required>
-              <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
-              <input type="hidden" name="_captcha" value="false">
-              <button type="submit" class="btn-primary text-sm px-4 btn-size">
-              <i class="fas fa-arrow-right"></i>
-              </button>
-            </form>
-          </div>
+        </div>
+        
+        <!-- Newsletter Section (Moved Below) -->
+        <div class="mt-8 sm:mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
+            <div class="max-w-xl mx-auto text-center">
+                <h3 class="font-bold text-sm sm:text-base uppercase tracking-wider text-slate-500 mb-3">Stay Updated</h3>
+                <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-4">Get the latest color trends and updates.</p>
+                <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex gap-2">
+                  <input type="email" name="email" placeholder="Your email"
+                  class="input-field text-sm flex-1" required>
+                  <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
+                  <input type="hidden" name="_captcha" value="false">
+                  <button type="submit" class="btn-primary text-sm px-4">
+                  <i class="fas fa-arrow-right"></i>
+                  </button>
+                </form>
+            </div>
         </div>
         
         <div class="border-t border-slate-200 dark:border-slate-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
