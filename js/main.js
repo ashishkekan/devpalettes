@@ -481,7 +481,7 @@ function renderFooter() {
   const footerHTML = `
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-5">
           <!-- Product -->
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
@@ -500,6 +500,7 @@ function renderFooter() {
               <li><a href="/about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
               <li><a href="/contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
               <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
+              <li><a href="/sitemap.html" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
           </div>
           
@@ -510,6 +511,16 @@ function renderFooter() {
               <li><a href="/privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
               <li><a href="/terms.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
               <li><a href="/cookie-policy.html" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
+              <li><a href="/disclaimer.html" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
+            </ul>
+          </div>
+
+          <!-- Support -->
+          <div>
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Support</h3>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <li><a href="/faq.html" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
+              <li><a href="/help-center.html" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
             </ul>
           </div>
           
