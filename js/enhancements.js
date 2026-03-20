@@ -1,6 +1,6 @@
 /**
  * Visual Enhancement Scripts
- * Devpaletteshub.com
+ * Devpalettes.com
  * Common animations: Visualizer, Particles, Scroll Animations, Parallax
  */
 

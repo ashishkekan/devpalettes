@@ -1,5 +1,5 @@
 /* ============================================
-   Devpaletteshub - Main JavaScript
+   Devpalettes - Main JavaScript
    Shared functionality across all pages
    ============================================ */
 
@@ -411,7 +411,7 @@ function renderNavbar() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
-                Devpaletteshub
+                Devpalettes
               </span>
             </div>
           </a>
@@ -481,7 +481,7 @@ function renderFooter() {
   const footerHTML = `
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-5">
           <!-- Product -->
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
@@ -500,6 +500,7 @@ function renderFooter() {
               <li><a href="/about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
               <li><a href="/contact.html" class="hover:text-emerald-500 transition-colors">Contact</a></li>
               <li><a href="/blog/index.html" class="hover:text-emerald-500 transition-colors">Blog</a></li>
+              <li><a href="/sitemap.html" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
           </div>
           
@@ -510,6 +511,16 @@ function renderFooter() {
               <li><a href="/privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
               <li><a href="/terms.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
               <li><a href="/cookie-policy.html" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
+              <li><a href="/disclaimer.html" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
+            </ul>
+          </div>
+
+          <!-- Support -->
+          <div>
+            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Support</h3>
+            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
+              <li><a href="/faq.html" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
+              <li><a href="/help-center.html" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
             </ul>
           </div>
           
@@ -538,12 +549,12 @@ function renderFooter() {
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
-                Devpaletteshub
+                Devpalettes
               </span>
             </div>
           </a>
           <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
-            &copy; ${new Date().getFullYear()} Devpaletteshub. All rights reserved.
+            &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
             <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
@@ -567,7 +578,7 @@ function renderFooter() {
   }
 }
 
-function renderAuthorBio(author = 'Devpaletteshub Team', date = null) {
+function renderAuthorBio(author = 'Devpalettes Team', date = null) {
   const container = document.getElementById('author-bio-container');
   if (!container) return;
 
@@ -586,7 +597,7 @@ function renderAuthorBio(author = 'Devpaletteshub Team', date = null) {
           Updated on ${displayDate}
         </p>
         <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
-          Devpaletteshub Team creates tools and resources for designers and developers worldwide.
+          Devpalettes Team creates tools and resources for designers and developers worldwide.
         </p>
       </div>
       <div class="flex gap-3">
@@ -628,11 +639,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('Devpaletteshub initialized successfully');
+  console.log('Devpalettes initialized successfully');
 });
 
 // Export utilities for use in other scripts
-window.Devpaletteshub = {
+window.Devpalettes = {
   ThemeManager,
   Toast,
   ColorUtils,

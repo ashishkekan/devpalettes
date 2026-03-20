@@ -1,11 +1,11 @@
 /* ============================================
-   Devpaletteshub - Color Converter
+   Devpalettes - Color Converter
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  if (!window.Devpaletteshub) return;
+  if (!window.Devpalettes) return;
   
-  const { ColorUtils, Clipboard } = window.Devpaletteshub;
+  const { ColorUtils, Clipboard } = window.Devpalettes;
   
   // State
   let currentColor = {
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="flex-1 h-12 cursor-pointer hover:opacity-80 transition-opacity" 
                  style="background: ${c}" 
                  title="${c}"
-                 onclick="Devpaletteshub.Clipboard.copy('${c}', 'Copied ${c}')">
+                 onclick="Devpalettes.Clipboard.copy('${c}', 'Copied ${c}')">
             </div>
           `).join('')}
         </div>
