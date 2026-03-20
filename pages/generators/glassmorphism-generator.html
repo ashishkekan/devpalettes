@@ -3,18 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Generate Glassmorphism CSS effects. Create frosted glass UI components with backdrop blur.">
-  <meta name="keywords" content="glassmorphism generator, css glass effect, frosted glass css, blur background">
-  <meta name="author" content="Devpalettes">
   
-  <title>Glassmorphism Generator | Devpalettes</title>
-  
+  <!-- Primary Meta Tags -->
+  <title>Glassmorphism Generator - Frosted Glass CSS Effect</title>
+  <meta name="title" content="Glassmorphism Generator">
+  <meta name="description" content="Create modern frosted glass UI effects with CSS. Adjust blur, transparency, and borders for glass-like interfaces.">
+  <meta name="keywords" content="glassmorphism generator, frosted glass css, glass ui css, backdrop filter, css glass effect">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/glassmorphism-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/glassmorphism-generator.html">
+  <meta property="og:title" content="Glassmorphism Generator">
+  <meta property="og:description" content="Create modern frosted glass UI effects.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Glassmorphism Generator",
+    "url": "https://colorpaletteshub.com/glassmorphism-generator.html",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
   <script src="https://cdn.tailwindcss.com"></script>
+   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -22,17 +42,13 @@
     }
   </script>
   <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
   </script>
   
   <link rel="stylesheet" href="../../assets/css/styles.css">
   <link rel="stylesheet" href="../../assets/css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <div id="navbar-container"></div>
   
   <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
@@ -43,86 +59,96 @@
     
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <!-- Header -->
       <div class="text-center mb-10 animate-on-scroll">
         <span class="inline-block px-4 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 text-sm font-medium rounded-full mb-4">
-          <i class="fas fa-wind mr-2"></i>CSS Effect
+           <i class="fas fa-clone mr-2"></i>UI Effect
         </span>
         <h1 class="text-4xl font-bold mb-4">Glassmorphism Generator</h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
-          Create modern frosted glass effects with backdrop blur.
-        </p>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create stunning frosted glass effects.</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
-      <div class="grid lg:grid-cols-3 gap-8">
-        
-        <!-- Controls -->
-        <div class="space-y-4 animate-on-scroll">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
           <div class="glass-card p-6 shimmer-card">
-             <h3 class="font-bold mb-4 text-lg">Settings</h3>
-             
-             <div class="space-y-4">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-adjust text-emerald-500"></i> Transparency
+             </h3>
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Opacity: <span id="v-op">0.70</span></label>
+                <input type="range" id="gl-op" min="0" max="100" value="70" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-water text-emerald-500"></i> Blur
+             </h3>
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Blur: <span id="v-blur">16</span>px</label>
+                <input type="range" id="gl-blur" min="0" max="50" value="16" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-border-style text-emerald-500"></i> Border
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Blur: <span id="val-blur">16</span>px</label>
-                   <input type="range" id="ctrl-blur" min="0" max="50" value="16" onchange="updateGlass()" class="w-full accent-emerald-500">
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Size: <span id="v-brd">1</span>px</label>
+                   <input type="range" id="gl-brd" min="0" max="5" value="1" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
                 </div>
-                
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Opacity: <span id="val-opac">0.5</span></label>
-                   <input type="range" id="ctrl-opac" min="0" max="100" value="50" onchange="updateGlass()" class="w-full accent-emerald-500">
-                </div>
-                
-                <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Border Radius: <span id="val-rad">16</span>px</label>
-                   <input type="range" id="ctrl-rad" min="0" max="50" value="16" onchange="updateGlass()" class="w-full accent-emerald-500">
-                </div>
-                
-                <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Border Color</label>
-                   <input type="color" id="ctrl-border" value="#ffffff" onchange="updateGlass()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Radius: <span id="v-rad">16</span>px</label>
+                   <input type="range" id="gl-rad" min="0" max="50" value="16" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
                 </div>
              </div>
           </div>
         </div>
         
-        <!-- Preview & Code -->
-        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
-          
-          <!-- Preview -->
-          <div class="glass-card p-0 shimmer-card overflow-hidden">
-             <div class="p-4 border-b border-slate-100 dark:border-slate-700">
-                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
-             </div>
-             
-             <!-- Colorful Background to show effect -->
-             <div class="h-96 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex items-center justify-center p-10">
-                <div id="glass-preview" class="w-full h-64 flex items-center justify-center text-white font-bold text-xl transition-all duration-300">
-                   <div class="text-center">
-                      <i class="fas fa-gem text-4xl mb-2 opacity-80"></i>
-                      <div>Glass Effect</div>
-                   </div>
-                </div>
-             </div>
-          </div>
-          
-          <!-- Code -->
-          <div class="glass-card p-6 shimmer-card">
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="min-h-[350px] relative bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+                 <div class="absolute inset-0 flex items-center justify-center p-8">
+                    <div id="glass-preview" class="w-full max-w-xs p-6 text-center transition-all duration-300">
+                       <h4 class="text-xl font-bold mb-2">Glass Card</h4>
+                       <p class="text-sm opacity-80">This is a frosted glass effect example.</p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
              <div class="flex justify-between items-center mb-2">
                 <h3 class="font-bold text-lg">CSS Code</h3>
                 <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
              </div>
-             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+             <textarea id="code-output" readonly class="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
           </div>
-          
         </div>
-        
       </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">What is Glassmorphism?</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Glassmorphism is a design trend characterized by transparency and blur. It uses the CSS property <code>backdrop-filter: blur()</code> to create a background that looks like frosted glass. This effect helps separate foreground elements from the background while maintaining visual connection.
+         </p>
+      </div>
+      
     </div>
   </main>
   
   <div id="footer-container"></div>
-  
   <script src="../../assets/js/main.js"></script>
   <script src="../../assets/js/enhancements.js"></script>
   
@@ -131,42 +157,45 @@
     const codeOutput = document.getElementById('code-output');
     
     window.updateGlass = function() {
-       const blur = document.getElementById('ctrl-blur').value;
-       const opac = document.getElementById('ctrl-opac').value / 100;
-       const rad = document.getElementById('ctrl-rad').value;
-       const border = document.getElementById('ctrl-border').value;
-       
-       document.getElementById('val-blur').textContent = blur;
-       document.getElementById('val-opac').textContent = opac.toFixed(2);
-       document.getElementById('val-rad').textContent = rad;
-       
-       // Apply Styles
-       preview.style.backdropFilter = `blur(${blur}px)`;
-       preview.style.webkitBackdropFilter = `blur(${blur}px)`;
-       preview.style.backgroundColor = `rgba(255, 255, 255, ${opac})`;
-       preview.style.borderRadius = `${rad}px`;
-       preview.style.border = `1px solid ${border}`;
-       
-       generateCode(blur, opac, rad, border);
+        const op = document.getElementById('gl-op').value / 100;
+        const blur = document.getElementById('gl-blur').value;
+        const brd = document.getElementById('gl-brd').value;
+        const rad = document.getElementById('gl-rad').value;
+        
+        document.getElementById('v-op').textContent = op.toFixed(2);
+        document.getElementById('v-blur').textContent = blur;
+        document.getElementById('v-brd').textContent = brd;
+        document.getElementById('v-rad').textContent = rad;
+        
+        // Apply styles (Using white base for glass effect)
+        preview.style.background = `rgba(255, 255, 255, ${op})`;
+        preview.style.backdropFilter = `blur(${blur}px)`;
+        preview.style.WebkitBackdropFilter = `blur(${blur}px)`;
+        preview.style.border = `${brd}px solid rgba(255, 255, 255, 0.2)`;
+        preview.style.borderRadius = `${rad}px`;
+        preview.style.boxShadow = `0 4px 30px rgba(0, 0, 0, 0.1)`;
+        
+        generateCode(op, blur, brd, rad);
     };
     
-    function generateCode(b, o, r, border) {
-       const css = `.glass-card {
-  background: rgba(255, 255, 255, ${o.toFixed(2)});
-  backdrop-filter: blur(${b}px);
-  -webkit-backdrop-filter: blur(${b}px);
-  border-radius: ${r}px;
-  border: 1px solid ${border};
-}`;
-       codeOutput.textContent = css;
+    function generateCode(op, blur, brd, rad) {
+        const css = `.glass-card {
+            background: rgba(255, 255, 255, ${op});
+            backdrop-filter: blur(${blur}px);
+            -webkit-backdrop-filter: blur(${blur}px);
+            border: ${brd}px solid rgba(255, 255, 255, 0.2);
+            border-radius: ${rad}px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+         }`;
+        codeOutput.value = css;
     }
     
     window.copyCode = function() {
-       const text = codeOutput.textContent;
-       navigator.clipboard.writeText(text);
-       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
     };
     
+    // Init
     updateGlass();
   </script>
 </body>
