@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate CSS scroll animations with live preview. Create fade-in, slide, zoom, and flip effects for your website.">
+  <meta name="keywords" content="scroll animation generator, css scroll effects, intersection observer, scroll animations, website animations">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Scroll Animation Generator - CSS Effects | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    /* Base State for Animations */
+    .anim-section {
+       transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    /* 1. Fade Up */
+    .anim-fade-up.is-hidden { opacity: 0; transform: translateY(60px); }
+    .anim-fade-up.is-visible { opacity: 1; transform: translateY(0); }
+    
+    /* 2. Slide Left */
+    .anim-slide-left.is-hidden { opacity: 0; transform: translateX(-100px); }
+    .anim-slide-left.is-visible { opacity: 1; transform: translateX(0); }
+    
+    /* 3. Slide Right */
+    .anim-slide-right.is-hidden { opacity: 0; transform: translateX(100px); }
+    .anim-slide-right.is-visible { opacity: 1; transform: translateX(0); }
+    
+    /* 4. Zoom In */
+    .anim-zoom.is-hidden { opacity: 0; transform: scale(0.7); }
+    .anim-zoom.is-visible { opacity: 1; transform: scale(1); }
+    
+    /* 5. Flip Up */
+    .anim-flip.is-hidden { opacity: 0; transform: rotateX(80deg); }
+    .anim-flip.is-visible { opacity: 1; transform: rotateX(0deg); }
+    
+    /* 6. Rotate */
+    .anim-rotate.is-hidden { opacity: 0; transform: rotate(-180deg) scale(0.5); }
+    .anim-rotate.is-visible { opacity: 1; transform: rotate(0deg) scale(1); }
+    
+    /* 7. Blur In */
+    .anim-blur.is-hidden { opacity: 0; filter: blur(20px); transform: scale(0.9); }
+    .anim-blur.is-visible { opacity: 1; filter: blur(0px); transform: scale(1); }
+    
+    /* 8. Bounce */
+    .anim-bounce.is-hidden { opacity: 0; transform: translateY(-80px); }
+    .anim-bounce.is-visible { opacity: 1; transform: translateY(0); animation: bounceLand 0.6s ease-out; }
+    
+    @keyframes bounceLand {
+       0% { transform: translateY(0); }
+       30% { transform: translateY(-20px); }
+       60% { transform: translateY(5px); }
+       100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-arrows-alt-v mr-2"></i>CSS Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Scroll Animation Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Select an animation type and scroll down to see the effect in action. Copy the generated code.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8 mb-12">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-1 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card sticky top-24">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-magic text-emerald-500"></i>
+                Animation Type
+             </h3>
+             
+             <div class="grid grid-cols-2 gap-3">
+                <button onclick="setAnim('fade-up')" class="anim-btn active px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Fade Up</button>
+                <button onclick="setAnim('slide-left')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Slide Left</button>
+                <button onclick="setAnim('slide-right')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Slide Right</button>
+                <button onclick="setAnim('zoom')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Zoom</button>
+                <button onclick="setAnim('flip')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Flip</button>
+                <button onclick="setAnim('rotate')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Rotate</button>
+                <button onclick="setAnim('blur')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Blur</button>
+                <button onclick="setAnim('bounce')" class="anim-btn px-3 py-3 rounded-lg text-sm font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Bounce</button>
+             </div>
+             
+             <p class="text-xs text-slate-400 mt-6 text-center">
+                <i class="fas fa-mouse mr-1"></i> Scroll down to preview
+             </p>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-2 space-y-8">
+           
+           <!-- Demo Sections -->
+           <div id="demo-container" class="space-y-12">
+              
+              <div class="anim-section anim-fade-up is-hidden glass-card p-8 text-center shimmer-card">
+                 <h3 class="text-2xl font-bold mb-2">Section 1</h3>
+                 <p class="text-slate-500 text-sm">This is a sample content block.</p>
+              </div>
+              
+              <div class="anim-section anim-fade-up is-hidden glass-card p-8 text-center shimmer-card">
+                 <h3 class="text-2xl font-bold mb-2">Section 2</h3>
+                 <p class="text-slate-500 text-sm">Scroll animations bring life to your page.</p>
+              </div>
+              
+              <div class="anim-section anim-fade-up is-hidden glass-card p-8 text-center shimmer-card">
+                 <h3 class="text-2xl font-bold mb-2">Section 3</h3>
+                 <p class="text-slate-500 text-sm">Use Intersection Observer for best performance.</p>
+              </div>
+              
+              <div class="anim-section anim-fade-up is-hidden glass-card p-8 text-center shimmer-card">
+                 <h3 class="text-2xl font-bold mb-2">Section 4</h3>
+                 <p class="text-slate-500 text-sm">CSS transitions make the magic happen.</p>
+              </div>
+              
+           </div>
+           
+           <!-- Spacer to allow last scroll -->
+           <div class="h-48"></div>
+           
+        </div>
+        
+      </div>
+      
+      <!-- Code Section (Fixed at bottom or separate section) -->
+      <div class="glass-card p-6 shimmer-card animate-on-scroll">
+         <div class="flex justify-between items-center mb-2">
+            <h3 class="font-bold text-lg">Generated Code</h3>
+            <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy Code</button>
+         </div>
+         <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-60">
+            <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300"></pre>
+         </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    (function() {
+      const sections = document.querySelectorAll('.anim-section');
+      const codeOutput = document.getElementById('code-output');
+      let currentAnim = 'fade-up';
+      
+      // --- Intersection Observer Logic ---
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+           if (entry.isIntersecting) {
+              entry.target.classList.remove('is-hidden');
+              entry.target.classList.add('is-visible');
+           } else {
+              // Optional: Reset animation on scroll up
+              entry.target.classList.remove('is-visible');
+              entry.target.classList.add('is-hidden');
+           }
+        });
+      }, { threshold: 0.15 });
+      
+      sections.forEach(section => observer.observe(section));
+      
+      // --- Animation Switcher ---
+      window.setAnim = function(type) {
+         currentAnim = type;
+         
+         // Update Buttons
+         document.querySelectorAll('.anim-btn').forEach(b => {
+            b.classList.remove('active', 'bg-emerald-500', 'text-white');
+         });
+         event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+         
+         // Update Sections
+         sections.forEach(section => {
+            // Remove all anim classes first
+            section.classList.remove(
+               'anim-fade-up', 'anim-slide-left', 'anim-slide-right', 
+               'anim-zoom', 'anim-flip', 'anim-rotate', 'anim-blur', 'anim-bounce',
+               'is-visible'
+            );
+            // Add new class + hidden state
+            section.classList.add(`anim-${type}`, 'is-hidden');
+         });
+         
+         updateCode();
+      };
+      
+      // --- Code Generator ---
+      window.updateCode = function() {
+         
+         // We generate CSS dynamically based on type
+         const cssMap = {
+            'fade-up': `is-hidden { opacity: 0; transform: translateY(60px); }`,
+            'slide-left': `is-hidden { opacity: 0; transform: translateX(-100px); }`,
+            'slide-right': `is-hidden { opacity: 0; transform: translateX(100px); }`,
+            'zoom': `is-hidden { opacity: 0; transform: scale(0.7); }`,
+            'flip': `is-hidden { opacity: 0; transform: rotateX(80deg); }`,
+            'rotate': `is-hidden { opacity: 0; transform: rotate(-180deg) scale(0.5); }`,
+            'blur': `is-hidden { opacity: 0; filter: blur(20px); transform: scale(0.9); }`,
+            'bounce': `is-hidden { opacity: 0; transform: translateY(-80px); }`
+         };
+         
+         const code = `/* CSS */
+            .anim-section {
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+
+            .anim-section.${cssMap[currentAnim]}
+            .anim-section.is-visible { opacity: 1; transform: translate(0) rotate(0) scale(1); }
+
+            /* JavaScript */
+            const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                entry.target.classList.remove('is-hidden');
+                } else {
+                entry.target.classList.remove('is-visible');
+                entry.target.classList.add('is-hidden');
+                }
+            });
+            }, { threshold: 0.15 });
+
+            document.querySelectorAll('.anim-section').forEach(el => observer.observe(el));`;
+         
+         codeOutput.textContent = code;
+      };
+      
+      window.copyCode = function() {
+         const text = codeOutput.textContent;
+         navigator.clipboard.writeText(text).then(() => {
+             if(window.Devpalettes && window.Devpalettes.Toast) {
+               window.Devpalettes.Toast.show('Code Copied!', 'success');
+             } else {
+               alert('Code Copied!');
+             }
+         });
+      };
+      
+      // Init
+      updateCode();
+      
+    })();
+  </script>
+</body>
+</html>

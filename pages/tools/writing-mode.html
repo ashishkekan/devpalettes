@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Writing Mode Generator - Vertical Text Layout Tool</title>
+  <meta name="title" content="CSS Writing Mode Generator">
+  <meta name="description" content="Generate CSS for vertical text layouts. Create vertical headers, East Asian style typography, and creative text effects.">
+  <meta name="keywords" content="css writing mode, vertical text css, writing-mode generator, css vertical text, text-orientation">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/writing-mode-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/writing-mode-generator.html">
+  <meta property="og:title" content="CSS Writing Mode Generator">
+  <meta property="og:description" content="Create vertical text layouts with CSS.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Writing Mode Generator",
+    "url": "https://colorpaletteshub.com/writing-mode-generator.html",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py- bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-text-height mr-2"></i>Typography
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Writing Mode Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create vertical and sideways text layouts.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-paragraph text-emerald-500"></i> Writing Mode
+             </h3>
+             <select id="wm-mode" onchange="updateWritingMode()" class="w-full bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-3 text-sm border-2 border-transparent focus:border-emerald-500 outline-none">
+                <option value="horizontal-tb">Horizontal (Top-to-Bottom)</option>
+                <option value="vertical-rl">Vertical (Right-to-Left)</option>
+                <option value="vertical-lr">Vertical (Left-to-Right)</option>
+             </select>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-text-width text-emerald-500"></i> Orientation
+             </h3>
+             <select id="wm-orient" onchange="updateWritingMode()" class="w-full bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-3 text-sm border-2 border-transparent focus:border-emerald-500 outline-none">
+                <option value="mixed">Mixed (Default)</option>
+                <option value="upright">Upright</option>
+                <option value="sideways">Sideways</option>
+             </select>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="p-8 min-h-[300px] flex items-center justify-center bg-slate-200 dark:bg-slate-900">
+                 <div id="wm-text" class="text-3xl font-black text-indigo-500 border-2 border-dashed border-slate-400 p-4 transition-all duration-300">
+                    VERTICAL TEXT
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">CSS Writing Modes</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            The <code>writing-mode</code> CSS property sets whether lines of text are laid out horizontally or vertically, as well as the direction in which blocks progress. It is essential for internationalization, especially for East Asian languages like Chinese or Japanese.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const textEl = document.getElementById('wm-text');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateWritingMode = function() {
+        const mode = document.getElementById('wm-mode').value;
+        const orient = document.getElementById('wm-orient').value;
+        
+        textEl.style.writingMode = mode;
+        textEl.style.textOrientation = orient;
+        
+        generateCode(mode, orient);
+    };
+    
+    function generateCode(mode, orient) {
+        const css = `.vertical-text {
+  writing-mode: ${mode};
+  text-orientation: ${orient};
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateWritingMode();
+  </script>
+</body>
+</html>

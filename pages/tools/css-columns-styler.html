@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Columns Generator - Multi-Column Layout Tool</title>
+  <meta name="title" content="CSS Columns Generator">
+  <meta name="description" content="Generate CSS multi-column layouts for text. Adjust column count, gap, and dividers.">
+  <meta name="keywords" content="css columns generator, css multi column, column-count, newspaper layout css, column-gap">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/css-columns-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/css-columns-generator.html">
+  <meta property="og:title" content="CSS Columns Generator">
+  <meta property="og:description" content="Create newspaper-style text layouts.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Columns Generator",
+    "url": "https://colorpaletteshub.com/css-columns-generator.html",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py- bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-newspaper mr-2"></i>Layout Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Columns Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create newspaper-style text layouts.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-th-large text-emerald-500"></i> Structure
+             </h3>
+             <div class="space-y-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Columns: <span id="v-col">3</span></label>
+                   <input type="range" id="col-count" min="1" max="6" value="3" onchange="updateColumns()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Gap: <span id="v-gap">40</span>px</label>
+                   <input type="range" id="col-gap" min="10" max="100" value="40" onchange="updateColumns()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-minus text-emerald-500"></i> Divider
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Width</label>
+                   <select id="col-rule-width" onchange="updateColumns()" class="w-full bg-slate-100 dark:bg-slate-800 rounded-lg px-3 py-2 text-sm border-2 border-transparent focus:border-emerald-500 outline-none">
+                      <option value="0">None</option>
+                      <option value="1px" selected>1px</option>
+                      <option value="2px">2px</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Color</label>
+                   <input type="color" id="col-rule-color" value="#e2e8f0" onchange="updateColumns()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="p-8 min-h-[350px] bg-white dark:bg-slate-800">
+                 <div id="col-preview" class="text-sm text-slate-600 dark:text-slate-300 text-justify transition-all duration-300">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">Using CSS Columns</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            CSS Multiple Columns allows text to flow into multiple columns, similar to a newspaper layout. The properties `column-count`, `column-gap`, and `column-rule` control how the text is distributed and styled. This is excellent for readability in long-form content.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('col-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateColumns = function() {
+        const count = document.getElementById('col-count').value;
+        const gap = document.getElementById('col-gap').value;
+        const ruleW = document.getElementById('col-rule-width').value;
+        const ruleC = document.getElementById('col-rule-color').value;
+        
+        document.getElementById('v-col').textContent = count;
+        document.getElementById('v-gap').textContent = gap;
+        
+        preview.style.columnCount = count;
+        preview.style.columnGap = `${gap}px`;
+        preview.style.columnRule = `${ruleW} solid ${ruleC}`;
+        
+        generateCode(count, gap, ruleW, ruleC);
+    };
+    
+    function generateCode(count, gap, w, c) {
+        const css = `.multi-column-text {
+  column-count: ${count};
+  column-gap: ${gap}px;
+  column-rule: ${w} solid ${c};
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateColumns();
+  </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to pair typography with colors effectively. Ensure readability and visual hierarchy in your designs.">
+  <meta name="keywords" content="typography color pairing, text and background contrast, font colors, readable design, typography tips">
+  <meta name="author" content="Devpalettes">
+  
+  <meta property="og:title" content="Typography and Color Pairing - Readability Guide">
+  <meta property="og:description" content="Learn how to pair typography with colors effectively.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://colorpaletteshub.com/blog/typography-color-pairing.html">
+  
+  <title>Typography and Color Pairing - Readability Guide | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">Typography</span>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-6">Typography and Color Pairing</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-3xl mx-auto">How to combine text and color for maximum readability.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Typography and color are inseparable partners in UI design. The color of your text against its background determines not just readability but also the overall tone of your content. A poor pairing can make even the most beautiful font unreadable.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Contrast is King</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            High contrast between text and background is essential for legibility. Dark text on a light background or light text on a dark background are the safest choices. Avoid colored text on colored backgrounds unless the contrast ratio is verified—this is especially important for small body text.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Using Color for Hierarchy</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Color can differentiate headings from body copy. While weight and size are primary tools, using a brand color for headings (e.g., dark blue H1 vs dark gray body text) adds visual interest and reinforces brand identity without sacrificing readability.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Colored Backgrounds</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            When placing text over colored backgrounds or images, always use an overlay. A semi-transparent black or white overlay ensures the text stands out. CSS gradients are excellent for creating smooth text legibility overlays on hero images.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Never view typography in isolation from color. Test your pairings across different screens and lighting conditions. A design that looks good on a calibrated monitor might fail on a low-brightness phone screen in sunlight.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/enhancements.js"></script>
+</body>
+</html>

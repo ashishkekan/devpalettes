@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Border Radius Generator - Fancy Shapes & Blobs</title>
+  <meta name="title" content="CSS Border Radius Generator">
+  <meta name="description" content="Create complex CSS border-radius shapes visually. Generate organic blobs and leaf shapes.">
+  <meta name="keywords" content="border radius generator, css blob generator, fancy border radius, css shape maker, organic shapes css">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/border-radius-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/border-radius-generator.html">
+  <meta property="og:title" content="CSS Border Radius Generator">
+  <meta property="og:description" content="Create complex border-radius shapes visually.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Border Radius Generator",
+    "url": "https://colorpaletteshub.com/border-radius-generator.html",
+    "description": "Visual tool for generating complex CSS border-radius values.",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-teal-100 dark:bg-teal-900/30 text-teal-600 dark:text-teal-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-shapes mr-2"></i>CSS Shape
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Fancy Border Radius Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create organic blobs and complex shapes.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-border-style text-emerald-500"></i> Corner Radius
+             </h3>
+             <p class="text-xs text-slate-500 mb-4">Top-Left, Top-Right, Bottom-Right, Bottom-Left</p>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Top-Left: <span id="v-tl">30</span>%</label>
+                   <input type="range" id="r-tl" min="0" max="100" value="30" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Top-Right: <span id="v-tr">70</span>%</label>
+                   <input type="range" id="r-tr" min="0" max="100" value="70" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Btm-Right: <span id="v-br">30</span>%</label>
+                   <input type="range" id="r-br" min="0" max="100" value="30" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Btm-Left: <span id="v-bl">70</span>%</label>
+                   <input type="range" id="r-bl" min="0" max="100" value="70" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+             <div class="mt-4 grid grid-cols-3 gap-2">
+                <button onclick="setPreset(50, 50, 50, 50)" class="btn-secondary text-xs py-2">Circle</button>
+                <button onclick="setPreset(10, 10, 10, 10)" class="btn-secondary text-xs py-2">Rounded</button>
+                <button onclick="randomShape()" class="btn-secondary text-xs py-2"><i class="fas fa-random"></i> Random</button>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Size & Color</h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Size: <span id="v-size">200</span>px</label>
+                   <input type="range" id="r-size" min="50" max="300" value="200" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Color</label>
+                   <input type="color" id="r-color" value="#10b981" onchange="updateRadius()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="p-8 bg-slate-200 dark:bg-slate-900 min-h-[300px] flex items-center justify-center">
+                 <div id="shape-preview" class="transition-all duration-300"></div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">Creating Organic Shapes with CSS</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            The <code>border-radius</code> property can accept up to four values (top-left, top-right, bottom-right, bottom-left). By using unequal percentages, you can create "blob" shapes, leaf shapes, and other organic figures that add visual interest to modern web designs without using images.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('shape-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateRadius = function() {
+        const tl = document.getElementById('r-tl').value;
+        const tr = document.getElementById('r-tr').value;
+        const br = document.getElementById('r-br').value;
+        const bl = document.getElementById('r-bl').value;
+        const size = document.getElementById('r-size').value;
+        const color = document.getElementById('r-color').value;
+        
+        document.getElementById('v-tl').textContent = tl;
+        document.getElementById('v-tr').textContent = tr;
+        document.getElementById('v-br').textContent = br;
+        document.getElementById('v-bl').textContent = bl;
+        document.getElementById('v-size').textContent = size;
+        
+        const radiusVal = `${tl}% ${tr}% ${br}% ${bl}%`;
+        
+        preview.style.width = `${size}px`;
+        preview.style.height = `${size}px`;
+        preview.style.backgroundColor = color;
+        preview.style.borderRadius = radiusVal;
+        
+        generateCode(radiusVal);
+    };
+    
+    window.setPreset = function(tl, tr, br, bl) {
+        document.getElementById('r-tl').value = tl;
+        document.getElementById('r-tr').value = tr;
+        document.getElementById('r-br').value = br;
+        document.getElementById('r-bl').value = bl;
+        updateRadius();
+    };
+    
+    window.randomShape = function() {
+        const r = () => Math.floor(Math.random() * 100);
+        setPreset(r(), r(), r(), r());
+    };
+    
+    function generateCode(rad) {
+        const css = `.shape {
+  width: 200px;
+  height: 200px;
+  background: #333; /* Your color */
+  border-radius: ${rad};
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateRadius();
+  </script>
+</body>
+</html>

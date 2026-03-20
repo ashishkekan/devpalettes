@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Skeleton Screen Generator - Loading Placeholder CSS</title>
+  <meta name="title" content="Skeleton Screen Generator">
+  <meta name="description" content="Generate CSS for skeleton loading screens. Create pulsating placeholders for content loading states in web apps.">
+  <meta name="keywords" content="skeleton screen css, loading skeleton generator, content placeholder, shimmer effect, loading state css">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/skeleton-screen-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/skeleton-screen-generator.html">
+  <meta property="og:title" content="Skeleton Screen Generator">
+  <meta property="og:description" content="Generate CSS for skeleton loading screens.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Skeleton Screen Generator",
+    "url": "https://colorpaletteshub.com/skeleton-screen-generator.html",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    @keyframes cms-shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-spinner mr-2"></i>Loading UI
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Skeleton Screen Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create loading placeholders for better UX.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-emerald-500"></i> Colors
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Base Color</label>
+                   <input type="color" id="sk-base" value="#e2e8f0" onchange="updateSkeleton()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Shine Color</label>
+                   <input type="color" id="sk-shine" value="#f1f5f9" onchange="updateSkeleton()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-tachometer-alt text-emerald-500"></i> Animation
+             </h3>
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Duration: <span id="v-speed">1.5</span>s</label>
+                <input type="range" id="sk-speed" min="0.5" max="3" step="0.1" value="1.5" onchange="updateSkeleton()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-vector-square text-emerald-500"></i> Shape
+             </h3>
+             <div>
+                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Radius: <span id="v-rad">4</span>px</label>
+                <input type="range" id="sk-rad" min="0" max="20" value="4" onchange="updateSkeleton()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="p-8 min-h-[250px] flex flex-col justify-center bg-white dark:bg-slate-800">
+                 <div id="sk-preview-line" class="w-3/4 h-4 mb-4"></div>
+                 <div id="sk-preview-line-sm" class="w-1/2 h-4 mb-8"></div>
+                 <div id="sk-preview-box" class="w-full h-24"></div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">Why Use Skeleton Screens?</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Skeleton screens (or ghost elements) improve perceived performance. Instead of showing a blank screen while content loads, you show a placeholder that mimics the structure of the content, reducing the feeling of waiting time for the user.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const line1 = document.getElementById('sk-preview-line');
+    const line2 = document.getElementById('sk-preview-line-sm');
+    const box = document.getElementById('sk-preview-box');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateSkeleton = function() {
+        const base = document.getElementById('sk-base').value;
+        const shine = document.getElementById('sk-shine').value;
+        const speed = document.getElementById('sk-speed').value;
+        const rad = document.getElementById('sk-rad').value;
+        
+        document.getElementById('v-speed').textContent = speed;
+        document.getElementById('v-rad').textContent = rad;
+        
+        const styleVal = `background: linear-gradient(90deg, ${base} 25%, ${shine} 50%, ${base} 75%);
+            background-size: 200% 100%;
+            animation: cms-shimmer ${speed}s infinite;
+            border-radius: ${rad}px;`;
+        
+        // Apply
+        line1.style.cssText = styleVal;
+        line2.style.cssText = styleVal;
+        box.style.cssText = styleVal;
+        
+        generateCode(base, shine, speed, rad);
+    };
+    
+    function generateCode(base, shine, speed, rad) {
+        const css = `.skeleton {
+            background: linear-gradient(90deg, ${base} 25%, ${shine} 50%, ${base} 75%);
+            background-size: 200% 100%;
+            animation: shimmer ${speed}s infinite;
+            border-radius: ${rad}px;
+            display: block;
+            }
+
+            @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateSkeleton();
+  </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate Neumorphism (Soft UI) CSS styles. Create soft, extruded plastic-like user interfaces.">
+  <meta name="keywords" content="neumorphism generator, soft ui css, neumorphism css, soft shadows">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Neumorphism Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-cloud mr-2"></i>UI Effect
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Neumorphism Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create Soft UI designs with extruded plastic-like effects.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Configuration</h3>
+             
+             <div class="space-y-4">
+                <!-- Shape -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Shape</label>
+                   <div class="grid grid-cols-2 gap-2">
+                      <button onclick="setShape('rect')" id="btn-rect" class="shape-btn active px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 transition-colors">Rectangle</button>
+                      <button onclick="setShape('circle')" id="btn-circle" class="shape-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 transition-colors">Circle</button>
+                   </div>
+                </div>
+                
+                <!-- Background Color -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Background Color</label>
+                   <input type="color" id="ctrl-bg" value="#e0e5ec" onchange="updateNeumo()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                
+                <!-- Distance -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Distance: <span id="val-dist">12</span>px</label>
+                   <input type="range" id="ctrl-dist" min="5" max="40" value="12" onchange="updateNeumo()" class="w-full accent-slate-500">
+                </div>
+                
+                <!-- Blur -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Blur: <span id="val-blur">16</span>px</label>
+                   <input type="range" id="ctrl-blur" min="5" max="50" value="16" onchange="updateNeumo()" class="w-full accent-slate-500">
+                </div>
+                
+                <!-- Intensity -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Intensity: <span id="val-int">15</span>%</label>
+                   <input type="range" id="ctrl-int" min="5" max="40" value="15" onchange="updateNeumo()" class="w-full accent-slate-500">
+                </div>
+                
+                <!-- Shape Radius -->
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Radius: <span id="val-rad">30</span>px</label>
+                   <input type="range" id="ctrl-rad" min="0" max="100" value="30" onchange="updateNeumo()" class="w-full accent-slate-500">
+                </div>
+                
+                <!-- Inset Toggle -->
+                <div class="flex items-center justify-between mt-2">
+                   <span class="text-sm text-slate-600 dark:text-slate-300">Pressed (Inset)</span>
+                   <input type="checkbox" id="ctrl-inset" onchange="updateNeumo()" class="accent-slate-500 w-5 h-5 rounded">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <!-- Preview -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+                <span class="text-xs text-slate-400">Best on light backgrounds</span>
+             </div>
+             
+             <div id="preview-bg" class="h-96 flex items-center justify-center transition-colors duration-500" style="background-color: #e0e5ec;">
+                <div id="neumo-preview" class="w-48 h-48 flex items-center justify-center transition-all duration-300">
+                   <i class="fas fa-heart text-5xl text-slate-400"></i>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+          
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('neumo-preview');
+    const previewBg = document.getElementById('preview-bg');
+    const codeOutput = document.getElementById('code-output');
+    
+    let shape = 'rect';
+    
+    window.setShape = function(s) {
+       shape = s;
+       document.querySelectorAll('.shape-btn').forEach(b => b.classList.remove('active', 'bg-slate-500', 'text-white'));
+       event.target.classList.add('active', 'bg-slate-500', 'text-white');
+       updateNeumo();
+    };
+    
+    window.updateNeumo = function() {
+       const bg = document.getElementById('ctrl-bg').value;
+       const dist = document.getElementById('ctrl-dist').value;
+       const blur = document.getElementById('ctrl-blur').value;
+       const int = document.getElementById('ctrl-int').value;
+       const rad = document.getElementById('ctrl-rad').value;
+       const inset = document.getElementById('ctrl-inset').checked;
+       
+       document.getElementById('val-dist').textContent = dist;
+       document.getElementById('val-blur').textContent = blur;
+       document.getElementById('val-int').textContent = int;
+       document.getElementById('val-rad').textContent = rad;
+       
+       // Calculate Shadow Colors
+       const darkColor = adjustColor(bg, -int);
+       const lightColor = adjustColor(bg, int);
+       
+       // Apply to Preview Background
+       previewBg.style.backgroundColor = bg;
+       
+       // Apply to Box
+       const insetStr = inset ? 'inset ' : '';
+       const shadow = `${insetStr}${dist}px ${dist}px ${blur}px ${darkColor}, ${insetStr}-${dist}px -${dist}px ${blur}px ${lightColor}`;
+       
+       preview.style.boxShadow = shadow;
+       preview.style.backgroundColor = bg;
+       
+       if(shape === 'circle') {
+          preview.style.borderRadius = '50%';
+       } else {
+          preview.style.borderRadius = `${rad}px`;
+       }
+       
+       generateCode(bg, dist, blur, darkColor, lightColor, inset, rad);
+    };
+    
+    function adjustColor(hex, percent) {
+       const num = parseInt(hex.slice(1), 16);
+       const amt = Math.round(2.55 * percent);
+       const R = Math.min(255, Math.max(0, (num >> 16) + amt));
+       const G = Math.min(255, Math.max(0, ((num >> 8) & 0x00FF) + amt));
+       const B = Math.min(255, Math.max(0, (num & 0x0000FF) + amt));
+       return '#' + (0x1000000 + R * 0x10000 + G * 0x100 + B).toString(16).slice(1);
+    }
+    
+    function generateCode(bg, dist, blur, dark, light, inset, rad) {
+       const insetStr = inset ? 'inset ' : '';
+       const radiusCSS = shape === 'circle' ? 'border-radius: 50%;' : `border-radius: ${rad}px;`;
+       
+       const css = `.neumorphic {
+  background-color: ${bg};
+  ${radiusCSS}
+  box-shadow: ${insetStr}${dist}px ${dist}px ${blur}px ${dark},
+              ${insetStr}-${dist}px -${dist}px ${blur}px ${light};
+}`;
+       codeOutput.textContent = css;
+    }
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text);
+       if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('Code Copied!', 'success');
+    };
+    
+    // Init
+    updateNeumo();
+  </script>
+</body>
+</html>

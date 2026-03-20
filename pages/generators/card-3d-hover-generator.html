@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate 3D card hover effects with mouse tracking. Create tilt, glare, and shadow effects.">
+  <meta name="keywords" content="3d card generator, css 3d tilt, hover effect, vanillajs tilt">
+  <meta name="author" content="Devpalettes">
+  
+  <title>3D Card Hover Generator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    .card-3d {
+       transform-style: preserve-3d;
+       transition: transform 0.1s ease;
+       will-change: transform;
+    }
+    .card-3d .shine {
+       position: absolute;
+       inset: 0;
+       pointer-events: none;
+       background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.3), transparent 60%);
+       opacity: 0;
+       transition: opacity 0.3s;
+    }
+    .card-3d:hover .shine { opacity: 1; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-cube mr-2"></i>CSS Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">3D Card Hover Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Generate interactive 3D parallax tilt effects. Move mouse over the card to test.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-4 animate-on-scroll">
+           
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg">Settings</h3>
+              
+              <div class="space-y-4">
+                 <div>
+                    <label class="flex items-center gap-2 text-sm">
+                       <input type="checkbox" id="opt-glare" checked onchange="updateCode()" class="accent-emerald-500 w-4 h-4 rounded">
+                       Enable Glare Effect
+                    </label>
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Max Tilt: <span id="val-tilt">15</span>deg</label>
+                    <input type="range" id="opt-tilt" min="0" max="45" value="15" onchange="updateVals()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Perspective: <span id="val-persp">1000</span>px</label>
+                    <input type="range" id="opt-persp" min="200" max="2000" value="1000" onchange="updateVals()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Scale: <span id="val-scale">1.05</span>x</label>
+                    <input type="range" id="opt-scale" min="1" max="1.5" step="0.01" value="1.05" onchange="updateVals()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-xs font-semibold mb-1 text-slate-500">Speed: <span id="val-speed">300</span>ms</label>
+                    <input type="range" id="opt-speed" min="100" max="1000" value="300" onchange="updateVals()" class="w-full accent-emerald-500">
+                 </div>
+              </div>
+           </div>
+           
+        </div>
+        
+        <!-- Center: Preview -->
+        <div class="lg:col-span-1 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+             </div>
+             
+             <div class="h-96 flex items-center justify-center bg-slate-200 dark:bg-slate-800">
+                <div id="card-3d" class="card-3d relative w-64 h-80 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-2xl overflow-hidden flex flex-col justify-end p-6 cursor-pointer">
+                   <div class="shine"></div>
+                   <div class="relative z-10">
+                      <h3 class="text-white font-bold text-xl mb-1">Parallax Card</h3>
+                      <p class="text-white/80 text-xs">Move mouse over me</p>
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Code -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+           
+           <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated JS</h3>
+                <button onclick="copyCode()" class="btn-primary text-xs py-2 px-3"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-3 overflow-auto max-h-96 code-block">
+                <pre id="code-output" class="text-xs text-slate-600 dark:text-slate-300 font-mono whitespace-pre-wrap"></pre>
+             </div>
+           </div>
+           
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const card = document.getElementById('card-3d');
+    const codeOutput = document.getElementById('code-output');
+    
+    // Config
+    const optTilt = document.getElementById('opt-tilt');
+    const optPersp = document.getElementById('opt-persp');
+    const optScale = document.getElementById('opt-scale');
+    const optSpeed = document.getElementById('opt-speed');
+    const optGlare = document.getElementById('opt-glare');
+    
+    // Live Demo Logic
+    card.addEventListener('mousemove', (e) => {
+       const rect = card.getBoundingClientRect();
+       const x = e.clientX - rect.left;
+       const y = e.clientY - rect.top;
+       const centerX = rect.width / 2;
+       const centerY = rect.height / 2;
+       
+       const maxTilt = parseFloat(optTilt.value);
+       const rotateX = ((y - centerY) / centerY) * -maxTilt;
+       const rotateY = ((x - centerX) / centerX) * maxTilt;
+       
+       card.style.transform = `perspective(${optPersp.value}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${optScale.value})`;
+       
+       // Glare
+       if(optGlare.checked) {
+          const percentX = (x / rect.width) * 100;
+          const percentY = (y / rect.height) * 100;
+          card.querySelector('.shine').style.setProperty('--mouse-x', percentX + '%');
+          card.querySelector('.shine').style.setProperty('--mouse-y', percentY + '%');
+       }
+    });
+    
+    card.addEventListener('mouseleave', () => {
+       card.style.transform = `perspective(${optPersp.value}px) rotateX(0deg) rotateY(0deg) scale(1)`;
+    });
+    
+    window.updateVals = function() {
+       document.getElementById('val-tilt').textContent = optTilt.value;
+       document.getElementById('val-persp').textContent = optPersp.value;
+       document.getElementById('val-scale').textContent = optScale.value;
+       document.getElementById('val-speed').textContent = optSpeed.value;
+       updateCode();
+    };
+    
+    window.updateCode = function() {
+       const tilt = optTilt.value;
+       const persp = optPersp.value;
+       const scale = optScale.value;
+       const speed = optSpeed.value;
+       const glare = optGlare.checked;
+       
+       const glareCSS = glare ? `
+/* Glare Overlay */
+.shine {
+   position: absolute; inset: 0; pointer-events: none;
+   background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.3), transparent 60%);
+   opacity: 0;
+   transition: opacity 0.3s;
+}
+.card:hover .shine { opacity: 1; }` : '';
+       
+       const code = `/* CSS */
+.card {
+  transform-style: preserve-3d;
+  transition: transform ${speed}ms ease;
+  will-change: transform;${glareCSS}
+}
+
+/* JavaScript */
+const card = document.querySelector('.card');
+
+card.addEventListener('mousemove', (e) => {
+  const rect = card.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const centerX = rect.width / 2;
+  const centerY = rect.height / 2;
+  
+  const rotateX = ((y - centerY) / centerY) * -${tilt};
+  const rotateY = ((x - centerX) / centerX) * ${tilt};
+  
+  card.style.transform = 
+    \`perspective(${persp}px) rotateX(\${rotateX}deg) rotateY(\${rotateY}deg) scale(${scale})\`;
+  
+  ${glare ? `// Glare update
+  const shine = card.querySelector('.shine');
+  if(shine) {
+    shine.style.setProperty('--mouse-x', (x/rect.width)*100 + '%');
+    shine.style.setProperty('--mouse-y', (y/rect.height)*100 + '%');
+  }` : ''}
+});
+
+card.addEventListener('mouseleave', () => {
+  card.style.transform = 'rotateX(0deg) rotateY(0deg) scale(1)';
+});`;
+       
+       codeOutput.textContent = code;
+    };
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text).then(() => {
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('Code Copied!', 'success');
+           }
+       });
+    };
+    
+    // Init
+    updateVals();
+  </script>
+</body>
+</html>

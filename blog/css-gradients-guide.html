@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master CSS gradients with this ultimate guide. Learn linear, radial, and conic gradients with practical examples.">
+  <meta name="keywords" content="css gradients guide, linear gradient, radial gradient, css gradient tutorial, web design gradients">
+  <meta name="author" content="Devpalettes">
+  
+  <meta property="og:title" content="The Ultimate Guide to CSS Gradients">
+  <meta property="og:description" content="Master CSS gradients with this comprehensive guide.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://colorpaletteshub.com/blog/css-gradients-guide.html">
+  
+  <title>The Ultimate Guide to CSS Gradients | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 text-sm font-medium rounded-full mb-4">CSS Tutorial</span>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-6">The Ultimate Guide to CSS Gradients</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-3xl mx-auto">Master the art of CSS gradients from basic to advanced techniques.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            CSS gradients allow you to display smooth transitions between two or more specified colors. Gone are the days of using image files for gradient backgrounds. Modern CSS gives you powerful control over color stops, directions, and gradient types, enabling lightweight and scalable visual effects.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Linear Gradients</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Linear gradients progress along a straight line. You can define the direction using angles (e.g., `45deg`) or keywords (e.g., `to right`). This is the most commonly used gradient type for web backgrounds. You can add multiple color stops to create complex banding effects or smooth multi-color transitions.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Radial Gradients</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Radial gradients emanate from a central point. By default, the gradient is centered within the element and radiates outward in an ellipse shape. You can change the shape to a circle or define specific positions to create spotlight effects. These are perfect for highlighting specific areas of a UI or creating abstract backgrounds.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conic Gradients</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Conic gradients (or angular gradients) transition colors around a center point rather than radiating from it. Imagine a color wheel spinning around a central axis. This type is excellent for creating pie charts, color wheels, and intricate pattern backgrounds without using JavaScript or images.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Gradient Transparency</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            CSS gradients also support transparency via the `rgba()` or `hsla()` functions, or the newer hexadecimal `#RRGGBBAA` notation. Creating fading overlays or glass-morphism effects relies heavily on gradients with transparent color stops.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Gradients are a fundamental tool in modern web design. They add depth, visual interest, and polish to interfaces. Experiment with our Gradient Generator to create custom CSS code instantly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/enhancements.js"></script>
+</body>
+</html>

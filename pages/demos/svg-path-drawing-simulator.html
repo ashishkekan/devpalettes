@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate animated SVG path drawing effects. Create stroke animations like line drawing with CSS and JS.">
+  <meta name="keywords" content="svg path animator, line drawing animation, stroke dasharray, svg generator">
+  <meta name="author" content="Devpalettes">
+  
+  <title>SVG Path Drawing Animator | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    .svg-canvas {
+       background: radial-gradient(circle, #f1f5f9 0%, #e2e8f0 100%);
+    }
+    .dark .svg-canvas {
+       background: radial-gradient(circle, #1e293b 0%, #0f172a 100%);
+    }
+    
+    /* Animated Path Class */
+    .draw-path {
+       fill: none;
+       stroke-linecap: round;
+       stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-sky-100 dark:bg-sky-900/30 text-sky-600 dark:text-sky-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-bezier-curve mr-2"></i>Animation Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">SVG Path Animator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create "Line Drawing" style animations for any SVG path. Choose a shape or paste your own.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-4 animate-on-scroll">
+           
+           <!-- Shape Selector -->
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                 <i class="fas fa-shapes text-emerald-500"></i>
+                 Select Shape
+              </h3>
+              <div class="grid grid-cols-2 gap-2">
+                 <button onclick="setShape('wave')" class="shape-btn active px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Wave</button>
+                 <button onclick="setShape('heart')" class="shape-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Heart</button>
+                 <button onclick="setShape('star')" class="shape-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Star</button>
+                 <button onclick="setShape('infinity')" class="shape-btn px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">Infinity</button>
+              </div>
+           </div>
+           
+           <!-- Settings -->
+           <div class="glass-card p-6 shimmer-card">
+              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                 <i class="fas fa-palette text-pink-500"></i>
+                 Settings
+              </h3>
+              
+              <div class="space-y-4">
+                 <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-500">Stroke Color</label>
+                    <input type="color" id="ctrl-color" value="#3b82f6" onchange="updateStyle()" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-500">Stroke Width: <span id="val-width">3</span>px</label>
+                    <input type="range" id="ctrl-width" min="1" max="10" value="3" onchange="updateStyle()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-500">Duration: <span id="val-dur">2</span>s</label>
+                    <input type="range" id="ctrl-dur" min="0.5" max="10" step="0.5" value="2" onchange="updateStyle()" class="w-full accent-emerald-500">
+                 </div>
+                 
+                 <div>
+                    <label class="block text-sm font-medium mb-1 text-slate-500">Easing</label>
+                    <select id="ctrl-ease" onchange="updateStyle()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none">
+                       <option value="linear">Linear</option>
+                       <option value="ease">Ease</option>
+                       <option value="ease-in-out" selected>Ease In Out</option>
+                       <option value="cubic-bezier(0.4, 0, 0.2, 1)">Smooth</option>
+                    </select>
+                 </div>
+                 
+                 <div class="flex items-center justify-between">
+                    <span class="text-sm text-slate-500">Loop Animation</span>
+                    <input type="checkbox" id="ctrl-loop" class="accent-emerald-500 w-5 h-5 rounded" onchange="updateStyle()">
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Actions -->
+           <div class="flex gap-2">
+              <button onclick="playAnim()" class="flex-1 btn-primary btn-glow justify-center py-3"><i class="fas fa-play mr-2"></i>Play</button>
+              <button onclick="resetAnim()" class="flex-1 btn-secondary justify-center py-3"><i class="fas fa-redo mr-2"></i>Reset</button>
+           </div>
+           
+        </div>
+        
+        <!-- Center: Preview -->
+        <div class="lg:col-span-1 space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+                <span class="text-xs text-slate-400">Path Length: <span id="path-length">0</span>px</span>
+             </div>
+             
+             <div class="svg-canvas h-80 flex items-center justify-center">
+                <svg id="svg-root" width="200" height="200" viewBox="0 0 100 100">
+                   <!-- Injected by JS -->
+                   <path id="target-path" class="draw-path"/>
+                </svg>
+             </div>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Code -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+           
+           <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated Code</h3>
+                <button onclick="copyCode()" class="btn-primary text-xs py-2 px-3"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-96 code-block">
+                <pre id="code-output" class="text-xs text-slate-600 dark:text-slate-300 font-mono whitespace-pre-wrap"></pre>
+             </div>
+           </div>
+           
+        </div>
+        
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const pathEl = document.getElementById('target-path');
+    const lengthEl = document.getElementById('path-length');
+    const codeOutput = document.getElementById('code-output');
+    
+    // Shapes Data
+    const shapes = {
+       wave: "M10 50 Q 30 20 50 50 T 90 50",
+       heart: "M50 88 C20 60 5 40 5 25 C5 10 20 0 35 0 C45 0 50 10 50 15 C50 10 55 0 65 0 C80 0 95 10 95 25 C95 40 80 60 50 88 Z",
+       star: "M50 5 L61 40 L98 40 L68 62 L79 97 L50 75 L21 97 L32 62 L2 40 L39 40 Z",
+       infinity: "M25 50 C25 25 50 25 50 50 C50 75 75 75 75 50 C75 25 50 25 50 50 C50 75 25 75 25 50"
+    };
+    
+    let currentShape = 'wave';
+    let pathLength = 0;
+    
+    // Initialize Path
+    window.setShape = function(name) {
+       currentShape = name;
+       
+       // Update Buttons
+       document.querySelectorAll('.shape-btn').forEach(b => {
+          b.classList.remove('active', 'bg-emerald-500', 'text-white');
+       });
+       event.target.classList.add('active', 'bg-emerald-500', 'text-white');
+       
+       // Set Path
+       pathEl.setAttribute('d', shapes[name]);
+       
+       // Calculate Length
+       try {
+          pathLength = Math.round(pathEl.getTotalLength());
+          lengthEl.textContent = pathLength;
+       } catch(e) {
+          pathLength = 1000;
+          lengthEl.textContent = "Calc Error";
+       }
+       
+       resetAnim();
+       updateStyle();
+    };
+    
+    // Update Styles
+    window.updateStyle = function() {
+       const color = document.getElementById('ctrl-color').value;
+       const width = document.getElementById('ctrl-width').value;
+       const dur = document.getElementById('ctrl-dur').value;
+       const ease = document.getElementById('ctrl-ease').value;
+       const loop = document.getElementById('ctrl-loop').checked;
+       
+       document.getElementById('val-width').textContent = width;
+       document.getElementById('val-dur').textContent = dur;
+       
+       // Apply to live element
+       pathEl.style.stroke = color;
+       pathEl.style.strokeWidth = width;
+       pathEl.style.transition = `stroke-dashoffset ${dur}s ${ease} ${loop ? 'infinite alternate' : ''}`;
+       
+       // Re-apply dasharray for reset
+       pathEl.style.strokeDasharray = pathLength;
+       
+       generateCode();
+    };
+    
+    // Play Animation
+    window.playAnim = function() {
+       pathEl.style.strokeDasharray = pathLength;
+       pathEl.style.strokeDashoffset = 0; // Draw
+    };
+    
+    // Reset Animation
+    window.resetAnim = function() {
+       pathEl.style.transition = 'none';
+       pathEl.style.strokeDasharray = pathLength;
+       pathEl.style.strokeDashoffset = pathLength; // Hide
+       // Force reflow
+       void pathEl.getBoundingClientRect();
+       // Restore transition
+       setTimeout(() => updateStyle(), 50);
+    };
+    
+    // Generate Code
+    window.generateCode = function() {
+       const color = document.getElementById('ctrl-color').value;
+       const width = document.getElementById('ctrl-width').value;
+       const dur = document.getElementById('ctrl-dur').value;
+       const ease = document.getElementById('ctrl-ease').value;
+       const loop = document.getElementById('ctrl-loop').checked;
+       
+       const pathData = shapes[currentShape];
+       
+       const code = `<!-- HTML -->
+<svg width="200" height="200" viewBox="0 0 100 100">
+  <path class="draw-path" d="${pathData}" />
+</svg>
+
+/* CSS */
+.draw-path {
+  fill: none;
+  stroke: ${color};
+  stroke-width: ${width};
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000; /* Set dynamically via JS */
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset ${dur}s ${ease} ${loop ? 'infinite alternate' : ''};
+}
+
+/* JavaScript (To calculate exact length) */
+const path = document.querySelector('.draw-path');
+const length = path.getTotalLength();
+path.style.strokeDasharray = length;
+path.style.strokeDashoffset = length;
+
+// Trigger animation (on scroll or click)
+// path.style.strokeDashoffset = "0";`;
+       
+       codeOutput.textContent = code;
+    };
+    
+    window.copyCode = function() {
+       const text = codeOutput.textContent;
+       navigator.clipboard.writeText(text).then(() => {
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('Code Copied!', 'success');
+           }
+       });
+    };
+    
+    // Init
+    setShape('wave');
+    updateStyle();
+  </script>
+</body>
+</html>

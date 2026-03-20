@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Button Generator - Create Stylish Buttons Online</title>
+  <meta name="title" content="CSS Button Generator">
+  <meta name="description" content="Design beautiful CSS buttons with gradients, shadows, and hover effects. Get the code instantly.">
+  <meta name="keywords" content="css button generator, button maker, css button styles, gradient button, hover button css">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/css-button-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/css-button-generator.html">
+  <meta property="og:title" content="CSS Button Generator">
+  <meta property="og:description" content="Design beautiful CSS buttons with gradients and shadows.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Button Generator",
+    "url": "https://colorpaletteshub.com/css-button-generator.html",
+    "description": "Tool to generate customizable CSS buttons.",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-mouse-pointer mr-2"></i>UI Component
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Button Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create beautiful, clickable buttons in seconds.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-fill-drip text-emerald-500"></i> Background
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Color 1</label>
+                   <input type="color" id="btn-c1" value="#4f46e5" onchange="updateBtn()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Color 2</label>
+                   <input type="color" id="btn-c2" value="#7c3aed" onchange="updateBtn()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             <div class="mt-4">
+                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Direction</label>
+                <select id="btn-dir" onchange="updateBtn()" class="w-full bg-slate-100 dark:bg-slate-800 rounded-lg px-4 py-2 text-sm border-2 border-transparent focus:border-emerald-500 outline-none">
+                   <option value="to right">Left to Right</option>
+                   <option value="to left">Right to Left</option>
+                   <option value="to bottom">Top to Bottom</option>
+                   <option value="to top">Bottom to Top</option>
+                </select>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-expand text-emerald-500"></i> Size & Shape
+             </h3>
+             <div class="space-y-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Padding: <span id="v-pad">12</span>px</label>
+                   <input type="range" id="btn-pad" min="5" max="30" value="12" onchange="updateBtn()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Radius: <span id="v-rad">8</span>px</label>
+                   <input type="range" id="btn-rad" min="0" max="50" value="8" onchange="updateBtn()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview (Hover Me)</h3>
+              </div>
+              
+              <div class="p-8 bg-slate-200 dark:bg-slate-900 min-h-[200px] flex items-center justify-center">
+                 <button id="btn-preview" class="px-6 py-3 text-white font-bold transition-all duration-300">
+                    Click Me
+                 </button>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-40 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">Why Use a CSS Button Generator?</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Buttons are the primary call-to-action (CTA) elements on a website. A well-designed button increases user engagement and click-through rates. This generator helps you create accessible and visually appealing buttons without writing complex CSS manually.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/enhancements.js"></script>
+  
+  <script>
+    const preview = document.getElementById('btn-preview');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateBtn = function() {
+        const c1 = document.getElementById('btn-c1').value;
+        const c2 = document.getElementById('btn-c2').value;
+        const dir = document.getElementById('btn-dir').value;
+        const pad = document.getElementById('btn-pad').value;
+        const rad = document.getElementById('btn-rad').value;
+        
+        document.getElementById('v-pad').textContent = pad;
+        document.getElementById('v-rad').textContent = rad;
+        
+        // Apply styles
+        preview.style.background = `linear-gradient(${dir}, ${c1}, ${c2})`;
+        preview.style.padding = `${pad}px 30px`;
+        preview.style.borderRadius = `${rad}px`;
+        
+        // Hover effect simulation (via JS toggle or CSS class)
+        preview.onmouseenter = () => {
+            preview.style.opacity = "0.9";
+            preview.style.transform = "translateY(-2px)";
+            preview.style.boxShadow = "0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08)";
+        };
+        preview.onmouseleave = () => {
+            preview.style.opacity = "1";
+            preview.style.transform = "translateY(0)";
+            preview.style.boxShadow = "none";
+        };
+        
+        generateCode(c1, c2, dir, pad, rad);
+    };
+    
+    function generateCode(c1, c2, d, p, r) {
+        const css = `.my-button {
+  background: linear-gradient(${d}, ${c1}, ${c2});
+  padding: ${p}px 30px;
+  border-radius: ${r}px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.my-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateBtn();
+  </script>
+</body>
+</html>

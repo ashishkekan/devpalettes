@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Isometric 3D Generator - 3D Shapes without WebGL</title>
+  <meta name="title" content="CSS Isometric 3D Generator">
+  <meta name="description" content="Generate CSS code for isometric 3D effects. Create 3D cubes, cards, and layouts using pure CSS transforms.">
+  <meta name="keywords" content="css isometric generator, css 3d transform, isometric css, 3d css box, css 3d cube">
+  <meta name="author" content="Color Palettes Hub">
+  <link rel="canonical" href="https://colorpaletteshub.com/isometric-generator.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://colorpaletteshub.com/isometric-generator.html">
+  <meta property="og:title" content="CSS Isometric 3D Generator">
+  <meta property="og:description" content="Create 3D shapes with pure CSS.">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Isometric Generator",
+    "url": "https://colorpaletteshub.com/isometric-generator.html",
+    "applicationCategory": "DesignApplication"
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  
+<link rel="stylesheet" href="../../assets/css/styles.css">
+<link rel="stylesheet" href="../../assets/css/animations.css">
+  
+  <style>
+    .iso-container {
+      perspective: 1000px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py- bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+           <i class="fas fa-cube mr-2"></i>3D Effect
+        </span>
+        <h1 class="text-4xl font-bold mb-4">CSS Isometric 3D Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create 3D isometric shapes with CSS.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-rotate text-emerald-500"></i> Rotate
+             </h3>
+             <div class="space-y-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Rotate X: <span id="v-x">45</span>deg</label>
+                   <input type="range" id="iso-x" min="0" max="90" value="45" onchange="updateIso()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Rotate Y: <span id="v-y">45</span>deg</label>
+                   <input type="range" id="iso-y" min="0" max="90" value="45" onchange="updateIso()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Rotate Z: <span id="v-z">0</span>deg</label>
+                   <input type="range" id="iso-z" min="0" max="360" value="0" onchange="updateIso()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-emerald-500"></i> Colors
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Top Face</label>
+                   <input type="color" id="iso-c1" value="#10b981" onchange="updateIso()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Left Face</label>
+                   <input type="color" id="iso-c2" value="#059669" onchange="updateIso()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="iso-container min-h-[300px] flex items-center justify-center bg-slate-200 dark:bg-slate-900">
+                 <div id="iso-card" class="w-40 h-40 transition-all duration-300 flex items-center justify-center text-white text-xs font-bold shadow-2xl">
+                    ISOMETRIC
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-40 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEO Content -->
+      <div class="mt-16 glass-card p-8 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">Creating 3D in CSS</h2>
+         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            CSS 3D Transforms allow you to position elements in three-dimensional space. By combining `transform-style: preserve-3d` with `perspective`, you can create complex 3D scenes. Isometric projection is a specific type of 3D visualization where the scale is not distorted by distance.
+         </p>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/enhancements.js"></script>
+
+  
+  <script>
+    const card = document.getElementById('iso-card');
+    const codeOutput = document.getElementById('code-output');
+    
+    window.updateIso = function() {
+        const x = document.getElementById('iso-x').value;
+        const y = document.getElementById('iso-y').value;
+        const z = document.getElementById('iso-z').value;
+        const c1 = document.getElementById('iso-c1').value;
+        const c2 = document.getElementById('iso-c2').value;
+        
+        document.getElementById('v-x').textContent = x;
+        document.getElementById('v-y').textContent = y;
+        document.getElementById('v-z').textContent = z;
+        
+        card.style.transform = `rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg)`;
+        card.style.background = `linear-gradient(135deg, ${c1} 50%, ${c2} 50%)`;
+        
+        generateCode(x, y, z, c1, c2);
+    };
+    
+    function generateCode(x, y, z, c1, c2) {
+        const css = `.isometric-card {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, ${c1} 50%, ${c2} 50%);
+  transform: rotateX(${x}deg) rotateY(${y}deg) rotateZ(${z}deg);
+}`;
+        codeOutput.value = css;
+    }
+    
+    window.copyCode = function() {
+        navigator.clipboard.writeText(codeOutput.value);
+        if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
+    };
+    
+    // Init
+    updateIso();
+  </script>
+</body>
+</html>
