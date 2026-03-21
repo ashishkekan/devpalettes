@@ -452,7 +452,7 @@ function renderNavbar() {
       <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
         <a href="/palettes" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Generate</a>
         <a href="/pastel-color-palettes" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Explore</a>
-        <a href="/gradient" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradients</a>
+        <a href="/gradient" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradient</a>
         <a href="/converter" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Convert</a>
         <a href="/color-names-chart" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
         <a href="/color-blindness" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
