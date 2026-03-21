@@ -602,7 +602,7 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
       </div>
       <div class="flex gap-3">
          <a href="https://x.com/AshishKekaan99" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-twitter text-lg sm:text-xl"></i></a>
-         <a href="https://github.com/ashishkekan/ColorPaletteHub" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-github text-lg sm:text-xl"></i></a>
+         <a href="https://github.com/ashishkekan/devpalettes" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-github text-lg sm:text-xl"></i></a>
       </div>
     </div>
   `;
