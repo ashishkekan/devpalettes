@@ -460,7 +460,7 @@ function renderNavbar() {
         <hr class="border-slate-200 dark:border-slate-700 my-4">
         <a href="/about" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
         <a href="/contact" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
-        <a href="/blog/home" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
+        <a href="/blog" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
         <div class="mt-auto pb-8">
           <a href="/palettes" class="btn-primary text-center mt-4 w-full justify-center">
             <i class="fas fa-palette"></i>
@@ -499,7 +499,7 @@ function renderFooter() {
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/about" class="hover:text-emerald-500 transition-colors">About Us</a></li>
               <li><a href="/contact" class="hover:text-emerald-500 transition-colors">Contact</a></li>
-              <li><a href="/blog/home" class="hover:text-emerald-500 transition-colors">Blog</a></li>
+              <li><a href="/blog" class="hover:text-emerald-500 transition-colors">Blog</a></li>
               <li><a href="/sitemap" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
           </div>
