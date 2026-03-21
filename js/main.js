@@ -418,13 +418,13 @@ function renderNavbar() {
           
           <!-- Desktop Nav -->
           <div class="nav-links hidden md:flex items-center gap-6 lg:gap-8">
-            <a href="/palettes" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'palette.html' ? 'text-emerald-500' : ''}">Generate</a>
-            <a href="/pastel-color-palettes" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'pastel-color-palettes.html' ? 'text-emerald-500' : ''}">Explore</a>
-            <a href="/gradient" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'gradient.html' ? 'text-emerald-500' : ''}">Gradient</a>
-            <a href="/converter" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'converter.html' ? 'text-emerald-500' : ''}">Convert</a>
-            <a href="/color-names-chart" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-names-chart.html' ? 'text-emerald-500' : ''}">Colors</a>
-            <a href="/color-blindness" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-blindness.html' ? 'text-emerald-500' : ''}">Vision</a>
-            <a href="/color-from-image" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === 'color-from-image.html' ? 'text-emerald-500' : ''}">Image</a>
+            <a href="/palettes" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/palettes' ? 'text-emerald-500' : ''}">Generate</a>
+            <a href="/pastel-color-palettes" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/pastel-color-palettes' ? 'text-emerald-500' : ''}">Explore</a>
+            <a href="/gradient" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/gradient' ? 'text-emerald-500' : ''}">Gradient</a>
+            <a href="/converter" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/converter' ? 'text-emerald-500' : ''}">Convert</a>
+            <a href="/color-names-chart" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-names-chart' ? 'text-emerald-500' : ''}">Colors</a>
+            <a href="/color-blindness" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-blindness' ? 'text-emerald-500' : ''}">Vision</a>
+            <a href="/color-from-image" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-from-image' ? 'text-emerald-500' : ''}">Image</a>
            </div>
           
           <!-- Right side -->
