@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>About Us - Our Mission & Story | Dev Palettes</title>
+  <meta name="title" content="About Us - Dev Palettes">
+  <meta name="description" content="Learn about Dev Palettes. We provide free, fast, and privacy-focused color tools for designers and developers.">
+  <meta name="keywords" content="about color palettes hub, color tools, design tools, free color palette generator">
+  <meta name="author" content="Dev Palettes">
+  <link rel="canonical" href="https://devpalettes.com/about" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/about">
+  <meta property="og:title" content="About Dev Palettes">
+  <meta property="og:description" content="Free color tools for designers and developers.">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "mainEntity": {
+      "@type": "Organization",
+      "name": "Dev Palettes",
+      "url": "https://devpalettes.com",
+      "logo": "https://devpalettes.com/images/logo.png",
+      "sameAs": [
+        "https://twitter.com/devpalettes",
+        "https://github.com/devpalettes"
+      ],
+      "description": "Free online color tools for designers and developers."
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-4">About Dev Palettes</h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-6">Making color selection effortless for everyone</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="prose prose-slate dark:prose-invert max-w-none">
+        
+        <!-- Mission Section -->
+        <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">Our Mission</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">
+            Dev Palettes was created with a simple goal: to make color selection accessible, 
+            enjoyable, and professional for designers, developers, and creators of all skill levels.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400">
+            We believe that great design starts with great colors. Whether you're building a website, 
+            creating a brand identity, or designing a mobile app, choosing the right colors shouldn't 
+            be a barrier to your creativity.
+          </p>
+        </div>
+        
+        <!-- Stats Grid -->
+        <div class="grid md:grid-cols-2 gap-6 mb-8">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center mb-4">
+              <i class="fas fa-users text-2xl text-emerald-500"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">50,000+ Users</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              Trusted by designers and developers worldwide for their color needs.
+            </p>
+          </div>
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <div class="w-12 h-12 rounded-xl bg-orange-500/10 flex items-center justify-center mb-4">
+              <i class="fas fa-palette text-2xl text-orange-500"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">1M+ Palettes</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              Over one million palettes generated and counting.
+            </p>
+          </div>
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mb-4">
+              <i class="fas fa-code text-2xl text-blue-500"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">100% Free</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              All features are completely free with no hidden costs or sign-ups required.
+            </p>
+          </div>
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center mb-4">
+              <i class="fas fa-lock text-2xl text-purple-500"></i>
+            </div>
+            <h3 class="text-lg font-bold mb-2">Privacy First</h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm">
+              Your palettes are stored locally. We don't track or sell your data.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Story Section -->
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">Our Story</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">
+            Dev Palettes started as a side project when our founder, frustrated with 
+            existing color tools, decided to build something better. What began as a simple 
+            palette generator quickly evolved into a comprehensive suite of color tools.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400">
+            Today, we serve thousands of users daily, helping them create beautiful, 
+            accessible, and professional color schemes for their projects. We're constantly 
+            improving and adding new features based on user feedback.
+          </p>
+        </div>
+        
+        <!-- Tools We Offer (SEO Internal Linking) -->
+        <div class="mt-12 animate-on-scroll">
+           <h2 class="text-2xl font-bold mb-6 text-center">Tools We Offer</h2>
+           <div class="grid md:grid-cols-3 gap-4">
+              <a href="../palettes" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+                 <i class="fas fa-palette text-2xl text-emerald-500 mb-2"></i>
+                 <h3 class="font-bold">Palette Generator</h3>
+              </a>
+              <a href="../gradient" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+                 <i class="fas fa-fill-drip text-2xl text-blue-500 mb-2"></i>
+                 <h3 class="font-bold">Gradient Maker</h3>
+              </a>
+              <a href="../color-from-image" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+                 <i class="fas fa-adjust text-2xl text-purple-500 mb-2"></i>
+                 <h3 class="font-bold">Color Picker</h3>
+              </a>
+           </div>
+        </div>
+        
+      </div>
+      
+      <div class="text-center mt-12 animate-on-scroll">
+        <a href="../palettes" class="btn-primary btn-glow inline-flex">
+          <i class="fas fa-palette"></i>
+          Start Creating
+        </a>
+      </div>
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

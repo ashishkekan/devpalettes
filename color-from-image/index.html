@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Color From Image - Extract Palettes From Photos | Dev Palettes</title>
+  <meta name="title" content="Color From Image - Extract Palettes From Photos">
+  <meta name="description" content="Extract beautiful color palettes from any image. Free online image color picker tool to get HEX, RGB, and HSL values instantly.">
+  <meta name="keywords" content="image color picker, extract colors from image, color palette from photo, image to palette, color extraction tool, get colors from image">
+  <meta name="author" content="Dev Palettes">
+  <link rel="canonical" href="https://devpalettes.com/color-from-image" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/color-from-image">
+  <meta property="og:title" content="Color From Image - Extract Palettes">
+  <meta property="og:description" content="Extract beautiful color palettes from any image.">
+  <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://devpalettes.com/color-from-image">
+  <meta property="twitter:title" content="Color From Image - Extract Palettes">
+  <meta property="twitter:description" content="Extract beautiful color palettes from any image.">
+
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color From Image Extractor",
+    "url": "https://devpalettes.com/color-from-image",
+    "description": "A tool to extract dominant and vibrant colors from uploaded images.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Hero-like heading -->
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color From Image</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Extract beautiful palettes from any photo instantly</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Upload & Controls -->
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Upload Image</h2>
+          <div id="drop-zone" class="rounded-2xl p-12 text-center cursor-pointer border-3 border-dashed border-emerald-500/40 hover:border-emerald-500 hover:bg-emerald-500/5 transition-all">
+            <input type="file" id="file-input" accept="image/*" class="hidden">
+            <div id="upload-content">
+              <div class="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-image text-4xl text-emerald-500"></i>
+              </div>
+              <p class="text-lg font-semibold mb-2">Drop your image here</p>
+              <p class="text-slate-500 dark:text-slate-400 mb-4">or click to browse</p>
+              <p class="text-sm text-slate-400">JPG, PNG, WebP, GIF</p>
+            </div>
+            <div id="preview-content" class="hidden">
+              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview">
+              <p class="text-sm text-slate-500 mt-4">Click to change image</p>
+            </div>
+          </div>
+          <div class="mt-6">
+            <div class="flex justify-between items-center mb-2">
+              <label class="font-medium">Number of Colors</label>
+              <span id="color-count-value" class="text-emerald-600 dark:text-emerald-400 font-bold">6</span>
+            </div>
+            <input type="range" id="color-count" min="3" max="10" value="6" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+          </div>
+          <div class="mt-6">
+            <label class="font-medium mb-3 block">Extraction Method</label>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="method-btn active px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium transition-all" data-method="dominant">
+                <i class="fas fa-palette mr-2"></i>Dominant
+              </button>
+              <button class="method-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-method="vibrant">
+                <i class="fas fa-bolt mr-2"></i>Vibrant
+              </button>
+            </div>
+          </div>
+          <button id="extract-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled>
+            <i class="fas fa-magic mr-2"></i>
+            Extract Colors
+          </button>
+          <div class="mt-8">
+            <p class="text-sm text-slate-500 mb-3">Try sample images:</p>
+            <div class="flex gap-2 flex-wrap">
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset">
+                <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover">
+              </button>
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="forest">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover">
+              </button>
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="ocean">
+                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover">
+              </button>
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="city">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover">
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Right: Results -->
+        <div class="glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Extracted Palette</h2>
+          <div id="empty-state" class="text-center py-16">
+            <div class="w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-palette text-5xl text-slate-300 dark:text-slate-600"></i>
+            </div>
+            <p class="text-lg text-slate-500 dark:text-slate-400">Upload an image to extract colors</p>
+            <p class="text-sm text-slate-400 mt-2">Your palette will appear here</p>
+          </div>
+          <div id="results-container" class="hidden">
+            <div id="color-swatches" class="grid grid-cols-3 gap-4 mb-6"></div>
+            <div id="color-details" class="bg-slate-100 dark:bg-slate-800/50 rounded-xl p-4 mb-6">
+              <p class="text-sm text-slate-500 mb-2">Click a color for details</p>
+              <div id="selected-color-info" class="hidden">
+                <div class="flex items-center gap-4">
+                  <div id="selected-color-preview" class="w-16 h-16 rounded-xl shadow-lg"></div>
+                  <div class="flex-1">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-sm text-slate-500">HEX</span>
+                      <span id="selected-hex" class="font-mono font-bold"></span>
+                    </div>
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-sm text-slate-500">RGB</span>
+                      <span id="selected-rgb" class="font-mono"></span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                      <span class="text-sm text-slate-500">HSL</span>
+                      <span id="selected-hsl" class="font-mono"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-3">
+              <button id="copy-all-btn" class="btn-primary btn-glow flex-1 justify-center">
+                <i class="fas fa-copy"></i> Copy All
+              </button>
+              <button id="export-css-btn" class="btn-secondary flex-1 justify-center">
+                <i class="fas fa-code"></i> Export CSS
+              </button>
+              <button id="export-json-btn" class="btn-secondary flex-1 justify-center">
+                <i class="fas fa-file-code"></i> JSON
+              </button>
+            </div>
+            <div class="mt-6 p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-emerald-600 dark:text-emerald-400">Love this palette?</p>
+                  <p class="text-sm text-slate-500">Share it with friends</p>
+                </div>
+                <div class="flex gap-2">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter">
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                  </button>
+                  <button class="share-btn w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="pinterest">
+                    <i class="fab fa-pinterest-p"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Color Picker -->
+      <div class="glass-card p-8 mt-8 animate-on-scroll shimmer-card">
+        <h2 class="text-2xl font-bold mb-6">Color Picker Tool</h2>
+        <p class="text-sm text-slate-500 mb-4">Click on image to pick exact colors</p>
+        <div class="grid lg:grid-cols-3 gap-6">
+          <div class="lg:col-span-2">
+            <div id="picker-container" class="relative bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden min-h-[300px] flex items-center justify-center shadow-inner">
+              <div id="picker-placeholder" class="text-center p-8">
+                <i class="fas fa-mouse-pointer text-4xl text-slate-300 dark:text-slate-600 mb-4"></i>
+                <p class="text-slate-500">Upload an image above to use the color picker</p>
+              </div>
+              <canvas id="picker-canvas" class="hidden max-w-full cursor-crosshair"></canvas>
+            </div>
+          </div>
+          <div>
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-semibold">Picked Colors</h3>
+              <button id="clear-picked-btn" class="text-sm text-slate-500 hover:text-red-500 transition-colors">
+                <i class="fas fa-trash-alt mr-1"></i>Clear
+              </button>
+            </div>
+            <div id="picked-colors" class="space-y-2 max-h-[300px] overflow-y-auto pr-2">
+              <p class="text-sm text-slate-500">Click on image to pick colors</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- ==========================================
+           SEO CONTENT SECTION (Starts Here)
+           ========================================== -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is Color Extraction?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Color extraction is the process of analyzing an image to identify its most prominent or visually significant colors. This helps designers create cohesive color palettes based on real-world inspiration, ensuring their designs match the mood and tone of the source image.
+            </p>
+         </section>
+
+         <!-- Methods -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Extraction Methods</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-emerald-500">Dominant Colors</h3>
+                  <p class="text-sm text-slate-500">Finds the colors that cover the most area in the image. Perfect for understanding the overall color composition.</p>
+               </div>
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-blue-500">Vibrant Colors</h3>
+                  <p class="text-sm text-slate-500">Prioritizes highly saturated colors. Best for extracting punchy, eye-catching accents from photos.</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Upload:</strong> Drag and drop an image or click to browse files.</li>
+               <li><strong>Configure:</strong> Choose the number of colors and extraction method.</li>
+               <li><strong>Extract:</strong> Click "Extract Colors" to generate your palette.</li>
+               <li><strong>Pick (Optional):</strong> Use the Color Picker tool to manually select specific pixels from the image.</li>
+               <li><strong>Export:</strong> Copy individual colors or export as CSS/JSON.</li>
+            </ol>
+         </section>
+         
+         <!-- Internal Links -->
+         <div class="text-center">
+            <h2 class="text-2xl font-bold mb-4">Related Tools</h2>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="../palettes" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="../gradient" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+            </div>
+         </div>
+         
+      </div>
+      <!-- End SEO Content -->
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <!-- Toast Container (Preserved for JS functionality) -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/color-from-image.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

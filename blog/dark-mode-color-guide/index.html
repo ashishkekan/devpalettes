@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Master dark mode design with our comprehensive color guide. Learn the best colors, contrast ratios, and techniques for stunning dark interfaces.">
+  <meta name="keywords" content="dark mode colors, dark theme design, dark interface colors, dark mode guide, dark UI design">
+  <meta name="author" content="Devpalettes">
+  
+  <meta property="og:title" content="Dark Mode Color Guide - Design for Dark Interfaces | Dev Palettes">
+  <meta property="og:description" content="Master dark mode design with our comprehensive guide. Learn best colors and techniques.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://devpalettes.com/dark-mode-color-guide">
+  
+  <title>Dark Mode Color Guide - Design for Dark Interfaces | Devpalettes</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+  
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Heading -->
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-6">Dark Mode Color Guide</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          Master dark mode design with our comprehensive color guide. Learn the best colors, contrast ratios, and techniques for stunning dark interfaces.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <!-- Single glass card -->
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Dark mode has transformed from a trendy feature to an essential design consideration. With major operating systems, browsers, and applications now offering dark mode options, designers must understand how to create effective dark interfaces that go beyond simply inverting colors. This comprehensive guide explores the principles, techniques, and best practices for designing with dark mode colors that look stunning and function beautifully.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Why Dark Mode Matters</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The popularity of dark mode isn't merely aesthetic preference—there are practical benefits that drive its adoption. Dark interfaces reduce eye strain, particularly in low-light environments where bright screens can be uncomfortable. This is especially relevant for users who work late hours or spend extended periods in front of screens. Dark mode can also extend battery life on devices with OLED screens, as black pixels consume less power than white ones.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            From a design perspective, dark mode offers opportunities to create dramatic, sophisticated interfaces that feel modern and premium. The reduced light emission can make colors appear more vibrant and content more focused. Many users simply prefer the aesthetic of dark interfaces, finding them more comfortable and visually appealing. Understanding these motivations helps designers approach dark mode thoughtfully rather than treating it as an afterthought.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Myth of Pure Black</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            One of the most common mistakes in dark mode design is using pure black (#000000) as the primary background color. While it might seem logical to go as dark as possible, pure black creates several problems. On OLED screens, pure black pixels turn off completely, which can cause an uncomfortable strobing effect when scrolling through content with varying background colors. Pure black also provides no depth or hierarchy—everything sits on the same flat plane, making it difficult to create visual separation between elements.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Instead, experienced designers use near-black colors that contain subtle color undertones. Dark grays with hints of blue, purple, or even warm tones create more depth and sophistication. Google's Material Design guidelines recommend #121212 as a primary dark surface color, which provides enough lightness to maintain visibility while remaining dark enough to be comfortable. The slight lightness also allows for even darker accent colors to create shadows and depth.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Creating Depth and Elevation</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            In light mode, shadows create depth and hierarchy. In dark mode, shadows are less effective against dark backgrounds, so designers must use alternative techniques. The primary approach is elevation through lighter surface colors. Elements that are "closer" to the user should be progressively lighter than elements that are "farther away." This mimics how light works in the physical world—surfaces facing a light source appear lighter than those in shadow.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Material Design's elevation system provides a useful framework: each level of elevation increases the surface lightness by a fixed amount. A card resting on a base surface might be slightly lighter, while a modal dialog floating above everything would be lighter still. This creates a clear visual hierarchy that helps users understand the structure of the interface without relying on shadows alone.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Text Colors and Contrast</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Text legibility is one of the most critical aspects of dark mode design. The temptation might be to use pure white text on dark backgrounds, but this can cause eye strain due to the high contrast. Instead, use off-white or light gray text colors that provide sufficient contrast without being harsh. A text color of #E0E0E0 or slightly darker maintains excellent readability while being more comfortable for extended reading.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Secondary text should be even lighter in value, creating clear hierarchy between primary content and supporting information. Links and interactive text elements can use color to indicate interactivity, but ensure the color has enough contrast against the background. WCAG guidelines require a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text. Always test your color combinations with accessibility tools to ensure compliance.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Accent Colors in Dark Mode</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Colors that work well in light mode may need adjustment for dark mode. Highly saturated colors can appear to vibrate against dark backgrounds, causing eye strain and visual discomfort. The solution is to desaturate accent colors by 20-30% when designing for dark mode. This maintains the color's identity while making it more comfortable to view. Similarly, colors may need to be slightly lighter to maintain visibility against dark surfaces.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Some colors naturally work better in dark mode than others. Blues, purples, and teals tend to translate well, maintaining their appeal against dark backgrounds. Yellows and oranges can be tricky—they may need significant adjustment to avoid looking muddy or causing eye strain. Test all accent colors thoroughly in both themes to ensure they work appropriately in each context.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Images and Media</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Images and media require special consideration in dark mode. Bright images can be jarring against dark backgrounds, creating an uncomfortable transition for the eyes. Some applications reduce the brightness of images in dark mode, either by applying a semi-transparent overlay or by actually adjusting image values. This technique can help images feel more integrated with the dark interface, though it should be used judiciously to avoid distorting the original content.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            For icons and illustrations, consider providing dark-mode-specific assets. Icons that work well on light backgrounds may need adjustments for dark backgrounds—thin lines might need to be thicker, and fills might need to be lighter. Vector graphics are particularly adaptable to dark mode, as they can be easily recolored or adjusted through CSS filters.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Implementing Dark Mode</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Technical implementation of dark mode varies by platform, but the fundamental approach is consistent: define color variables that can be swapped based on the current theme preference. CSS custom properties make this straightforward for web applications, allowing you to define colors once and reference them throughout your styles. When the theme changes, you update the variable values, and all elements update automatically.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Consider whether users should be able to override system preferences. Some users prefer dark mode in general but light mode for specific applications. Providing a manual toggle allows users to choose their preferred experience. Also consider storing this preference so it persists across sessions, and remember that some users may want different themes for different times of day.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Dark mode design requires a thoughtful approach that goes beyond simple color inversion. By understanding the principles of depth, contrast, and color adaptation, designers can create dark interfaces that are not only visually appealing but also comfortable and accessible. As dark mode continues to grow in popularity, mastering these techniques becomes increasingly essential for modern designers. Use our gradient and palette tools to experiment with dark mode color combinations and find the perfect palette for your next project.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <script src="../../js/main.js"></script>
+  
+  <script src="../../js/enhancements.js"></script>
+</body>
+</html>
