@@ -1,6 +1,18 @@
 [build]
   publish = "."
 
+# ✅ Allow sitemap FIRST
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap.xml"
+  status = 200
+
+# ✅ Allow robots
+[[redirects]]
+  from = "/robots.txt"
+  to = "/robots.txt"
+  status = 200
+
 # ✅ Force HTTPS
 [[redirects]]
   from = "http://*"
@@ -8,14 +20,8 @@
   status = 301
   force = true
 
-# ✅ Clean URLs (no .html)
+# ✅ Clean URLs
 [[redirects]]
   from = "/*"
   to = "/:splat.html"
   status = 200
-
-# ✅ Custom 404 page (optional)
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
