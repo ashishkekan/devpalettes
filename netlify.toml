@@ -1,5 +1,21 @@
+[build]
+  publish = "."
+
+# ✅ Force HTTPS
 [[redirects]]
   from = "http://*"
   to = "https://:splat"
   status = 301
   force = true
+
+# ✅ Clean URLs (no .html)
+[[redirects]]
+  from = "/*"
+  to = "/:splat.html"
+  status = 200
+
+# ✅ Custom 404 page (optional)
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
