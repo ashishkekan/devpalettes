@@ -557,13 +557,13 @@ function renderFooter() {
             &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
-            <a href="https://x.com/AshishKekaan99" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
+            <a href="https://x.com/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
               <i class="fab fa-twitter text-lg sm:text-xl"></i>
             </a>
-            <a href="https://github.com/ashishkekan/ColorPaletteHub" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+            <a href="https://github.com/ashishkekan/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
               <i class="fab fa-github text-lg sm:text-xl"></i>
             </a>
-            <a href="https://www.instagram.com/ashkingtechiez/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/devpalettes/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
               <i class="fab fa-instagram text-lg sm:text-xl"></i>
             </a>
           </div>
