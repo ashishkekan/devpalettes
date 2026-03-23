@@ -392,6 +392,42 @@ const Storage = {
 };
 
 // ==========================================
+// Back to Top Button
+// ==========================================
+
+const BackToTop = {
+  btn: null,
+
+  init() {
+    // Create the button element
+    this.btn = document.createElement('button');
+    this.btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    this.btn.className = 'back-to-top';
+    this.btn.setAttribute('aria-label', 'Back to top');
+    
+    // Append to body
+    document.body.appendChild(this.btn);
+
+    // Show/Hide logic on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        this.btn.classList.add('visible');
+      } else {
+        this.btn.classList.remove('visible');
+      }
+    });
+
+    // Scroll to top on click
+    this.btn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+};
+
+// ==========================================
 // Render Shared Components
 // ==========================================
 
@@ -631,6 +667,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize keyboard shortcuts
   KeyboardShortcuts.init();
+  
+  // Initialize Back to Top Button
+  BackToTop.init();
   
   // Theme toggle button
   document.addEventListener('click', (e) => {
