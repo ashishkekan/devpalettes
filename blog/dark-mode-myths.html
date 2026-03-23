@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Debunking common dark mode myths. It's not always better for eyes or battery. The truth about dark interface design.">
+  <meta name="keywords" content="dark mode myths, dark mode vs light mode, is dark mode better, eye strain dark mode, dark mode battery saving">
+  <title>Dark Mode Myths - Truth About Dark UI | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-sm font-medium rounded-full mb-4">UI Design</span>
+        <h1 class="text-3xl font-bold mb-6">Dark Mode Myths</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Separating fact from fiction in the dark mode debate.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Dark mode has transitioned from a niche feature for developers to a mainstream expectation. Every major OS and app now supports it. With its popularity comes a wave of misconceptions. Many users assume dark mode is universally better—healthier for eyes and essential for battery life. The reality is more nuanced.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Myth 1: Dark Mode Saves Battery on All Screens</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            This myth is half-true. On OLED and AMOLED screens, black pixels are turned off, meaning dark mode can significantly reduce power consumption. However, on traditional LCD screens (found in many laptops and desktop monitors), the backlight is always on, regardless of the color being displayed. In fact, dark mode on an LCD might use slightly <em>more</em> power. Most users don't know which screen type they have, leading to the blanket assumption that dark mode is always "greener."
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Myth 2: Dark Mode Reduces Eye Strain for Everyone</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            For people with normal vision, dark mode can reduce glare in low-light environments. But for a significant portion of the population, dark mode makes things worse. People with astigmatism (a very common condition) have blurred vision because the eye doesn't focus light evenly. Light text on a dark background creates a "halation" effect—a smeary, blurry appearance that makes reading difficult. For these users, dark mode increases eye strain. Additionally, people with conditions like myopia or presbyopia often find light backgrounds easier to focus on.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Myth 3: Dark Mode is Better in Bright Sunlight</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            In bright daylight, a dark interface is actually harder to read. High contrast (black on white) cuts through glare more effectively. This is why e-readers like Kindle use a light interface to mimic paper. Using dark mode outdoors often forces you to crank up the brightness to maximum, negating any battery savings.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Dark mode is a choice, not a cure-all. It should be offered as an option alongside light mode, respecting user preference. It is not a default "health setting." The best interface is one that adapts to the user's environment and visual capabilities.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

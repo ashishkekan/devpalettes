@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Best practices for using color in data visualization. Accessibility, distinct hues, and avoiding rainbow gradients in charts.">
+  <meta name="keywords" content="data visualization colors, chart colors, infographic design, accessible charts, data design">
+  <title>Color in Data Visualization - Best Practices | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">Data Design</span>
+        <h1 class="text-3xl font-bold mb-6">Color in Data Visualization</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Clarity, accessibility, and meaning in charts and graphs.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Data visualization is the graphical representation of information and data. Color is one of the most powerful tools in this discipline, capable of highlighting patterns, differentiating categories, and guiding the viewer's eye. However, it is also the most misused element. Poor color choices can distort data, hide insights, and render charts unreadable for millions of users.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Rainbow Gradient Trap</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The "rainbow scale" (ROYGBIV) was once the default for heatmaps and scientific visualizations. It is now widely criticized by data scientists. The human brain perceives colors in a hierarchy: we see some colors as "higher" or "darker" than others, regardless of their actual value. The rainbow scale creates false boundaries where the data has none, and it is completely inaccessible to colorblind users. Sequential scales (light to dark) or diverging scales (two contrasting hues meeting in the middle) are far more accurate for representing magnitude.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Distinctness Over Aesthetics</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            When visualizing categorical data (e.g., sales by region), you need distinct colors, not matching ones. Colors should be easily distinguishable from each other. Avoid using shades of the same color for different categories, as this implies a hierarchy that doesn't exist. Use a palette of 4-10 high-contrast, perceptually uniform colors. Tools like "Category10" in Tableau or D3.js provide excellent default categorical palettes.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Accessibility in Charts</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Approximately 8% of men have color vision deficiency. If your chart relies solely on color to differentiate between bars or lines, you are failing these users. Always pair color with other visual cues: patterns (stripes, dots), direct labeling (writing the value on the bar), or varying shapes. High contrast text labels are essential. Ensure your data visualizations tell the same story in grayscale as they do in color.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Color in data visualization should clarify, not decorate. Every color choice must have a purpose—whether it's to group, separate, or highlight. By prioritizing accessibility and perceptual uniformity, you create charts that are not only beautiful but universally understandable.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
