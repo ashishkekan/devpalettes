@@ -392,6 +392,42 @@ const Storage = {
 };
 
 // ==========================================
+// Back to Top Button
+// ==========================================
+
+const BackToTop = {
+  btn: null,
+
+  init() {
+    // Create the button element
+    this.btn = document.createElement('button');
+    this.btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    this.btn.className = 'back-to-top';
+    this.btn.setAttribute('aria-label', 'Back to top');
+    
+    // Append to body
+    document.body.appendChild(this.btn);
+
+    // Show/Hide logic on scroll
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        this.btn.classList.add('visible');
+      } else {
+        this.btn.classList.remove('visible');
+      }
+    });
+
+    // Scroll to top on click
+    this.btn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+};
+
+// ==========================================
 // Render Shared Components
 // ==========================================
 
@@ -429,7 +465,9 @@ function renderNavbar() {
           
           <!-- Right side -->
           <div class="flex items-center gap-2 sm:gap-4">
-            <button id="theme-toggle" class="p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+            <button id="theme-toggle" 
+              class="h-8 px-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors" 
+              aria-label="Toggle theme">
               <i class="fas fa-moon text-lg sm:text-xl dark:hidden"></i>
               <i class="fas fa-sun text-lg sm:text-xl hidden dark:block"></i>
             </button>
@@ -437,7 +475,7 @@ function renderNavbar() {
               <i class="fas fa-palette"></i>
               Create Free
             </a>
-            <div class="hamburger md:hidden p-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+            <div class="hamburger md:hidden h-6 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white transition-all"></span>
@@ -631,6 +669,9 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize keyboard shortcuts
   KeyboardShortcuts.init();
+  
+  // Initialize Back to Top Button
+  BackToTop.init();
   
   // Theme toggle button
   document.addEventListener('click', (e) => {
