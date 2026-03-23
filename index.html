@@ -17,7 +17,12 @@
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
   <script type="application/ld+json">
     {
@@ -71,10 +76,6 @@
     })();
   </script>
   <style>
-    /* ==========================================
-       ANIMATION ENHANCEMENT STYLES
-       ========================================== */
-    
     /* Hero Visualizer Canvas */
     #hero-visualizer {
       position: absolute;
@@ -814,19 +815,12 @@
   <!-- Scripts -->
   <script src="js/main.js?v=2"></script>
   <script>
-    // ==========================================
-    // VISUAL ENHANCEMENT SCRIPTS
-    // ==========================================
     
     (function() {
       'use strict';
       
       // Check for reduced motion preference
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      
-      // ==========================================
-      // 1. HERO VISUALIZER (Canvas Waves)
-      // ==========================================
       
       function initHeroVisualizer() {
         const canvas = document.getElementById('hero-visualizer');
@@ -890,10 +884,6 @@
         });
       }
       
-      // ==========================================
-      // 2. FLOATING PARTICLES
-      // ==========================================
-      
       function initParticles() {
         const container = document.getElementById('particles-container');
         if (!container || prefersReducedMotion) return;
@@ -933,10 +923,6 @@
         container.appendChild(particle);
       }
       
-      // ==========================================
-      // 3. SCROLL ANIMATIONS
-      // ==========================================
-      
       function initScrollAnimations() {
         const observerOptions = {
           root: null,
@@ -964,10 +950,6 @@
           observer.observe(el);
         });
       }
-      
-      // ==========================================
-      // 4. PALETTE GENERATION ANIMATION
-      // ==========================================
       
       function initPaletteAnimations() {
         const originalRefresh = window.refreshPalettes;
@@ -1030,10 +1012,6 @@
         setTimeout(enhancePaletteBlocks, 100);
       }
       
-      // ==========================================
-      // 5. BUTTON RIPPLE EFFECT
-      // ==========================================
-      
       function initButtonEffects() {
         document.querySelectorAll('.btn-primary, .btn-coral').forEach(btn => {
           btn.addEventListener('click', function(e) {
@@ -1080,10 +1058,6 @@
         }
       }
       
-      // ==========================================
-      // 6. SPECTRUM LINE ANIMATION ENHANCEMENT
-      // ==========================================
-      
       function initSpectrumEnhancement() {
         const spectrumLine = document.querySelector('.spectrum-line');
         if (!spectrumLine || prefersReducedMotion) return;
@@ -1104,10 +1078,6 @@
         });
       }
       
-      // ==========================================
-      // 7. GRADIENT PREVIEW HOVER EFFECT
-      // ==========================================
-      
       function initGradientEffects() {
         document.querySelectorAll('.gradient-preview').forEach(preview => {
           preview.addEventListener('mouseenter', function() {
@@ -1120,10 +1090,6 @@
           });
         });
       }
-      
-      // ==========================================
-      // 8. PARALLAX EFFECT FOR BLOBS
-      // ==========================================
       
       function initParallaxBlobs() {
         if (prefersReducedMotion) return;
@@ -1140,10 +1106,6 @@
           });
         });
       }
-      
-      // ==========================================
-      // INITIALIZE ALL
-      // ==========================================
       
       function init() {
         // Wait for DOM to be fully ready
