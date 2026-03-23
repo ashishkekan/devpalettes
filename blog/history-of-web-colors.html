@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A journey through the history of web colors. From 8-bit graphics to modern CSS gradients and HDR displays.">
+  <meta name="keywords" content="history of web colors, web design history, evolution of color, web safe colors, hex codes history">
+  <title>History of Web Colors - Design Evolution | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">History</span>
+        <h1 class="text-3xl font-bold mb-6">History of Web Colors</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">From 216 "Web Safe" colors to millions of hues today.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            The digital canvas has evolved dramatically. In the early 1990s, the web was a grayscale document viewer. By the mid-90s, color arrived, but it was heavily restricted. Today, we have access to millions of colors and sophisticated blending modes. The history of web colors is a story of technology catching up with human creativity.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Era of Web Safe Colors (1996)</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            In 1996, most computers displayed only 8-bit color (256 colors). However, operating systems reserved 40 colors for their own UI, leaving only 216 colors for web browsers. This led to the "Web Safe Color Palette"—a specific set of 216 hex codes that were guaranteed to render without dithering (a speckled, low-quality effect). Designers were forced to work within this strict box. Colors like #FF0000 (Red) and #00FF00 (Lime) became the staples of early web design.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Death of Web Safe (2000s)</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            As hardware improved, 16-bit and 24-bit color displays became standard. The "Web Safe" palette became obsolete. Designers suddenly had access to 16.7 million colors (True Color). This freedom led to the rich, photo-realistic web designs of the Web 2.0 era. Gradients, transparency (PNGs), and complex color schemes became possible.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Modern Color Capabilities</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Today, CSS supports not just Hex and RGB, but HSL (Hue, Saturation, Lightness) which is more intuitive for manipulating colors. We have named colors, `currentcolor`, and new display technologies like P3, which can show colors outside the traditional sRGB gamut—more vibrant greens and reds that weren't possible a decade ago. We are now entering an era of "High Dynamic Range" web design.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Understanding where web colors came from helps us appreciate the freedom we have today. While we no longer worry about dithering, we face new challenges: consistency across devices and accessibility. The history of color teaches us that technology sets the limits, but creativity finds the way.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
