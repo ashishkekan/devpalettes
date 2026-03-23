@@ -39,9 +39,6 @@ const ThemeManager = {
   }
 };
 
-// ==========================================
-// Toast Notifications
-// ==========================================
 
 const Toast = {
   container: null,
@@ -81,10 +78,6 @@ const Toast = {
     }, duration);
   }
 };
-
-// ==========================================
-// Color Utilities
-// ==========================================
 
 const ColorUtils = {
   // Generate random hex color
@@ -239,9 +232,6 @@ const ColorUtils = {
   }
 };
 
-// ==========================================
-// Clipboard
-// ==========================================
 
 const Clipboard = {
   async copy(text, message = 'Copied to clipboard!') {
@@ -272,9 +262,6 @@ const Clipboard = {
   }
 };
 
-// ==========================================
-// Navbar & Mobile Menu
-// ==========================================
 
 const Navbar = {
   init() {
@@ -328,9 +315,6 @@ const Navbar = {
   }
 };
 
-// ==========================================
-// Keyboard Shortcuts
-// ==========================================
 
 const KeyboardShortcuts = {
   callbacks: {},
@@ -363,9 +347,6 @@ const KeyboardShortcuts = {
   }
 };
 
-// ==========================================
-// Local Storage Helpers
-// ==========================================
 
 const Storage = {
   get(key, defaultValue = null) {
@@ -390,10 +371,6 @@ const Storage = {
     localStorage.removeItem(`colorpallates-${key}`);
   }
 };
-
-// ==========================================
-// Back to Top Button
-// ==========================================
 
 const BackToTop = {
   btn: null,
@@ -426,10 +403,6 @@ const BackToTop = {
     });
   }
 };
-
-// ==========================================
-// Render Shared Components
-// ==========================================
 
 function renderNavbar() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -646,9 +619,6 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
   `;
 }
 
-// ==========================================
-// Initialize Everything
-// ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize theme
