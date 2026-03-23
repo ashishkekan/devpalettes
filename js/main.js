@@ -414,10 +414,8 @@ function renderNavbar() {
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2 group">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-black
-                flex items-center justify-center text-cyan-400 font-bold text-lg sm:text-xl
-                shadow-[0_0_15px_rgba(34,211,238,0.6)]
-                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+              <div class="w-10 h-10 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.6)] transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">
+                <img src="/images/devpalettes.png" alt="Devpalettes" class="w-full h-full object-contain">
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
@@ -554,10 +552,8 @@ function renderFooter() {
         <div class="border-t border-slate-200 dark:border-slate-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <a href="/" class="flex items-center gap-2 group mb-4 sm:mb-0">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
-                flex items-center justify-center text-cyan-400 font-bold text-lg sm:text-xl
-                shadow-[0_0_15px_rgba(34,211,238,0.6)]
-                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+              <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl overflow-hidden flex items-center justify-center shadow-[0_0_15px_rgba(34,211,238,0.6)] transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">
+                <img src="/images/devpalettes.png" alt="Devpalettes" class="w-full h-full object-contain">
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
