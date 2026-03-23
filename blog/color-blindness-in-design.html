@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A comprehensive guide to designing for color blindness. Understand Deuteranopia, Protanopia, and how to create accessible palettes for everyone.">
+  <meta name="keywords" content="color blindness design, accessible colors, deuteranopia, protanopia, inclusive design, wcag color">
+  <title>Color Blindness in Design - Accessibility Guide | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 text-sm font-medium rounded-full mb-4">Accessibility</span>
+        <h1 class="text-3xl font-bold mb-6">Color Blindness in Design</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Designing inclusive experiences for the 300 million people with color vision deficiency.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Color blindness, or Color Vision Deficiency (CVD), affects approximately 8% of men and 0.5% of women of Northern European descent. Globally, that translates to roughly 300 million people who perceive colors differently. For digital designers, this isn't just a statistic; it's a call to action. Designing for color blindness isn't just about compliance—it's about empathy, usability, and ensuring that digital products are accessible to the widest possible audience.
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            When we rely solely on color to convey information—such as red for errors and green for success—we inadvertently exclude a significant portion of users. A "colorblind-friendly" design benefits everyone, not just those with CVD. High contrast, clear patterns, and distinct typography improve usability in bright sunlight, on low-quality screens, and for elderly users.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Understanding the Types of Color Blindness</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            To design effectively, one must understand the variations of CVD. It’s rarely about seeing the world in black and white (Monochromacy is extremely rare). Most cases involve difficulty distinguishing between specific colors:
+          </p>
+          
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li><strong>Deuteranomaly/Deuteranopia (Green-Weak/Blind):</strong> The most common form. Reds and greens look similar, often appearing as muddy yellows/browns.</li>
+            <li><strong>Protanomaly/Protanopia (Red-Weak/Blind):</strong> Similar to Deuteranomaly but involves reduced sensitivity to red light. Reds can appear black/dark.</li>
+            <li><strong>Tritanomaly/Tritanopia (Blue-Weak/Blind):</strong> Rarer. Difficulty distinguishing blue and green, and yellow and red.</li>
+          </ul>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Best Practices for Accessibility</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The golden rule of accessible design is: <strong>Never use color as the only visual means of conveying information.</strong> This principle solves 90% of accessibility issues related to color. Instead of just changing a border color to red for an error input, add a visible icon (like an exclamation mark) and a text label stating "Error."
+          </p>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Use high contrast ratios. WCAG 2.1 guidelines require a contrast ratio of at least 4.5:1 for normal text. Avoid problematic combinations like red/green or blue/yellow next to each other. Tools like Sim Daltonism or the Color Blindness Simulator on Devpalettes allow you to view your designs through the lens of different CVD types.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Safe Color Palettes</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Creating a palette that works for everyone involves choosing colors that have distinct luminance values. Even if the hue is indistinguishable, the brightness should differ. A dark red and a light green will be distinguishable, whereas a dark red and a dark green will not. Opt for blues and oranges as primary contrasting colors, as they are visible across almost all forms of color blindness.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Inclusive design is good design. By accounting for color blindness, we move closer to a web that is truly universal. Testing your work with simulation tools and adhering to WCAG guidelines ensures that your beautiful palettes are also functional for everyone. Accessibility isn't a constraint—it's an opportunity to build robust, user-centric products.
+          </p>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
