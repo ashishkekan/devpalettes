@@ -493,7 +493,7 @@ function renderFooter() {
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div class="grid grid-cols-2 md:grid-cols-5">
           <!-- Product -->
-          <div>
+          <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/palettes" class="hover:text-emerald-500 transition-colors">Palette Generator</a></li>
@@ -504,7 +504,7 @@ function renderFooter() {
           </div>
           
           <!-- Resources -->
-          <div>
+          <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/about" class="hover:text-emerald-500 transition-colors">About Us</a></li>
@@ -535,7 +535,7 @@ function renderFooter() {
           </div>
           
           <!-- Newsletter -->
-          <div class="col-span-2 md:col-span-1">
+          <div class="col-span-2 md:col-span-1 mt-6 sm:mt-0">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Stay Updated</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 sm:mb-4">Get the latest color trends and updates.</p>
             <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex gap-2">
