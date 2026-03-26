@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A beginner's guide to color theory. Understanding hue, saturation, lightness, and the color wheel basics.">
+  <meta name="keywords" content="color theory for beginners, color wheel basics, hue saturation lightness, understanding color, design basics">
+  <title>Color Theory for Beginners - Fundamentals | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 text-sm font-medium rounded-full mb-4">Fundamentals</span>
+        <h1 class="text-3xl font-bold mb-6">Color Theory for Beginners</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">The starting point for every great designer.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Color theory is the grammar of visual language. It provides the rules and structures that allow us to communicate meaning through hue. While some designers rely on intuition, a solid grasp of color theory ensures that your choices are intentional and effective. For beginners, it can seem like a complex science, but it breaks down into a few core concepts.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Color Wheel</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Invented by Sir Isaac Newton, the color wheel is a circular diagram of colors arranged by their chromatic relationship. It starts with Primary colors (Red, Yellow, Blue). Mixing these creates Secondary colors (Green, Orange, Purple). Mixing those creates Tertiary colors. The wheel is the map for all navigation. It tells you which colors are opposites (Complementary) and which are neighbors (Analogous).
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">HSL: Hue, Saturation, Lightness</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Hue:</strong> The "color" itself—red, blue, green. It's the position on the wheel (0-360 degrees).
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Saturation:</strong> The intensity of the color. A fully saturated color is vivid; a desaturated color is muted or gray.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Lightness:</strong> The brightness of the color. Adding white creates a tint; adding black creates a shade.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Understanding HSL is crucial for digital design because it is how computers and CSS define colors. It gives you precise control over the emotion of a palette.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Color theory isn't about memorizing rules; it's about understanding relationships. Once you see the logic behind the wheel and HSL, you can break the rules effectively. Every great palette starts with these fundamentals.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

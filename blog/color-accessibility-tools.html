@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Essential color accessibility tools for designers. Contrast checkers, color blind simulators, and palette validators.">
+  <meta name="keywords" content="color accessibility tools, wcag checker, contrast checker, color blind simulator, accessible design">
+  <title>Color Accessibility Tools - Essential Guide | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet"="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded-full mb-4">Tools</span>
+        <h1 class="text-3xl font-bold mb-6">Color Accessibility Tools</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">The software that ensures your design works for everyone.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Designing for accessibility isn't just a moral obligation; it's a professional standard. Fortunately, designers today have a robust toolkit to test their color choices. From ensuring text is readable to simulating color blindness, these tools bridge the gap between "it looks good to me" and "it works for everyone."
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Contrast Checkers</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The most fundamental tool in the arsenal. Contrast checkers (like WebAIM's Contrast Checker or Stark) take a foreground and background color and calculate the ratio. They instantly flag if text passes WCAG AA (4.5:1) or AAA (7:1) standards. Modern plugins for Figma and Sketch integrate this directly into the design workflow, allowing you to fix issues in real-time rather than retrofitting later.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Color Blindness Simulators</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Tools like Coblis, Color Oracle, and the Sim Daltonism app allow designers to view their screens through the lens of different vision deficiencies (Protanopia, Deuteranopia, Tritanopia). This is critical for data visualization, where red/green contrasts might be invisible to 8% of men. Seeing your design in grayscale is a quick stress test—if it makes sense in grayscale, it will likely work for most color vision deficiencies.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Palette Generators with A11y Built-in</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Tools like Coolors and Adobe Color now have "accessibility mode" or "color blind safe" filters. They generate palettes that are mathematically distinct for various vision types. Devpalettes also provides contrast scoring for generated combinations, ensuring that your random palettes are viable for production use.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Accessibility tools should be used early and often. They are not a final QA step but a continuous part of the design process. Incorporating them into your daily workflow ensures that accessibility becomes a habit, not a hurdle.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
