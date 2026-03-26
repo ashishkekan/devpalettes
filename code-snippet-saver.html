@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Save and manage code snippets locally. Organize your code snippets with titles and easy access.">
+  <meta name="keywords" content="code snippet saver, code storage, local storage code, developer tools">
+  <title>Code Snippet Saver - Tool | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .snippet-card {
+      background: rgba(30, 41, 59, 1); /* slate-800 */
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    .snippet-code {
+      background: #0f172a; /* slate-900 */
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.85rem;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">Tool</span>
+        <h1 class="text-3xl font-bold mb-6">Code Snippet Saver</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Save and organize your frequently used code snippets locally.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Input Area -->
+        <div class="lg:col-span-1">
+          <div class="glass-card p-6 animate-on-scroll shimmer-card sticky top-24">
+            <h3 class="text-lg font-bold mb-4">New Snippet</h3>
+            <div class="space-y-4">
+              <input type="text" id="snippet-title" class="input-field" placeholder="Title (e.g. React useEffect)">
+              <textarea id="snippet-code" class="input-field h-64 font-mono text-sm" placeholder="Paste your code here..."></textarea>
+              <button id="save-btn" class="btn-primary w-full justify-center">
+                <i class="fas fa-save"></i> Save Snippet
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- List Area -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          <div class="flex justify-between items-center mb-4">
+             <h3 class="text-lg font-bold">Saved Snippets (<span id="count">0</span>)</h3>
+             <button id="clear-all" class="text-sm text-red-500 hover:text-red-600 font-medium">Clear All</button>
+          </div>
+          
+          <div id="snippets-container" class="space-y-4">
+             <!-- Snippets will appear here -->
+          </div>
+          
+          <div id="empty-state" class="text-center py-12 text-slate-400 hidden">
+             <i class="fas fa-code text-4xl mb-4"></i>
+             <p>No snippets saved yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const titleInput = document.getElementById('snippet-title');
+      const codeInput = document.getElementById('snippet-code');
+      const saveBtn = document.getElementById('save-btn');
+      const container = document.getElementById('snippets-container');
+      const emptyState = document.getElementById('empty-state');
+      const countSpan = document.getElementById('count');
+      const clearAllBtn = document.getElementById('clear-all');
+
+      // Load snippets from LocalStorage
+      let snippets = JSON.parse(localStorage.getItem('devpalettes_snippets')) || [];
+
+      function saveSnippets() {
+        localStorage.setItem('devpalettes_snippets', JSON.stringify(snippets));
+        render();
+      }
+
+      function addSnippet() {
+        const title = titleInput.value.trim();
+        const code = codeInput.value.trim();
+        
+        if (!code) {
+            if(window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Please enter some code', 'error');
+            } else {
+                alert('Please enter some code');
+            }
+            return;
+        }
+
+        snippets.unshift({
+          id: Date.now(),
+          title: title || 'Untitled Snippet',
+          code: code,
+          date: new Date().toLocaleDateString()
+        });
+
+        titleInput.value = '';
+        codeInput.value = '';
+        
+        saveSnippets();
+        
+        if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('Snippet saved!', 'success');
+        }
+      }
+
+      function deleteSnippet(id) {
+        snippets = snippets.filter(s => s.id !== id);
+        saveSnippets();
+      }
+
+      function copySnippet(code) {
+         navigator.clipboard.writeText(code).then(() => {
+            if(window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Code copied!', 'success');
+            }
+         });
+      }
+
+      function render() {
+        container.innerHTML = '';
+        countSpan.textContent = snippets.length;
+        
+        if (snippets.length === 0) {
+          emptyState.classList.remove('hidden');
+          return;
+        }
+        
+        emptyState.classList.add('hidden');
+
+        snippets.forEach(snippet => {
+          const card = document.createElement('div');
+          card.className = 'snippet-card';
+          
+          card.innerHTML = `
+            <div class="p-4 flex justify-between items-center border-b border-slate-700">
+              <div>
+                <h4 class="font-semibold text-white">${snippet.title}</h4>
+                <span class="text-xs text-slate-400">${snippet.date}</span>
+              </div>
+              <div class="flex gap-2">
+                 <button class="copy-btn p-2 text-slate-400 hover:text-emerald-400 transition" title="Copy">
+                   <i class="fas fa-copy"></i>
+                 </button>
+                 <button class="delete-btn p-2 text-slate-400 hover:text-red-400 transition" title="Delete">
+                   <i class="fas fa-trash"></i>
+                 </button>
+              </div>
+            </div>
+            <div class="snippet-code">${escapeHtml(snippet.code)}</div>
+          `;
+          
+          // Event Listeners
+          card.querySelector('.delete-btn').addEventListener('click', () => deleteSnippet(snippet.id));
+          card.querySelector('.copy-btn').addEventListener('click', () => copySnippet(snippet.code));
+          
+          container.appendChild(card);
+        });
+      }
+
+      function escapeHtml(text) {
+        return text
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      // Events
+      saveBtn.addEventListener('click', addSnippet);
+      
+      clearAllBtn.addEventListener('click', () => {
+         if(confirm('Are you sure you want to delete all snippets?')) {
+            snippets = [];
+            saveSnippets();
+         }
+      });
+
+      // Initial Render
+      render();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate CSS backdrop filters visually. Adjust blur, brightness, and opacity for glassmorphism effects.">
+  <meta name="keywords" content="backdrop filter generator, glassmorphism css, css blur generator, glass effect">
+  <title>Backdrop Filter Generator - Tool | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .preview-backdrop {
+      background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80');
+      background-size: cover;
+      background-position: center;
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-box {
+      padding: 2rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: white;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 text-sm font-medium rounded-full mb-4">Tool</span>
+        <h1 class="text-3xl font-bold mb-6">Backdrop Filter Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Create modern glassmorphism effects with live preview.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Controls -->
+          <div class="space-y-6">
+            <div>
+              <label class="flex justify-between text-sm font-medium mb-2">
+                <span>Blur</span>
+                <span id="blur-val" class="text-emerald-500">5px</span>
+              </label>
+              <input type="range" id="blur" min="0" max="30" value="5" class="w-full">
+            </div>
+            
+            <div>
+              <label class="flex justify-between text-sm font-medium mb-2">
+                <span>Brightness</span>
+                <span id="bright-val" class="text-emerald-500">100%</span>
+              </label>
+              <input type="range" id="brightness" min="50" max="150" value="100" class="w-full">
+            </div>
+            
+            <div>
+              <label class="flex justify-between text-sm font-medium mb-2">
+                <span>Saturation</span>
+                <span id="sat-val" class="text-emerald-500">100%</span>
+              </label>
+              <input type="range" id="saturation" min="0" max="200" value="100" class="w-full">
+            </div>
+
+             <div>
+              <label class="flex justify-between text-sm font-medium mb-2">
+                <span>Background Opacity</span>
+                <span id="opacity-val" class="text-emerald-500">20%</span>
+              </label>
+              <input type="range" id="opacity" min="0" max="100" value="20" class="w-full">
+            </div>
+            
+            <div class="pt-4">
+              <button id="copy-btn" class="btn-secondary w-full justify-center">
+                <i class="fas fa-code"></i> Copy CSS
+              </button>
+            </div>
+          </div>
+
+          <!-- Preview -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Live Preview</label>
+            <div class="preview-backdrop aspect-video flex items-center justify-center p-4">
+              <div id="glass-box" class="glass-box text-center w-full">
+                <i class="fas fa-gem text-3xl mb-2"></i>
+                <h3 class="text-xl font-bold">Glassmorphism</h3>
+                <p class="text-sm opacity-80">Adjust sliders to see effect</p>
+              </div>
+            </div>
+            
+            <!-- Code Output -->
+            <div class="mt-4 p-4 rounded-lg bg-slate-800 text-xs text-slate-200 font-mono overflow-x-auto">
+              <pre id="code-output">/* CSS Output */</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const blurInput = document.getElementById('blur');
+      const brightInput = document.getElementById('brightness');
+      const satInput = document.getElementById('saturation');
+      const opacityInput = document.getElementById('opacity');
+      
+      const blurVal = document.getElementById('blur-val');
+      const brightVal = document.getElementById('bright-val');
+      const satVal = document.getElementById('sat-val');
+      const opacityVal = document.getElementById('opacity-val');
+      
+      const glassBox = document.getElementById('glass-box');
+      const codeOutput = document.getElementById('code-output');
+      const copyBtn = document.getElementById('copy-btn');
+
+      function update() {
+        const b = blurInput.value;
+        const br = brightInput.value;
+        const s = satInput.value;
+        const o = opacityInput.value;
+
+        blurVal.textContent = `${b}px`;
+        brightVal.textContent = `${br}%`;
+        satVal.textContent = `${s}%`;
+        opacityVal.textContent = `${o}%`;
+
+        const filterValue = `blur(${b}px) brightness(${br}%) saturate(${s}%)`;
+        const bgColor = `rgba(255, 255, 255, ${o / 100})`;
+
+        glassBox.style.backdropFilter = filterValue;
+        glassBox.style.webkitBackdropFilter = filterValue; // Safari support
+        glassBox.style.backgroundColor = bgColor;
+
+        codeOutput.textContent = `.glass-card {
+  backdrop-filter: ${filterValue};
+  -webkit-backdrop-filter: ${filterValue};
+  background: ${bgColor};
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}`;
+      }
+
+      // Add listeners
+      [blurInput, brightInput, satInput, opacityInput].forEach(el => el.addEventListener('input', update));
+
+      // Copy functionality
+      copyBtn.addEventListener('click', () => {
+        const css = codeOutput.textContent;
+        navigator.clipboard.writeText(css).then(() => {
+           // Reusing Toast from main.js if available, else simple alert
+           if(window.Devpalettes && window.Devpalettes.Toast) {
+             window.Devpalettes.Toast.show('CSS copied to clipboard!', 'success');
+           } else {
+             alert('CSS copied!');
+           }
+        });
+      });
+
+      // Initial update
+      update();
+    });
+  </script>
+</body>
+</html>

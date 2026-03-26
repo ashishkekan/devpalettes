@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Build and preview custom navigation bars for your website. Set colors, alignment, and menu items easily.">
+  <meta name="keywords" content="navbar builder, navigation generator, css navbar, header builder">
+  <title>Navbar Builder - Tool | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .preview-container {
+      background-image: linear-gradient(45deg, #ccc 25%, transparent 25%), linear-gradient(-45deg, #ccc 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ccc 75%), linear-gradient(-45deg, transparent 75%, #ccc 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .dark .preview-container {
+      background-image: linear-gradient(45deg, #333 25%, transparent 25%), linear-gradient(-45deg, #333 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #333 75%), linear-gradient(-45deg, transparent 75%, #333 75%);
+    }
+    .preview-hero {
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 0.875rem;
+    }
+    .dark .preview-hero {
+      background: #1e293b;
+      color: #94a3b8;
+    }
+    .custom-navbar {
+      padding: 1rem 1.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+    .custom-navbar a {
+      text-decoration: none;
+      margin: 0 0.5rem;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+    .custom-navbar a:hover { opacity: 0.8; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">Tool</span>
+        <h1 class="text-3xl font-bold mb-6">Navbar Builder</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Design and preview custom navigation bars for your projects.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card max-w-4xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Controls -->
+          <div class="space-y-6">
+            <div>
+              <label class="block text-sm font-medium mb-2">Menu Items (Comma separated)</label>
+              <input type="text" id="menu-items" class="input-field" value="Home, About, Services, Contact" placeholder="Home, About, Contact">
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium mb-2">Background Color</label>
+                <div class="flex gap-2">
+                  <input type="color" id="bg-color" value="#3b82f6" class="w-12 h-10 rounded cursor-pointer border-0">
+                  <input type="text" id="bg-color-text" class="input-field flex-1" value="#3b82f6">
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Text Color</label>
+                <div class="flex gap-2">
+                  <input type="color" id="text-color" value="#ffffff" class="w-12 h-10 rounded cursor-pointer border-0">
+                  <input type="text" id="text-color-text" class="input-field flex-1" value="#ffffff">
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium mb-2">Alignment</label>
+              <select id="nav-align" class="input-field cursor-pointer">
+                <option value="flex-start">Left</option>
+                <option value="center">Center</option>
+                <option value="flex-end">Right</option>
+                <option value="space-between" selected>Space Between</option>
+              </select>
+            </div>
+
+            <button id="generate-btn" class="btn-primary w-full justify-center">
+              <i class="fas fa-sync-alt"></i> Update Preview
+            </button>
+          </div>
+
+          <!-- Preview -->
+          <div>
+            <label class="block text-sm font-medium mb-2">Live Preview</label>
+            <div class="preview-container p-4">
+              <div id="navbar-preview" class="custom-navbar">
+                <!-- Generated Navbar -->
+              </div>
+              <div class="preview-hero mt-2">
+                <span>Page Content Area</span>
+              </div>
+            </div>
+            
+            <!-- Code Output -->
+             <div class="mt-4">
+               <label class="block text-sm font-medium mb-2">Generated CSS</label>
+               <pre id="css-output" class="bg-slate-800 text-emerald-400 p-4 rounded-lg text-xs overflow-x-auto">/* CSS will appear here */</pre>
+             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuInput = document.getElementById('menu-items');
+      const bgColorPicker = document.getElementById('bg-color');
+      const bgColorText = document.getElementById('bg-color-text');
+      const textColorPicker = document.getElementById('text-color');
+      const textColorText = document.getElementById('text-color-text');
+      const alignSelect = document.getElementById('nav-align');
+      const preview = document.getElementById('navbar-preview');
+      const cssOutput = document.getElementById('css-output');
+      const generateBtn = document.getElementById('generate-btn');
+
+      // Sync Color Pickers and Text Inputs
+      bgColorPicker.addEventListener('input', (e) => { bgColorText.value = e.target.value; update(); });
+      bgColorText.addEventListener('input', (e) => { bgColorPicker.value = e.target.value; update(); });
+      textColorPicker.addEventListener('input', (e) => { textColorText.value = e.target.value; update(); });
+      textColorText.addEventListener('input', (e) => { textColorPicker.value = e.target.value; update(); });
+      
+      generateBtn.addEventListener('click', update);
+      
+      // Input listeners for real-time update
+      [menuInput, alignSelect].forEach(el => el.addEventListener('input', update));
+
+      function update() {
+        const items = menuInput.value.split(',').map(s => s.trim()).filter(s => s);
+        const bgColor = bgColorText.value;
+        const textColor = textColorText.value;
+        const align = alignSelect.value;
+
+        // Build Navbar HTML
+        let html = '';
+        items.forEach(item => {
+          html += `<a href="#">${item}</a>`;
+        });
+        
+        preview.innerHTML = html;
+        preview.style.backgroundColor = bgColor;
+        preview.style.color = textColor;
+        preview.style.justifyContent = align;
+
+        // Update CSS Output
+        cssOutput.textContent = `.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: ${align};
+  padding: 1rem 1.5rem;
+  background-color: ${bgColor};
+  color: ${textColor};
+  border-radius: 8px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: inherit;
+  margin: 0 0.5rem;
+  font-weight: 500;
+}`;
+      }
+
+      // Initial render
+      update();
+    });
+  </script>
+</body>
+</html>
