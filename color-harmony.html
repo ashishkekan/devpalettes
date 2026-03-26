@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Color Harmony Generator tool. Create beautiful color palettes using color theory rules like Complementary, Analogous, Triadic.">
+  <meta name="keywords" content="color harmony generator, color palette tool, complementary colors, triadic colors, color theory">
+  <title>Color Harmony Generator - Tool | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Specific Tool Styles */
+    .tool-container {
+      position: relative;
+      z-index: 10;
+    }
+    
+    .tool-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .tool-desc {
+      color: #64748b;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+    }
+    
+    .dark .tool-desc {
+      color: #94a3b8;
+    }
+
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      align-items: stretch;
+    }
+
+    .input-group input, .input-group select {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .palette-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+
+    .color-box {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+
+    .color-box::before {
+      content: 'Click to Copy';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 0.8rem;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .color-box:hover::before {
+      opacity: 1;
+    }
+
+    .color-box:hover {
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .color-box:active {
+      transform: scale(0.98);
+    }
+
+    .error-msg {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      display: none;
+    }
+
+    /* Toast styles if not loaded from CSS */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+    }
+
+    .toast {
+      background: white;
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      animation: slideUp 0.3s ease;
+      border-left: 4px solid #10b981;
+      margin-top: 0.5rem;
+    }
+    
+    .dark .toast {
+      background: #1e293b;
+      color: white;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-sm font-medium rounded-full mb-4">Tool</span>
+        <h1 class="text-3xl font-bold mb-6">Color Harmony Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Generate professional palettes using color theory rules.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card max-w-4xl mx-auto">
+        <div class="tool-container">
+          
+          <div class="input-group">
+            <input type="text" id="color-input" class="input-field" placeholder="Enter HEX (e.g. #ff5733)" value="#3b82f6">
+            
+            <select id="harmony-type" class="input-field cursor-pointer">
+              <option value="complementary">Complementary</option>
+              <option value="analogous">Analogous</option>
+              <option value="triadic">Triadic</option>
+              <option value="split">Split Complementary</option>
+              <option value="tetradic">Tetradic</option>
+            </select>
+
+            <button id="generate-btn" class="btn-primary whitespace-nowrap">
+              <i class="fas fa-magic"></i> Generate
+            </button>
+          </div>
+
+          <div id="error-message" class="error-msg"></div>
+
+          <!-- Palette Display -->
+          <div id="palette" class="palette-display"></div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // ==========================================
+      // 1. State & DOM Elements
+      // ==========================================
+      const colorInput = document.getElementById('color-input');
+      const harmonySelect = document.getElementById('harmony-type');
+      const generateBtn = document.getElementById('generate-btn');
+      const paletteContainer = document.getElementById('palette');
+      const errorMsg = document.getElementById('error-message');
+      const toastContainer = document.getElementById('toast-container');
+
+      // ==========================================
+      // 2. Color Logic Utilities
+      // ==========================================
+      
+      const ColorUtils = {
+        // Map common names to Hex
+        colorNames: {
+          red: '#ff0000', green: '#00ff00', blue: '#0000ff',
+          yellow: '#ffff00', cyan: '#00ffff', magenta: '#ff00ff',
+          white: '#ffffff', black: '#000000', orange: '#ffa500',
+          pink: '#ffc0cb', purple: '#800080', gray: '#808080',
+          grey: '#808080', lime: '#00ff00', navy: '#000080',
+          teal: '#008080', coral: '#ff7f50', salmon: '#fa8072'
+        },
+
+        // Parse input (Hex or Name) to valid Hex
+        parseInput(input) {
+          let hex = input.trim().toLowerCase();
+          
+          // Check if name
+          if (this.colorNames[hex]) {
+            return this.colorNames[hex];
+          }
+          
+          // Normalize Hex
+          if (hex.charAt(0) !== '#') {
+            hex = '#' + hex;
+          }
+          
+          // Expand shorthand (e.g. #03F -> #0033FF)
+          if (/^#([a-f0-9]{3})$/i.test(hex)) {
+            const [_, r, g, b] = hex.match(/^#([a-f0-9])([a-f0-9])([a-f0-9])$/i);
+            hex = `#${r}${r}${g}${g}${b}${b}`;
+          }
+          
+          // Validate full Hex
+          if (/^#([a-f0-9]{6})$/i.test(hex)) {
+            return hex;
+          }
+          
+          return null; // Invalid
+        },
+
+        // Hex to HSL
+        hexToHsl(hex) {
+          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          if (!result) return null;
+          
+          let r = parseInt(result[1], 16) / 255;
+          let g = parseInt(result[2], 16) / 255;
+          let b = parseInt(result[3], 16) / 255;
+
+          const max = Math.max(r, g, b), min = Math.min(r, g, b);
+          let h, s, l = (max + min) / 2;
+
+          if (max === min) {
+            h = s = 0; // achromatic
+          } else {
+            const d = max - min;
+            s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+            switch (max) {
+              case r: h = ((g - b) / d + (g < b ? 6 : 0)) / 6; break;
+              case g: h = ((b - r) / d + 2) / 6; break;
+              case b: h = ((r - g) / d + 4) / 6; break;
+            }
+          }
+
+          return {
+            h: Math.round(h * 360),
+            s: Math.round(s * 100),
+            l: Math.round(l * 100)
+          };
+        },
+
+        // HSL to Hex
+        hslToHex(h, s, l) {
+          s /= 100;
+          l /= 100;
+
+          const c = (1 - Math.abs(2 * l - 1)) * s;
+          const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+          const m = l - c / 2;
+          let r = 0, g = 0, b = 0;
+
+          if (0 <= h && h < 60) { r = c; g = x; b = 0; }
+          else if (60 <= h && h < 120) { r = x; g = c; b = 0; }
+          else if (120 <= h && h < 180) { r = 0; g = c; b = x; }
+          else if (180 <= h && h < 240) { r = 0; g = x; b = c; }
+          else if (240 <= h && h < 300) { r = x; g = 0; b = c; }
+          else if (300 <= h && h < 360) { r = c; g = 0; b = x; }
+
+          r = Math.round((r + m) * 255).toString(16).padStart(2, '0');
+          g = Math.round((g + m) * 255).toString(16).padStart(2, '0');
+          b = Math.round((b + m) * 255).toString(16).padStart(2, '0');
+
+          return `#${r}${g}${b}`;
+        },
+
+        // Calculate luminance for contrast
+        getLuminance(hex) {
+          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          if (!result) return 0;
+          const r = parseInt(result[1], 16) / 255;
+          const g = parseInt(result[2], 16) / 255;
+          const b = parseInt(result[3], 16) / 255;
+          // Simplified luminance calculation
+          return (0.299 * r + 0.587 * g + 0.114 * b);
+        },
+
+        getContrastColor(hex) {
+          return this.getLuminance(hex) > 0.5 ? '#000000' : '#ffffff';
+        }
+      };
+
+      // ==========================================
+      // 3. Harmony Logic
+      // ==========================================
+      
+      function generatePalette(baseHex, type) {
+        const hsl = ColorUtils.hexToHsl(baseHex);
+        if (!hsl) return [];
+        
+        let hues = [];
+        const baseHue = hsl.h;
+        
+        switch(type) {
+          case 'complementary':
+            hues = [baseHue, (baseHue + 180) % 360];
+            break;
+          case 'analogous':
+            hues = [(baseHue - 30 + 360) % 360, baseHue, (baseHue + 30) % 360];
+            break;
+          case 'triadic':
+            hues = [baseHue, (baseHue + 120) % 360, (baseHue + 240) % 360];
+            break;
+          case 'split':
+            hues = [baseHue, (baseHue + 150) % 360, (baseHue + 210) % 360];
+            break;
+          case 'tetradic':
+            hues = [baseHue, (baseHue + 90) % 360, (baseHue + 180) % 360, (baseHue + 270) % 360];
+            break;
+          default:
+            hues = [baseHue];
+        }
+
+        return hues.map(h => ColorUtils.hslToHex(h, hsl.s, hsl.l));
+      }
+
+      // ==========================================
+      // 4. UI & Rendering
+      // ==========================================
+      
+      function renderPalette(colors) {
+        paletteContainer.innerHTML = '';
+        
+        colors.forEach(color => {
+          const textColor = ColorUtils.getContrastColor(color);
+          const box = document.createElement('div');
+          box.className = 'color-box';
+          box.style.backgroundColor = color;
+          box.style.color = textColor;
+          box.innerHTML = color.toUpperCase();
+          box.setAttribute('data-color', color);
+          
+          box.addEventListener('click', () => copyToClipboard(color));
+          
+          paletteContainer.appendChild(box);
+        });
+      }
+
+      function showError(msg) {
+        errorMsg.textContent = msg;
+        errorMsg.style.display = 'block';
+      }
+
+      function hideError() {
+        errorMsg.style.display = 'none';
+      }
+
+      // ==========================================
+      // 5. Clipboard
+      // ==========================================
+      
+      function copyToClipboard(text) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(`Copied ${text}`);
+        }).catch(err => {
+          // Fallback
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed'; ta.style.opacity = 0;
+          document.body.appendChild(ta);
+          ta.select();
+          try {
+            document.execCommand('copy');
+            showToast(`Copied ${text}`);
+          } catch (e) {
+            showToast('Failed to copy', true);
+          }
+          document.body.removeChild(ta);
+        });
+      }
+
+      function showToast(message, isError = false) {
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        if (isError) toast.style.borderLeftColor = '#ef4444';
+        
+        const icon = isError ? 'fa-exclamation-circle' : 'fa-check-circle';
+        const iconColor = isError ? 'text-red-400' : 'text-emerald-400';
+        
+        toast.innerHTML = `
+          <i class="fas ${icon} ${iconColor}"></i>
+          <span>${message}</span>
+        `;
+        
+        toastContainer.appendChild(toast);
+        
+        setTimeout(() => {
+          toast.style.opacity = '0';
+          toast.style.transform = 'translateY(10px)';
+          toast.style.transition = 'all 0.3s ease';
+          setTimeout(() => toast.remove(), 300);
+        }, 2000);
+      }
+
+      // ==========================================
+      // 6. Event Handlers
+      // ==========================================
+      
+      function handleGenerate() {
+        const inputVal = colorInput.value;
+        const harmonyType = harmonySelect.value;
+        
+        hideError();
+        
+        const validHex = ColorUtils.parseInput(inputVal);
+        
+        if (!validHex) {
+          showError('Invalid color. Please enter a valid HEX code (e.g., #ff5733) or name (e.g., blue).');
+          return;
+        }
+        
+        // Update input to normalized value
+        colorInput.value = validHex;
+        
+        const colors = generatePalette(validHex, harmonyType);
+        renderPalette(colors);
+      }
+
+      // Click Listener
+      generateBtn.addEventListener('click', handleGenerate);
+
+      // Enter Key Listener
+      colorInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          handleGenerate();
+        }
+      });
+
+      // ==========================================
+      // 7. Initial Load
+      // ==========================================
+      
+      // Generate default palette on load
+      handleGenerate();
+      
+    });
+  </script>
+</body>
+</html>
