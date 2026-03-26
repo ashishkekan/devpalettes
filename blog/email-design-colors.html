@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Best practices for color in email design. Deliverability, accessibility, and dark mode compatibility for newsletters.">
+  <meta name="keywords" content="email design colors, email marketing design, newsletter colors, dark mode email, email accessibility">
+  <title>Email Design Colors - Marketing Guide | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">Email Marketing</span>
+        <h1 class="text-3xl font-bold mb-6">Email Design Colors</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Designing for the inbox, not the browser.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Email is one of the most restrictive mediums for color design. Unlike web browsers, which render code consistently, email clients (Outlook, Gmail, Apple Mail) interpret HTML and CSS differently. What looks stunning in a browser might break or turn invisible in an inbox. Mastering email color requires a blend of technical knowledge and aesthetic restraint.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Dark Mode Challenge</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Many users read emails in dark mode. If your email uses a white background with dark text, some email clients will invert it—turning white to black and black to white. This can ruin logos and brand colors. To counter this, avoid using image-based text. Use actual HTML text with hex colors. Test your emails in both light and dark modes to ensure contrast holds up.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Color and Deliverability</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Spam filters analyze email content. While color itself isn't a direct trigger, emails that are one giant, red image can trigger "image-heavy" spam filters. Using a balance of HTML text (colored with hex codes) and images improves deliverability. Also, avoid using "invisible text" (white text on a white background), a classic spammer tactic that guarantees your email lands in the spam folder.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Email design is about resilience. Use a "safe" palette, test across clients, and prioritize text over images for critical information.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
