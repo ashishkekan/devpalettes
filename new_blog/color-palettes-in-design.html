@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palettes in Design: The Ultimate Guide for UI/UX</title>
+  <meta name="description" content="Learn how to choose the perfect color palettes for your design projects. Explore types, tips, and tools for UI/UX designers.">
+  <meta name="keywords" content="color palettes, ui color palettes, best color combinations, website color palette, modern color schemes">
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 text-sm font-medium rounded-full mb-4">Design Guide</span>
+        <h1 class="text-3xl font-bold mb-6">Color Palettes in Design: The Ultimate Guide</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">How to choose, combine, and apply colors effectively in UI/UX.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <article class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Colors speak louder than words. In the digital world, a user forms an opinion about a website in just 50 milliseconds, and color plays a huge role in that split-second judgment. A well-chosen <strong>color palette</strong> can make your design feel trustworthy, exciting, or calming. A bad one can confuse users or even drive them away. Whether you are building a startup landing page or a complex dashboard, understanding color palettes is your first step toward great design.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What is a Color Palette?</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Simply put, a color palette is a set of colors chosen to be used together in a design. It usually includes a primary color, a few secondary colors, and neutral shades like whites, blacks, or grays. Think of it as the "outfit" your website wears. You wouldn't wear clashing prints, right? Similarly, a palette ensures your digital product looks cohesive and professional. In UI design, these palettes are often defined using HEX codes or RGB values so developers can implement them consistently.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Color Palettes Matter in Design</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Colors are not just decoration; they are functional tools. They guide the user's eye, indicate interactive elements (like buttons), and establish brand recognition. For example, a "Buy Now" button needs a color that stands out—that’s where your palette strategy comes in. A consistent palette reduces cognitive load, making your app or site easier to navigate. If every screen uses different shades, the user feels lost. Consistency builds trust.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">5 Common Types of Color Palettes</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Designers use color theory to build palettes. The color wheel is your best friend here. Based on the wheel, here are the most common schemes:
+          </p>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li><strong>Monochromatic:</strong> Uses different shades of a single color. Great for minimal, clean designs. It’s safe but can be boring if not handled well.</li>
+            <li><strong>Analogous:</strong> Uses colors that sit next to each other on the wheel (e.g., Blue, Blue-Green, Green). This creates a serene, comfortable look.</li>
+            <li><strong>Complementary:</strong> Uses colors opposite each other (e.g., Blue and Orange). This offers high contrast and high energy. Perfect for call-to-action buttons.</li>
+            <li><strong>Triadic:</strong> Uses three colors equally spaced on the wheel. It’s vibrant but needs careful balancing to avoid chaos.</li>
+            <li><strong>Tetradic:</strong> Uses four colors. This is complex and works best if you let one color dominate the others.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Choose a Website Color Palette</h2>
+          <ol class="text-slate-600 dark:text-slate-300 list-decimal list-inside space-y-2 mb-6">
+            <li><strong>Start with your brand:</strong> What is your personality? A finance app might want stable blues; a food delivery app might want energetic reds or oranges.</li>
+            <li><strong>Pick a dominant color:</strong> This will cover about 60% of your space (usually backgrounds).</li>
+            <li><strong>Add a secondary color:</strong> This covers 30% and supports the primary color.</li>
+            <li><strong>Choose an accent:</strong> The remaining 10% is for CTAs and highlights. Make it pop.</li>
+            <li><strong>Test for accessibility:</strong> Ensure your text has enough contrast against backgrounds.</li>
+          </ol>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Common Mistakes to Avoid</h2>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li><strong>Using too many colors:</strong> Stick to 3-5 main colors. More than that creates visual noise.</li>
+            <li><strong>Ignoring contrast:</strong> Light grey text on a white background is unreadable. Always check WCAG contrast ratios.</li>
+            <li><strong>Forgetting neutral shades:</strong> You need whites, greys, and blacks to give the eye a rest.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Pro Tips for Designers</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Follow the 60-30-10 rule. It’s a classic interior design rule that works perfectly for UI. Use 60% neutral, 30% primary, and 10% accent. Also, generate your palette digitally first. Don't guess hex codes. Use a tool to see how colors interact on screen before coding.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Recommended Tools</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Don't create palettes blindly. Use these free tools to speed up your workflow:
+          </p>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li><a href="/palettes" class="text-emerald-500 hover:underline">Color Palette Generator</a> - Generate random palettes instantly.</li>
+            <li><a href="/color-from-image" class="text-emerald-500 hover:underline">Color from Image</a> - Get inspired by extracting colors from photos.</li>
+            <li><a href="/contrast-in-ui" class="text-emerald-500 hover:underline">Contrast Checker</a> - Ensure your text is readable.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+          <div class="space-y-4 text-slate-600 dark:text-slate-300">
+            <p><strong>Q: How many colors should be in a UI palette?</strong><br>A: Ideally, 3 to 5. A primary, secondary, accent, and two neutrals (light and dark).</p>
+            <p><strong>Q: What is the 60-30-10 rule?</strong><br>A: A formula for balance: 60% dominant color, 30% secondary, 10% accent.</p>
+            <p><strong>Q: Which color palette is best for eyes?</strong><br>A: Low saturation palettes with soft neutrals. Dark mode is also easier for long reading sessions.</p>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A great color palette is the foundation of a great user interface. It aligns with your brand, guides the user, and ensures accessibility. Start with theory, use the right tools, and always test your choices. Ready to build your own? Try our <a href="/palettes" class="text-emerald-500 hover:underline">Palette Generator</a> today.
+          </p>
+        </div>
+      </article>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
