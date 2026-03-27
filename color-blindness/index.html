@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>Color Blindness Simulator - Accessibility Checker | Dev Palettes</title>
-  <meta name="title" content="Color Blindness Simulator - Accessibility Checker">
-  <meta name="description" content="Test how your designs appear to users with color vision deficiencies. Simulate Protanopia, Deuteranopia, Tritanopia, and check WCAG contrast.">
-  <meta name="keywords" content="color blindness simulator, protanopia simulator, deuteranopia, tritanopia, wcag accessibility, color contrast checker">
-  <meta name="author" content="Dev Palettes">
+  <title>Color Blindness Simulator: Protanopia & WCAG Checker</title>
+  <meta name="description" content="Test your UI for accessibility with our Color Blindness Simulator. Check for Protanopia, Deuteranopia, and WCAG contrast compliance instantly.">
+  <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/color-blindness" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/color-blindness">
-  <meta property="og:title" content="Color Blindness Simulator">
-  <meta property="og:description" content="Test your designs for color blindness and contrast accessibility.">
+  <meta property="og:title" content="Color Blindness Simulator: Protanopia & WCAG Checker">
+  <meta property="og:description" content="Test your UI for accessibility with our Color Blindness Simulator. Check for Protanopia, Deuteranopia, and WCAG contrast compliance.">
   <meta property="og:image" content="https://devpalettes.com/images/og-colorblind.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/color-blindness">
-  <meta property="twitter:title" content="Color Blindness Simulator">
-  <meta property="twitter:description" content="Test your designs for color blindness and contrast accessibility.">
+  <meta property="twitter:title" content="Color Blindness Simulator: Protanopia & WCAG Checker">
+  <meta property="twitter:description" content="Test your UI for accessibility with our Color Blindness Simulator. Check for Protanopia, Deuteranopia, and WCAG contrast compliance.">
+  
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
-  <!-- Structured Data (JSON-LD) -->
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -44,10 +44,46 @@
   }
   </script>
 
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a color blindness simulator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A color blindness simulator is a tool that processes your color palette to show how it appears to users with various color vision deficiencies like Protanopia or Deuteranopia."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test for WCAG contrast compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the contrast checker section of this tool. Enter your foreground and background colors, and the tool will calculate the ratio and indicate if it passes WCAG AA or AAA standards."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Protanopia and Deuteranopia?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Protanopia is the inability to perceive red light, while Deuteranopia is the inability to perceive green light. Both result in red-green color blindness but have different underlying causes."
+        }
+      }
+    ]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
   <script src="../js/tailwind.js"></script>
    
   <script>
@@ -88,7 +124,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       <!-- Heading -->
       <div class="text-center mb-12 animate-on-scroll">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color Blindness Simulator</h1>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Color Blindness Simulator: Protanopia, Deuteranopia & WCAG Checker</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Test how your colors appear to people with color vision deficiencies</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
@@ -206,7 +242,7 @@
         </div>
       </div>
       
-      <!-- Contrast Checker Section (Required for JS to work) -->
+      <!-- Contrast Checker Section -->
       <div class="glass-card p-8 mt-8 animate-on-scroll shimmer-card">
         <h2 class="text-2xl font-bold mb-6">Contrast Checker</h2>
         <div class="grid md:grid-cols-2 gap-8">
@@ -260,19 +296,34 @@
         </div>
       </div>
       
+      <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16 animate-on-scroll">
          
          <!-- What is -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">What is Color Blindness?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Color blindness, also known as color vision deficiency, is the decreased ability to see color or differences in color. It affects approximately 8% of men and 0.5% of women of Northern European descent. Designing for color blindness ensures accessibility for millions of users.
+               Color blindness, or color vision deficiency, is the decreased ability to see color or differences in color. It affects approximately 8% of men and 0.5% of women. Using a <strong>color blindness simulator</strong> ensures your designs are accessible to this significant user base, meeting both ethical standards and WCAG compliance.
             </p>
+         </section>
+
+         <!-- How to Test Section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Test Colors for Accessibility</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Testing your UI for accessibility involves simulating how colors appear under different vision deficiencies and checking contrast ratios. Follow these steps:
+            </p>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Input Your Palette:</strong> Enter the HEX codes of your design colors into the input fields above.</li>
+               <li><strong>Run the Simulation:</strong> Click "Simulate" to generate views for Protanopia, Deuteranopia, and Tritanopia.</li>
+               <li><strong>Check Contrast:</strong> Use the Contrast Checker to ensure text is readable against backgrounds (aim for a ratio of 4.5:1 or higher).</li>
+               <li><strong>Analyze Results:</strong> Look for colors that blend together or become indistinguishable in the simulation views.</li>
+            </ol>
          </section>
 
          <!-- Types -->
          <section>
-            <h2 class="text-2xl font-bold mb-6 text-center">Types of Color Blindness</h2>
+            <h2 class="text-2xl font-bold mb-6 text-center">Types of Color Blindness Simulated</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                <div class="glass-card p-6">
                   <h3 class="font-bold mb-2 text-red-500">Protanopia</h3>
@@ -293,7 +344,7 @@
             </div>
          </section>
 
-         <!-- Tips -->
+         <!-- Design Tips -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Design Tips for Accessibility</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
@@ -305,13 +356,15 @@
          </section>
 
          <!-- Internal Links -->
-         <div class="text-center">
-            <h2 class="text-2xl font-bold mb-4">Related Tools</h2>
-            <div class="flex flex-wrap justify-center gap-3">
-               <a href="/converter" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-               <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color From Image</a>
-            </div>
-         </div>
+         <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Explore More Design Resources</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Learn how to create beautiful and accessible color palettes for your next project.</p>
+            <div class="flex flex-wrap justify-center gap-4">
+               <a href="/palettes" class="btn-primary">Color Palette Generator</a>
+               <a href="/blog/ui-color-trends-2026" class="btn-secondary">UI Color Trends 2026</a>
+               <a href="/blog/pastel-color-guide" class="btn-secondary">Pastel Color Guide</a>
+             </div>
+         </section>
          
       </div>
       <!-- End SEO Content -->
