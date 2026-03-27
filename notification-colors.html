@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Designing notification colors for apps. Distinguishing between info, success, warning, and error alerts effectively.">
+  <meta name="keywords" content="notification design, toast notification, alert colors, system feedback, ux notifications">
+  <title>Notification Colors - System Feedback | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-indigo-100 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 text-sm font-medium rounded-full mb-4">UI Design</span>
+        <h1 class="text-3xl font-bold mb-6">Notification Colors</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">The visual language of alerts and system updates.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Notifications are the heartbeat of an application. They confirm actions, warn of issues, and provide updates. Because they appear contextually and briefly, their color coding must be instantly recognizable. A user shouldn't have to read the text to know if a notification is good news or bad news; the color should tell the story.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Standard Color Codes</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Over decades of computing, a standard has emerged. <strong>Green</strong> signifies success (e.g., "File saved"). <strong>Red</strong> signifies error or critical failure. <strong>Yellow/Orange</strong> signifies a warning (e.g., "Storage full"). <strong>Blue</strong> signifies neutral information (e.g., "New feature available"). Sticking to this code reduces cognitive load, as users instinctively understand the message's intent.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Toast Notifications vs. Badges</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            "Toasts" are temporary pop-ups. They should use soft backgrounds with the corresponding accent color for the icon/border. A bright solid red toast can be too distracting. "Badges" (like the red dot on an app icon) should use high-saturation colors to catch the peripheral vision.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Consistency is the golden rule of notifications. If you use green for "success" today, do not use it for "warning" tomorrow. Build a color system that users can trust.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Color strategy for dashboard design. Managing information density, data visualization, and dark mode interfaces.">
+  <meta name="keywords" content="dashboard design, dashboard ui, data visualization colors, admin dashboard, analytics colors">
+  <title>Dashboard Color Strategy - Data Design | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-violet-100 dark:bg-violet-900/30 text-violet-600 dark:text-violet-400 text-sm font-medium rounded-full mb-4">Dashboard</span>
+        <h1 class="text-3xl font-bold mb-6">Dashboard Color Strategy</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Organizing complexity with color.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Dashboards are information-dense environments. They display charts, tables, KPIs, and metrics all at once. Without a strict color strategy, a dashboard becomes a confusing mosaic. The goal is to declutter the visual space, allowing the user to scan and interpret data rapidly.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Backgrounds and Containers</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Use a subtle background to anchor the interface. Light gray is standard for light mode; deep charcoal for dark mode. "Cards" or "Widgets" should have a slightly lighter or darker shade than the background to create separation. Avoid strong colors for these containers; they should be neutral canvases for the data.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Accent Colors for Data</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Reserve your vibrant colors for the data itself—lines on a chart, progress bars, or highlighted numbers. Use a consistent color-to-meaning mapping across the dashboard. If "Revenue" is blue on the main chart, it should be blue on the sidebar widget too. This consistency reduces cognitive load.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Dark Mode Preference</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Dashboards are often used for long periods. Dark mode is increasingly the default for these tools. It reduces eye strain and makes colored data points pop more effectively than on a bright white screen.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            In a dashboard, color is a functional tool, not just decoration. Use it to create hierarchy and direct focus to the metrics that matter most.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

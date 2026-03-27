@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choosing colors for navigation bars. Visibility, sticky behavior, and glassmorphism trends in modern navigation.">
+  <meta name="keywords" content="navigation bar design, navbar colors, sticky navigation, glassmorphism navbar, menu design">
+  <title>Navigation Bar Colors - UI Navigation | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <span class="inline-block px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 text-sm font-medium rounded-full mb-4">Navigation</span>
+        <h1 class="text-3xl font-bold mb-6">Navigation Bar Colors</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Designing the roadmap of your interface.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            The navigation bar is the compass of a website. It must be visible, legible, and usable at all times. The choice of color for the navbar determines whether it stands out as a distinct entity or blends seamlessly into the page content. With modern trends like "glassmorphism" and sticky scrolling, the palette strategy has evolved.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Solid vs. Transparent</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Traditional navbars used solid, high-contrast backgrounds (white or brand color). This ensured maximum readability. Modern designs often use semi-transparent backgrounds with "blur" effects (backdrop-filter). This allows content to scroll underneath the navbar, creating a sense of depth. However, this requires careful color management to ensure text remains readable against the blurred background.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Active States and Hover</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The "active" link color tells the user where they are. It should be distinct from the inactive links. Often, the active state uses the primary brand color, while inactive links are neutral gray. Hover states should provide a subtle shift—lightening the background or changing the text color—to indicate interactivity without overwhelming the design.
+          </p>
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A navigation bar's colors should prioritize clarity. Whether solid or glass, the user must never struggle to read the menu items.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>
