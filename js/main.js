@@ -372,35 +372,70 @@ const Storage = {
   }
 };
 
-const BackToTop = {
-  btn: null,
+const ScrollButtons = {
+  btnTop: null,
+  btnBottom: null,
 
   init() {
-    // Create the button element
-    this.btn = document.createElement('button');
-    this.btn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    this.btn.className = 'back-to-top';
-    this.btn.setAttribute('aria-label', 'Back to top');
+    // --- Create Back to Top Button ---
+    this.btnTop = document.createElement('button');
+    this.btnTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    this.btnTop.className = 'back-to-top';
+    this.btnTop.setAttribute('aria-label', 'Back to top');
+    document.body.appendChild(this.btnTop);
+
+    this.btnTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- Create Back to Bottom Button ---
+    this.btnBottom = document.createElement('button');
+    this.btnBottom.innerHTML = '<i class="fas fa-arrow-down"></i>'; // Down Arrow
+    this.btnBottom.className = 'back-to-bottom';
+    this.btnBottom.setAttribute('aria-label', 'Back to bottom');
+    document.body.appendChild(this.btnBottom);
+
+    this.btnBottom.addEventListener('click', () => {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    });
+
+    // --- Scroll Event Listener ---
+    window.addEventListener('scroll', () => this.handleScroll());
     
-    // Append to body
-    document.body.appendChild(this.btn);
+    // Initial check on load
+    this.handleScroll();
+  },
 
-    // Show/Hide logic on scroll
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        this.btn.classList.add('visible');
-      } else {
-        this.btn.classList.remove('visible');
-      }
-    });
+  handleScroll() {
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+    
+    // Threshold for showing buttons (e.g., 100px)
+    const threshold = 100;
+    
+    // Check if at Top
+    const isAtTop = scrollY < threshold;
+    
+    // Check if at Bottom (with a small threshold)
+    const isAtBottom = (scrollY + windowHeight) >= (docHeight - threshold);
 
-    // Scroll to top on click
-    this.btn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
+    // --- Visibility Logic ---
+    // Requirement: "at a time ek hi dikhana hai"
+    
+    if (isAtTop) {
+      // We are at the top: Show "Back to Bottom", Hide "Back to Top"
+      this.btnBottom.classList.add('visible');
+      this.btnTop.classList.remove('visible');
+    } else {
+      // We have scrolled down: Show "Back to Top", Hide "Back to Bottom"
+      this.btnTop.classList.add('visible');
+      this.btnBottom.classList.remove('visible');
+    }
+    
+    // Optional: If strictly at the very bottom, we can hide both if you want, 
+    // but usually keeping "Back to Top" at the bottom is standard UX.
+    // Current logic keeps "Back to Top" visible whenever scrolled down.
   }
 };
 
@@ -641,7 +676,7 @@ document.addEventListener('DOMContentLoaded', () => {
   KeyboardShortcuts.init();
   
   // Initialize Back to Top Button
-  BackToTop.init();
+  ScrollButtons.init();
   
   // Theme toggle button
   document.addEventListener('click', (e) => {
