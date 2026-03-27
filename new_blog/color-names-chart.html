@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Names Chart – Complete List of Colors with Codes</title>
+  <meta name="description" content="Explore a complete color names chart with HEX, RGB, and HSL codes. Perfect for designers and developers.">
+  <meta name="keywords" content="color names chart, list of colors, css color names, hex codes, color codes, color names list">
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Custom Scrollbar for Grid */
+    .color-grid-container::-webkit-scrollbar {
+      height: 8px;
+    }
+    .color-grid-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .color-grid-container::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .dark .color-grid-container::-webkit-scrollbar-thumb {
+      background: #475569;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-6">Color Names Chart</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Complete Guide with HEX, RGB & HSL Codes</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <!-- Interactive Color Grid Tool -->
+      <div class="glass-card p-6 mb-8 animate-on-scroll">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
+          <h2 class="text-xl font-bold text-slate-800 dark:text-white">Interactive Color Explorer</h2>
+          <div class="relative w-full md:w-64">
+            <input type="text" id="color-search" placeholder="Search (e.g. Blue, Red...)" class="input-field pl-10 w-full">
+            <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          </div>
+        </div>
+        <p class="text-xs text-slate-500 mb-4">Click any color to copy HEX code. Scroll to explore more.</p>
+        
+        <div id="color-grid" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-2 max-h-[400px] overflow-y-auto color-grid-container pr-2">
+          <!-- Colors injected by JS -->
+        </div>
+      </div>
+
+      <!-- Article Content -->
+      <article class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            Choosing the right color can be tricky, especially when you’re dealing with hundreds of shades and variations. A color names chart makes this process easier by giving you a structured list of colors along with their codes. Whether you're a designer looking for inspiration or a developer working with CSS, knowing standard color names and values helps you work faster and more efficiently. In this guide, you’ll explore different types of color names, how they are used in design, and how to pick the right ones for your projects.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What is a Color Names Chart?</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A color names chart is a collection of predefined color names along with their corresponding values such as HEX, RGB, and HSL. These charts help designers and developers quickly identify and use colors without manually guessing or creating them from scratch.
+          </p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            For example:
+            <ul class="mt-2">
+              <li>Red → #FF0000</li>
+              <li>Blue → #0000FF</li>
+              <li>Black → #000000</li>
+            </ul>
+            These standard names are often supported directly in CSS and design tools.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Color Names Matter in Design</h2>
+          
+          <div class="grid md:grid-cols-2 gap-4 my-6 not-prose">
+             <div class="glass-card p-4">
+               <h4 class="font-bold text-emerald-500 flex items-center gap-2 mb-2"><i class="fas fa-palette"></i> Consistency</h4>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Using standard color names ensures your design remains consistent across pages and platforms.</p>
+             </div>
+             <div class="glass-card p-4">
+               <h4 class="font-bold text-orange-500 flex items-center gap-2 mb-2"><i class="fas fa-bolt"></i> Faster Workflow</h4>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Instead of manually picking colors every time, you can quickly choose from predefined options.</p>
+             </div>
+             <div class="glass-card p-4">
+               <h4 class="font-bold text-blue-500 flex items-center gap-2 mb-2"><i class="fas fa-code"></i> Developer Friendly</h4>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Color names and codes make it easier to implement designs directly into code.</p>
+             </div>
+             <div class="glass-card p-4">
+               <h4 class="font-bold text-pink-500 flex items-center gap-2 mb-2"><i class="fas fa-universal-access"></i> Accessibility</h4>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Using the right color combinations improves readability and accessibility.</p>
+             </div>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Types of Color Names</h2>
+          
+          <h3 class="text-xl font-bold mt-6 mb-3 text-slate-800 dark:text-slate-200">1. Basic Color Names</h3>
+          <p class="text-slate-600 dark:text-slate-300">These are simple and widely used colors:</p>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-1 mb-4">
+            <li>Red</li>
+            <li>Blue</li>
+            <li>Green</li>
+            <li>Yellow</li>
+          </ul>
+
+          <h3 class="text-xl font-bold mt-6 mb-3 text-slate-800 dark:text-slate-200">2. Extended CSS Color Names</h3>
+          <p class="text-slate-600 dark:text-slate-300">CSS supports 140+ named colors like:</p>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-1 mb-4">
+            <li>Coral</li>
+            <li>Crimson</li>
+            <li>Indigo</li>
+            <li>Turquoise</li>
+          </ul>
+
+          <h3 class="text-xl font-bold mt-6 mb-3 text-slate-800 dark:text-slate-200">3. Custom Color Names</h3>
+          <p class="text-slate-600 dark:text-slate-300">Design systems often define their own names like:</p>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-1 mb-4">
+            <li>Primary Blue</li>
+            <li>Accent Purple</li>
+            <li>Soft Gray</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Popular Color Names with Codes</h2>
+          
+          <div class="overflow-x-auto my-6">
+            <table class="min-w-full bg-white dark:bg-slate-800 rounded-xl overflow-hidden text-sm">
+              <thead class="bg-slate-50 dark:bg-slate-700">
+                <tr>
+                  <th class="py-3 px-4 text-left font-semibold">Color Name</th>
+                  <th class="py-3 px-4 text-left font-semibold">HEX</th>
+                  <th class="py-3 px-4 text-left font-semibold">RGB</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-200 dark:divide-slate-700">
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer" onclick="Devpalettes.Clipboard.copy('#FF0000', 'Copied Red')">
+                  <td class="py-3 px-4 flex items-center gap-2"><span class="w-4 h-4 rounded inline-block" style="background:#FF0000"></span> Red</td>
+                  <td class="py-3 px-4 font-mono text-red-500">#FF0000</td>
+                  <td class="py-3 px-4 font-mono text-slate-500">rgb(255,0,0)</td>
+                </tr>
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer" onclick="Devpalettes.Clipboard.copy('#0000FF', 'Copied Blue')">
+                  <td class="py-3 px-4 flex items-center gap-2"><span class="w-4 h-4 rounded inline-block" style="background:#0000FF"></span> Blue</td>
+                  <td class="py-3 px-4 font-mono text-blue-500">#0000FF</td>
+                  <td class="py-3 px-4 font-mono text-slate-500">rgb(0,0,255)</td>
+                </tr>
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer" onclick="Devpalettes.Clipboard.copy('#008000', 'Copied Green')">
+                  <td class="py-3 px-4 flex items-center gap-2"><span class="w-4 h-4 rounded inline-block" style="background:#008000"></span> Green</td>
+                  <td class="py-3 px-4 font-mono text-green-600">#008000</td>
+                  <td class="py-3 px-4 font-mono text-slate-500">rgb(0,128,0)</td>
+                </tr>
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer" onclick="Devpalettes.Clipboard.copy('#000000', 'Copied Black')">
+                  <td class="py-3 px-4 flex items-center gap-2"><span class="w-4 h-4 rounded inline-block border dark:border-slate-600" style="background:#000000"></span> Black</td>
+                  <td class="py-3 px-4 font-mono">#000000</td>
+                  <td class="py-3 px-4 font-mono text-slate-500">rgb(0,0,0)</td>
+                </tr>
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-700/50 cursor-pointer" onclick="Devpalettes.Clipboard.copy('#FFFFFF', 'Copied White')">
+                  <td class="py-3 px-4 flex items-center gap-2"><span class="w-4 h-4 rounded inline-block border dark:border-slate-600" style="background:#FFFFFF"></span> White</td>
+                  <td class="py-3 px-4 font-mono">#FFFFFF</td>
+                  <td class="py-3 px-4 font-mono text-slate-500">rgb(255,255,255)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Use Color Names in CSS</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            You can directly use color names in CSS:
+            <pre class="bg-slate-800 text-white p-4 rounded-lg text-xs overflow-x-auto"><code>color: red;
+background-color: blue;</code></pre>
+            Or use HEX values for better control:
+            <pre class="bg-slate-800 text-white p-4 rounded-lg text-xs overflow-x-auto"><code>color: #ff5733;</code></pre>
+            <strong>Best practice:</strong> Production me HEX ya HSL use karo precision ke liye.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Common Mistakes</h2>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li>❌ Random colors use karna without system</li>
+            <li>❌ Low contrast combinations</li>
+            <li>❌ Too many colors in one design</li>
+            <li>❌ Ignoring accessibility</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Pro Tips</h2>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li>🎯 3–5 colors ka palette use karo</li>
+            <li>🎨 Color harmony follow karo</li>
+            <li>♿ WCAG contrast check karo</li>
+            <li>📱 Dark mode compatibility test karo</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Tools You Can Use</h2>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-3 not-prose my-4">
+             <a href="/palettes" class="glass-card p-3 text-center hover:scale-105 transition-transform">
+                <i class="fas fa-palette text-xl text-emerald-500 mb-1"></i>
+                <span class="block text-xs font-semibold">Palette Generator</span>
+             </a>
+             <a href="/gradient" class="glass-card p-3 text-center hover:scale-105 transition-transform">
+                <i class="fas fa-fill-drip text-xl text-cyan-500 mb-1"></i>
+                <span class="block text-xs font-semibold">Gradient Generator</span>
+             </a>
+             <a href="/converter" class="glass-card p-3 text-center hover:scale-105 transition-transform">
+                <i class="fas fa-sync-alt text-xl text-orange-500 mb-1"></i>
+                <span class="block text-xs font-semibold">Color Converter</span>
+             </a>
+             <a href="/contrast-in-ui" class="glass-card p-3 text-center hover:scale-105 transition-transform">
+                <i class="fas fa-adjust text-xl text-violet-500 mb-1"></i>
+                <span class="block text-xs font-semibold">Contrast Checker</span>
+             </a>
+             <a href="/color-from-image" class="glass-card p-3 text-center hover:scale-105 transition-transform">
+                <i class="fas fa-image text-xl text-pink-500 mb-1"></i>
+                <span class="block text-xs font-semibold">Color from Image</span>
+             </a>
+             <a href="/svg-editor" class="glass-card p-3 text-center hover:scale-105 transition-transform">
+                <i class="fas fa-vector-square text-xl text-blue-500 mb-1"></i>
+                <span class="block text-xs font-semibold">SVG Editor</span>
+             </a>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">FAQs</h2>
+          <div class="space-y-4 text-slate-600 dark:text-slate-300">
+            <p><strong>Q: How many color names are there in CSS?</strong><br>A: Around 140+ standard color names supported in CSS.</p>
+            <p><strong>Q: Should I use color names or HEX?</strong><br>A: HEX is preferred for precise control and consistency.</p>
+            <p><strong>Q: Are color names consistent across browsers?</strong><br>A: Yes, standard CSS names are supported in all modern browsers.</p>
+            <p><strong>Q: Can I create custom color names?</strong><br>A: Yes, you can define them in design systems (CSS Variables) like `--primary-color: #3B82F6;`.</p>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A color names chart is a simple yet powerful tool for both designers and developers. It helps you quickly select, apply, and manage colors without confusion. By combining color names with proper color systems and tools, you can create visually appealing and consistent designs effortlessly. Use the interactive chart above to find your perfect shade!
+          </p>
+        </div>
+      </article>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  
+  <!-- Specific Script for Interactive Chart -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const colorGrid = document.getElementById('color-grid');
+        const searchInput = document.getElementById('color-search');
+        
+        // Extended list of CSS Named Colors
+        const colors = [
+            {name:"AliceBlue",hex:"#F0F8FF"}, {name:"AntiqueWhite",hex:"#FAEBD7"}, {name:"Aqua",hex:"#00FFFF"}, {name:"Aquamarine",hex:"#7FFFD4"},
+            {name:"Azure",hex:"#F0FFFF"}, {name:"Beige",hex:"#F5F5DC"}, {name:"Bisque",hex:"#FFE4C4"}, {name:"Black",hex:"#000000"},
+            {name:"BlanchedAlmond",hex:"#FFEBCD"}, {name:"Blue",hex:"#0000FF"}, {name:"BlueViolet",hex:"#8A2BE2"}, {name:"Brown",hex:"#A52A2A"},
+            {name:"BurlyWood",hex:"#DEB887"}, {name:"CadetBlue",hex:"#5F9EA0"}, {name:"Chartreuse",hex:"#7FFF00"}, {name:"Chocolate",hex:"#D2691E"},
+            {name:"Coral",hex:"#FF7F50"}, {name:"CornflowerBlue",hex:"#6495ED"}, {name:"Cornsilk",hex:"#FFF8DC"}, {name:"Crimson",hex:"#DC143C"},
+            {name:"Cyan",hex:"#00FFFF"}, {name:"DarkBlue",hex:"#00008B"}, {name:"DarkCyan",hex:"#008B8B"}, {name:"DarkGoldenRod",hex:"#B8860B"},
+            {name:"DarkGray",hex:"#A9A9A9"}, {name:"DarkGreen",hex:"#006400"}, {name:"DarkKhaki",hex:"#BDB76B"}, {name:"DarkMagenta",hex:"#8B008B"},
+            {name:"DarkOliveGreen",hex:"#556B2F"}, {name:"DarkOrange",hex:"#FF8C00"}, {name:"DarkOrchid",hex:"#9932CC"}, {name:"DarkRed",hex:"#8B0000"},
+            {name:"DarkSalmon",hex:"#E9967A"}, {name:"DarkSeaGreen",hex:"#8FBC8F"}, {name:"DarkSlateBlue",hex:"#483D8B"}, {name:"DarkSlateGray",hex:"#2F4F4F"},
+            {name:"DarkTurquoise",hex:"#00CED1"}, {name:"DarkViolet",hex:"#9400D3"}, {name:"DeepPink",hex:"#FF1493"}, {name:"DeepSkyBlue",hex:"#00BFFF"},
+            {name:"DimGray",hex:"#696969"}, {name:"DodgerBlue",hex:"#1E90FF"}, {name:"FireBrick",hex:"#B22222"}, {name:"FloralWhite",hex:"#FFFAF0"},
+            {name:"ForestGreen",hex:"#228B22"}, {name:"Fuchsia",hex:"#FF00FF"}, {name:"Gainsboro",hex:"#DCDCDC"}, {name:"GhostWhite",hex:"#F8F8FF"},
+            {name:"Gold",hex:"#FFD700"}, {name:"GoldenRod",hex:"#DAA520"}, {name:"Gray",hex:"#808080"}, {name:"Green",hex:"#008000"},
+            {name:"GreenYellow",hex:"#ADFF2F"}, {name:"HoneyDew",hex:"#F0FFF0"}, {name:"HotPink",hex:"#FF69B4"}, {name:"IndianRed",hex:"#CD5C5C"},
+            {name:"Indigo",hex:"#4B0082"}, {name:"Ivory",hex:"#FFFFF0"}, {name:"Khaki",hex:"#F0E68C"}, {name:"Lavender",hex:"#E6E6FA"},
+            {name:"LavenderBlush",hex:"#FFF0F5"}, {name:"LawnGreen",hex:"#7CFC00"}, {name:"LemonChiffon",hex:"#FFFACD"}, {name:"LightBlue",hex:"#ADD8E6"},
+            {name:"LightCoral",hex:"#F08080"}, {name:"LightCyan",hex:"#E0FFFF"}, {name:"LightGoldenRodYellow",hex:"#FAFAD2"}, {name:"LightGray",hex:"#D3D3D3"},
+            {name:"LightGreen",hex:"#90EE90"}, {name:"LightPink",hex:"#FFB6C1"}, {name:"LightSalmon",hex:"#FFA07A"}, {name:"LightSeaGreen",hex:"#20B2AA"},
+            {name:"LightSkyBlue",hex:"#87CEFA"}, {name:"LightSlateGray",hex:"#778899"}, {name:"LightSteelBlue",hex:"#B0C4DE"}, {name:"LightYellow",hex:"#FFFFE0"},
+            {name:"Lime",hex:"#00FF00"}, {name:"LimeGreen",hex:"#32CD32"}, {name:"Linen",hex:"#FAF0E6"}, {name:"Magenta",hex:"#FF00FF"},
+            {name:"Maroon",hex:"#800000"}, {name:"MediumAquaMarine",hex:"#66CDAA"}, {name:"MediumBlue",hex:"#0000CD"}, {name:"MediumOrchid",hex:"#BA55D3"},
+            {name:"MediumPurple",hex:"#9370DB"}, {name:"MediumSeaGreen",hex:"#3CB371"}, {name:"MediumSlateBlue",hex:"#7B68EE"}, {name:"MediumSpringGreen",hex:"#00FA9A"},
+            {name:"MediumTurquoise",hex:"#48D1CC"}, {name:"MediumVioletRed",hex:"#C71585"}, {name:"MidnightBlue",hex:"#191970"}, {name:"MintCream",hex:"#F5FFFA"},
+            {name:"MistyRose",hex:"#FFE4E1"}, {name:"Moccasin",hex:"#FFE4B5"}, {name:"NavajoWhite",hex:"#FFDEAD"}, {name:"Navy",hex:"#000080"},
+            {name:"OldLace",hex:"#FDF5E6"}, {name:"Olive",hex:"#808000"}, {name:"OliveDrab",hex:"#6B8E23"}, {name:"Orange",hex:"#FFA500"},
+            {name:"OrangeRed",hex:"#FF4500"}, {name:"Orchid",hex:"#DA70D6"}, {name:"PaleGoldenRod",hex:"#EEE8AA"}, {name:"PaleGreen",hex:"#98FB98"},
+            {name:"PaleTurquoise",hex:"#AFEEEE"}, {name:"PaleVioletRed",hex:"#DB7093"}, {name:"PapayaWhip",hex:"#FFEFD5"}, {name:"PeachPuff",hex:"#FFDAB9"},
+            {name:"Peru",hex:"#CD853F"}, {name:"Pink",hex:"#FFC0CB"}, {name:"Plum",hex:"#DDA0DD"}, {name:"PowderBlue",hex:"#B0E0E6"},
+            {name:"Purple",hex:"#800080"}, {name:"RebeccaPurple",hex:"#663399"}, {name:"Red",hex:"#FF0000"}, {name:"RosyBrown",hex:"#BC8F8F"},
+            {name:"RoyalBlue",hex:"#4169E1"}, {name:"SaddleBrown",hex:"#8B4513"}, {name:"Salmon",hex:"#FA8072"}, {name:"SandyBrown",hex:"#F4A460"},
+            {name:"SeaGreen",hex:"#2E8B57"}, {name:"SeaShell",hex:"#FFF5EE"}, {name:"Sienna",hex:"#A0522D"}, {name:"Silver",hex:"#C0C0C0"},
+            {name:"SkyBlue",hex:"#87CEEB"}, {name:"SlateBlue",hex:"#6A5ACD"}, {name:"SlateGray",hex:"#708090"}, {name:"Snow",hex:"#FFFAFA"},
+            {name:"SpringGreen",hex:"#00FF7F"}, {name:"SteelBlue",hex:"#4682B4"}, {name:"Tan",hex:"#D2B48C"}, {name:"Teal",hex:"#008080"},
+            {name:"Thistle",hex:"#D8BFD8"}, {name:"Tomato",hex:"#FF6347"}, {name:"Turquoise",hex:"#40E0D0"}, {name:"Violet",hex:"#EE82EE"},
+            {name:"Wheat",hex:"#F5DEB3"}, {name:"White",hex:"#FFFFFF"}, {name:"WhiteSmoke",hex:"#F5F5F5"}, {name:"Yellow",hex:"#FFFF00"},
+            {name:"YellowGreen",hex:"#9ACD32"}
+        ];
+
+        function renderGrid(filter = '') {
+            colorGrid.innerHTML = '';
+            const filtered = colors.filter(c => c.name.toLowerCase().includes(filter.toLowerCase()));
+            
+            if(filtered.length === 0) {
+                colorGrid.innerHTML = '<p class="col-span-full text-center text-slate-400 py-8">No colors found.</p>';
+                return;
+            }
+
+            filtered.forEach(color => {
+                const isLight = isLightColor(color.hex);
+                const block = document.createElement('div');
+                block.className = `h-20 rounded-lg flex flex-col items-center justify-center cursor-pointer transition-transform hover:scale-105 shadow-sm`;
+                block.style.backgroundColor = color.hex;
+                block.style.color = isLight ? '#000' : '#fff';
+                block.innerHTML = `
+                    <span class="font-semibold text-xs text-center px-1 leading-tight">${color.name}</span>
+                    <span class="font-mono text-[10px] opacity-75">${color.hex}</span>
+                `;
+                block.onclick = () => {
+                    Devpalettes.Clipboard.copy(color.hex, `Copied ${color.name}`);
+                };
+                colorGrid.appendChild(block);
+            });
+        }
+
+        function isLightColor(hex) {
+            const rgb = Devpalettes.ColorUtils.hexToRgb(hex);
+            if(!rgb) return false;
+            const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+            return brightness > 155;
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            renderGrid(e.target.value);
+        });
+
+        // Initial render
+        renderGrid();
+    });
+  </script>
+</body>
+</html>
