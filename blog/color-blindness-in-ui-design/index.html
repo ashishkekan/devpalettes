@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Designing for Color Blindness: A Guide to Accessible UI</title>
+  <meta name="description" content="Learn how to design accessible interfaces for color blind users. Tips on contrast, tools, and WCAG guidelines.">
+  <meta name="keywords" content="color blindness, color accessibility, color blind friendly palette, wcag colors, accessible design, contrast checker">
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="../../js/tailwind.js"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-6">Designing for Color Blindness</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Build inclusive products that work for everyone.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <article class="glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            About 8% of men and 0.5% of women have some form of <strong>color vision deficiency</strong>. If your website relies solely on color to convey meaning, you might be excluding a massive chunk of your audience. Accessible design isn't just a nice-to-have; it's a necessity. In this guide, we’ll cover how to design UIs that are friendly to color blind users.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What is Color Blindness?</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Color blindness, or Color Vision Deficiency (CVD), is the inability to distinguish certain colors. It’s usually genetic. The most common type is Deuteranomaly (Red-Green blindness). This means red and green look similar. Total color blindness (Monochromacy) is rare. For a designer, this means "Red = Error" and "Green = Success" is a dangerous design pattern if used alone.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Accessibility Matters</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Designing for accessibility improves the experience for everyone, not just those with disabilities. High contrast and clear labels help users in bright sunlight, on low-quality screens, or simply in a hurry. In many countries, accessibility is also a legal requirement (WCAG compliance).
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Common Mistakes to Avoid</h2>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li><strong>Using color alone for status:</strong> Don't just turn a field red for an error. Add an icon (like an X) and a text label ("Invalid email").</li>
+           li><strong>Low contrast:</strong> Light grey text on a white background is hard for everyone, but impossible for some.</li>
+            <li><strong>Relying on color names:</strong> Instructions like "Click the green button" are unhelpful if you can't see green.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Design for Color Blindness</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            1. <strong>Use multiple cues:</strong> Combine color with icons, text, or patterns.<br>
+            2. <strong>Check contrast:</strong> Use a contrast checker tool to ensure text stands out.<br>
+            3. <strong>Simulate CVD:</strong> Use tools to view your design as a color blind user would see it.<br>
+            4. <strong>Avoid bad combos:</strong> Red/Green and Blue/Yellow are the toughest combinations. Try Blue/Orange instead.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Pro Tips for Accessible UI</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Use a "grayscale test". If you turn your design black and white, can you still understand the hierarchy and state (error vs success)? If yes, you’ve done a good job. Also, focus on value (brightness) contrast. Even if hues look similar to a CVD user, different brightness levels will be distinguishable.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Recommended Tools</h2>
+          <ul class="text-slate-600 dark:text-slate-300 space-y-2 mb-6">
+            <li><a href="/color-blindness" class="text-emerald-500 hover:underline">Color Blindness Simulator</a> - See your design through different vision types.</li>
+            <li><a href="/a11y-fixer" class="text-emerald-500 hover:underline">Accessibility Color Fixer</a> - Auto-fix contrast issues.</li>
+            <li><a href="/contrast-in-ui" class="text-emerald-500 hover:underline">Contrast Checker</a> - Verify WCAG compliance.</li>
+          </ul>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+          <div class="space-y-4 text-slate-600 dark:text-slate-300">
+            <p><strong>Q: Can I use red and green at all?</strong><br>A: Yes, but don't rely on them to differentiate critical information. Add icons or text.</p>
+            <p><strong>Q: What is WCAG?</strong><br>A: Web Content Accessibility Guidelines. It defines standards like "4.5:1 contrast ratio" for text.</p>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Designing for color blindness makes your product robust and inclusive. It’s not about sacrificing aesthetics; it’s about communication. Use the right tools to check your work and ensure no user is left behind. Try our <a href="/a11y-fixer" class="text-emerald-500 hover:underline">Accessibility Fixer</a> to audit your designs today.
+          </p>
+        </div>
+      </article>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../../js/main.js"></script>
+  <script src="../../js/enhancements.js"></script>
+</body>
+</html>
