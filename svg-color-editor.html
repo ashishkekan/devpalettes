@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit colors inside SVG files online. Replace, modify, and download updated SVGs.">
+  <title>SVG Color Editor | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Preview -->
+        <div class="order-2 lg:order-1 animate-on-scroll flex flex-col">
+          <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-inner p-4 flex-grow flex items-center justify-center min-h-[400px]">
+            <div id="svg-preview-container" class="w-full h-full flex items-center justify-center">
+              <p class="text-slate-400">Upload SVG to preview</p>
+            </div>
+          </div>
+          <button id="download-svg-btn" class="btn-primary mt-4 justify-center"><i class="fas fa-download"></i> Download SVG</button>
+        </div>
+
+        <!-- Controls -->
+        <div class="order-1 lg:order-2">
+          <h1 class="text-3xl font-bold mb-6 animate-on-scroll">SVG Color Editor</h1>
+          <div class="spectrum-line max-w-xs mb-6 animate-on-scroll"></div>
+
+          <div class="glass-card p-6 rounded-xl mb-6">
+            <label class="block text-sm font-semibold mb-2">Upload SVG</label>
+            <input type="file" id="svg-upload" accept=".svg" class="input-field">
+          </div>
+
+          <div id="svg-color-list" class="space-y-3">
+            <!-- List of colors found in SVG will appear here -->
+            <!-- 
+            <div class="flex items-center gap-4 glass-card p-3 rounded-lg">
+              <div class="w-10 h-10 rounded" style="background: #FF0000"></div>
+              <input type="color" class="w-10 h-10 rounded cursor-pointer">
+              <button class="text-xs text-emerald-500">Replace</button>
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/svg-editor.js"></script>
+</body>
+</html>

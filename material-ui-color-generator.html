@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate accessible color palettes for Material UI. Create theme objects easily.">
+  <title>Material UI Color Generator | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-8 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-2">Material UI Color Generator</h1>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- Input Section -->
+      <div class="max-w-xl mx-auto mb-10 animate-on-scroll glass-card p-6 rounded-2xl">
+        <label class="block text-sm font-bold mb-2 text-slate-500 uppercase">Primary Color</label>
+        <div class="flex gap-4">
+          <input type="color" id="mui-primary-input" value="#1976d2" class="w-20 h-12 rounded cursor-pointer">
+          <input type="text" id="mui-primary-hex" value="#1976d2" class="input-field flex-1 font-mono">
+        </div>
+        <button id="generate-mui-btn" class="btn-primary btn-glow w-full mt-4"><i class="fas fa-palette"></i> Generate Palette</button>
+      </div>
+
+      <!-- Palette Display -->
+      <div id="mui-palette-display" class="space-y-6 animate-on-scroll">
+        <!-- Light Palette -->
+        <div>
+          <h3 class="font-bold text-sm uppercase text-slate-500 mb-2">Light Palette</h3>
+          <div class="grid grid-cols-10 gap-1 rounded overflow-hidden" id="mui-light-grid">
+            <!-- JS will populate 50-900 -->
+          </div>
+        </div>
+        
+        <!-- Dark Palette -->
+        <div>
+          <h3 class="font-bold text-sm uppercase text-slate-500 mb-2">Dark Palette</h3>
+          <div class="grid grid-cols-10 gap-1 rounded overflow-hidden" id="mui-dark-grid">
+            <!-- JS will populate -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Output -->
+      <div class="mt-8 bg-slate-100 dark:bg-slate-800 rounded-xl p-6 animate-on-scroll">
+        <div class="flex justify-between mb-2">
+          <span class="text-sm font-semibold">theme.js</span>
+          <button id="copy-mui-code" class="text-sm text-emerald-500"><i class="fas fa-copy"></i> Copy</button>
+        </div>
+        <pre id="mui-code-output" class="text-xs font-mono overflow-auto max-h-60 bg-slate-200 dark:bg-slate-900 p-4 rounded"></pre>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/mui-theme.js"></script>
+</body>
+</html>

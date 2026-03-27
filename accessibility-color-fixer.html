@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Automatically find and fix low-contrast colors for WCAG compliance.">
+  <title>Accessibility Color Fixer | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Preview -->
+        <div class="order-2 lg:order-1 animate-on-scroll">
+          <!-- Contrast Preview -->
+          <div id="a11y-preview" class="w-full aspect-video rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg" style="background: #FFFFFF; color: #000000;">
+            Aa
+          </div>
+          
+          <!-- Score -->
+          <div class="text-center mt-6">
+            <div id="contrast-score" class="text-6xl font-black text-slate-200 dark:text-slate-800">21:1</div>
+            <p id="wcag-badge" class="mt-2 text-lg font-bold text-emerald-500"><i class="fas fa-check-circle"></i> AAA Pass</p>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="order-1 lg:order-2">
+          <h1 class="text-3xl font-bold mb-6 animate-on-scroll">Contrast Fixer</h1>
+          <div class="spectrum-line max-w-xs mb-6 animate-on-scroll"></div>
+
+          <div class="space-y-4">
+            <div class="glass-card p-4 rounded-xl">
+              <label class="text-sm font-semibold">Foreground (Text)</label>
+              <div class="flex gap-2 mt-1">
+                <input type="color" id="a11y-fg" value="#000000" class="w-12 h-10 rounded cursor-pointer">
+                <input type="text" id="a11y-fg-hex" value="#000000" class="input-field flex-1 font-mono">
+              </div>
+            </div>
+
+            <div class="glass-card p-4 rounded-xl">
+              <label class="text-sm font-semibold">Background</label>
+              <div class="flex gap-2 mt-1">
+                <input type="color" id="a11y-bg" value="#FFFFFF" class="w-12 h-10 rounded cursor-pointer">
+                <input type="text" id="a11y-bg-hex" value="#FFFFFF" class="input-field flex-1 font-mono">
+              </div>
+            </div>
+
+            <button id="fix-colors-btn" class="btn-coral w-full justify-center"><i class="fas fa-wand-magic-sparkles"></i> Auto Fix</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/a11y-fixer.js"></script>
+</body>
+</html>

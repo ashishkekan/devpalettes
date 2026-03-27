@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom CSS buttons with advanced hover effects. Copy-paste ready code.">
+  <title>CSS Button Generator | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Preview -->
+        <div class="order-2 lg:order-1 animate-on-scroll flex flex-col items-center justify-center h-[500px] bg-slate-100 dark:bg-slate-800 rounded-2xl shadow-inner">
+          <button id="live-button" class="px-8 py-4 bg-emerald-500 text-white rounded-lg text-xl font-bold transition-all duration-300">
+            Hover Me
+          </button>
+        </div>
+
+        <!-- Controls -->
+        <div class="order-1 lg:order-2">
+          <h1 class="text-3xl font-bold mb-6 animate-on-scroll">Button Generator</h1>
+          <div class="spectrum-line max-w-xs mb-6 animate-on-scroll"></div>
+
+          <div class="space-y-4">
+            <!-- Text -->
+            <div class="glass-card p-4 rounded-xl">
+              <label class="text-sm font-semibold">Button Text</label>
+              <input type="text" id="btn-text" value="Hover Me" class="input-field mt-1">
+            </div>
+            
+            <!-- Colors -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="glass-card p-4 rounded-xl">
+                <label class="text-sm font-semibold">Background</label>
+                <input type="color" id="btn-bg" value="#10b981" class="w-full h-10 mt-1 rounded cursor-pointer">
+              </div>
+              <div class="glass-card p-4 rounded-xl">
+                <label class="text-sm font-semibold">Text Color</label>
+                <input type="color" id="btn-color" value="#ffffff" class="w-full h-10 mt-1 rounded cursor-pointer">
+              </div>
+            </div>
+
+            <!-- Hover Effect -->
+            <div class="glass-card p-4 rounded-xl">
+              <label class="text-sm font-semibold">Hover Effect</label>
+              <select id="hover-effect" class="input-field mt-1">
+                <option value="scale">Scale Up</option>
+                <option value="glow">Neon Glow</option>
+                <option value="invert">Color Invert</option>
+                <option value="slide">Slide Fill</option>
+                <option value="outline">Outline Reveal</option>
+              </select>
+            </div>
+
+            <!-- Radius -->
+            <div class="glass-card p-4 rounded-xl">
+              <label class="text-sm font-semibold">Border Radius</label>
+              <input type="range" id="btn-radius" min="0" max="50" value="8" class="w-full mt-1">
+            </div>
+
+            <!-- Code Output -->
+            <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 mt-4">
+              <div class="flex justify-between mb-2">
+                <span class="text-xs font-semibold">CSS Code</span>
+                <button id="copy-btn-css" class="text-xs text-emerald-500">Copy</button>
+              </div>
+              <pre id="btn-css-output" class="text-xs overflow-auto max-h-40 font-mono"></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/button-generator.js"></script>
+</body>
+</html>

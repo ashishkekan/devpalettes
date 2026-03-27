@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate color palettes using AI keywords. Enter a mood or theme.">
+  <title>AI Color Palette Generator | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-8 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-2">AI Palette Generator</h1>
+        <p class="text-slate-500">Describe your vibe: "Sunset Beach", "Cyberpunk", "Minimalist"</p>
+        <div class="spectrum-line max-w-md mx-auto mt-4"></div>
+      </div>
+
+      <!-- Input -->
+      <div class="max-w-2xl mx-auto mb-8 animate-on-scroll">
+        <div class="glass-card p-2 rounded-2xl flex gap-2">
+          <input type="text" id="ai-input" placeholder="e.g., 'Calm Ocean Morning'" class="input-field flex-1 border-0 bg-transparent focus:ring-0">
+          <button id="ai-generate-btn" class="btn-primary rounded-xl"><i class="fas fa-magic"></i> Generate</button>
+        </div>
+      </div>
+
+      <!-- Suggestions -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer hover:bg-emerald-100" onclick="document.getElementById('ai-input').value='Sunset Beach'">Sunset Beach</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer hover:bg-emerald-100" onclick="document.getElementById('ai-input').value='Retro 80s'">Retro 80s</span>
+        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-xs cursor-pointer hover:bg-emerald-100" onclick="document.getElementById('ai-input').value='Dark Forest'">Dark Forest</span>
+      </div>
+
+      <!-- Palette Output -->
+      <div id="ai-palette-output" class="grid grid-cols-5 gap-2 rounded-2xl overflow-hidden shadow-2xl animate-on-scroll" style="min-height: 200px;">
+        <div class="h-40 bg-slate-200 dark:bg-slate-700"></div>
+        <div class="h-40 bg-slate-300 dark:bg-slate-600"></div>
+        <div class="h-40 bg-slate-400 dark:bg-slate-500"></div>
+        <div class="h-40 bg-slate-300 dark:bg-slate-600"></div>
+        <div class="h-40 bg-slate-200 dark:bg-slate-700"></div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex justify-center gap-4 mt-6 animate-on-scroll">
+        <button id="save-ai-palette" class="btn-secondary"><i class="fas fa-heart"></i> Save</button>
+        <button id="copy-ai-palette" class="btn-primary"><i class="fas fa-copy"></i> Copy CSS</button>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/ai-palette.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Upload a logo and extract its dominant brand colors.">
+  <title>Brand Color Extractor | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-8 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-2">Brand Color Extractor</h1>
+        <p class="text-slate-500">Upload a logo to extract its color palette</p>
+        <div class="spectrum-line max-w-md mx-auto mt-4"></div>
+      </div>
+
+      <div class="max-w-xl mx-auto">
+        <div class="glass-card p-6 rounded-2xl animate-on-scroll">
+          <div id="upload-logo-area" class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-10 text-center cursor-pointer hover:border-emerald-500 transition-colors">
+            <i class="fas fa-image text-4xl text-slate-400 mb-2"></i>
+            <p class="text-sm text-slate-500">Drop Logo or Click</p>
+            <input type="file" id="logo-input" class="hidden" accept="image/*">
+          </div>
+        </div>
+      </div>
+
+      <!-- Extracted Palette -->
+      <div id="extracted-palette" class="mt-10 grid grid-cols-2 md:grid-cols-5 gap-4 animate-on-scroll">
+        <!-- Colors will be populated here -->
+      </div>
+      
+      <div class="text-center mt-8 animate-on-scroll">
+        <button id="export-brand-palette" class="btn-primary"><i class="fas fa-download"></i> Export Palette</button>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/brand-extractor.js"></script>
+</body>
+</html>

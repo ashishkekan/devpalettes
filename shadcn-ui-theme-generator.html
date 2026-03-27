@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate custom color themes for ShadCN UI. Export CSS variables.">
+  <title>ShadCN Theme Generator | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold mb-2 animate-on-scroll">ShadCN Theme Generator</h1>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Color Inputs -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+          <div class="glass-card p-4 rounded-xl">
+            <label class="text-xs font-bold uppercase text-slate-500">Background</label>
+            <input type="color" id="shad-bg" value="#ffffff" class="w-full h-12 mt-1 rounded cursor-pointer">
+          </div>
+          <div class="glass-card p-4 rounded-xl">
+            <label class="text-xs font-bold uppercase text-slate-500">Foreground</label>
+            <input type="color" id="shad-fg" value="#0f172a" class="w-full h-12 mt-1 rounded cursor-pointer">
+          </div>
+          <div class="glass-card p-4 rounded-xl">
+            <label class="text-xs font-bold uppercase text-slate-500">Primary</label>
+            <input type="color" id="shad-primary" value="#18181b" class="w-full h-12 mt-1 rounded cursor-pointer">
+          </div>
+          <div class="glass-card p-4 rounded-xl">
+            <label class="text-xs font-bold uppercase text-slate-500">Accent</label>
+            <input type="color" id="shad-accent" value="#f1f5f9" class="w-full h-12 mt-1 rounded cursor-pointer">
+          </div>
+        </div>
+
+        <!-- Preview & Code -->
+        <div class="lg:col-span-2 space-y-6">
+          <!-- Live Preview Card -->
+          <div id="shad-preview" class="glass-card p-8 rounded-xl animate-on-scroll" style="background: #fff; color: #0f172a;">
+            <h2 class="text-xl font-bold mb-4">Preview Card</h2>
+            <p class="text-sm opacity-70 mb-4">This is how your components will look.</p>
+            <div class="flex gap-2">
+              <button class="px-4 py-2 rounded text-sm font-medium text-white" style="background: #18181b;">Primary Btn</button>
+              <button class="px-4 py-2 rounded border text-sm font-medium" style="border-color: #e2e8f0;">Secondary</button>
+            </div>
+          </div>
+
+          <!-- Code Output -->
+          <div class="bg-slate-900 rounded-xl p-6 text-white animate-on-scroll">
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-sm font-bold text-emerald-400">globals.css</span>
+              <button id="copy-shad" class="text-xs bg-emerald-500 px-3 py-1 rounded font-bold">Copy CSS</button>
+            </div>
+            <pre id="shad-code" class="text-xs text-slate-300 overflow-auto max-h-60 font-mono"></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/shadcn-theme.js"></script>
+</body>
+</html>

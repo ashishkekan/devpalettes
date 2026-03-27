@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Grab colors from any website by URL. Instantly extract the color palette used on a webpage.">
+  <title>Color Picker from URL | Devpalettes</title>
+  <link rel="icon" type="image/png" href="../images/devpalettes.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script> if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); } tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-3xl font-bold mb-6">Website Color Extractor</h1>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- Input Section -->
+      <div class="max-w-3xl mx-auto mb-8 animate-on-scroll">
+        <div class="glass-card p-6 rounded-2xl flex gap-4">
+          <input type="url" id="url-input" placeholder="https://example.com" class="input-field flex-1">
+          <button id="extract-btn" class="btn-primary">
+            <i class="fas fa-search"></i> Extract
+          </button>
+        </div>
+      </div>
+
+      <!-- Results Grid -->
+      <div id="loading-state" class="hidden text-center py-10">
+        <i class="fas fa-spinner fa-spin text-4xl text-emerald-500"></i>
+        <p class="mt-4">Scanning website colors...</p>
+      </div>
+
+      <div id="results-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <!-- Colors will be populated here -->
+        <!-- Example Card -->
+        <!-- 
+        <div class="glass-card p-4 flex flex-col items-center cursor-pointer" onclick="copyColor('#FFF')">
+          <div class="w-full aspect-square rounded-lg mb-2" style="background: #FFF"></div>
+          <span class="text-xs font-mono">#FFFFFF</span>
+        </div> 
+        -->
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/url-picker.js"></script>
+</body>
+</html>
