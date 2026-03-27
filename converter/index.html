@@ -5,28 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>Color Converter - HEX to RGB & HSL Converter | Dev Palettes</title>
-  <meta name="title" content="Color Converter - HEX to RGB & HSL Converter">
-  <meta name="description" content="Free online color converter. Convert HEX to RGB, HEX to HSL, and vice versa instantly. Real-time preview and color harmonies included.">
-  <meta name="keywords" content="color converter, hex to rgb, rgb to hex, hsl converter, color format converter, hex code picker">
-  <meta name="author" content="Dev Palettes">
+  <title>HEX to RGB Converter - Free Online Color Converter Tool</title>
+  <meta name="description" content="Convert HEX to RGB and RGB to HEX instantly with our free online color converter. Supports HSL conversion and color harmonies.">
+  <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/converter"/>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/converter">
-  <meta property="og:title" content="Color Converter - HEX to RGB & HSL">
-  <meta property="og:description" content="Convert colors between HEX, RGB, and HSL formats instantly.">
+  <meta property="og:title" content="HEX to RGB Converter - Free Online Color Converter">
+  <meta property="og:description" content="Convert HEX to RGB and RGB to HEX instantly. Supports HSL and color harmonies.">
   <meta property="og:image" content="https://devpalettes.com/images/og-converter.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/converter">
-  <meta property="twitter:title" content="Color Converter - HEX to RGB & HSL">
-  <meta property="twitter:description" content="Convert colors between HEX, RGB, and HSL formats instantly.">
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
-  <!-- Structured Data (JSON-LD) -->
+  <meta property="twitter:title" content="HEX to RGB Converter - Free Online Tool">
+  <meta property="twitter:description" content="Convert HEX to RGB and RGB to HEX instantly.">
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,11 +40,53 @@
     "description": "A free online tool to convert colors between HEX, RGB, and HSL formats.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Compatible with Chrome, Firefox, Safari, Edge.",
+    "featureList": [
+      "HEX to RGB conversion",
+      "RGB to HEX conversion",
+      "HSL conversion",
+      "Color harmony generation",
+      "Real-time preview"
+    ],
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I convert a HEX code to RGB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the 6-digit HEX code (e.g., #10B981) into the input field above. The tool automatically calculates the Red, Green, and Blue values (0-255) for you instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between HEX and RGB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HEX is a hexadecimal representation of color used in web development (e.g., #FFFFFF). RGB represents colors using three numerical values for Red, Green, and Blue (e.g., 255, 255, 255). Both describe the same color but in different formats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why would I need to convert colors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Designers often need to convert colors to use them in different software. For example, converting a HEX code from a website design to RGB values for use in photo editing software."
+        }
+      }
+    ]
   }
   </script>
 
@@ -52,7 +98,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Tailwind CSS -->
+  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
   <script src="../js/tailwind.js"></script>
    
   <!-- Theme Initialization -->
@@ -93,8 +139,8 @@
     
     <div class="max-w-4xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
       <div class="text-center mb-10 animate-on-scroll">
-        <h1 class="text-4xl font-bold mb-3">Color Converter</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">HEX ↔ RGB ↔ HSL • Live preview & harmonies</p>
+        <h1 class="text-4xl font-bold mb-3">HEX to RGB Color Converter</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">HEX ↔ RGB ↔ HSL • Free tool for designers and developers</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
@@ -180,7 +226,7 @@
       
       <div class="seo-content space-y-12 mt-16 animate-on-scroll">
          
-         <!-- What is -->
+         <!-- Intro Paragraph -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">What is a Color Converter?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
@@ -226,6 +272,8 @@
             <h2 class="text-2xl font-bold mb-4">Related Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Once you have your color, try these tools:</p>
             <div class="flex flex-wrap justify-center gap-3">
+               <a href="/color-names-chart" class="btn-secondary text-xs py-2 px-4">HTML Color Names</a>
+               <a href="/color-blindness" class="btn-secondary text-xs py-2 px-4">Color Blindness Test</a>
                <a href="../palettes" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
                <a href="../gradient" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
             </div>

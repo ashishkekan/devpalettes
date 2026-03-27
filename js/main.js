@@ -449,10 +449,13 @@ function renderNavbar() {
           <!-- Logo -->
           <a href="/" class="flex items-center gap-2 group">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl bg-black
-                flex items-center justify-center text-cyan-400 font-bold text-lg sm:text-xl
+              <div class="w-8 h-8 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
+                flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
-                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
+                <img src="/images/devpalettes_zoom_180.png" 
+                  alt="Devpalettes Logo"
+                  class="w-6 h-6 sm:w-6 sm:h-6 object-contain mx-auto" />
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
@@ -589,10 +592,13 @@ function renderFooter() {
         <div class="border-t border-slate-200 dark:border-slate-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <a href="/" class="flex items-center gap-2 group mb-4 sm:mb-0">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
-                flex items-center justify-center text-cyan-400 font-bold text-lg sm:text-xl
+              <div class="w-8 h-8 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
+                flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
-                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)]">🎨
+                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
+                <img src="/images/devpalettes_zoom_180.png" 
+                  alt="Devpalettes Logo"
+                  class="w-6 h-6 sm:w-6 sm:h-6 object-contain mx-auto" />
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
@@ -635,7 +641,7 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
       <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg flex-shrink-0">
         CPH
       </div>
-      <div class="flex-1 text-center sm:text-left">
+      <div class="flex-1 texflex items-center gap-2 sm:gap-3 group cursor-pointert-center sm:text-left">
         <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1">Written by</p>
         <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">${author}</h4>
         <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center sm:justify-start gap-2">

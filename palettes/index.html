@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>Color Palette Generator - Create & Export Schemes | Dev Palettes</title>
-  <meta name="title" content="Color Palette Generator - Create & Export Schemes">
-  <meta name="description" content="Generate beautiful color palettes with our free online tool. Lock colors, export to CSS, JSON, or PNG, and save your favorites. Perfect for designers and developers.">
-  <meta name="keywords" content="color palette generator, color scheme generator, css color variables, design tools, hex to rgb, color picker">
-  <meta name="author" content="Dev Palettes">
+  <title>Free Color Palette Generator - Create Schemes & Export CSS</title>
+  <meta name="description" content="Generate free color palettes online. Create schemes, lock colors, and export CSS variables. No login required.">
+  <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/palettes"/>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/palettes">
-  <meta property="og:title" content="Color Palette Generator - Create Beautiful Schemes">
+  <meta property="og:title" content="Free Color Palette Generator - Create Schemes">
   <meta property="og:description" content="Generate unlimited color palettes, lock your favorites, and export code instantly.">
   <meta property="og:image" content="https://devpalettes.com/images/og-palette.png">
 
@@ -29,11 +27,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
+  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
   <!-- Tailwind CSS -->
   <script src="../js/tailwind.js"></script>
    
@@ -50,7 +53,7 @@
     }
   </script>
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -60,6 +63,7 @@
     "description": "A free online tool to generate random color palettes, lock colors, and export to CSS or PNG.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -71,6 +75,40 @@
       "Export to CSS",
       "Export to PNG",
       "Save Palettes Locally"
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I export colors to CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the 'Copy CSS' button. This copies CSS variables (e.g., --color-1: #FF5733) to your clipboard, ready to paste into your stylesheet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I save my palettes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes! Click 'Save Palette' to store it in your browser's local storage. You can reload it anytime from the 'Saved Palettes' section."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this tool free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. This is a free tool for designers and developers with no usage limits."
+        }
+      }
     ]
   }
   </script>
@@ -96,10 +134,11 @@
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       <!-- Header -->
       <div class="text-center mb-8 animate-on-scroll">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Color Palette Generator</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Free Color Palette Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-2">
           Press <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate • Click colors to copy • Lock colors to keep them
         </p>
+        <p class="text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-6">Free tool. No login required. Export to CSS.</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
@@ -235,8 +274,10 @@
             <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Once you have your palette, try these tools:</p>
             <div class="flex flex-wrap justify-center gap-3">
-               <a href="../converter" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-               <a href="../gradient" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="/converter" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/gradient" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="/color-blindness" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
+               <a href="/color-names-chart" class="btn-secondary text-xs py-2 px-4">HTML Color Names</a>
             </div>
          </div>
 

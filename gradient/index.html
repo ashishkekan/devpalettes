@@ -5,17 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>CSS Gradient Generator - Create Linear & Radial Gradients | Dev Palettes</title>
-  <meta name="title" content="CSS Gradient Generator - Create Linear & Radial Gradients">
-  <meta name="description" content="Generate beautiful CSS gradients for free. Create linear and radial gradients with multiple color stops. Copy CSS code instantly.">
-  <meta name="keywords" content="gradient generator, css gradient, linear gradient, radial gradient, background gradient, css gradient generator">
+  <title>CSS Gradient Generator - Free Linear & Radial Gradient Tool</title>
+  <meta name="description" content="Create beautiful CSS gradients for free. Generate linear and radial gradients with multiple color stops. Get instant CSS code.">
   <meta name="author" content="Dev Palettes">
   <link rel="canonical" href="https://devpalettes.com/gradient" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/gradient">
-  <meta property="og:title" content="CSS Gradient Generator">
+  <meta property="og:title" content="CSS Gradient Generator - Free Tool">
   <meta property="og:description" content="Create stunning linear and radial CSS gradients with our free online tool.">
   <meta property="og:image" content="https://devpalettes.com/images/og-gradient.png">
 
@@ -24,10 +22,15 @@
   <meta property="twitter:url" content="https://devpalettes.com/gradient">
   <meta property="twitter:title" content="CSS Gradient Generator">
   <meta property="twitter:description" content="Create stunning linear and radial CSS gradients with our free online tool.">
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+  
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,11 +40,46 @@
     "description": "A free online tool to generate CSS linear and radial gradients with multiple color stops.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Modern browser recommended.",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a CSS gradient?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A CSS gradient allows you to display smooth transitions between two or more specified colors. They are used for backgrounds and are defined by the background-image property."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I create a linear gradient in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the linear-gradient() function in your CSS. You specify an angle (or direction) and a list of color stops. For example: background: linear-gradient(90deg, #ff0000, #0000ff);."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are CSS gradients supported in all browsers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, CSS gradients are supported in all modern web browsers, including Chrome, Firefox, Safari, and Edge. Vendor prefixes are no longer needed for standard implementations."
+        }
+      }
+    ]
   }
   </script>
 
@@ -53,7 +91,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Tailwind CSS -->
+  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
   <script src="../js/tailwind.js"></script>
    
   <!-- Theme Initialization -->
@@ -95,11 +133,17 @@
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       <!-- Header -->
       <div class="text-center mb-8 animate-on-scroll">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Gradient Generator</h1>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">CSS Gradient Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">
           Create stunning CSS gradients with ease • Copy code instantly
         </p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto mb-4"></div>
+        <!-- Intro Paragraph -->
+        <p class="text-slate-500 dark:text-slate-500 max-w-2xl mx-auto text-sm">
+           Our <strong>CSS Gradient Generator</strong> lets you create beautiful <strong>linear gradients</strong> and <strong>radial gradients</strong> in seconds. Adjust angles, add color stops, and get the CSS code instantly. <strong>Free tool, no signup required.</strong>
+        </p>
+        <!-- Hidden Image for SEO Indexing -->
+        <img src="https://devpalettes.com/images/gradient-generator-preview.png" alt="Screenshot of CSS Gradient Generator interface" class="hidden">
       </div>
 
       <div class="grid lg:grid-cols-2 gap-8">
@@ -165,14 +209,14 @@
           <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Quick Presets</label>
             <div class="grid grid-cols-4 gap-2">
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);" data-gradient="linear-gradient(135deg, #ff0844 0%, #ffb199 100%)"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" title="Purple Dream Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" title="Pink Sunset Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" title="Blue Sky Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" title="Green Mint Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)" title="Peach Glow Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" title="Pastel Mix Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);" data-gradient="linear-gradient(135deg, #ff0844 0%, #ffb199 100%)" title="Red Flame Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)" title="Dark Night Gradient"></button>
             </div>
           </div>
           
@@ -235,12 +279,15 @@
             </ol>
          </section>
          
-         <!-- Related Tools -->
+         <!-- Internal Links -->
          <div class="text-center">
-            <h2 class="text-2xl font-bold mb-4">Related Design Tools</h2>
+            <h2 class="text-2xl font-bold mb-4">Explore More Color Tools</h2>
+            <p class="text-slate-500 mb-4 text-sm">Take your designs further with these resources:</p>
             <div class="flex flex-wrap justify-center gap-3">
-               <a href="../palettes" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
-               <a href="../converter" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/palettes" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="/converter" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/dark-color-palettes" class="btn-secondary text-xs py-2 px-4">Dark Palettes</a>
+               <a href="/pastel-color-palettes" class="btn-secondary text-xs py-2 px-4">Pastel Palettes</a>
             </div>
          </div>
          
