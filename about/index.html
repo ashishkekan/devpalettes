@@ -8,7 +8,7 @@
   <title>About Devpalettes – Free Color Palette Generator</title>
   <meta name="description" content="Devpalettes provides a free, fast, and private color palette generator. Trusted by 50k+ designers. No sign-up required.">
   <meta name="author" content="Devpalettes">
-  <link rel="canonical" href="https://devpalettes.com/about"/>
+  <link rel="canonical" href="https://devpalettes.com/about/"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -82,7 +82,16 @@
       theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
     }
   </script>
-  
+  <script>
+    (function() {
+      var path = window.location.pathname;
+
+      // ignore files (like .html, .js, etc.)
+      if (path !== "/" && !path.endsWith("/") && !path.includes(".")) {
+        window.location.replace(path + "/" + window.location.search + window.location.hash);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
@@ -177,27 +186,27 @@
         <div class="mt-12 animate-on-scroll">
            <h2 class="text-2xl font-bold mb-6 text-center">Tools We Offer</h2>
            <div class="grid md:grid-cols-3 gap-4">
-              <a href="../palettes" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+              <a href="../palettes/" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
                 <i class="fas fa-palette text-2xl text-emerald-500 mb-2"></i>
                 <h3 class="font-bold">Color Palette Generator</h3>
               </a>
-              <a href="../gradient" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+              <a href="../gradient/" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
                 <i class="fas fa-fill-drip text-2xl text-blue-500 mb-2"></i>
                 <h3 class="font-bold">CSS Gradient Generator</h3>
               </a>
-              <a href="../color-from-image" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+              <a href="../color-from-image/" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
                 <i class="fas fa-image text-2xl text-purple-500 mb-2"></i>
                 <h3 class="font-bold">Image Color Picker</h3>
               </a>
-              <a href="../color-blindness" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+              <a href="../color-blindness/" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
                 <i class="fas fa-image text-2xl text-purple-500 mb-2"></i>
                 <h3 class="font-bold">Color Blindness</h3>
               </a>
-              <a href="../dark-color-palettes" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+              <a href="../dark-color-palettes/" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
                 <i class="fas fa-image text-2xl text-purple-500 mb-2"></i>
                 <h3 class="font-bold">Dark Color Palettes</h3>
               </a>
-              <a href="../pastel-color-palettes" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
+              <a href="../pastel-color-palettes/" class="glass-card p-4 text-center hover:ring-2 hover:ring-emerald-500 transition-all">
                 <i class="fas fa-image text-2xl text-purple-500 mb-2"></i>
                 <h3 class="font-bold">Pastel Color Palettes</h3>
               </a>
@@ -206,7 +215,7 @@
       </div>
       
       <div class="text-center mt-12 animate-on-scroll">
-        <a href="../palettes" class="btn-primary btn-glow inline-flex">
+        <a href="../palettes/" class="btn-primary btn-glow inline-flex">
           <i class="fas fa-palette"></i>
           Start Creating
         </a>
