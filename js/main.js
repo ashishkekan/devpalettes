@@ -3,6 +3,14 @@
    Shared functionality across all pages
    ============================================ */
 
+  (function() {
+    var path = window.location.pathname;
+
+    if (path !== "/" && !path.endsWith("/") && !path.includes(".")) {
+      window.location.replace(path + "/" + window.location.search + window.location.hash);
+    }
+  })();
+
 // ==========================================
 // Theme Management
 // ==========================================
