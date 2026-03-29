@@ -473,13 +473,13 @@ function renderNavbar() {
           
           <!-- Desktop Nav -->
           <div class="nav-links hidden md:flex items-center gap-6 lg:gap-8">
-            <a href="/palettes" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/palettes' ? 'text-emerald-500' : ''}">Generate</a>
-            <a href="/pastel-color-palettes" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/pastel-color-palettes' ? 'text-emerald-500' : ''}">Explore</a>
-            <a href="/gradient" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/gradient' ? 'text-emerald-500' : ''}">Gradient</a>
-            <a href="/converter" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/converter' ? 'text-emerald-500' : ''}">Convert</a>
-            <a href="/color-names-chart" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-names-chart' ? 'text-emerald-500' : ''}">Colors</a>
-            <a href="/color-blindness" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-blindness' ? 'text-emerald-500' : ''}">Vision</a>
-            <a href="/color-from-image" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-from-image' ? 'text-emerald-500' : ''}">Image</a>
+            <a href="/palettes/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/palettes/' ? 'text-emerald-500' : ''}">Generate</a>
+            <a href="/pastel-color-palettes/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/pastel-color-palettes/' ? 'text-emerald-500' : ''}">Explore</a>
+            <a href="/gradient/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/gradient/' ? 'text-emerald-500' : ''}">Gradient</a>
+            <a href="/converter/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/converter/' ? 'text-emerald-500' : ''}">Convert</a>
+            <a href="/color-names-chart/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-names-chart/' ? 'text-emerald-500' : ''}">Colors</a>
+            <a href="/color-blindness/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-blindness/' ? 'text-emerald-500' : ''}">Vision</a>
+            <a href="/color-from-image/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-from-image/' ? 'text-emerald-500' : ''}">Image</a>
            </div>
           
           <!-- Right side -->
@@ -490,7 +490,7 @@ function renderNavbar() {
               <i class="fas fa-moon text-lg sm:text-xl dark:hidden"></i>
               <i class="fas fa-sun text-lg sm:text-xl hidden dark:block"></i>
             </button>
-            <a href="/palettes" class="hidden sm:flex btn-primary text-sm">
+            <a href="/palettes/" class="hidden sm:flex btn-primary text-sm">
               <i class="fas fa-palette"></i>
               Create Free
             </a>
@@ -507,19 +507,19 @@ function renderNavbar() {
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
       <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
-        <a href="/palettes" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Generate</a>
-        <a href="/pastel-color-palettes" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Explore</a>
-        <a href="/gradient" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradient</a>
-        <a href="/converter" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Convert</a>
-        <a href="/color-names-chart" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
-        <a href="/color-blindness" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
-        <a href="/color-from-image" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
+        <a href="/palettes/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Generate</a>
+        <a href="/pastel-color-palettes/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Explore</a>
+        <a href="/gradient/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradient</a>
+        <a href="/converter/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Convert</a>
+        <a href="/color-names-chart/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
+        <a href="/color-blindness/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
+        <a href="/color-from-image/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
         <hr class="border-slate-200 dark:border-slate-700 my-4">
-        <a href="/about" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
-        <a href="/contact" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
-        <a href="/blog" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
+        <a href="/about/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
+        <a href="/contact/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
+        <a href="/blog/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
         <div class="mt-auto pb-8">
-          <a href="/palettes" class="btn-primary text-center mt-4 w-full justify-center">
+          <a href="/palettes/" class="btn-primary text-center mt-4 w-full justify-center">
             <i class="fas fa-palette"></i>
             Create Free Palette
           </a>
@@ -543,10 +543,10 @@ function renderFooter() {
           <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/palettes" class="hover:text-emerald-500 transition-colors">Palette Generator</a></li>
-              <li><a href="/gradient" class="hover:text-emerald-500 transition-colors">Gradient Builder</a></li>
-              <li><a href="/converter" class="hover:text-emerald-500 transition-colors">Color Converter</a></li>
-              <li><a href="/pastel-color-palettes" class="hover:text-emerald-500 transition-colors">Browse Palettes</a></li>
+              <li><a href="/palettes/" class="hover:text-emerald-500 transition-colors">Palette Generator</a></li>
+              <li><a href="/gradient/" class="hover:text-emerald-500 transition-colors">Gradient Builder</a></li>
+              <li><a href="/converter/" class="hover:text-emerald-500 transition-colors">Color Converter</a></li>
+              <li><a href="/pastel-color-palettes/" class="hover:text-emerald-500 transition-colors">Browse Palettes</a></li>
             </ul>
           </div>
           
@@ -554,10 +554,10 @@ function renderFooter() {
           <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/about" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-              <li><a href="/contact" class="hover:text-emerald-500 transition-colors">Contact</a></li>
-              <li><a href="/blog" class="hover:text-emerald-500 transition-colors">Blog</a></li>
-              <li><a href="/sitemap" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
+              <li><a href="/about/" class="hover:text-emerald-500 transition-colors">About Us</a></li>
+              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact</a></li>
+              <li><a href="/blog/" class="hover:text-emerald-500 transition-colors">Blog</a></li>
+              <li><a href="/sitemap/" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
           </div>
           
@@ -565,10 +565,10 @@ function renderFooter() {
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Legal</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/privacy-policy" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
-              <li><a href="/cookie-policy" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
-              <li><a href="/disclaimer" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
+              <li><a href="/privacy-policy/" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms/" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
+              <li><a href="/cookie-policy/" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
+              <li><a href="/disclaimer/" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
             </ul>
           </div>
 
@@ -576,8 +576,8 @@ function renderFooter() {
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Support</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/faq" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
-              <li><a href="/help-center" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
+              <li><a href="/faq/" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
+              <li><a href="/help-center/" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
             </ul>
           </div>
           
