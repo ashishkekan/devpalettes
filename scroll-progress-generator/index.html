@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create scroll progress bars and reading indicators with CSS. Customize color, height, and position instantly.">
+  <meta name="keywords" content="scroll progress generator, reading indicator, scroll bar css, website progress bar, reading progress bar css">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/scroll-progress-bar/">
+  
+  <title>Scroll Progress Bar Generator – Reading Indicator CSS</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Scroll Progress Bar Generator – Reading Indicator CSS">
+  <meta property="og:description" content="Create scroll progress bars and reading indicators with CSS. Customize color, height, and position instantly.">
+  <meta property="og:url" content="https://devpalettes.com/scroll-progress-bar/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-scroll-progress-bar.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scroll Progress Bar Generator – Reading Indicator CSS">
+  <meta name="twitter:description" content="Create scroll progress bars and reading indicators with CSS. Customize color, height, and position instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-scroll-progress-bar.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Scroll Progress Bar Generator",
+    "description": "Create scroll progress bars and reading indicators with CSS. Customize color, height, and position instantly.",
+    "url": "https://devpalettes.com/scroll-progress-bar/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a scroll progress bar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A scroll progress bar is a thin horizontal bar fixed to the top or bottom of a webpage that fills in as the user scrolls down. It visually represents how far the reader has progressed through the page content, similar to a loading bar but driven by scroll position."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add a reading progress bar in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You need three components: a fixed-position container element, an inner bar element for the fill color, and a JavaScript event listener on the window scroll event that calculates the scroll percentage and updates the inner bar's width accordingly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does a progress bar improve UX?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, a reading progress bar improves user experience by providing spatial orientation within long-form content. It reduces uncertainty about article length, encourages readers to scroll further, and gives a sense of accomplishment as the bar fills up."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I customize scroll indicators?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. You can customize the color, height, position (top or bottom), background opacity, border-radius, and even add gradient fills or animations. This generator lets you adjust all these properties and copy the resulting CSS and JavaScript code."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-4">Scroll Progress Bar Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Create beautiful reading progress indicators. Customize style, position, and colors.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <aside class="space-y-6 animate-on-scroll" aria-label="Progress bar configuration">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500" aria-hidden="true"></i>
+                Configuration
+             </h3>
+             
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                   <label for="ctrl-pos" class="block text-sm font-medium mb-2 text-slate-500">Position</label>
+                   <select id="ctrl-pos" onchange="updateBar()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="top">Top</option>
+                      <option value="bottom">Bottom</option>
+                   </select>
+                </div>
+                <div>
+                   <label for="ctrl-height" class="block text-sm font-medium mb-2 text-slate-500">Height</label>
+                   <select id="ctrl-height" onchange="updateBar()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="4px">Thin (4px)</option>
+                      <option value="8px" selected>Normal (8px)</option>
+                      <option value="12px">Thick (12px)</option>
+                   </select>
+                </div>
+             </div>
+             
+             <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                   <label for="ctrl-color" class="block text-sm font-medium mb-2 text-slate-500">Bar Color</label>
+                   <input type="color" id="ctrl-color" value="#10b981" onchange="updateBar()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label for="ctrl-bg" class="block text-sm font-medium mb-2 text-slate-500">Background</label>
+                   <input type="color" id="ctrl-bg" value="#e2e8f0" onchange="updateBar()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+             <div>
+                <label for="ctrl-simulate" class="block text-sm font-medium mb-2 text-slate-500">Simulate Scroll</label>
+                <input type="range" id="ctrl-simulate" min="0" max="100" value="30" oninput="updateBar()" class="w-full accent-emerald-500">
+             </div>
+          </div>
+        </aside>
+        
+        <!-- Right: Preview & Code -->
+        <section class="space-y-6 animate-on-scroll" aria-label="Preview and generated code">
+          
+          <!-- Preview -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden relative">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+             </div>
+             
+             <!-- Mock Browser -->
+             <div class="relative h-96 bg-white dark:bg-slate-800 overflow-hidden">
+                <!-- The Generated Bar -->
+                <div id="preview-container" class="absolute left-0 w-full z-10 transition-all duration-300" style="top: 0; height: 8px; background-color: #e2e8f0;">
+                   <div id="preview-bar" class="h-full transition-all duration-150" style="width: 30%; background-color: #10b981;"></div>
+                </div>
+                
+                <!-- Fake Content -->
+                <div class="p-6 pt-16 space-y-4 opacity-50">
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-3/4"></div>
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-full"></div>
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-1/2"></div>
+                   <div class="h-20 bg-slate-100 dark:bg-slate-700 rounded w-full mt-4"></div>
+                   <div class="h-4 bg-slate-100 dark:bg-slate-700 rounded w-5/6"></div>
+                </div>
+                <img src="https://devpalettes.com/images/og-scroll-progress-bar.png" alt="scroll progress bar example showing reading indicator on website" width="1" height="1" class="absolute opacity-0 pointer-events-none" loading="lazy">
+             </div>
+          </div>
+          
+          <!-- Code -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4" aria-label="Copy code"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy JS</button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-40">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300" aria-live="polite"></pre>
+             </div>
+          </div>
+          
+        </section>
+        
+      </div>
+
+      <!-- Use Cases Section -->
+      <section class="mt-16 max-w-4xl mx-auto animate-on-scroll" aria-label="Common use cases for scroll progress bars">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6 flex items-center gap-2">
+            <i class="fas fa-crosshairs text-indigo-500" aria-hidden="true"></i>
+            Use Cases
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Blog Articles</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Show readers how far through a long-form post they have scrolled, encouraging them to finish reading.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Documentation Sites</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Help users track their position in technical docs with many sections, chapters, and code examples.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Long-Form Content</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Provide spatial context in landing pages, case studies, and storytelling pages where content length is unknown.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- SEO Content Section -->
+      <section class="mt-12 max-w-4xl mx-auto animate-on-scroll" aria-label="Guide to scroll progress bars">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2>What is a Scroll Progress Bar?</h2>
+          <p>A scroll progress bar is a thin, horizontal graphical element fixed to the top or bottom of a webpage that fills in from left to right as the user scrolls down the page. It functions as a reading indicator — at a glance, the user can see what percentage of the page content they have consumed. When the bar is empty, the reader is at the top; when it is completely filled, the reader has reached the bottom.</p>
+          <p>Unlike traditional progress bars that fill based on discrete tasks or data loading, a scroll progress bar is driven entirely by the browser's scroll position. It requires no manual input or state management from the content author — it simply listens to the scroll event and calculates the current position relative to the total scrollable height. The result is a smooth, real-time visual indicator that provides spatial orientation within a long document.</p>
+          
+          <h2>Why Use a Reading Progress Indicator?</h2>
+          <p>A reading progress bar directly improves the user experience of long-form content in several measurable ways. First, it <strong>reduces uncertainty</strong>. When a user lands on a 5,000-word article with no visual cues about its length, they face an ambiguous commitment. A progress bar immediately communicates that the page has a defined end point and shows how far along they are, which psychologically lowers the perceived effort of finishing.</p>
+          <p>Second, it <strong>increases engagement</strong>. Studies on user behavior show that progress indicators activate a completion drive — the desire to finish what has been started. As the bar fills, the user receives continuous micro-feedback that reinforces their forward momentum. This is the same psychological principle that makes video game progress bars, fitness tracking rings, and donation thermometer graphics effective.</p>
+          <p>Third, it provides <strong>navigation context</strong>. On pages with multiple sections, sidebars, or embedded media, it can be difficult for users to judge how much core content remains. The progress bar serves as an always-visible reference point that works regardless of where the user is focused on the screen.</p>
+          
+          <h2>How Scroll Progress Bars Work</h2>
+          <p>The implementation relies on three components working together. First, an HTML container element is positioned <strong>fixed</strong> to the viewport — either at the top or bottom — using CSS <strong>position: fixed</strong>. This ensures the bar remains visible regardless of scroll position. The container receives a background color (often semi-transparent) and a defined height.</p>
+          <p>Second, a child element inside the container represents the fill. Its <strong>width</strong> property starts at 0% and is dynamically updated via JavaScript. The fill color can be a solid color, a gradient, or even an animated gradient for extra visual appeal.</p>
+          <p>Third, a <strong>JavaScript scroll event listener</strong> calculates the progress percentage on every scroll event. The formula is straightforward: <strong>progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100</strong>. The <strong>scrollY</strong> value represents how many pixels have been scrolled past, and subtracting the window height from the total document height gives the maximum scrollable distance. The ratio, multiplied by 100, yields a percentage that is applied to the fill element's width. For performance, modern implementations use <strong>requestAnimationFrame</strong> to throttle updates and prevent layout thrashing.</p>
+          
+          <h2>Features of This Tool</h2>
+          <p>This scroll progress bar generator provides a <strong>live preview</strong> that updates instantly as you adjust any setting, so you can see exactly how the bar will look before copying any code. The <strong>position toggle</strong> lets you switch between top-fixed and bottom-fixed placement to match your design preference. The <strong>height selector</strong> offers thin, normal, and thick options — thinner bars are more subtle and less distracting, while thicker bars are more prominent and suitable for bold designs.</p>
+          <p>The <strong>color pickers</strong> for bar color and background color allow full creative control. Choosing a background that matches your page's header or footer and a bar color that matches your brand accent ensures the progress indicator feels native to your site rather than tacked on. The <strong>simulation slider</strong> lets you preview the bar at any scroll position without actually scrolling the page, making it easy to verify that the fill color, height, and position look correct across the full range of motion.</p>
+          
+          <h2>How to Use This Generator</h2>
+          <p>Using this tool takes three simple steps. First, adjust the configuration controls on the left to set your preferred position, height, bar color, and background color. The live preview on the right updates in real-time as you change any value. Use the simulation slider to see how the bar looks at different scroll positions. Second, once you are satisfied with the visual result, click the "Copy JS" button to copy the complete HTML, CSS, and JavaScript code to your clipboard. Third, paste the code into your website — place the HTML just inside the opening <strong>&lt;body&gt;</strong> tag, add the CSS to your stylesheet, and include the JavaScript before the closing <strong>&lt;/body&gt;</strong> tag. The bar will immediately begin working on your live site. When styling the surrounding page elements that will sit alongside your new progress bar, <a href="/palettes">generate color palettes</a> that ensure visual consistency. If you need precise color values for customization, <a href="/converter">convert HEX to RGB</a> for accurate CSS formatting. To create a fully polished reading experience, <a href="/blog/color-palettes-guide/">learn color combinations</a> that make long-form content comfortable and visually engaging.</p>
+          
+        </article>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-4xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about scroll progress bars">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is a scroll progress bar?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A scroll progress bar is a thin horizontal bar fixed to the top or bottom of a webpage that fills in as the user scrolls down. It visually represents how far the reader has progressed through the page content, similar to a loading bar but driven by scroll position.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How do I add a reading progress bar in CSS?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">You need three components: a fixed-position container element, an inner bar element for the fill color, and a JavaScript event listener on the window scroll event that calculates the scroll percentage and updates the inner bar's width accordingly.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Does a progress bar improve UX?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, a reading progress bar improves user experience by providing spatial orientation within long-form content. It reduces uncertainty about article length, encourages readers to scroll further, and gives a sense of accomplishment as the bar fills up.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can I customize scroll indicators?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Absolutely. You can customize the color, height, position (top or bottom), background opacity, border-radius, and even add gradient fills or animations. This generator lets you adjust all these properties and copy the resulting CSS and JavaScript code.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools Section -->
+      <section class="mt-12 max-w-4xl mx-auto animate-on-scroll" aria-label="Related CSS tools">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            
+            <a href="/css-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-code text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">CSS Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Build and preview CSS box shadows, borders, and layouts visually.</p>
+            </a>
+            
+            <a href="/gradient-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-palette text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Gradient Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create beautiful CSS gradients with live preview and code export.</p>
+            </a>
+            
+            <a href="/shadow-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-clone text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Shadow Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Design multi-layered box shadows with real-time customization.</p>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/scroll-progress-bar.js"></script>
+</body>
+</html>

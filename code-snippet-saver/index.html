@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Save, organize, and manage your code snippets online. Copy, edit, and reuse code easily with this free snippet manager tool.">
+  <meta name="keywords" content="code snippet saver, snippet manager, save code online, code storage, developer tool, code organizer">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/code-snippet-saver/">
+  
+  <title>Code Snippet Saver – Save & Manage Code Online</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Code Snippet Saver – Save & Manage Code Online">
+  <meta property="og:description" content="Save, organize, and manage your code snippets online. Copy, edit, and reuse code easily with this free snippet manager tool.">
+  <meta property="og:url" content="https://devpalettes.com/code-snippet-saver/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-code-snippet-saver.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Code Snippet Saver – Save & Manage Code Online">
+  <meta name="twitter:description" content="Save, organize, and manage your code snippets online. Copy, edit, and reuse code easily with this free snippet manager tool.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-code-snippet-saver.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Code Snippet Saver",
+    "description": "Save, organize, and manage your code snippets online. Copy, edit, and reuse code easily with this free snippet manager tool.",
+    "url": "https://devpalettes.com/code-snippet-saver/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a code snippet?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A code snippet is a small, reusable piece of source code that solves a specific problem or performs a single function. Developers save snippets to avoid rewriting common patterns like utility functions, CSS resets, or API call templates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I save code snippets online?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use an online snippet saver like this tool. Paste your code, assign a title and language, and click save. The tool stores your snippets in your browser's local storage, so they persist across sessions without requiring an account."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data stored securely?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This tool stores your snippets locally in your browser using localStorage. No data is ever sent to a server. Your code remains entirely on your device, ensuring complete privacy and security."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I organize snippets by language?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can assign a programming language to each snippet when saving it. You can then use the language filter dropdown to view only snippets for a specific language like JavaScript, Python, or CSS."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <style>
+    .code-textarea {
+       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+       tab-size: 2;
+    }
+    .snippet-preview {
+       max-height: 100px;
+       overflow: hidden;
+       word-break: break-all;
+       white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <header class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-code mr-2" aria-hidden="true"></i>Developer Tool
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Code Snippet Saver</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Save, organize, and manage your code snippets in one place.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Input Controls -->
+        <aside class="space-y-6 animate-on-scroll" aria-label="Snippet input controls">
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-plus-circle text-cyan-500" aria-hidden="true"></i>
+                New Snippet
+             </h2>
+             
+             <div class="space-y-4">
+                <div>
+                   <label for="snippet-title" class="block text-xs font-semibold text-slate-500 mb-1">Snippet Title</label>
+                   <input type="text" id="snippet-title" placeholder="e.g., Fetch API Helper" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                </div>
+                
+                <div>
+                   <label for="snippet-lang" class="block text-xs font-semibold text-slate-500 mb-1">Language</label>
+                   <select id="snippet-lang" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                      <option value="JavaScript">JavaScript</option>
+                      <option value="HTML">HTML</option>
+                      <option value="CSS">CSS</option>
+                      <option value="JSON">JSON</option>
+                      <option value="Python">Python</option>
+                      <option value="TypeScript">TypeScript</option>
+                      <option value="Java">Java</option>
+                      <option value="C++">C++</option>
+                      <option value="C#">C#</option>
+                      <option value="PHP">PHP</option>
+                      <option value="SQL">SQL</option>
+                      <option value="Go">Go</option>
+                      <option value="Ruby">Ruby</option>
+                      <option value="Swift">Swift</option>
+                      <option value="Bash">Bash / Shell</option>
+                      <option value="Other">Other</option>
+                   </select>
+                </div>
+                
+                <div>
+                   <label for="snippet-code" class="block text-xs font-semibold text-slate-500 mb-1">Code</label>
+                   <textarea id="snippet-code" class="code-textarea w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg p-4 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500 resize-y min-h-[250px]" placeholder="Paste your code here..."></textarea>
+                </div>
+             </div>
+             
+             <div class="flex gap-2 mt-2">
+                <button onclick="saveSnippet()" class="btn-primary flex-1 justify-center py-2.5 text-sm"><i class="fas fa-save mr-2" aria-hidden="true"></i>Save Snippet</button>
+                <button onclick="copySnippetInput()" class="btn-secondary flex-1 justify-center py-2.5 text-sm"><i class="fas fa-copy mr-2" aria-hidden="true"></i>Copy</button>
+                <button onclick="clearInput()" class="btn-secondary py-2.5 px-4 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30"><i class="fas fa-trash" aria-hidden="true"></i></button>
+             </div>
+          </div>
+        </aside>
+        
+        <!-- Right: Saved Snippets -->
+        <section class="lg:col-span-2 space-y-6 animate-on-scroll" aria-label="Saved code snippets">
+          
+          <!-- Search & Filter -->
+          <div class="glass-card p-4 shimmer-card">
+             <div class="flex flex-col sm:flex-row gap-3">
+                <div class="flex-1">
+                   <label for="search-input" class="sr-only">Search snippets</label>
+                   <div class="relative">
+                      <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-sm" aria-hidden="true"></i>
+                      <input type="text" id="search-input" placeholder="Search by title..." oninput="loadSnippets()" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg pl-10 pr-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                   </div>
+                </div>
+                <div>
+                   <label for="filter-lang" class="sr-only">Filter by language</label>
+                   <select id="filter-lang" onchange="loadSnippets()" class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                      <option value="All">All Languages</option>
+                   </select>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Snippets Grid -->
+          <div id="snippets-grid" class="grid sm:grid-cols-2 gap-4">
+             <!-- Populated by JS -->
+             <div id="empty-state" class="sm:col-span-2 glass-card p-12 shimmer-card text-center">
+                <i class="fas fa-folder-open text-4xl text-slate-300 dark:text-slate-600 mb-4" aria-hidden="true"></i>
+                <p class="text-slate-400 text-sm">No snippets saved yet. Create your first one!</p>
+             </div>
+          </div>
+          
+        </section>
+        
+      </div>
+
+      <!-- Image SEO -->
+      <img src="https://devpalettes.com/images/og-code-snippet-saver.png" alt="code snippet manager tool showing saved code examples" width="1" height="1" class="absolute opacity-0 pointer-events-none" loading="lazy">
+
+      <!-- SEO Content Section -->
+      <section class="mt-16 max-w-4xl mx-auto animate-on-scroll" aria-label="Guide to code snippet management">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline prose-strong:text-slate-800 dark:prose-strong:text-white">
+          
+          <h2>What is a Code Snippet Saver?</h2>
+          <p>A code snippet saver is a tool that allows developers to store, organize, and quickly retrieve small blocks of reusable code. A code snippet is typically a short piece of source code that solves a specific problem — like a utility function for formatting dates, a CSS media query for responsive layouts, or an API wrapper for HTTP requests. Instead of searching through old projects or bookmarking dozens of Stack Overflow tabs, a snippet saver provides a centralized, searchable library of your most useful code fragments.</p>
+          <p>Most snippet managers store data locally in the browser using localStorage, meaning your snippets are available instantly without requiring an internet connection, an account, or a subscription. This makes them ideal for developers who switch between machines or work in environments where installing desktop apps is restricted. When you <a href="/palettes">generate color palettes</a> or need to <a href="/converter">convert HEX to RGB</a> values while coding, having those tools and your most-used patterns saved in one accessible place significantly accelerates your workflow.</p>
+          
+          <h2>Why Developers Use Snippet Managers</h2>
+          <p>Developers repeatedly write the same boilerplate code across projects: authentication flows, database connection strings, state management setups, error handling patterns, and utility functions. Relying on memory or scattered text files leads to inconsistencies, version drift, and wasted time searching through old projects. A snippet manager eliminates these problems by providing a single, organized repository where every useful piece of code lives.</p>
+          <p>Snippet managers also protect against context switching. Every time you leave your code editor to search Google, GitHub, or Slack for a piece of code, you break your flow state. Studies show that it takes an average of 23 minutes to fully regain focus after an interruption. By keeping common patterns accessible in a sidebar tool, you stay in your editor and maintain your concentration, leading to higher quality code and fewer bugs.</p>
+          
+          <h2>Benefits of Saving Code Snippets</h2>
+          <p>The primary benefit is <strong>speed</strong>. Finding a snippet by title or language takes seconds compared to minutes of searching through projects or documentation. <strong>Consistency</strong> is another major advantage — when you save a snippet and reuse it across projects, you ensure that every implementation follows the same tested pattern, reducing the chance of introducing bugs through copy-paste errors. <strong>Learning and onboarding</strong> also benefit: junior developers can access a shared library of team-standard snippets to understand how the codebase handles common tasks, rather than guessing or writing ad-hoc solutions.</p>
+          <p>For remote teams, snippet savers bridge the gap between personal productivity and shared knowledge. When a team member discovers a better way to handle a specific pattern, they save it to the shared library, and every other developer immediately benefits. To ensure your saved snippets integrate well with your project's design system, <a href="/blog/color-palettes-guide/">learn color combinations</a> that keep your codebase visually consistent and easy to navigate.</p>
+          
+          <h2>How to Use This Tool</h2>
+          <p>This snippet saver is designed for speed and simplicity. To save a snippet, enter a descriptive title in the "Snippet Title" field — choose something specific enough to find later, like "Debounce Function Utility" rather than "Helper." Select the programming language from the dropdown to enable filtering. Paste your code into the textarea and click "Save Snippet." The snippet immediately appears in the saved cards grid below.</p>
+          <p>To find a snippet later, use the search bar to filter by title or the language dropdown to show only snippets for a specific technology. Each saved card shows a preview of the code's first lines so you can visually identify it without opening it. Click the copy button on any card to grab the full code to your clipboard. If you no longer need a snippet, click the delete button to permanently remove it.</p>
+          
+          <h2>Best Practices for Managing Code Snippets</h2>
+          <p><strong>Name snippets descriptively.</strong> A title like "Util 1" becomes useless after a week. Instead, use titles like "Format Currency with Intl.NumberFormat" or "Express.js CORS Middleware Setup" that describe exactly what the code does. This makes search effective and prevents you from opening five snippets to find the one you need.</p>
+          <p><strong>Categorize by language.</strong> Always set the correct language tag. This allows you to filter to "Python" when working on a Django backend and see only relevant patterns, hiding JavaScript, CSS, and SQL snippets that aren't applicable to your current context.</p>
+          <p><strong>Keep snippets focused.</strong> A snippet should do one thing well. If you find yourself saving hundred-line blocks of code, consider whether you are truly saving a snippet or copying an entire module. The most valuable snippets are typically under 30 lines — small, self-contained functions or configuration blocks that can be dropped into any project.</p>
+          <p><strong>Review and update regularly.</strong> Code patterns evolve. The debounce function you saved two years ago might have a more efficient implementation today. Periodically audit your saved snippets to replace outdated patterns with modern alternatives, delete duplicates, and remove code you no longer use. A well-maintained snippet library is significantly more valuable than a large, cluttered one.</p>
+          
+        </article>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-4xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about code snippets">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is a code snippet?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A code snippet is a small, reusable piece of source code that solves a specific problem or performs a single function. Developers save snippets to avoid rewriting common patterns like utility functions, CSS resets, or API call templates.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How do I save code snippets online?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Use an online snippet saver like this tool. Paste your code, assign a title and language, and click save. The tool stores your snippets in your browser's local storage, so they persist across sessions without requiring an account.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Is my data stored securely?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">This tool stores your snippets locally in your browser using localStorage. No data is ever sent to a server. Your code remains entirely on your device, ensuring complete privacy and security.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can I organize snippets by language?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, you can assign a programming language to each snippet when saving it. You can then use the language filter dropdown to view only snippets for a specific language like JavaScript, Python, or CSS.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/code-snippet-saver.js"></script>
+</body>
+</html>
