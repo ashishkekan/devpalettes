@@ -121,7 +121,7 @@
     <div class="gradient-blob blob-3"></div>
     <div id="particles-container"></div>
     
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Header -->
       <div class="text-center mb-10 animate-on-scroll">
@@ -171,11 +171,6 @@
          </div>
       </div>
 
-      <!-- Image SEO -->
-      <div class="my-12 animate-on-scroll">
-         <img src="/images/bootstrap-generator-preview.png" alt="bootstrap color palette generator example theme" class="w-full rounded-xl shadow-lg max-w-4xl mx-auto border border-slate-200 dark:border-slate-700">
-      </div>
-      
       <!-- SEO Content Section -->
       <div class="prose prose-slate dark:prose-invert max-w-4xl mx-auto my-16 animate-on-scroll">
          <h2>What is the Bootstrap Color System?</h2>
@@ -207,18 +202,21 @@
 
          <h2>How to Apply Colors in Bootstrap</h2>
          <p>Once you have your generated SCSS variables, applying them is simple. In your main stylesheet (e.g., <code>main.scss</code>), place the variables before the Bootstrap import:</p>
-         <pre><code class="language-scss">// Your custom variables
- $primary: #0d6efd;
- $secondary: #6c757d;
-// ... other generated vars
+         <pre>
+            <code class="language-scss">// Your custom variables
+               $primary: #0d6efd;
+               $secondary: #6c757d;
+               // ... other generated vars
 
-// Import Bootstrap
-@import "bootstrap/scss/bootstrap";</code></pre>
+               // Import Bootstrap
+               @import "bootstrap/scss/bootstrap";
+            </code>
+         </pre>
          <p>Alternatively, if you are not using a build step, you can override CSS variables in a standard CSS file, though SCSS is preferred for deeper integration. To understand the theory behind selecting these colors, you can <a href="/blog/color-palettes-guide/">learn color combinations</a> in our blog guide.</p>
       </div>
 
       <!-- Use Cases Section -->
-      <div class="max-w-4xl mx-auto my-16 animate-on-scroll">
+      <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
          <h2 class="text-2xl font-bold mb-6 text-center">Use Cases for Custom Bootstrap Themes</h2>
          <div class="grid md:grid-cols-3 gap-6">
             <div class="glass-card p-6 text-center">
@@ -240,7 +238,7 @@
       </div>
 
       <!-- FAQ Section -->
-      <div class="max-w-4xl mx-auto my-16 animate-on-scroll glass-card p-8">
+      <div class="max-w-7xl mx-auto my-16 animate-on-scroll glass-card p-8">
          <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
          <div class="space-y-4">
             <div>
@@ -263,24 +261,24 @@
       </div>
 
       <!-- Related Tools -->
-      <div class="max-w-4xl mx-auto my-16 animate-on-scroll">
+      <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
          <h2 class="text-2xl font-bold mb-6 text-center">Related Tools</h2>
          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <a href="/tailwind-color-generator" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
+            <a href="/tailwind-color-palette-generator/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
                <i class="fas fa-wind text-2xl text-cyan-500"></i>
                <div>
                   <h4 class="font-bold group-hover:text-primary transition-colors">Tailwind Generator</h4>
                   <p class="text-xs text-slate-500">Create Tailwind config themes.</p>
                </div>
             </a>
-            <a href="/gradient-generator" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
+            <a href="/gradient/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
                <i class="fas fa-fill-drip text-2xl text-pink-500"></i>
                <div>
                   <h4 class="font-bold group-hover:text-primary transition-colors">Gradient Generator</h4>
                   <p class="text-xs text-slate-500">Build smooth CSS gradients.</p>
                </div>
             </a>
-            <a href="/contrast-checker" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
+            <a href="/wcag-contrast-checker/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
                <i class="fas fa-adjust text-2xl text-amber-500"></i>
                <div>
                   <h4 class="font-bold group-hover:text-primary transition-colors">Contrast Checker</h4>
@@ -292,9 +290,7 @@
 
     </div>
   </main>
-  
   <div id="footer-container"></div>
-  
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
   <script src="../js/bootstrap-color-generator.js"></script>
