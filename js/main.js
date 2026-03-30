@@ -377,7 +377,7 @@ const Navbar = {
 
 const NAV_CATEGORIES = [
   {
-    label: 'Colors',
+    label: 'Color Lab',
     tools: [
       { label: 'Color From Image', path: 'color-from-image/' },
       { label: 'Color Converter', path: 'converter/' },
@@ -389,7 +389,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'Accessibility & Testing',
+    label: 'Accessibility Suite',
     tools: [
       { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Tester', path: 'color-accessibility/' },
@@ -399,7 +399,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'UI/CSS Generators',
+    label: 'UI Forge',
     tools: [
       { label: 'Box Shadow Generator', path: 'box-shadow-generator/' },
       { label: 'Border Radius Generator', path: 'border-radius-generator/' },
@@ -412,7 +412,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'Layouts',
+    label: 'Layout Engine',
     tools: [
       { label: 'Flexbox Helper', path: 'flexbox/' },
       { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
@@ -434,7 +434,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'Advanced',
+    label: 'Pro Tools',
     tools: [
       { label: 'Brand Color Extractor', path: 'brand-color-extractor/' },
       { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
