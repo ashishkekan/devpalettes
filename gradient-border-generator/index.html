@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Generate beautiful CSS gradient borders for buttons and cards. Customize colors, radius, and border width instantly.">
+  <meta name="keywords" content="gradient border, css border gradient, animated border, css trick, gradient border generator, css gradient border">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/gradient-border-generator/">
+  
+  <title>CSS Gradient Border Generator – Create Borders Online</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="CSS Gradient Border Generator – Create Borders Online">
+  <meta property="og:description" content="Generate beautiful CSS gradient borders for buttons and cards. Customize colors, radius, and border width instantly.">
+  <meta property="og:url" content="https://devpalettes.com/gradient-border-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-gradient-border-generator.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS Gradient Border Generator – Create Borders Online">
+  <meta name="twitter:description" content="Generate beautiful CSS gradient borders for buttons and cards. Customize colors, radius, and border width instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-gradient-border-generator.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Gradient Border Generator",
+    "description": "Generate beautiful CSS gradient borders for buttons and cards. Customize colors, radius, and border width instantly.",
+    "url": "https://devpalettes.com/gradient-border-generator/",
+    "applicationCategory": "DesignApplication",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to create gradient borders in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The most reliable method is the wrapper technique: create an outer container with a gradient background and padding equal to the desired border width, then place an inner element inside with a solid background color and a slightly smaller border-radius. The gap between the gradient wrapper and the solid inner element creates the appearance of a gradient border."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can CSS borders use gradients directly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, the CSS border property does not accept gradient values directly. The border-color property only supports solid colors. To achieve a gradient border effect, you must use alternative techniques such as the wrapper padding method, the background-clip method with border-image, or the mask-image approach."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best method for gradient borders?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The wrapper padding method is considered the best approach for most use cases because it offers full control over border-radius, works reliably across all modern browsers, and does not conflict with other background properties on the inner element. The background-clip method using border-image is more concise but has limited border-radius support."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are gradient borders supported in all browsers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gradient borders created with the wrapper padding technique are supported in all modern browsers including Chrome, Firefox, Safari, and Edge. The border-image approach has broader support but does not work well with border-radius. Always test your chosen method across target browsers before deploying to production."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <header class="text-center mb-10 animate-on-scroll">
+        <span class="inline-block px-4 py-1 bg-rose-100 dark:bg-rose-900/30 text-rose-600 dark:text-rose-400 text-sm font-medium rounded-full mb-4">
+          <i class="fas fa-border-style mr-2" aria-hidden="true"></i>CSS Effect
+        </span>
+        <h1 class="text-4xl font-bold mb-4">Gradient Border Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create beautiful gradient borders for cards and buttons.</p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <aside class="space-y-4 animate-on-scroll" aria-label="Gradient border configuration">
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg">Colors</h2>
+             <div class="space-y-3">
+                <div>
+                   <label for="c-start" class="block text-xs font-semibold text-slate-500 mb-1">Start Color</label>
+                   <input type="color" id="c-start" value="#f43f5e" onchange="updateBorder()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label for="c-end" class="block text-xs font-semibold text-slate-500 mb-1">End Color</label>
+                   <input type="color" id="c-end" value="#3b82f6" onchange="updateBorder()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+                <div>
+                   <label for="c-bg" class="block text-xs font-semibold text-slate-500 mb-1">Inside Color</label>
+                   <input type="color" id="c-bg" value="#ffffff" onchange="updateBorder()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+             <div class="mt-4 space-y-3">
+                <div>
+                   <label for="ctrl-w" class="block text-xs font-semibold text-slate-500 mb-1">Border Width: <span id="v-w">4</span>px</label>
+                   <input type="range" id="ctrl-w" min="1" max="12" value="4" onchange="updateBorder()" class="w-full accent-emerald-500">
+                </div>
+                <div>
+                   <label for="ctrl-r" class="block text-xs font-semibold text-slate-500 mb-1">Radius: <span id="v-r">12</span>px</label>
+                   <input type="range" id="ctrl-r" min="0" max="50" value="12" onchange="updateBorder()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+        </aside>
+        
+        <!-- Preview & Code -->
+        <section class="lg:col-span-2 space-y-6 animate-on-scroll" aria-label="Gradient border preview and code output">
+          <div class="glass-card p-8 shimmer-card min-h-[300px] flex items-center justify-center bg-slate-100 dark:bg-slate-800">
+             <!-- The trick: A wrapper with gradient background, and an inner box with padding matching border width -->
+             <div id="border-wrapper" class="p-1 rounded-xl transition-all duration-300" style="background: linear-gradient(90deg, #f43f5e, #3b82f6);" role="img" aria-label="Gradient border preview">
+                <div id="border-inner" class="w-64 h-64 flex items-center justify-center font-bold text-slate-600 dark:text-slate-300 transition-colors duration-300" style="background-color: #ffffff; border-radius: 8px;">
+                   Content Box
+                </div>
+             </div>
+             <img src="https://devpalettes.com/images/og-gradient-border-generator.png" alt="css gradient border example for cards and buttons" width="1" height="1" class="absolute opacity-0 pointer-events-none" loading="lazy">
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h2 class="font-bold text-lg">CSS Code</h2>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4" aria-label="Copy CSS code"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40" aria-live="polite"></pre>
+          </div>
+        </section>
+      </div>
+      
+      <!-- SEO Content Section -->
+      <section class="mt-16 max-w-4xl mx-auto animate-on-scroll" aria-label="Guide to CSS gradient borders">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2>What Is a Gradient Border in CSS?</h2>
+          <p>A gradient border is a visual effect where the border surrounding an element transitions smoothly between two or more colors instead of displaying a single solid color. Unlike standard CSS borders defined with the <strong>border</strong> property, gradient borders cannot be created with a single line of CSS because the <strong>border-color</strong> property does not accept gradient values. Instead, designers use creative CSS techniques to simulate the appearance of a gradient along the edge of an element.</p>
+          <p>Gradient borders add a layer of visual sophistication that flat borders cannot achieve. They draw attention to specific UI elements — such as featured cards, call-to-action buttons, or input fields — by introducing color movement and energy at the boundary of the element. This subtle dynamism makes interfaces feel more polished and modern without requiring animations or JavaScript.</p>
+          
+          <h2>How Gradient Borders Work</h2>
+          <p>At a technical level, gradient borders exploit the fact that CSS <strong>background</strong> properties do support gradient functions like <strong>linear-gradient()</strong> and <strong>radial-gradient()</strong>. Rather than applying a gradient to the border directly, the gradient is applied to a background layer, and the visible area is then masked or inset so that only the edge region — the "border" area — shows the gradient. The inner area is covered by a solid background color, creating the illusion that the gradient belongs to the border itself.</p>
+          <p>The key insight is that a gradient border is not really a border at all — it is a background gradient with a hole cut out of it. Understanding this concept makes it easier to grasp why multiple CSS techniques exist for achieving the same visual result, each with different trade-offs in terms of browser support, border-radius compatibility, and implementation complexity.</p>
+          
+          <h2>CSS Techniques for Gradient Borders</h2>
+          
+          <h3>The Wrapper Padding Method</h3>
+          <p>The most widely used technique involves two nested elements. The outer element receives a gradient background and a <strong>padding</strong> value equal to the desired border width. The inner element receives a solid background color and a <strong>border-radius</strong> that is slightly smaller than the outer element's radius (offset by the padding value). The gradient shows through the padding gap, creating a seamless gradient border effect. This method offers full control over border-radius, works with all gradient directions, and has excellent browser compatibility.</p>
+          
+          <h3>The Background-Clip Method</h3>
+          <p>This technique uses a single element with two background layers: a gradient layer and a solid color layer. The solid layer is clipped to the <strong>padding-box</strong> while the gradient layer is clipped to the <strong>border-box</strong>. With a transparent border set via <strong>border: Npx solid transparent</strong>, the gradient becomes visible in the border region. This approach is more concise since it requires only one HTML element, but it can conflict with other background properties and has quirks with <strong>border-radius</strong> in some browsers.</p>
+          
+          <h3>The Border-Image Method</h3>
+          <p>CSS <strong>border-image</strong> can accept a gradient value directly, making the syntax extremely short. However, <strong>border-image</strong> overrides <strong>border-radius</strong> in most browsers, meaning the border will appear as sharp rectangles even when border-radius is set. This limitation makes border-image unsuitable for rounded UI elements, though it works well for rectangular containers and decorative dividers.</p>
+          
+          <h3>The Mask-Image Method</h3>
+          <p>The most advanced technique uses <strong>mask-image</strong> or <strong>-webkit-mask-image</strong> to cut out the inner region of a gradient-filled element. This produces clean gradient borders with proper border-radius support but relies on properties that still require vendor prefixes in some browsers. It is best suited for projects where cutting-edge CSS is acceptable and fallbacks are provided.</p>
+          
+          <h2>Use Cases for Gradient Borders</h2>
+          <p>Gradient borders are particularly effective for <strong>featured content cards</strong> — product highlights, testimonial cards, or pricing tiers — where the border needs to signal importance without overwhelming the content. <strong>Call-to-action buttons</strong> with gradient borders create a sense of energy that flat borders lack, encouraging clicks. <strong>Input fields</strong> with gradient borders on focus provide clear, visually appealing feedback that improves form usability. <strong>Image frames</strong> and <strong>avatar containers</strong> benefit from gradient borders that add a decorative touch without competing with the image content.</p>
+          
+          <h2>Tips for Modern Gradient Border Design</h2>
+          <p>Keep gradient transitions subtle — extreme color shifts across a thin border can look chaotic rather than elegant. Use colors from the same hue family for a refined look, or complementary colors for bold accents. Match the gradient direction to the element's purpose: horizontal gradients feel stable and grounded for cards, while diagonal or radial gradients add dynamism to buttons. Ensure the inside background color provides sufficient contrast with the text content. To build a consistent color system around your gradient borders, <a href="/palettes">generate color palettes</a> that include gradient start and end tones. When working with specific gradient colors, you may need to <a href="/converter">convert HEX to RGB</a> for more precise opacity adjustments in rgba() values. For broader guidance on selecting colors that work well together in gradients and borders, <a href="/blog/color-palettes-guide/">learn color combinations</a> that create harmonious visual transitions.</p>
+          
+        </article>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-4xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about gradient borders">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How to create gradient borders in CSS?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The most reliable method is the wrapper technique: create an outer container with a gradient background and padding equal to the desired border width, then place an inner element inside with a solid background color and a slightly smaller border-radius. The gap between the gradient wrapper and the solid inner element creates the appearance of a gradient border.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can CSS borders use gradients directly?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No, the CSS border property does not accept gradient values directly. The border-color property only supports solid colors. To achieve a gradient border effect, you must use alternative techniques such as the wrapper padding method, the background-clip method with border-image, or the mask-image approach.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is the best method for gradient borders?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The wrapper padding method is considered the best approach for most use cases because it offers full control over border-radius, works reliably across all modern browsers, and does not conflict with other background properties on the inner element. The background-clip method using border-image is more concise but has limited border-radius support.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Are gradient borders supported in all browsers?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Gradient borders created with the wrapper padding technique are supported in all modern browsers including Chrome, Firefox, Safari, and Edge. The border-image approach has broader support but does not work well with border-radius. Always test your chosen method across target browsers before deploying to production.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Related Tools Section -->
+      <section class="mt-12 max-w-4xl mx-auto animate-on-scroll" aria-label="Related design tools">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            
+            <a href="/button-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-hand-pointer text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Button Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create gradient, glass, neon, and 3D CSS buttons with live preview.</p>
+            </a>
+            
+            <a href="/card-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-square text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Card Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Design glass, gradient, and neumorphism UI cards with custom content.</p>
+            </a>
+            
+            <a href="/glassmorphism-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-droplet text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Glassmorphism Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Build frosted-glass UI effects with blur, transparency, and borders.</p>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/gradient-border-generator.js"></script>
+</body>
+</html>
