@@ -379,69 +379,69 @@ const NAV_CATEGORIES = [
   {
     label: 'Color Lab',
     tools: [
-      { label: 'Color From Image', path: 'color-from-image/' },
-      { label: 'Color Converter', path: 'converter/' },
-      { label: 'Palette Generator', path: 'palettes/' },
-      { label: 'Gradient Builder', path: 'gradient/' },
-      { label: 'Color Names Chart', path: 'color-names-chart/' },
-      { label: 'Color Blindness', path: 'color-blindness/' },
-      { label: 'Color Wheel', path: 'color-wheel/' }
-    ]
-  },
-  {
-    label: 'Accessibility Suite',
-    tools: [
-      { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
-      { label: 'Color Accessibility Tester', path: 'color-accessibility/' },
-      { label: 'Color Opacity Checker', path: 'color-opacity/' },
-      { label: 'Color Difference Checker', path: 'color-diff-checker/' },
-      { label: 'Color Usage Preview', path: 'color-preview/' }
+      { label: 'Extract Colors from Image 🔥', path: 'color-from-image/' },
+      { label: 'AI Color Palette Generator 🔥', path: 'palettes/' },
+      { label: 'CSS Gradient Generator', path: 'gradient/' },
+      { label: 'HEX ⇄ RGB ⇄ HSL Converter', path: 'converter/' },
+      { label: 'Color Wheel Picker', path: 'color-wheel/' },
+      { label: 'Color Names & HEX Chart', path: 'color-names-chart/' },
+      { label: 'Color Blindness Simulator', path: 'color-blindness/' }
     ]
   },
   {
     label: 'UI Forge',
     tools: [
-      { label: 'Box Shadow Generator', path: 'box-shadow-generator/' },
-      { label: 'Border Radius Generator', path: 'border-radius-generator/' },
+      { label: 'CSS Box Shadow Generator 🔥', path: 'box-shadow-generator/' },
+      { label: 'Border Radius Generator 🔥', path: 'border-radius-generator/' },
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
-      { label: 'Glassmorphism Generator', path: 'glassmorphism-generator/' },
-      { label: 'Neumorphism Generator', path: 'neumorphism-generator/' },
-      { label: 'Button Generator', path: 'button-generator/' },
-      { label: 'Card Generator', path: 'card-generator/' },
+      { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
+      { label: 'Neumorphism UI Generator', path: 'neumorphism-generator/' },
+      { label: 'CSS Button Generator', path: 'button-generator/' },
+      { label: 'Modern UI Card Generator', path: 'card-generator/' },
       { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
+    ]
+  },
+  {
+    label: 'Dev Utilities',
+    tools: [
+      { label: 'Lorem Ipsum Generator 🔥', path: 'lorem-ipsum-generator/' },
+      { label: 'SEO Slug Generator 🔥', path: 'slug-generator/' },
+      { label: 'REM to PX Converter', path: 'rem-px-converter/' },
+      { label: 'Text Difference Checker', path: 'text-diff-checker/' },
+      { label: 'Code Snippet Manager', path: 'code-snippet-saver/' },
+      { label: 'Scroll Progress Bar Generator', path: 'scroll-progress-generator/' }
+    ]
+  },
+  {
+    label: 'Accessibility Suite',
+    tools: [
+      { label: 'WCAG Contrast Checker (AA/AAA)', path: 'wcag-contrast-checker/' },
+      { label: 'Color Accessibility Tester', path: 'color-accessibility/' },
+      { label: 'Opacity & Transparency Checker', path: 'color-opacity/' },
+      { label: 'Color Difference Checker', path: 'color-diff-checker/' },
+      { label: 'UI Color Preview Tool', path: 'color-preview/' }
     ]
   },
   {
     label: 'Layout Engine',
     tools: [
-      { label: 'Flexbox Helper', path: 'flexbox/' },
-      { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
+      { label: 'Flexbox Layout Generator', path: 'flexbox/' },
+      { label: 'CSS Grid Generator (Visual)', path: 'css-grid-generator/' },
       { label: 'Aspect Ratio Calculator', path: 'aspect-ratio-calculator/' },
-      { label: '3D Transform Generator', path: 'transform-3d/' },
-      { label: 'Clip Path Generator', path: 'clip-path-generator/' },
+      { label: '3D CSS Transform Generator', path: 'transform-3d/' },
+      { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
       { label: 'CSS Filter Generator', path: 'css-filter-generator/' }
-    ]
-  },
-  {
-    label: 'Utilities',
-    tools: [
-      { label: 'REM ⇄ PX Converter', path: 'rem-px-converter/' },
-      { label: 'Lorem Ipsum Generator', path: 'lorem-ipsum-generator/' },
-      { label: 'Slug Generator', path: 'slug-generator/' },
-      { label: 'Text Diff Checker', path: 'text-diff-checker/' },
-      { label: 'Code Snippet Saver', path: 'code-snippet-saver/' },
-      { label: 'Scroll Progress Generator', path: 'scroll-progress-generator/' }
     ]
   },
   {
     label: 'Pro Tools',
     tools: [
-      { label: 'Brand Color Extractor', path: 'brand-color-extractor/' },
-      { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
-      { label: 'Tailwind Palette Generator', path: 'tailwind-color-palette-generator/' },
-      { label: 'Bootstrap Palette Generator', path: 'bootstrap-color-palette-generator/' },
+      { label: 'Convert Image to Gradient 🔥', path: 'image-to-gradient-generator/' },
+      { label: 'Extract Brand Colors from Website', path: 'brand-color-extractor/' },
+      { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
+      { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
       { label: 'SVG Color Editor', path: 'svg-color-editor/' },
-      { label: 'Social Meta Preview', path: 'social-meta-preview/' }
+      { label: 'Social Media Meta Preview Tool', path: 'social-meta-preview/' }
     ]
   }
 ];
