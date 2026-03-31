@@ -379,8 +379,8 @@ const NAV_CATEGORIES = [
   {
     label: 'Color Lab',
     tools: [
-      { label: 'Extract Colors from Image 🔥', path: 'color-from-image/' },
-      { label: 'AI Color Palette Generator 🔥', path: 'palettes/' },
+      { label: 'Extract Colors from Image', path: 'color-from-image/' },
+      { label: 'AI Color Palette Generator', path: 'palettes/' },
       { label: 'CSS Gradient Generator', path: 'gradient/' },
       { label: 'HEX ⇄ RGB ⇄ HSL Converter', path: 'converter/' },
       { label: 'Color Wheel Picker', path: 'color-wheel/' },
@@ -391,8 +391,8 @@ const NAV_CATEGORIES = [
   {
     label: 'UI Forge',
     tools: [
-      { label: 'CSS Box Shadow Generator 🔥', path: 'box-shadow-generator/' },
-      { label: 'Border Radius Generator 🔥', path: 'border-radius-generator/' },
+      { label: 'CSS Box Shadow Generator', path: 'box-shadow-generator/' },
+      { label: 'Border Radius Generator', path: 'border-radius-generator/' },
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
       { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
       { label: 'Neumorphism UI Generator', path: 'neumorphism-generator/' },
@@ -404,12 +404,18 @@ const NAV_CATEGORIES = [
   {
     label: 'Dev Utilities',
     tools: [
-      { label: 'Lorem Ipsum Generator 🔥', path: 'lorem-ipsum-generator/' },
-      { label: 'SEO Slug Generator 🔥', path: 'slug-generator/' },
+      { label: 'Lorem Ipsum Generator', path: 'lorem-ipsum-generator/' },
+      { label: 'SEO Slug Generator', path: 'slug-generator/' },
       { label: 'REM to PX Converter', path: 'rem-px-converter/' },
       { label: 'Text Difference Checker', path: 'text-diff-checker/' },
       { label: 'Code Snippet Manager', path: 'code-snippet-saver/' },
-      { label: 'Scroll Progress Bar Generator', path: 'scroll-progress-generator/' }
+      { label: 'Scroll Progress Bar Generator', path: 'scroll-progress-generator/' },
+      { label: 'Meta Tag Generator', path: 'meta-tag-generator/' },
+      { label: 'Keyword Density Checker', path: 'keyword-density-checker/' },
+      { label: 'Text Formatter', path: 'text-formatter/' },
+      { label: 'SEO Analyzer', path: 'seo-analyzer/' },
+      { label: 'Open Graph Generator', path: 'open-graph-generator/' },
+      { label: 'JSON Formatter', path: 'json-formatter/' }
     ]
   },
   {
@@ -436,7 +442,7 @@ const NAV_CATEGORIES = [
   {
     label: 'Pro Tools',
     tools: [
-      { label: 'Convert Image to Gradient 🔥', path: 'image-to-gradient-generator/' },
+      { label: 'Convert Image to Gradient', path: 'image-to-gradient-generator/' },
       { label: 'Extract Brand Colors from Website', path: 'brand-color-extractor/' },
       { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
       { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
