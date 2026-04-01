@@ -689,7 +689,7 @@ function renderNavbar() {
               <i class="fas fa-palette"></i>
               Create Free
             </a>
-            <div class="hamburger md:hidden h-6 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+            <div class="hamburger md:hidden h-5 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white transition-all"></span>
