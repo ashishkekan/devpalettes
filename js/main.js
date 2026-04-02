@@ -415,7 +415,7 @@ const NAV_CATEGORIES = [
       { label: 'Text Formatter', path: 'text-formatter/' },
       { label: 'SEO Analyzer', path: 'seo-analyzer/' },
       { label: 'Open Graph Generator', path: 'open-graph-generator/' },
-      { label: 'JSON Formatter', path: 'json-formatter/' }
+      { label: 'JSON Formatter', path: 'json-formatter/' },
     ]
   },
   {
