@@ -231,10 +231,43 @@
     updateUI();
   });
 
-  // Save Button
+  // Save Button (Export + Copy JSON)
   document.getElementById('save-scheme-btn').addEventListener('click', () => {
-     // Logic to save or export (simplified for now)
-     alert('Scheme Export feature coming soon!');
+    const colors = [];
+
+    // Get all generated colors from UI
+    document.querySelectorAll('#scheme-output .color-row').forEach(row => {
+      const hex = row.querySelector('.font-bold').textContent.trim();
+      const rgbText = row.querySelector('.opacity-70').textContent.trim();
+      const [r, g, b] = rgbText.split(',').map(v => parseInt(v.trim()));
+
+      const [h, s, l] = ColorMath.rgbToHsl(r, g, b);
+
+      colors.push({
+        hex,
+        rgb: { r, g, b },
+        hsl: { h, s, l }
+      });
+    });
+
+    const jsonData = JSON.stringify(colors, null, 2);
+
+    // Copy to clipboard
+    navigator.clipboard.writeText(jsonData);
+
+    // Download as JSON file
+    const blob = new Blob([jsonData], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'color-scheme.json';
+    a.click();
+    URL.revokeObjectURL(url);
+
+    // Optional toast
+    if (window.Devpalettes && window.Devpalettes.Toast) {
+      window.Devpalettes.Toast.show('Color scheme exported & copied!', 'success');
+    }
   });
 
   // Init
