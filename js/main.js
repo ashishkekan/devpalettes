@@ -379,75 +379,75 @@ const NAV_CATEGORIES = [
   {
     label: 'Color Lab',
     tools: [
-      { label: 'Extract Colors from Image', path: 'color-from-image/' },
-      { label: 'AI Color Palette Generator', path: 'palettes/' },
-      { label: 'CSS Gradient Generator', path: 'gradient/' },
-      { label: 'HEX ⇄ RGB ⇄ HSL Converter', path: 'converter/' },
-      { label: 'Color Wheel Picker', path: 'color-wheel/' },
-      { label: 'Color Names & HEX Chart', path: 'color-names-chart/' },
-      { label: 'Color Blindness Simulator', path: 'color-blindness/' }
+      { label: 'Image to Colors', path: 'color-from-image/' },
+      { label: 'AI Palette', path: 'palettes/' },
+      { label: 'Gradient Maker', path: 'gradient/' },
+      { label: 'Color Converter', path: 'converter/' },
+      { label: 'Color Wheel', path: 'color-wheel/' },
+      { label: 'Color Chart', path: 'color-names-chart/' },
+      { label: 'Color Blindness', path: 'color-blindness/' }
     ]
   },
   {
     label: 'UI Forge',
     tools: [
-      { label: 'CSS Box Shadow Generator', path: 'box-shadow-generator/' },
-      { label: 'Border Radius Generator', path: 'border-radius-generator/' },
-      { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
-      { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
-      { label: 'Neumorphism UI Generator', path: 'neumorphism-generator/' },
-      { label: 'CSS Button Generator', path: 'button-generator/' },
-      { label: 'Modern UI Card Generator', path: 'card-generator/' },
-      { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
+      { label: 'Box Shadow', path: 'box-shadow-generator/' },
+      { label: 'Border Radius', path: 'border-radius-generator/' },
+      { label: 'CSS Animations', path: 'css-animation-generator/' },
+      { label: 'Glass UI', path: 'glassmorphism-generator/' },
+      { label: 'Neumorphism', path: 'neumorphism-generator/' },
+      { label: 'Button Maker', path: 'button-generator/' },
+      { label: 'Card UI', path: 'card-generator/' },
+      { label: 'Gradient Border', path: 'gradient-border-generator/' }
     ]
   },
   {
     label: 'Dev Utilities',
     tools: [
-      { label: 'Lorem Ipsum Generator', path: 'lorem-ipsum-generator/' },
-      { label: 'SEO Slug Generator', path: 'slug-generator/' },
-      { label: 'REM to PX Converter', path: 'rem-px-converter/' },
-      { label: 'Text Difference Checker', path: 'text-diff-checker/' },
-      { label: 'Code Snippet Manager', path: 'code-snippet-saver/' },
-      { label: 'Scroll Progress Bar Generator', path: 'scroll-progress-generator/' },
-      { label: 'Meta Tag Generator', path: 'meta-tag-generator/' },
-      { label: 'Keyword Density Checker', path: 'keyword-density-checker/' },
+      { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
+      { label: 'Slug Generator', path: 'slug-generator/' },
+      { label: 'REM ↔ PX', path: 'rem-px-converter/' },
+      { label: 'Text Diff', path: 'text-diff-checker/' },
+      { label: 'Snippets', path: 'code-snippet-saver/' },
+      { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
+      { label: 'Meta Tags', path: 'meta-tag-generator/' },
+      { label: 'Keyword Checker', path: 'keyword-density-checker/' },
       { label: 'Text Formatter', path: 'text-formatter/' },
       { label: 'SEO Analyzer', path: 'seo-analyzer/' },
-      { label: 'Open Graph Generator', path: 'open-graph-generator/' },
+      { label: 'Open Graph', path: 'open-graph-generator/' },
       { label: 'JSON Formatter', path: 'json-formatter/' },
     ]
   },
   {
-    label: 'Accessibility Suite',
+    label: 'Accessibility',
     tools: [
-      { label: 'WCAG Contrast Checker (AA/AAA)', path: 'wcag-contrast-checker/' },
-      { label: 'Color Accessibility Tester', path: 'color-accessibility/' },
-      { label: 'Opacity & Transparency Checker', path: 'color-opacity/' },
-      { label: 'Color Difference Checker', path: 'color-diff-checker/' },
-      { label: 'UI Color Preview Tool', path: 'color-preview/' }
+      { label: 'Contrast Checker', path: 'wcag-contrast-checker/' },
+      { label: 'Accessibility Test', path: 'color-accessibility/' },
+      { label: 'Opacity Checker', path: 'color-opacity/' },
+      { label: 'Color Diff', path: 'color-diff-checker/' },
+      { label: 'Color Preview', path: 'color-preview/' }
     ]
   },
   {
-    label: 'Layout Engine',
+    label: 'Layout',
     tools: [
-      { label: 'Flexbox Layout Generator', path: 'flexbox/' },
-      { label: 'CSS Grid Generator (Visual)', path: 'css-grid-generator/' },
-      { label: 'Aspect Ratio Calculator', path: 'aspect-ratio-calculator/' },
-      { label: '3D CSS Transform Generator', path: 'transform-3d/' },
-      { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
-      { label: 'CSS Filter Generator', path: 'css-filter-generator/' }
+      { label: 'Flexbox', path: 'flexbox/' },
+      { label: 'CSS Grid', path: 'css-grid-generator/' },
+      { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
+      { label: '3D Transform', path: 'transform-3d/' },
+      { label: 'Clip Path', path: 'clip-path-generator/' },
+      { label: 'CSS Filters', path: 'css-filter-generator/' }
     ]
   },
   {
     label: 'Pro Tools',
     tools: [
-      { label: 'Convert Image to Gradient', path: 'image-to-gradient-generator/' },
-      { label: 'Extract Brand Colors from Website', path: 'brand-color-extractor/' },
-      { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
-      { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
-      { label: 'SVG Color Editor', path: 'svg-color-editor/' },
-      { label: 'Social Media Meta Preview Tool', path: 'social-meta-preview/' }
+      { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
+      { label: 'Brand Colors', path: 'brand-color-extractor/' },
+      { label: 'Tailwind Colors', path: 'tailwind-color-palette-generator/' },
+      { label: 'Bootstrap Colors', path: 'bootstrap-color-palette-generator/' },
+      { label: 'SVG Editor', path: 'svg-color-editor/' },
+      { label: 'Social Preview', path: 'social-meta-preview/' }
     ]
   }
 ];
