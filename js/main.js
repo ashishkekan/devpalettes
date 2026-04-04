@@ -440,6 +440,14 @@ const NAV_CATEGORIES = [
     ]
   },
   {
+    label: 'Palettes',
+    tools: [
+      { label: 'Pastel Color Palette', path: 'pastel-color-palettes/' },
+      { label: 'Dark Color Palette', path: 'dark-color-palettes/' },
+      { label: 'Neon Color Palette', path: 'neon-color-palettes/' }
+    ]
+  },
+  {
     label: 'Pro Tools',
     tools: [
       { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
