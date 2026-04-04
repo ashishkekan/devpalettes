@@ -379,75 +379,75 @@ const NAV_CATEGORIES = [
   {
     label: 'Color Lab',
     tools: [
-      { label: 'Image to Colors', path: 'color-from-image/' },
-      { label: 'AI Palette', path: 'palettes/' },
+      { label: 'Color from image', path: 'color-from-image/' },
+      // { label: 'AI Palette generator', path: 'palettes/' },
       { label: 'Gradient Maker', path: 'gradient/' },
       { label: 'Color Converter', path: 'converter/' },
-      { label: 'Color Wheel', path: 'color-wheel/' },
-      { label: 'Color Chart', path: 'color-names-chart/' },
+      // { label: 'Color Wheel', path: 'color-wheel/' },
+      { label: 'Color Names Chart', path: 'color-names-chart/' },
       { label: 'Color Blindness', path: 'color-blindness/' }
     ]
   },
   {
     label: 'UI Forge',
     tools: [
-      { label: 'Box Shadow', path: 'box-shadow-generator/' },
-      { label: 'Border Radius', path: 'border-radius-generator/' },
-      { label: 'CSS Animations', path: 'css-animation-generator/' },
-      { label: 'Glass UI', path: 'glassmorphism-generator/' },
-      { label: 'Neumorphism', path: 'neumorphism-generator/' },
-      { label: 'Button Maker', path: 'button-generator/' },
-      { label: 'Card UI', path: 'card-generator/' },
-      { label: 'Gradient Border', path: 'gradient-border-generator/' }
+      { label: 'Box Shadow Generator', path: 'box-shadow-generator/' },
+      { label: 'Border Radius Generator', path: 'border-radius-generator/' },
+      { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
+      // { label: 'Glass UI', path: 'glassmorphism-generator/' },
+      // { label: 'Neumorphism', path: 'neumorphism-generator/' },
+      // { label: 'Button Maker', path: 'button-generator/' },
+      // { label: 'Card UI', path: 'card-generator/' },
+      // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
     ]
   },
   {
     label: 'Dev Utilities',
     tools: [
-      { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
-      { label: 'Slug Generator', path: 'slug-generator/' },
-      { label: 'REM ↔ PX', path: 'rem-px-converter/' },
-      { label: 'Text Diff', path: 'text-diff-checker/' },
-      { label: 'Snippets', path: 'code-snippet-saver/' },
-      { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
-      { label: 'Meta Tags', path: 'meta-tag-generator/' },
-      { label: 'Keyword Checker', path: 'keyword-density-checker/' },
-      { label: 'Text Formatter', path: 'text-formatter/' },
-      { label: 'SEO Analyzer', path: 'seo-analyzer/' },
-      { label: 'Open Graph', path: 'open-graph-generator/' },
+      // { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
+      // { label: 'Slug Generator', path: 'slug-generator/' },
+      // { label: 'REM ↔ PX', path: 'rem-px-converter/' },
+      // { label: 'Text Diff', path: 'text-diff-checker/' },
+      // { label: 'Snippets', path: 'code-snippet-saver/' },
+      // { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
+      { label: 'Meta Tags Generator', path: 'meta-tag-generator/' },
+      // { label: 'Keyword Checker', path: 'keyword-density-checker/' },
+      // { label: 'Text Formatter', path: 'text-formatter/' },
+      // { label: 'SEO Analyzer', path: 'seo-analyzer/' },
+      // { label: 'Open Graph', path: 'open-graph-generator/' },
       { label: 'JSON Formatter', path: 'json-formatter/' },
     ]
   },
   {
     label: 'Accessibility',
     tools: [
-      { label: 'Contrast Checker', path: 'wcag-contrast-checker/' },
-      { label: 'Accessibility Test', path: 'color-accessibility/' },
-      { label: 'Opacity Checker', path: 'color-opacity/' },
-      { label: 'Color Diff', path: 'color-diff-checker/' },
-      { label: 'Color Preview', path: 'color-preview/' }
+      { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
+      { label: 'Color Accessibility Test', path: 'color-accessibility/' },
+      // { label: 'Opacity Checker', path: 'color-opacity/' },
+      // { label: 'Color Diff', path: 'color-diff-checker/' },
+      // { label: 'Color Preview', path: 'color-preview/' }
     ]
   },
   {
     label: 'Layout',
     tools: [
       { label: 'Flexbox', path: 'flexbox/' },
-      { label: 'CSS Grid', path: 'css-grid-generator/' },
-      { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
-      { label: '3D Transform', path: 'transform-3d/' },
-      { label: 'Clip Path', path: 'clip-path-generator/' },
-      { label: 'CSS Filters', path: 'css-filter-generator/' }
+      { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
+      // { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
+      // { label: '3D Transform', path: 'transform-3d/' },
+      { label: 'Clip Path Generator', path: 'clip-path-generator/' },
+      // { label: 'CSS Filters', path: 'css-filter-generator/' }
     ]
   },
   {
     label: 'Pro Tools',
     tools: [
       { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
-      { label: 'Brand Colors', path: 'brand-color-extractor/' },
-      { label: 'Tailwind Colors', path: 'tailwind-color-palette-generator/' },
-      { label: 'Bootstrap Colors', path: 'bootstrap-color-palette-generator/' },
-      { label: 'SVG Editor', path: 'svg-color-editor/' },
-      { label: 'Social Preview', path: 'social-meta-preview/' }
+      { label: 'Extract Brand Colors', path: 'brand-color-extractor/' },
+      // { label: 'Tailwind Colors', path: 'tailwind-color-palette-generator/' },
+      // { label: 'Bootstrap Colors', path: 'bootstrap-color-palette-generator/' },
+      // { label: 'SVG Editor', path: 'svg-color-editor/' },
+      { label: 'Social Preview Maker', path: 'social-meta-preview/' }
     ]
   }
 ];
