@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Gradient Color Palettes: Beautiful CSS Gradient Combinations</title>
+  <meta name="description" content="Discover stunning gradient color palettes for CSS backgrounds. Explore beautiful gradient color combinations for web design, social media, and branding. Free.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/gradient-color-palettes/"/>
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/gradient-color-palettes/">
+  <meta property="og:title" content="Gradient Color Palettes: Beautiful CSS Gradient Combinations">
+  <meta property="og:description" content="Discover stunning gradient color palettes for CSS backgrounds and web design.">
+  <meta property="og:image" content="https://devpalettes.com/images/og-gradient-palettes.png">
+
+  <!-- Structured Data: CollectionPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "url": "https://devpalettes.com/gradient-color-palettes/",
+    "logo": "https://devpalettes.com/images/devpalettes.png", 
+    "name": "Gradient Color Palettes",
+    "description": "A collection of beautiful gradient color palettes for CSS backgrounds.",
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Sunset Gradient Palette" },
+        { "@type": "ListItem", "position": 2, "name": "Ocean Blue Gradient Palette" }
+      ]
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are gradient color palettes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Gradient color palettes are curated sets of colors specifically chosen to blend smoothly into CSS gradients, creating seamless color transitions for backgrounds, buttons, and UI elements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I create a CSS gradient from a palette?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Take the hex codes from a gradient palette and use them in a CSS linear-gradient or radial-gradient function, for example: background: linear-gradient(135deg, #FF6B6B, #FFE66D);"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    .gradient-card .flex > div {
+      background-clip: padding-box;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-20 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      <div class="text-center mb-8 animate-on-scroll">
+        <h1 class="text-4xl font-bold mb-4">Gradient Color Palettes</h1>
+        <p class="text-xl text-slate-600 dark:text-slate-400 mb-4">Beautiful gradient colors for CSS backgrounds and UI design</p>
+        <div class="spectrum-line max-w-md mx-auto mb-6"></div>
+        <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-sm">
+           Explore curated <strong>gradient color palettes</strong> with colors that blend seamlessly into stunning <strong>CSS gradients</strong>. Perfect for website backgrounds, buttons, hero sections, and social media graphics. <strong>Free to use, no signup required.</strong>
+        </p>
+      </div>
+
+      <!-- Filter Tags -->
+      <div class="flex flex-wrap justify-center gap-2 mb-8 animate-on-scroll">
+        <a href="../pastel-color-palettes/" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Pastel</a>
+        <a href="../dark-color-palettes/" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Dark</a>
+        <a href="../neon-color-palettes/" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Neon</a>
+        <a href="../aesthetic-color-palettes/" class="px-4 py-2 rounded-full bg-slate-200 dark:bg-slate-700 text-sm font-medium hover:bg-emerald-500 hover:text-white transition-colors">Aesthetic</a>
+        <span class="px-4 py-2 rounded-full bg-emerald-500 text-white text-sm font-medium">Gradient</span>
+      </div>
+
+      <!-- Palettes Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <!-- Palette 1 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF512F;" onclick="Devpalettes.Clipboard.copy('#FF512F')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F09819;" onclick="Devpalettes.Clipboard.copy('#F09819')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFD200;" onclick="Devpalettes.Clipboard.copy('#FFD200')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF6B6B;" onclick="Devpalettes.Clipboard.copy('#FF6B6B')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFE66D;" onclick="Devpalettes.Clipboard.copy('#FFE66D')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Sunset Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Warm orange to golden glow</p>
+          </div>
+        </div>
+        <!-- Palette 2 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0F2027;" onclick="Devpalettes.Clipboard.copy('#0F2027')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #203A43;" onclick="Devpalettes.Clipboard.copy('#203A43')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #2C5364;" onclick="Devpalettes.Clipboard.copy('#2C5364')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #4DA8DA;" onclick="Devpalettes.Clipboard.copy('#4DA8DA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #79DAE8;" onclick="Devpalettes.Clipboard.copy('#79DAE8')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Ocean Blue Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Deep sea to shallow shore</p>
+          </div>
+        </div>
+        <!-- Palette 3 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #141E30;" onclick="Devpalettes.Clipboard.copy('#141E30')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #243B55;" onclick="Devpalettes.Clipboard.copy('#243B55')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #7B68EE;" onclick="Devpalettes.Clipboard.copy('#7B68EE')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B537F2;" onclick="Devpalettes.Clipboard.copy('#B537F2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E0AAFF;" onclick="Devpalettes.Clipboard.copy('#E0AAFF')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Purple Sky Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Midnight to twilight purple</p>
+          </div>
+        </div>
+        <!-- Palette 4 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #CB2D3E;" onclick="Devpalettes.Clipboard.copy('#CB2D3E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #EF473A;" onclick="Devpalettes.Clipboard.copy('#EF473A')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F7A541;" onclick="Devpalettes.Clipboard.copy('#F7A541')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F4D03F;" onclick="Devpalettes.Clipboard.copy('#F4D03F')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFE66D;" onclick="Devpalettes.Clipboard.copy('#FFE66D')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Fire Glow Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Blazing red to golden flame</p>
+          </div>
+        </div>
+        <!-- Palette 5 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #11998E;" onclick="Devpalettes.Clipboard.copy('#11998E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #38EF7D;" onclick="Devpalettes.Clipboard.copy('#38EF7D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A8E063;" onclick="Devpalettes.Clipboard.copy('#A8E063')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #56AB2F;" onclick="Devpalettes.Clipboard.copy('#56AB2F')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C6F0A8;" onclick="Devpalettes.Clipboard.copy('#C6F0A8')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Emerald Forest Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Lush green nature flow</p>
+          </div>
+        </div>
+        <!-- Palette 6 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E44D26;" onclick="Devpalettes.Clipboard.copy('#E44D26')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F16529;" onclick="Devpalettes.Clipboard.copy('#F16529')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F7971E;" onclick="Devpalettes.Clipboard.copy('#F7971E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFD200;" onclick="Devpalettes.Clipboard.copy('#FFD200')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFF176;" onclick="Devpalettes.Clipboard.copy('#FFF176')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Warm Amber Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Rich orange to warm yellow</p>
+          </div>
+        </div>
+        <!-- Palette 7 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0F0C29;" onclick="Devpalettes.Clipboard.copy('#0F0C29')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #302B63;" onclick="Devpalettes.Clipboard.copy('#302B63')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #24243E;" onclick="Devpalettes.Clipboard.copy('#24243E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #667EEA;" onclick="Devpalettes.Clipboard.copy('#667EEA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #764BA2;" onclick="Devpalettes.Clipboard.copy('#764BA2')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Cosmic Purple Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Deep space indigo blend</p>
+          </div>
+        </div>
+        <!-- Palette 8 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FC5C7D;" onclick="Devpalettes.Clipboard.copy('#FC5C7D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E8837C;" onclick="Devpalettes.Clipboard.copy('#E8837C')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F7A072;" onclick="Devpalettes.Clipboard.copy('#F7A072')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFCBA4;" onclick="Devpalettes.Clipboard.copy('#FFCBA4')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFE0B2;" onclick="Devpalettes.Clipboard.copy('#FFE0B2')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Peach Blush Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Soft pink to warm peach</p>
+          </div>
+        </div>
+        <!-- Palette 9 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #00B4DB;" onclick="Devpalettes.Clipboard.copy('#00B4DB')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0083B0;" onclick="Devpalettes.Clipboard.copy('#0083B0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #005C97;" onclick="Devpalettes.Clipboard.copy('#005C97')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #36D1DC;" onclick="Devpalettes.Clipboard.copy('#36D1DC')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #5B86E5;" onclick="Devpalettes.Clipboard.copy('#5B86E5')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Ice Blue Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Cool cyan to electric blue</p>
+          </div>
+        </div>
+        <!-- Palette 10 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #C33764;" onclick="Devpalettes.Clipboard.copy('#C33764')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #E84393;" onclick="Devpalettes.Clipboard.copy('#E84393')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FD79A8;" onclick="Devpalettes.Clipboard.copy('#FD79A8')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F8A5C2;" onclick="Devpalettes.Clipboard.copy('#F8A5C2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F78FB3;" onclick="Devpalettes.Clipboard.copy('#F78FB3')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Rose Pink Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Deep magenta to soft rose</p>
+          </div>
+        </div>
+        <!-- Palette 11 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1A2980;" onclick="Devpalettes.Clipboard.copy('#1A2980')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #26D0CE;" onclick="Devpalettes.Clipboard.copy('#26D0CE')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #48C6EF;" onclick="Devpalettes.Clipboard.copy('#48C6EF')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #6FB1FC;" onclick="Devpalettes.Clipboard.copy('#6FB1FC')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A8EDEA;" onclick="Devpalettes.Clipboard.copy('#A8EDEA')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Tropical Teal Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Ocean blue to aqua mint</p>
+          </div>
+        </div>
+        <!-- Palette 12 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #2C3E50;" onclick="Devpalettes.Clipboard.copy('#2C3E50')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #3498DB;" onclick="Devpalettes.Clipboard.copy('#3498DB')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #2980B9;" onclick="Devpalettes.Clipboard.copy('#2980B9')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #6DD5FA;" onclick="Devpalettes.Clipboard.copy('#6DD5FA')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #2980B9;" onclick="Devpalettes.Clipboard.copy('#2980B9')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Steel Blue Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Corporate blue to sky blue</p>
+          </div>
+        </div>
+        <!-- Palette 13 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F953C6;" onclick="Devpalettes.Clipboard.copy('#F953C6')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B91D73;" onclick="Devpalettes.Clipboard.copy('#B91D73')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #8E2DE2;" onclick="Devpalettes.Clipboard.copy('#8E2DE2')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #4A00E0;" onclick="Devpalettes.Clipboard.copy('#4A00E0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #7B2FF7;" onclick="Devpalettes.Clipboard.copy('#7B2FF7')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Neon Fusion Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Hot pink to electric violet</p>
+          </div>
+        </div>
+        <!-- Palette 14 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F7971E;" onclick="Devpalettes.Clipboard.copy('#F7971E')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFD200;" onclick="Devpalettes.Clipboard.copy('#FFD200')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFF176;" onclick="Devpalettes.Clipboard.copy('#FFF176')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFF9C4;" onclick="Devpalettes.Clipboard.copy('#FFF9C4')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FFFDE7;" onclick="Devpalettes.Clipboard.copy('#FFFDE7')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Golden Hour Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Sunshine yellow fade to cream</p>
+          </div>
+        </div>
+        <!-- Palette 15 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #0D0D0D;" onclick="Devpalettes.Clipboard.copy('#0D0D0D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1C1C1C;" onclick="Devpalettes.Clipboard.copy('#1C1C1C')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #434343;" onclick="Devpalettes.Clipboard.copy('#434343')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #6B6B6B;" onclick="Devpalettes.Clipboard.copy('#6B6B6B')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A0A0A0;" onclick="Devpalettes.Clipboard.copy('#A0A0A0')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Monochrome Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Black to silver gradient</p>
+          </div>
+        </div>
+        <!-- Palette 16 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #1D976C;" onclick="Devpalettes.Clipboard.copy('#1D976C')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #93F9B9;" onclick="Devpalettes.Clipboard.copy('#93F9B9')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #56ab2f;" onclick="Devpalettes.Clipboard.copy('#56ab2f')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #A8E063;" onclick="Devpalettes.Clipboard.copy('#A8E063')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D4FC79;" onclick="Devpalettes.Clipboard.copy('#D4FC79')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Spring Meadow Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Fresh green to lime zest</p>
+          </div>
+        </div>
+        <!-- Palette 17 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #654EA3;" onclick="Devpalettes.Clipboard.copy('#654EA3')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #EAAFC8;" onclick="Devpalettes.Clipboard.copy('#EAAFC8')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F6D5F7;" onclick="Devpalettes.Clipboard.copy('#F6D5F7')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #DCC6E0;" onclick="Devpalettes.Clipboard.copy('#DCC6E0')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #B8A9C9;" onclick="Devpalettes.Clipboard.copy('#B8A9C9')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Lavender Mist Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Purple haze to soft blush</p>
+          </div>
+        </div>
+        <!-- Palette 18 -->
+        <div class="glass-card gradient-card overflow-hidden animate-on-scroll shimmer-card">
+          <div class="flex">
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #D31027;" onclick="Devpalettes.Clipboard.copy('#D31027')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #EA384D;" onclick="Devpalettes.Clipboard.copy('#EA384D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #F46B45;" onclick="Devpalettes.Clipboard.copy('#F46B45')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FDBB2D;" onclick="Devpalettes.Clipboard.copy('#FDBB2D')"></div>
+            <div class="flex-1 h-32 cursor-pointer hover:flex-grow transition-all" style="background: #FF8C42;" onclick="Devpalettes.Clipboard.copy('#FF8C42')"></div>
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold mb-1">Lava Flow Gradient Palette</h3>
+            <p class="text-sm text-slate-500">Volcanic red to molten orange</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content -->
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">What Are Gradient Color Palettes?</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">
+          Gradient color palettes are curated collections of colors specifically selected to blend seamlessly into <strong>CSS gradients</strong>. Unlike standard palettes where each color stands independently, gradient palettes are designed as color flows — each shade transitions smoothly into the next, creating a continuous visual sweep. When applied as a <strong>background gradient</strong> using CSS linear-gradient or radial-gradient, these colors produce the rich, dimensional effects that define modern web design.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">
+          The key difference between a regular palette and a gradient palette is transition quality. A random set of five colors might create harsh bands when used in a gradient. A gradient palette, by contrast, is tested for smooth tonal transitions — adjacent colors share enough hue or luminance overlap to blend without visible stepping. This makes gradient palettes particularly valuable for hero sections, card backgrounds, buttons, and any UI element where a flat color feels too static.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400">
+          Gradient palettes also work beautifully in non-CSS contexts. Designers use them for illustration color ramps, print material fades, social media story backgrounds, and presentation slides. If you have a photo with a beautiful gradient sky or sunset, you can <a href="/color-from-image/" class="text-emerald-500 hover:underline">extract colors from image</a> files to capture the exact gradient stops present in nature — often more nuanced than anything you could pick manually.
+        </p>
+      </div>
+
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">Best Gradient Color Combinations</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">
+          The most effective <strong>gradient colors</strong> share a common characteristic: they follow a logical path through color space. Here are the combinations that consistently produce the best results:
+        </p>
+        <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
+          <li><strong>Analogous gradients (same hue family):</strong> Blue to cyan, red to orange, or purple to pink. These create the smoothest transitions because adjacent colors share the same base hue with only lightness or saturation changes. They feel calm and cohesive.</li>
+          <li><strong>Warm-to-cool gradients:</strong> Sunset palettes that move from orange through pink to purple. These create visual tension and energy, making them ideal for hero sections and CTAs that need to command attention.</li>
+          <li><strong>Dark-to-light gradients:</strong> Moving from a deep dark color to a bright or pastel version of the same hue. These add depth to backgrounds and work well for dashboard sidebars and card overlays.</li>
+          <li><strong>Monochrome gradients:</strong> Black through grays to white. The ultimate neutral gradient — sophisticated, professional, and impossible to get wrong. Perfect for minimal UIs and corporate designs.</li>
+          <li><strong>Triadic gradients:</strong> Three colors roughly 120 degrees apart on the color wheel, blended through intermediate steps. These create vibrant, dynamic backgrounds that feel playful and energetic.</li>
+          <li><strong>Dark base + accent pop gradients:</strong> A gradient that stays dark for most of its range then transitions to a vivid accent color in the final stop. This technique adds a subtle glow effect to dark-themed interfaces.</li>
+        </ul>
+        <p class="text-slate-600 dark:text-slate-400 mt-4">
+          To build your own gradient combinations interactively, use our free <a href="/gradient/" class="text-emerald-500 hover:underline">gradient generator tool</a> where you can pick colors, adjust angles, and preview results in real time before copying the CSS code.
+        </p>
+      </div>
+
+      <div class="glass-card p-8 mb-8 animate-on-scroll shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">How to Use Gradients in UI Design</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">
+          <strong>Background gradients</strong> are the most common application, but modern UI design offers many more opportunities to leverage gradient palettes effectively:
+        </p>
+        <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2">
+          <li><strong>Hero section backgrounds:</strong> A full-width gradient behind your headline and CTA creates instant visual impact. Use a dark-to-accent gradient angled at 135 degrees for depth, or a warm sunset gradient for an inviting feel.</li>
+          <li><strong>Button gradients:</strong> Replace flat button colors with a subtle gradient for a premium feel. Keep the gradient range small (e.g., two close shades) so the button still reads as a single color at a glance.</li>
+          <li><strong>Card overlays:</strong> A gradient overlay on top of a background image or pattern adds a layer of polish while maintaining text readability. Use a dark-to-transparent gradient from bottom to top.</li>
+          <li><strong>Loading states and progress bars:</strong> Animated gradient backgrounds on skeleton loaders or progress indicators make waiting feel less tedious. CSS animation can slowly shift the gradient position for a shimmering effect.</li>
+          <li><strong>Text gradients:</strong> Apply a gradient to text using background-clip: text for striking headings. Use this sparingly — one gradient headline per page is enough to make an impression without overwhelming.</li>
+          <li><strong>Border gradients:</strong> Using a gradient border (via border-image or a pseudo-element background trick) adds a subtle, modern frame to cards and containers that flat borders cannot achieve.</li>
+        </ul>
+        
+        <!-- Internal Links Section -->
+        <div class="mt-6 pt-6 border-t border-slate-200 dark:border-slate-700">
+           <h3 class="font-bold mb-3">Related Tools & Palettes</h3>
+           <p class="text-sm text-slate-500 mb-3">Ready to build your own gradients? These tools help:</p>
+           <div class="flex flex-wrap gap-2">
+              <a href="/gradient/" class="text-xs px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-emerald-100">CSS Gradient Generator</a>
+              <a href="/palettes/" class="text-xs px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-emerald-100">Build Custom Palettes</a>
+              <a href="/color-from-image/" class="text-xs px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-emerald-100">Extract Colors from Image</a>
+              <a href="/pastel-color-palettes/" class="text-xs px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-emerald-100">Pastel Palettes</a>
+              <a href="/neon-color-palettes/" class="text-xs px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-emerald-100">Neon Palettes</a>
+              <a href="/dark-color-palettes/" class="text-xs px-3 py-1 bg-slate-100 dark:bg-slate-800 rounded-full hover:bg-emerald-100">Dark Palettes</a>
+           </div>
+        </div>
+      </div>
+      
+      <div class="text-center animate-on-scroll">
+        <a href="../gradient/" class="btn-primary btn-glow inline-flex">
+          <i class="fas fa-swatchbook"></i>
+          Create Custom Gradient
+        </a>
+      </div>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

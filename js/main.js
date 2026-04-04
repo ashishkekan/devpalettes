@@ -444,7 +444,10 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'Pastel Color Palette', path: 'pastel-color-palettes/' },
       { label: 'Dark Color Palette', path: 'dark-color-palettes/' },
-      { label: 'Neon Color Palette', path: 'neon-color-palettes/' }
+      { label: 'Neon Color Palette', path: 'neon-color-palettes/' },
+      { label: 'Aesthetic Color Palette', path: 'aesthetic-color-palettes/' },
+      { label: 'Gradient Color Palette', path: 'gradient-color-palettes/' },
+      { label: 'Minimal Color Palette', path: 'minimal-color-palettes/' },
     ]
   },
   {
