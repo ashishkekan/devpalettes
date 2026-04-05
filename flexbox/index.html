@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn CSS Flexbox visually with an interactive playground. Adjust properties, preview layouts, and copy code instantly.">
+  <meta name="keywords" content="flexbox playground, css flexbox, flexbox generator, css layout tool, flexbox guide, flexbox interactive">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/flexbox-playground/">
+  
+  <title>Flexbox Playground – CSS Flexbox Generator Tool</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Flexbox Playground – CSS Flexbox Generator Tool">
+  <meta property="og:description" content="Learn CSS Flexbox visually with an interactive playground. Adjust properties, preview layouts, and copy code instantly.">
+  <meta property="og:url" content="https://devpalettes.com/flexbox-playground/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-flexbox-playground.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Flexbox Playground – CSS Flexbox Generator Tool">
+  <meta name="twitter:description" content="Learn CSS Flexbox visually with an interactive playground. Adjust properties, preview layouts, and copy code instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-flexbox-playground.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Flexbox Playground",
+    "description": "Learn CSS Flexbox visually with an interactive playground. Adjust properties, preview layouts, and copy code instantly.",
+    "url": "https://devpalettes.com/flexbox-playground/",
+    "applicationCategory": "DeveloperApplication",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Flexbox in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Flexbox, or the Flexible Box Layout Module, is a CSS layout model designed for distributing space and aligning items within a container. It allows elements to arrange themselves dynamically based on available space, making it ideal for one-dimensional layouts — either a single row or a single column."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does justify-content work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The justify-content property controls how flex items are distributed along the main axis of the flex container. Options include flex-start (items grouped at the start), flex-end (items grouped at the end), center (items centered), space-between (equal spacing between items with no space at edges), space-around (equal spacing around each item), and space-evenly (equal spacing everywhere including edges)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between align-items and align-content?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Align-items controls how individual flex items are positioned along the cross axis within their flex line, applying to all items in a single-line container. Align-content only takes effect when flex-wrap is set to wrap or wrap-reverse, and it controls how multiple flex lines are distributed along the cross axis as a group. For single-line containers, align-content has no visible effect."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When should I use Flexbox vs Grid?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use Flexbox for one-dimensional layouts where items need to flow in a single direction — rows or columns — such as navigation bars, button groups, card rows, and form layouts. Use CSS Grid for two-dimensional layouts where you need precise control over both rows and columns simultaneously, such as page-level layouts, image galleries, and complex dashboard grids. Flexbox and Grid can also be combined within the same project."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <style>
+    /* Checkerboard background for preview to visualize stretch */
+    .preview-bg-grid {
+       background-color: #ffffff;
+       background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+       background-size: 15px 15px;
+    }
+    .dark .preview-bg-grid {
+       background-color: #1e293b;
+       background-image: radial-gradient(#334155 1px, transparent 1px);
+    }
+    
+    .flex-item {
+       transition: all 0.3s ease;
+       min-width: 60px;
+       min-height: 60px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">Flexbox Playground</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Interactive tool to master CSS Flexbox. Adjust properties and see the layout change instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <aside class="lg:col-span-1 space-y-6 animate-on-scroll" aria-label="Flexbox container and item controls">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500" aria-hidden="true"></i>
+                Container Properties
+             </h2>
+             
+             <div class="space-y-4">
+                <!-- Flex Direction -->
+                <div>
+                   <label for="ctrl-direction" class="block text-xs font-semibold text-slate-500 mb-1">Flex Direction</label>
+                   <select id="ctrl-direction" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="row">row</option>
+                      <option value="row-reverse">row-reverse</option>
+                      <option value="column">column</option>
+                      <option value="column-reverse">column-reverse</option>
+                   </select>
+                </div>
+                
+                <!-- Justify Content -->
+                <div>
+                   <label for="ctrl-justify" class="block text-xs font-semibold text-slate-500 mb-1">Justify Content</label>
+                   <select id="ctrl-justify" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                      <option value="space-evenly">space-evenly</option>
+                   </select>
+                </div>
+                
+                <!-- Align Items -->
+                <div>
+                   <label for="ctrl-align-items" class="block text-xs font-semibold text-slate-500 mb-1">Align Items</label>
+                   <select id="ctrl-align-items" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="stretch">stretch</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="baseline">baseline</option>
+                   </select>
+                </div>
+                
+                <!-- Flex Wrap -->
+                <div>
+                   <label for="ctrl-wrap" class="block text-xs font-semibold text-slate-500 mb-1">Flex Wrap</label>
+                   <select id="ctrl-wrap" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="nowrap">nowrap</option>
+                      <option value="wrap">wrap</option>
+                      <option value="wrap-reverse">wrap-reverse</option>
+                   </select>
+                </div>
+                
+                <!-- Align Content (Only visible on wrap) -->
+                <div>
+                   <label for="ctrl-align-content" class="block text-xs font-semibold text-slate-500 mb-1">Align Content</label>
+                   <select id="ctrl-align-content" onchange="updateFlex()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                      <option value="stretch">stretch</option>
+                      <option value="flex-start">flex-start</option>
+                      <option value="flex-end">flex-end</option>
+                      <option value="center">center</option>
+                      <option value="space-between">space-between</option>
+                      <option value="space-around">space-around</option>
+                   </select>
+                </div>
+                
+                <!-- Gap -->
+                <div>
+                   <label for="ctrl-gap" class="block text-xs font-semibold text-slate-500 mb-1">Gap: <span id="gap-val">10</span>px</label>
+                   <input type="range" id="ctrl-gap" min="0" max="50" value="10" onchange="updateFlex()" class="w-full accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <!-- Item Controls -->
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-md flex items-center gap-2">
+                <i class="fas fa-shapes text-cyan-500" aria-hidden="true"></i>
+                Items Control
+             </h2>
+             <div class="flex gap-3">
+                <button onclick="addItem()" class="flex-1 btn-secondary text-sm justify-center py-2">
+                   <i class="fas fa-plus mr-1" aria-hidden="true"></i> Add
+                </button>
+                <button onclick="removeItem()" class="flex-1 btn-secondary text-sm justify-center py-2 bg-red-100 dark:bg-red-900/30 hover:bg-red-200 text-red-600">
+                   <i class="fas fa-minus mr-1" aria-hidden="true"></i> Remove
+                </button>
+             </div>
+             <p class="text-xs text-slate-400 mt-3 text-center">Total Items: <span id="item-count" class="font-bold text-slate-700 dark:text-white">0</span></p>
+          </div>
+          
+        </aside>
+        
+        <!-- Right: Preview & Code -->
+        <section class="lg:col-span-2 space-y-6 animate-on-scroll" aria-label="Flexbox preview and generated CSS code">
+          
+          <!-- Preview Area -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex justify-between items-center">
+                <h2 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview Area</h2>
+                <span class="text-xs text-slate-400">Resize window to test responsiveness</span>
+             </div>
+             
+             <!-- The Flex Container -->
+             <div class="preview-bg-grid p-4 min-h-[400px]">
+                <div id="flex-container" class="w-full h-full border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-xl transition-all duration-300 relative overflow-hidden" role="img" aria-label="Flexbox layout preview">
+                   <!-- Items injected by JS -->
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h2 class="font-bold text-lg">Generated CSS</h2>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy generated CSS code">
+                   <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
+                </button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-48">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300" aria-live="polite"></pre>
+             </div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <!-- SEO Content Section -->
+      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to CSS Flexbox layout">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2 class="text-2xl font-bold mb-4">What Is CSS Flexbox?</h2>
+          <p>CSS Flexbox, formally known as the <strong>Flexible Box Layout Module</strong>, is a one-dimensional layout system designed for distributing space and aligning items within a container. Unlike traditional layout methods like floats or inline-block, Flexbox operates along a single axis — either horizontally or vertically — and automatically calculates how available space should be shared among child elements. This makes it exceptionally well-suited for responsive designs where container sizes change dynamically based on viewport width or user interaction.</p>
+          <p>Flexbox simplifies tasks that were historically difficult in CSS: vertically centering an element, distributing equal space between items, reordering elements without changing HTML structure, and making layouts that adapt gracefully to different screen sizes. Since its widespread browser support, Flexbox has become the standard approach for component-level layouts — navigation bars, form rows, card groups, and footer layouts.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Why Flexbox Is Important</h2>
+          <p>Before Flexbox, developers relied on floats, table layouts, and absolute positioning to achieve anything beyond simple block-and-inline flow. These methods required hacks, clearfix solutions, and fragile media queries. Flexbox eliminates these workarounds by providing a purpose-built layout model. A single <strong>display: flex</strong> declaration on a container unlocks a complete set of alignment and distribution properties that work predictably across browsers.</p>
+          <p>Flexbox also introduces the concept of a <strong>main axis</strong> and a <strong>cross axis</strong>. The main axis is determined by the flex-direction property — it runs horizontally for row layouts and vertically for column layouts. The cross axis runs perpendicular to it. Understanding this two-axis model is the key to mastering Flexbox, because every alignment property is defined in terms of one axis or the other.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Understanding Flexbox Container Properties</h2>
+          
+          <h3 class="text-2xl font-bold mb-4">flex-direction</h3>
+          <p>The <strong>flex-direction</strong> property sets the main axis of the flex container. The default value is <strong>row</strong>, which arranges items horizontally from left to right. <strong>row-reverse</strong> flips the order so items flow right to left. <strong>column</strong> switches the main axis to vertical, stacking items top to bottom, while <strong>column-reverse</strong> stacks them bottom to top. The direction property also determines the behavior of justify-content (which always operates on the main axis) and align-items (which always operates on the cross axis).</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">justify-content</h3>
+          <p>The <strong>justify-content</strong> property controls how items are distributed along the main axis. <strong>flex-start</strong> groups all items at the beginning of the axis. <strong>flex-end</strong> pushes them to the end. <strong>center</strong> places them in the middle. <strong>space-between</strong> distributes equal spacing between adjacent items while leaving no space at the edges — ideal for navigation bars where the first and last items should touch the container walls. <strong>space-around</strong> applies equal spacing around each item, which means the edges get half the spacing of between items. <strong>space-evenly</strong> applies identical spacing everywhere, including between items and at the edges.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">align-items</h3>
+          <p>The <strong>align-items</strong> property positions items along the cross axis. <strong>stretch</strong> (the default) forces items to expand and fill the full cross-axis dimension of the container, which is why flex items without an explicit height will stretch to match the tallest sibling in a row layout. <strong>flex-start</strong> aligns items to the top of the container, <strong>flex-end</strong> to the bottom, and <strong>center</strong> to the middle. <strong>baseline</strong> aligns items based on their text baseline, which is useful when items have different font sizes but should appear to sit on the same line.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">flex-wrap</h3>
+          <p>By default, flex items try to fit on a single line. The <strong>flex-wrap</strong> property changes this behavior. <strong>nowrap</strong> keeps all items on one line, potentially shrinking them if the container is too narrow. <strong>wrap</strong> allows items to flow onto new lines when they exceed the container width. <strong>wrap-reverse</strong> does the same but wraps in the opposite direction. Wrapping is essential for responsive card grids and tag clouds where the number of items is unpredictable.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">align-content</h3>
+          <p>The <strong>align-content</strong> property controls how multiple wrapped lines are distributed along the cross axis. It has no effect when flex-wrap is set to nowrap because there is only one line. When wrapping is active, align-content works similarly to justify-content but on the cross axis: <strong>stretch</strong> expands lines to fill the container, <strong>flex-start</strong> groups lines at the top, <strong>center</strong> centers them vertically, and <strong>space-between</strong> and <strong>space-around</strong> distribute spacing between lines.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">gap</h3>
+          <p>The <strong>gap</strong> property sets spacing between flex items without adding margins to the items themselves. It accepts one or two values: a single value applies equal spacing in both directions, while two values set row-gap and column-gap independently. Gap is cleaner than margin-based spacing because it does not create extra space at the container edges, and it collapses naturally at line breaks in wrapped layouts. It is supported in all modern browsers for both Flexbox and Grid.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Real-World Use Cases for Flexbox</h2>
+          <p>Flexbox excels in component-level layouts. <strong>Navigation bars</strong> use Flexbox to space logo, links, and action buttons across a row with align-items to vertically center everything. <strong>Form rows</strong> pair labels and inputs side by side, using justify-content to distribute spacing. <strong>Card grids</strong> with flex-wrap create responsive layouts that reflow based on available width. <strong>Footer layouts</strong> use Flexbox to push copyright text to one side and social links to the other with a single space-between declaration. <strong>Centering content</strong> — both horizontally and vertically — is trivially easy with Flexbox, requiring only display: flex, justify-content: center, and align-items: center on the parent.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Common Mistakes Beginners Make</h2>
+          <p>One frequent mistake is confusing the main axis and cross axis. When flex-direction is set to column, justify-content controls vertical spacing and align-items controls horizontal alignment — the opposite of the default row direction. Another common error is using align-content on a single-line container and wondering why nothing changes; align-content only works with wrapping enabled. Beginners also sometimes add margins to flex items when gap would be more appropriate, leading to inconsistent edge spacing. Finally, forgetting to set display: flex on the container — or accidentally setting it on the items instead — is a simple but frustrating oversight that prevents all flex properties from taking effect.</p>
+          <p>When building flex-based layouts with color-coded items for testing or documentation, <a href="/palettes/">generate color palettes</a> to ensure consistent, distinguishable colors for each item. If you need to translate colors from design tools into CSS, <a href="/converter/">convert HEX to RGB</a> for precise control over opacity values. To develop a broader color sense for your layout projects, <a href="/blog/color-palettes-guide/">learn color combinations</a> that create visual harmony across UI components.</p><br>
+          
+        </article>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about CSS Flexbox">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is Flexbox in CSS?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Flexbox, or the Flexible Box Layout Module, is a CSS layout model designed for distributing space and aligning items within a container. It allows elements to arrange themselves dynamically based on available space, making it ideal for one-dimensional layouts — either a single row or a single column.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How does justify-content work?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The justify-content property controls how flex items are distributed along the main axis of the flex container. Options include flex-start (items grouped at the start), flex-end (items grouped at the end), center (items centered), space-between (equal spacing between items with no space at edges), space-around (equal spacing around each item), and space-evenly (equal spacing everywhere including edges).</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is the difference between align-items and align-content?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Align-items controls how individual flex items are positioned along the cross axis within their flex line, applying to all items in a single-line container. Align-content only takes effect when flex-wrap is set to wrap or wrap-reverse, and it controls how multiple flex lines are distributed along the cross axis as a group. For single-line containers, align-content has no visible effect.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">When should I use Flexbox vs Grid?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Use Flexbox for one-dimensional layouts where items need to flow in a single direction — rows or columns — such as navigation bars, button groups, card rows, and form layouts. Use CSS Grid for two-dimensional layouts where you need precise control over both rows and columns simultaneously, such as page-level layouts, image galleries, and complex dashboard grids. Flexbox and Grid can also be combined within the same project.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Related Tools Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Related design tools">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            
+            <a href="/css-grid-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-table-cells text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Grid Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Build CSS Grid layouts with interactive row and column controls.</p>
+            </a>
+            
+            <a href="/button-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-hand-pointer text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Button Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create gradient, glass, neon, and 3D CSS buttons with live preview.</p>
+            </a>
+            
+            <a href="/card-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-square text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Card Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Design glass, gradient, and neumorphism UI cards with custom content.</p>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/flexbox-playground.js"></script>
+</body>
+</html>

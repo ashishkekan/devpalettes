@@ -268,43 +268,103 @@ const Navbar = {
     this.navbar = document.querySelector('.navbar');
     this.hamburger = document.querySelector('.hamburger');
     this.mobileMenu = document.querySelector('.mobile-menu');
-    
+
     // Scroll effect
     window.addEventListener('scroll', () => this.handleScroll());
-    
+
+    // Desktop dropdowns
+    this.initDropdowns();
+
     // Mobile menu toggle
     if (this.hamburger && this.mobileMenu) {
       this.hamburger.addEventListener('click', () => this.toggleMobile());
-      
+
       // Close on link click
       this.mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => this.closeMobile());
       });
+
+      // Mobile dropdown toggles
+      this.mobileMenu.querySelectorAll('[data-mobile-dropdown-button]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const key = btn.getAttribute('data-mobile-dropdown-button');
+          const menu = this.mobileMenu.querySelector(`[data-mobile-dropdown-menu="${key}"]`);
+          if (!menu) return;
+          const isOpen = !menu.classList.contains('hidden');
+          menu.classList.toggle('hidden', isOpen);
+          btn.setAttribute('aria-expanded', String(!isOpen));
+        });
+      });
     }
   },
-  
+
+  initDropdowns() {
+    const dropdowns = Array.from(document.querySelectorAll('[data-dropdown]'));
+    if (!dropdowns.length) return;
+
+    const closeAll = (except = null) => {
+      dropdowns.forEach(dropdown => {
+        if (except && dropdown === except) return;
+        const menu = dropdown.querySelector('[data-dropdown-menu]');
+        const button = dropdown.querySelector('[data-dropdown-button]');
+        if (menu) menu.classList.add('hidden');
+        if (button) button.setAttribute('aria-expanded', 'false');
+      });
+    };
+
+    document.addEventListener('click', (e) => {
+      const button = e.target.closest('[data-dropdown-button]');
+      if (button) {
+        const dropdown = button.closest('[data-dropdown]');
+        const menu = dropdown?.querySelector('[data-dropdown-menu]');
+        if (!dropdown || !menu) return;
+
+        const isOpen = !menu.classList.contains('hidden');
+        closeAll(dropdown);
+        menu.classList.toggle('hidden', isOpen);
+        button.setAttribute('aria-expanded', String(!isOpen));
+        e.preventDefault();
+        return;
+      }
+
+      if (!e.target.closest('[data-dropdown]')) {
+        closeAll();
+      }
+    }, true);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeAll();
+    });
+
+    dropdowns.forEach(dropdown => {
+      dropdown.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => closeAll());
+      });
+    });
+  },
+
   handleScroll() {
     if (this.navbar) {
       this.navbar.classList.toggle('scrolled', window.scrollY > 20);
     }
   },
-  
+
   toggleMobile() {
     const isOpen = !this.mobileMenu.classList.contains('translate-x-0');
-    
+
     if (isOpen) {
-        this.mobileMenu.classList.remove('translate-x-full');
-        this.mobileMenu.classList.add('translate-x-0');
-        document.body.style.overflow = 'hidden';
+      this.mobileMenu.classList.remove('translate-x-full');
+      this.mobileMenu.classList.add('translate-x-0');
+      document.body.style.overflow = 'hidden';
     } else {
-        this.mobileMenu.classList.remove('translate-x-0');
-        this.mobileMenu.classList.add('translate-x-full');
-        document.body.style.overflow = '';
+      this.mobileMenu.classList.remove('translate-x-0');
+      this.mobileMenu.classList.add('translate-x-full');
+      document.body.style.overflow = '';
     }
-    
+
     this.hamburger.classList.toggle('active');
   },
-  
+
   closeMobile() {
     if (this.hamburger && this.mobileMenu) {
       this.mobileMenu.classList.remove('translate-x-0');
@@ -314,6 +374,114 @@ const Navbar = {
     }
   }
 };
+
+const NAV_CATEGORIES = [
+  {
+    label: 'Color Lab',
+    tools: [
+      { label: 'Color from image', path: 'color-from-image/' },
+      { label: 'AI Palette generator', path: 'palettes/' },
+      { label: 'Gradient Maker', path: 'gradient/' },
+      { label: 'Color Converter', path: 'converter/' },
+      // { label: 'Color Wheel', path: 'color-wheel/' },
+      { label: 'Color Names Chart', path: 'color-names-chart/' },
+      { label: 'Color Blindness', path: 'color-blindness/' }
+    ]
+  },
+  {
+    label: 'UI Forge',
+    tools: [
+      { label: 'Box Shadow Generator', path: 'box-shadow-generator/' },
+      { label: 'Border Radius Generator', path: 'border-radius-generator/' },
+      { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
+      // { label: 'Glass UI', path: 'glassmorphism-generator/' },
+      // { label: 'Neumorphism', path: 'neumorphism-generator/' },
+      // { label: 'Button Maker', path: 'button-generator/' },
+      // { label: 'Card UI', path: 'card-generator/' },
+      // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
+    ]
+  },
+  {
+    label: 'Dev Utilities',
+    tools: [
+      // { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
+      // { label: 'Slug Generator', path: 'slug-generator/' },
+      // { label: 'REM ↔ PX', path: 'rem-px-converter/' },
+      // { label: 'Text Diff', path: 'text-diff-checker/' },
+      // { label: 'Snippets', path: 'code-snippet-saver/' },
+      // { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
+      { label: 'Meta Tags Generator', path: 'meta-tag-generator/' },
+      // { label: 'Keyword Checker', path: 'keyword-density-checker/' },
+      // { label: 'Text Formatter', path: 'text-formatter/' },
+      // { label: 'SEO Analyzer', path: 'seo-analyzer/' },
+      // { label: 'Open Graph', path: 'open-graph-generator/' },
+      { label: 'JSON Formatter', path: 'json-formatter/' },
+    ]
+  },
+  {
+    label: 'Accessibility',
+    tools: [
+      { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
+      { label: 'Color Accessibility Test', path: 'color-accessibility/' },
+      // { label: 'Opacity Checker', path: 'color-opacity/' },
+      // { label: 'Color Diff', path: 'color-diff-checker/' },
+      // { label: 'Color Preview', path: 'color-preview/' }
+    ]
+  },
+  {
+    label: 'Layout',
+    tools: [
+      { label: 'Flexbox', path: 'flexbox/' },
+      { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
+      // { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
+      // { label: '3D Transform', path: 'transform-3d/' },
+      { label: 'Clip Path Generator', path: 'clip-path-generator/' },
+      // { label: 'CSS Filters', path: 'css-filter-generator/' }
+    ]
+  },
+  {
+    label: 'Palettes',
+    tools: [
+      { label: 'Pastel Color Palette', path: 'pastel-color-palettes/' },
+      { label: 'Dark Color Palette', path: 'dark-color-palettes/' },
+      { label: 'Neon Color Palette', path: 'neon-color-palettes/' },
+      { label: 'Aesthetic Color Palette', path: 'aesthetic-color-palettes/' },
+      { label: 'Gradient Color Palette', path: 'gradient-color-palettes/' },
+      { label: 'Minimal Color Palette', path: 'minimal-color-palettes/' },
+    ]
+  },
+  {
+    label: 'Pro Tools',
+    tools: [
+      { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
+      { label: 'Extract Brand Colors', path: 'brand-color-extractor/' },
+      // { label: 'Tailwind Colors', path: 'tailwind-color-palette-generator/' },
+      // { label: 'Bootstrap Colors', path: 'bootstrap-color-palette-generator/' },
+      // { label: 'SVG Editor', path: 'svg-color-editor/' },
+      { label: 'Social Preview Maker', path: 'social-meta-preview/' }
+    ]
+  }
+];
+
+function getRootRelativePrefix() {
+  const pathname = window.location.pathname || '/';
+  const withoutLeadingSlash = pathname.startsWith('/') ? pathname.slice(1) : pathname;
+  if (!withoutLeadingSlash) return '';
+
+  const segments = withoutLeadingSlash.split('/').filter(Boolean);
+  if (!segments.length) return '';
+
+  const last = segments[segments.length - 1];
+  const isFile = last.includes('.');
+  const depth = isFile ? Math.max(0, segments.length - 1) : segments.length;
+  return depth ? '../'.repeat(depth) : '';
+}
+
+function navHref(path = '') {
+  const prefix = getRootRelativePrefix();
+  if (!path) return prefix || './';
+  return prefix + String(path).replace(/^\/+/, '');
+}
 
 
 const KeyboardShortcuts = {
@@ -440,20 +608,72 @@ const ScrollButtons = {
 };
 
 function renderNavbar() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  
+  const desktopDropdownsHTML = NAV_CATEGORIES.map((category, idx) => {
+    const toolLinks = category.tools.map(tool => `
+      <a href="${navHref(tool.path)}"
+        class="block px-3 py-2 rounded-lg text-sm hover:bg-slate-200 dark:hover:bg-slate-700/50 transition-colors"
+        role="menuitem">${tool.label}</a>
+    `).join('');
+
+    return `
+      <div class="relative group" data-dropdown>
+        <button type="button"
+          class="text-sm font-medium hover:text-emerald-500 transition-colors flex items-center gap-1"
+          data-dropdown-button
+          aria-haspopup="true"
+          aria-expanded="false">
+          ${category.label}
+          <i class="fas fa-chevron-down text-[10px] opacity-70"></i>
+        </button>
+        <div class="hidden absolute left-0 mt-2 min-w-[15rem] max-w-[19rem] max-h-80 overflow-auto
+          group-hover:block
+          bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800
+          shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)]
+          rounded-xl p-2 z-50"
+          data-dropdown-menu
+          role="menu">
+          ${toolLinks}
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  const mobileCategoriesHTML = NAV_CATEGORIES.map((category, idx) => {
+    const toolLinks = category.tools.map(tool => `
+      <a href="${navHref(tool.path)}"
+        class="text-base font-medium hover:text-emerald-500 transition-colors py-1 pl-3">
+        ${tool.label}
+      </a>
+    `).join('');
+
+    return `
+      <div class="py-2 border-b border-slate-100 dark:border-slate-800">
+        <button type="button"
+          class="w-full text-lg font-medium hover:text-emerald-500 transition-colors py-2 flex items-center justify-between"
+          data-mobile-dropdown-button="${idx}"
+          aria-expanded="false">
+          <span>${category.label}</span>
+          <i class="fas fa-chevron-down text-xs opacity-70"></i>
+        </button>
+        <div class="hidden flex flex-col gap-2 pb-2" data-mobile-dropdown-menu="${idx}">
+          ${toolLinks}
+        </div>
+      </div>
+    `;
+  }).join('');
+
   const navHTML = `
-    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)] sticky top-0 z-50">
+    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-14 sm:h-12">
           <!-- Logo -->
-          <a href="/" class="flex items-center gap-2 group">
+          <a href="${navHref('')}" class="flex items-center gap-2 group">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
               <div class="w-8 h-8 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="/images/devpalettes_zoom_180.png" 
+                <img src="${navHref('images/devpalettes_zoom_180.png')}" 
                   alt="Devpalettes Logo"
                   class="w-6 h-6 sm:w-6 sm:h-6 object-contain mx-auto" />
               </div>
@@ -465,13 +685,7 @@ function renderNavbar() {
           
           <!-- Desktop Nav -->
           <div class="nav-links hidden md:flex items-center gap-6 lg:gap-8">
-            <a href="/palettes/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/palettes/' ? 'text-emerald-500' : ''}">Generate</a>
-            <a href="/pastel-color-palettes/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/pastel-color-palettes/' ? 'text-emerald-500' : ''}">Explore</a>
-            <a href="/gradient/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/gradient/' ? 'text-emerald-500' : ''}">Gradient</a>
-            <a href="/converter/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/converter/' ? 'text-emerald-500' : ''}">Convert</a>
-            <a href="/color-names-chart/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-names-chart/' ? 'text-emerald-500' : ''}">Colors</a>
-            <a href="/color-blindness/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-blindness/' ? 'text-emerald-500' : ''}">Vision</a>
-            <a href="/color-from-image/" class="text-sm font-medium hover:text-emerald-500 transition-colors ${currentPage === '/color-from-image/' ? 'text-emerald-500' : ''}">Image</a>
+            ${desktopDropdownsHTML}
            </div>
           
           <!-- Right side -->
@@ -482,11 +696,11 @@ function renderNavbar() {
               <i class="fas fa-moon text-lg sm:text-xl dark:hidden"></i>
               <i class="fas fa-sun text-lg sm:text-xl hidden dark:block"></i>
             </button>
-            <a href="/palettes/" class="hidden sm:flex btn-primary text-sm">
+            <a href="${navHref('palettes/')}" class="hidden sm:flex btn-primary text-sm">
               <i class="fas fa-palette"></i>
               Create Free
             </a>
-            <div class="hamburger md:hidden h-6 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+            <div class="hamburger md:hidden h-5 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white transition-all"></span>
@@ -499,19 +713,13 @@ function renderNavbar() {
     <!-- Mobile Menu -->
     <div class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
       <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
-        <a href="/palettes/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Generate</a>
-        <a href="/pastel-color-palettes/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Explore</a>
-        <a href="/gradient/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Gradient</a>
-        <a href="/converter/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Convert</a>
-        <a href="/color-names-chart/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Colors</a>
-        <a href="/color-blindness/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Vision</a>
-        <a href="/color-from-image/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2 border-b border-slate-100 dark:border-slate-800">Image</a>
+        ${mobileCategoriesHTML}
         <hr class="border-slate-200 dark:border-slate-700 my-4">
-        <a href="/about/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
-        <a href="/contact/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
-        <a href="/blog/" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
+        <a href="${navHref('about/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About Us</a>
+        <a href="${navHref('contact/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact Us</a>
+        <a href="${navHref('blog/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
         <div class="mt-auto pb-8">
-          <a href="/palettes/" class="btn-primary text-center mt-4 w-full justify-center">
+          <a href="${navHref('palettes/')}" class="btn-primary text-center mt-4 w-full justify-center">
             <i class="fas fa-palette"></i>
             Create Free Palette
           </a>
@@ -547,7 +755,7 @@ function renderFooter() {
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/about/" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact</a></li>
+              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact Us</a></li>
               <li><a href="/blog/" class="hover:text-emerald-500 transition-colors">Blog</a></li>
               <li><a href="/sitemap/" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
@@ -570,6 +778,7 @@ function renderFooter() {
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/faq/" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
               <li><a href="/help-center/" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
+              <li><a href="/why-trust-us/" class="hover:text-emerald-500 transition-colors">Why Trust Us</a></li>
             </ul>
           </div>
           

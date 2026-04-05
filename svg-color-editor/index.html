@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edit SVG colors online. Upload SVG, change colors, and export updated file instantly.">
+  <meta name="keywords" content="svg color editor, edit svg online, svg color changer, svg editor tool">
+  <meta name="author" content="Devpalettes">
+  
+  <title>SVG Color Editor | Devpalettes</title>
+  
+  <link rel="canonical" href="https://devpalettes.com/svg-color-editor">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SVG Color Editor – Edit SVG Colors Online Easily">
+  <meta property="og:description" content="Edit SVG colors online. Upload SVG, change colors, and export updated file instantly.">
+  <meta property="og:url" content="https://devpalettes.com/svg-color-editor">
+  <meta property="og:image" content="https://devpalettes.com/og-svg-editor.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SVG Color Editor – Edit SVG Colors Online Easily">
+  <meta name="twitter:description" content="Edit SVG colors online. Upload SVG, change colors, and export updated file instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/og-svg-editor.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { 
+        extend: { 
+          fontFamily: { 
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          } 
+        } 
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "SVG Color Editor",
+    "description": "Edit SVG colors online. Upload SVG, change colors, and export updated file instantly.",
+    "url": "https://devpalettes.com/svg-color-editor",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How to edit SVG colors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Upload your SVG file or paste SVG code into the editor. The tool automatically detects all colors used in your SVG. Click on any color to modify it, and the preview updates instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I change SVG fill color?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can change both fill and stroke colors in SVG files. The editor detects all color properties including fill, stroke, stop-color, and even inline style declarations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is inline SVG?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Inline SVG refers to SVG code embedded directly within HTML documents rather than referenced as an external file. This allows for direct manipulation with CSS and JavaScript."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to export SVG?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After editing your SVG colors, click the Download button to save the SVG file to your device. You can also use the Copy button to copy the SVG code to your clipboard."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <style>
+    .upload-zone {
+      border: 2px dashed rgba(148, 163, 184, 0.4);
+      transition: all 0.3s ease;
+    }
+    .upload-zone:hover, .upload-zone.drag-over {
+      border-color: #3b82f6;
+      background: rgba(59, 130, 246, 0.1);
+    }
+    .upload-zone.drag-over {
+      transform: scale(1.02);
+    }
+    
+    .preview-area {
+      background: repeating-conic-gradient(
+        theme('colors.slate.200') 0% 25%, 
+        theme('colors.slate.100') 0% 50%
+      ) 50% / 16px 16px;
+    }
+    .dark .preview-area {
+      background: repeating-conic-gradient(
+        theme('colors.slate.700') 0% 25%, 
+        theme('colors.slate.800') 0% 50%
+      ) 50% / 16px 16px;
+    }
+    
+    .preview-area svg {
+      max-width: 100%;
+      max-height: 300px;
+    }
+    
+    .color-swatch {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      border: 2px solid rgba(148, 163, 184, 0.3);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .color-swatch:hover {
+      transform: scale(1.08);
+      border-color: #3b82f6;
+    }
+    .color-swatch input[type="color"] {
+      position: absolute;
+      inset: -10px;
+      width: 150%;
+      height: 150%;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    
+    .code-input {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .spectrum-line {
+      height: 3px;
+      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #3b82f6, #8b5cf6, #ec4899);
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">SVG Color Editor</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">
+          Upload your SVG, detect all colors, and edit them in real-time.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <!-- Main Editor Grid -->
+      <div class="grid lg:grid-cols-2 gap-6 mb-8">
+        
+        <!-- Input Section -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-upload text-blue-500"></i>
+            Input SVG
+          </h2>
+          
+          <!-- Upload Zone -->
+          <div id="upload-zone" class="upload-zone rounded-xl p-8 text-center cursor-pointer mb-4" role="button" tabindex="0" aria-label="Upload SVG file">
+            <i class="fas fa-cloud-arrow-up text-4xl text-slate-400 mb-3"></i>
+            <p class="text-slate-700 dark:text-slate-300 font-medium mb-1">Drop SVG file here</p>
+            <p class="text-slate-500 text-sm">or click to browse</p>
+            <input type="file" id="file-input" accept=".svg" class="hidden" aria-hidden="true">
+          </div>
+          
+          <div class="flex items-center gap-4 mb-4">
+            <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+            <span class="text-slate-500 text-sm">or paste code</span>
+            <div class="flex-1 h-px bg-slate-200 dark:bg-slate-700"></div>
+          </div>
+          
+          <textarea 
+            id="svg-input" 
+            class="w-full code-input bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl p-4 text-slate-700 dark:text-slate-300 focus:outline-none focus:border-blue-500 mb-4"
+            placeholder="Paste your SVG code here..."
+            aria-label="SVG code input"
+          ></textarea>
+          
+          <button id="load-btn" class="btn-primary btn-glow w-full text-lg py-3">
+            <i class="fas fa-wand-magic-sparkles mr-2"></i>Load SVG
+          </button>
+        </div>
+        
+        <!-- Preview Section -->
+        <div class="glass-card p-6 shimmer-card animate-on-scroll">
+          <h2 class="text-lg font-bold mb-4 flex items-center gap-2">
+            <i class="fas fa-eye text-blue-500"></i>
+            Preview
+          </h2>
+          
+          <div id="preview-container" class="preview-area rounded-xl min-h-[300px] flex items-center justify-center mb-4 border border-slate-200 dark:border-slate-700">
+            <p class="text-slate-400">Load an SVG to preview</p>
+          </div>
+          
+          <div class="flex gap-3">
+            <button id="copy-btn" class="btn-secondary flex-1 justify-center py-3" disabled>
+              <i class="fas fa-copy mr-2"></i>Copy Code
+            </button>
+            <button id="download-btn" class="btn-primary btn-glow flex-1 justify-center py-3" disabled>
+              <i class="fas fa-download mr-2"></i>Download
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Colors Panel -->
+      <div id="colors-panel" class="glass-card p-6 shimmer-card mb-8 hidden animate-on-scroll">
+        <div class="flex justify-between items-center mb-4">
+          <h2 class="text-lg font-bold flex items-center gap-2">
+            <i class="fas fa-palette text-blue-500"></i>
+            Detected Colors
+            <span id="color-count" class="text-sm font-normal text-slate-500"></span>
+          </h2>
+        </div>
+        
+        <div id="colors-list" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-6">
+          <!-- Colors inserted by JS -->
+        </div>
+        
+        <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
+          <h3 class="font-medium mb-3">Quick Actions</h3>
+          <div class="flex flex-wrap gap-3">
+            <button id="invert-btn" class="btn-secondary text-sm">
+              <i class="fas fa-circle-half-stroke mr-1"></i>Invert All
+            </button>
+            <button id="grayscale-btn" class="btn-secondary text-sm">
+              <i class="fas fa-sliders mr-1"></i>Grayscale
+            </button>
+            <button id="reset-btn" class="btn-secondary text-sm">
+              <i class="fas fa-rotate-left mr-1"></i>Reset
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Content Section -->
+      <div class="max-w-7xl mx-auto space-y-12 animate-on-scroll">
+        
+        <div class="glass-card p-8">
+          <h2 class="text-2xl font-bold mb-4 relative inline-block">
+            What is SVG?
+            <span class="absolute bottom-0 left-0 w-12 h-1 bg-blue-500 rounded"></span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            SVG, which stands for Scalable Vector Graphics, is an XML-based markup language designed for describing two-dimensional vector graphics. Unlike raster image formats such as JPEG or PNG, SVG files are composed of mathematical descriptions of shapes, paths, and text rather than a fixed grid of pixels. This fundamental difference gives SVG its most powerful characteristic: infinite scalability without any loss of quality.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Developed by the World Wide Web Consortium (W3C) since 1999, SVG has become an essential part of modern web development. The format supports a rich set of features including paths, shapes, text, gradients, patterns, transformations, and even animations. Because SVG files are text-based XML documents, they can be created and edited with any text editor, processed by scripting languages, and optimized using standard compression techniques like GZIP.
+          </p>
+        </div>
+        
+        <div class="glass-card p-8">
+          <h2 class="text-2xl font-bold mb-4 relative inline-block">
+            How SVG Colors Work
+            <span class="absolute bottom-0 left-0 w-12 h-1 bg-blue-500 rounded"></span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Colors in SVG can be specified through several different mechanisms, each with its own use cases and behaviors. Understanding these mechanisms is crucial for effectively editing SVG colors. The most common way to apply color is through the fill and stroke presentation attributes, which define the interior color and outline color of shapes respectively.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            SVG supports multiple color formats for specifying these values. Named colors like "red" or "blue" provide an intuitive way to apply common colors. Hexadecimal notation, such as #FF5733 or the shorter #F53 form, offers a compact representation widely used in web development. RGB and RGBA functions allow specifying colors by their red, green, and blue components, with RGBA adding an alpha channel for transparency.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Beyond direct color values, SVG supports the keyword "currentColor", which references the computed value of the color CSS property from the element or its ancestors. This powerful feature enables cascading color schemes where changing a single color property affects multiple elements throughout an SVG.
+          </p>
+        </div>
+        
+        <div class="glass-card p-8">
+          <h2 class="text-2xl font-bold mb-4 relative inline-block">
+            Why Edit SVG Colors
+            <span class="absolute bottom-0 left-0 w-12 h-1 bg-blue-500 rounded"></span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Color editing is one of the most common tasks performed on SVG files, and for good reason. In design workflows, SVG icons and illustrations often need to be adapted to match different brand guidelines, user interface themes, or accessibility requirements. Being able to quickly modify colors without redrawing the entire graphic saves significant time and maintains consistency.
+          </p>
+          <ul class="space-y-2 mb-4">
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span>Adapting icons to match brand color guidelines and style guides</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span>Creating dark mode variants of illustrations and interface elements</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span>Ensuring sufficient contrast ratios for accessibility compliance</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span>Generating multiple color variants from a single source file</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-check text-green-500 mt-1"></i>
+              <span>Updating legacy graphics to modern color schemes</span>
+            </li>
+          </ul>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            For accessibility, color editing becomes essential when ensuring adequate contrast ratios as specified by WCAG guidelines. SVG graphics that appear clearly on one background might need adjustment when placed on different colored surfaces.
+          </p>
+        </div>
+        
+        <div class="glass-card p-8">
+          <h2 class="text-2xl font-bold mb-4 relative inline-block">
+            How to Use This Tool
+            <span class="absolute bottom-0 left-0 w-12 h-1 bg-blue-500 rounded"></span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Getting started with the SVG Color Editor is straightforward. Begin by loading your SVG file using one of two methods. You can either drag and drop an SVG file directly onto the upload zone, click the upload zone to open a file browser, or paste your SVG code directly into the text area provided.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Once your SVG is loaded, the editor automatically scans the entire document to detect all color values. This includes fill attributes, stroke attributes, stop-color definitions within gradients, and colors specified in inline styles. Each unique color is displayed in the colors panel with a visual swatch and editable color input.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            To modify any detected color, simply click on the color swatch or use the color picker input. Changes are applied instantly, with the preview updating in real-time to show the result. After achieving your desired color scheme, you can copy the SVG code or download it as a file.
+          </p>
+        </div>
+        
+        <div class="glass-card p-8">
+          <h2 class="text-2xl font-bold mb-4 relative inline-block">
+            Benefits of SVG Editing
+            <span class="absolute bottom-0 left-0 w-12 h-1 bg-blue-500 rounded"></span>
+          </h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Working with SVG files through a dedicated editor offers numerous advantages over alternative approaches. Unlike raster image editors, which would require converting between formats and dealing with resolution limitations, direct SVG editing preserves the vector nature of the graphics throughout the process.
+          </p>
+          <ul class="space-y-2">
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-bolt text-yellow-500 mt-1"></i>
+              <span>No software installation required - works entirely in the browser</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-shield-halved text-blue-500 mt-1"></i>
+              <span>Privacy preserved - all processing happens locally on your device</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-bolt text-yellow-500 mt-1"></i>
+              <span>Instant preview - see changes in real-time as you edit</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-expand text-purple-500 mt-1"></i>
+              <span>Format preservation - maintain SVG quality and scalability</span>
+            </li>
+            <li class="flex items-start gap-3 text-slate-600 dark:text-slate-400">
+              <i class="fas fa-code text-green-500 mt-1"></i>
+              <span>Cross-platform compatibility - works on any device with a browser</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <!-- FAQ Section -->
+      <div class="max-w-7xl mx-auto mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-6 text-center">Frequently Asked Questions</h2>
+        
+        <div class="space-y-3" id="faq-container">
+          <div class="glass-card overflow-hidden faq-item">
+            <button class="faq-question w-full p-5 text-left flex justify-between items-center font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-expanded="false">
+              <span>How to edit SVG colors?</span>
+              <i class="fas fa-chevron-down text-blue-500 transition-transform"></i>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+              <div class="p-5 pt-0 text-slate-600 dark:text-slate-400">
+                Upload your SVG file or paste SVG code into the editor. The tool automatically detects all colors used in your SVG. Click on any color to modify it, and the preview updates instantly. Once satisfied, download or copy the updated SVG.
+              </div>
+            </div>
+          </div>
+          
+          <div class="glass-card overflow-hidden faq-item">
+            <button class="faq-question w-full p-5 text-left flex justify-between items-center font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-expanded="false">
+              <span>Can I change SVG fill color?</span>
+              <i class="fas fa-chevron-down text-blue-500 transition-transform"></i>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+              <div class="p-5 pt-0 text-slate-600 dark:text-slate-400">
+                Yes, you can change both fill and stroke colors in SVG files. The editor detects all color properties including fill, stroke, stop-color, and even inline style declarations. Each detected color can be modified individually.
+              </div>
+            </div>
+          </div>
+          
+          <div class="glass-card overflow-hidden faq-item">
+            <button class="faq-question w-full p-5 text-left flex justify-between items-center font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-expanded="false">
+              <span>What is inline SVG?</span>
+              <i class="fas fa-chevron-down text-blue-500 transition-transform"></i>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+              <div class="p-5 pt-0 text-slate-600 dark:text-slate-400">
+                Inline SVG refers to SVG code embedded directly within HTML documents rather than referenced as an external file. This allows for direct manipulation with CSS and JavaScript, making it ideal for interactive graphics and animations.
+              </div>
+            </div>
+          </div>
+          
+          <div class="glass-card overflow-hidden faq-item">
+            <button class="faq-question w-full p-5 text-left flex justify-between items-center font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" aria-expanded="false">
+              <span>How to export SVG?</span>
+              <i class="fas fa-chevron-down text-blue-500 transition-transform"></i>
+            </button>
+            <div class="faq-answer max-h-0 overflow-hidden transition-all duration-300">
+              <div class="p-5 pt-0 text-slate-600 dark:text-slate-400">
+                After editing your SVG colors, click the Download button to save the SVG file to your device. You can also use the Copy button to copy the SVG code to your clipboard for pasting into your project files or design tools.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Related Tools -->
+      <div class="max-w-7xl mx-auto mt-12 text-center animate-on-scroll">
+        <h2 class="text-xl font-bold mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="/converter/" class="glass-card px-5 py-3 hover:border-blue-500 transition-colors flex items-center gap-2">
+            <i class="fas fa-exchange-alt text-blue-500"></i>
+            <span>Color Converter</span>
+          </a>
+          <a href="/wcag-contrast-checker/" class="glass-card px-5 py-3 hover:border-blue-500 transition-colors flex items-center gap-2">
+            <i class="fas fa-circle-half-stroke text-blue-500"></i>
+            <span>Contrast Checker</span>
+          </a>
+          <a href="/image-to-gradient-generator/" class="glass-card px-5 py-3 hover:border-blue-500 transition-colors flex items-center gap-2">
+            <i class="fas fa-image text-blue-500"></i>
+            <span>Image to Gradient</span>
+          </a>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/svg-color-editor.js"></script>
+  
+  <script>
+    // FAQ Toggle
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-answer');
+        const icon = btn.querySelector('i');
+        const isOpen = item.classList.contains('open');
+        
+        // Close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-answer').style.maxHeight = '0';
+          i.querySelector('.faq-question i').style.transform = 'rotate(0deg)';
+        });
+        
+        // Open clicked if was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -21,7 +21,6 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
   <!-- Structured Data: Article -->
@@ -82,13 +81,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
-  <script src="../../js/tailwind.js"></script>
+  <!-- PRIMARY: Tailwind CDN - always loads, guarantees Tailwind classes work -->
+  <script src="https://cdn.tailwindcss.com"></script>
   
-  <!-- CRITICAL FIX: Prevent Flash of Unstyled Content (FOUC) -->
+  <!-- Dark mode FOUC prevention - MUST run before body renders -->
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -108,9 +106,127 @@
     }
   </script>
   
-  <link rel="stylesheet" href="../../css/styles.css">
-  <link rel="stylesheet" href="../../css/animations.css">
-  
+  <!-- CRITICAL: Inline fallback CSS - ensures content ALWAYS renders -->
+  <!-- This covers: prose typography, animate-on-scroll visibility, glass-card styling, spectrum line -->
+  <!-- Without this, if external CSS fails, content is invisible -->
+  <style>
+    /* animate-on-scroll: local works via enhancements.js revealing, but if JS fails content stays hidden.
+       This makes content visible by default; enhancements.js adds animation on top. */
+    .animate-on-scroll {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+    }
+
+    /* shimmer-card */
+    .shimmer-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Prose typography - mirrors @tailwindcss/typography plugin.
+       The Tailwind CDN does NOT include this plugin by default, so `prose` class alone
+       would strip all typography styles. This fallback ensures content always looks correct. */
+    .prose { color: #334155; line-height: 1.75; max-width: 65ch; }
+    .prose h1 { font-size: 2.25em; font-weight: 800; margin-top: 0; margin-bottom: 0.8889em; line-height: 1.1; color: #0f172a; }
+    .prose h2 { font-size: 1.5em; font-weight: 700; margin-top: 2em; margin-bottom: 1em; line-height: 1.3; color: #0f172a; }
+    .prose h3 { font-size: 1.25em; font-weight: 600; margin-top: 1.6em; margin-bottom: 0.6em; line-height: 1.4; color: #1e293b; }
+    .prose h4 { font-size: 1.125em; font-weight: 600; margin-top: 1.5em; margin-bottom: 0.5em; line-height: 1.5; color: #1e293b; }
+    .prose p { margin-top: 1.25em; margin-bottom: 1.25em; }
+    .prose a { color: #059669; text-decoration: underline; text-underline-offset: 2px; }
+    .prose a:hover { color: #047857; }
+    .prose strong { font-weight: 700; color: #0f172a; }
+    .prose ul, .prose ol { margin-top: 1.25em; margin-bottom: 1.25em; padding-left: 1.625em; }
+    .prose ul { list-style-type: disc; }
+    .prose ol { list-style-type: decimal; }
+    .prose li { margin-top: 0.5em; margin-bottom: 0.5em; }
+    .prose blockquote { border-left: 4px solid #e2e8f0; padding-left: 1em; font-style: italic; color: #64748b; margin-top: 1.6em; margin-bottom: 1.6em; }
+    .prose hr { border-color: #e2e8f0; margin-top: 3em; margin-bottom: 3em; }
+    .prose code { color: #059669; background-color: #f1f5f9; padding: 0.2em 0.4em; border-radius: 0.25rem; font-size: 0.875em; font-weight: 500; }
+    .prose pre { background-color: #1e293b; color: #e2e8f0; padding: 1em 1.5em; border-radius: 0.75rem; overflow-x: auto; margin-top: 1.5em; margin-bottom: 1.5em; }
+    .prose pre code { background: none; padding: 0; color: inherit; }
+    .prose > *:first-child { margin-top: 0 !important; }
+    .prose > *:last-child { margin-bottom: 0 !important; }
+
+    /* Dark mode prose */
+    .dark .prose { color: #94a3b8; }
+    .dark .prose h1, .dark .prose h2 { color: #f1f5f9; }
+    .dark .prose h3, .dark .prose h4 { color: #e2e8f0; }
+    .dark .prose strong { color: #f1f5f9; }
+    .dark .prose a { color: #34d399; }
+    .dark .prose a:hover { color: #6ee7b7; }
+    .dark .prose blockquote { border-left-color: #334155; }
+    .dark .prose hr { border-color: #1e293b; }
+    .dark .prose code { background-color: #1e293b; color: #34d399; }
+
+    /* Glass card */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+      margin: 5px;
+    }
+    .glass-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    .dark .glass-card {
+      background: rgba(21, 25, 33, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .dark .glass-card:hover {
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    @media (max-width: 768px) {
+      .glass-card { padding: 1rem !important; margin: 0.5rem 0; border-radius: 12px; }
+      .glass-card:hover { transform: none; }
+    }
+
+    /* Spectrum line */
+    .spectrum-line {
+      height: 4px;
+      background: linear-gradient(90deg, #10b981, #0d9488, #f97316, #ec4899, #8b5cf6, #10b981);
+      background-size: 200% 100%;
+      border-radius: 9999px;
+      animation: spectrum-shift 3s linear infinite;
+    }
+    @keyframes spectrum-shift {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    /* Div margin */
+    .div-margin { margin-top: 40px; }
+  </style>
+
+  <!-- External CSS as enhancement (non-blocking, won't break page if missing) -->
+  <link rel="preload" href="../../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.style.display='none'">
+  <link rel="preload" href="../../css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.style.display='none'">
+
+  <!-- Local Tailwind as enhancement (non-blocking, won't block page) -->
+  <script>
+    // Only load local tailwind if CDN fails or for development
+    window.addEventListener('load', function() {
+      // If Tailwind CDN classes are working, skip local
+      var testEl = document.createElement('div');
+      testEl.className = 'bg-red-500 text-white p-4';
+      testEl.style.display = 'none';
+      document.body.appendChild(testEl);
+      var computed = window.getComputedStyle(testEl);
+      var tailwindWorking = computed.backgroundColor !== '' && computed.backgroundColor !== 'rgba(0, 0, 0, 0)';
+      document.body.removeChild(testEl);
+      
+      if (!tailwindWorking) {
+        var s = document.createElement('script');
+        s.src = '../../js/tailwind.js';
+        s.onerror = function() { console.warn('Local tailwind.js not found, using CDN fallback'); };
+        document.head.appendChild(s);
+      }
+    });
+  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   
@@ -118,7 +234,7 @@
   <div id="navbar-container"></div>
   
   <!-- Main Content -->
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+  <main class="pt-20 pb-12 min-h-screen relative overflow-hidden">
     <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
@@ -145,149 +261,170 @@
             Colors are far more than visual decoration—they are powerful communicators that influence our emotions, behaviors, and decisions in profound ways. The field of color psychology explores these effects, providing designers with valuable insights for creating more effective and emotionally resonant work. This comprehensive guide examines the psychological impact of colors and offers practical strategies for leveraging color psychology in your design projects.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Science Behind Color Psychology</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">The Science Behind Color Psychology</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Color psychology is rooted in both biological and cultural factors. Our eyes perceive color through specialized cells called cones, which send signals to the brain that trigger various physiological and psychological responses. These responses can include changes in heart rate, appetite, and mood. Research has shown that exposure to certain colors can affect hormone production, including cortisol (stress) and melatonin (sleep), demonstrating the tangible physiological impact of color perception.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             However, color psychology is not purely biological—cultural associations play a significant role in how we interpret and respond to colors. White, for example, symbolizes purity and weddings in Western cultures but is associated with mourning in many Eastern cultures. Understanding both the universal and culturally-specific aspects of color psychology is essential for designers working in global contexts or targeting diverse audiences.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Color Meanings Cheat Sheet</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Color Meanings Cheat Sheet</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
              Quickly reference the core emotions associated with common design colors. This cheat sheet is a great starting point when conceptualizing your next project. To experiment with these hues, you can use our <a href="/palettes/" class="text-emerald-500 hover:underline">color palette generator</a>.
           </p>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+          <!-- Color cards grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6" style="color:inherit;margin-top:1.5rem;margin-bottom:1.5rem;padding-left:0;font-size:inherit;line-height:inherit;">
             <div class="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
               <div class="w-10 h-10 rounded-full bg-red-500 flex-shrink-0"></div>
               <div>
-                <h4 class="font-bold">Red</h4>
-                <p class="text-sm text-slate-500">Passion, Urgency, Danger, Excitement</p>
+                <h4 class="font-bold" style="margin:0;">Red</h4>
+                <p class="text-sm text-slate-500" style="margin:0;">Passion, Urgency, Danger, Excitement</p>
               </div>
             </div>
             <div class="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
               <div class="w-10 h-10 rounded-full bg-blue-600 flex-shrink-0"></div>
               <div>
-                <h4 class="font-bold">Blue</h4>
-                <p class="text-sm text-slate-500">Trust, Calm, Professionalism, Sadness</p>
+                <h4 class="font-bold" style="margin:0;">Blue</h4>
+                <p class="text-sm text-slate-500" style="margin:0;">Trust, Calm, Professionalism, Sadness</p>
               </div>
             </div>
             <div class="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
               <div class="w-10 h-10 rounded-full bg-yellow-400 flex-shrink-0"></div>
               <div>
-                <h4 class="font-bold">Yellow</h4>
-                <p class="text-sm text-slate-500">Optimism, Happiness, Caution, Warmth</p>
+                <h4 class="font-bold" style="margin:0;">Yellow</h4>
+                <p class="text-sm text-slate-500" style="margin:0;">Optimism, Happiness, Caution, Warmth</p>
               </div>
             </div>
             <div class="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
               <div class="w-10 h-10 rounded-full bg-green-500 flex-shrink-0"></div>
               <div>
-                <h4 class="font-bold">Green</h4>
-                <p class="text-sm text-slate-500">Nature, Growth, Health, Money</p>
+                <h4 class="font-bold" style="margin:0;">Green</h4>
+                <p class="text-sm text-slate-500" style="margin:0;">Nature, Growth, Health, Money</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+              <div class="w-10 h-10 rounded-full bg-purple-500 flex-shrink-0"></div>
+              <div>
+                <h4 class="font-bold" style="margin:0;">Purple</h4>
+                <p class="text-sm text-slate-500" style="margin:0;">Luxury, Creativity, Mystery, Spirituality</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-lg">
+              <div class="w-10 h-10 rounded-full bg-orange-500 flex-shrink-0"></div>
+              <div>
+                <h4 class="font-bold" style="margin:0;">Orange</h4>
+                <p class="text-sm text-slate-500" style="margin:0;">Energy, Enthusiasm, Friendliness, Fun</p>
               </div>
             </div>
           </div>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Red: Passion, Energy, and Urgency</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Red: Passion, Energy, and Urgency</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Red is perhaps the most psychologically powerful color, capable of evoking intense emotions and physical responses. Research has demonstrated that exposure to red can increase heart rate and blood pressure, creating a sense of excitement or urgency. This makes red highly effective for calls-to-action, clearance sales, and time-sensitive offers. However, its intensity means it should be used strategically—too much red can feel aggressive or overwhelming.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             In branding, red communicates passion, energy, and boldness. Brands like Coca-Cola, Netflix, and YouTube use red to project confidence and vitality. In UI design, red is the universal color for errors and warnings, leveraging its association with danger to capture attention. When using red, consider the specific shade—bright reds feel energetic and modern, while deeper reds convey sophistication and tradition.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Blue: Trust, Calm, and Professionalism</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Blue: Trust, Calm, and Professionalism</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Blue is consistently rated as the most popular color across cultures, and its psychological effects help explain this widespread appeal. Blue has been shown to lower blood pressure and heart rate, creating a sense of calm and relaxation. This makes blue ideal for healthcare environments, financial services, and any context where trust and stability are paramount. The association of blue with the sky and ocean gives it a timeless, universal quality.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Tech companies, banks, and healthcare providers frequently choose blue for their branding, leveraging its associations with trust, intelligence, and reliability. Facebook, LinkedIn, Intel, and countless financial institutions use various shades of blue. In interface design, blue is commonly used for links and interactive elements because users intuitively understand that blue indicates clickability. Different blues convey different messages—navy suggests authority and tradition, while brighter blues feel more modern and approachable.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Best Colors for UI Design</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Best Colors for UI Design</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
              In User Interface (UI) design, color psychology must balance aesthetics with function. <strong>Blue</strong> is the safest choice for primary actions and navigation due to its high trust factor. <strong>Green</strong> is reserved for success states (e.g., "Payment Successful"). <strong>Red</strong> is critical for errors but should be used sparingly to avoid alarm fatigue. For backgrounds, neutral colors like white, light gray, or soft pastels reduce cognitive load, allowing the eye to focus on interactive elements.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
              When designing interfaces, ensure sufficient contrast for accessibility. A common mistake is using color alone to convey meaning; always pair color with text or icons. For example, a "Delete" button should be red but also labeled clearly. For generating accessible UI palettes quickly, you can use our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> or check contrast with our <a href="/blog/color-blindness-in-ui-design/" class="text-emerald-500 hover:underline">accessibility guide</a>.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Green: Nature, Growth, and Balance</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Green: Nature, Growth, and Balance</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Green's strong association with nature gives it unique psychological properties. Research suggests that exposure to green can reduce stress and improve focus, which explains why green is often used in educational and healthcare settings. Green represents growth, renewal, and environmental consciousness—associations that make it particularly effective for brands focused on sustainability, health, and wellness.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             In user interfaces, green universally signals success, progress, and positive actions. It's the standard color for confirmation messages, completed tasks, and "go" states. Green can also represent money and financial growth, making it popular for fintech and investment platforms. However, designers should be aware that green can have negative associations (envy, inexperience) and should consider context carefully.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Yellow and Orange: Optimism and Energy</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Yellow and Orange: Optimism and Energy</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Yellow and orange are among the most visible colors, capturing attention quickly and evoking feelings of warmth, optimism, and creativity. Yellow is processed first by the human eye, making it excellent for warning signs and attention-grabbing elements. However, yellow can also cause eye fatigue in large amounts and is associated with caution—think of traffic signs and hazard warnings.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Orange combines the energy of red with the cheerfulness of yellow, creating a color that feels friendly and approachable. It's associated with creativity, enthusiasm, and affordability. Brands targeting younger audiences or emphasizing value often use orange effectively. In UI design, orange is a popular alternative to red for calls-to-action when you want to encourage action without creating urgency.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Purple: Luxury, Creativity, and Mystery</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Purple: Luxury, Creativity, and Mystery</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Purple occupies a unique space in color psychology, combining the stability of blue with the energy of red. Historically, purple dye was expensive and rare, making purple the color of royalty and luxury. These associations persist today—purple conveys sophistication, creativity, and premium quality. Brands in beauty, luxury goods, and creative industries often leverage purple's unique psychological profile.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Lighter purples, like lavender, evoke feelings of nostalgia, romance, and calm. Deeper purples suggest richness and drama. Purple is also associated with spirituality and mindfulness, making it popular for wellness and meditation applications. When using purple, balance is key—too much can feel artificial or overwhelming, but strategic use adds sophistication and depth.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Neutral Colors: Sophistication and Balance</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Neutral Colors: Sophistication and Balance</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Black, white, and gray may not be on the color wheel, but they play crucial roles in design psychology. Black conveys sophistication, power, and elegance. It's favored by luxury brands and is associated with exclusivity and timelessness. Studies have shown that black packaging can increase perceived product value by up to 10%. In web design, black creates dramatic contrast and draws attention to colorful elements.
           </p>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             White represents purity, cleanliness, and simplicity. It creates a sense of space and allows other colors to shine. Apple's use of white in product design and branding exemplifies how white can communicate premium simplicity. Gray serves as a sophisticated neutral that can feel either warm or cool depending on its undertones. It provides a contemporary backdrop that lets content take center stage while adding more depth than pure white.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">How to Choose Colors for Your Brand</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">How to Choose Colors for Your Brand</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
              Selecting a brand color palette is a critical strategic decision. Start by defining your brand's personality—are you bold and loud, or calm and reliable? If your brand is adventurous, reds and oranges are suitable. If it is professional and secure, blues and greys are better. Look at your competitors; while you want to stand out, understanding industry norms helps you signal the right message. Finally, test your choices. Use our tools to create variations and see what resonates with your audience. Explore more tips in our <a href="/blog/" class="text-emerald-500 hover:underline">Design Guides</a>.
           </p>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Frequently Asked Questions</h2>
           
           <div class="space-y-4">
-            <div class="glass-card p-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               <h3 class="font-bold text-lg mb-2">What is color psychology in design?</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm">
                 Color psychology in design is the study of how colors influence human behavior and emotions. It helps designers choose colors that evoke specific feelings, like trust or excitement, to improve user experience and brand perception.
               </p>
             </div>
-            <div class="glass-card p-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               <h3 class="font-bold text-lg mb-2">Which color is best for call-to-action buttons?</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm">
                 Red and orange are often best for call-to-action buttons because they create urgency and attract attention. However, the best color depends on the background contrast and overall brand palette.
               </p>
             </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+              <h3 class="font-bold text-lg mb-2">Does color psychology work the same in all cultures?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm">
+                No. While some color responses are biological (like red increasing heart rate), many associations are cultural. White means purity in Western cultures but mourning in some Eastern cultures. Always research your target audience's cultural context.
+              </p>
+            </div>
           </div>
           
-          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Conclusion</h2>
+          <h2 class="text-2xl font-bold mt-8 mb-4">Conclusion</h2>
           
-          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p>
             Color psychology offers powerful insights for creating designs that resonate emotionally and drive desired behaviors. By understanding how different colors affect perception and emotion, designers can make more informed choices that support their objectives. Whether you're designing a brand identity, user interface, or marketing campaign, thoughtful color selection based on psychological principles can significantly enhance effectiveness. Use our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> to explore different palettes and discover the perfect colors for your next project.
           </p>
           
@@ -299,6 +436,8 @@
   <!-- Footer -->
   <div id="footer-container"></div>
   
+  <!-- These load normally as blocking scripts — main.js injects navbar/footer into the DOM -->
+  <!-- They run after all HTML is parsed so getElementById works correctly -->
   <script src="../../js/main.js"></script>
   <script src="../../js/enhancements.js"></script>
 </body>

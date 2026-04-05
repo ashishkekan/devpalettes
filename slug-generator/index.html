@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Convert titles into clean SEO-friendly URL slugs. Generate optimized permalinks instantly for blogs, websites, and SEO.">
+  <meta name="keywords" content="slug generator, url generator, seo slug, clean url, permalink generator, seo friendly url">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/slug-generator/">
+  
+  <title>URL Slug Generator – SEO Friendly Permalink Tool</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="URL Slug Generator – SEO Friendly Permalink Tool">
+  <meta property="og:description" content="Convert titles into clean SEO-friendly URL slugs. Generate optimized permalinks instantly for blogs, websites, and SEO.">
+  <meta property="og:url" content="https://devpalettes.com/slug-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-slug-generator.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="URL Slug Generator – SEO Friendly Permalink Tool">
+  <meta name="twitter:description" content="Convert titles into clean SEO-friendly URL slugs. Generate optimized permalinks instantly for blogs, websites, and SEO.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-slug-generator.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "URL Slug Generator",
+    "description": "Convert titles into clean SEO-friendly URL slugs. Generate optimized permalinks instantly for blogs, websites, and SEO.",
+    "url": "https://devpalettes.com/slug-generator/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a slug in a URL?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A slug is the part of a URL that comes at the very end and identifies a specific page in a human-readable format. For example, in 'example.com/blog/seo-best-practices', the slug is 'seo-best-practices'."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to create SEO-friendly URLs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To create SEO-friendly URLs, use lowercase letters, separate words with hyphens, remove stop words like 'a' or 'the', keep the slug under 60 characters, and include the primary target keyword."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I use hyphens or underscores in URLs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You should always use hyphens (-) instead of underscores (_) in URLs. Google treats hyphens as word separators but does not treat underscores the same way, meaning 'seo-tips' is read as two words, while 'seo_tips' may be read as one single word."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does URL slug affect SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, URL slugs directly affect SEO. Search engines use the words in the URL as a minor ranking factor. A descriptive slug helps Google understand the page's topic, improves click-through rates from search results, and enhances user experience."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">Slug Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Convert your titles into clean, URL-friendly slugs instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <!-- Input Section -->
+      <section class="glass-card p-6 mb-6 shimmer-card animate-on-scroll" aria-label="Slug text input">
+        <div class="flex justify-between items-center mb-2">
+           <label for="input-text" class="text-sm font-semibold text-slate-500">Enter Text</label>
+           <button onclick="clearInput()" class="text-xs text-slate-400 hover:text-red-500 transition-colors">Clear</button>
+        </div>
+        <textarea 
+           id="input-text" 
+           rows="4" 
+           class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl p-4 text-base focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+           placeholder="e.g., My First Blog Post! (Best practices)"
+           oninput="generateSlug()"></textarea>
+      </section>
+      
+      <!-- Options -->
+      <section class="glass-card p-6 mb-6 shimmer-card animate-on-scroll" aria-label="Slug formatting options">
+         <div class="flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+               <span class="text-sm text-slate-500">Separator:</span>
+               <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="separator" value="-" checked onchange="generateSlug()" class="accent-emerald-500">
+                  <span class="text-sm">Hyphen (-)</span>
+               </label>
+               <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="radio" name="separator" value="_" onchange="generateSlug()" class="accent-emerald-500">
+                  <span class="text-sm">Underscore (_)</span>
+               </label>
+            </div>
+            <label class="flex items-center gap-2 cursor-pointer">
+               <input type="checkbox" id="lowercase-check" checked onchange="generateSlug()" class="accent-emerald-500 rounded">
+               <span class="text-sm">Lowercase</span>
+            </label>
+         </div>
+      </section>
+      
+      <!-- Output Section -->
+      <section class="glass-card p-6 mb-8 shimmer-card animate-on-scroll relative" aria-label="Generated slug output">
+         <div class="flex justify-between items-center mb-3">
+            <h2 class="font-bold text-lg text-slate-700 dark:text-slate-200">Generated Slug</h2>
+            <button onclick="copySlug()" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy slug to clipboard">
+               <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
+            </button>
+         </div>
+         <div id="output-slug" class="p-4 bg-slate-100 dark:bg-slate-800 rounded-xl font-mono text-lg text-emerald-600 dark:text-emerald-400 break-all min-h-[60px] flex items-center" aria-live="polite">
+            Enter text to generate slug...
+         </div>
+      </section>
+      
+      <!-- Info -->
+      <section class="glass-card p-6 shimmer-card animate-on-scroll" aria-label="What is a URL slug">
+        <h2 class="font-bold mb-3 text-lg flex items-center gap-2">
+           <i class="fas fa-info-circle text-sky-500" aria-hidden="true"></i>
+           What is a Slug?
+        </h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">
+           A slug is the part of a URL that identifies a particular page on a website in an easy-to-read form. Slugs are an important part of SEO because they help search engines understand the content of the page.
+        </p>
+        <div class="bg-slate-100 dark:bg-slate-800 p-4 rounded-lg text-sm font-mono text-left">
+           <span class="text-slate-500">https://example.com/blog/</span><span class="text-emerald-500 font-bold">my-first-post</span>
+        </div>
+      </section>
+
+      <!-- SEO Content Section -->
+      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to SEO friendly URL slugs">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline prose-strong:text-slate-800 dark:prose-strong:text-white">
+          
+          <h2 class="text-2xl font-bold mb-4">What is a URL Slug?</h2>
+          <p>A URL slug is the specific, human-readable portion of a web address that identifies a particular page on a website. It typically appears at the end of the URL, following the domain name and any category or parent directory paths. For instance, in the URL <strong>example.com/blog/seo-best-practices</strong>, the slug is <strong>seo-best-practices</strong>.</p>
+          <p>Unlike database IDs or randomly generated strings, a well-crafted slug provides both users and search engines with an immediate, clear hint about the content of the page before they even click on it. Slugs are derived from the title of the page but undergo a cleaning process to ensure they only contain safe, web-compatible characters.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Why Slugs Matter for SEO</h2>
+          <p>URL slugs are a confirmed, albeit minor, ranking factor in Google's search algorithm. When a user searches for a query, Google bolds the matching words in the search results—including the words in the URL. If your slug contains the target keyword, it reinforces the page's relevance, potentially improving its rank and significantly boosting its click-through rate (CTR).</p>
+          <p>Beyond direct ranking impact, slugs enhance <strong>readability</strong>. Users scanning search engine results pages (SERPs) often look at the URL to gauge the credibility and relevance of a link. A clean, descriptive slug like <strong>/best-running-shoes</strong> is far more trustworthy and clickable than a cryptic parameter-based URL like <strong>/post?id=84729</strong>. Furthermore, clean URLs are easier to share, copy, paste, and remember, indirectly supporting off-page SEO and social media marketing efforts.</p>
+          <p>Strategic <strong>keyword usage</strong> within the slug helps search engines categorize the page accurately. By placing the primary keyword near the beginning of the URL, you signal the core topic of the content efficiently. However, keyword stuffing in URLs is penalized, so the slug must remain natural and concise.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Best Practices for SEO-Friendly URLs</h2>
+          <h3 class="text-2xl font-bold mb-4">Use Hyphens, Not Underscores</h3>
+          <p>Google's official documentation explicitly recommends using hyphens (-) to separate words in URLs. While humans read both easily, search engine crawlers historically treated underscores as joining words together. Therefore, <strong>seo-tips</strong> is read as two words, whereas <strong>seo_tips</strong> may be read as a single word, harming your keyword targeting.</p><br>
+          <h3 class="text-2xl font-bold mb-4">Avoid Stop Words</h3>
+          <p>Common stop words like "a," "an," "the," "and," "but," and "or" add unnecessary length to your URL without providing SEO value. Removing them makes the slug more concise and ensures the focus remains on your primary keywords. For example, "the-best-seo-tips-for-beginners" becomes "best-seo-tips-beginners."</p><br>
+          <h3 class="text-2xl font-bold mb-4">Keep it Short and Descriptive</h3>
+          <p>Long URLs get truncated in mobile search results and can appear spammy. Aim for a slug length of 3 to 5 words, keeping the total URL under 60 characters when possible. The slug should summarize the page's content accurately without being a duplicate of the title tag.</p><br>
+          <h3 class="text-2xl font-bold mb-4">Always Use Lowercase Letters</h3>
+          <p>URLs are case-sensitive on some servers (like Linux/Apache), meaning <strong>SEO-Tips</strong> and <strong>seo-tips</strong> could technically lead to different pages or cause duplicate content issues. Converting slugs entirely to lowercase prevents canonical problems and creates a cleaner visual appearance.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">How This Slug Generator Works</h2>
+          <p>This tool automates the standard slug creation process. When you enter text, the generator trims leading and trailing whitespace, optionally converts the string to lowercase, and strips accented characters (e.g., converting "é" to "e") using Unicode normalization. It then removes all special characters and punctuation, leaving only alphanumeric characters. Finally, it replaces spaces with your chosen separator (hyphens or underscores) and collapses multiple separators into a single one to ensure a perfectly clean output.</p>
+          <p>When styling the pages where these slugs will live, having a cohesive design is key to user trust. You can <a href="/palettes/">generate color palettes</a> that reflect your brand identity to use alongside your clean URLs. If you need to match specific CMS colors for your links, <a href="/converter/">convert HEX to RGB</a> for exact CSS implementation. To make sure your entire site looks professional—from its URL structure down to its visual design—<a href="/blog/color-palettes-guide/">learn color combinations</a> that create a harmonious and trustworthy user experience.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Examples of Good vs Bad Slugs</h2>
+          <p>Understanding the difference between effective and poor URL structures is crucial. A <strong>bad slug</strong> might look like <strong>/post?id=492&cat=5</strong> (contains no keywords, uses parameters) or <strong>/My_Awesome_Blog_Post!!!</strong> (uses underscores, uppercase letters, and special characters). A <strong>good slug</strong> strips the noise and focuses on meaning: <strong>/awesome-blog-post</strong>. Another example is converting a long title like "How to Start Learning CSS in 2026: A Complete Guide for Beginners" into a concise slug: <strong>/start-learning-css-2026-guide</strong>. It captures the primary keywords, drops stop words, and remains highly readable.</p><br>
+          
+        </article>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about URL slugs">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is a slug in a URL?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A slug is the part of a URL that comes at the very end and identifies a specific page in a human-readable format. For example, in 'example.com/blog/seo-best-practices', the slug is 'seo-best-practices'.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How to create SEO-friendly URLs?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To create SEO-friendly URLs, use lowercase letters, separate words with hyphens, remove stop words like 'a' or 'the', keep the slug under 60 characters, and include the primary target keyword.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Should I use hyphens or underscores in URLs?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">You should always use hyphens (-) instead of underscores (_) in URLs. Google treats hyphens as word separators but does not treat underscores the same way, meaning 'seo-tips' is read as two words, while 'seo_tips' may be read as one single word.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Does URL slug affect SEO?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, URL slugs directly affect SEO. Search engines use the words in the URL as a minor ranking factor. A descriptive slug helps Google understand the page's topic, improves click-through rates from search results, and enhances user experience.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Slug Examples -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Common URL slug examples">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6 flex items-center gap-2">
+            <i class="fas fa-link text-indigo-500" aria-hidden="true"></i>
+            Common Slug Examples
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Blog Post</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-1 truncate">"10 Tips for Better SEO in 2026"</p>
+              <p class="text-xs font-mono text-indigo-500 font-bold truncate">10-tips-better-seo-2026</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Product Page</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-1 truncate">"Blue Running Shoes (Men's)"</p>
+              <p class="text-xs font-mono text-indigo-500 font-bold truncate">blue-running-shoes-mens</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Category</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mb-1 truncate">"Web Design & Development"</p>
+              <p class="text-xs font-mono text-indigo-500 font-bold truncate">web-design-development</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Related SEO tools">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            
+            <a href="/meta-tag-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-code text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Meta Tag Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create optimized title and meta description tags for SEO.</p>
+            </a>
+            
+            <a href="/keyword-density-checker/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-magnifying-glass-chart text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Keyword Density Checker</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Analyze keyword frequency and distribution in your content.</p>
+            </a>
+            
+            <a href="/text-formatter/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-align-justify text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Text Formatter</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Clean up, format, and prepare text for publishing.</p>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/slug-generator.js"></script>
+</body>
+</html>

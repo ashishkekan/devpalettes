@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>Social Media Preview Tool – Open Graph & Twitter Cards</title>
+  <meta name="description" content="Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.">
+  <meta name="keywords" content="social media preview, open graph tester, twitter card validator, seo tool">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/social-meta-preview/">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Social Media Preview Tool – Open Graph & Twitter Cards">
+  <meta property="og:description" content="Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.">
+  <meta property="og:url" content="https://devpalettes.com/social-meta-preview/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/social-preview-og.png">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Social Media Preview Tool – Open Graph & Twitter Cards">
+  <meta name="twitter:description" content="Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/social-preview-og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
+  </script>
+  <script> tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } } </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Social Media Preview Tool",
+    "url": "https://devpalettes.com/social-meta-preview/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes"
+    },
+    "description": "A tool to preview how your website appears on Facebook, Twitter, and LinkedIn by testing Open Graph and Twitter Card meta tags."
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Open Graph meta?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open Graph meta tags are snippets of code that control how URLs are displayed when shared on social media platforms like Facebook. They dictate the title, image, and description shown in the preview."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I preview a link on Facebook?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can preview a link on Facebook using the Facebook Sharing Debugger tool or by using a social media preview tool like this one to simulate the appearance before publishing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a Twitter Card validator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Twitter Card validator is an official tool by Twitter that allows developers to check how their website URLs will appear in the Twitter feed, ensuring images and titles display correctly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my link preview not showing correctly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This is often due to missing meta tags, incorrect image dimensions, or caching issues. Social platforms cache link data, so changes may not appear immediately unless the cache is cleared via the platform's debugger."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">Social Media Preview</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Test how your links appear on Facebook, Twitter, and LinkedIn.</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        <!-- Controls -->
+        <div class="space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Details</h3>
+             <div class="space-y-3">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Page Title</label>
+                   <input type="text" id="meta-title" value="My Awesome Website" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Description</label>
+                   <textarea id="meta-desc" rows="2" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">This is a description of the page content.</textarea>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Image URL</label>
+                   <input type="text" id="meta-img" value="https://source.unsplash.com/random/1200x630" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Preview -->
+        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
+          
+          <!-- Facebook Card -->
+          <div class="glass-card p-0 overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
+                <i class="fab fa-facebook text-blue-600"></i> Facebook Preview
+             </div>
+             <div class="p-4 bg-white dark:bg-slate-800">
+                <div id="fb-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                   <div id="fb-img" class="h-48 bg-slate-200 bg-cover bg-center"></div>
+                   <div class="p-3">
+                      <div class="text-xs text-slate-500 uppercase">example.com</div>
+                      <div id="fb-title" class="font-bold text-slate-800 truncate">My Awesome Website</div>
+                      <div id="fb-desc" class="text-xs text-slate-500 line-clamp-2">This is a description of the page content.</div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Twitter Card -->
+          <div class="glass-card p-0 overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
+                <i class="fab fa-twitter text-sky-500"></i> Twitter Preview
+             </div>
+             <div class="p-4 bg-white dark:bg-slate-800">
+                <div id="tw-card" class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden grid md:grid-cols-2">
+                   <div id="tw-img" class="h-32 bg-slate-200 bg-cover bg-center"></div>
+                   <div class="p-3 flex flex-col justify-center">
+                      <div class="text-xs text-slate-500 mb-1">Website</div>
+                      <div id="tw-title" class="font-bold text-slate-800 text-sm">My Awesome Website</div>
+                      <div id="tw-desc" class="text-xs text-slate-500 mt-1 line-clamp-2">This is a description...</div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+        </div>
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="prose prose-slate dark:prose-invert max-w-7xl mx-auto my-16 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-4">What is Open Graph?</h2>
+         <p>Open Graph is a protocol introduced by Facebook that allows any web page to become a rich object in a social graph. Essentially, it gives developers control over how their content appears when shared on social media platforms like Facebook, LinkedIn, and Twitter. Without Open Graph tags, social platforms would scrape the page content and guess which title, image, and description to display, often resulting in incorrect or unappealing previews.</p>
+         <p>The protocol relies on specific meta tags placed in the <code>&lt;head&gt;</code> section of an HTML document. Key tags include <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code>. These tags ensure that the visual representation of your link is consistent and engaging, regardless of where it is shared. For developers working on branding, ensuring image quality and dimensions are correct is crucial; if you need to adjust color formats for your assets, you can use our tool to <a href="/converter/">convert HEX to RGB</a>.</p><br>
+
+         <h2 class="text-2xl font-bold mb-4">What are Twitter Cards?</h2>
+         <p>Twitter Cards are similar to Open Graph tags but are specifically designed for the Twitter platform. They allow you to attach media experiences to Tweets that link to your content. There are several types of Twitter Cards, such as "Summary Card with Large Image," which provides a prominent image alongside the title and description, and "Player Card," which allows for video and audio media.</p>
+         <p>While Twitter falls back on Open Graph tags if specific Twitter Card tags (like <code>twitter:title</code> or <code>twitter:image</code>) are missing, it is best practice to implement both. This ensures optimal display and allows you to tailor the messaging specifically for Twitter's audience and UI constraints. Implementing these correctly can significantly increase click-through rates compared to standard text-only tweets.</p><br>
+
+         <h2 class="text-2xl font-bold mb-4">Why Social Media Preview Matters for SEO</h2>
+         <p>While social signals (likes, shares) are not a direct ranking factor in Google's algorithm, the indirect benefits of optimizing your social media previews are immense for SEO. A well-optimized preview leads to higher engagement:</p>
+         <ul>
+            <li><strong>Higher Click-Through Rate (CTR):</strong> Engaging images and compelling titles encourage users to click. Higher traffic signals to search engines that your content is valuable.</li>
+            <li><strong>Increased Sharing:</strong> When users see a professional preview, they are more likely to share it, amplifying your reach and potential for backlinks.</li>
+            <li><strong>Brand Consistency:</strong> Consistent branding across all shares builds trust. Trust is a key factor in user behavior, influencing bounce rates and time on site.</li>
+         </ul>
+         <p>Furthermore, accessibility and readability play a role. Ensuring your preview text is readable over the background image is vital. You should always <a href="/wcag-contrast-checker/">check color contrast</a> of your social images to ensure they are accessible to all users.</p><br>
+
+         <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+         <p>Using the Social Media Preview Tool is simple and helps you debug your implementation before going live:</p>
+         <ol>
+            <li><strong>Enter Your Data:</strong> Input the desired Page Title, Description, and Image URL into the control panel on the left.</li>
+            <li><strong>Live Preview:</strong> Observe the live updates in the Facebook and Twitter preview cards on the right. This simulates exactly how your link will look when shared.</li>
+            <li><strong>Analyze:</strong> Check for text truncation, image cropping, or missing descriptions.</li>
+            <li><strong>Implement:</strong> Once satisfied, copy the values into your website's <code>&lt;head&gt;</code> section using the correct meta tag syntax.</li>
+         </ol>
+         <p>For a deeper understanding of the underlying code, you can <a href="/blog/seo-meta-tag-guide/">learn meta tags SEO</a> best practices in our detailed guide.</p><br>
+
+         <h2 class="text-2xl font-bold mb-4">Common Mistakes in Social Sharing</h2>
+         <p>Even experienced developers make mistakes when implementing social meta tags. Avoid these common pitfalls:</p>
+         <ul>
+            <li><strong>Wrong Image Size:</strong> Uploading images that are too small (e.g., 200x200) results in poor quality or no image display. Ideally, use 1200x630 pixels for Open Graph.</li>
+            <li><strong>Missing Tags:</strong> Forgetting <code>og:image</code> or <code>twitter:card</code> causes the platform to fall back on auto-scraped data, which is often inaccurate.</li>
+            <li><strong>Duplicate Meta Tags:</strong> Having multiple instances of the same tag confuses scrapers and can lead to unpredictable results.</li>
+            <li><strong>Caching Issues:</strong> Platforms like Facebook and Twitter cache your link data. If you update your tags, use the platform's debugger tool to clear the cache; otherwise, the old preview may persist for weeks.</li>
+         </ul>
+      </div>
+
+      <!-- Use Cases Section -->
+      <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-6 text-center">Use Cases</h2>
+         <div class="grid md:grid-cols-3 gap-6">
+            <div class="glass-card p-6 text-center">
+               <i class="fas fa-search text-3xl text-blue-500 mb-4"></i>
+               <h3 class="font-bold mb-2">SEO Optimization</h3>
+               <p class="text-sm text-slate-600 dark:text-slate-400">SEO specialists can test how blog posts and landing pages will appear before launching campaigns.</p>
+            </div>
+            <div class="glass-card p-6 text-center">
+               <i class="fas fa-pen-nib text-3xl text-blue-500 mb-4"></i>
+               <h3 class="font-bold mb-2">Bloggers & Writers</h3>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Content creators can ensure their articles look professional and enticing when shared by readers.</p>
+            </div>
+            <div class="glass-card p-6 text-center">
+               <i class="fas fa-code text-3xl text-blue-500 mb-4"></i>
+               <h3 class="font-bold mb-2">Web Developers</h3>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Developers can validate the implementation of meta tags during the build process to avoid bugs.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="max-w-7xl mx-auto my-16 animate-on-scroll glass-card p-8">
+         <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <div class="space-y-4">
+            <div>
+               <h3 class="font-bold text-lg mb-2">What is Open Graph meta?</h3>
+               <p class="text-slate-600 dark:text-slate-400">Open Graph meta tags are snippets of code that control how URLs are displayed when shared on social media platforms like Facebook. They dictate the title, image, and description shown in the preview.</p>
+            </div>
+            <div>
+               <h3 class="font-bold text-lg mb-2">How do I preview a link on Facebook?</h3>
+               <p class="text-slate-600 dark:text-slate-400">You can preview a link on Facebook using the Facebook Sharing Debugger tool or by using a social media preview tool like this one to simulate the appearance before publishing.</p>
+            </div>
+            <div>
+               <h3 class="font-bold text-lg mb-2">What is a Twitter Card validator?</h3>
+               <p class="text-slate-600 dark:text-slate-400">The Twitter Card validator is an official tool by Twitter that allows developers to check how their website URLs will appear in the Twitter feed, ensuring images and titles display correctly.</p>
+            </div>
+            <div>
+               <h3 class="font-bold text-lg mb-2">Why is my link preview not showing correctly?</h3>
+               <p class="text-slate-600 dark:text-slate-400">This is often due to missing meta tags, incorrect image dimensions, or caching issues. Social platforms cache link data, so changes may not appear immediately unless the cache is cleared via the platform's debugger.</p>
+            </div>
+         </div>
+      </div>
+
+      <!-- Related Tools -->
+      <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
+         <h2 class="text-2xl font-bold mb-6 text-center">Related Tools</h2>
+         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <a href="/meta-tag-generator/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
+               <i class="fas fa-tags text-2xl text-green-500"></i>
+               <div>
+                  <h4 class="font-bold group-hover:text-blue-500 transition-colors">Meta Tag Generator</h4>
+                  <p class="text-xs text-slate-500">Create standard meta tags.</p>
+               </div>
+            </a>
+            <a href="/seo-analyzer/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
+               <i class="fas fa-chart-line text-2xl text-purple-500"></i>
+               <div>
+                  <h4 class="font-bold group-hover:text-blue-500 transition-colors">SEO Analyzer</h4>
+                  <p class="text-xs text-slate-500">Audit your on-page SEO.</p>
+               </div>
+            </a>
+            <a href="/open-graph-generator/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
+               <i class="fab fa-facebook text-2xl text-blue-600"></i>
+               <div>
+                  <h4 class="font-bold group-hover:text-blue-500 transition-colors">Open Graph Generator</h4>
+                  <p class="text-xs text-slate-500">Generate OG code easily.</p>
+               </div>
+            </a>
+         </div>
+      </div>
+
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/social-meta-preview.js"></script>
+</body>
+</html>

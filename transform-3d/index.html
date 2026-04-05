@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create and visualize CSS 3D transforms with live preview. Adjust rotate, scale, translate, and perspective instantly.">
+  <meta name="keywords" content="3d transform generator, css perspective, css 3d rotate, interactive css tool, css 3d transform, rotateX, rotateY">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/transform-3d/">
+  
+  <title>CSS 3D Transform Generator – Rotate, Scale & Perspective</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="CSS 3D Transform Generator – Rotate, Scale & Perspective">
+  <meta property="og:description" content="Create and visualize CSS 3D transforms with live preview. Adjust rotate, scale, translate, and perspective instantly.">
+  <meta property="og:url" content="https://devpalettes.com/3d-transform-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-3d-transform-generator.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS 3D Transform Generator – Rotate, Scale & Perspective">
+  <meta name="twitter:description" content="Create and visualize CSS 3D transforms with live preview. Adjust rotate, scale, translate, and perspective instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-3d-transform-generator.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS 3D Transform Generator",
+    "description": "Create and visualize CSS 3D transforms with live preview. Adjust rotate, scale, translate, and perspective instantly.",
+    "url": "https://devpalettes.com/3d-transform-generator/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is CSS 3D transform?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CSS 3D transforms allow elements to be manipulated in three-dimensional space using properties like rotateX, rotateY, rotateZ, translateZ, and scale. Combined with the perspective property, these transforms create the illusion of depth on a two-dimensional screen, enabling realistic rotations, translations, and scaling effects."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does perspective work in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The perspective property in CSS defines the distance between the viewer and the z-plane of transformed elements. A smaller value (e.g., 200px) creates a strong, exaggerated 3D effect, while a larger value (e.g., 1500px) produces a subtle, flatter appearance. Perspective must be applied to the parent container, not the element being transformed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between rotateX and rotateY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "RotateX rotates an element around its horizontal X-axis, creating a top-over-bottom flip effect (like tilting a laptop screen backward). RotateY rotates an element around its vertical Y-axis, creating a left-over-right flip effect (like turning a book page or a revolving door)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to create 3D effects in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To create 3D effects in CSS, apply a perspective value to the parent container, then use transform functions like rotateX(), rotateY(), translateZ(), and scale() on the child element. Ensure transform-style: preserve-3d is set on the parent if you are building multi-face 3D objects, and use transitions or animations for smooth motion."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <style>
+    /* Range Input Styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: pointer;
+      width: 100%;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 6px;
+      border-radius: 3px;
+      background: #cbd5e1;
+    }
+    .dark input[type=range]::-webkit-slider-runnable-track {
+      background: #334155;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      margin-top: -5px;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      background: #10b981;
+      border: 2px solid white;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* 3D Scene Setup */
+    .scene-container {
+       perspective: 800px;
+       perspective-origin: 50% 50%;
+       transition: perspective 0.3s ease;
+    }
+    
+    .transform-box {
+       width: 150px;
+       height: 150px;
+       transition: transform 0.1s ease-out;
+       transform-style: preserve-3d;
+       cursor: grab;
+    }
+    .transform-box:active {
+       cursor: grabbing;
+    }
+    
+    /* Custom scrollbar for code */
+    .code-block::-webkit-scrollbar { width: 6px; height: 6px; }
+    .code-block::-webkit-scrollbar-thumb { background: #94a3b8; border-radius: 3px; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">3D Transform Studio</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Interact with the box or use sliders. Generate CSS for complex 3D effects instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <aside class="lg:col-span-1 space-y-4 animate-on-scroll" aria-label="Transform controls">
+          
+          <!-- Transform Controls -->
+          <div class="glass-card p-5 shimmer-card">
+            <h2 class="font-bold mb-4 text-lg flex items-center gap-2 text-indigo-500">
+               <i class="fas fa-sync-alt" aria-hidden="true"></i> Rotation
+            </h2>
+            <div class="space-y-3">
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>X Axis</span><span id="val-rx" class="font-mono font-bold">0°</span></div>
+                  <input type="range" id="ctrl-rx" min="-180" max="180" value="0" class="w-full" aria-label="Rotate X axis">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Y Axis</span><span id="val-ry" class="font-mono font-bold">0°</span></div>
+                  <input type="range" id="ctrl-ry" min="-180" max="180" value="0" class="w-full" aria-label="Rotate Y axis">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Z Axis</span><span id="val-rz" class="font-mono font-bold">0°</span></div>
+                  <input type="range" id="ctrl-rz" min="-180" max="180" value="0" class="w-full" aria-label="Rotate Z axis">
+               </div>
+            </div>
+          </div>
+          
+          <div class="glass-card p-5 shimmer-card">
+            <h2 class="font-bold mb-4 text-lg flex items-center gap-2 text-emerald-500">
+               <i class="fas fa-expand-arrows-alt" aria-hidden="true"></i> Position & Scale
+            </h2>
+            <div class="space-y-3">
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Perspective</span><span id="val-p" class="font-mono font-bold">800px</span></div>
+                  <input type="range" id="ctrl-p" min="100" max="2000" value="800" class="w-full" aria-label="Perspective depth">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Scale</span><span id="val-s" class="font-mono font-bold">1.0</span></div>
+                  <input type="range" id="ctrl-s" min="0.1" max="3" step="0.1" value="1" class="w-full" aria-label="Scale factor">
+               </div>
+               <div>
+                  <div class="flex justify-between text-xs mb-1"><span>Translate Z</span><span id="val-tz" class="font-mono font-bold">0px</span></div>
+                  <input type="range" id="ctrl-tz" min="-200" max="200" value="0" class="w-full" aria-label="Translate Z axis">
+               </div>
+            </div>
+          </div>
+          
+          <!-- Presets -->
+          <div class="glass-card p-5 shimmer-card">
+             <h2 class="font-bold mb-3 text-sm uppercase tracking-wider text-slate-500">Presets</h2>
+             <div class="grid grid-cols-2 gap-2">
+                <button onclick="setPreset(0,0,0,800,1,0)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Reset</button>
+                <button onclick="setPreset(0,180,0,1000,1,0)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Flip Y</button>
+                <button onclick="setPreset(45,45,0,1000,1,50)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Cube</button>
+                <button onclick="setPreset(-20,0,0,500,1.2,0)" class="px-3 py-2 rounded bg-slate-200 dark:bg-slate-700 text-xs font-bold hover:bg-emerald-500 hover:text-white transition-colors">Float</button>
+             </div>
+          </div>
+          
+        </aside>
+        
+        <!-- Center: Preview -->
+        <section class="lg:col-span-1 space-y-4 animate-on-scroll" aria-label="3D transform preview">
+          
+          <div class="glass-card p-0 shimmer-card overflow-hidden h-[400px] flex items-center justify-center relative">
+             <!-- Background Grid -->
+             <div class="absolute inset-0 bg-slate-100 dark:bg-slate-800 opacity-50" style="background-image: linear-gradient(#cbd5e1 1px, transparent 1px), linear-gradient(90deg, #cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
+             
+             <div id="scene" class="scene-container relative w-full h-full flex items-center justify-center">
+                <div id="box" class="transform-box bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-2xl flex items-center justify-center text-white font-bold text-xl border border-white/20" role="img" aria-label="3D transform preview box">
+                   <span>BOX</span>
+                </div>
+             </div>
+          </div>
+          
+          <p class="text-center text-xs text-slate-400 animate-on-scroll">
+             <i class="fas fa-hand-pointer mr-1" aria-hidden="true"></i> Drag the box to rotate manually
+          </p>
+          
+        </section>
+        
+        <!-- Right: Style & Code -->
+        <section class="lg:col-span-1 space-y-4 animate-on-scroll" aria-label="Style controls and CSS output">
+           
+           <!-- Style Controls -->
+           <div class="glass-card p-5 shimmer-card">
+              <h2 class="font-bold mb-4 text-lg flex items-center gap-2 text-pink-500">
+                 <i class="fas fa-paint-brush" aria-hidden="true"></i> Style Box
+              </h2>
+              <div class="grid grid-cols-2 gap-3">
+                 <div>
+                    <label for="ctrl-color" class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                    <input type="color" id="ctrl-color" value="#6366f1" class="w-full h-8 rounded cursor-pointer bg-transparent">
+                 </div>
+                 <div>
+                    <label for="ctrl-radius" class="block text-xs font-semibold mb-1 text-slate-500">Border Radius</label>
+                    <input type="range" id="ctrl-radius" min="0" max="75" value="12" class="w-full" aria-label="Border radius percentage">
+                 </div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-5 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h2 class="font-bold text-lg">CSS Code</h2>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy CSS code"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>
+             </div>
+             <div class="bg-slate-900 rounded-lg p-3 code-block overflow-auto max-h-64">
+                <pre id="code-output" class="text-xs text-emerald-400 font-mono whitespace-pre-wrap" aria-live="polite"></pre>
+             </div>
+           </div>
+           
+        </section>
+        
+      </div>
+      
+      <!-- Common Presets Explanation Section -->
+      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Common 3D transform presets explained">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6 flex items-center gap-2">
+            <i class="fas fa-magic text-indigo-500" aria-hidden="true"></i>
+            Common Presets Explained
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Cube View (45°, 45°)</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Rotates equally on X and Y axes to show two faces simultaneously, simulating an isometric or cube-corner perspective. Ideal for showcasing multi-sided elements.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Flip Y (180° Y-Axis)</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Rotates the element 180 degrees around its vertical axis, creating a full horizontal flip. Commonly used for card flip animations where the back side is revealed.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Float / Tilt (-20° X, Low Perspective)</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">A slight backward tilt combined with a low perspective value creates an exaggerated depth effect that makes elements appear to hover above the surface. Perfect for hero sections and featured cards.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Depth (Translate Z + Perspective)</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Moving an element forward along the Z-axis combined with perspective makes it appear closer to the viewer, growing larger. Useful for bringing focus to active or hovered elements in a 3D space.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- SEO Content Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to CSS 3D transforms">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2 class="text-2xl font-bold mb-4">What Are CSS 3D Transforms?</h2>
+          <p>CSS 3D transforms extend the standard two-dimensional transform model into three-dimensional space, allowing elements to be rotated, scaled, and translated along the X, Y, and Z axes. While 2D transforms manipulate elements flatly on the screen plane, 3D transforms create the illusion of depth — elements appear to recede into the distance, tilt toward the viewer, or rotate in physical space. This capability is powered by the <strong>transform</strong> property combined with 3D-specific functions and the <strong>perspective</strong> property that establishes a viewing context.</p>
+          <p>The three primary rotation functions are <strong>rotateX()</strong>, <strong>rotateY()</strong>, and <strong>rotateZ()</strong>. RotateX spins the element around its horizontal axis — imagine tilting a laptop screen backward or forward. RotateY spins the element around its vertical axis — like a revolving door or turning a page in a book. RotateZ spins the element around its Z-axis (the axis pointing out of the screen) — similar to spinning a clock face. These three rotations can be combined in a single transform declaration to achieve any orientation in 3D space.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Understanding Perspective in CSS</h2>
+          <p>Perspective is the foundational concept that makes 3D transforms look three-dimensional rather than flat. In CSS, <strong>perspective</strong> defines the distance between the viewer's eye and the z=0 plane — the flat surface where untransformed elements sit. A small perspective value (such as 200px) places the viewer close to the element, creating a dramatic, exaggerated 3D effect where rotations cause extreme foreshortening. A large perspective value (such as 1500px or 2000px) places the viewer far away, resulting in a subtle, almost orthographic appearance where depth changes are barely noticeable.</p>
+          <p>Perspective must be applied to the <strong>parent container</strong> of the element being transformed, not to the element itself. When applied directly via the <strong>transform</strong> property using the <strong>perspective()</strong> function, it affects only that specific element. When set as a standalone CSS property on the parent, it establishes a shared 3D space that all child transforms reference. For multi-element 3D scenes, the parent property approach ensures consistent depth across all children. The <strong>perspective-origin</strong> property can further refine the viewing angle by shifting the vanishing point — for example, moving it to the bottom-center creates a ground-level camera angle.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Transform Properties Explained</h2>
+          
+          <h3 class="text-2xl font-bold mb-4">rotate() Functions</h3>
+          <p>The rotate functions accept an angle value in degrees (deg), radians (rad), or turns (turn). <strong>rotateX(45deg)</strong> tilts the top edge of the element away from the viewer by 45 degrees. <strong>rotateY(-90deg)</strong> turns the element 90 degrees to the right, making it edge-on and invisible if it has no thickness. <strong>rotateZ(180deg)</strong> flips the element upside down. When multiple rotations are chained — such as <strong>rotateX(45deg) rotateY(45deg)</strong> — they are applied sequentially from right to left, meaning the Y rotation happens first in the element's local coordinate system, then the X rotation is applied to the already-Y-rotated element.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">scale()</h3>
+          <p>The <strong>scale()</strong> function changes the size of the element along one or more axes. In 3D contexts, <strong>scale3d(sx, sy, sz)</strong> allows independent scaling on each axis — scaling Z can make an element appear thicker or thinner in depth. A uniform scale like <strong>scale(1.5)</strong> enlarges the element equally in all directions. In 3D transforms, scale is often combined with translateZ to simulate depth-of-field effects where closer objects appear larger.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">translateZ()</h3>
+          <p>The <strong>translateZ()</strong> function moves the element forward or backward along the Z-axis. Positive values bring the element closer to the viewer (it appears larger due to perspective), while negative values push it away (it appears smaller). TranslateZ is essential for parallax effects, layered card stacks, and any UI where elements exist at different depths. Without perspective, translateZ has no visible effect — the two properties are interdependent.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">How to Use This 3D Transform Generator</h2>
+          <p>This tool provides a real-time visual environment for experimenting with CSS 3D transforms. Start by adjusting the rotation sliders for X, Y, and Z axes to orient the box. Modify the perspective slider to see how viewing distance affects the intensity of the 3D effect — try extreme values like 200px and 1500px to observe the difference. Use the scale and translateZ sliders to explore depth positioning. Click and drag the box directly to rotate it freely with the mouse. Once you achieve the desired effect, customize the box color and border radius, then copy the generated CSS code to use in your project. When selecting colors for your 3D elements, <a href="/palettes/">generate color palettes</a> that provide gradients and accents working well together. If you need precise color values for your transforms or background styling, <a href="/converter/">convert HEX to RGB</a> for accurate format handling. To build a cohesive visual system around your 3D components, <a href="/blog/color-palettes-guide/">learn color combinations</a> that enhance depth perception and visual hierarchy.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Real Use Cases for CSS 3D Transforms</h2>
+          <p>3D transforms are widely used in modern UI design to create engaging interactive elements. <strong>Card flip animations</strong> use rotateY(180deg) on hover or click to reveal information on the back side of a card — common in pricing tables, team member profiles, and flashcard applications. <strong>Hover tilt effects</strong> apply subtle rotateX and rotateY values based on mouse position, making elements feel physically responsive to the cursor. <strong>Parallax scrolling</strong> uses translateZ at different values on layered elements to create depth as the user scrolls. <strong>3D carousels</strong> arrange items in a circular pattern using rotateY and translateZ, with each item rotated by an equal angle increment. <strong>Page transitions</strong> use perspective and rotateX to simulate pages turning like a book. These effects add a tactile quality to interfaces that flat 2D animations cannot achieve, making user interactions feel more natural and memorable.</p>
+          
+        </article>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about CSS 3D transforms">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is CSS 3D transform?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">CSS 3D transforms allow elements to be manipulated in three-dimensional space using properties like rotateX, rotateY, rotateZ, translateZ, and scale. Combined with the perspective property, these transforms create the illusion of depth on a two-dimensional screen, enabling realistic rotations, translations, and scaling effects.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How does perspective work in CSS?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The perspective property in CSS defines the distance between the viewer and the z-plane of transformed elements. A smaller value (e.g., 200px) creates a strong, exaggerated 3D effect, while a larger value (e.g., 1500px) produces a subtle, flatter appearance. Perspective must be applied to the parent container, not the element being transformed.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is the difference between rotateX and rotateY?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">RotateX rotates an element around its horizontal X-axis, creating a top-over-bottom flip effect (like tilting a laptop screen backward). RotateY rotates an element around its vertical Y-axis, creating a left-over-right flip effect (like turning a book page or a revolving door).</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How to create 3D effects in CSS?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To create 3D effects in CSS, apply a perspective value to the parent container, then use transform functions like rotateX(), rotateY(), translateZ(), and scale() on the child element. Ensure transform-style: preserve-3d is set on the parent if you are building multi-face 3D objects, and use transitions or animations for smooth motion.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Related Tools Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Related design tools">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            
+            <a href="/flexbox/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-arrows-left-right text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Flexbox Playground</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Learn CSS Flexbox visually with interactive alignment controls.</p>
+            </a>
+            
+            <a href="/css-grid-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-table-cells text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">CSS Grid Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Build responsive grid layouts with row and column controls.</p>
+            </a>
+            
+            <a href="/gradient/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-palette text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Gradient Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create beautiful CSS gradients with live preview and code export.</p>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/transform-3d.js"></script>
+</body>
+</html>
