@@ -715,8 +715,8 @@ function renderNavbar() {
       <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
         ${mobileCategoriesHTML}
         <hr class="border-slate-200 dark:border-slate-700 my-4">
-        <a href="${navHref('about/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About</a>
-        <a href="${navHref('contact/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact</a>
+        <a href="${navHref('about/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About Us</a>
+        <a href="${navHref('contact/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact Us</a>
         <a href="${navHref('blog/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
         <div class="mt-auto pb-8">
           <a href="${navHref('palettes/')}" class="btn-primary text-center mt-4 w-full justify-center">
@@ -755,7 +755,7 @@ function renderFooter() {
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/about/" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact</a></li>
+              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact Us</a></li>
               <li><a href="/blog/" class="hover:text-emerald-500 transition-colors">Blog</a></li>
               <li><a href="/sitemap/" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
