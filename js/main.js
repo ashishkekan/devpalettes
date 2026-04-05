@@ -380,7 +380,7 @@ const NAV_CATEGORIES = [
     label: 'Color Lab',
     tools: [
       { label: 'Color from image', path: 'color-from-image/' },
-      // { label: 'AI Palette generator', path: 'palettes/' },
+      { label: 'AI Palette generator', path: 'palettes/' },
       { label: 'Gradient Maker', path: 'gradient/' },
       { label: 'Color Converter', path: 'converter/' },
       // { label: 'Color Wheel', path: 'color-wheel/' },
