@@ -778,6 +778,7 @@ function renderFooter() {
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
               <li><a href="/faq/" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
               <li><a href="/help-center/" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
+              <li><a href="/why-trust-us/" class="hover:text-emerald-500 transition-colors">Why Trust Us</a></li>
             </ul>
           </div>
           
