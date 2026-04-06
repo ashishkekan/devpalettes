@@ -23,6 +23,12 @@
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
+  <!-- Modern Image Format: WebP favicon alternatives (place .webp files on server alongside .png) -->
+  <link rel="icon" type="image/webp" sizes="16x16" href="/images/devpalettes_zoom_16.webp">
+  <link rel="icon" type="image/webp" sizes="32x32" href="/images/devpalettes_zoom_32.webp">
+  <link rel="icon" type="image/webp" sizes="64x64" href="/images/devpalettes_zoom_64.webp">
+  <link rel="icon" type="image/webp" sizes="180x180" href="/images/devpalettes_zoom_180.webp">
+
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -41,6 +47,16 @@
     }
   </script>
   <meta name="google-site-verification" content="wohbyekMYwIXhjhv2MbwZAcdDdxfPt6JpfrXk7c83Oc" />
+
+  <!-- Google Analytics — Replace G-XXXXXXXXXX with your actual GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+
   <!-- Google Fonts -->
   <link rel="canonical" href="https://devpalettes.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +67,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Tailwind CSS -->
   <script src="/js/tailwind.js"></script>
+  <!-- NOTE: For CDN Usage — consider serving /js/tailwind.js and css/styles.css from a CDN (e.g., Cloudflare, jsDelivr) for improved global caching and load times -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -75,6 +92,7 @@
       }
     })();
   </script>
+  <!-- NOTE: Strict-Transport-Security — This header MUST be set in your server config (e.g., Nginx/Apache/Cloudflare), NOT via meta tag. Example for Nginx: add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always; -->
   <style>
     /* Hero Visualizer Canvas */
     #hero-visualizer {
@@ -774,7 +792,7 @@
   <section class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Top Blogs of the Week</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-4">Top Blogs of the Week</h3>
         <p class="text-slate-600 dark:text-slate-400">🔥 Most popular and trending design articles this week.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
@@ -822,7 +840,7 @@
   <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 animate-on-scroll">
-        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Top Tools of the Week</h2>
+        <h3 class="text-3xl sm:text-4xl font-bold mb-4">Top Tools of the Week</h3>
         <p class="text-slate-600 dark:text-slate-400">🚀 Most used tools by designers and developers this week.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
@@ -860,28 +878,32 @@
   <!-- Added Social Sharing Section (After CTA or before Footer) -->
   <section class="py-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-6">Share Devpalettes with Your Network</h2>
+      <h3 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-6">Share Devpalettes with Your Network</h3>
       <div class="flex flex-wrap justify-center gap-4">
         <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" 
           target="_blank" 
+          rel="noopener noreferrer"
           class="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
           <i class="fab fa-x-twitter"></i> Share on X
         </a>
         
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" 
           target="_blank" 
+          rel="noopener noreferrer"
           class="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
           <i class="fab fa-facebook-f"></i> Share on Facebook
         </a>
         
         <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" 
           target="_blank" 
+          rel="noopener noreferrer"
           class="flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors">
           <i class="fab fa-linkedin-in"></i> Share on LinkedIn
         </a>
         
         <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" 
           target="_blank" 
+          rel="noopener noreferrer"
           class="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
           <i class="fab fa-whatsapp"></i> Share on WhatsApp
         </a>
@@ -959,7 +981,7 @@
 
   <section class="py-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 text-center animate-on-scroll">
-      <h2 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-6">Explore All Tools & Palettes</h2>
+      <h3 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-6">Explore All Tools & Palettes</h3>
       <div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
         <a href="/palettes/" class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 font-medium transition-colors">Color Palette Generator</a>
         <a href="/pastel-color-palettes/" class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 font-medium transition-colors">Pastel Color Palettes</a>
