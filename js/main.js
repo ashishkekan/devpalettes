@@ -663,7 +663,7 @@ function renderNavbar() {
   }).join('');
 
   const navHTML = `
-    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
+    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]" aria-label="Main navigation">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-14 sm:h-12">
           <!-- Logo -->
