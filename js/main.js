@@ -821,7 +821,7 @@ function renderFooter() {
             <a href="https://x.com/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
               <i class="fab fa-twitter text-lg sm:text-xl"></i>
             </a>
-            <a href="https://github.com/Devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+            <a href="https://github.com/ashishkekan/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
               <i class="fab fa-github text-lg sm:text-xl"></i>
             </a>
             <a href="https://www.instagram.com/devpalettes/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
