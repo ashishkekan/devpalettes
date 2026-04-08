@@ -17,10 +17,10 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Modern Image Format: WebP favicon alternatives (place .webp files on server alongside .png) -->
-  <link rel="icon" type="image/webp" sizes="16x16" href="/images/devpalettes_zoom_16.webp">
-  <link rel="icon" type="image/webp" sizes="32x32" href="/images/devpalettes_zoom_32.webp">
-  <link rel="icon" type="image/webp" sizes="64x64" href="/images/devpalettes_zoom_64.webp">
-  <link rel="icon" type="image/webp" sizes="180x180" href="/images/devpalettes_zoom_180.webp">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
   <script type="application/ld+json">
     {
@@ -870,37 +870,33 @@
   <!-- Added Social Sharing Section (After CTA or before Footer) -->
   <section class="py-12 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 text-center">
-      <h3 class="text-lg font-semibold text-slate-700 dark:text-slate-300 mb-6">Share Devpalettes with Your Network</h3>
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" 
-          target="_blank" 
-          class="flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full hover:bg-gray-800 transition-colors">
-          <i class="fab fa-x-twitter"></i> Share on X
+      <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+      <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+      <div class="flex items-center justify-center gap-3 flex-wrap">
+        <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+          <i class="fab fa-x-twitter"></i> Twitter
         </a>
-        
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" 
-          target="_blank" 
-          class="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
-          <i class="fab fa-facebook-f"></i> Share on Facebook
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+          <i class="fab fa-facebook-f"></i> Facebook
         </a>
-        
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" 
-          target="_blank" 
-          class="flex items-center gap-2 px-6 py-3 bg-blue-700 text-white rounded-full hover:bg-blue-800 transition-colors">
-          <i class="fab fa-linkedin-in"></i> Share on LinkedIn
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+          <i class="fab fa-linkedin-in"></i> LinkedIn
         </a>
-        
-        <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" 
-          target="_blank" 
-          class="flex items-center gap-2 px-6 py-3 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
-          <i class="fab fa-whatsapp"></i> Share on WhatsApp
+        <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+          <i class="fab fa-whatsapp"></i> WhatsApp
         </a>
+        <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+          <i class="fab fa-pinterest-p"></i> Pinterest
+        </a>
+        <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+          <i class="fas fa-link"></i> Copy Link
+        </button>
       </div>
     </div>
   </section>
 
   <!-- SEO Content Section — EXPANDED with external links -->
-  <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50 gradient-padding mt-2" style="padding-top: 0;">
+  <section class="py-20 bg-slate-100/50 dark:bg-slate-900/50 gradient-padding mt-2" style="padding-top: 20px;">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="prose prose-slate dark:prose-invert max-w-none animate-on-scroll">
         <h2 class="text-2xl font-bold mb-6">Why Use a Color Palette Generator?</h2>
@@ -1379,6 +1375,44 @@
       }
       // Spacebar shortcut
       Devpalettes.KeyboardShortcuts.on('space', refreshPalettes);
+    });
+  </script>
+
+  <!-- Copy Link Button -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
     });
   </script>
 </body>
