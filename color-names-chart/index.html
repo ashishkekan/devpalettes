@@ -6,7 +6,7 @@
   
   <!-- Primary Meta Tags -->
   <title>HTML Color Names Chart: 148 Colors with HEX & RGB Codes</title>
-  <meta name="description" content="Explore the complete list of 148 standard HTML color names with HEX and RGB values. Click any color to copy the code instantly.">
+  <meta name="description" content="Explore the complete list of 148 standard HTML color names with HEX and RGB values. Click any color to copy the code instantly. Learn CSS color names, HEX colors, and RGB colors.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/color-names-chart/"/>
 
@@ -14,14 +14,14 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/color-names-chart/">
   <meta property="og:title" content="HTML Color Names Chart: 148 Colors with HEX & RGB Codes">
-  <meta property="og:description" content="Complete list of 148 standard HTML color names. Click to copy.">
+  <meta property="og:description" content="Complete list of 148 standard HTML color names with HEX and RGB values. Click to copy.">
   <meta property="og:image" content="https://devpalettes.com/images/og-colors.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/color-names-chart/">
   <meta property="twitter:title" content="HTML Color Names Chart: 148 Colors with HEX & RGB Codes">
-  <meta property="twitter:description" content="Complete list of 148 standard HTML color names. Click to copy.">
+  <meta property="twitter:description" content="Complete list of 148 standard HTML color names with HEX and RGB values. Click to copy.">
   
   <!-- Favicon & Apple Touch Icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -46,7 +46,7 @@
     "url": "https://devpalettes.com/color-names-chart/",
     "logo": "https://devpalettes.com/images/devpalettes.png",
     "name": "HTML Color Names",
-    "description": "A list of standard HTML color names.",
+    "description": "A list of standard HTML color names with HEX and RGB codes.",
     "numberOfItems": 148,
     "itemListElement": [
       {
@@ -70,7 +70,7 @@
         "name": "How many HTML color names are there?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "There are 148 standard HTML color names supported by modern browsers. These include basic names like Red and Blue, as well as extended names like Coral and BurlyWood."
+          "text": "There are 148 standard HTML color names supported by all modern browsers. These were originally derived from the X11 color standard and later adopted into the CSS Color Module Level 3 specification by the W3C. The list includes 16 basic colors like Red, Blue, and Green, plus 132 extended names like CornflowerBlue, RebeccaPurple, and BurlyWood."
         }
       },
       {
@@ -78,7 +78,7 @@
         "name": "Can I use HTML color names in CSS?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, you can use HTML color names directly in CSS properties. For example: `color: Tomato;` or `background-color: SlateBlue;`. They are valid CSS values."
+          "text": "Yes, all 148 HTML color names are valid CSS color values. You can use them directly in any CSS property that accepts a color, such as color: Tomato; or background-color: SlateBlue;. They work in all modern browsers and are part of the official CSS specification."
         }
       },
       {
@@ -86,7 +86,23 @@
         "name": "What is the difference between HEX and color names?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "HEX codes (like #FF0000) are numerical representations of colors, while color names (like Red) are keywords. Names are easier to remember, but HEX offers more precision and a wider range of shades."
+          "text": "HEX codes like #FF0000 are six-digit hexadecimal numbers representing RGB channels, while color names like Red are human-readable keywords that map to those same HEX values. Both produce identical colors in the browser. Names are easier to remember and read in code, while HEX codes allow you to specify any of the 16.7 million possible RGB colors, not just the 148 named ones."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are HTML color names case-sensitive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, HTML and CSS color names are not case-sensitive. You can write Tomato, tomato, or TOMATO and they will all work the same way. However, the convention is to use CamelCase for readability, which is also how they are documented on MDN and the W3C specification."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why should I use named colors instead of HEX codes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Named colors improve code readability. Writing color: Coral; is immediately understandable, while color: #FF7F50; requires a mental lookup. Named colors are ideal for prototyping, quick edits, and working in teams where clarity matters. For production work requiring precise brand colors, HEX or RGB values are still recommended."
         }
       }
     ]
@@ -113,6 +129,26 @@
   
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .share-btns a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      color: #64748b;
+      font-size: 14px;
+      transition: color 0.2s, background 0.2s;
+    }
+    .share-btns a:hover {
+      color: #0f172a;
+      background: rgba(100,116,139,0.12);
+    }
+    .dark .share-btns a { color: #94a3b8; }
+    .dark .share-btns a:hover { color: #f1f5f9; background: rgba(148,163,184,0.15); }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
@@ -127,8 +163,14 @@
     
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       <div class="text-center mb-12 animate-on-scroll" style="margin-top: 45px;">
-        <h1 class="text-4xl font-bold mb-3">HTML Color Names Chart: 148 CSS Colors</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Complete list of standard named colors • Click to copy HEX</p>
+        <h1 class="text-4xl font-bold mb-3">HTML Color Names Chart: 148 CSS Colors with HEX & RGB</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">Complete list of standard named colors • Click to copy HEX</p>
+        <div class="share-btns flex items-center justify-center gap-2 mb-6">
+          <span class="text-xs text-slate-400 mr-1">Share:</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/color-names-chart/" target="_blank" rel="noopener noreferrer" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/color-names-chart/&text=HTML%20Color%20Names%20Chart%20-%20148%20CSS%20Colors%20with%20HEX%20%26%20RGB" target="_blank" rel="noopener noreferrer" aria-label="Share on Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://wa.me/?text=HTML%20Color%20Names%20Chart%20-%20148%20CSS%20Colors%20with%20HEX%20%26%20RGB%20https://devpalettes.com/color-names-chart/" target="_blank" rel="noopener noreferrer" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
       
@@ -138,42 +180,108 @@
       
       <div class="seo-content space-y-12 mt-16 animate-on-scroll">
          
-         <!-- List Section -->
+         <!-- Introduction Section -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Complete List of HTML Color Codes</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Below is the complete reference of 148 standard HTML color codes supported by all major web browsers. This list includes the color name, the corresponding HEX code, and the RGB value. These names are derived from the X11 color standard and are fully compliant with CSS3 specifications. Use this chart to quickly find color names like "CornflowerBlue" or "RebeccaPurple" without memorizing complex hex values.
+               Below is the complete reference of 148 standard HTML color codes supported by all major web browsers. This color chart includes every recognized color name, its corresponding HEX code, and the RGB value for each entry. These names are derived from the <a href="https://www.w3.org/TR/css-color-3/" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">CSS Color Module Level 3 specification</a> by the W3C and the original X11 color standard. Use this chart to quickly find color names like "CornflowerBlue" or "RebeccaPurple" without memorizing complex hex values.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Click on any color block above to copy the HEX code to your clipboard instantly. Whether you are building a <a href="/color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color palette</a> for a new project or quickly prototyping a layout, this tool is designed to speed up your development workflow by making color selection effortless. If you need to convert between formats, try our <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> tool for seamless switching between HEX, RGB, HSL, and more.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Click on any color block above to copy the HEX code to your clipboard instantly. This tool is designed to speed up your development workflow by making color selection effortless.
+               Each color in this HTML color names chart renders identically across Chrome, Firefox, Safari, and Edge, so you can use these named colors with confidence in any web project.
             </p>
          </section>
 
-         <!-- What is -->
+         <!-- What are HTML Color Names -->
          <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">What are HTML Color Names?</h2>
+            <h2 class="text-2xl font-bold mb-4">What Are HTML Color Names?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               HTML color names are predefined keywords that represent specific colors in web design and development. Instead of using numeric values like HEX codes (<code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#FF0000</code>) or RGB colors (<code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rgb(255, 0, 0)</code>), developers can simply use the keyword <strong>Red</strong>. These CSS color names are part of the official specification and are parsed by every browser's rendering engine into their equivalent numeric values behind the scenes.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               There are currently <strong>148 standard color names</strong> supported by all modern browsers. The original set of 16 basic colors — including Red, Blue, Green, Black, White, and Yellow — was defined in the HTML 3.2 specification. The extended list of 148 names was later formalized in the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">CSS Color Module</a> and includes evocative names like "Tomato", "DodgerBlue", "PeachPuff", and "RebeccaPurple" (added as a tribute to Rebecca Alison Meyer).
+            </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               HTML Color Names are predefined keywords that represent specific colors in web design. Instead of using numeric values like HEX codes (<code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#FF0000</code>), developers can simply use the name <strong>Red</strong>. There are currently <strong>148 standard color names</strong> supported by all major browsers, originally derived from the X11 color names.
+               These named colors are not just convenient aliases — they are an integral part of the CSS specification documented by <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/named-color" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN Web Docs</a>. Using them in your stylesheets ensures full cross-browser compatibility without any polyfills or fallbacks.
+            </p>
+         </section>
+
+         <!-- How Many Color Names Exist -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How Many Color Names Exist in CSS?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The CSS specification defines exactly <strong>148 named colors</strong>. This number has remained stable since CSS Color Module Level 3. The original HTML standard included only 16 basic colors: Aqua, Black, Blue, Fuchsia, Gray, Green, Lime, Maroon, Navy, Olive, Purple, Red, Silver, Teal, White, and Yellow. The remaining 132 names were inherited from the X11 color system used in early Unix-based graphical interfaces.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               While 148 may seem limited compared to the 16.7 million colors expressible through HEX or RGB values, these named colors cover a surprisingly wide and useful range. From warm tones like <a href="/warm-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">Sienna</a> and <a href="/warm-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">Chocolate</a> to cool tones like <a href="/cool-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SteelBlue</a> and <a href="/cool-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">CadetBlue</a>, the named palette provides a solid foundation for web design. For more specialized palettes, explore our <a href="/neon-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">neon color palettes</a> or <a href="/pastel-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">pastel color palettes</a>.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               CSS Color Module Level 4 introduced additional color functions like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">hsl()</code>, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">lab()</code>, and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">oklch()</code>, but the 148 named colors remain unchanged and are the most human-friendly way to specify colors in CSS.
+            </p>
+         </section>
+
+         <!-- HEX vs RGB vs Named Colors -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Difference Between HEX, RGB, and Named Colors</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               All three formats — HEX colors, RGB colors, and named colors — ultimately describe the same thing: a specific color displayed on screen. The difference lies in syntax, precision, and usability. Understanding when to use each format is essential for efficient web development.
+            </p>
+            <div class="space-y-4 mb-4">
+               <div>
+                  <h3 class="font-bold mb-1">HEX Colors</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">HEX (hexadecimal) codes are six-character strings prefixed with a hash symbol, like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#FF6347</code>. Each pair of characters represents the red, green, and blue channels in base-16 notation. HEX colors can express any of the 16,777,216 possible RGB colors, making them the most precise option for brand colors and production work. They are the most widely used format in design tools like Figma and Sketch.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold mb-1">RGB Colors</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">RGB colors use the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rgb(r, g, b)</code> function syntax, where each value ranges from 0 to 255. For example, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rgb(255, 99, 71)</code> is equivalent to <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#FF6347</code>. The modern variant <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rgba()</code> adds an alpha channel for transparency, which is useful for overlays and glassmorphism effects. Need to switch formats? Use our <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> for instant translation.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold mb-1">Named Colors</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Named colors are the 148 human-readable keywords like "Tomato", "Coral", and "SkyBlue". They map one-to-one with specific HEX and RGB values. While they offer less variety than HEX or RGB, their strength lies in readability and developer experience. Writing <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: DarkCyan;</code> communicates intent far more clearly than <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: #008B8B;</code>.</p>
+               </div>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               In practice, many teams use named colors during prototyping and switch to HEX or RGB values in production for precision. Our <a href="/contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> tool works with all three formats to help you ensure your text meets WCAG accessibility standards.
+            </p>
+         </section>
+
+         <!-- When to Use Named Colors -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">When to Use Named Colors in Design</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Named colors shine in specific scenarios where speed, readability, and communication matter more than pixel-perfect precision. Here are the best use cases for HTML color names in your workflow:
+            </p>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Rapid Prototyping:</strong> When sketching out layouts and wireframes, typing <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">background: Lavender;</code> is faster than looking up a HEX code. You can always refine colors later using a <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color picker from image</a> tool.</li>
+               <li><strong>Team Communication:</strong> In code reviews and documentation, named colors are self-documenting. A teammate instantly understands <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">border: 1px solid Gainsboro;</code> without needing a visual reference.</li>
+               <li><strong>Learning and Teaching:</strong> For beginners learning CSS, named colors provide an approachable entry point before diving into numeric color systems.</li>
+               <li><strong>Theming and Dark Modes:</strong> Semantic color names in CSS variables like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">--surface: WhiteSmoke;</code> make theme switching intuitive. For dark themes, explore our <a href="/dark-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">dark color palettes</a> for inspiration.</li>
+               <li><strong>Quick Fixes and Hotfixes:</strong> When deploying an urgent fix at 2 AM, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: Crimson;</code> gets the job done without opening a design tool.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               For production-grade work where exact color matching is required — such as brand guidelines or design system tokens — HEX and RGB values remain the recommended choice. Named colors are best used as a complementary tool in your design toolkit alongside <a href="/gradient-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradient generators</a> and palette builders.
             </p>
          </section>
 
          <!-- Usage Tips -->
          <section>
-            <h2 class="text-2xl font-bold mb-6 text-center">How to Use This Chart</h2>
+            <h2 class="text-2xl font-bold mb-6 text-center">How to Use This Color Chart</h2>
             <div class="grid md:grid-cols-2 gap-6">
                <div class="glass-card p-6">
                   <h3 class="font-bold mb-2 flex items-center gap-2">
                      <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">1</span>
                      Identify Colors
                   </h3>
-                  <p class="text-sm text-slate-500">Browse the visual grid to find the perfect color name for your project.</p>
+                  <p class="text-sm text-slate-500">Browse the visual grid to find the perfect color name for your project. Each card shows the color swatch, name, and HEX code at a glance.</p>
                </div>
                <div class="glass-card p-6">
                   <h3 class="font-bold mb-2 flex items-center gap-2">
                      <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">2</span>
                      Click to Copy
                   </h3>
-                  <p class="text-sm text-slate-500">Click on any color card to instantly copy its HEX code to your clipboard.</p>
+                  <p class="text-sm text-slate-500">Click on any color card to instantly copy its HEX code to your clipboard. A confirmation toast will appear when the code is copied.</p>
                </div>
             </div>
          </section>
@@ -182,11 +290,39 @@
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Why Use Named Colors in CSS?</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Readability:</strong> Code like <code>color: Tomato;</code> is easier to understand than <code>color: #FF6347;</code>.</li>
-               <li><strong>Memorability:</strong> It's easier to remember names like "SkyBlue" or "Chocolate" than hex codes.</li>
-               <li><strong>Speed:</strong> Faster to type common names during rapid prototyping.</li>
-               <li><strong>Transparency:</strong> You know exactly what color you are using just by reading the name.</li>
+               <li><strong>Readability:</strong> Code like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: Tomato;</code> is easier to understand at a glance than <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: #FF6347;</code>, especially in large stylesheets with hundreds of declarations.</li>
+               <li><strong>Memorability:</strong> It is easier to remember names like "SkyBlue", "ForestGreen", or "Chocolate" than their corresponding hex codes. This reduces context-switching between your editor and a color reference.</li>
+               <li><strong>Speed:</strong> Typing a familiar color name is faster than looking up or recalling a six-digit hex value, which accelerates development during sprints and hackathons.</li>
+               <li><strong>Transparency:</strong> You know exactly what color you are using just by reading the name. There is no ambiguity about whether <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#808000</code> is olive or lime — writing <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">Olive</code> makes it explicit.</li>
+               <li><strong>Zero Dependencies:</strong> Named colors work everywhere — no preprocessors, no configuration files, no build steps required. They are native to CSS.</li>
             </ul>
+         </section>
+
+         <!-- FAQ Section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+               <div>
+                  <h3 class="font-bold mb-2">How many HTML color names are there?</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">There are 148 standard HTML color names supported by all modern browsers. These were originally derived from the X11 color standard and later adopted into the CSS Color Module Level 3 specification by the W3C. The list includes 16 basic colors like Red, Blue, and Green, plus 132 extended names like CornflowerBlue, RebeccaPurple, and BurlyWood.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold mb-2">Can I use HTML color names in CSS?</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Yes, all 148 HTML color names are valid CSS color values. You can use them directly in any CSS property that accepts a color, such as <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: Tomato;</code> or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">background-color: SlateBlue;</code>. They work in all modern browsers and are part of the official CSS specification.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold mb-2">What is the difference between HEX and color names?</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">HEX codes like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">#FF0000</code> are six-digit hexadecimal numbers representing RGB channels, while color names like "Red" are human-readable keywords that map to those same HEX values. Both produce identical colors in the browser. Names are easier to remember and read in code, while HEX codes allow you to specify any of the 16.7 million possible RGB colors, not just the 148 named ones.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold mb-2">Are HTML color names case-sensitive?</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">No, HTML and CSS color names are not case-sensitive. You can write <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">Tomato</code>, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">tomato</code>, or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">TOMATO</code> and they will all render the same color. However, the convention is to use CamelCase for readability, which is also how they are documented on MDN and the W3C specification.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold mb-2">Why should I use named colors instead of HEX codes?</h3>
+                  <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">Named colors improve code readability. Writing <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: Coral;</code> is immediately understandable, while <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">color: #FF7F50;</code> requires a mental lookup. Named colors are ideal for prototyping, quick edits, and working in teams where clarity matters. For production work requiring precise brand colors, HEX or RGB values are still recommended.</p>
+               </div>
+            </div>
          </section>
          
          <!-- Internal Links -->
@@ -196,8 +332,11 @@
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color From Image</a>
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-               <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
-             </div>
+               <a href="/gradient-generator/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="/contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
+               <a href="/random-color-generator/" class="btn-secondary text-xs py-2 px-4">Random Color Generator</a>
+               <a href="/color-palettes/" class="btn-secondary text-xs py-2 px-4">Color Palettes</a>
+            </div>
          </section>
          
       </div>
