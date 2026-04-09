@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-F252PEQ1JC');
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
@@ -96,13 +104,6 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F252PEQ1JC');
-  </script>
   <script src="../js/tailwind.js"></script>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
@@ -426,7 +427,34 @@
             </div>
          </section>
 
-         <div class="text-center">
+         <section class="glass-card p-8 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                  <i class="fab fa-pinterest-p"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+         <section class="glass-card p-8 shimmer-card text-center">
             <h2 class="text-2xl font-bold mb-4">Explore More Color Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Take your designs further with these resources:</p>
             <div class="flex flex-wrap justify-center gap-3">
@@ -434,7 +462,7 @@
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
                <a href="/blog/color-palettes-guide/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
             </div>
-         </div>
+         </section>
          
       </div>
       <!-- End SEO Content -->
@@ -445,5 +473,41 @@
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
   <script src="../js/css-animation-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
