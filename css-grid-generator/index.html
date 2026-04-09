@@ -239,38 +239,42 @@
           </div>
         </div>
       </section>
+
+      <!-- Added Social Sharing Section (After CTA or before Footer) -->
+      <section class="glass-card p-8 shimmer-card text-center">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+              <i class="fab fa-pinterest-p"></i> Pinterest
+            </a>
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+              <i class="fas fa-link"></i> Copy Link
+            </button>
+          </div>
+        </div>
+      </section>
       
       <!-- Related Tools Section -->
-      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Related design tools">
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
-          <div class="grid sm:grid-cols-3 gap-4">
-            
-            <a href="/flexbox-playground/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
-                <i class="fas fa-arrows-left-right text-emerald-500" aria-hidden="true"></i>
-              </div>
-              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Flexbox Playground</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Learn CSS Flexbox visually with interactive alignment controls.</p>
-            </a>
-            
-            <a href="/card-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
-                <i class="fas fa-square text-emerald-500" aria-hidden="true"></i>
-              </div>
-              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Card Generator</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Design glass, gradient, and neumorphism UI cards with custom content.</p>
-            </a>
-            
-            <a href="/button-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
-                <i class="fas fa-hand-pointer text-emerald-500" aria-hidden="true"></i>
-              </div>
-              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Button Generator</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Create gradient, glass, neon, and 3D CSS buttons with live preview.</p>
-            </a>
-            
-          </div>
+      <section class="glass-card p-8 shimmer-card text-center">
+        <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/flexbox-playground/" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
+          <a href="/card-generator/" class="btn-secondary text-xs py-2 px-4">Card Generator</a>
+          <a href="/button-generator/" class="btn-secondary text-xs py-2 px-4">Button Generator</a>
         </div>
       </section>
     </div>
@@ -279,5 +283,41 @@
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
   <script src="../js/css-grid-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
