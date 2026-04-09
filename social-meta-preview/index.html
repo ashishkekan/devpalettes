@@ -270,31 +270,41 @@
          </div>
       </div>
 
+      <!-- Added Social Sharing Section (After CTA or before Footer) -->
+      <section class="glass-card p-8 shimmer-card text-center">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+              <i class="fab fa-pinterest-p"></i> Pinterest
+            </a>
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+              <i class="fas fa-link"></i> Copy Link
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Related Tools -->
-      <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
+      <section class="glass-card p-8 shimmer-card text-center">
          <h2 class="text-2xl font-bold mb-6 text-center">Related Tools</h2>
-         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <a href="/meta-tag-generator/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
-               <i class="fas fa-tags text-2xl text-green-500"></i>
-               <div>
-                  <h4 class="font-bold group-hover:text-blue-500 transition-colors">Meta Tag Generator</h4>
-                  <p class="text-xs text-slate-500">Create standard meta tags.</p>
-               </div>
-            </a>
-            <a href="/seo-analyzer/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
-               <i class="fas fa-chart-line text-2xl text-purple-500"></i>
-               <div>
-                  <h4 class="font-bold group-hover:text-blue-500 transition-colors">SEO Analyzer</h4>
-                  <p class="text-xs text-slate-500">Audit your on-page SEO.</p>
-               </div>
-            </a>
-            <a href="/open-graph-generator/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
-               <i class="fab fa-facebook text-2xl text-blue-600"></i>
-               <div>
-                  <h4 class="font-bold group-hover:text-blue-500 transition-colors">Open Graph Generator</h4>
-                  <p class="text-xs text-slate-500">Generate OG code easily.</p>
-               </div>
-            </a>
+         <div class="flex flex-wrap justify-center gap-3">
+            <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+            <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+            <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
          </div>
       </div>
 
@@ -305,5 +315,41 @@
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
   <script src="../js/social-meta-preview.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
