@@ -52,9 +52,9 @@
   /* ========== PRESETS ========== */
   var presets = {
     blog: {
-      title: '10 Essential Web Development Tips for 2025',
-      description: 'Discover the most important web development practices that every developer should follow in 2025, from performance optimization to accessibility standards.',
-      url: 'https://example.com/blog/web-development-tips-2025',
+      title: '10 Essential Web Development Tips for 2026',
+      description: 'Discover the most important web development practices that every developer should follow in 2026, from performance optimization to accessibility standards.',
+      url: 'https://example.com/blog/web-development-tips-2026',
       image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&h=630&fit=crop',
       type: 'article',
       siteName: 'DevBlog',
