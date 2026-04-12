@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free Landing Page Builder tool. Visually design, customize, and generate clean, responsive HTML for your landing page hero, features, and CTA sections. No coding required.">
+  <meta name="keywords" content="landing page builder, website generator, visual html builder, landing page creator, web design tool, free html generator, css layout builder, responsive design tool">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/landing-page-builder/">
+  
+  <title>Landing Page Builder – Free Visual Website Generator</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Landing Page Builder – Free Visual Website Generator">
+  <meta property="og:description" content="Visually design and generate clean, responsive HTML for your landing pages. Customize hero, features, and CTA sections instantly.">
+  <meta property="og:url" content="https://devpalettes.com/landing-page-builder/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/images/og-landing-page-builder.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Landing Page Builder – Free Visual Website Generator">
+  <meta name="twitter:description" content="Visually design and generate clean, responsive HTML for your landing pages. Customize hero, features, and CTA sections instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-landing-page-builder.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Landing Page Builder",
+    "description": "Free visual tool to build and generate responsive landing page HTML code.",
+    "url": "https://devpalettes.com/landing-page-builder/",
+    "applicationCategory": "DesignApplication",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD Structured Data: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Landing Page Builder – Free Visual Website Generator",
+    "description": "Free visual tool to build and generate responsive landing page HTML code.",
+    "url": "https://devpalettes.com/landing-page-builder/",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com/"
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://devpalettes.com/images/og-landing-page-builder.png"
+    },
+    "datePublished": "2024-01-20",
+    "dateModified": "2025-06-18",
+    "inLanguage": "en"
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <style>
+    /* Custom Scrollbar for Preview */
+    .preview-scroll::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    .preview-scroll::-webkit-scrollbar-track {
+        background: #f1f5f9; 
+    }
+    .dark .preview-scroll::-webkit-scrollbar-track {
+        background: #1e293b; 
+    }
+    .preview-scroll::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+    }
+    .dark .preview-scroll::-webkit-scrollbar-thumb {
+        background: #475569; 
+    }
+    
+    /* Mobile Preview Frame */
+    .mobile-frame {
+        width: 375px;
+        margin: 0 auto;
+        border: 12px solid #334155;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        transition: all 0.3s ease;
+    }
+    
+    /* Fix for layout jumping */
+    .preview-wrapper-inner {
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">Landing Page Builder – Free Visual Website Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Visually design your landing page structure. Add sections, customize content, and export clean, responsive HTML code instantly.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls -->
+        <aside class="lg:col-span-1 space-y-6 animate-on-scroll" aria-label="Landing page builder controls">
+          
+          <!-- Add Section -->
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-layer-group text-emerald-500" aria-hidden="true"></i>
+                Sections
+             </h2>
+             
+             <div class="flex gap-2 mb-4">
+                <select id="new-section-type" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                   <option value="hero">Hero Section</option>
+                   <option value="features">Features Grid</option>
+                   <option value="testimonials">Testimonials</option>
+                   <option value="pricing">Pricing Table</option>
+                   <option value="cta">Call to Action</option>
+                   <option value="footer">Simple Footer</option>
+                </select>
+                <button onclick="addSection()" class="btn-primary px-4 py-2 text-sm" title="Add selected section">
+                   <i class="fas fa-plus"></i>
+                </button>
+             </div>
+
+             <div id="sections-list" class="space-y-2 max-h-[200px] overflow-y-auto pr-2 preview-scroll">
+                <!-- Sections will be injected here -->
+             </div>
+             <button onclick="resetBuilder()" class="w-full mt-4 text-xs text-red-500 hover:text-red-400 text-center underline" title="Reset to default template">Reset to Default Template</button>
+          </div>
+          
+          <!-- Properties Panel (Dynamic) -->
+          <div id="properties-panel" class="glass-card p-6 shimmer-card hidden flex flex-col max-h-[600px]">
+             <div class="flex justify-between items-center mb-4 border-b border-slate-100 dark:border-slate-700 pb-2 shrink-0">
+                <h2 class="font-bold text-lg flex items-center gap-2 text-emerald-500" id="prop-panel-title">
+                   <i class="fas fa-edit" aria-hidden="true"></i> Properties
+                </h2>
+                <button onclick="deleteActiveSection()" class="text-red-500 hover:text-red-400 text-sm" title="Delete this section">
+                   <i class="fas fa-trash"></i>
+                </button>
+             </div>
+             <div id="controls-container" class="space-y-4 overflow-y-auto pr-2 preview-scroll flex-1">
+                <!-- Dynamic controls injected here -->
+             </div>
+          </div>
+          
+        </aside>
+        
+        <!-- Right: Preview & Code -->
+        <section class="lg:col-span-2 space-y-6 animate-on-scroll flex flex-col" aria-label="Live preview and generated code">
+          
+          <!-- Preview Area -->
+          <div class="glass-card p-0 shimmer-card overflow-hidden flex flex-col flex-1 min-h-[600px]">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 flex justify-between items-center shrink-0">
+                <h2 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h2>
+                <div class="flex items-center gap-4">
+                    <button onclick="togglePreviewMode()" class="text-xs font-semibold text-slate-500 hover:text-emerald-500 transition-colors" id="preview-mode-btn">
+                        <i class="fas fa-mobile-alt mr-1"></i> Mobile View
+                    </button>
+                    <span class="text-xs text-slate-400">Responsive</span>
+                </div>
+             </div>
+             
+             <!-- The Preview Canvas -->
+             <div class="preview-bg-grid p-4 md:p-8 bg-white dark:bg-slate-900 flex-1 overflow-auto preview-scroll relative flex items-center justify-center" id="preview-wrapper">
+                <div id="landing-preview" class="w-full transition-all duration-300 preview-wrapper-inner">
+                   <!-- HTML Injected Here -->
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card shrink-0">
+             <div class="flex justify-between items-center mb-2">
+                <h2 class="font-bold text-lg">Generated HTML</h2>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy generated HTML code">
+                   <i class="fas fa-code mr-1" aria-hidden="true"></i>Copy HTML
+                </button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-48 relative">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all" aria-live="polite"></pre>
+             </div>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <!-- SEO Content Section (Moved Down as requested) -->
+      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to landing page design">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2 class="text-2xl font-bold mb-4">What Is a Landing Page Builder?</h2>
+          <p>A <strong>Landing Page Builder</strong> is a specialized web tool designed to help marketers, entrepreneurs, and developers construct high-converting single-page websites without writing code from scratch. Unlike a full-blown Content Management System (CMS) like WordPress or Drupal, which manages entire sites with complex databases, a landing page builder focuses on the "Single Page Application" model. It breaks a page down into modular, stackable blocks—such as Hero, Features, Testimonials, and Pricing—allowing you to assemble a layout visually using a drag-and-drop interface or a section-based editor.</p>
+          <p>Our visual builder simplifies the web development workflow by abstracting the complexities of HTML and CSS. Instead of wrestling with `flexbox` properties, media queries, and z-index stacking contexts, you simply select a section type, input your text, choose colors, and adjust alignment. The tool instantly renders a live preview and generates the semantic HTML and responsive CSS structure required to display it. This ensures that the code you export is clean, lightweight, and follows modern web standards, avoiding the "div soup" and bloated inline styles often associated with older WYSIWYG editors.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Why Use a Visual Builder for Landing Pages?</h2>
+          <p>Speed and iteration are the primary advantages. In the agile world of digital marketing, the ability to test different value propositions, headlines, and layouts rapidly is crucial. A visual builder facilitates A/B testing by allowing you to clone a section, tweak the headline, and see the result instantly without involving a developer. This immediate feedback loop helps optimize conversion rates (CVR) because you can visually validate design choices in real-time.</p>
+          <p>Furthermore, visual builders enforce design consistency. By using pre-defined, responsive grid systems and typography scales, the tool prevents common layout errors like misaligned columns or overflowing containers on mobile devices. It also enforces semantic structure (H1, H2, H3) automatically, which is vital for SEO. Search engines prefer well-organized HTML documents with clear heading hierarchies. Using our <a href="/landing-page-builder/" title="Free landing page builder tool">landing page builder</a> ensures your page structure is accessible and indexable from the moment you export the code.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Anatomy of a High-Converting Landing Page</h2>
+          <p>Not all landing pages are created equal. The most effective ones follow a specific psychological flow designed to guide the visitor from awareness to action. Our builder is structured around these essential components:</p>
+          
+          <h3 class="text-lg font-bold mb-2">The Hero Section</h3>
+          <p>This is the "Above the Fold" area—the first thing a visitor sees without scrolling. It must communicate the Unique Value Proposition (UVP) within seconds. A strong Hero section contains a clear, benefit-driven headline, a subheadline that expands on the offer, a high-contrast Call-to-Action (CTA) button, and a visual element (image or gradient) that reinforces the mood. In our builder, you can customize the background color and text alignment to ensure the Hero captures attention immediately. For visual impact, you can pair the solid color with a subtle <a href="/gradient/" title="Generate CSS gradients">CSS gradient</a> in the exported code.</p><br>
+          
+          <h3 class="text-lg font-bold mb-2">The Features Grid</h3>
+          <p>Once you have hooked the visitor, you must prove your claims. The Features section breaks down your product or service into digestible, scannable chunks. It typically uses a card-based layout where each card represents a benefit. Visual consistency here is key—icons should align, text lengths should be balanced, and spacing should be uniform. Our builder allows you to control the number of feature cards (1-6) and the background contrast, ensuring the section remains readable on both desktop and mobile.</p><br>
+          
+          <h3 class="text-lg font-bold mb-2">Social Proof & Testimonials</h3>
+          <p>Trust is the currency of the web. A Testimonials section serves as social proof, validating the claims made in the Hero and Features sections. Seeing real names and photos of satisfied customers reduces purchase anxiety. Our builder generates quote-style layouts that look professional out of the box. To maximize credibility, combine this section with high-quality typography, which you can explore further using our <a href="/font-pairing/" title="Find complementary font pairs">font pairing tool</a>.</p><br>
+          
+          <h3 class="text-lg font-bold mb-2">Pricing and FAQ</h3>
+          <p>Transparency builds trust. A Pricing section should clearly differentiate between tiers (e.g., Basic, Pro, Enterprise) using visual hierarchy—bold prices, checkmarks for features, and a distinct "Recommended" tag for the best value plan. The builder's Pricing template handles this layout automatically. For addressing objections, an FAQ section is often added before the final CTA. While our tool doesn't have a specific FAQ block, you can easily repurpose a "Features" or "Text" block to serve this purpose.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Ensuring Responsive Design in Generated Code</h2>
+          <p>A common pitfall of visual builders is generating code that looks perfect on a 1920px desktop monitor but breaks on a 375px mobile phone. Our tool addresses this by injecting fluid CSS values and max-width constraints directly into the generated HTML.</p>
+          <p>The generated code uses a `max-width` container approach (typically 1200px) centered with `margin: 0 auto`. This prevents content from stretching uncomfortably wide on ultra-wide monitors while allowing it to shrink naturally on smaller screens. We also use percentage-based widths for grids and flexible padding units (rem/em) rather than fixed pixels. This means your exported page will automatically reflow when the browser window resizes, without you needing to write a single media query.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Best Practices for Copy and Conversion</h2>
+          <p>Even the most beautiful design will fail without persuasive copy. When using our builder, focus on benefits rather than features. Instead of saying "We have 24/7 support" (a feature), say "Never worry about downtime again with our 24/7 expert support" (a benefit). Keep headlines short—under 10 words is ideal for mobile readability. Ensure your CTA buttons use action-oriented verbs like "Start," "Get," or "Download" rather than passive phrases like "Submit" or "Learn More."</p>
+          <p>Color psychology also plays a role. Green buttons typically signify "Go" or positive action, making them ideal for primary CTAs, while blue buttons convey trust and are good for secondary actions. Our color picker allows you to experiment with these psychological triggers. If you need help choosing a palette that matches your brand, our <a href="/palettes/" title="Generate color palettes">color palette generator</a> can provide harmonious color schemes.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Next Steps: From Builder to Deployment</h2>
+          <p>Once you have designed your page using this tool, the workflow is straightforward. Click "Copy HTML," create a new file named `index.html` on your computer, and paste the code. Open that file in any web browser to see your page live.</p>
+          <p>To publish it to the world, you don't need a complex backend. You can host static HTML files for free on platforms like Netlify, Vercel, or GitHub Pages. These platforms connect directly to a Git repository. Simply push your `index.html` file to a GitHub repo, connect it to Netlify, and your landing page will be live in seconds. This static approach is incredibly fast, secure, and cost-effective compared to traditional hosting.</p>
+          <p>For those looking to add interactivity later, such as smooth scrolling or form validation, you can easily inject JavaScript into the exported file. For now, this builder focuses on providing the most critical asset: a semantic, responsive, and visually structured HTML foundation.</p><br>
+          
+        </article>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about the landing page builder">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Is the generated HTML code responsive?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes. The builder injects responsive CSS logic (fluid widths and max-widths) directly into the inline styles of the exported code. This ensures the layout adapts to mobile, tablet, and desktop screens without additional CSS files.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can I use this for commercial projects?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Absolutely. The code generated is free to use for both personal and commercial projects. There are no licensing fees or attribution requirements.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Do I need to know CSS to use this tool?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No coding knowledge is required to use the builder. The interface handles all styling. However, if you wish to make advanced customizations later, the generated code is clean and commented, making it easy for developers to edit.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How do I add custom fonts or logos?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">After exporting the HTML, you can add a `<link>` tag to the `<head>` section to import Google Fonts. For logos, you can simply insert an `<img>` tag into the Hero section using a text editor.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Added Social Sharing Section -->
+      <section class="glass-card p-8 my-8 shimmer-card text-center">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/landing-page-builder/&text=Build%20landing%20pages%20visually%20with%20this%20free%20HTML%20generator!" target="_blank" rel="noopener noreferrer" title="Share this Landing Page Builder on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/landing-page-builder/" target="_blank" rel="noopener noreferrer" title="Share this Landing Page Builder on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/landing-page-builder/" target="_blank" rel="noopener noreferrer" title="Share this Landing Page Builder on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+              <i class="fas fa-link"></i> Copy Link
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools Section (Moved Up slightly for UX) -->
+      <section class="glass-card p-8 shimmer-card text-center mt-8">
+        <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/flexbox-playground/" title="Master CSS Flexbox layouts" class="btn-secondary text-xs py-2 px-4">Flexbox Generator</a>
+          <a href="/css-grid-generator/" title="Build CSS Grid layouts visually" class="btn-secondary text-xs py-2 px-4">Grid Generator</a>
+          <a href="/gradient/" title="Generate beautiful CSS gradients" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+          <a href="/box-shadow-generator/" title="Create CSS box shadows" class="btn-secondary text-xs py-2 px-4">Shadow Generator</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/landing-page-builder.js" defer></script>
+  
+  <script>
+    // Copy Link Logic (Inline minimal script)
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+               if (window.Devpalettes && window.Devpalettes.Toast) {
+                  window.Devpalettes.Toast.show('Link copied!');
+               } else {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                  setTimeout(function() {
+                    copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                  }, 2000);
+               }
+            });
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
