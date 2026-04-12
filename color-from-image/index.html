@@ -154,7 +154,7 @@
         <!-- Left: Upload & Controls -->
         <div class="glass-card p-8 animate-on-scroll shimmer-card">
           <h2 class="text-2xl font-bold mb-6">Upload Image</h2>
-          <div id="drop-zone" class="rounded-2xl p-12 text-center cursor-pointer border-3 border-dashed border-emerald-500/40 hover:border-emerald-500 hover:bg-emerald-500/5 transition-all">
+          <div id="drop-zone" class="rounded-2xl p-12 text-center cursor-pointer border-3 border-dashed border-emerald-500/40 hover:border-emerald-500 hover:bg-emerald-500/5 transition-all" title="Click or drag and drop to upload an image">
             <input type="file" id="file-input" accept="image/*" class="hidden">
             <div id="upload-content">
               <div class="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-4">
@@ -165,7 +165,7 @@
               <p class="text-sm text-slate-400">JPG, PNG, WebP, GIF</p>
             </div>
             <div id="preview-content" class="hidden">
-              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview">
+              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview" title="Preview of uploaded image">
               <p class="text-sm text-slate-500 mt-4">Click to change image</p>
             </div>
           </div>
@@ -174,20 +174,20 @@
               <label class="font-medium">Number of Colors</label>
               <span id="color-count-value" class="text-emerald-600 dark:text-emerald-400 font-bold">6</span>
             </div>
-            <input type="range" id="color-count" min="3" max="10" value="6" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+            <input type="range" id="color-count" min="3" max="10" value="6" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500" title="Adjust number of colors to extract">
           </div>
           <div class="mt-6">
             <label class="font-medium mb-3 block">Extraction Method</label>
             <div class="grid grid-cols-2 gap-3">
-              <button class="method-btn active px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium transition-all" data-method="dominant">
+              <button class="method-btn active px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium transition-all" data-method="dominant" title="Extract dominant colors by area">
                 <i class="fas fa-palette mr-2"></i>Dominant
               </button>
-              <button class="method-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-method="vibrant">
+              <button class="method-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-method="vibrant" title="Extract vibrant, saturated colors">
                 <i class="fas fa-bolt mr-2"></i>Vibrant
               </button>
             </div>
           </div>
-          <button id="extract-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled>
+          <button id="extract-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled title="Run AI color extraction">
             <i class="fas fa-magic mr-2"></i>
             Extract Colors
           </button>
@@ -195,16 +195,16 @@
             <p class="text-sm text-slate-500 mb-3">Try sample images:</p>
             <div class="flex gap-2 flex-wrap">
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset">
-                <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover" title="Load sunset sample image">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="forest">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover" title="Load forest sample image">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="ocean">
-                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover" title="Load ocean sample image">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="city">
-                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover" title="Load city sample image">
               </button>
             </div>
           </div>
@@ -245,13 +245,13 @@
               </div>
             </div>
             <div class="flex flex-wrap gap-3">
-              <button id="copy-all-btn" class="btn-primary btn-glow flex-1 justify-center">
+              <button id="copy-all-btn" class="btn-primary btn-glow flex-1 justify-center" title="Copy all color codes to clipboard">
                 <i class="fas fa-copy"></i> Copy
               </button>
-              <button id="export-css-btn" class="btn-secondary flex-1 justify-center">
+              <button id="export-css-btn" class="btn-secondary flex-1 justify-center" title="Export palette as CSS variables">
                 <i class="fas fa-code"></i> CSS
               </button>
-              <button id="export-json-btn" class="btn-secondary flex-1 justify-center">
+              <button id="export-json-btn" class="btn-secondary flex-1 justify-center" title="Export palette as JSON">
                 <i class="fas fa-file-code"></i> JSON
               </button>
             </div>
@@ -262,22 +262,22 @@
                   <p class="text-sm text-slate-500">Share it with friends</p>
                 </div>
                 <div class="flex gap-2 flex-wrap justify-end">
-                  <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter" title="Share palette on Twitter/X">
                     <i class="fab fa-twitter"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="facebook">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="facebook" title="Share palette on Facebook">
                     <i class="fab fa-facebook-f"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="linkedin">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="linkedin" title="Share palette on LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="whatsapp">
+                  <button class="share-btn w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="whatsapp" title="Share palette on WhatsApp">
                     <i class="fab fa-whatsapp"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="pinterest">
+                  <button class="share-btn w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="pinterest" title="Pin palette on Pinterest">
                     <i class="fab fa-pinterest-p"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-slate-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="copylink">
+                  <button class="share-btn w-10 h-10 rounded-full bg-slate-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="copylink" title="Copy palette link to clipboard">
                     <i class="fas fa-link"></i>
                   </button>
                 </div>
@@ -293,7 +293,7 @@
         <p class="text-sm text-slate-500 mb-4">Click on image to pick exact colors</p>
         <div class="grid lg:grid-cols-3 gap-6">
           <div class="lg:col-span-2">
-            <div id="picker-container" class="relative bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden min-h-[300px] flex items-center justify-center shadow-inner">
+            <div id="picker-container" class="relative bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden min-h-[300px] flex items-center justify-center shadow-inner" title="Interactive canvas to pick colors">
               <div id="picker-placeholder" class="text-center p-8">
                 <i class="fas fa-mouse-pointer text-4xl text-slate-300 dark:text-slate-600 mb-4"></i>
                 <p class="text-slate-500">Upload an image above to use the color picker</p>
@@ -304,7 +304,7 @@
           <div>
             <div class="flex justify-between items-center mb-4">
               <h3 class="font-semibold">Picked Colors</h3>
-              <button id="clear-picked-btn" class="text-sm text-slate-500 hover:text-red-500 transition-colors">
+              <button id="clear-picked-btn" class="text-sm text-slate-500 hover:text-red-500 transition-colors" title="Clear all picked colors">
                 <i class="fas fa-trash-alt mr-1"></i>Clear
               </button>
             </div>
@@ -328,7 +328,7 @@
                Modern color extraction tools use pixel-level analysis to scan every part of a photo, clustering similar colors together and ranking them by dominance or saturation. The result is a ready-to-use palette with HEX, RGB, and HSL values that you can directly apply to your web projects, brand materials, or UI designs. This AI-powered approach to extract colors from image files delivers results in seconds — no manual color matching needed.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               According to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN Web Docs</a>, CSS supports multiple color formats including HEX, RGB, and HSL — all of which this tool provides for every extracted color from your image.
+               According to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Read CSS color value documentation on MDN Web Docs">MDN Web Docs</a>, CSS supports multiple color formats including HEX, RGB, and HSL — all of which this tool provides for every extracted color from your image.
             </p>
          </section>
 
@@ -339,10 +339,10 @@
                Professional designers know that the best color palettes often come from nature, architecture, and everyday objects. When you extract colors from a photo, you get harmonious combinations that have already been composed by natural lighting, shadows, and textures. This approach eliminates guesswork from palette creation.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Instead of staring at a <a href="/color-wheel/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color wheel</a> trying to find complementary shades manually, you can let real-world imagery guide your choices. Whether building a website for a restaurant and wanting colors from food photography, or designing an app inspired by a travel destination, photo-based color extraction delivers authentic, visually proven results.
+               Instead of staring at a <a href="/color-wheel/" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Generate color palettes from the color wheel">color wheel</a> trying to find complementary shades manually, you can let real-world imagery guide your choices. Whether building a website for a restaurant and wanting colors from food photography, or designing an app inspired by a travel destination, photo-based color extraction delivers authentic, visually proven results.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Research from <a href="https://en.wikipedia.org/wiki/Color_theory" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">color theory principles</a> confirms that colors found together in nature tend to be inherently harmonious — making photo extraction one of the smartest starting points for any design project.
+               Research from <a href="https://en.wikipedia.org/wiki/Color_theory" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Read about Color Theory on Wikipedia">color theory principles</a> confirms that colors found together in nature tend to be inherently harmonious — making photo extraction one of the smartest starting points for any design project.
             </p>
          </section>
 
@@ -353,14 +353,14 @@
                Knowing when to extract colors from an image can speed up your design workflow significantly. Here are the most effective scenarios where this AI color palette generator shines:
             </p>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Brand Identity Creation:</strong> Extract colors from a client's product photos to build a matching brand palette that feels authentic to their visual identity. Pair with our <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">palette from color tool</a> for further refinement.</li>
+               <li><strong>Brand Identity Creation:</strong> Extract colors from a client's product photos to build a matching brand palette that feels authentic to their visual identity. Pair with our <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Explore our color palette generator tool">palette from color tool</a> for further refinement.</li>
                <li>Mood Board Translation: Turn visual inspiration from Pinterest or Dribbble into usable HEX codes without manual color matching.</li>
                <li>Website Redesign: Analyze a competitor's website screenshot to understand their color strategy and find opportunities for differentiation.</li>
-               <li><strong>Product Design:</strong> Match UI elements to specific colors found in product photography for a cohesive, premium look. Use our <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to verify accessibility.</li>
+               <li><strong>Product Design:</strong> Match UI elements to specific colors found in product photography for a cohesive, premium look. Use our <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Check contrast ratios for accessibility">contrast checker</a> to verify accessibility.</li>
                <li><strong>Social Media Content:</strong> Create on-brand graphics by extracting colors from existing marketing materials and applying them consistently across posts.</li>
             </ul>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               For UI designers working on app interfaces, combining extracted image colors with a <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradient generator</a> can produce stunning background effects that match your product photography perfectly.
+               For UI designers working on app interfaces, combining extracted image colors with a <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Generate CSS gradients">gradient generator</a> can produce stunning background effects that match your product photography perfectly.
             </p>
          </section>
 
@@ -391,7 +391,7 @@
                <li>HSL values like hsl(14, 100%, 60%) describe colors by hue, saturation, and lightness — ideal for creating color variations, tints, and shades programmatically.</li>
             </ul>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
-               Need to convert between formats? Our <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter tool</a> handles all transformations instantly.
+               Need to convert between formats? Our <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Convert color formats (HEX, RGB, HSL)">color converter tool</a> handles all transformations instantly.
             </p>
          </section>
 
@@ -415,7 +415,7 @@
                <li>Crop your image to focus on the area that matters most before uploading, removing irrelevant background colors.</li>
                <li>Try both dominant and vibrant methods on the same image — they often produce surprisingly different palettes suited for different purposes.</li>
                <li>Combine auto-extracted colors with manually picked colors from the Color Picker for a palette that captures both the big picture and fine details.</li>
-               <li>Test your extracted palette with our <a href="/color-blindness/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color blindness simulator</a> to ensure accessibility for all users.</li>
+               <li>Test your extracted palette with our <a href="/color-blindness/" class="text-emerald-600 dark:text-emerald-400 hover:underline" title="Simulate color blindness vision">color blindness simulator</a> to ensure accessibility for all users.</li>
             </ul>
          </section>
 
@@ -425,22 +425,22 @@
               <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter" title="Share this tool on Twitter/X">
                   <i class="fab fa-x-twitter"></i> Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook" title="Share this tool on Facebook">
                   <i class="fab fa-facebook-f"></i> Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn" title="Share this tool on LinkedIn">
                   <i class="fab fa-linkedin-in"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp" title="Share this tool on WhatsApp">
                   <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest" title="Pin this tool on Pinterest">
                   <i class="fab fa-pinterest-p"></i> Pinterest
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link" title="Copy page URL to clipboard">
                   <i class="fas fa-link"></i> Copy Link
                 </button>
               </div>
@@ -452,12 +452,12 @@
             <h2 class="text-2xl font-bold mb-4">Related Design Tools</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your design workflow with these free tools built for creators and developers.</p>
             <div class="flex flex-wrap justify-center gap-3">
-               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
-               <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
-               <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-               <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
-               <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
-               <a href="/color-wheel/" class="btn-secondary text-xs py-2 px-4">Color Wheel</a>
+               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4" title="Visit Color Palette Generator">Color Palette Generator</a>
+               <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4" title="Visit Color Blindness Simulator">Color Blindness Simulator</a>
+               <a href="/converter/" class="btn-secondary text-xs py-2 px-4" title="Visit Color Converter">Color Converter</a>
+               <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4" title="Visit Contrast Checker">Contrast Checker</a>
+               <a href="/gradient/" class="btn-secondary text-xs py-2 px-4" title="Visit Gradient Generator">Gradient Generator</a>
+               <a href="/color-wheel/" class="btn-secondary text-xs py-2 px-4" title="Visit Color Wheel">Color Wheel</a>
              </div>
          </section>
          
