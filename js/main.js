@@ -458,7 +458,8 @@ const NAV_CATEGORIES = [
       // { label: 'Tailwind Colors', path: 'tailwind-color-palette-generator/' },
       // { label: 'Bootstrap Colors', path: 'bootstrap-color-palette-generator/' },
       // { label: 'SVG Editor', path: 'svg-color-editor/' },
-      { label: 'Social Preview Maker', path: 'social-meta-preview/' }
+      { label: 'Social Preview Maker', path: 'social-meta-preview/' },
+      { label: 'Landing Page Builder', path: 'page-builder/' },
     ]
   }
 ];
