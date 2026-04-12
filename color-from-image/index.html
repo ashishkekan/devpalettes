@@ -10,6 +10,27 @@
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/color-from-image/"/>
 
+  <!-- Preconnect & Prefetch for Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+
+  <!-- Preload Critical CSS and Fonts -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+  
+  <link rel="preload" href="../css/styles.css" as="style">
+  <link rel="preload" href="../css/animations.css" as="style">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/color-from-image/">
@@ -22,14 +43,8 @@
   <meta property="twitter:url" content="https://devpalettes.com/color-from-image/">
   <meta property="twitter:title" content="Extract Colors from Image - Free AI Color Palette Generator">
   <meta property="twitter:description" content="Extract colors from any photo instantly with our free AI-powered image color picker. Generate CSS palettes, get HEX, RGB, HSL values.">
-  
-  <!-- Favicon & Apple Touch Icon -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-
+  <!-- Google Analytics (Async for non-blocking) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -99,13 +114,8 @@
   }
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
-  <script src="../js/tailwind.js"></script>
+  <!-- Performance Note: Deferring Tailwind script to prevent render-blocking -->
+  <script src="../js/tailwind.js" defer></script>
    
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
@@ -113,7 +123,7 @@
       document.documentElement.classList.add('dark');
     }
   </script>
-  <script>
+  <script defer>
     tailwind.config = {
       darkMode: 'class',
       theme: {
@@ -165,7 +175,7 @@
               <p class="text-sm text-slate-400">JPG, PNG, WebP, GIF</p>
             </div>
             <div id="preview-content" class="hidden">
-              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview" title="Preview of uploaded image">
+              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview" title="Preview of uploaded image" decoding="async">
               <p class="text-sm text-slate-500 mt-4">Click to change image</p>
             </div>
           </div>
@@ -195,16 +205,16 @@
             <p class="text-sm text-slate-500 mb-3">Try sample images:</p>
             <div class="flex gap-2 flex-wrap">
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset">
-                <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover" title="Load sunset sample image">
+                <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover" title="Load sunset sample image" width="64" height="64" loading="lazy" decoding="async">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="forest">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover" title="Load forest sample image">
+                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover" title="Load forest sample image" width="64" height="64" loading="lazy" decoding="async">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="ocean">
-                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover" title="Load ocean sample image">
+                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover" title="Load ocean sample image" width="64" height="64" loading="lazy" decoding="async">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="city">
-                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover" title="Load city sample image">
+                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover" title="Load city sample image" width="64" height="64" loading="lazy" decoding="async">
               </button>
             </div>
           </div>
@@ -473,9 +483,10 @@
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
   
-  <script src="../js/main.js"></script>
-  <script src="../js/color-from-image.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <!-- Deferred Scripts to Improve TTI and Speed Index -->
+  <script src="../js/main.js" defer></script>
+  <script src="../js/color-from-image.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 
   <!-- Enhanced Share Functionality -->
   <script>
