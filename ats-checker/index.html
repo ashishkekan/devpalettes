@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>ATS Resume Checker – Free AI Resume Score Tool</title>
+  <meta name="description" content="Check your resume ATS score instantly. Upload your resume, match with job description, and improve your chances of getting hired with our free resume analyzer.">
+  <meta name="keywords" content="ATS checker, resume score, resume analyzer, ATS resume tool, job application scanner, free resume checker, resume parser, job fit analyzer">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/ats-checker/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/ats-checker/">
+  <meta property="og:title" content="ATS Resume Checker – Free AI Resume Score Tool">
+  <meta property="og:description" content="Check your resume ATS score instantly. Upload your resume, match with job description, and improve your chances of getting hired.">
+  <meta property="og:image" content="https://devpalettes.com/images/og-ats-checker.png">
+  <meta property="og:site_name" content="Devpalettes">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://devpalettes.com/ats-checker/">
+  <meta name="twitter:title" content="ATS Resume Checker – Free AI Resume Score Tool">
+  <meta name="twitter:description" content="Check your resume ATS score instantly. Optimize your resume for any job description.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-ats-checker.png">
+
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "ATS Resume Checker",
+    "description": "A free client-side tool to analyze resume compatibility with job descriptions using ATS logic.",
+    "url": "https://devpalettes.com/ats-checker/",
+    "applicationCategory": "UtilitiesApplication",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "browserRequirements": "Requires JavaScript and PDF.js",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is an ATS score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "An ATS (Applicant Tracking System) score is a ranking given to your resume by software used by recruiters. It measures how well your resume keywords and formatting match the job description."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to improve my ATS score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To improve your score, tailor your resume for each job by including specific keywords found in the job description. Use standard section headings like 'Experience' and 'Skills', and avoid complex formatting like tables or images."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my data private?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This tool runs entirely in your browser. Your resume and job description are never uploaded to any server."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- PDF.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+  </script>
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+
+  <script src="../js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  
+  <style>
+    /* Circular Progress */
+    .progress-ring__circle {
+      transition: stroke-dashoffset 1s ease-in-out;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+    }
+    
+    /* Drag Drop Zone */
+    .drag-active { border-color: #3b82f6 !important; background-color: rgba(59, 130, 246, 0.1) !important; }
+    
+    /* Custom Scrollbar for results */
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+    .custom-scroll::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 20px; }
+    .dark .custom-scroll::-webkit-scrollbar-thumb { background-color: #475569; }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">ATS Resume Checker – Free Resume Score Tool</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Optimize your resume for Applicant Tracking Systems. Upload your PDF, paste the job description, and get an instant score to boost your interview chances.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="grid lg:grid-cols-3 gap-8">
+        
+        <!-- Left: Controls / Inputs -->
+        <aside class="lg:col-span-1 space-y-6 animate-on-scroll" aria-label="Resume and Job Description Inputs">
+          
+          <!-- Upload Resume -->
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-file-pdf text-red-500" aria-hidden="true"></i>
+                1. Upload Resume (PDF)
+             </h2>
+             
+             <div id="drop-zone" class="border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl p-6 text-center transition-all cursor-pointer hover:border-blue-500 dark:hover:border-blue-500 bg-slate-50/50 dark:bg-slate-800/30">
+                <input type="file" id="resume-input" accept=".pdf" class="hidden">
+                <i class="fas fa-cloud-upload-alt text-3xl text-slate-400 mb-2"></i>
+                <p class="text-xs font-medium text-slate-700 dark:text-slate-300">Drag & Drop your Resume PDF</p>
+                <p class="text-[10px] text-slate-500 mt-1">or click to browse</p>
+                <div id="file-info" class="hidden mt-3 p-2 bg-blue-50 dark:bg-blue-900/20 rounded text-blue-600 dark:text-blue-400 text-xs font-mono text-center"></div>
+             </div>
+             
+             <div id="extracted-preview-container" class="hidden mt-3">
+                <button id="toggle-preview" class="text-xs text-blue-500 hover:underline">View Extracted Text</button>
+                <textarea id="resume-text-preview" readonly class="hidden w-full h-24 p-2 text-xs bg-slate-100 dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-700 font-mono mt-1 custom-scroll"></textarea>
+             </div>
+          </div>
+          
+          <!-- Job Description -->
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-briefcase text-blue-500" aria-hidden="true"></i>
+                2. Job Description
+             </h2>
+             <textarea id="jd-input" rows="8" placeholder="Paste the full job description here to analyze keyword match..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition-all text-sm resize-none custom-scroll"></textarea>
+             <div class="flex justify-end mt-2">
+                <span id="jd-char-count" class="text-xs text-slate-400">0 characters</span>
+             </div>
+          </div>
+          
+          <!-- Analyze Button -->
+          <button id="analyze-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-500 text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+            <i class="fas fa-search"></i> Analyze Resume
+          </button>
+          
+        </aside>
+        
+        <!-- Right: Preview / Results -->
+        <section class="lg:col-span-2 space-y-6 animate-on-scroll" aria-label="ATS Analysis Results Dashboard">
+          
+          <!-- Empty State -->
+          <div id="results-empty" class="glass-card p-12 shimmer-card text-center min-h-[400px] flex flex-col items-center justify-center">
+            <div class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-4">
+              <i class="fas fa-chart-pie text-4xl text-slate-300 dark:text-slate-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-400">Ready to Analyze</h3>
+            <p class="text-slate-500 text-sm mt-2 max-w-md mx-auto">Upload your resume and job description to see your ATS score.</p>
+          </div>
+          
+          <!-- Results Content (Hidden initially) -->
+          <div id="results-content" class="hidden space-y-6">
+             
+             <!-- Score Card -->
+             <div class="glass-card p-6 shimmer-card relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-emerald-500"></div>
+                
+                <div class="flex flex-col md:flex-row items-center justify-between gap-8">
+                   <!-- Circle Score -->
+                   <div class="flex-shrink-0 relative w-40 h-40 flex items-center justify-center">
+                      <svg class="w-full h-full transform -rotate-90">
+                        <circle cx="80" cy="80" r="70" stroke="currentColor" stroke-width="12" fill="transparent" class="text-slate-200 dark:text-slate-700" />
+                        <circle id="score-circle" cx="80" cy="80" r="70" stroke="currentColor" stroke-width="12" fill="transparent" stroke-dasharray="440" stroke-dashoffset="440" class="text-blue-600 dark:text-blue-400 progress-ring__circle" />
+                      </svg>
+                      <div class="absolute flex flex-col items-center">
+                        <span id="score-value" class="text-4xl font-bold text-slate-800 dark:text-white">0</span>
+                        <span class="text-xs font-medium text-slate-500">/ 100</span>
+                      </div>
+                   </div>
+                   
+                   <!-- Stats & Message -->
+                   <div class="flex-1 w-full text-center md:text-left">
+                      <h2 class="text-lg font-semibold text-slate-500 uppercase tracking-wider mb-2">Overall ATS Score</h2>
+                      <p id="score-message" class="text-xl font-medium mb-4"></p>
+                      
+                      <div class="grid grid-cols-2 gap-4">
+                         <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+                            <p class="text-xs text-slate-500 uppercase">Keyword Match</p>
+                            <p id="stat-match" class="text-2xl font-bold text-blue-600 dark:text-blue-400">0%</p>
+                         </div>
+                         <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700">
+                            <p class="text-xs text-slate-500 uppercase">Format Score</p>
+                            <p id="stat-format" class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">0/20</p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             <!-- Keywords Analysis -->
+             <div class="glass-card p-6 shimmer-card max-h-[300px] overflow-y-auto custom-scroll">
+                <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                   <i class="fas fa-key text-amber-500" aria-hidden="true"></i> Keyword Analysis
+                </h3>
+                
+                <!-- Matched -->
+                <div class="mb-4">
+                   <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2 uppercase">Matched Keywords</p>
+                   <div id="matched-keywords" class="flex flex-wrap gap-2">
+                      <!-- JS injected -->
+                   </div>
+                </div>
+                
+                <!-- Missing -->
+                <div>
+                   <p class="text-xs font-semibold text-red-500 dark:text-red-400 mb-2 uppercase">Missing Keywords</p>
+                   <div id="missing-keywords" class="flex flex-wrap gap-2">
+                      <!-- JS injected -->
+                   </div>
+                </div>
+             </div>
+
+             <!-- Suggestions -->
+             <div class="glass-card p-6 shimmer-card">
+                <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
+                   <i class="fas fa-lightbulb text-yellow-500" aria-hidden="true"></i> Suggestions
+                </h3>
+                <ul id="suggestions-list" class="space-y-2 text-sm text-slate-600 dark:text-slate-400 list-disc list-inside">
+                   <!-- JS injected -->
+                </ul>
+                <div class="mt-4 pt-4 border-t border-slate-200 dark:border-slate-700 flex justify-end gap-2">
+                   <button id="copy-report-btn" class="text-xs bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 px-3 py-2 rounded-lg transition-colors flex items-center gap-1">
+                     <i class="fas fa-copy"></i> Copy Report
+                   </button>
+                   <button id="download-report-btn" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg transition-colors flex items-center gap-1">
+                     <i class="fas fa-download"></i> Download
+                   </button>
+                </div>
+             </div>
+
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <!-- SEO Content Section (Style match flexbox) -->
+      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to ATS and Resume Optimization">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2 class="text-2xl font-bold mb-4">What Is an ATS Resume Checker?</h2>
+          <p>An ATS (Applicant Tracking System) Resume Checker is a tool designed to simulate how hiring software scans your resume. Companies large and small use ATS software to filter the hundreds of resumes they receive for a single job opening. This tool analyzes your resume text against a specific job description to determine how likely you are to pass the initial automated screening.</p>
+          <p>Our free ATS Resume Checker uses client-side technology to ensure your data remains private. It extracts text from your PDF resume and compares it against the keywords found in the job description. It provides a score from 0 to 100, highlights missing skills, and offers actionable suggestions to help you tailor your application for the specific role you are applying for. Unlike standard spell-checkers, this tool focuses on semantic relevance and structural compatibility with parsing algorithms.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Why ATS Scoring Is Important</h2>
+          <p>In the modern hiring landscape, up to 75% of resumes are rejected by ATS software before a human ever sees them. If your resume doesn't contain the right keywords or if the formatting is too complex for the parser to read, you could be the perfect candidate but still get rejected. An ATS score acts as a diagnostic tool; it tells you if your resume speaks the same language as the job posting.</p>
+          <p>Recruiters set specific criteria—like required skills, education level, or years of experience—into their systems. The ATS then scores candidates based on these criteria. By using a checker before you apply, you can identify gaps in your resume, such as missing "hard skills" or software proficiencies, and fill them in. This proactive approach significantly increases your visibility to recruiters. To further optimize your application materials, you might use our <a href="/json-formatter/" title="Format JSON data for developer resumes">JSON Formatter</a> if you are including code samples, or a <a href="/text-formatter/" title="Clean up text for cover letters">Text Formatter</a> for your cover letters.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Understanding the Scoring Algorithm</h2>
+          
+          <h3 class="text-2xl font-bold mb-4">Keyword Matching</h3>
+          <p>The core of any ATS is keyword extraction. The system scans the job description for important terms—usually nouns like "Python," "Project Management," "Customer Service," or specific software names. It then searches your resume for these exact terms. Our checker highlights these matches in green and missing terms in red. It's not just about volume; it's about relevance. A resume that lists 20 irrelevant skills but misses the 5 core requirements of the job will score lower than a focused resume that hits all 5 requirements.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">Formatting Signals</h3>
+          <p>While keywords are king, formatting determines if the king can be read. ATS parsers struggle with two-column layouts, tables, text boxes, and graphics. They prefer a clean, single-column layout with standard headings (e.g., "Work Experience" rather than "My Journey"). Our tool checks for basic formatting signals, such as the presence of standard section headers and contact information, assigning a portion of your score to "Readability."</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">Keyword Density</h3>
+          <p>This metric measures how frequently your matched keywords appear relative to the total word count. A healthy density suggests that the keywords are integrated naturally into your experience and skills sections rather than just stuffed into a list. However, excessive repetition can sometimes trigger spam filters, so balance is key.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Real-World Use Cases</h2>
+          <p><strong>Tech Jobs:</strong> Developers often need to list specific stacks (e.g., React, Node.js, AWS). An ATS checker ensures you haven't abbreviated these in a way the parser won't recognize (e.g., writing "JS" instead of "JavaScript" if the JD asks for the full word).</p>
+          <p><strong>Marketing Roles:</strong> Marketers must match industry buzzwords like "SEO," "Content Strategy," or "B2B". The checker helps you align your terminology with the specific niche you are applying to.</p>
+          <p><strong>Management Positions:</strong> For leadership roles, soft skills like "Strategic Planning," "Team Building," and "P&L Management" are critical keywords. The tool verifies these high-level competencies are prominent in your resume.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Common Mistakes to Avoid</h2>
+          <p>A major mistake is relying solely on graphics. An infographic resume might look great to a human, but to an ATS, it looks like a blank page. Another error is using acronyms without spelling them out at least once (e.g., "CRM" vs "Customer Relationship Management"). Finally, hiding dates or contact information in headers or footers can lead to that data being ignored by the parser. Always use the body of the document for critical info.</p>
+
+        </article>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about ATS Checking">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is an ATS score?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">An ATS (Applicant Tracking System) score is a ranking given to your resume by software used by recruiters. It measures how well your resume keywords and formatting match the job description.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How to improve my ATS score?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To improve your score, tailor your resume for each job by including specific keywords found in the job description. Use standard section headings like 'Experience' and 'Skills', and avoid complex formatting like tables or images.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Is my data private?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes. This tool runs entirely in your browser using JavaScript. Your resume and job description are never uploaded to any server.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Social Sharing Section (Matching Flexbox Design) -->
+      <section class="glass-card p-8 my-16 shimmer-card text-center">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+          <p class="text-slate-500 mb-4 text-sm">Help your friends get hired by sharing this free ATS checker.</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/ats-checker/&text=Check%20your%20resume%20ATS%20score%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" title="Share this ATS checker on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/ats-checker/" target="_blank" rel="noopener noreferrer" title="Share this ATS checker on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/ats-checker/" target="_blank" rel="noopener noreferrer" title="Share this ATS checker on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20ATS%20Resume%20Checker%20https://devpalettes.com/ats-checker/" target="_blank" rel="noopener noreferrer" title="Share this ATS checker on WhatsApp" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/ats-checker/&description=Free%20ATS%20Resume%20Checker%20to%20improve%20your%20hiring%20chances" target="_blank" rel="noopener noreferrer" title="Share this ATS checker on Pinterest" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+              <i class="fab fa-pinterest-p"></i> Pinterest
+            </a>
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+              <i class="fas fa-link"></i> Copy Link
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Related Tools Section (Matching Flexbox Design) -->
+      <section class="glass-card p-8 shimmer-card text-center">
+        <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/json-formatter/" title="Format and beautify JSON data" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+          <a href="/text-formatter/" title="Clean and format text online" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
+          <a href="/meta-tag-generator/" title="Generate SEO meta tags for your website" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+          <a href="/keyword-density-checker/" title="Analyze keyword density in your content" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  
+  <!-- Scripts -->
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/ats-checker.js" defer></script>
+  
+  <!-- Copy Link Script (Consistent with Flexbox) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
