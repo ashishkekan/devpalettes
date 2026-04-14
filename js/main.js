@@ -460,7 +460,7 @@ const NAV_CATEGORIES = [
       // { label: 'SVG Editor', path: 'svg-color-editor/' },
       { label: 'Social Preview Maker', path: 'social-meta-preview/' },
       { label: 'Landing Page Builder', path: 'page-builder/' },
-      // { label: 'ATS Resume Checker', path: 'ats-checker/' },
+      { label: 'ATS Resume Checker', path: 'ats-checker/' },
     ]
   }
 ];
