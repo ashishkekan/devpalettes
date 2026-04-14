@@ -173,11 +173,6 @@
       lines.push('<meta name="description" content="' + escapeHtml(desc) + '">');
     }
 
-    // Keywords
-    if (DOM.includeKeywords.checked && keywords) {
-      lines.push('<meta name="keywords" content="' + escapeHtml(keywords) + '">');
-    }
-
     // Author
     if (author) {
       lines.push('<meta name="author" content="' + escapeHtml(author) + '">');
