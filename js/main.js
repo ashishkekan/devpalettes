@@ -394,7 +394,7 @@ const NAV_CATEGORIES = [
       { label: 'Box Shadow Generator', path: 'box-shadow-generator/' },
       { label: 'Border Radius Generator', path: 'border-radius-generator/' },
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
-      // { label: 'Glass UI', path: 'glassmorphism-generator/' },
+      { label: 'Glassmorphism', path: 'glassmorphism-generator/' },
       // { label: 'Neumorphism', path: 'neumorphism-generator/' },
       // { label: 'Button Maker', path: 'button-generator/' },
       // { label: 'Card UI', path: 'card-generator/' },
@@ -411,7 +411,7 @@ const NAV_CATEGORIES = [
       // { label: 'Snippets', path: 'code-snippet-saver/' },
       // { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
       { label: 'Meta Tags Generator', path: 'meta-tag-generator/' },
-      // { label: 'Keyword Checker', path: 'keyword-density-checker/' },
+      { label: 'Keyword Checker', path: 'keyword-density-checker/' },
       // { label: 'Text Formatter', path: 'text-formatter/' },
       // { label: 'SEO Analyzer', path: 'seo-analyzer/' },
       // { label: 'Open Graph', path: 'open-graph-generator/' },
@@ -460,6 +460,7 @@ const NAV_CATEGORIES = [
       // { label: 'SVG Editor', path: 'svg-color-editor/' },
       { label: 'Social Preview Maker', path: 'social-meta-preview/' },
       { label: 'Landing Page Builder', path: 'page-builder/' },
+      { label: 'ATS Resume Checker', path: 'ats-checker/' },
     ]
   }
 ];
