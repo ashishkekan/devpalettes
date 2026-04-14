@@ -698,7 +698,7 @@ function renderNavbar() {
               <i class="fas fa-moon text-lg sm:text-xl dark:hidden"></i>
               <i class="fas fa-sun text-lg sm:text-xl hidden dark:block"></i>
             </button>
-            <a href="${navHref('palettes/')}" class="hidden sm:flex btn-primary text-sm">
+            <a href="${navHref('palettes/')}" class="hidden sm:flex btn-primary text-sm small-btn">
               <i class="fas fa-palette"></i>
               Create Free
             </a>
