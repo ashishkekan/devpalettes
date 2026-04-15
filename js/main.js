@@ -413,7 +413,7 @@ const NAV_CATEGORIES = [
       { label: 'Meta Tags Generator', path: 'meta-tag-generator/' },
       { label: 'Keyword Checker', path: 'keyword-density-checker/' },
       // { label: 'Text Formatter', path: 'text-formatter/' },
-      // { label: 'SEO Analyzer', path: 'seo-analyzer/' },
+      { label: 'SEO Analyzer', path: 'seo-analyzer/' },
       // { label: 'Open Graph', path: 'open-graph-generator/' },
       { label: 'JSON Formatter', path: 'json-formatter/' },
     ]
