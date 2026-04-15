@@ -433,6 +433,32 @@
         });
       }
     });
+    // Base Color Copy Buttons Fix
+    document.querySelectorAll('.copy-btn[data-copy]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let value = '';
+
+        const type = btn.getAttribute('data-copy');
+
+        if (type === 'hex') {
+          value = document.getElementById('base-hex').textContent;
+        } else if (type === 'rgb') {
+          value = document.getElementById('base-rgb').textContent;
+        } else if (type === 'hsl') {
+          value = document.getElementById('base-hsl').textContent;
+        }
+
+        navigator.clipboard.writeText(value);
+
+        // Optional toast / UI feedback
+        if (window.Devpalettes && window.Devpalettes.Toast) {
+          window.Devpalettes.Toast.show(`${value} Copied!`, 'success');
+        } else {
+          btn.textContent = 'Copied!';
+          setTimeout(() => (btn.textContent = 'Copy'), 1500);
+        }
+      });
+    });
   </script>
 </body>
 </html>
