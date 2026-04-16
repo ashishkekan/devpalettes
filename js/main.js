@@ -405,7 +405,6 @@ const NAV_CATEGORIES = [
     label: 'Dev Utilities',
     tools: [
       // { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
-      { label: 'Slug Generator', path: 'slug-generator/' },
       // { label: 'REM ↔ PX', path: 'rem-px-converter/' },
       // { label: 'Text Diff', path: 'text-diff-checker/' },
       { label: 'Snippets', path: 'code-snippet-manager/' },
