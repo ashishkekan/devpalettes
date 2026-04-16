@@ -434,7 +434,7 @@ const NAV_CATEGORIES = [
       { label: 'Flexbox', path: 'flexbox/' },
       { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
       // { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
-      { label: '3D Transform', path: 'transform-3d/' },
+      { label: '3D Transform Tool', path: 'css-3d-transform-tool/' },
       { label: 'Clip Path Generator', path: 'clip-path-generator/' },
       // { label: 'CSS Filters', path: 'css-filter-generator/' }
     ]
