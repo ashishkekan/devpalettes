@@ -405,10 +405,10 @@ const NAV_CATEGORIES = [
     label: 'Dev Utilities',
     tools: [
       // { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
-      // { label: 'Slug Generator', path: 'slug-generator/' },
+      { label: 'Slug Generator', path: 'slug-generator/' },
       // { label: 'REM ↔ PX', path: 'rem-px-converter/' },
       // { label: 'Text Diff', path: 'text-diff-checker/' },
-      // { label: 'Snippets', path: 'code-snippet-saver/' },
+      { label: 'Snippets', path: 'code-snippet-manager/' },
       // { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
       { label: 'Meta Tags Generator', path: 'meta-tag-generator/' },
       { label: 'Keyword Checker', path: 'keyword-density-checker/' },
@@ -434,7 +434,7 @@ const NAV_CATEGORIES = [
       { label: 'Flexbox', path: 'flexbox/' },
       { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
       // { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
-      // { label: '3D Transform', path: 'transform-3d/' },
+      { label: '3D Transform', path: 'transform-3d/' },
       { label: 'Clip Path Generator', path: 'clip-path-generator/' },
       // { label: 'CSS Filters', path: 'css-filter-generator/' }
     ]
