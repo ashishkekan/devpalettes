@@ -404,43 +404,108 @@
       </section>
       
       <!-- Related Tools Section -->
-      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Related design tools">
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
-          <div class="grid sm:grid-cols-3 gap-4">
-            
-            <a href="/flexbox/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
-                <i class="fas fa-arrows-left-right text-emerald-500" aria-hidden="true"></i>
-              </div>
-              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Flexbox Playground</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Learn CSS Flexbox visually with interactive alignment controls.</p>
-            </a>
-            
-            <a href="/css-grid-generator/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
-                <i class="fas fa-table-cells text-emerald-500" aria-hidden="true"></i>
-              </div>
-              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">CSS Grid Generator</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Build responsive grid layouts with row and column controls.</p>
-            </a>
-            
-            <a href="/gradient/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
-              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
-                <i class="fas fa-palette text-emerald-500" aria-hidden="true"></i>
-              </div>
-              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Gradient Generator</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Create beautiful CSS gradients with live preview and code export.</p>
-            </a>
-            
-          </div>
+      <section class="glass-card p-8 my-16 shimmer-card text-center" aria-label="Related CSS tools for developers">
+        <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/flexbox/" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
+          <a href="/css-grid-generator/" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2">CSS Grid Generator</a>
+          <a href="/gradient/" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2">Gradient Generator</a>
         </div>
       </section>
+
+      <!-- Share This Tool Section (Newly Added) -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll">
+        <div class="glass-card p-8 shimmer-card text-center">
+            <h2 class="font-bold text-2xl mb-3">Share This Tool</h2>
+            <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/css-3d-transform-tool/&text=Create%20beautiful%20CSS%203D%20transforms%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                    <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/css-3d-transform-tool/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/css-3d-transform-tool/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                    <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20CSS%203D%20Transform%20Tool%20https://devpalettes.com/css-3d-transform-tool/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/css-3d-transform-tool/&description=Create%20beautiful%20CSS%203D%20transforms%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                    <i class="fab fa-pinterest-p"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                    <i class="fas fa-link"></i> Copy Link
+                </button>
+            </div>
+        </div>
+      </section>
+      
     </div>
   </main>
   <div id="footer-container"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
   <script src="../js/transform-3d.js"></script>
+  
+  <!-- Share Logic Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          // Fallback for older browsers if navigator.clipboard is not available
+          var copyText = window.location.href;
+          
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(copyText).then(function() {
+              showCopyFeedback(copyLinkBtn);
+            }).catch(function(err) {
+              console.error('Failed to copy text: ', err);
+              // Attempt fallback
+              fallbackCopy(copyText);
+            });
+          } else {
+            fallbackCopy(copyText);
+          }
+          
+          function fallbackCopy(text) {
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            
+            // Avoid scrolling to bottom
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+            
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            
+            try {
+              var successful = document.execCommand('copy');
+              if(successful) {
+                showCopyFeedback(copyLinkBtn);
+              }
+            } catch (err) {
+              console.error('Fallback: Oops, unable to copy', err);
+            }
+            
+            document.body.removeChild(textArea);
+          }
+          
+          function showCopyFeedback(btn) {
+            var originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(function() {
+              btn.innerHTML = originalHTML;
+            }, 2000);
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
