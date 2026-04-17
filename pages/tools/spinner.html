@@ -11,7 +11,7 @@
   <meta name="keywords" content="css spinner generator, loading spinner, css loader, animation generator, web loader">
   <meta name="author" content="Color Palettes Hub">
   <link rel="canonical" href="https://colorpaletteshub.com/spinner.html" />
-
+<script src="https://cdn.tailwindcss.com"></script>
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com/spinner.html">
@@ -19,31 +19,7 @@
   <meta property="og:description" content="Create custom CSS loading spinners instantly.">
 
   <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "CSS Spinner Generator",
-    "url": "https://colorpaletteshub.com/spinner.html",
-    "description": "Tool to generate customizable CSS loading spinners.",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-   
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -247,7 +223,7 @@
     
     window.copyCode = function() {
         const text = codeOutput.value;
-        navigator.clipboard.writeText(text);
+        Clipboard.writeText(text);
         if (window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
     };
     

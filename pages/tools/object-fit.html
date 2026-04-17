@@ -11,7 +11,7 @@
   <meta name="keywords" content="css object fit generator, object fit cover, css object position, image fit container, responsive image css">
   <meta name="author" content="Color Palettes Hub">
   <link rel="canonical" href="https://colorpaletteshub.com/object-fit-generator.html" />
-
+<script src="https://cdn.tailwindcss.com"></script>
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://colorpaletteshub.com/object-fit-generator.html">
@@ -19,28 +19,7 @@
   <meta property="og:description" content="Visualize how images fit inside containers.">
 
   <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Object-Fit Generator",
-    "url": "https://colorpaletteshub.com/object-fit-generator.html",
-    "applicationCategory": "DesignApplication"
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-   
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script>
     tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
   </script>
@@ -203,7 +182,7 @@
     }
     
     window.copyCode = function() {
-        navigator.clipboard.writeText(codeOutput.value);
+        Clipboard.writeText(codeOutput.value);
         if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show('CSS Copied!', 'success');
     };
     

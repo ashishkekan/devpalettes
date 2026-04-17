@@ -15,13 +15,7 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -168,13 +162,6 @@
       }
       
       // Adjust Lightness
-      function adjustColor(hex, amount) {
-         const rgb = hexToRgb(hex);
-         const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
-         hsl.l = Math.max(0, Math.min(100, hsl.l + amount));
-         const newRgb = hslToRgb(hsl.h, hsl.s, hsl.l);
-         return rgbToHex(newRgb.r, newRgb.g, newRgb.b);
-      }
       
       // Set Saturation and Lightness (for fixed semantic colors)
       function setSatLight(hex, sVal, lVal) {
@@ -204,7 +191,7 @@
         
         const palette = [
           { name: '$primary', color: hex, desc: 'Main Brand' },
-          { name: '$secondary', color: adjustColor('#6c757d', 0), desc: 'Neutral' }, // Fixed grey usually, or derived
+          { name: '$secondary', color: ColorUtils.adjustColor('#6c757d', 0), desc: 'Neutral' }, // Fixed grey usually, or derived
           { name: '$success', color: '#198754', desc: 'Success' },
           { name: '$info', color: '#0dcaf0', desc: 'Info' },
           { name: '$warning', color: '#ffc107', desc: 'Warning' },
@@ -229,7 +216,7 @@
            `;
            
            card.onclick = () => {
-              navigator.clipboard.writeText(item.color);
+              Clipboard.writeText(item.color);
               if(window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show(`${item.color} copied!`);
            };
            
@@ -247,7 +234,7 @@
       
       window.copyConfig = function() {
         const text = document.getElementById('config-output').textContent;
-        navigator.clipboard.writeText(text).then(() => {
+        Clipboard.writeText(text).then(() => {
            if(window.Devpalettes && window.Devpalettes.Toast) {
              window.Devpalettes.Toast.show('SCSS Variables Copied!', 'success');
            } else {

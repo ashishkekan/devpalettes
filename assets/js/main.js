@@ -200,6 +200,27 @@ const ColorUtils = {
     };
   },
   
+
+  // Lighten/darken a hex color by a percentage (-100..100)
+  adjustHex(hex, percent) {
+    if (typeof hex !== 'string' || !hex.startsWith('#') || hex.length !== 7) return hex;
+
+    const num = parseInt(hex.slice(1), 16);
+    if (Number.isNaN(num)) return hex;
+
+    const amt = Math.round(2.55 * percent);
+    const r = Math.min(255, Math.max(0, (num >> 16) + amt));
+    const g = Math.min(255, Math.max(0, ((num >> 8) & 0x00ff) + amt));
+    const b = Math.min(255, Math.max(0, (num & 0x0000ff) + amt));
+
+    return `#${(0x1000000 + r * 0x10000 + g * 0x100 + b).toString(16).slice(1)}`;
+  },
+
+  // Back-compat alias used by some pages/scripts
+  adjustColor(hex, percent) {
+    return this.adjustHex(hex, percent);
+  },
+
   // Calculate contrast color (black or white)
   getContrastColor(hex) {
     const rgb = this.hexToRgb(hex);
@@ -244,11 +265,10 @@ const ColorUtils = {
 // ==========================================
 
 const Clipboard = {
-  async copy(text, message = 'Copied to clipboard!') {
+  async writeText(text) {
     try {
       await navigator.clipboard.writeText(text);
-      Toast.show(message, 'success');
-      return true;
+      return;
     } catch (err) {
       // Fallback for older browsers
       const textarea = document.createElement('textarea');
@@ -257,17 +277,25 @@ const Clipboard = {
       textarea.style.opacity = '0';
       document.body.appendChild(textarea);
       textarea.select();
-      
+
       try {
-        document.execCommand('copy');
-        Toast.show(message, 'success');
-        return true;
-      } catch (e) {
-        Toast.show('Failed to copy', 'error');
-        return false;
+        const ok = document.execCommand('copy');
+        if (!ok) throw new Error('execCommand copy failed');
+        return;
       } finally {
         document.body.removeChild(textarea);
       }
+    }
+  },
+
+  async copy(text, message = 'Copied to clipboard!') {
+    try {
+      await this.writeText(text);
+      if (message) Toast.show(message, 'success');
+      return true;
+    } catch {
+      Toast.show('Failed to copy', 'error');
+      return false;
     }
   }
 };

@@ -18,33 +18,9 @@
   <meta property="og:title" content="Glass Input Generator">
   <meta property="og:description" content="Create modern glass inputs and forms with CSS.">
   <meta property="og:image" content="https://colorpaletteshub.com/images/og-glass.png">
-
+<script src="https://cdn.tailwindcss.com"></script>
   <!-- Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Glass Input Generator",
-    "url": "https://colorpaletteshub.com/glass-input-generator.html",
-    "description": "A tool to generate CSS for glassmorphism inputs and forms.",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-   
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -305,7 +281,7 @@ border-radius: ${settings.radius}px;`;
     
     window.copyCode = function(type) {
         const text = type === 'css' ? cssArea.value : htmlArea.value;
-        navigator.clipboard.writeText(text);
+        Clipboard.writeText(text);
         if (window.Devpalettes && window.Devpalettes.Toast) window.Devpalettes.Toast.show(`${type.toUpperCase()} Copied!`, 'success');
     };
     

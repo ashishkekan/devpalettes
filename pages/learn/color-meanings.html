@@ -15,13 +15,7 @@
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
-       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
+  <script src="../../assets/js/theme-preload.js"></script>
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -310,7 +304,7 @@
   
   <script>
     function copyColor(hex) {
-       navigator.clipboard.writeText(hex).then(() => {
+       Clipboard.writeText(hex).then(() => {
           if(window.Devpalettes && window.Devpalettes.Toast) {
             window.Devpalettes.Toast.show(`Copied ${hex}`, 'success');
           } else {

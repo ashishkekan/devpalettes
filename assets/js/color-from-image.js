@@ -523,7 +523,7 @@
         Clipboard.copy(text, message);
       } else {
         // Fallback if global utility not found
-        navigator.clipboard.writeText(text).then(() => {
+        Clipboard.writeText(text).then(() => {
           if (Toast) Toast.show(message, 'success');
         });
       }
