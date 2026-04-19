@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Meta Tags Analyzer – Analyze Website Meta Tags Online Free</title>
+  <meta name="description" content="Analyze meta tags of any website instantly. Check title, description, Open Graph, Twitter cards, canonical tags, and get a detailed SEO score with this free meta tag analyzer tool.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/meta-tags-analyzer/"/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/meta-tags-analyzer/">
+  <meta property="og:title" content="Meta Tags Analyzer – Analyze Website Meta Tags Online Free">
+  <meta property="og:description" content="Analyze meta tags of any website instantly. Check title, description, OG, Twitter cards, and get a detailed SEO score with this free tool.">
+  <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://devpalettes.com/meta-tags-analyzer/">
+  <meta property="twitter:title" content="Meta Tags Analyzer – Analyze Website Meta Tags Online Free">
+  <meta property="twitter:description" content="Analyze meta tags of any website instantly. Check title, description, OG, Twitter cards, and get a detailed SEO score with this free tool.">
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+  
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Meta Tags Analyzer",
+    "url": "https://devpalettes.com/meta-tags-analyzer/",
+    "logo": "https://devpalettes.com/images/devpalettes.png",
+    "description": "A free online tool to analyze meta tags of any website. Extract and validate title, description, Open Graph, Twitter Card, canonical, and other SEO-critical meta tags with a detailed score and actionable recommendations.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are meta tags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Meta tags are HTML elements placed in the <head> section of a webpage that provide metadata about the page's content to search engines and social media platforms. The most important meta tags for SEO are the title tag, meta description, viewport tag, and canonical tag. Social media platforms use Open Graph and Twitter Card meta tags to control how links are displayed when shared."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does a meta tags analyzer work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A meta tags analyzer fetches the HTML source code of a URL and parses the <head> section to extract all meta elements. It identifies the title, description, Open Graph properties, Twitter Card tags, canonical URL, viewport settings, and other metadata. It then evaluates each tag against SEO best practices — checking title length, description length, presence of required OG tags, image dimensions, and more — to produce an overall SEO score with specific recommendations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good SEO score for meta tags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A score of 80-100 indicates excellent meta tag implementation. A score of 60-79 is good with minor improvements needed. Below 60 means significant meta tag issues that could impact search rankings and social sharing appearance. Key factors that lower the score include missing title or description, title longer than 60 characters, description longer than 160 characters, missing Open Graph tags, missing Twitter Card tags, and missing canonical URL."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is the meta description important?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The meta description is the short text snippet that appears below the page title in search engine results. While it is not a direct ranking factor for Google, a well-written meta description significantly improves click-through rate (CTR) from search results. Google typically displays up to 155-160 characters. A compelling, accurate meta description that includes relevant keywords can increase organic traffic by 5-20% compared to auto-generated snippets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Open Graph and Twitter Card tags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Open Graph (OG) tags were created by Facebook and are used by Facebook, LinkedIn, Pinterest, and most social platforms to control link preview appearance. Twitter Card tags were created by Twitter and control how links appear in tweets. They serve the same purpose but use different HTML attributes — OG uses property='og:title' while Twitter uses name='twitter:title'. Twitter falls back to OG tags if Twitter-specific tags are missing, so implementing OG tags first provides a baseline for all platforms."
+        }
+      }
+    ]
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="../js/tailwind.js"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
+      <!-- Hero Section -->
+      <div class="text-center mb-12 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Meta Tags Analyzer</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Analyze meta tags of any website instantly. Check title, description, Open Graph, Twitter cards, and get a detailed SEO score</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- Quick Stats Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+              <i class="fas fa-chart-simple text-emerald-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">SEO Score</span>
+          </div>
+          <p id="stat-score" class="text-3xl font-bold text-slate-400">—</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+              <i class="fas fa-tags text-blue-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Tags Found</span>
+          </div>
+          <p id="stat-tags" class="text-3xl font-bold text-slate-400">0</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+              <i class="fas fa-triangle-exclamation text-purple-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Warnings</span>
+          </div>
+          <p id="stat-warnings" class="text-3xl font-bold text-slate-400">0</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+              <i class="fas fa-circle-check text-amber-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Status</span>
+          </div>
+          <p id="stat-status" class="text-3xl font-bold text-slate-400">Idle</p>
+        </div>
+      </div>
+
+      <div class="block md:grid md:grid-cols-2 gap-8">
+        <!-- Left: Inputs -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+              URL Input
+            </h2>
+            <div class="space-y-5">
+              <!-- URL Input -->
+              <div>
+                <label class="block text-sm font-semibold mb-2">Website URL</label>
+                <div class="relative">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><i class="fas fa-globe"></i></span>
+                  <input type="url" id="url-input" placeholder="https://example.com" class="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" spellcheck="false" autocomplete="off">
+                </div>
+                <div class="flex justify-between mt-1.5">
+                  <p id="url-error" class="text-xs text-red-500 hidden"></p>
+                  <p id="url-hint" class="text-xs text-slate-400">Enter the full URL including https://</p>
+                </div>
+              </div>
+              <!-- Analyze Button -->
+              <div class="pt-2 flex gap-3">
+                <button id="analyze-btn" class="btn-primary btn-glow text-sm py-3 px-6 flex items-center gap-2 flex-1 justify-center">
+                  <i class="fas fa-magnifying-glass-chart"></i> Analyze Meta Tags
+                </button>
+                <button id="clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
+                  <i class="fas fa-rotate-left"></i> Clear
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Examples -->
+          <div class="glass-card p-8 shimmer-card">
+            <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+              Quick Examples
+            </h2>
+            <p class="text-sm text-slate-500 mb-4">Try analyzing these well-known websites to see meta tag analysis in action</p>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://github.com">
+                <i class="fab fa-github text-slate-800 dark:text-slate-200 mr-2"></i>GitHub
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://stackoverflow.com">
+                <i class="fab fa-stack-overflow text-amber-500 mr-2"></i>Stack Overflow
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://developer.mozilla.org">
+                <i class="fas fa-book text-blue-600 mr-2"></i>MDN Web Docs
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://tailwindcss.com">
+                <i class="fas fa-wind text-cyan-500 mr-2"></i>Tailwind CSS
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Output -->
+        <div class="space-y-6 animate-on-scroll">
+          <!-- Analysis Output -->
+          <div class="glass-card p-8 shimmer-card">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+                Analysis Results
+              </h2>
+              <div class="flex gap-1.5">
+                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result">
+                  <i class="fas fa-list mr-1"></i>Tags
+                </button>
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw">
+                  <i class="fas fa-code mr-1"></i>Raw
+                </button>
+              </div>
+            </div>
+            <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
+              <!-- Tags View -->
+              <div id="view-result" class="preview-panel">
+                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                    <div class="flex gap-1.5">
+                      <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                      <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                      <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                      <div class="px-4 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-400 font-mono">meta-analysis</div>
+                    </div>
+                  </div>
+                  <div id="tags-content" class="p-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300 min-h-[300px] max-h-[500px] overflow-y-auto">
+                    <span class="text-slate-400">Enter a URL and click "Analyze" to see extracted meta tags here</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Raw View -->
+              <div id="view-raw" class="preview-panel hidden">
+                <div class="relative">
+                  <pre id="raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[500px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Enter a URL to see raw meta tag HTML here</pre>
+                  <button id="copy-raw-btn" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100">
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Export Options -->
+          <div class="glass-card p-8 shimmer-card">
+            <div class="flex justify-between items-center mb-5">
+              <h2 class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-download"></i></span>
+                Export
+              </h2>
+              <div class="flex gap-2">
+                <button id="copy-report-btn" class="btn-primary btn-glow text-xs py-2 px-3">
+                  <i class="fas fa-copy mr-1"></i>Copy Report
+                </button>
+                <button id="download-btn" class="btn-secondary text-xs py-2 px-3">
+                  <i class="fas fa-file-arrow-down mr-1"></i>Download
+                </button>
+              </div>
+            </div>
+            <div class="relative">
+              <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[120px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Analyze a URL to generate an exportable report</pre>
+            </div>
+            <p id="export-info" class="text-xs text-slate-400 mt-3">No analysis generated yet</p>
+          </div>
+
+          <!-- Validation Status -->
+          <div class="glass-card p-6 shimmer-card">
+            <h3 class="font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-clipboard-check text-emerald-500"></i>
+              Validation Checklist
+            </h3>
+            <div id="validation-list" class="space-y-2.5">
+              <div class="flex items-center gap-3 text-sm" data-check="has-url">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Valid URL provided</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="has-title">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Title tag present</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="has-description">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Meta description present</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="has-og-tags">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Open Graph tags present</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="has-twitter-tags">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Twitter Card tags present</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="has-canonical">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Canonical URL set</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Area -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is a Meta Tags Analyzer?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A meta tags analyzer is a tool that inspects the HTML source code of a webpage and extracts all metadata elements from its <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;head&gt;</code> section. Meta tags are HTML attributes that provide structured information about a page's content to search engines, social media platforms, browsers, and other software. The analyzer parses these tags, displays their values, and evaluates them against SEO best practices to produce an actionable report.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The most critical meta tags for search engine optimization are the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;title&gt;</code> tag (which defines the page title shown in search results and browser tabs), the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;meta name="description"&gt;</code> tag (which provides the search snippet), the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;link rel="canonical"&gt;</code> tag (which prevents duplicate content issues), and the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;meta name="viewport"&gt;</code> tag (which controls mobile rendering).
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               For social media sharing, the analyzer checks Open Graph (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">og:title</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">og:description</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">og:image</code>) and Twitter Card (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">twitter:card</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">twitter:title</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">twitter:image</code>) meta tags. This meta tags analyzer fetches the page using a CORS proxy, parses the HTML, and presents a comprehensive breakdown of every meta element found.
+            </p>
+         </section>
+
+         <!-- How it Works -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How Does This Meta Tags Analyzer Work?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               This tool follows a multi-step process to analyze the meta tags of any publicly accessible URL:
+            </p>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>URL Validation:</strong> The entered URL is validated for correct format (scheme, domain, path). The tool normalizes the URL by ensuring it starts with <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://</code> and removes trailing slashes for consistency.</li>
+               <li><strong>HTML Fetching:</strong> The tool fetches the HTML source code of the target URL through a CORS proxy service. Since browsers block direct cross-origin requests for security reasons, the proxy retrieves the page on your behalf and returns the raw HTML.</li>
+               <li><strong>Head Parsing:</strong> The HTML response is parsed using the browser's built-in <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">DOMParser</code>. The parser extracts the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;head&gt;</code> section and identifies all <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;meta&gt;</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;title&gt;</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;link&gt;</code>, and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;base&gt;</code> elements.</li>
+               <li><strong>Tag Extraction:</strong> Each element is categorized by type — basic meta (description, viewport, robots, charset), Open Graph (og:*), Twitter Card (twitter:*), link relations (canonical, alternate, prev/next), and other metadata. The content/attribute values are extracted and displayed.</li>
+               <li><strong>SEO Scoring:</strong> Each tag category is evaluated against SEO best practices. The title is checked for length (ideal: 30-60 characters), the description for length (ideal: 120-160 characters), OG tags for completeness (title, description, image, url, type all present), Twitter tags for completeness, and the canonical tag for presence. Points are deducted for missing tags, lengths outside optimal ranges, and other issues.</li>
+               <li><strong>Report Generation:</strong> The tool produces a structured report showing all extracted tags with their values, a color-coded status for each (pass, warning, fail), an overall SEO score out of 100, and specific recommendations for improvement.</li>
+            </ol>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The entire analysis runs in your browser. The only network request is to fetch the target page's HTML through the proxy — no analysis data is sent to any server.
+            </p>
+         </section>
+
+         <!-- Benefits -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Benefits of Analyzing Meta Tags</h2>
+            <div class="grid sm:grid-cols-2 gap-6 mt-6">
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-arrow-up-right-dots text-emerald-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Improve Search Rankings</h3>
+                     <p class="text-sm text-slate-500">Properly optimized title and description tags are among the most impactful on-page SEO factors. Analyzing and fixing meta tags can lead to measurable improvements in search engine rankings and organic traffic.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-share-nodes text-blue-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Better Social Sharing</h3>
+                     <p class="text-sm text-slate-500">Missing or broken Open Graph and Twitter Card tags result in poor-looking link previews when your content is shared on social media. Analyzing these tags ensures your links always display correctly with the right image, title, and description.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-bug text-purple-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Catch Missing Tags</h3>
+                     <p class="text-sm text-slate-500">It is easy to forget to add meta tags when launching new pages or during template changes. The analyzer instantly identifies which tags are missing, preventing SEO gaps from going unnoticed for weeks or months.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-ruler text-amber-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Length Optimization</h3>
+                     <p class="text-sm text-slate-500">Titles that are too long get truncated in search results with an ellipsis. Descriptions that are too short waste valuable SERP real estate. The analyzer shows exact character counts with visual indicators for optimal ranges.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-clone text-red-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Detect Duplicate Content</h3>
+                     <p class="text-sm text-slate-500">Missing canonical tags can cause search engines to index duplicate versions of the same page (HTTP vs HTTPS, www vs non-www, URL parameters). The analyzer checks for canonical tag presence and consistency.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-binoculars text-teal-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Competitor Analysis</h3>
+                     <p class="text-sm text-slate-500">Analyze your competitors' meta tags to understand their SEO strategy. See what titles, descriptions, and OG tags they use, how they structure their metadata, and identify opportunities to create better-optimized pages.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Meta Tags Analyzer</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Enter URL:</strong> Type or paste the full URL of the page you want to analyze, including the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://</code> scheme. The tool accepts any publicly accessible URL. Pages behind authentication or firewalls cannot be analyzed.</li>
+               <li><strong>Click Analyze:</strong> Press the "Analyze Meta Tags" button or hit Enter. The tool fetches the page HTML through a CORS proxy and begins parsing. Analysis typically completes in 1-3 seconds depending on the target server's response time.</li>
+               <li><strong>Review Tags:</strong> In the "Tags" view, see all extracted meta tags organized by category — Basic Meta, Open Graph, Twitter Card, Link Tags, and Other. Each tag shows its name, value, and a status indicator (green check, yellow warning, red fail).</li>
+               <li><strong>Check SEO Score:</strong> The stats cards at the top show the overall SEO score (0-100), total tags found, number of warnings, and analysis status. A score above 80 is excellent, 60-79 is good, and below 60 needs improvement.</li>
+               <li><strong>Read Warnings:</strong> Each warning explains exactly what is wrong and how to fix it — for example, "Title is 75 characters (recommended: 30-60)" or "Missing og:image tag". Address these to improve your score.</li>
+               <li><strong>View Raw HTML:</strong> Switch to the "Raw" tab to see the extracted meta tag HTML as it appears in the page source. This is useful for developers who need to copy or modify the exact tag markup.</li>
+               <li><strong>Export Report:</strong> Click "Copy Report" to copy a text summary of the analysis to your clipboard, or "Download" to save a detailed report as a text file. Reports include the URL, score, all tags, and all warnings.</li>
+               <li><strong>Try Examples:</strong> Click any preset button (GitHub, Stack Overflow, MDN, Tailwind CSS) to instantly analyze a real website and see how the tool works with different meta tag implementations.</li>
+            </ol>
+         </section>
+
+         <!-- Practical Use Cases -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Pre-Launch QA:</strong> Before launching a new page or website, analyze it with this tool to verify that all meta tags are present, correctly formatted, and within optimal length limits. Catch issues before search engines index the page.</li>
+               <li><strong>Post-Deployment Verification:</strong> After deploying changes to meta tags, re-analyze the live URL to confirm that the updated tags are being served correctly by your CDN, server, or CMS. Cache issues can sometimes serve stale meta tags.</li>
+               <li><strong>SEO Audit:</strong> As part of a comprehensive SEO audit, analyze every important page on your site to create a meta tag inventory. Identify patterns of missing tags, overly long titles, or duplicate descriptions across the site.</li>
+               <li><strong>Social Preview Debugging:</strong> When a shared link looks wrong on Facebook, Twitter, or LinkedIn, use this tool to verify that the OG and Twitter Card tags are present and correct. Most social sharing issues are caused by missing or malformed meta tags.</li>
+               <li><strong>Competitor Research:</strong> Analyze top-ranking competitor pages to understand their meta tag strategy. Compare title structures, description patterns, and OG tag usage to identify optimization opportunities for your own pages.</li>
+               <li><strong>Client Reporting:</strong> SEO agencies can use the export feature to generate shareable meta tag reports for clients. The downloaded report provides a clear summary of the current state and specific recommendations for improvement.</li>
+               <li><strong>Content Management Validation:</strong> In CMS-driven websites where multiple authors create content, use this tool periodically to spot meta tag quality issues across the site — missing descriptions, inconsistent title formats, or duplicate OG images.</li>
+            </ul>
+         </section>
+
+         <!-- FAQ Section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4" id="faq-container">
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>What are meta tags?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Meta tags are HTML elements placed in the head section of a webpage that provide metadata about the page's content to search engines and social media platforms. The most important meta tags for SEO are the title tag, meta description, viewport tag, and canonical tag. Social media platforms use Open Graph and Twitter Card meta tags to control how links are displayed when shared.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>How does a meta tags analyzer work?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">A meta tags analyzer fetches the HTML source code of a URL and parses the head section to extract all meta elements. It identifies the title, description, Open Graph properties, Twitter Card tags, canonical URL, viewport settings, and other metadata. It then evaluates each tag against SEO best practices — checking title length, description length, presence of required OG tags, image dimensions, and more — to produce an overall SEO score with specific recommendations.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>What is a good SEO score for meta tags?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">A score of 80-100 indicates excellent meta tag implementation. A score of 60-79 is good with minor improvements needed. Below 60 means significant meta tag issues that could impact search rankings and social sharing appearance. Key factors that lower the score include missing title or description, title longer than 60 characters, description longer than 160 characters, missing Open Graph tags, missing Twitter Card tags, and missing canonical URL.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>Why is the meta description important?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">The meta description is the short text snippet that appears below the page title in search engine results. While it is not a direct ranking factor for Google, a well-written meta description significantly improves click-through rate (CTR) from search results. Google typically displays up to 155-160 characters. A compelling, accurate meta description that includes relevant keywords can increase organic traffic by 5-20% compared to auto-generated snippets.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>What is the difference between Open Graph and Twitter Card tags?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph (OG) tags were created by Facebook and are used by Facebook, LinkedIn, Pinterest, and most social platforms to control link preview appearance. Twitter Card tags were created by Twitter and control how links appear in tweets. They serve the same purpose but use different HTML attributes — OG uses property='og:title' while Twitter uses name='twitter:title'. Twitter falls back to OG tags if Twitter-specific tags are missing, so implementing OG tags first provides a baseline for all platforms.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+         
+         <!-- Related Tools -->
+         <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have analyzed your meta tags, try these related tools:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">OG Generator</a>
+               <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+               <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+               <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+               <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+               <a href="/url-encoder-decoder/" class="btn-secondary text-xs py-2 px-4">URL Encoder</a>
+            </div>
+         </section>
+
+         <!-- Social Sharing Section -->
+          <section class="glass-card p-8 my-16 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/meta-tags-analyzer/&text=Analyze%20meta%20tags%20of%20any%20website%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/meta-tags-analyzer/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/meta-tags-analyzer/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20this%20free%20meta%20tags%20analyzer%20https://devpalettes.com/meta-tags-analyzer/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+      </div>
+      <!-- End SEO Content -->
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
+  <script src="../js/main.js"></script>
+  <script src="../js/meta-tags-analyzer.js"></script>
+  <script src="../js/enhancements.js"></script>
+</body>
+</html>

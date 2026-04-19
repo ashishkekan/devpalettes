@@ -384,8 +384,6 @@ const NAV_CATEGORIES = [
       { label: 'Gradient Maker', path: 'gradient/' },
       { label: 'Color Converter', path: 'converter/' },
       { label: 'Color Wheel', path: 'color-wheel/' },
-      { label: 'Color Names Chart', path: 'color-names-chart/' },
-      { label: 'Color Blindness', path: 'color-blindness/' }
     ]
   },
   {
@@ -422,6 +420,7 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Test', path: 'color-accessibility/' },
+      { label: 'Robots Txt Generator', path: 'robots-txt-generator/' },
       // { label: 'Opacity Checker', path: 'color-opacity/' },
       // { label: 'Color Diff', path: 'color-diff-checker/' },
       // { label: 'Color Preview', path: 'color-preview/' }
