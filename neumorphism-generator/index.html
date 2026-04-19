@@ -240,10 +240,10 @@
           
           <h2 class="text-2xl font-bold mb-4">How Soft UI Works: The Light and Shadow Concept</h2>
           <p>At the core of neumorphism is a dual-shadow technique. Every neumorphic element receives two box-shadows applied simultaneously: a dark shadow offset toward the bottom-right and a light shadow offset toward the top-left. Both shadows use the same blur radius and distance, creating a symmetrical impression of depth. Because the element's background color matches its parent container, the shadows alone define its boundaries — there are no visible borders.</p>
-          <p>The dark shadow simulates the area where light is blocked, while the light shadow simulates reflected light hitting the surface from the opposite direction. The balance between these two shadows determines whether the element appears raised (convex) or pressed (concave). Swapping external shadows for inset shadows instantly converts a raised button into a pressed state, making neumorphism especially intuitive for interactive elements like toggles, buttons, and input fields.</p><br>
+          <p>The dark shadow simulates the area where light is blocked, while the light shadow simulates reflected light hitting the surface from the opposite direction. The balance between these two shadows determines whether the element appears raised (convex) or pressed (concave). Swapping external shadows for inset shadows instantly converts a raised button into a pressed state, making neumorphism especially intuitive for interactive elements like toggles, buttons, and input fields. For more advanced shadow layering options, the <a href="/box-shadow-generator/">box shadow generator</a> provides independent control over each shadow color, offset, and spread.</p><br>
           
           <h3 class="text-2xl font-bold mb-4">Key Shadow Properties</h3>
-          <p>Three properties control the neumorphic effect: <strong>distance</strong> (how far shadows extend), <strong>blur</strong> (how soft the shadow edges appear), and <strong>intensity</strong> (the darkness or lightness of each shadow color). Increasing distance makes elements appear more elevated, while higher blur values create a softer, more diffused look. Intensity is calculated as a percentage shift from the base background color — typically between 10% and 25% for the most natural results.</p><br>
+          <p>Three properties control the neumorphic effect: <strong>distance</strong> (how far shadows extend), <strong>blur</strong> (how soft the shadow edges appear), and <strong>intensity</strong> (the darkness or lightness of each shadow color). Increasing distance makes elements appear more elevated, while higher blur values create a softer, more diffused look. Intensity is calculated as a percentage shift from the base background color — typically between 10% and 25% for the most natural results. Use the <a href="/color-wheel/">color wheel tool</a> to visualize how these percentage shifts affect your chosen base color in real time.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Skeuomorphism vs. Neumorphism: What's Different?</h2>
           <p>Skeuomorphic design aims to replicate real-world objects in digital form — think of the leather-textured calendar in early iOS or the wooden bookshelf in older iBooks. It relies heavily on textures, gradients, and detailed imagery to create convincing physical metaphors. Neumorphism strips away all ornamentation. There are no textures, no realistic materials, no photographic elements. Instead, it achieves a physical feel through pure shadow geometry on flat, monochrome surfaces.</p>
@@ -256,7 +256,11 @@
           <h2 class="text-2xl font-bold mb-4">Design Tips for Better Neumorphism</h2>
           <p>Start with a light, neutral background — gray tones around <strong>#e0e5ec</strong> produce the most reliable results. Keep shadow distances between 8px and 20px for a natural look; anything beyond 30px starts to look exaggerated. Always use matching blur values slightly larger than your shadow distance to maintain soft edges. Limit neumorphism to key interactive elements rather than applying it to every component on the page. Pair neumorphic elements with clear typography and sufficient text contrast to maintain readability. For a cohesive palette, <a href="/palettes/">generate color palettes</a> that include soft neutral tones as a foundation.</p>
           <p>If you need to translate your neumorphic shadow colors between formats, you can <a href="/converter/">convert HEX to RGB</a> values for more precise color manipulation. To build a complete color system around your neumorphic design, <a href="/blog/color-palettes-guide/">learn color combinations</a> that complement soft UI aesthetics without sacrificing contrast and clarity.</p><br>
-          
+
+          <p>Beyond individual components, neumorphism pairs beautifully with <a href="/gradient/">CSS gradients</a> for page backgrounds. A subtle linear gradient behind a neumorphic card adds atmospheric depth without competing with the shadow effect. When composing full pages with multiple neumorphic elements, the <a href="/page-builder/">page builder</a> can help you arrange cards, controls, and text blocks into balanced layouts without writing layout CSS from scratch.</p><br>
+
+          <p>For designers looking to combine visual styles, pairing neumorphism with <a href="/glassmorphism-generator/">glassmorphism</a> produces rich, layered interfaces. A common pattern is using neumorphic controls at the base level and glassmorphic overlays for modals, tooltips, or floating panels. This hybrid approach leverages the tactile clarity of soft UI alongside the translucency of frosted glass, keeping each element's role distinct. To ensure such hybrid pages perform well in search results, the <a href="/seo-analyzer/">SEO analyzer</a> can audit your page structure and identify improvements.</p><br>
+
         </article>
       </section>
       
@@ -273,20 +277,30 @@
             
             <div>
               <h3 class="font-semibold text-base mb-2">How to create soft UI in CSS?</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To create soft UI in CSS, set the element's background color to match its parent, then apply two box-shadows: a dark shadow offset toward the bottom-right and a light shadow offset toward the top-left. Use moderate blur values (10–30px) to keep edges soft. Adjust shadow distance and intensity to control the depth effect.</p>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To create soft UI in CSS, set the element's background color to match its parent, then apply two box-shadows: a dark shadow offset toward the bottom-right and a light shadow offset toward the top-left. Use moderate blur values (10–30px) to keep edges soft. Adjust shadow distance and intensity to control the depth effect. <!-- ✅ Added internal link -->For fine-tuned control over individual shadow layers, the <a href="/box-shadow-generator/">box shadow generator</a> lets you customize each shadow independently.</p>
             </div>
             
             <div>
               <h3 class="font-semibold text-base mb-2">Is neumorphism good for accessibility?</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Neumorphism can present accessibility challenges. Because elements and backgrounds share similar colors, contrast ratios may fall below WCAG guidelines. To improve accessibility, use inset shadows for interactive states, add clear text labels, and ensure sufficient color contrast for text content within neumorphic components.</p>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Neumorphism can present accessibility challenges. Because elements and backgrounds share similar colors, contrast ratios may fall below WCAG guidelines. To improve accessibility, use inset shadows for interactive states, add clear text labels, and ensure sufficient color contrast for text content within neumorphic components. <!-- ✅ Added internal link -->You can run your neumorphic designs through the <a href="/ats-checker/">ATS checker</a> to evaluate contrast ratios and flag potential accessibility issues before shipping.</p>
             </div>
             
             <div>
               <h3 class="font-semibold text-base mb-2">What are best colors for neumorphism?</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Light gray tones like #e0e5ec, #dde1e7, and #f0f0f3 are the most popular neumorphism backgrounds because they produce clear, visible shadows. Pastel shades such as soft blues, muted pinks, and light greens also work well. Avoid very dark or very saturated backgrounds, as shadows become harder to perceive.</p>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Light gray tones like #e0e5ec, #dde1e7, and #f0f0f3 are the most popular neumorphism backgrounds because they produce clear, visible shadows. Pastel shades such as soft blues, muted pinks, and light greens also work well. Avoid very dark or very saturated backgrounds, as shadows become harder to perceive. <!-- ✅ Added internal links -->Explore soft, harmonious tones with the <a href="/color-wheel/">color wheel</a> or browse <a href="/palettes/">pre-made color palettes</a> curated with neumorphic-friendly neutrals in mind.</p>
             </div>
             
           </div>
+        </div>
+      </section>
+
+      <section class="glass-card p-6 mt-12 shimmer-card text-center">
+        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Explore more tools to streamline your design and development workflow.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/meta-tag-generator/" title="Generate meta tags for SEO optimization" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+          <a href="/json-formatter/" title="Format and validate JSON data" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+          <a href="/open-graph-generator/" title="Create Open Graph meta tags for social sharing" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
+          <a href="/robots-txt-generator/" title="Generate robots.txt files for search engine crawlers" class="btn-secondary text-xs py-2 px-4">Robots.txt Generator</a>
         </div>
       </section>
 
@@ -326,6 +340,10 @@
           <a href="/button-generator/" title="Design custom CSS buttons with live preview" class="btn-secondary text-xs py-2 px-4">Button Generator</a>
           <a href="/card-generator/" title="Create responsive card components for your layouts" class="btn-secondary text-xs py-2 px-4">Card Generator</a>
           <a href="/box-shadow-generator/" title="Generate CSS box shadows with fine-tuned controls" class="btn-secondary text-xs py-2 px-4">Shadow Generator</a>
+          <a href="/color-wheel/" title="Pick harmonious colors with an interactive color wheel" class="btn-secondary text-xs py-2 px-4">Color Wheel</a>
+          <a href="/gradient/" title="Create beautiful CSS gradients with live preview" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+          <a href="/page-builder/" title="Build responsive page layouts with a drag-and-drop editor" class="btn-secondary text-xs py-2 px-4">Page Builder</a>
+          <a href="/keyword-density-checker/" title="Analyze keyword frequency in your content for SEO" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
         </div>
       </section>
       
