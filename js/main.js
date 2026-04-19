@@ -384,8 +384,6 @@ const NAV_CATEGORIES = [
       { label: 'Gradient Maker', path: 'gradient/' },
       { label: 'Color Converter', path: 'converter/' },
       { label: 'Color Wheel', path: 'color-wheel/' },
-      { label: 'Color Names Chart', path: 'color-names-chart/' },
-      { label: 'Color Blindness', path: 'color-blindness/' }
     ]
   },
   {
