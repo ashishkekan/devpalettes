@@ -422,6 +422,7 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Test', path: 'color-accessibility/' },
+      { label: 'Robots Txt Generator', path: 'robots-txt-generator/' },
       // { label: 'Opacity Checker', path: 'color-opacity/' },
       // { label: 'Color Diff', path: 'color-diff-checker/' },
       // { label: 'Color Preview', path: 'color-preview/' }
