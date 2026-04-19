@@ -577,33 +577,128 @@ const ScrollButtons = {
   handleScroll() {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
-    const docHeight = document.body.scrollHeight;
-    
-    // Threshold for showing buttons (e.g., 100px)
     const threshold = 100;
-    
-    // Check if at Top
     const isAtTop = scrollY < threshold;
     
-    // Check if at Bottom (with a small threshold)
-    const isAtBottom = (scrollY + windowHeight) >= (docHeight - threshold);
-
-    // --- Visibility Logic ---
-    // Requirement: "at a time ek hi dikhana hai"
-    
     if (isAtTop) {
-      // We are at the top: Show "Back to Bottom", Hide "Back to Top"
       this.btnBottom.classList.add('visible');
       this.btnTop.classList.remove('visible');
     } else {
-      // We have scrolled down: Show "Back to Top", Hide "Back to Bottom"
       this.btnTop.classList.add('visible');
       this.btnBottom.classList.remove('visible');
     }
-    
-    // Optional: If strictly at the very bottom, we can hide both if you want, 
-    // but usually keeping "Back to Top" at the bottom is standard UX.
-    // Current logic keeps "Back to Top" visible whenever scrolled down.
+  }
+};
+
+const PageHelpers = {
+  copyText(text, handlers = {}) {
+    const { onSuccess, onError } = handlers;
+
+    const handleSuccess = () => {
+      if (typeof onSuccess === 'function') onSuccess();
+      return true;
+    };
+
+    const handleError = () => {
+      if (typeof onError === 'function') onError();
+      return false;
+    };
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text)
+        .then(handleSuccess)
+        .catch(() => this.fallbackCopyText(text, { onSuccess, onError }));
+    }
+
+    return Promise.resolve(this.fallbackCopyText(text, { onSuccess, onError }));
+  },
+
+  fallbackCopyText(text, handlers = {}) {
+    const { onSuccess, onError } = handlers;
+    const input = document.createElement('input');
+    input.value = text;
+    document.body.appendChild(input);
+    input.select();
+
+    try {
+      document.execCommand('copy');
+      if (typeof onSuccess === 'function') onSuccess();
+      return true;
+    } catch {
+      if (typeof onError === 'function') onError();
+      return false;
+    } finally {
+      document.body.removeChild(input);
+    }
+  },
+
+  initFaqToggles(options = {}) {
+    const selector = options.selector || '.faq-toggle';
+    const retryDelay = options.retryDelay ?? 100;
+    const initialDelay = options.initialDelay ?? 50;
+
+    setTimeout(function bindFaqToggles() {
+      const toggles = document.querySelectorAll(selector);
+      if (!toggles.length) {
+        setTimeout(bindFaqToggles, retryDelay);
+        return;
+      }
+
+      toggles.forEach(toggle => {
+        if (toggle.dataset.faqBound === 'true') return;
+        toggle.dataset.faqBound = 'true';
+
+        toggle.addEventListener('click', (e) => {
+          e.preventDefault();
+          const content = toggle.nextElementSibling;
+          const icon = toggle.querySelector('i');
+          if (!content) return;
+
+          const isHidden = content.classList.contains('hidden');
+          if (isHidden) {
+            content.classList.remove('hidden');
+            content.style.maxHeight = `${content.scrollHeight}px`;
+            if (icon) icon.style.transform = 'rotate(180deg)';
+            return;
+          }
+
+          content.style.maxHeight = '0px';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+          setTimeout(() => {
+            content.classList.add('hidden');
+            content.style.maxHeight = '';
+          }, 300);
+        });
+      });
+    }, initialDelay);
+  },
+
+  initCopyLinkButton(options = {}) {
+    const button = options.button || document.getElementById('copy-link-btn');
+    if (!button || button.dataset.copyLinkBound === 'true') return;
+
+    const copiedHtml = options.copiedHtml || '<i class="fas fa-check"></i> Copied!';
+    const defaultHtml = options.defaultHtml || '<i class="fas fa-link"></i> Copy Link';
+    const resetDelay = options.resetDelay ?? 2000;
+    const notify = typeof options.notify === 'function' ? options.notify : null;
+    const successMessage = options.successMessage || 'Page link copied';
+    const errorMessage = options.errorMessage || 'Failed to copy link';
+
+    button.dataset.copyLinkBound = 'true';
+    button.addEventListener('click', () => {
+      this.copyText(window.location.href, {
+        onSuccess: () => {
+          button.innerHTML = copiedHtml;
+          if (notify) notify(successMessage, 'success');
+          setTimeout(() => {
+            button.innerHTML = defaultHtml;
+          }, resetDelay);
+        },
+        onError: () => {
+          if (notify) notify(errorMessage, 'error');
+        }
+      });
+    });
   }
 };
 
@@ -900,7 +995,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('Devpalettes initialized successfully');
 });
 
 // Export utilities for use in other scripts
@@ -910,5 +1004,6 @@ window.Devpalettes = {
   ColorUtils,
   Clipboard,
   Storage,
-  KeyboardShortcuts
+  KeyboardShortcuts,
+  PageHelpers
 };
