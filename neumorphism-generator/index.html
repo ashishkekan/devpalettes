@@ -289,6 +289,45 @@
           </div>
         </div>
       </section>
+
+      <!-- Added Social Sharing Section (After CTA or before Footer) -->
+      <section class="glass-card p-8 my-16 shimmer-card text-center">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/flexbox-playground/&text=Master%20CSS%20Flexbox%20with%20this%20free%20interactive%20generator!" target="_blank" rel="noopener noreferrer" title="Share this CSS Flexbox generator on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/flexbox-playground/" target="_blank" rel="noopener noreferrer" title="Share this CSS Flexbox generator on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/flexbox-playground/" target="_blank" rel="noopener noreferrer" title="Share this CSS Flexbox generator on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20CSS%20Flexbox%20generator%20https://devpalettes.com/flexbox-playground/" target="_blank" rel="noopener noreferrer" title="Share this CSS Flexbox generator on WhatsApp" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+              <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/flexbox-playground/&description=Free%20CSS%20Flexbox%20generator%20to%20learn%20flexbox%20visually" target="_blank" rel="noopener noreferrer" title="Share this CSS Flexbox generator on Pinterest" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+              <i class="fab fa-pinterest-p"></i> Pinterest
+            </a>
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+              <i class="fas fa-link"></i> Copy Link
+            </button>
+          </div>
+        </div>
+      </section>
+      
+      <!-- Related Tools Section -->
+      <section class="glass-card p-8 shimmer-card text-center">
+        <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/glassmorphism-generator/" title="Generate glassmorphic designs with a visual builder" class="btn-secondary text-xs py-2 px-4">Glassmorphism Generator</a>
+          <a href="/button-generator/" title="Design custom CSS buttons with live preview" class="btn-secondary text-xs py-2 px-4">Button Generator</a>
+          <a href="/card-generator/" title="Create responsive card components for your layouts" class="btn-secondary text-xs py-2 px-4">Card Generator</a>
+          <a href="/box-shadow-generator/" title="Generate CSS box shadows with fine-tuned controls" class="btn-secondary text-xs py-2 px-4">Shadow Generator</a>
+        </div>
+      </section>
       
     </div>
   </main>
@@ -298,5 +337,42 @@
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
   <script src="../js/neumorphism-generator.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

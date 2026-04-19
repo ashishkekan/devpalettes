@@ -393,7 +393,7 @@ const NAV_CATEGORIES = [
       { label: 'Border Radius Generator', path: 'border-radius-generator/' },
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
       { label: 'Glassmorphism', path: 'glassmorphism-generator/' },
-      // { label: 'Neumorphism', path: 'neumorphism-generator/' },
+      { label: 'Neumorphism', path: 'neumorphism-generator/' },
       // { label: 'Button Maker', path: 'button-generator/' },
       // { label: 'Card UI', path: 'card-generator/' },
       // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
