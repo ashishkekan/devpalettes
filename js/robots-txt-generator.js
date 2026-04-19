@@ -1,5 +1,4 @@
 // robots-txt-generator.js
-
 (function () {
   'use strict';
 
@@ -63,20 +62,18 @@
   // ─── Generate robots.txt ───
   function generate() {
     const ua = userAgentInput.value.trim() || '*';
-    const allowLines = allowInput.value.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-    const disallowLines = disallowInput.value.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    const allowLines = allowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
+    const disallowLines = disallowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
     const mainSitemap = sitemapInput.value.trim();
     const crawlDelay = crawlDelayInput.value.trim();
-    const allSitemaps = [mainSitemap, ...extraSitemaps].filter(s => s.length > 0);
+    const allSitemaps = [mainSitemap].concat(extraSitemaps).filter(function (s) { return s.length > 0; });
 
-    let output = '';
-    let ruleCount = 0;
+    var output = '';
+    var ruleCount = 0;
 
-    // User-agent
     output += 'User-agent: ' + ua + '\n';
     ruleCount++;
 
-    // Allow
     if (allowLines.length > 0) {
       allowLines.forEach(function (path) {
         output += 'Allow: ' + path + '\n';
@@ -84,7 +81,6 @@
       });
     }
 
-    // Disallow
     if (disallowLines.length > 0) {
       disallowLines.forEach(function (path) {
         output += 'Disallow: ' + path + '\n';
@@ -95,16 +91,14 @@
       ruleCount++;
     }
 
-    // Crawl-delay
     if (crawlDelay !== '') {
-      const delay = parseInt(crawlDelay, 10);
+      var delay = parseInt(crawlDelay, 10);
       if (!isNaN(delay) && delay >= 0) {
         output += 'Crawl-delay: ' + delay + '\n';
         ruleCount++;
       }
     }
 
-    // Empty line before sitemaps
     if (allSitemaps.length > 0) {
       output += '\n';
       allSitemaps.forEach(function (url) {
@@ -113,14 +107,12 @@
       });
     }
 
-    const cleanOutput = output.trimEnd();
+    var cleanOutput = output.trimEnd();
 
-    // Update all views
     previewContent.textContent = cleanOutput;
     rawContent.textContent = cleanOutput;
     generatedCode.textContent = cleanOutput;
 
-    // Update stats
     statRules.textContent = ruleCount;
     statRules.classList.remove('text-slate-400');
     statRules.classList.add('text-emerald-500');
@@ -128,8 +120,7 @@
     statSitemap.textContent = allSitemaps.length > 0 ? 'Yes' : 'No';
     statSitemap.className = 'text-3xl font-bold ' + (allSitemaps.length > 0 ? 'text-emerald-500' : 'text-slate-400');
 
-    // Count filled fields
-    let filledCount = 0;
+    var filledCount = 0;
     if (ua) filledCount++;
     if (allowLines.length > 0) filledCount++;
     if (disallowInput.value.trim().length > 0) filledCount++;
@@ -140,28 +131,26 @@
 
     ruleCountInfo.textContent = ruleCount + ' rules generated';
 
-    // Validation
     validate(ua, allowLines, disallowLines, allSitemaps, crawlDelay);
   }
 
   // ─── Validation ───
   function validate(ua, allowLines, disallowLines, allSitemaps, crawlDelay) {
-    const checks = validationList.querySelectorAll('[data-check]');
-    let allValid = true;
+    var checks = validationList.querySelectorAll('[data-check]');
+    var allValid = true;
 
-    // Reset all
     checks.forEach(function (el) {
-      const icon = el.querySelector('i');
-      const text = el.querySelector('span');
+      var icon = el.querySelector('i');
+      var text = el.querySelector('span');
       icon.className = 'fas fa-circle text-[8px] text-slate-300 dark:text-slate-600';
       text.className = 'text-slate-400';
     });
 
     function setCheck(key, passed) {
-      const el = validationList.querySelector('[data-check="' + key + '"]');
+      var el = validationList.querySelector('[data-check="' + key + '"]');
       if (!el) return;
-      const icon = el.querySelector('i');
-      const text = el.querySelector('span');
+      var icon = el.querySelector('i');
+      var text = el.querySelector('span');
       if (passed) {
         icon.className = 'fas fa-circle-check text-[10px] text-emerald-500';
         text.className = 'text-emerald-600 dark:text-emerald-400';
@@ -173,46 +162,38 @@
     }
 
     function setNeutral(key) {
-      const el = validationList.querySelector('[data-check="' + key + '"]');
+      var el = validationList.querySelector('[data-check="' + key + '"]');
       if (!el) return;
-      const icon = el.querySelector('i');
-      const text = el.querySelector('span');
+      var icon = el.querySelector('i');
+      var text = el.querySelector('span');
       icon.className = 'fas fa-circle text-[8px] text-slate-300 dark:text-slate-600';
       text.className = 'text-slate-400';
     }
 
-    // 1. User-agent specified
     setCheck('user-agent', ua.length > 0);
+    setCheck('has-rules', allowLines.length > 0 || disallowLines.length > 0);
 
-    // 2. At least one rule
-    const hasRules = allowLines.length > 0 || disallowLines.length > 0;
-    setCheck('has-rules', hasRules);
-
-    // 3. All paths start with /
-    const allPaths = [...allowLines, ...disallowLines];
+    var allPaths = allowLines.concat(disallowLines);
     if (allPaths.length > 0) {
-      const allStartWithSlash = allPaths.every(function (p) { return p.startsWith('/'); });
+      var allStartWithSlash = allPaths.every(function (p) { return p.startsWith('/'); });
       setCheck('paths-valid', allStartWithSlash);
     } else {
       setNeutral('paths-valid');
     }
 
-    // 4. No conflicting Allow/Disallow
     if (allowLines.length > 0 && disallowLines.length > 0) {
-      const allowSet = new Set(allowLines.map(function (p) { return p.toLowerCase(); }));
-      const disallowSet = new Set(disallowLines.map(function (p) { return p.toLowerCase(); }));
-      let conflict = false;
+      var allowSet = new Set(allowLines.map(function (p) { return p.toLowerCase(); }));
+      var conflict = false;
       allowSet.forEach(function (p) {
-        if (disallowSet.has(p)) conflict = true;
+        if (disallowLines.some(function (d) { return d.toLowerCase() === p; })) conflict = true;
       });
       setCheck('no-conflict', !conflict);
     } else {
       setNeutral('no-conflict');
     }
 
-    // 5. Sitemap URL valid
     if (allSitemaps.length > 0) {
-      const sitemapValid = allSitemaps.every(function (url) {
+      var sitemapValid = allSitemaps.every(function (url) {
         try { new URL(url); return true; } catch (e) { return false; }
       });
       setCheck('sitemap-valid', sitemapValid);
@@ -220,18 +201,15 @@
       setNeutral('sitemap-valid');
     }
 
-    // 6. Crawl-delay valid
     if (crawlDelay !== '') {
-      const delay = parseInt(crawlDelay, 10);
-      const cdValid = !isNaN(delay) && delay >= 0;
+      var delay = parseInt(crawlDelay, 10);
+      var cdValid = !isNaN(delay) && delay >= 0;
       setCheck('crawl-delay-valid', cdValid);
     } else {
       setNeutral('crawl-delay-valid');
     }
 
-    // 7. No empty Disallow (Disallow: with nothing blocks everything — warn)
-    const disallowRaw = disallowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length === 0; });
-    if (disallowLines.length === 0 && disallowRaw.length > 0) {
+    if (disallowLines.length === 0 && disallowInput.value.split('\n').some(function (l) { return l.trim().length === 0; })) {
       setNeutral('no-empty-disallow');
     } else if (disallowLines.length > 0) {
       setCheck('no-empty-disallow', true);
@@ -239,7 +217,6 @@
       setNeutral('no-empty-disallow');
     }
 
-    // Update valid status stat
     statValid.textContent = allValid ? 'Yes' : 'No';
     statValid.className = 'text-3xl font-bold ' + (allValid ? 'text-emerald-500' : 'text-red-400');
   }
@@ -260,7 +237,6 @@
         '<i class="fas fa-xmark"></i></button></div>';
     }).join('');
 
-    // Bind remove buttons
     sitemapListEl.querySelectorAll('.remove-sitemap').forEach(function (btn) {
       btn.addEventListener('click', function () {
         var idx = parseInt(this.getAttribute('data-index'), 10);
@@ -290,7 +266,6 @@
       sitemapInput.value = preset.sitemap;
       crawlDelayInput.value = preset.crawlDelay;
 
-      // Reset extra sitemaps
       extraSitemaps = [];
       renderSitemapList();
 
@@ -314,7 +289,7 @@
     showToast('All fields reset', 'info');
   });
 
-  // ─── Add Sitemap Button ───
+  // ─── Add Sitemap Buttons ───
   document.getElementById('rt-add-sitemap-btn').addEventListener('click', function () {
     extraSitemapWrap.classList.remove('hidden');
     extraSitemapInput.focus();
@@ -332,7 +307,7 @@
       showToast('Please enter a valid URL', 'error');
       return;
     }
-    if (extraSitemaps.includes(url) || url === sitemapInput.value.trim()) {
+    if (extraSitemaps.indexOf(url) !== -1 || url === sitemapInput.value.trim()) {
       showToast('This sitemap URL already exists', 'error');
       return;
     }
@@ -346,13 +321,11 @@
 
   // ─── Copy Buttons ───
   document.getElementById('copy-tags-btn').addEventListener('click', function () {
-    var text = generatedCode.textContent;
-    copyToClipboard(text, 'robots.txt copied to clipboard');
+    copyToClipboard(generatedCode.textContent, 'robots.txt copied to clipboard');
   });
 
   document.getElementById('copy-code-inline').addEventListener('click', function () {
-    var text = rawContent.textContent;
-    copyToClipboard(text, 'robots.txt copied to clipboard');
+    copyToClipboard(rawContent.textContent, 'robots.txt copied to clipboard');
   });
 
   // ─── Download Button ───
@@ -402,6 +375,7 @@
   // ─── Toast Helper ───
   function showToast(message, type) {
     var container = document.getElementById('toast-container');
+    if (!container) return;
     var toast = document.createElement('div');
     var iconClass = 'fas fa-circle-check text-emerald-500';
     var borderClass = 'border-emerald-500/30';
@@ -435,13 +409,11 @@
     tab.addEventListener('click', function () {
       var view = this.getAttribute('data-view');
 
-      // Update tab styles
       document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
       });
       this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
 
-      // Show/hide panels
       document.getElementById('view-preview').classList.toggle('hidden', view !== 'preview');
       document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
     });
@@ -455,5 +427,69 @@
 
   // ─── Initialize ───
   generate();
+
+  // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  setTimeout(function initFaqToggles() {
+    var faqToggles = document.querySelectorAll('.faq-toggle');
+    if (faqToggles.length === 0) {
+      // Retry after a short delay in case DOM isn't ready
+      setTimeout(initFaqToggles, 100);
+      return;
+    }
+
+    faqToggles.forEach(function (toggle) {
+      // Remove any existing listeners by cloning
+      var clone = toggle.cloneNode(true);
+      toggle.parentNode.replaceChild(clone, toggle);
+      clone.addEventListener('click', function (e) {
+        e.preventDefault();
+        var content = this.nextElementSibling;
+        var icon = this.querySelector('i');
+        if (!content) return;
+
+        var isHidden = content.classList.contains('hidden');
+        if (isHidden) {
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+          setTimeout(function () {
+            content.classList.add('hidden');
+            content.style.maxHeight = '';
+          }, 300);
+        }
+      });
+    });
+  }, 50);
+
+  // ─── Copy Link ───
+  document.addEventListener('DOMContentLoaded', function () {
+    var copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(window.location.href).then(function () {
+            copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(function () {
+              copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+            }, 2000);
+          });
+        } else {
+          var tempInput = document.createElement('input');
+          tempInput.value = window.location.href;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          setTimeout(function () {
+            copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+          }, 2000);
+        }
+      });
+    }
+  });
 
 })();

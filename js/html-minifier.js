@@ -422,5 +422,66 @@
 
   // ─── Initialize ───
   process();
+    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  setTimeout(function initFaqToggles() {
+    var faqToggles = document.querySelectorAll('.faq-toggle');
+    if (faqToggles.length === 0) {
+      setTimeout(initFaqToggles, 100);
+      return;
+    }
+
+    faqToggles.forEach(function (toggle) {
+      var clone = toggle.cloneNode(true);
+      toggle.parentNode.replaceChild(clone, toggle);
+      clone.addEventListener('click', function (e) {
+        e.preventDefault();
+        var content = this.nextElementSibling;
+        var icon = this.querySelector('i');
+        if (!content) return;
+
+        var isHidden = content.classList.contains('hidden');
+        if (isHidden) {
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+          setTimeout(function () {
+            content.classList.add('hidden');
+            content.style.maxHeight = '';
+          }, 300);
+        }
+      });
+    });
+  }, 50);
+
+  // ─── Copy Link ───
+  document.addEventListener('DOMContentLoaded', function () {
+    var copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(window.location.href).then(function () {
+            copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(function () {
+              copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+            }, 2000);
+          });
+        } else {
+          var tempInput = document.createElement('input');
+          tempInput.value = window.location.href;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          setTimeout(function () {
+            copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+          }, 2000);
+        }
+      });
+    }
+  });
 
 })();

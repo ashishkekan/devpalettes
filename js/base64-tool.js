@@ -70,17 +70,12 @@
   // ─── Validate Base64 String ───
   function isValidBase64(str) {
     if (!str || str.length === 0) return false;
-    // Remove whitespace
     var cleaned = str.replace(/\s/g, '');
-    // Must match Base64 pattern: alphanumeric + /+ with optional = padding
     var regex = /^[A-Za-z0-9+/]*={0,2}$/;
     if (!regex.test(cleaned)) return false;
-    // Length must be multiple of 4 (after stripping whitespace)
     if (cleaned.length % 4 !== 0) return false;
-    // Padding must be at end only
     var padIndex = cleaned.indexOf('=');
     if (padIndex !== -1 && padIndex < cleaned.length - 2) return false;
-    // If padding exists, check valid amounts
     if (cleaned.endsWith('==') && cleaned.length < 4) return false;
     if (cleaned.endsWith('=') && cleaned.length < 4) return false;
     return true;
@@ -117,17 +112,13 @@
     currentOutput = '';
     hasError = false;
 
-    // Input count
     inputCount.textContent = inputLen + ' char' + (inputLen !== 1 ? 's' : '');
 
-    // Stats
     statInputLen.textContent = inputLen;
     statInputLen.className = 'text-3xl font-bold ' + (inputLen > 0 ? 'text-emerald-500' : 'text-slate-400');
 
-    // Reset checks
     resetChecks();
 
-    // Empty input
     if (inputLen === 0) {
       previewContent.textContent = 'Enter text and select a mode to see the result here';
       rawContent.textContent = 'Enter text and select a mode to see the raw output here';
@@ -145,7 +136,6 @@
     setCheck('has-input', true);
 
     if (currentMode === 'encode') {
-      // Encode mode
       var encoded = utf8ToBase64(input);
 
       if (encoded !== null) {
@@ -163,7 +153,6 @@
         setCheck('valid-encode', true);
         setCheck('no-errors', true);
         setCheck('output-ready', true);
-        // Neutral for decode checks in encode mode
         setCheck('valid-decode', null);
         setCheck('valid-base64', null);
       } else {
@@ -186,7 +175,6 @@
       }
 
     } else {
-      // Decode mode
       var cleanedInput = input.replace(/\s/g, '');
       var validB64 = isValidBase64(cleanedInput);
 
@@ -362,6 +350,7 @@
   // ─── Toast Helper ───
   function showToast(message, type) {
     var container = document.getElementById('toast-container');
+    if (!container) return;
     var toast = document.createElement('div');
     var iconClass = 'fas fa-circle-check text-emerald-500';
     var borderClass = 'border-emerald-500/30';
@@ -392,5 +381,67 @@
 
   // ─── Initialize ───
   process();
+
+  // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  setTimeout(function initFaqToggles() {
+    var faqToggles = document.querySelectorAll('.faq-toggle');
+    if (faqToggles.length === 0) {
+      setTimeout(initFaqToggles, 100);
+      return;
+    }
+
+    faqToggles.forEach(function (toggle) {
+      var clone = toggle.cloneNode(true);
+      toggle.parentNode.replaceChild(clone, toggle);
+      clone.addEventListener('click', function (e) {
+        e.preventDefault();
+        var content = this.nextElementSibling;
+        var icon = this.querySelector('i');
+        if (!content) return;
+
+        var isHidden = content.classList.contains('hidden');
+        if (isHidden) {
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+          setTimeout(function () {
+            content.classList.add('hidden');
+            content.style.maxHeight = '';
+          }, 300);
+        }
+      });
+    });
+  }, 50);
+
+  // ─── Copy Link ───
+  document.addEventListener('DOMContentLoaded', function () {
+    var copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(window.location.href).then(function () {
+            copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(function () {
+              copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+            }, 2000);
+          });
+        } else {
+          var tempInput = document.createElement('input');
+          tempInput.value = window.location.href;
+          document.body.appendChild(tempInput);
+          tempInput.select();
+          document.execCommand('copy');
+          document.body.removeChild(tempInput);
+          copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          setTimeout(function () {
+            copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+          }, 2000);
+        }
+      });
+    }
+  });
 
 })();
