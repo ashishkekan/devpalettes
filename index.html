@@ -53,16 +53,17 @@
     gtag('config', 'G-F252PEQ1JC');
   </script>
 
-  <!-- Google Fonts -->
+  <!-- Google Fonts with preload -->
   <link rel="canonical" href="https://devpalettes.com/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Updated: Added Noto Color Emoji for icon support -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+  <!-- Preload critical font -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Tailwind CSS -->
-  <script src="/assets/js/tailwind.js"></script>
+  <script src="/assets/js/tailwind.js" defer></script>
   <!-- NOTE: For CDN Usage — consider serving /js/tailwind.js and css/styles.css from a CDN (e.g., Cloudflare, jsDelivr) for improved global caching and load times -->
   <script>
     tailwind.config = {
@@ -302,15 +303,15 @@
         </div>
         <!-- Controls -->
         <div class="flex flex-wrap items-center justify-center gap-4 animate-on-scroll">
-          <button id="generate-btn" class="btn-primary btn-glow">
+          <button id="generate-btn" class="btn-primary btn-glow" onclick="if(typeof Analytics !== 'undefined') Analytics.trackButtonClick('generate_palette')">
             <i class="fas fa-sync-alt"></i>
             Generate Palette
           </button>
-          <button id="export-css-btn" class="btn-secondary">
+          <button id="export-css-btn" class="btn-secondary" onclick="if(typeof Analytics !== 'undefined') Analytics.trackButtonClick('export_css')">
             <i class="fas fa-code"></i>
             Export CSS
           </button>
-          <a href="/palettes/" class="btn-secondary">
+          <a href="/palettes/" class="btn-secondary" onclick="if(typeof Analytics !== 'undefined') Analytics.trackButtonClick('open_palette_editor')">
             <i class="fas fa-expand"></i>
             Open Editor
           </a>
@@ -585,7 +586,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 animate-on-scroll">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Popular Design Tools</h2>
-        <p class="text-slate-600 dark:text-slate-400">🚀 Most used tools by designers and developers this week.</p>
+        <p class="text-slate-600 dark:text-slate-400">🚀 Most used tools by designers and developers. Learn <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">how to create effective color palettes</a> and <a href="/blog/color-psychology/" class="text-emerald-500 hover:underline">understand color psychology</a> for better designs.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-8">
         <!-- Tool Card 1 -->

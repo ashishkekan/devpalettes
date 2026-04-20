@@ -675,7 +675,47 @@
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
   
   <script src="/assets/js/common.js"></script>
-  <script src="/assets/js/image-compressor.js"></script>
+  <script>
+    // Lazy load image compressor functionality
+    let imageCompressorLoaded = false;
+
+    function loadImageCompressor() {
+      if (imageCompressorLoaded) return;
+
+      const script = document.createElement('script');
+      script.src = '/assets/js/image-compressor.js';
+      script.onload = function() {
+        imageCompressorLoaded = true;
+        // Track tool usage
+        if (typeof Analytics !== 'undefined') {
+          Analytics.trackToolUsage('image_compressor', 'load');
+        }
+      };
+      document.head.appendChild(script);
+    }
+
+    // Load on user interaction or after page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load immediately if user has already interacted
+      if (document.readyState === 'complete') {
+        setTimeout(loadImageCompressor, 100);
+      } else {
+        window.addEventListener('load', () => setTimeout(loadImageCompressor, 100));
+      }
+
+      // Also load on first user interaction
+      const loadOnInteraction = () => {
+        loadImageCompressor();
+        document.removeEventListener('click', loadOnInteraction);
+        document.removeEventListener('keydown', loadOnInteraction);
+        document.removeEventListener('touchstart', loadOnInteraction);
+      };
+
+      document.addEventListener('click', loadOnInteraction, { once: true });
+      document.addEventListener('keydown', loadOnInteraction, { once: true });
+      document.addEventListener('touchstart', loadOnInteraction, { once: true });
+    });
+  </script>
 </body>
 </html>
 

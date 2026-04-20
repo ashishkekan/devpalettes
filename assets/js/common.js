@@ -4,8 +4,55 @@
    ============================================ */
 
 // ==========================================
-// Theme Management
+// Analytics & Tracking
 // ==========================================
+
+const Analytics = {
+  // Track tool usage
+  trackToolUsage(toolName, action = 'use') {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', action, {
+        event_category: 'tool_usage',
+        event_label: toolName,
+        custom_parameter_1: window.location.pathname
+      });
+    }
+  },
+
+  // Track button clicks
+  trackButtonClick(buttonName, category = 'button_click') {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'click', {
+        event_category: category,
+        event_label: buttonName,
+        custom_parameter_1: window.location.pathname
+      });
+    }
+  },
+
+  // Track conversions
+  trackConversion(conversionType, value = null) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'conversion', {
+        event_category: 'conversion',
+        event_label: conversionType,
+        value: value,
+        custom_parameter_1: window.location.pathname
+      });
+    }
+  },
+
+  // Track page interactions
+  trackInteraction(interactionType, elementName) {
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'interaction', {
+        event_category: 'user_interaction',
+        event_label: `${interactionType}_${elementName}`,
+        custom_parameter_1: window.location.pathname
+      });
+    }
+  }
+};
 
 const ThemeManager = {
   init() {
