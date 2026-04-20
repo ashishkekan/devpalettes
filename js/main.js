@@ -463,6 +463,8 @@ const NAV_CATEGORIES = [
   }
 ];
 
+const NAVBAR_COMPONENT_PATH = '/components/navbar.html';
+
 function getRootRelativePrefix() {
   const pathname = window.location.pathname || '/';
   const withoutLeadingSlash = pathname.startsWith('/') ? pathname.slice(1) : pathname;
@@ -702,119 +704,117 @@ const PageHelpers = {
   }
 };
 
-function renderNavbar() {
+function buildNavbarDesktopDropdowns() {
   const desktopDropdownsHTML = NAV_CATEGORIES.map((category, idx) => {
     const toolLinks = category.tools.map(tool => `
       <a href="${navHref(tool.path)}"
-        class="block px-3 py-2 rounded-lg text-sm hover:bg-slate-200 dark:hover:bg-slate-700/50 transition-colors"
+        class="nav-dropdown-link block px-3 py-2 rounded-xl text-sm hover:bg-slate-100 dark:hover:bg-slate-800/80 transition-colors"
         role="menuitem">${tool.label}</a>
     `).join('');
 
     return `
-      <div class="relative group" data-dropdown>
+      <div class="relative" data-dropdown>
         <button type="button"
-          class="text-sm font-medium hover:text-emerald-500 transition-colors flex items-center gap-1"
+          class="nav-pill text-sm font-medium transition-colors flex items-center gap-2"
           data-dropdown-button
           aria-haspopup="true"
           aria-expanded="false">
           ${category.label}
-          <i class="fas fa-chevron-down text-[10px] opacity-70"></i>
+          <i class="fas fa-chevron-down text-[10px] opacity-70 transition-transform"></i>
         </button>
         <div class="hidden absolute left-0 mt-2 min-w-[15rem] max-w-[19rem] max-h-80 overflow-auto
-          group-hover:block
-          bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800
-          shadow-[0_8px_30px_rgba(0,0,0,0.12)] dark:shadow-[0_8px_30px_rgba(255,255,255,0.12)]
-          rounded-xl p-2 z-50"
+          bg-white/95 dark:bg-slate-950/95 border border-slate-200/80 dark:border-slate-800
+          shadow-[0_18px_60px_rgba(15,23,42,0.14)] dark:shadow-[0_18px_60px_rgba(2,6,23,0.55)]
+          backdrop-blur-xl rounded-2xl p-2 z-50 nav-dropdown-panel"
           data-dropdown-menu
           role="menu">
+          <div class="px-3 pb-2 pt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400 dark:text-slate-500">
+            ${category.label}
+          </div>
           ${toolLinks}
         </div>
       </div>
     `;
   }).join('');
 
+  return desktopDropdownsHTML;
+}
+
+function buildNavbarMobileCategories() {
   const mobileCategoriesHTML = NAV_CATEGORIES.map((category, idx) => {
     const toolLinks = category.tools.map(tool => `
       <a href="${navHref(tool.path)}"
-        class="text-base font-medium hover:text-emerald-500 transition-colors py-1 pl-3">
+        class="mobile-nav-link text-base font-medium transition-colors py-2 pl-4 pr-3 rounded-xl">
         ${tool.label}
       </a>
     `).join('');
 
     return `
-      <div class="py-2 border-b border-slate-100 dark:border-slate-800">
+      <div class="mobile-nav-section py-2 border-b border-slate-100 dark:border-slate-800/80">
         <button type="button"
-          class="w-full text-lg font-medium hover:text-emerald-500 transition-colors py-2 flex items-center justify-between"
+          class="w-full text-base font-semibold transition-colors py-3 flex items-center justify-between gap-3"
           data-mobile-dropdown-button="${idx}"
           aria-expanded="false">
           <span>${category.label}</span>
-          <i class="fas fa-chevron-down text-xs opacity-70"></i>
+          <i class="fas fa-chevron-down text-xs opacity-70 transition-transform"></i>
         </button>
-        <div class="hidden flex flex-col gap-2 pb-2" data-mobile-dropdown-menu="${idx}">
+        <div class="hidden flex flex-col gap-1 pb-2" data-mobile-dropdown-menu="${idx}">
           ${toolLinks}
         </div>
       </div>
     `;
   }).join('');
 
-  const navHTML = `
-    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
+  return mobileCategoriesHTML;
+}
+
+function getNavbarFallbackTemplate() {
+  return `
+    <nav class="navbar nav-surface">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-14 sm:h-12">
-          <!-- Logo -->
-          <a href="${navHref('')}" class="flex items-center gap-2 group">
-            <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div class="w-8 h-8 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
-                flex items-center justify-center
-                shadow-[0_0_15px_rgba(34,211,238,0.6)]
-                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="${navHref('images/devpalettes_zoom_180.png')}" 
-                  alt="Devpalettes Logo"
-                  class="w-6 h-6 sm:w-6 sm:h-6 object-contain mx-auto" />
+        <div class="flex items-center justify-between h-14">
+          <a href="{{HOME_URL}}" class="flex items-center gap-2 group" aria-label="Devpalettes Home">
+            <div class="flex items-center gap-2 sm:gap-3">
+              <div class="w-9 h-9 rounded-xl bg-black flex items-center justify-center shadow-[0_0_18px_rgba(34,211,238,0.55)] transition group-hover:shadow-[0_0_28px_rgba(34,211,238,0.9)] overflow-hidden">
+                <img src="{{LOGO_URL}}" alt="Devpalettes Logo" class="w-6 h-6 object-contain mx-auto" />
               </div>
-              <span class="text-lg sm:text-2xl font-bold text-cyan-400">
-                Devpalettes
-              </span>
+              <span class="text-lg sm:text-[1.4rem] font-bold tracking-tight text-cyan-400">Devpalettes</span>
             </div>
           </a>
-          
-          <!-- Desktop Nav -->
-          <div class="nav-links hidden md:flex items-center gap-6 lg:gap-8">
-            ${desktopDropdownsHTML}
-           </div>
-          
-          <!-- Right side -->
-          <div class="flex items-center gap-2 sm:gap-4">
-            <button id="theme-toggle" 
-              class="h-8 px-2 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 flex items-center justify-center transition-colors" 
-              aria-label="Toggle theme">
-              <i class="fas fa-moon text-lg sm:text-xl dark:hidden"></i>
-              <i class="fas fa-sun text-lg sm:text-xl hidden dark:block"></i>
+          <div class="nav-links hidden md:flex items-center gap-3 lg:gap-4">
+            {{DESKTOP_DROPDOWNS}}
+          </div>
+          <div class="flex items-center gap-2 sm:gap-3">
+            <button id="theme-toggle" class="nav-icon-button h-10 w-10 rounded-xl flex items-center justify-center transition-colors" aria-label="Toggle theme">
+              <i class="fas fa-moon text-lg dark:hidden"></i>
+              <i class="fas fa-sun text-lg hidden dark:block"></i>
             </button>
-            <a href="${navHref('palettes/')}" class="hidden sm:flex btn-primary text-sm small-btn">
+            <a href="{{PALETTES_URL}}" class="hidden sm:flex btn-primary text-sm small-btn">
               <i class="fas fa-palette"></i>
               Create Free
             </a>
-            <div class="hamburger md:hidden h-5 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
-              <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
-              <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
-              <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white transition-all"></span>
-            </div>
+            <button type="button" class="hamburger md:hidden flex items-center justify-center rounded-xl transition-colors cursor-pointer" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mobile-menu">
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+              <span class="hamburger-line"></span>
+            </button>
           </div>
         </div>
       </div>
     </nav>
-    
-    <!-- Mobile Menu -->
-    <div class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
-      <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
-        ${mobileCategoriesHTML}
-        <hr class="border-slate-200 dark:border-slate-700 my-4">
-        <a href="${navHref('about/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">About Us</a>
-        <a href="${navHref('contact/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Contact Us</a>
-        <a href="${navHref('blog/')}" class="text-lg font-medium hover:text-emerald-500 transition-colors py-2">Blog</a>
-        <div class="mt-auto pb-8">
-          <a href="${navHref('palettes/')}" class="btn-primary text-center mt-4 w-full justify-center">
+    <div class="mobile-menu-backdrop fixed inset-0 z-30 bg-slate-950/30 backdrop-blur-[2px] opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"></div>
+    <div id="mobile-menu" class="mobile-menu fixed inset-y-0 right-0 z-40 w-full max-w-sm bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-l border-slate-200/70 dark:border-slate-800 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
+      <div class="flex flex-col gap-4 p-5 h-full overflow-y-auto">
+        <div class="rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white/70 dark:bg-slate-900/60 p-3">
+          {{MOBILE_CATEGORIES}}
+        </div>
+        <div class="flex flex-col gap-1 pt-1">
+          <a href="{{ABOUT_URL}}" class="mobile-nav-link text-base font-medium transition-colors py-3 px-4 rounded-xl">About Us</a>
+          <a href="{{CONTACT_URL}}" class="mobile-nav-link text-base font-medium transition-colors py-3 px-4 rounded-xl">Contact Us</a>
+          <a href="{{BLOG_URL}}" class="mobile-nav-link text-base font-medium transition-colors py-3 px-4 rounded-xl">Blog</a>
+        </div>
+        <div class="mt-auto pb-6">
+          <a href="{{PALETTES_URL}}" class="btn-primary text-center mt-4 w-full justify-center">
             <i class="fas fa-palette"></i>
             Create Free Palette
           </a>
@@ -822,11 +822,34 @@ function renderNavbar() {
       </div>
     </div>
   `;
-  
+}
+
+function populateNavbarTemplate(template) {
+  return template
+    .replace('{{HOME_URL}}', navHref(''))
+    .replace('{{LOGO_URL}}', navHref('images/devpalettes_zoom_180.png'))
+    .replace('{{PALETTES_URL}}', navHref('palettes/'))
+    .replace('{{ABOUT_URL}}', navHref('about/'))
+    .replace('{{CONTACT_URL}}', navHref('contact/'))
+    .replace('{{BLOG_URL}}', navHref('blog/'))
+    .replace('{{DESKTOP_DROPDOWNS}}', buildNavbarDesktopDropdowns())
+    .replace('{{MOBILE_CATEGORIES}}', buildNavbarMobileCategories());
+}
+
+async function renderNavbar() {
   const navbarContainer = document.getElementById('navbar-container');
-  if (navbarContainer) {
-    navbarContainer.innerHTML = navHTML;
+  if (!navbarContainer) return;
+
+  let template = '';
+  try {
+    const response = await fetch(NAVBAR_COMPONENT_PATH, { cache: 'no-cache' });
+    if (!response.ok) throw new Error(`Navbar component request failed: ${response.status}`);
+    template = await response.text();
+  } catch {
+    template = getNavbarFallbackTemplate();
   }
+
+  navbarContainer.innerHTML = populateNavbarTemplate(template);
 }
 
 function renderFooter() {
