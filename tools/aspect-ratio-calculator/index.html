@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculate aspect ratios, resize images proportionally, and convert dimensions instantly with this free online tool.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/aspect-ratio-calculator/">
+  
+  <title>Aspect Ratio Calculator – Image & Video Size Tool</title>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Aspect Ratio Calculator – Image & Video Size Tool">
+  <meta property="og:description" content="Calculate aspect ratios, resize images proportionally, and convert dimensions instantly with this free online tool.">
+  <meta property="og:url" content="https://devpalettes.com/aspect-ratio-calculator/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/og-aspect-ratio-calculator.png">
+  <meta property="og:site_name" content="Devpalettes">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aspect Ratio Calculator – Image & Video Size Tool">
+  <meta name="twitter:description" content="Calculate aspect ratios, resize images proportionally, and convert dimensions instantly with this free online tool.">
+  <meta name="twitter:image" content="https://devpalettes.com/assets/images/og-aspect-ratio-calculator.png">
+  
+  <!-- JSON-LD Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Aspect Ratio Calculator",
+    "description": "Calculate aspect ratios, resize images proportionally, and convert dimensions instantly with this free online tool.",
+    "url": "https://devpalettes.com/aspect-ratio-calculator/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+  
+  <!-- JSON-LD Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is aspect ratio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Aspect ratio is the proportional relationship between the width and height of an image, video, or screen. It is expressed as two numbers separated by a colon, such as 16:9, where the first number represents width and the second represents height. Aspect ratio determines the shape of visual content — whether it appears wide, square, or tall."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I calculate aspect ratio?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To calculate aspect ratio from pixel dimensions, find the greatest common divisor (GCD) of the width and height, then divide both values by the GCD. For example, a 1920x1080 image has a GCD of 120, so 1920/120 = 16 and 1080/120 = 9, giving an aspect ratio of 16:9."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is 16:9 in pixels?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common 16:9 pixel dimensions include 1280x720 (720p HD), 1920x1080 (1080p Full HD), 2560x1440 (1440p QHD), and 3840x2160 (4K UHD). Any width and height pair where the width divided by height equals approximately 1.778 maintains the 16:9 aspect ratio."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to resize an image without losing quality?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To resize without distortion, always maintain the original aspect ratio by locking the proportion between width and height. Use an aspect ratio calculator to find the correct corresponding dimension. For quality preservation when downscaling, use high-quality resampling algorithms like Lanczos. When upscaling, avoid going beyond 200% of original size to prevent visible degradation."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+
+  <script src="/assets/js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+  
+  <style>
+    .ratio-box {
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Header -->
+      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">Aspect Ratio Calculator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          Calculate dimensions for images, videos, and containers.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
+      
+      <div class="block md:grid md:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <aside class="space-y-6 animate-on-scroll" aria-label="Aspect ratio controls">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg">Common Ratios</h2>
+             <div class="grid grid-cols-4 gap-2" role="group" aria-label="Preset aspect ratios">
+                <button onclick="setRatio(16,9)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">16:9</button>
+                <button onclick="setRatio(1,1)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">1:1</button>
+                <button onclick="setRatio(4,3)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">4:3</button>
+                <button onclick="setRatio(21,9)" class="px-3 py-2 rounded text-xs font-bold bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-colors">21:9</button>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg">Custom Dimensions</h2>
+             
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="ctrl-w" class="block text-xs font-semibold text-slate-500 mb-1">Width (px)</label>
+                  <input type="number" id="ctrl-w" value="1920" onchange="calc()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2">
+                </div>
+                <div>
+                  <label for="ctrl-h" class="block text-xs font-semibold text-slate-500 mb-1">Height (px)</label>
+                  <input type="number" id="ctrl-h" value="1080" onchange="calc()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2">
+                </div>
+             </div>
+             
+             <div class="mt-4 p-4 bg-slate-100 dark:bg-slate-800 rounded-xl">
+                <div class="flex justify-between text-sm mb-1">
+                  <span class="text-slate-500">Ratio:</span>
+                  <span id="result-ratio" class="font-bold text-emerald-500">16:9</span>
+                </div>
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-500">Total Pixels:</span>
+                  <span id="result-pixels" class="font-bold">2,073,600</span>
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg">Resize to New Width</h2>
+             <div class="flex gap-2">
+                <label for="new-w" class="sr-only">New width in pixels</label>
+                <input type="number" id="new-w" value="1280" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-3 py-2">
+                <button onclick="resize()" class="btn-primary px-4 py-2">Resize</button>
+             </div>
+             <div class="mt-2 text-right text-sm">
+                New Height: <span id="new-h" class="font-bold text-cyan-500">720px</span>
+             </div>
+          </div>
+          
+        </aside>
+        
+        <!-- Right: Preview -->
+        <section class="space-y-6 animate-on-scroll" aria-label="Aspect ratio preview and CSS output">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h2 class="font-bold mb-4 text-lg">Visual Preview</h2>
+             
+             <div class="bg-slate-100 dark:bg-slate-800 p-10 flex items-center justify-center min-h-[400px] rounded-xl">
+                <div id="ratio-box" class="ratio-box bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg shadow-lg flex items-center justify-center text-white text-xs font-bold" role="img" aria-label="Aspect ratio visual preview">
+                  16:9
+                </div>
+             </div>
+             
+             <div class="mt-4 text-center text-xs text-slate-500">
+              Actual displayed size is scaled to fit.
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h2 class="font-bold text-lg">CSS Code</h2>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy CSS code"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-32" aria-live="polite"></pre>
+          </div>
+          
+        </section>
+        
+      </div>
+      
+      <!-- Use Cases Section -->
+      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Aspect ratio use cases">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6 flex items-center gap-2">
+            <i class="fas fa-bullseye text-emerald-500" aria-hidden="true"></i>
+            Common Use Cases
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">YouTube Thumbnails</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Use 16:9 ratio (1280x720px minimum) to match the video player and avoid cropped previews.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Instagram Posts</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Square 1:1 (1080x1080px) or portrait 4:5 (1080x1350px) for maximum screen coverage.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Web Design Containers</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">CSS aspect-ratio property maintains consistent proportions for cards, heroes, and media embeds.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-1">Responsive Layouts</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Aspect ratios prevent layout shift when images load, improving Core Web Vitals scores.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- SEO Content Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to aspect ratios">
+        <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          
+          <h2 class="text-2xl font-bold mb-4">What Is Aspect Ratio?</h2>
+          <p>Aspect ratio is the proportional relationship between the width and height of a rectangular shape — an image, video frame, screen, or container. It is expressed as two numbers separated by a colon, such as <strong>16:9</strong>, where the first number represents the width and the second represents the height. The ratio does not describe absolute pixel dimensions; instead, it defines the shape. A 16:9 image at 1920x1080 pixels has the same proportions as a 16:9 image at 1280x720 pixels — one is simply larger than the other while maintaining the identical shape.</p>
+          <p>Understanding aspect ratio is essential for anyone working with digital media. When an image is displayed or resized without preserving its original aspect ratio, it becomes distorted — either stretched horizontally (appearing wider than intended) or vertically (appearing taller). Maintaining the correct aspect ratio ensures that visual content looks natural and accurately represents its subject.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">Common Aspect Ratios</h2>
+          
+          <h3 class="text-2xl font-bold mb-4">16:9 — Widescreen Standard</h3>
+          <p>The 16:9 aspect ratio is the dominant standard for video content, television broadcasts, and monitor displays. It replaced the older 4:3 standard as high-definition content became mainstream. YouTube, Netflix, Vimeo, and virtually all video streaming platforms default to 16:9. Common pixel dimensions include 1920x1080 (Full HD), 2560x1440 (QHD), and 3840x2160 (4K). Any content created for video should use 16:9 to avoid black bars or cropping during playback.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">1:1 — Square Format</h3>
+          <p>The 1:1 ratio produces a perfect square and is closely associated with Instagram, profile pictures, and social media thumbnails. It simplifies composition by eliminating the decision between landscape and portrait orientation. Common dimensions are 1080x1080 pixels for Instagram posts and 500x500 pixels for profile avatars. The square format works well for product photos, artwork, and any content where symmetry is desirable.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">4:3 — Classic Display</h3>
+          <p>The 4:3 ratio was the standard for television and computer monitors before widescreen became prevalent. It is still used in some contexts including iPad screens (1024x768), PowerPoint presentations, and classic photography (originating from 35mm film at 4:3). Standard pixel dimensions include 1024x768 (XGA), 1600x1200 (UXGA), and 800x600 (SVGA). Content designed for older displays or printed materials may still use this ratio.</p><br>
+          
+          <h3 class="text-2xl font-bold mb-4">21:9 — Ultrawide Format</h3>
+          <p>The 21:9 ratio (sometimes expressed as 64:27) is used for ultrawide monitors, cinematic film formats, and immersive video content. It provides a significantly wider field of view than 16:9, making it popular for gaming, movie production, and panoramic photography. Common pixel dimensions include 2560x1080 and 3440x1440. Content in 21:9 feels cinematic but may require letterboxing on standard 16:9 displays.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">How to Calculate Aspect Ratio</h2>
+          <p>Calculating the aspect ratio from pixel dimensions requires finding the <strong>greatest common divisor (GCD)</strong> of the width and height, then dividing both values by that number. For example, given dimensions of 1920x1080: the GCD of 1920 and 1080 is 120. Dividing 1920 by 120 yields 16, and dividing 1080 by 120 yields 9, so the aspect ratio is 16:9. This mathematical approach works for any pair of dimensions and always produces the simplest integer ratio. For very large numbers or non-integer pixel values, the Euclidean algorithm provides an efficient way to compute the GCD.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">How to Resize Images Without Distortion</h2>
+          <p>The key to distortion-free resizing is always maintaining the original aspect ratio. When you change the width, you must calculate the corresponding height using the formula: <strong>new height = (original height / original width) × new width</strong>. Conversely, when changing the height: <strong>new width = (original width / original height) × new height</strong>. This proportional scaling ensures that every pixel maintains its relative position, preventing stretching or squishing. When working with CSS, the <strong>aspect-ratio</strong> property handles this automatically. When preparing images for upload, always use image editors or tools that lock the aspect ratio during resize operations.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">CSS aspect-ratio Property</h2>
+          <p>Modern CSS provides the <strong>aspect-ratio</strong> property, which allows developers to set the proportional relationship of an element directly in stylesheets. For example, <strong>aspect-ratio: 16 / 9;</strong> ensures that an element always maintains a 16:9 shape regardless of its width. This property works with <strong>width: 100%</strong> to create fully responsive containers that adapt to their parent while preserving proportions — eliminating layout shift when images load and removing the need for padding-based hacks.</p>
+          <p>For older browsers that do not support the aspect-ratio property, the fallback technique uses a <strong>padding-top percentage</strong> on a pseudo-element. The percentage is calculated as <strong>(height / width) × 100</strong>. For a 16:9 ratio, this means <strong>padding-top: 56.25%</strong>. The actual content is positioned absolutely over this padding spacer. While the modern property is now supported in all major browsers, including the fallback ensures compatibility with older environments. When styling aspect-ratio containers with backgrounds or borders, <a href="/palettes/">generate color palettes</a> that complement the content inside. For precise color adjustments in your CSS, you can <a href="/converter/">convert HEX to RGB</a> to work with opacity values. To develop a refined sense of color harmony across your layouts, <a href="/blog/color-palettes-guide/">learn color combinations</a> that enhance visual consistency.</p>
+          
+        </article>
+      </section>
+      
+      <!-- FAQ Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about aspect ratios">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is aspect ratio?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Aspect ratio is the proportional relationship between the width and height of an image, video, or screen. It is expressed as two numbers separated by a colon, such as 16:9, where the first number represents width and the second represents height. Aspect ratio determines the shape of visual content — whether it appears wide, square, or tall.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How do I calculate aspect ratio?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To calculate aspect ratio from pixel dimensions, find the greatest common divisor (GCD) of the width and height, then divide both values by the GCD. For example, a 1920x1080 image has a GCD of 120, so 1920/120 = 16 and 1080/120 = 9, giving an aspect ratio of 16:9.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is 16:9 in pixels?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Common 16:9 pixel dimensions include 1280x720 (720p HD), 1920x1080 (1080p Full HD), 2560x1440 (1440p QHD), and 3840x2160 (4K UHD). Any width and height pair where the width divided by height equals approximately 1.778 maintains the 16:9 aspect ratio.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">How to resize an image without losing quality?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">To resize without distortion, always maintain the original aspect ratio by locking the proportion between width and height. Use an aspect ratio calculator to find the correct corresponding dimension. For quality preservation when downscaling, use high-quality resampling algorithms like Lanczos. When upscaling, avoid going beyond 200% of original size to prevent visible degradation.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+      
+      <!-- Related Tools Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Related tools">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            
+            <a href="/color-from-image/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-eye-dropper text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Image Color Extractor</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Extract dominant colors from any uploaded image.</p>
+            </a>
+            
+            <a href="/converter/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-exchange-alt text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Color Converter</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Convert between HEX, RGB, HSL, and other color formats.</p>
+            </a>
+            
+            <a href="/gradient/" class="group block p-5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 transition-colors">
+              <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center mb-3">
+                <i class="fas fa-palette text-emerald-500" aria-hidden="true"></i>
+              </div>
+              <h3 class="font-semibold text-sm mb-1 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Gradient Generator</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create beautiful CSS gradients with live preview and code export.</p>
+            </a>
+            
+          </div>
+        </div>
+      </section>
+      
+    </div>
+  </main>
+  <div id="footer-container"></div>
+<script src="/assets/js/common.js"></script>
+  <script src="/assets/js/aspect-ratio-calculator.js"></script>
+</body>
+</html>
+
+
+

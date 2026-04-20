@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Border Radius Generator – Blob & Shape Maker</title>
+  <meta name="description" content="Create custom CSS border-radius shapes and blobs easily. Design organic UI shapes and copy ready-to-use CSS code.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/border-radius-generator/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/border-radius-generator/">
+  <meta property="og:title" content="CSS Border Radius Generator – Blob & Shape Maker">
+  <meta property="og:description" content="Create custom CSS border-radius shapes and blobs easily. Design organic UI shapes and copy ready-to-use CSS code.">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/border-radius-generator-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS Border Radius Generator – Blob & Shape Maker">
+  <meta name="twitter:description" content="Create custom CSS border-radius shapes and blobs easily. Design organic UI shapes and copy ready-to-use CSS code.">
+  <meta name="twitter:image" content="https://devpalettes.com/assets/images/border-radius-generator-og.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Border Radius Generator",
+    "url": "https://devpalettes.com/border-radius-generator/",
+    "description": "Create custom CSS border-radius shapes and blobs easily. Design organic UI shapes and copy ready-to-use CSS code.",
+    "applicationCategory": "DesignApplication",
+    "creator": "Devpalettes",
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is border-radius in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The border-radius CSS property rounds the corners of an element's outer border edge. It can accept one to four values, allowing you to control each corner independently to create anything from slightly rounded rectangles to perfect circles and complex organic shapes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to create blob shapes in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blob shapes are created by setting unequal border-radius percentage values on all four corners. For example, border-radius: 30% 70% 70% 30% creates an organic blob. Using percentage values instead of pixels is key because percentages scale relative to the element's dimensions, producing smooth asymmetric curves."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What values are best for organic shapes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For organic shapes, use percentage values between 20% and 80% with contrasting pairs. Good starting points include 30% 70% 70% 30% for a leaf shape, 60% 40% 30% 70% for a blob, or 50% 50% 50% 50% for a perfect circle. Avoid values near 0% or 100% on all corners as they produce standard rectangles or circles."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use border-radius for UI design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Border-radius is widely used in modern UI for rounded buttons, card containers, avatar images, notification badges, and decorative background shapes. Organic blob shapes created with border-radius are popular as background decorations, hero section accents, and floating UI elements."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+  <script src="/assets/js/tailwind.js"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      
+      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">Fancy Border Radius Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Create organic blobs and complex shapes • Copy CSS code instantly</p>
+        <div class="spectrum-line max-w-md mx-auto mb-4"></div>
+        <p class="text-slate-500 dark:text-slate-500 max-w-2xl mx-auto text-sm">
+           Our <strong>CSS Border Radius Generator</strong> lets you visually create blobs, leaves, and organic shapes by adjusting each corner independently. Set custom values, pick colors, and copy the <strong>border-radius CSS code</strong> for your project. <strong>Free tool, no signup required.</strong>
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-border-style text-emerald-500"></i> Corner Radius
+             </h3>
+             <p class="text-xs text-slate-500 mb-4">Top-Left, Top-Right, Bottom-Right, Bottom-Left</p>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 mb-1">Top-Left: <span id="v-tl">30</span>%</label>
+                  <input type="range" id="r-tl" min="0" max="100" value="30" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 mb-1">Top-Right: <span id="v-tr">70</span>%</label>
+                  <input type="range" id="r-tr" min="0" max="100" value="70" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 mb-1">Btm-Right: <span id="v-br">30</span>%</label>
+                  <input type="range" id="r-br" min="0" max="100" value="30" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 mb-1">Btm-Left: <span id="v-bl">70</span>%</label>
+                  <input type="range" id="r-bl" min="0" max="100" value="70" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+             <div class="mt-4 grid grid-cols-3 gap-2">
+               <button onclick="setPreset(50, 50, 50, 50)" class="btn-secondary text-xs py-2">Circle</button>
+               <button onclick="setPreset(10, 10, 10, 10)" class="btn-secondary text-xs py-2">Rounded</button>
+               <button onclick="randomShape()" class="btn-secondary text-xs py-2"><i class="fas fa-random"></i> Random</button>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg">Size & Color</h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 mb-1">Size: <span id="v-size">200</span>px</label>
+                  <input type="range" id="r-size" min="50" max="300" value="200" onchange="updateRadius()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                  <label class="block text-xs font-semibold text-slate-500 mb-1">Color</label>
+                  <input type="color" id="r-color" value="#10b981" onchange="updateRadius()" class="w-full h-10 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="p-8 bg-slate-200 dark:bg-slate-900 min-h-[300px] flex items-center justify-center">
+                 <div id="shape-preview" class="transition-all duration-300"></div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is CSS Border Radius?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">border-radius</code> CSS property rounds the corners of an element's outer border edge. It can accept one to four values, giving you control over each corner independently. A single value applies uniformly to all corners, two values set top-left/bottom-right and top-right/bottom-left pairs, and four values control each corner individually. This flexibility makes it possible to create everything from slightly rounded rectangles to perfect circles and complex organic shapes—all without images or SVG.
+            </p>
+         </section>
+
+         <!-- How it works -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How Border Radius Values Work</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               When you provide four values to border-radius, they apply in a specific clockwise order:
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>First value (Top-Left):</strong> Rounds the top-left corner.</li>
+               <li><strong>Second value (Top-Right):</strong> Rounds the top-right corner.</li>
+               <li><strong>Third value (Bottom-Right):</strong> Rounds the bottom-right corner.</li>
+               <li><strong>Fourth value (Bottom-Left):</strong> Rounds the bottom-left corner.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+               Pixel values create fixed-radius corners, while percentage values scale relative to the element's dimensions. Percentage values are essential for creating organic shapes because they adapt to the element's size, producing smooth asymmetric curves. At 50% on all four corners, the element becomes a perfect circle (or ellipse, if width and height differ).
+            </p>
+         </section>
+
+         <!-- Blob shapes comparison -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Common Organic Shape Patterns</h2>
+            <div class="grid md:grid-cols-4 gap-6">
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 text-sm">Leaf Shape</h3>
+                  <p class="text-xs text-slate-500 mb-3">30% 70% 70% 30%</p>
+                  <div class="h-24 w-24 mx-auto rounded-xl" style="background-color: #10b981; border-radius: 30% 70% 70% 30%;"></div>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 text-sm">Blob</h3>
+                  <p class="text-xs text-slate-500 mb-3">60% 40% 30% 70%</p>
+                  <div class="h-24 w-24 mx-auto rounded-xl" style="background-color: #6366f1; border-radius: 60% 40% 30% 70%;"></div>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 text-sm">Organic</h3>
+                  <p class="text-xs text-slate-500 mb-3">40% 60% 60% 40%</p>
+                  <div class="h-24 w-24 mx-auto rounded-xl" style="background-color: #f59e0b; border-radius: 40% 60% 60% 40%;"></div>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 text-sm">Water Drop</h3>
+                  <p class="text-xs text-slate-500 mb-3">50% 50% 50% 50%</p>
+                  <div class="h-24 w-24 mx-auto rounded-xl" style="background-color: #06b6d4; border-radius: 50% 50% 50% 50%;"></div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Image + How to create blobs -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Create Blob Shapes</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Creating a blob shape is simpler than it looks. The key is using unequal percentage values on opposing corners. When adjacent corners have significantly different values (like 30% on top-left and 70% on top-right), the border creates an asymmetric curve that mimics natural, organic forms.
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Use percentage values:</strong> Pixels create uniform curves. Percentages create the asymmetric, flowing shapes that look organic.</li>
+               <li><strong>Contrast opposing corners:</strong> Set top-left and bottom-right with one value, then top-right and bottom-left with a different value for a balanced blob.</li>
+               <li><strong>Keep values between 20-80%:</strong> Values too close to 0% or 100% make the shape look like a rectangle or circle rather than a blob.</li>
+               <li><strong>Combine with gradients:</strong> Pair your blob shape with a gradient background for a polished, modern look.</li>
+            </ul>
+            <p class="mt-4 text-slate-500 text-sm">If you need to <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> values for your shape's gradient colors, our converter handles that instantly.</p>
+         </section>
+
+         <!-- Use cases -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Use Cases in Modern UI Design</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Hero section decorations:</strong> Large, semi-transparent blobs placed behind headings create a trendy, dynamic background without images.</li>
+               <li><strong>Avatar frames:</strong> Uneven border-radius on profile images adds personality while keeping the design clean.</li>
+               <li><strong>Background accents:</strong> Colored blob shapes positioned in corners or behind content sections add visual depth to flat layouts.</li>
+               <li><strong>Testimonial cards:</strong> Using a blob shape as a quote background or speaker avatar makes the section feel approachable and modern.</li>
+               <li><strong>Feature highlights:</strong> Blob-shaped containers for icons or illustrations draw attention without using traditional rectangular cards.</li>
+            </ul>
+            <p class="mt-4 text-slate-500 text-sm">When building these components, make sure to <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a> that complement your blob shapes—soft pastels and gradients work especially well with organic forms.</p>
+         </section>
+
+         <!-- How to use tool -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Generator</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Adjust Corners:</strong> Use the four sliders to set different border-radius values for each corner.</li>
+               <li><strong>Try Presets:</strong> Click Circle or Rounded for quick starting points, or hit Random for unexpected shapes.</li>
+               <li><strong>Customize Appearance:</strong> Change the size and background color to match your design context.</li>
+               <li><strong>Preview Live:</strong> The shape updates in real time as you adjust any value.</li>
+               <li><strong>Copy Code:</strong> Click Copy to grab the border-radius CSS and paste it directly into your stylesheet.</li>
+            </ol>
+         </section>
+
+         <!-- FAQ -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-5">
+               <div>
+                  <h3 class="font-semibold mb-1">What is border-radius in CSS?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">The border-radius CSS property rounds the corners of an element's outer border edge. It can accept one to four values, allowing you to control each corner independently to create everything from slightly rounded rectangles to perfect circles and complex organic shapes.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How to create blob shapes in CSS?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Set unequal border-radius percentage values on all four corners. For example, border-radius: 30% 70% 70% 30% creates an organic blob. Percentage values scale relative to the element's dimensions, producing smooth asymmetric curves.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What values are best for organic shapes?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Use percentage values between 20% and 80% with contrasting pairs. Good starting points: 30% 70% 70% 30% for a leaf, 60% 40% 30% 70% for a blob, or 50% 50% 50% 50% for a circle. Avoid values near 0% or 100% on all corners.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Can I use border-radius for UI design?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Absolutely. Border-radius is used for rounded buttons, card containers, avatar images, notification badges, and decorative background shapes. Organic blobs created with border-radius are popular as hero section accents and floating UI elements.</p>
+               </div>
+            </div>
+         </section>
+         
+         <section class="glass-card p-8 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                  <i class="fab fa-pinterest-p"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+         <!-- Internal Links -->
+         <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Explore More Color Tools</h2>
+            <p class="text-slate-500 mb-4 text-sm">Take your designs further with these resources:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/blog/color-palettes-in-design/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
+            </div>
+         </section>
+         
+      </div>
+      <!-- End SEO Content -->
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/border-radius-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+

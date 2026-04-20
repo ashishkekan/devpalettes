@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Regex Tester – Test Regular Expressions Online Free</title>
+  <meta name="description" content="Test regular expressions online in real time. Highlight matches, debug patterns, and validate regex with flags (g, i, m) using this free regex tester tool.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/regex-tester/"/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/regex-tester/">
+  <meta property="og:title" content="Regex Tester – Test Regular Expressions Online Free">
+  <meta property="og:description" content="Test regular expressions online in real time. Highlight matches, debug patterns, and validate regex with flags (g, i, m) using this free tool.">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://devpalettes.com/regex-tester/">
+  <meta property="twitter:title" content="Regex Tester – Test Regular Expressions Online Free">
+  <meta property="twitter:description" content="Test regular expressions online in real time. Highlight matches, debug patterns, and validate regex with flags (g, i, m) using this free tool.">
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+  
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Regex Tester",
+    "url": "https://devpalettes.com/regex-tester/",
+    "logo": "https://devpalettes.com/assets/images/devpalettes.png",
+    "description": "A free online tool to test and debug regular expressions in real time. Highlight matches, validate patterns, and experiment with regex flags (g, i, m) directly in the browser.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a regular expression?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A regular expression (regex) is a sequence of characters that defines a search pattern. It is used in programming for string matching, validation, extraction, and replacement. For example, the regex ^\\d{3}-\\d{2}-\\d{4}$ matches a US Social Security Number format like 123-45-6789."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do the regex flags g, i, and m mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The g (global) flag finds all matches in the string instead of stopping after the first. The i (case-insensitive) flag makes the match ignore uppercase and lowercase differences. The m (multiline) flag makes ^ and $ match the start and end of each line rather than the entire string."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my regex throw an error?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common regex errors include unescaped forward slashes (use \\/), unmatched parentheses or brackets, invalid escape sequences (like \\a which is not a valid regex escape), and quantifiers without preceding elements (like * or + at the start). This tool shows a clear error message when the pattern is invalid."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my regex tested client-side?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All regex testing happens entirely in your browser using JavaScript's native RegExp object. No pattern or test string is sent to any server. Your data stays completely private and is never transmitted over the network."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I test regex with capture groups?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This tool supports capture groups, named capture groups, non-capturing groups, lookaheads, lookbehinds, and all other JavaScript-compatible regex features. Match details including group captures are displayed in the match breakdown panel."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="/assets/js/tailwind.js"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
+      <!-- Hero Section -->
+      <div class="text-center mb-12 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Regex Tester</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Test regular expressions in real time. Highlight matches, debug patterns, and validate regex with flags directly in your browser</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- Quick Stats Row -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+              <i class="fas fa-bullseye text-emerald-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Matches Found</span>
+          </div>
+          <p id="stat-matches" class="text-3xl font-bold text-slate-400">0</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+              <i class="fas fa-circle-check text-blue-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Pattern Valid</span>
+          </div>
+          <p id="stat-valid" class="text-3xl font-bold text-slate-400">—</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+              <i class="fas fa-flag text-purple-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Flags Used</span>
+          </div>
+          <p id="stat-flags" class="text-3xl font-bold text-slate-400">None</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+              <i class="fas fa-signal text-amber-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Status</span>
+          </div>
+          <p id="stat-status" class="text-3xl font-bold text-slate-400">Idle</p>
+        </div>
+      </div>
+
+      <div class="block md:grid md:grid-cols-2 gap-8">
+        <!-- Left: Inputs -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-8 shimmer-card">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+              Regex Input
+            </h2>
+            <div class="space-y-5">
+              <!-- Pattern -->
+              <div>
+                <label class="block text-sm font-semibold mb-2">Regular Expression Pattern</label>
+                <div class="relative">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-mono text-lg font-bold">/</span>
+                  <input type="text" id="regex-pattern" placeholder="e.g. \d{3}-\d{2}-\d{4}" class="w-full pl-8 pr-8 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm font-mono" spellcheck="false" autocomplete="off">
+                  <span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-mono text-lg font-bold">/</span>
+                </div>
+                <div class="flex justify-between mt-1.5">
+                  <p class="text-xs text-slate-400">Enter your regex pattern between the slashes</p>
+                  <p id="pattern-error" class="text-xs text-red-500 hidden"></p>
+                </div>
+              </div>
+              <!-- Flags -->
+              <div>
+                <label class="block text-sm font-semibold mb-2">Flags</label>
+                <div class="space-y-2.5">
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" id="flag-g" class="sr-only peer">
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <span class="text-sm font-mono text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors"><strong>g</strong> — Global (find all matches)</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" id="flag-i" class="sr-only peer">
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <span class="text-sm font-mono text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors"><strong>i</strong> — Case-insensitive</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" id="flag-m" class="sr-only peer">
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <span class="text-sm font-mono text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors"><strong>m</strong> — Multiline (^ and $ match line breaks)</span>
+                  </label>
+                  <label class="flex items-center gap-3 cursor-pointer group">
+                    <input type="checkbox" id="flag-s" class="sr-only peer">
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <span class="text-sm font-mono text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors"><strong>s</strong> — Dotall (. matches newlines)</span>
+                  </label>
+                </div>
+              </div>
+              <!-- Test String -->
+              <div>
+                <label class="block text-sm font-semibold mb-2">Test String</label>
+                <textarea id="test-string" rows="10" placeholder="Enter the text you want to test against the regex pattern..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm font-mono resize-none" spellcheck="false"></textarea>
+                <div class="flex justify-between mt-1.5">
+                  <p class="text-xs text-slate-400">Paste or type your test string here</p>
+                  <p id="test-string-count" class="text-xs text-slate-400">0 chars · 0 lines</p>
+                </div>
+              </div>
+              <!-- Buttons -->
+              <div class="pt-2 flex gap-3">
+                <button id="clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
+                  <i class="fas fa-rotate-left"></i> Clear All
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Presets -->
+          <div class="glass-card p-8 shimmer-card">
+            <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+              Quick Examples
+            </h2>
+            <p class="text-sm text-slate-500 mb-4">Try these common regex patterns to see the tester in action</p>
+            <div class="grid grid-cols-2 gap-3">
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="email">
+                <i class="fas fa-envelope text-blue-500 mr-2"></i>Email
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="phone">
+                <i class="fas fa-phone text-purple-500 mr-2"></i>Phone
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="url">
+                <i class="fas fa-link text-amber-500 mr-2"></i>URL
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="ip">
+                <i class="fas fa-network-wired text-emerald-500 mr-2"></i>IP Address
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="date">
+                <i class="fas fa-calendar text-red-500 mr-2"></i>Date
+              </button>
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="hex">
+                <i class="fas fa-hashtag text-teal-500 mr-2"></i>Hex Color
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Output -->
+        <div class="space-y-6 animate-on-scroll">
+          <!-- Highlighted Output -->
+          <div class="glass-card p-8 shimmer-card">
+            <div class="flex items-center justify-between mb-6">
+              <h2 class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+                Match Highlighting
+              </h2>
+              <div class="flex gap-1.5">
+                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="highlight">
+                  <i class="fas fa-highlighter mr-1"></i>Highlight
+                </button>
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="details">
+                  <i class="fas fa-list mr-1"></i>Details
+                </button>
+              </div>
+            </div>
+            <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
+              <!-- Highlight View -->
+              <div id="view-highlight" class="preview-panel">
+                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                    <div class="flex gap-1.5">
+                      <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                      <div class="w-3 h-3 rounded-full bg-amber-400"></div>
+                      <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                      <div class="px-4 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-400 font-mono">test-string.txt</div>
+                    </div>
+                  </div>
+                  <pre id="highlight-content" class="p-4 text-sm font-mono leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-wrap break-all min-h-[300px]"><span class="text-slate-400">Enter a regex pattern and test string to see highlighted matches here</span></pre>
+                </div>
+              </div>
+              <!-- Details View -->
+              <div id="view-details" class="preview-panel hidden">
+                <div class="relative">
+                  <div id="match-details" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[500px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">No match details yet</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Export Options -->
+          <div class="glass-card p-8 shimmer-card">
+            <div class="flex justify-between items-center mb-5">
+              <h2 class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-code"></i></span>
+                Regex Code
+              </h2>
+              <div class="flex gap-2">
+                <button id="copy-regex-btn" class="btn-primary btn-glow text-xs py-2 px-3">
+                  <i class="fas fa-copy mr-1"></i>Copy
+                </button>
+              </div>
+            </div>
+            <div class="relative">
+              <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[120px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Enter a regex pattern to generate code snippets</pre>
+            </div>
+            <p id="regex-output-info" class="text-xs text-slate-400 mt-3">No regex pattern provided yet</p>
+          </div>
+
+          <!-- Validation Status -->
+          <div class="glass-card p-6 shimmer-card">
+            <h3 class="font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-clipboard-check text-emerald-500"></i>
+              Validation Checklist
+            </h3>
+            <div id="validation-list" class="space-y-2.5">
+              <div class="flex items-center gap-3 text-sm" data-check="has-pattern">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Regex pattern is provided</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="pattern-valid">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Pattern is syntactically valid</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="has-test-string">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Test string is provided</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="matches-found">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Matches found in test string</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="flags-configured">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Flags are configured</span>
+              </div>
+              <div class="flex items-center gap-3 text-sm" data-check="ready-to-use">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <span class="text-slate-400">Regex is ready to use in code</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content Area -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is a Regular Expression?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A regular expression (abbreviated regex or regexp) is a sequence of characters that defines a search pattern. It provides a concise and flexible way to match, locate, and manage text. Regular expressions are supported by virtually every programming language (JavaScript, Python, Java, PHP, Go, Rust) and are used for tasks like form validation, text extraction, search-and-replace operations, log parsing, and data cleaning.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A regex pattern consists of literal characters (which match themselves) and metacharacters (which have special meaning). For example, the pattern <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">\d{3}-\d{2}-\d{4}</code> uses the metacharacter <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">\d</code> (digit) and the quantifier <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">{n}</code> (exactly n times) along with literal hyphens to match a US Social Security Number format like <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">123-45-6789</code>.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Regular expressions can range from simple patterns like <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">cat</code> (matches the literal word "cat") to complex patterns using character classes, quantifiers, anchors, groups, lookaheads, lookbehinds, and backreferences. This regex tester tool helps you build, test, and debug any regex pattern in real time without writing code.
+            </p>
+         </section>
+
+         <!-- How it Works -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How Does This Regex Tester Work?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               This regex tester processes your input entirely in the browser using JavaScript's native <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">RegExp</code> object. Here is how each component works:
+            </p>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Pattern Parsing:</strong> When you type a regex pattern, the tool attempts to create a <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">new RegExp(pattern, flags)</code> object. If the pattern contains syntax errors (unmatched parentheses, invalid escapes, etc.), the error is caught and displayed immediately — no broken page or console errors.</li>
+               <li><strong>Flag Application:</strong> The selected flags modify how the regex engine interprets the pattern. The <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">g</code> flag enables global matching (all occurrences), <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">i</code> enables case-insensitive matching, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">m</code> enables multiline mode, and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">s</code> enables dotall mode.</li>
+               <li><strong>Match Execution:</strong> The tool uses <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">RegExp.prototype.exec()</code> in a loop (for global flag) or a single call to find all matches. Each match object includes the matched text, start/end indices, and any capture group values.</li>
+               <li><strong>Highlighting:</strong> The test string is split into segments — text before a match, the matched text, and text after — and each segment is wrapped in a span with appropriate styling. Matches are highlighted with a colored background for visual clarity.</li>
+               <li><strong>Detail Extraction:</strong> For each match, the tool extracts the full match value, index position, and all capture groups (including named groups). This data is presented in a structured, easy-to-read format in the Details view.</li>
+            </ol>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               All processing happens on every keystroke with a small debounce delay (150ms) to prevent excessive computation during fast typing. No data is ever sent to a server — your patterns and test strings remain entirely in your browser.
+            </p>
+         </section>
+
+         <!-- Benefits -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Benefits of Using a Regex Tester</h2>
+            <div class="grid sm:grid-cols-2 gap-6 mt-6">
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-bolt text-emerald-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Instant Feedback</h3>
+                     <p class="text-sm text-slate-500">See matches highlighted in real time as you type. No need to run code, refresh pages, or switch between editor and terminal. The visual feedback makes it easy to iterate quickly on complex patterns.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-bug text-blue-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Error Detection</h3>
+                     <p class="text-sm text-slate-500">Invalid regex syntax is caught and displayed immediately with a clear error message. Instead of a cryptic runtime exception, you see exactly what is wrong — unmatched parentheses, invalid escape sequences, or malformed quantifiers.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-layer-group text-purple-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Capture Group Insight</h3>
+                     <p class="text-sm text-slate-500">See exactly what each capture group matches, including numbered groups and named groups. This is invaluable for debugging complex patterns with multiple groups that interact in unexpected ways.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-sliders text-amber-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Flag Experimentation</h3>
+                     <p class="text-sm text-slate-500">Toggle regex flags on and off instantly to see how they affect matching behavior. Understanding the impact of each flag is much easier when you can see the results side by side in real time.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-shield-halved text-red-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Private and Secure</h3>
+                     <p class="text-sm text-slate-500">All testing happens in your browser. Your regex patterns and test strings are never transmitted to any server. This is important when testing regex against sensitive data like logs, PII, or proprietary text.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-graduation-cap text-teal-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Learning Tool</h3>
+                     <p class="text-sm text-slate-500">The preset examples and visual highlighting make this tool excellent for learning regex. See how each metacharacter and construct behaves with real examples, then modify them to build understanding.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Regex Tester</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Enter Pattern:</strong> Type your regular expression pattern in the input field. Do not include the leading/trailing slashes — they are displayed as decorative delimiters. Use standard JavaScript regex syntax (e.g., <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">\d+</code> for one or more digits).</li>
+               <li><strong>Select Flags:</strong> Toggle the flags you need. <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">g</code> for global (all matches), <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">i</code> for case-insensitive, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">m</code> for multiline, and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">s</code> for dotall mode. Multiple flags can be combined.</li>
+               <li><strong>Enter Test String:</strong> Paste or type the text you want to test against the pattern. Multi-line text is fully supported — use the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">m</code> flag to make <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">^</code> and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">$</code> match line boundaries.</li>
+               <li><strong>View Highlights:</strong> Matches are highlighted automatically in the test string. Each match is visually distinct with a colored background, making it easy to see exactly where and how many times the pattern matches.</li>
+               <li><strong>Check Details:</strong> Switch to the "Details" tab to see a structured breakdown of each match including the matched text, start/end indices, and any capture group values.</li>
+               <li><strong>Review Stats:</strong> The stats cards show match count, pattern validity, active flags, and current status. An invalid pattern shows "Invalid" in red with the error message below the pattern input.</li>
+               <li><strong>Copy Regex:</strong> Click "Copy" in the Regex Code panel to copy a ready-to-use JavaScript code snippet with your pattern and flags.</li>
+               <li><strong>Try Presets:</strong> Click any preset button (Email, Phone, URL, IP Address, Date, Hex Color) to load a working pattern with a sample test string instantly.</li>
+            </ol>
+         </section>
+
+         <!-- Practical Use Cases -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Form Validation:</strong> Test regex patterns for email validation, phone number formatting, zip codes, credit card numbers, and other user input fields before implementing them in your application's validation logic.</li>
+               <li><strong>Log Analysis:</strong> Build regex patterns to extract structured data from server logs, access logs, and error logs. Test them against real log samples to ensure they capture the right fields before deploying to production log pipelines.</li>
+               <li><strong>Data Extraction:</strong> Create patterns to scrape specific information from HTML, XML, or JSON text — extract URLs, image sources, metadata values, or any structured data embedded in unstructured text.</li>
+               <li><strong>Search and Replace:</strong> Test find-and-replace patterns before using them in your code editor or script. Verify that the regex matches only the intended text and that replacement patterns produce correct output.</li>
+               <li><strong>URL Routing:</strong> Build and test regex patterns for URL routing in web frameworks (Express.js, Django, Laravel). Ensure routes match the correct URL patterns and capture the right parameters.</li>
+               <li><strong>Text Cleaning:</strong> Develop regex patterns to remove unwanted characters, normalize whitespace, strip HTML tags, or transform text formats. Test against diverse input samples to catch edge cases.</li>
+               <li><strong>API Response Parsing:</strong> Test patterns for extracting specific fields or values from API responses, especially when dealing with inconsistent formatting or legacy data sources.</li>
+            </ul>
+         </section>
+
+         <!-- FAQ Section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4" id="faq-container">
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>What is a regular expression?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">A regular expression (regex) is a sequence of characters that defines a search pattern. It is used in programming for string matching, validation, extraction, and replacement. For example, the regex ^\d{3}-\d{2}-\d{4}$ matches a US Social Security Number format like 123-45-6789. Regex is supported by virtually every programming language and is one of the most powerful text processing tools available.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>What do the regex flags g, i, and m mean?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">The g (global) flag finds all matches in the string instead of stopping after the first match. Without g, regex operations only find the first occurrence. The i (case-insensitive) flag makes the match ignore uppercase and lowercase differences, so /abc/i matches "ABC", "abc", and "AbC". The m (multiline) flag makes ^ and $ match the start and end of each line rather than the start and end of the entire string, which is essential when testing patterns against multi-line text.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>Why does my regex throw an error?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Common regex errors include unescaped forward slashes (use \/ to match a literal slash), unmatched opening or closing parentheses and brackets, invalid escape sequences (like \a or \e which are not valid JavaScript regex escapes), and quantifiers (*, +, ?, {n}) placed without a preceding element to quantify. This tool catches these errors and displays a clear message below the pattern input.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>Is my regex tested client-side?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. All regex testing happens entirely in your browser using JavaScript's native RegExp object. No pattern, test string, or match data is sent to any server. Your data stays completely private and is never transmitted over the network. You can safely test regex against sensitive data like production logs, personally identifiable information, or proprietary text.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>Can I test regex with capture groups?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This tool fully supports capture groups (parenthesized subpatterns), named capture groups (?&lt;name&gt;...), non-capturing groups (?:...), lookaheads (?=... and ?!...), lookbehinds (?&lt;=... and ?&lt;!...), and all other JavaScript-compatible regex features. Switch to the "Details" view to see each match broken down with all capture group values clearly displayed.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+         
+         <!-- Related Tools -->
+         <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have tested your regex, try these related developer tools:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+               <a href="/base64-encoder-decoder/" class="btn-secondary text-xs py-2 px-4">Base64 Encoder</a>
+               <a href="/url-encoder-decoder/" class="btn-secondary text-xs py-2 px-4">URL Encoder</a>
+               <a href="/text-formatter/" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
+               <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+               <a href="/uuid-generator/" class="btn-secondary text-xs py-2 px-4">UUID Generator</a>
+            </div>
+         </section>
+
+         <!-- Social Sharing Section -->
+          <section class="glass-card p-8 my-16 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/regex-tester/&text=Test%20regular%20expressions%20online%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/regex-tester/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/regex-tester/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20this%20free%20regex%20tester%20https://devpalettes.com/regex-tester/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+      </div>
+      <!-- End SEO Content -->
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/regex-tester.js"></script>
+</body>
+</html>
+
+
+

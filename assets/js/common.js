@@ -830,108 +830,32 @@ function renderNavbar() {
 }
 
 function renderFooter() {
-  const footerHTML = `
-    <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div class="grid grid-cols-2 md:grid-cols-5">
-          <!-- Product -->
-          <div class="mb-5">
-            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
-            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/palettes/" class="hover:text-emerald-500 transition-colors">Palette Generator</a></li>
-              <li><a href="/gradient/" class="hover:text-emerald-500 transition-colors">Gradient Builder</a></li>
-              <li><a href="/converter/" class="hover:text-emerald-500 transition-colors">Color Converter</a></li>
-              <li><a href="/pastel-color-palettes/" class="hover:text-emerald-500 transition-colors">Browse Palettes</a></li>
-            </ul>
-          </div>
-          
-          <!-- Resources -->
-          <div class="mb-5">
-            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
-            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/about/" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact Us</a></li>
-              <li><a href="/blog/" class="hover:text-emerald-500 transition-colors">Blog</a></li>
-              <li><a href="/sitemap/" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
-            </ul>
-          </div>
-          
-          <!-- Legal -->
-          <div>
-            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Legal</h3>
-            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/privacy-policy/" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms/" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
-              <li><a href="/cookie-policy/" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
-              <li><a href="/disclaimer/" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
-            </ul>
-          </div>
-
-          <!-- Support -->
-          <div>
-            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Support</h3>
-            <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/faq/" class="hover:text-emerald-500 transition-colors">FAQ</a></li>
-              <li><a href="/help-center/" class="hover:text-emerald-500 transition-colors">Help Center</a></li>
-              <li><a href="/why-trust-us/" class="hover:text-emerald-500 transition-colors">Why Trust Us</a></li>
-            </ul>
-          </div>
-          
-          <!-- Newsletter -->
-          <div class="col-span-2 md:col-span-1 mt-6 sm:mt-0">
-            <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Stay Updated</h3>
-            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 sm:mb-4">Get the latest color trends and updates.</p>
-            <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex gap-2">
-              <input type="email" name="email" placeholder="Your email"
-              class="input-field text-sm flex-1" required>
-              <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
-              <input type="hidden" name="_captcha" value="false">
-              <button type="submit" class="btn-primary text-sm px-4 btn-size">
-              <i class="fas fa-arrow-right"></i>
-              </button>
-            </form>
-          </div>
-        </div>
-        
-        <div class="border-t border-slate-200 dark:border-slate-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <a href="/" class="flex items-center gap-2 group mb-4 sm:mb-0">
-            <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
-              <div class="w-8 h-8 sm:w-8 sm:h-8 rounded-lg sm:rounded-xl bg-black
-                flex items-center justify-center
-                shadow-[0_0_15px_rgba(34,211,238,0.6)]
-                transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="/images/devpalettes_zoom_180.png" 
-                  alt="Devpalettes Logo"
-                  class="w-6 h-6 sm:w-6 sm:h-6 object-contain mx-auto" />
-              </div>
-              <span class="text-xl sm:text-2xl font-bold text-cyan-400">
-                Devpalettes
-              </span>
+  // Fetch footer from component file
+  fetch('/components/footer.html')
+    .then(response => response.text())
+    .then(footerHTML => {
+      const footerContainer = document.getElementById('footer-container');
+      if (footerContainer) {
+        footerContainer.innerHTML = footerHTML;
+      }
+    })
+    .catch(error => {
+      console.error('Error loading footer:', error);
+      // Fallback to inline footer if fetch fails
+      const fallbackHTML = `
+        <footer class="bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 mt-16">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center">
+              <p class="text-slate-600 dark:text-slate-400">Footer loading...</p>
             </div>
-          </a>
-          <p class="text-xs sm:text-sm text-slate-500 text-center sm:text-left">
-            &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
-          </p>
-          <div class="flex items-center gap-4">
-            <a href="https://x.com/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
-              <i class="fab fa-twitter text-lg sm:text-xl"></i>
-            </a>
-            <a href="https://github.com/Devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
-              <i class="fab fa-github text-lg sm:text-xl"></i>
-            </a>
-            <a href="https://www.instagram.com/devpalettes/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
-              <i class="fab fa-instagram text-lg sm:text-xl"></i>
-            </a>
           </div>
-        </div>
-      </div>
-    </footer>
-  `;
-  
-  const footerContainer = document.getElementById('footer-container');
-  if (footerContainer) {
-    footerContainer.innerHTML = footerHTML;
-  }
+        </footer>
+      `;
+      const footerContainer = document.getElementById('footer-container');
+      if (footerContainer) {
+        footerContainer.innerHTML = fallbackHTML;
+      }
+    });
 }
 
 function renderAuthorBio(author = 'Devpalettes Team', date = null) {
