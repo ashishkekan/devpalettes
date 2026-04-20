@@ -17,13 +17,13 @@
   <meta http-equiv="Expires" content="0">
 
   <!-- Modern Image Format: WebP favicon alternatives (place .webp files on server alongside .png) -->
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/assets/images/devpalettes_zoom_16.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/assets/images/devpalettes_zoom_32.png">
-  <link rel="icon" type="image/png" sizes="64x64" href="/assets/assets/images/devpalettes_zoom_64.png">
-  <link rel="icon" type="image/png" sizes="180x180" href="/assets/assets/images/devpalettes_zoom_180.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+  <link rel="icon" type="image/png" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
   
   <!-- Added Apple Touch Icon -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/assets/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 
   <script type="application/ld+json">
     {
@@ -62,7 +62,7 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Tailwind CSS -->
-  <script src="/js/tailwind.js"></script>
+  <script src="/assets/js/tailwind.js"></script>
   <!-- NOTE: For CDN Usage — consider serving /js/tailwind.js and css/styles.css from a CDN (e.g., Cloudflare, jsDelivr) for improved global caching and load times -->
   <script>
     tailwind.config = {
@@ -323,7 +323,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12 animate-on-scroll">
         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Trending Palettes</h2>
-        <p class="text-slate-600 dark:text-slate-400">Click any color to copy. Curated by our community.</p>
+        <p class="text-slate-600 dark:text-slate-400">Click any color to copy. Curated by our community. Learn how to <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">create effective color palettes</a> for your projects.</p>
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Palette Card 1 -->
@@ -395,7 +395,7 @@
           <h2 class="text-3xl sm:text-4xl font-bold mb-4">CSS Gradient Builder</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-6">
             Create stunning <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gradient" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">linear and radial CSS gradients</a> 
-            with multiple color stops. Preview in real-time and export CSS instantly.
+            with multiple color stops. Preview in real-time and export CSS instantly. Learn more about <a href="/blog/gradient-colors-in-ui-design/" class="text-emerald-500 hover:underline">gradient design techniques</a> in our blog.
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-center gap-3">
@@ -445,7 +445,7 @@
           <div class="text-xl font-bold mb-3">Accessibility First</div>
           <p class="text-slate-600 dark:text-slate-400">
             Automatic contrast checking against <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">WCAG contrast requirements</a> 
-            ensures your colors work for all users. Get compliance scores instantly.
+            ensures your colors work for all users. Get compliance scores instantly with our <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline">contrast checker tool</a>.
           </p>
         </div>
         <!-- Feature 2 -->
@@ -456,7 +456,7 @@
           <div class="text-xl font-bold mb-3">Developer Ready</div>
           <p class="text-slate-600 dark:text-slate-400">
             Export palettes to CSS, SCSS, JSON, or Tailwind config.
-            Copy with a single click — production-ready code every time.
+            Copy with a single click — production-ready code every time. Convert between color formats using our <a href="/converter/" class="text-emerald-500 hover:underline">color converter</a>.
           </p>
         </div>
         <!-- Feature 3 -->
@@ -467,7 +467,7 @@
           <div class="text-xl font-bold mb-3">Image Picker</div>
           <p class="text-slate-600 dark:text-slate-400">
             Extract dominant colors from any image.
-            Upload and generate palettes automatically.
+            Upload and generate palettes automatically with our <a href="/color-from-image/" class="text-emerald-500 hover:underline">color extraction tool</a>.
           </p>
         </div>
       </div>
@@ -614,6 +614,33 @@
           <div class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">Color Converter</div>
           <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">Convert colors between HEX, RGB, HSL, and more formats in a single click.</p>
           <span class="btn-secondary inline-flex">Convert Now</span>
+        </a>
+        <!-- Tool Card 4 -->
+        <a href="/color-from-image/" class="glass-card shimmer-card p-8 text-center group block animate-on-scroll">
+          <div class="w-16 h-16 rounded-2xl bg-purple-500/10 flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-image text-3xl text-purple-500"></i>
+          </div>
+          <div class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">Color from Image</div>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">Extract dominant colors from any image and generate perfect palettes automatically.</p>
+          <span class="btn-secondary inline-flex">Extract Colors</span>
+        </a>
+        <!-- Tool Card 5 -->
+        <a href="/wcag-contrast-checker/" class="glass-card shimmer-card p-8 text-center group block animate-on-scroll">
+          <div class="w-16 h-16 rounded-2xl bg-red-500/10 flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-universal-access text-3xl text-red-500"></i>
+          </div>
+          <div class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">Contrast Checker</div>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">Ensure your color combinations meet WCAG accessibility standards.</p>
+          <span class="btn-secondary inline-flex">Check Contrast</span>
+        </a>
+        <!-- Tool Card 6 -->
+        <a href="/css-minifier/" class="glass-card shimmer-card p-8 text-center group block animate-on-scroll">
+          <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 flex items-center justify-center mx-auto mb-6">
+            <i class="fas fa-compress text-3xl text-cyan-500"></i>
+          </div>
+          <div class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">CSS Minifier</div>
+          <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">Compress your CSS files for faster loading and better performance.</p>
+          <span class="btn-secondary inline-flex">Minify CSS</span>
         </a>
       </div>
     </div>
