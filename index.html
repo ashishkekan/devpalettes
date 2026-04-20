@@ -77,7 +77,7 @@
     }
   </script>
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="css/styles.css?v=2">
+  <link rel="stylesheet" href="/assets/css/common.css">
   <!-- Theme Flash Prevention Script -->
   <script>
     (function() {
@@ -89,63 +89,6 @@
     })();
   </script>
   <style>
-    /* Hero Visualizer Canvas */
-    #hero-visualizer {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      opacity: 0.6;
-      pointer-events: none;
-    }
-    
-    .dark #hero-visualizer {
-      opacity: 0.4;
-    }
-    
-    /* Floating Gradient Blobs */
-    .gradient-blob {
-      position: absolute;
-      border-radius: 50%;
-      filter: blur(80px);
-      opacity: 0.5;
-      pointer-events: none;
-      z-index: 1;
-      will-change: transform;
-    }
-    
-    .dark .gradient-blob {
-      opacity: 0.3;
-    }
-    
-    .blob-1 {
-      width: 400px;
-      height: 400px;
-      background: linear-gradient(135deg, #10b981, #14b8a6);
-      top: -100px;
-      left: -100px;
-      animation: blobFloat1 25s ease-in-out infinite;
-    }
-    
-    .blob-2 {
-      width: 350px;
-      height: 350px;
-      background: linear-gradient(135deg, #f97316, #ec4899);
-      top: 20%;
-      right: -80px;
-      animation: blobFloat2 28s ease-in-out infinite;
-    }
-    
-    .blob-3 {
-      width: 300px;
-      height: 300px;
-      background: linear-gradient(135deg, #06b6d4, #8b5cf6);
-      bottom: 10%;
-      left: 10%;
-      animation: blobFloat3 22s ease-in-out infinite;
-    }
-    
     .blob-4 {
       width: 250px;
       height: 250px;
@@ -155,70 +98,13 @@
       animation: blobFloat4 30s ease-in-out infinite;
     }
     
-    @keyframes blobFloat1 {
-      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      25% { transform: translate(100px, 50px) scale(1.1) rotate(45deg); }
-      50% { transform: translate(50px, 100px) scale(0.9) rotate(90deg); }
-      75% { transform: translate(-30px, 60px) scale(1.05) rotate(135deg); }
-    }
-    
-    @keyframes blobFloat2 {
-      0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      33% { transform: translate(-80px, 80px) scale(1.15) rotate(-60deg); }
-      66% { transform: translate(-40px, -40px) scale(0.85) rotate(-120deg); }
-    }
-    
-    @keyframes blobFloat3 {
-      0%, 100% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(80px, -60px) scale(1.2); }
-    }
-    
     @keyframes blobFloat4 {
       0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
       25% { transform: translate(-60px, -40px) scale(1.1) rotate(30deg); }
       50% { transform: translate(30px, -80px) scale(0.95) rotate(60deg); }
       75% { transform: translate(60px, -20px) scale(1.05) rotate(90deg); }
     }
-    
-    /* Color Spectrum Glow Line */
-    .spectrum-line {
-      height: 4px;
-      border-radius: 2px;
-      background: linear-gradient(
-        90deg,
-        #10b981 0%,
-        #06b6d4 16%,
-        #8b5cf6 32%,
-        #ec4899 48%,
-        #f97316 64%,
-        #fbbf24 80%,
-        #10b981 100%
-      );
-      background-size: 200% 100%;
-      animation: spectrumShift 4s linear infinite;
-      box-shadow: 
-        0 0 20px rgba(16, 185, 129, 0.5),
-        0 0 40px rgba(6, 182, 212, 0.3),
-        0 0 60px rgba(139, 92, 246, 0.2);
-      position: relative;
-    }
-    
-    .spectrum-line::after {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: inherit;
-      filter: blur(8px);
-      opacity: 0.6;
-      border-radius: inherit;
-    }
-    
-    @keyframes spectrumShift {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 200% 50%; }
-    }
-    
-    /* Enhanced Palette Block Effects */
+
     .palette-block-enhanced {
       position: relative;
       transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -302,156 +188,16 @@
         transform: translateY(0) scale(1);
       }
     }
-    
-    /* Floating Particles Container */
-    #particles-container {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 2;
-    }
-    
-    .particle {
-      position: absolute;
-      border-radius: 50%;
-      pointer-events: none;
-      animation: particleFloat linear infinite;
-    }
-    
-    @keyframes particleFloat {
-      0% {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      90% {
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-100vh) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    
-    /* Scroll Animations */
-    .animate-on-scroll {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    
-    .animate-on-scroll.animate-in {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    .animate-on-scroll.animate-in:nth-child(1) { transition-delay: 0s; }
-    .animate-on-scroll.animate-in:nth-child(2) { transition-delay: 0.1s; }
-    .animate-on-scroll.animate-in:nth-child(3) { transition-delay: 0.2s; }
-    .animate-on-scroll.animate-in:nth-child(4) { transition-delay: 0.3s; }
-    .animate-on-scroll.animate-in:nth-child(5) { transition-delay: 0.4s; }
-    .animate-on-scroll.animate-in:nth-child(6) { transition-delay: 0.5s; }
-    
-    /* Shimmer Effect for Palette Cards */
-    .shimmer-card {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .shimmer-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.08) 50%,
-        transparent 100%
-      );
-      transform: translateX(-100%);
-      animation: shimmerEffect 3s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 10;
-    }
-    
-    @keyframes shimmerEffect {
-      0% { transform: translateX(-100%); }
-      50%, 100% { transform: translateX(100%); }
-    }
-    
-    /* Neon Button Glow */
-    .btn-glow {
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .btn-glow::before {
-      content: '';
-      position: absolute;
-      inset: -2px;
-      background: linear-gradient(135deg, #10b981, #14b8a6, #10b981);
-      border-radius: inherit;
-      z-index: -1;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      filter: blur(10px);
-    }
-    
-    .btn-glow:hover::before {
-      opacity: 0.7;
-      animation: glowPulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes glowPulse {
-      0%, 100% { 
-        opacity: 0.5;
-        transform: scale(1);
-      }
-      50% { 
-        opacity: 0.8;
-        transform: scale(1.05);
-      }
-    }
-    
-    /* Reduced Motion */
+
     @media (prefers-reduced-motion: reduce) {
-      .gradient-blob,
-      .spectrum-line,
-      .particle,
-      .shimmer-card::before,
-      .btn-glow::before {
-        animation: none !important;
-      }
-      
-      .animate-on-scroll {
-        opacity: 1;
-        transform: none;
-      }
-      
       .palette-block-enhanced:hover {
         transform: none;
       }
     }
-    
-    /* Mobile Optimizations */
+
     @media (max-width: 768px) {
-      .gradient-blob {
-        filter: blur(60px);
-        opacity: 0.4;
-      }
-      
-      .blob-1 { width: 250px; height: 250px; }
-      .blob-2 { width: 200px; height: 200px; }
-      .blob-3 { width: 180px; height: 180px; }
       .blob-4 { width: 150px; height: 150px; }
-      
-      .spectrum-line {
-        height: 3px;
-      }
-      
+
       .palette-block-enhanced:hover {
         transform: scale(1.02);
       }
@@ -1006,7 +752,7 @@
   <div id="footer-container"></div>
  
   <!-- Scripts -->
-  <script src="js/main.js?v=2"></script>
+  <script src="/assets/js/common.js"></script>
   <script>
     
     (function() {
@@ -1015,165 +761,7 @@
       // Check for reduced motion preference
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       
-      function initHeroVisualizer() {
-        const canvas = document.getElementById('hero-visualizer');
-        if (!canvas || prefersReducedMotion) return;
-        
-        const ctx = canvas.getContext('2d');
-        let animationId = null;
-        let time = 0;
-        
-        function resize() {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-        }
-        
-        resize();
-        window.addEventListener('resize', resize);
-        
-        const waves = [
-          { y: 0.3, amplitude: 50, frequency: 0.01, speed: 0.02, color: 'rgba(16, 185, 129, 0.15)' },
-          { y: 0.5, amplitude: 40, frequency: 0.015, speed: 0.025, color: 'rgba(6, 182, 212, 0.12)' },
-          { y: 0.7, amplitude: 60, frequency: 0.008, speed: 0.018, color: 'rgba(139, 92, 246, 0.1)' },
-          { y: 0.4, amplitude: 35, frequency: 0.012, speed: 0.022, color: 'rgba(249, 115, 22, 0.08)' },
-          { y: 0.6, amplitude: 45, frequency: 0.01, speed: 0.028, color: 'rgba(236, 72, 153, 0.1)' }
-        ];
-        
-        function drawWave(wave, t) {
-          ctx.beginPath();
-          ctx.moveTo(0, canvas.height);
-          
-          for (let x = 0; x <= canvas.width; x += 3) {
-            const y = canvas.height * wave.y + 
-                      Math.sin(x * wave.frequency + t * wave.speed) * wave.amplitude +
-                      Math.sin(x * wave.frequency * 0.5 + t * wave.speed * 1.5) * wave.amplitude * 0.5;
-            ctx.lineTo(x, y);
-          }
-          
-          ctx.lineTo(canvas.width, canvas.height);
-          ctx.closePath();
-          ctx.fillStyle = wave.color;
-          ctx.fill();
-        }
-        
-        function animate() {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
-          
-          waves.forEach(wave => drawWave(wave, time));
-          
-          time++;
-          animationId = requestAnimationFrame(animate);
-        }
-        
-        animate();
-        
-        // Cleanup on page hide
-        document.addEventListener('visibilitychange', () => {
-          if (document.hidden) {
-            cancelAnimationFrame(animationId);
-          } else {
-            animate();
-          }
-        });
-      }
-      
-      function initParticles() {
-        const container = document.getElementById('particles-container');
-        if (!container || prefersReducedMotion) return;
-        
-        const particleColors = [
-          '#10b981', '#06b6d4', '#8b5cf6', '#f97316', '#ec4899', '#fbbf24'
-        ];
-        
-        const particleCount = Math.min(25, Math.floor(window.innerWidth / 60));
-        
-        for (let i = 0; i < particleCount; i++) {
-          createParticle(container, particleColors, i);
-        }
-      }
-      
-      function createParticle(container, colors, index) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        const size = Math.random() * 6 + 3;
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        const left = Math.random() * 100;
-        const duration = Math.random() * 15 + 20;
-        const delay = Math.random() * 10;
-        
-        particle.style.cssText = `
-          width: ${size}px;
-          height: ${size}px;
-          background: ${color};
-          left: ${left}%;
-          animation-duration: ${duration}s;
-          animation-delay: ${delay}s;
-          opacity: ${Math.random() * 0.5 + 0.3};
-          box-shadow: 0 0 ${size * 2}px ${color};
-        `;
-        
-        container.appendChild(particle);
-      }
-      
-      function initScrollAnimations() {
-        const observerOptions = {
-          root: null,
-          rootMargin: '0px 0px -50px 0px',
-          threshold: 0.1
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('animate-in');
-              
-              // Stagger children
-              const children = entry.target.parentElement.querySelectorAll('.animate-on-scroll');
-              children.forEach((child, index) => {
-                if (child === entry.target) {
-                  child.style.transitionDelay = `${index * 0.1}s`;
-                }
-              });
-            }
-          });
-        }, observerOptions);
-        
-        document.querySelectorAll('.animate-on-scroll').forEach(el => {
-          observer.observe(el);
-        });
-      }
-      
       function initPaletteAnimations() {
-        const originalRefresh = window.refreshPalettes;
-        
-        window.refreshPalettes = function() {
-          const mainPalette = document.getElementById('main-palette');
-          const heroPalette = document.getElementById('hero-palette');
-          
-          // Add animation class
-          [mainPalette, heroPalette].forEach(palette => {
-            if (palette) {
-              palette.classList.add('palette-generating');
-            }
-          });
-          
-          // Call original function
-          if (typeof originalRefresh === 'function') {
-            originalRefresh();
-          }
-          
-          // Remove animation class after animation completes
-          setTimeout(() => {
-            [mainPalette, heroPalette].forEach(palette => {
-              if (palette) {
-                palette.classList.remove('palette-generating');
-              }
-            });
-          }, 600);
-        };
-        
-        // Enhance palette blocks with enhanced class
         function enhancePaletteBlocks() {
           document.querySelectorAll('#hero-palette > div, #main-palette > div').forEach(block => {
             if (!block.classList.contains('palette-block-enhanced')) {
@@ -1284,24 +872,7 @@
         });
       }
       
-      function initParallaxBlobs() {
-        if (prefersReducedMotion) return;
-        
-        const blobs = document.querySelectorAll('.gradient-blob');
-        
-        document.addEventListener('mousemove', (e) => {
-          const x = (e.clientX / window.innerWidth - 0.5) * 20;
-          const y = (e.clientY / window.innerHeight - 0.5) * 20;
-          
-          blobs.forEach((blob, index) => {
-            const factor = (index + 1) * 0.5;
-            blob.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
-          });
-        });
-      }
-      
       function init() {
-        // Wait for DOM to be fully ready
         if (document.readyState === 'loading') {
           document.addEventListener('DOMContentLoaded', initAll);
         } else {
@@ -1310,16 +881,10 @@
       }
       
       function initAll() {
-        initHeroVisualizer();
-        initParticles();
-        initScrollAnimations();
         initPaletteAnimations();
         initButtonEffects();
         initSpectrumEnhancement();
         initGradientEffects();
-        initParallaxBlobs();
-        
-        console.log('Visual enhancements initialized');
       }
       
       init();
@@ -1384,43 +949,7 @@
       Devpalettes.KeyboardShortcuts.on('space', refreshPalettes);
     });
   </script>
-
-  <!-- Copy Link Button -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var copyLinkBtn = document.getElementById('copy-link-btn');
-      if (copyLinkBtn) {
-        copyLinkBtn.addEventListener('click', function() {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(window.location.href).then(function() {
-              if (window.Devpalettes && window.Devpalettes.Toast) {
-                window.Devpalettes.Toast.show('Link copied!');
-              } else {
-                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                setTimeout(function() {
-                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-                }, 2000);
-              }
-            });
-          } else {
-            var tempInput = document.createElement('input');
-            tempInput.value = window.location.href;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            if (window.Devpalettes && window.Devpalettes.Toast) {
-              window.Devpalettes.Toast.show('Link copied!');
-            } else {
-              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-              setTimeout(function() {
-                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-              }, 2000);
-            }
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>
+
+
