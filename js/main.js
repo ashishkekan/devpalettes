@@ -387,7 +387,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'CSS Generators',
+    label: 'UI/UX',
     tools: [
       { label: 'Box Shadow CSS Generator', path: 'box-shadow-generator/' },
       { label: 'Border Radius Generator', path: 'border-radius-generator/' },
@@ -416,7 +416,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'Accessibility Tools',
+    label: 'Accessibility',
     tools: [
       { label: 'WCAG Contrast Checker Tool', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Checker', path: 'color-accessibility/' },
@@ -426,7 +426,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'CSS Layout Tools',
+    label: 'Layouts Tools',
     tools: [
       { label: 'Flexbox Layout Generator', path: 'flexbox/' },
       { label: 'CSS Grid Generator Tool', path: 'css-grid-generator/' },
@@ -437,7 +437,7 @@ const NAV_CATEGORIES = [
     ]
   },
   {
-    label: 'Color Palettes',
+    label: 'Palettes',
     tools: [
       { label: 'Pastel Color Palettes', path: 'pastel-color-palettes/' },
       { label: 'Dark Color Palettes', path: 'dark-color-palettes/' },
