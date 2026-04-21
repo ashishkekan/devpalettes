@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>HEX to RGB Converter - Free Online Color Converter Tool</title>
+  <meta name="description" content="Convert HEX to RGB and RGB to HEX instantly with our free online color converter. Supports HSL conversion and color harmonies.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/converter/"/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/converter/">
+  <meta property="og:title" content="HEX to RGB Converter - Free Online Color Converter">
+  <meta property="og:description" content="Convert HEX to RGB and RGB to HEX instantly. Supports HSL and color harmonies.">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/og-converter.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://devpalettes.com/converter/">
+  <meta property="twitter:title" content="HEX to RGB Converter - Free Online Tool">
+  <meta property="twitter:description" content="Convert HEX to RGB and RGB to HEX instantly.">
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Converter",
+    "url": "https://devpalettes.com/converter/",
+    "logo": "https://devpalettes.com/assets/images/devpalettes.png",
+    "description": "A free online tool to convert colors between HEX, RGB, and HSL formats.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Compatible with Chrome, Firefox, Safari, Edge.",
+    "featureList": [
+      "HEX to RGB conversion",
+      "RGB to HEX conversion",
+      "HSL conversion",
+      "Color harmony generation",
+      "Real-time preview"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I convert a HEX code to RGB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter the 6-digit HEX code (e.g., #10B981) into the input field above. The tool automatically calculates the Red, Green, and Blue values (0-255) for you instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between HEX and RGB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "HEX is a hexadecimal representation of color used in web development (e.g., #FFFFFF). RGB represents colors using three numerical values for Red, Green, and Blue (e.g., 255, 255, 255). Both describe the same color but in different formats."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why would I need to convert colors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Designers often need to convert colors to use them in different software. For example, converting a HEX code from a website design to RGB values for use in photo editing software."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
+  <script src="/assets/js/tailwind.js"></script>
+   
+  <!-- Theme Initialization -->
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-3">HEX to RGB, HSL Color Converter</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">HEX ↔ RGB ↔ HSL • Free tool for designers and developers</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Left: Preview -->
+        <div class="glass-card p-8 text-center animate-on-scroll shimmer-card">
+          <div id="color-preview" class="w-full aspect-square rounded-2xl shadow-2xl mb-8 transition-all" style="background-color: #10b981;"></div>
+          <input type="color" id="color-picker" value="#10b981" class="w-28 h-28 rounded-xl cursor-pointer border-4 border-white dark:border-slate-800 shadow">
+        </div>
+        
+        <!-- Right: Controls -->
+        <div class="space-y-8">
+          <!-- HEX -->
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <label class="block text-sm font-semibold mb-2">HEX Code</label>
+            <div class="flex gap-3">
+              <input type="text" id="hex-input" value="#10B981" maxlength="7" class="input-field font-mono text-2xl text-center uppercase flex-1">
+              <button id="copy-hex" class="btn-secondary btn-glow px-6 btn-size">
+                <i class="fas fa-copy"></i>
+              </button>
+            </div>
+          </div>
+          
+          <!-- RGB -->
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <label class="block text-sm font-semibold mb-4">RGB Values</label>
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <label class="text-xs text-slate-500 block mb-1 text-center">Red</label>
+                <input type="number" id="rgb-r" min="0" max="255" value="16" class="input-field text-center text-xl">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500 block mb-1 text-center">Green</label>
+                <input type="number" id="rgb-g" min="0" max="255" value="185" class="input-field text-center text-xl">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500 block mb-1 text-center">Blue</label>
+                <input type="number" id="rgb-b" min="0" max="255" value="129" class="input-field text-center text-xl">
+              </div>
+            </div>
+            <div class="mt-6 flex items-center justify-between bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
+              <code id="rgb-output" class="font-mono text-lg">rgb(16, 185, 129)</code>
+              <button id="copy-rgb" class="btn-secondary btn-glow text-sm px-4 copy-btn">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+            </div>
+          </div>
+          
+          <!-- HSL -->
+          <div class="glass-card p-6 animate-on-scroll shimmer-card">
+            <label class="block text-sm font-semibold mb-4">HSL Values</label>
+            <div class="grid grid-cols-3 gap-4">
+              <div>
+                <label class="text-xs text-slate-500 block mb-1 text-center">Hue</label>
+                <input type="number" id="hsl-h" min="0" max="360" value="160" class="input-field text-center text-xl">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500 block mb-1 text-center">Saturation</label>
+                <input type="number" id="hsl-s" min="0" max="100" value="84" class="input-field text-center text-xl">
+              </div>
+              <div>
+                <label class="text-xs text-slate-500 block mb-1 text-center">Lightness</label>
+                <input type="number" id="hsl-l" min="0" max="100" value="39" class="input-field text-center text-xl">
+              </div>
+            </div>
+            <div class="mt-6 flex items-center justify-between bg-slate-100 dark:bg-slate-800 rounded-xl p-4">
+              <code id="hsl-output" class="font-mono text-lg">hsl(160, 84%, 39%)</code>
+              <button id="copy-hsl" class="btn-secondary btn-glow text-sm px-4 copy-btn">
+                <i class="fas fa-copy mr-1"></i> Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Color Harmonies -->
+      <div class="mt-12 animate-on-scroll">
+        <h2 class="text-xl font-bold mb-4 text-center md:text-left">Color Harmonies</h2>
+        <div id="harmonies" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+      
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- Intro Paragraph -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is a Color Converter?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               A <strong>Color Converter</strong> is a tool that translates color values between different digital formats. Designers and developers use it to ensure color consistency across web design, graphic design, and printing. The most common formats are <strong>HEX</strong> (used in web design), <strong>RGB</strong> (used in screens and displays), and <strong>HSL</strong> (intuitive for adjusting hue, saturation, and lightness).
+            </p>
+         </section>
+
+         <!-- Format Explanation -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Understanding Color Formats</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-emerald-500">HEX (Hexadecimal)</h3>
+                  <p class="text-xs text-slate-500 mb-2">Used in HTML/CSS</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">A 6-digit code representing the combination of Red, Green, and Blue (e.g., #10B981).</p>
+               </div>
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-blue-500">RGB (Red, Green, Blue)</h3>
+                  <p class="text-xs text-slate-500 mb-2">Used in Screens & Displays</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Defines colors using three values from 0-255 for each color channel.</p>
+               </div>
+               <div class="glass-card p-6">
+                  <h3 class="font-bold mb-2 text-purple-500">HSL (Hue, Saturation, Lightness)</h3>
+                  <p class="text-xs text-slate-500 mb-2">Used for Easier Adjustments</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Represents colors in a cylindrical-coordinate system. Great for creating color variations.</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Converter</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Pick a Color:</strong> Use the color picker to select your base color.</li>
+               <li><strong>Enter Values:</strong> Alternatively, type a HEX code or enter RGB/HSL values directly.</li>
+               <li><strong>Instant Conversion:</strong> The other fields update automatically in real-time.</li>
+               <li><strong>Copy Results:</strong> Click the copy button next to any format to copy the code.</li>
+            </ol>
+          </section>
+
+          <section class="glass-card p-8 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                  <i class="fab fa-pinterest-p"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <!-- Internal Links -->
+          <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Related Tools</h2>
+            <p class="text-slate-500 mb-4 text-sm">Once you have your color, try these tools:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/color-names-chart/" class="btn-secondary text-xs py-2 px-4">HTML Color Names</a>
+               <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Test</a>
+               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+            </div>
+          </section>
+         
+      </div>
+      <!-- End SEO Content -->
+
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/converter.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+

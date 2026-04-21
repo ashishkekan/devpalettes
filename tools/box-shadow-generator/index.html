@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>CSS Box Shadow Generator – Create Smooth Shadow Effects</title>
+  <meta name="description" content="Generate smooth CSS box shadows easily. Customize blur, spread, offset, and color for perfect UI shadows.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/box-shadow-generator/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/box-shadow-generator/">
+  <meta property="og:title" content="CSS Box Shadow Generator – Create Smooth Shadow Effects">
+  <meta property="og:description" content="Generate smooth CSS box shadows easily. Customize blur, spread, offset, and color for perfect UI shadows.">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/box-shadow-generator-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS Box Shadow Generator – Create Smooth Shadow Effects">
+  <meta name="twitter:description" content="Generate smooth CSS box shadows easily. Customize blur, spread, offset, and color for perfect UI shadows.">
+  <meta name="twitter:image" content="https://devpalettes.com/assets/images/box-shadow-generator-og.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Box Shadow Generator",
+    "url": "https://devpalettes.com/box-shadow-generator/",
+    "description": "Generate smooth CSS box shadows easily. Customize blur, spread, offset, and color for perfect UI shadows.",
+    "applicationCategory": "DesignApplication",
+    "creator": "Devpalettes",
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is box shadow in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The box-shadow CSS property adds shadow effects around an element's frame. It accepts values for horizontal offset, vertical offset, blur radius, spread radius, and color. You can also use the inset keyword to draw the shadow inside the element."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to create smooth shadows?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To create smooth shadows, use a high blur value (20px or more), a small offset (0-5px), no spread, and a low-opacity color (0.1 to 0.25). This produces a soft, natural-looking shadow commonly used in modern UI design for cards and elevated surfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is blur and spread in box shadow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blur controls how soft or sharp the shadow edge is—higher values create softer, more diffused shadows. Spread controls the size of the shadow—positive values expand it beyond the element, negative values shrink it inward."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What are best shadow values for UI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For modern UI, common shadow values are: subtle elevation (0 1px 3px rgba(0,0,0,0.1)), card shadow (0 4px 15px rgba(0,0,0,0.1)), and prominent elevation (0 10px 40px rgba(0,0,0,0.15)). Layering two shadows with different blur values creates a more realistic depth effect."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="/assets/js/tailwind.js"></script>
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
+  
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      
+      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">CSS Box Shadow Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create depth and elevation for your UI components • Copy code instantly</p>
+        <div class="spectrum-line max-w-md mx-auto mb-4"></div>
+        <p class="text-slate-500 dark:text-slate-500 max-w-2xl mx-auto text-sm">
+           Our <strong>CSS Box Shadow Generator</strong> lets you visually create smooth, layered, and inset shadows. Adjust offset, blur, spread, color, and opacity—then copy the <strong>box-shadow CSS code</strong> for your project. <strong>Free tool, no signup required.</strong>
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-arrows-alt text-emerald-500"></i> Position
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">X Offset: <span id="v-x">10</span>px</label>
+                  <input type="range" id="sh-x" min="-50" max="50" value="10" onchange="updateShadow()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                  <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Y Offset: <span id="v-y">10</span>px</label>
+                  <input type="range" id="sh-y" min="-50" max="50" value="10" onchange="updateShadow()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-circle text-emerald-500"></i> Blur & Spread
+             </h3>
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Blur: <span id="v-blur">30</span>px</label>
+                   <input type="range" id="sh-blur" min="0" max="100" value="30" onchange="updateShadow()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+                <div>
+                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Spread: <span id="v-spread">0</span>px</label>
+                   <input type="range" id="sh-spread" min="-20" max="20" value="0" onchange="updateShadow()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+          </div>
+
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
+                <i class="fas fa-palette text-emerald-500"></i> Color
+             </h3>
+             <div class="flex items-center gap-4">
+                <input type="color" id="sh-color" value="#000000" onchange="updateShadow()" class="w-12 h-12 rounded cursor-pointer bg-transparent">
+                <div class="flex-1">
+                   <label class="block text-sm font-medium mb-1 text-slate-600 dark:text-slate-400">Opacity: <span id="v-op">0.3</span></label>
+                   <input type="range" id="sh-op" min="0" max="100" value="30" onchange="updateShadow()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                </div>
+             </div>
+             <label class="flex items-center gap-2 mt-4 text-sm cursor-pointer">
+                <input type="checkbox" id="sh-inset" onchange="updateShadow()" class="accent-emerald-500"> 
+                <span>Inset Shadow</span>
+             </label>
+          </div>
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6">
+           <!-- Preview -->
+           <div class="glass-card p-0 shimmer-card overflow-hidden animate-on-scroll">
+              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+              </div>
+              
+              <div class="p-8 min-h-[300px] flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-900 dark:to-slate-800">
+                 <div id="shadow-preview" class="w-48 h-48 bg-white dark:bg-slate-700 rounded-xl transition-all duration-300"></div>
+              </div>
+           </div>
+           
+           <!-- Code Output -->
+           <div class="glass-card p-6 shimmer-card animate-on-scroll">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">CSS Code</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <textarea id="code-output" readonly class="w-full h-32 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- SEO Content -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is CSS Box Shadow?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">box-shadow</code> CSS property adds shadow effects around an element's frame. You can set multiple shadow effects separated by commas, making it possible to create complex, layered depth that mimics real-world lighting. A box shadow is described by X and Y offsets relative to the element, blur and spread radius, and color. It is one of the most effective properties for adding depth to flat UI designs without using images.
+            </p>
+         </section>
+
+         <!-- How it works -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How Box Shadow Works</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The box-shadow property accepts several values that control the shadow's appearance:
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Offset-X:</strong> Moves the shadow horizontally. Positive values push it right; negative values push it left.</li>
+               <li><strong>Offset-Y:</strong> Moves the shadow vertically. Positive values push it down; negative values push it up.</li>
+               <li><strong>Blur Radius:</strong> Controls how soft or sharp the shadow's edges are. A value of 0 creates a hard-edged shadow; higher values create progressively softer, more diffused shadows.</li>
+               <li><strong>Spread Radius:</strong> Expands or contracts the shadow. Positive values make the shadow larger than the element; negative values shrink it.</li>
+               <li><strong>Color:</strong> Defines the shadow's color. Using low-opacity colors (like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rgba(0,0,0,0.15)</code>) produces natural-looking shadows.</li>
+            </ul>
+         </section>
+
+         <!-- Types -->
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Types of CSS Box Shadows</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm">S</span>
+                     Soft Shadows
+                  </h3>
+                  <p class="text-xs text-slate-500 mb-3">High blur, low opacity. Creates a natural, diffused look used for cards and modals.</p>
+                  <div class="h-20 rounded-xl bg-white dark:bg-slate-700 mx-auto" style="box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 120px;"></div>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm">L</span>
+                     Layered Shadows
+                  </h3>
+                  <p class="text-xs text-slate-500 mb-3">Multiple shadows stacked for realistic depth. Combines a sharp close shadow with a soft far shadow.</p>
+                  <div class="h-20 rounded-xl bg-white dark:bg-slate-700 mx-auto" style="box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 8px 30px rgba(0,0,0,0.12); max-width: 120px;"></div>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm">I</span>
+                     Inset Shadows
+                  </h3>
+                  <p class="text-xs text-slate-500 mb-3">Drawn inside the element using the inset keyword. Ideal for input fields and pressed states.</p>
+                  <div class="h-20 rounded-xl bg-white dark:bg-slate-700 mx-auto" style="box-shadow: inset 0 2px 6px rgba(0,0,0,0.15); max-width: 120px;"></div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Image + Best Practices -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Best Practices for UI Shadows</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Use low opacity:</strong> Shadows with 0.08–0.2 opacity look more natural than fully opaque black shadows.</li>
+               <li><strong>Keep offsets small:</strong> Large X/Y offsets look unrealistic. Stick to 0–10px for modern UI elevation.</li>
+               <li><strong>Layer two shadows:</strong> A sharp, close shadow (low blur) combined with a soft, distant shadow (high blur) creates convincing depth.</li>
+               <li><strong>Match your palette:</strong> If you <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a> with cool tones, use a slightly cool-tinted shadow (like rgba(0,0,40,0.1)) instead of pure black.</li>
+               <li><strong>Use inset for inputs:</strong> Inset shadows on form fields create a subtle "recessed" look that signals interactivity.</li>
+            </ul>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Generator</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Adjust Position:</strong> Use the X and Y offset sliders to move the shadow direction.</li>
+               <li><strong>Set Blur & Spread:</strong> Increase blur for softer edges; adjust spread to resize the shadow area.</li>
+               <li><strong>Pick Color & Opacity:</strong> Choose a shadow color and lower the opacity for a natural look.</li>
+               <li><strong>Toggle Inset:</strong> Check the inset box to create inner shadows for inputs and pressed states.</li>
+               <li><strong>Copy Code:</strong> Click Copy to grab the box-shadow CSS and paste it into your stylesheet.</li>
+            </ol>
+            <p class="mt-4 text-slate-500 text-sm">Need to <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> for your shadow color values? Use our color converter for quick format changes.</p>
+         </section>
+
+         <!-- Common Mistakes -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Common Mistakes in Box Shadow Usage</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Using pure black at full opacity:</strong> This creates harsh, unrealistic shadows. Always reduce opacity to 0.15 or below.</li>
+               <li><strong>Overusing large offsets:</strong> Shadows that are offset too far make elements look disconnected from the surface.</li>
+               <li><strong>Ignoring dark mode:</strong> The same shadow that looks subtle on white may be invisible on dark backgrounds. Increase opacity slightly for dark themes.</li>
+               <li><strong>Too many shadow layers:</strong> Three or more shadows can hurt performance on pages with many elements. Stick to two layers maximum.</li>
+               <li><strong>Forgetting spread:</strong> A small negative spread (-1px to -3px) tightens the shadow and prevents it from overflowing rounded corners.</li>
+            </ul>
+            <p class="mt-4 text-slate-500 text-sm">To <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that pair well with your shadow styles, check out our palette guide.</p>
+         </section>
+
+         <!-- FAQ -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-5">
+               <div>
+                  <h3 class="font-semibold mb-1">What is box shadow in CSS?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">The box-shadow CSS property adds shadow effects around an element's frame. It accepts values for horizontal offset, vertical offset, blur radius, spread radius, and color. You can also use the inset keyword to draw the shadow inside the element.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How to create smooth shadows?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Use a high blur value (20px or more), a small offset (0-5px), no spread, and a low-opacity color (0.1 to 0.25). This produces a soft, natural-looking shadow commonly used in modern UI design for cards and elevated surfaces.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What is blur and spread in box shadow?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Blur controls how soft or sharp the shadow edge is—higher values create softer, more diffused shadows. Spread controls the size of the shadow—positive values expand it beyond the element, negative values shrink it inward.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What are best shadow values for UI?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">For modern UI: subtle elevation (0 1px 3px rgba(0,0,0,0.1)), card shadow (0 4px 15px rgba(0,0,0,0.1)), and prominent elevation (0 10px 40px rgba(0,0,0,0.15)). Layering two shadows with different blur values creates a more realistic depth effect.</p>
+               </div>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                  <i class="fab fa-pinterest-p"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+         <!-- Related Tools -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4 text-center">Related CSS Tools</h2>
+            <p class="text-slate-500 mb-6 text-center text-sm">Enhance your CSS workflow with these complementary tools</p>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+               <a href="/border-radius-generator/" class="group block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg">
+                  <div class="flex items-center gap-3 mb-2">
+                     <div class="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-circle text-emerald-600 dark:text-emerald-400"></i>
+                     </div>
+                     <h3 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Border Radius Generator</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Create perfect rounded corners for modern UI elements</p>
+               </a>
+               <a href="/css-grid-generator/" class="group block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg">
+                  <div class="flex items-center gap-3 mb-2">
+                     <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-th text-blue-600 dark:text-blue-400"></i>
+                     </div>
+                     <h3 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">CSS Grid Generator</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Build responsive grid layouts with visual controls</p>
+               </a>
+               <a href="/glassmorphism-generator/" class="group block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg">
+                  <div class="flex items-center gap-3 mb-2">
+                     <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-gem text-purple-600 dark:text-purple-400"></i>
+                     </div>
+                     <h3 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Glassmorphism Generator</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Create modern glass-like UI effects with backdrop blur</p>
+               </a>
+               <a href="/neumorphism-generator/" class="group block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg">
+                  <div class="flex items-center gap-3 mb-2">
+                     <div class="w-10 h-10 bg-pink-100 dark:bg-pink-900/30 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-cube text-pink-600 dark:text-pink-400"></i>
+                     </div>
+                     <h3 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-pink-600 dark:group-hover:text-pink-400 transition-colors">Neumorphism Generator</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Design soft, inset button styles with inner shadows</p>
+               </a>
+               <a href="/css-animation-generator/" class="group block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg">
+                  <div class="flex items-center gap-3 mb-2">
+                     <div class="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-play text-orange-600 dark:text-orange-400"></i>
+                     </div>
+                     <h3 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">CSS Animation Generator</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Create smooth transitions and keyframe animations</p>
+               </a>
+               <a href="/css-filter-generator/" class="group block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-300 dark:hover:border-emerald-600 transition-all duration-300 hover:shadow-lg">
+                  <div class="flex items-center gap-3 mb-2">
+                     <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/30 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-magic text-indigo-600 dark:text-indigo-400"></i>
+                     </div>
+                     <h3 class="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">CSS Filter Generator</h3>
+                  </div>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Apply visual effects like blur, brightness, and contrast</p>
+               </a>
+            </div>
+         </section>
+         
+      </div>
+      <!-- End SEO Content -->
+    </div>
+  </main>
+  <div id="footer-container"></div>
+  <script src="/assets/js/common.js"></script>
+  <script src="/assets/js/box-shadow-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+

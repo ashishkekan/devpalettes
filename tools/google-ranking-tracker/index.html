@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Google Ranking Tracker Tool (Free Keyword Position Checker)</title>
+  <meta name="description" content="Track your keyword rankings with this free Google ranking tracker tool. Monitor positions, trends, and SEO performance easily.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/google-ranking-tracker/"/>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/google-ranking-tracker/">
+  <meta property="og:title" content="Google Ranking Tracker Tool (Free Keyword Position Checker)">
+  <meta property="og:description" content="Track your keyword rankings with this free Google ranking tracker tool. Monitor positions, trends, and SEO performance easily.">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://devpalettes.com/google-ranking-tracker/">
+  <meta property="twitter:title" content="Google Ranking Tracker Tool (Free Keyword Position Checker)">
+  <meta property="twitter:description" content="Track your keyword rankings with this free Google ranking tracker tool. Monitor positions, trends, and SEO performance easily.">
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+  
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Google Ranking Tracker",
+    "url": "https://devpalettes.com/google-ranking-tracker/",
+    "logo": "https://devpalettes.com/assets/images/devpalettes.png",
+    "description": "A free tool to track keyword rankings on Google, monitor position changes, and visualize SEO performance trends.",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I track my Google keyword rankings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter your target keyword in the input field and click 'Track Keyword'. The tool adds it to your dashboard with a simulated position. You can monitor changes, filter by position range, and view trends over time on the chart."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good Google ranking position?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Positions 1-3 on the first page of Google receive the majority of clicks. A position in the top 10 (first page) is generally considered good. Positions 11-20 are on page two and receive significantly less traffic."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How often should I check my keyword rankings?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most websites, checking rankings weekly is sufficient. Daily checking can show too much noise from normal Google fluctuations. Monthly checks work well for established sites with stable rankings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why did my keyword ranking drop suddenly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sudden ranking drops can be caused by Google algorithm updates, new competitors entering your space, technical issues like crawl errors, lost backlinks, or content becoming outdated. Check Google Search Console for manual actions or crawl issues first."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="/assets/js/tailwind.js"></script>
+   
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Visualizer Background -->
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
+      <!-- Hero Section -->
+      <div class="text-center mb-12 animate-on-scroll">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-4">
+          <i class="fas fa-chart-line"></i>
+          Free SEO Dashboard
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Google Ranking Tracker Tool</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Track your keyword rankings in real-time with position monitoring and trend analysis</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+              <i class="fas fa-key text-emerald-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Total Keywords</span>
+          </div>
+          <p id="stat-total" class="text-3xl font-bold">0</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+              <i class="fas fa-signal text-blue-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Avg Position</span>
+          </div>
+          <p id="stat-avg" class="text-3xl font-bold">—</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+              <i class="fas fa-trophy text-purple-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Top 10 Keywords</span>
+          </div>
+          <p id="stat-top10" class="text-3xl font-bold">0</p>
+        </div>
+        <div class="glass-card p-5 shimmer-card">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+              <i class="fas fa-arrow-up text-amber-500"></i>
+            </div>
+            <span class="text-sm text-slate-500">Improving</span>
+          </div>
+          <p id="stat-improving" class="text-3xl font-bold">0</p>
+        </div>
+      </div>
+
+      <!-- Input + Filters Row -->
+      <div class="glass-card p-6 mb-8 animate-on-scroll shimmer-card">
+        <div class="flex flex-col sm:flex-row gap-3 mb-4">
+          <div class="flex-1 relative">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+            <input type="text" id="keyword-input" placeholder="Enter a keyword to track (e.g., best seo tools)" class="w-full pl-11 pr-4 py-3.5 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
+          </div>
+          <button id="track-btn" class="btn-primary btn-glow px-6 py-3.5 whitespace-nowrap">
+            <i class="fas fa-plus mr-2"></i>Track Keyword
+          </button>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
+          <div class="flex gap-2 flex-wrap">
+            <button class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-filter="all">All</button>
+            <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-filter="top10">Top 10</button>
+            <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-filter="top50">Top 50</button>
+          </div>
+          <div class="flex gap-2">
+            <div class="relative">
+              <i class="fas fa-filter absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+              <input type="text" id="search-keywords" placeholder="Search..." class="pl-8 pr-3 py-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 outline-none transition-all text-sm w-40">
+            </div>
+            <button id="refresh-btn" class="w-9 h-9 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:border-emerald-500 hover:text-emerald-500 transition-all" title="Refresh data">
+              <i class="fas fa-sync-alt text-sm"></i>
+            </button>
+            <button id="export-csv-btn" class="w-9 h-9 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:border-emerald-500 hover:text-emerald-500 transition-all" title="Export CSV">
+              <i class="fas fa-file-csv text-sm"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Main Grid: Keywords List + Chart -->
+      <div class="grid lg:grid-cols-5 gap-8 mb-8">
+        <!-- Keywords List (3 cols) -->
+        <div class="lg:col-span-3 glass-card p-8 animate-on-scroll shimmer-card">
+          <div class="flex justify-between items-center mb-6">
+            <h2 class="text-xl font-bold">Tracked Keywords</h2>
+            <span id="keyword-count-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">0 keywords</span>
+          </div>
+
+          <!-- Empty State -->
+          <div id="empty-state" class="text-center py-16">
+            <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5">
+              <i class="fas fa-chart-bar text-4xl text-slate-300 dark:text-slate-600"></i>
+            </div>
+            <p class="text-lg font-medium text-slate-500 dark:text-slate-400 mb-2">No keywords tracked yet</p>
+            <p class="text-sm text-slate-400">Add your first keyword above to start monitoring rankings</p>
+          </div>
+
+          <!-- Loading State -->
+          <div id="loading-state" class="hidden text-center py-16">
+            <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
+            <p class="text-sm text-slate-500">Fetching ranking data...</p>
+          </div>
+
+          <!-- Keywords List -->
+          <div id="keywords-list" class="hidden space-y-3 max-h-[520px] overflow-y-auto pr-1"></div>
+
+          <!-- Top Gaining Highlight -->
+          <div id="top-gaining" class="hidden mt-6 p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-fire text-emerald-500"></i>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400">Top Gaining Keyword</p>
+                <p id="top-gaining-name" class="text-lg font-bold"></p>
+              </div>
+              <span id="top-gaining-change" class="ml-auto text-lg font-bold text-emerald-500"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chart (2 cols) -->
+        <div class="lg:col-span-2 glass-card p-8 animate-on-scroll shimmer-card">
+          <h2 class="text-xl font-bold mb-6">Ranking Trends</h2>
+          <div id="chart-empty" class="flex flex-col items-center justify-center h-[300px]">
+            <i class="fas fa-chart-line text-4xl text-slate-300 dark:text-slate-600 mb-4"></i>
+            <p class="text-sm text-slate-400 text-center">Add keywords to see ranking trends</p>
+          </div>
+          <div id="chart-container" class="hidden">
+            <canvas id="ranking-chart" height="300"></canvas>
+          </div>
+          <div id="chart-legend" class="hidden mt-4 flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+
+      <!-- SEO Content Area -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <!-- What is -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is a Google Ranking Tracker?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A Google ranking tracker is an SEO tool that monitors the position of your webpages in Google search results for specific keywords. Instead of manually searching Google every day to see where your pages rank, a ranking tracker automates this process and records historical data so you can identify trends over time.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Tracking keyword positions is one of the most fundamental activities in search engine optimization. It tells you whether your SEO efforts are actually moving the needle. Without ranking data, you are essentially guessing at what works and what does not. A good <strong>keyword position checker</strong> gives you the data you need to make informed decisions about content strategy, technical SEO, and link building.
+            </p>
+         </section>
+
+         <!-- Benefits -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Benefits of Tracking Keyword Rankings</h2>
+            <div class="grid sm:grid-cols-2 gap-6 mt-6">
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-chart-line text-emerald-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Measure SEO Progress</h3>
+                     <p class="text-sm text-slate-500">See exactly how your rankings change over time after publishing new content or fixing technical issues.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-exclamation-triangle text-blue-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Detect Ranking Drops Early</h3>
+                     <p class="text-sm text-slate-500">Get notified when a keyword drops so you can investigate and fix problems before they cause significant traffic loss.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-bullseye text-purple-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Identify Quick Wins</h3>
+                     <p class="text-sm text-slate-500">Find keywords ranking on page two (positions 11-20) that could reach page one with a small content improvement.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-competitor text-amber-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Competitor Comparison</h3>
+                     <p class="text-sm text-slate-500">Track the same keywords your competitors target and understand their SEO strategy based on ranking movements.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-link text-red-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Correlate with Traffic</h3>
+                     <p class="text-sm text-slate-500">Combine ranking data with Google Analytics to understand the exact relationship between position changes and organic traffic.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-tasks text-teal-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Prioritize SEO Tasks</h3>
+                     <p class="text-sm text-slate-500">Focus your limited time on the keywords that matter most based on search volume, current position, and business value.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- How to Use -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How to Use This Google Ranking Tracker</h2>
+            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Add Keywords:</strong> Type your target keyword in the input field and click "Track Keyword." You can add as many keywords as you need.</li>
+               <li><strong>Review Positions:</strong> Each keyword shows its current Google position, change from the previous check, and last updated timestamp.</li>
+               <li><strong>Filter Results:</strong> Use the "Top 10" and "Top 50" filter buttons to focus on keywords in specific position ranges.</li>
+               <li><strong>Search Keywords:</strong> Use the search box to quickly find a specific keyword in your list.</li>
+               <li><strong>Analyze Trends:</strong> The ranking trends chart shows position history over time for your tracked keywords.</li>
+               <li><strong>Refresh Data:</strong> Click the refresh button to simulate a new ranking check with updated positions.</li>
+               <li><strong>Export Data:</strong> Click the CSV export button to download your keyword ranking data for further analysis in spreadsheets.</li>
+               <li><strong>Remove Keywords:</strong> Click the trash icon on any keyword card to remove it from tracking.</li>
+            </ol>
+         </section>
+
+         <!-- Practical Use Cases -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Content Strategy:</strong> After publishing a new blog post targeting a specific keyword, track its position over weeks to measure content effectiveness.</li>
+               <li><strong>SEO Client Reporting:</strong> Agencies use ranking trackers to create monthly reports showing keyword position improvements for clients.</li>
+               <li><strong>E-commerce Product Pages:</strong> Track product page rankings for high-intent keywords like "buy [product name] online" to optimize for conversions.</li>
+               <li><strong>Local SEO Monitoring:</strong> Track keywords with local intent to ensure your business appears in local pack results and map listings.</li>
+               <li><strong>Algorithm Update Impact:</strong> After a Google core update, check your keyword tracker to see which pages gained or lost positions.</li>
+               <li><strong>Technical SEO Validation:</strong> After fixing crawl errors, implementing schema markup, or improving page speed, track whether rankings improve.</li>
+            </ul>
+         </section>
+
+         <!-- FAQ Section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-4" id="faq-container">
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>How do I track my Google keyword rankings?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Enter your target keyword in the input field and click "Track Keyword." The tool adds it to your dashboard with a simulated position. You can monitor changes, filter by position range, and view trends over time on the chart.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>What is a good Google ranking position?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Positions 1-3 on the first page of Google receive the majority of clicks. A position in the top 10 (first page) is generally considered good. Positions 11-20 are on page two and receive significantly less traffic. Ideally, you want all your important keywords on page one.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>How often should I check my keyword rankings?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">For most websites, checking rankings weekly is sufficient. Daily checking can show too much noise from normal Google fluctuations. Monthly checks work well for established sites with stable rankings. New sites or pages should be checked more frequently during the first few months.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                     <span>Why did my keyword ranking drop suddenly?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                  </button>
+                  <div class="faq-content px-6 pb-4 hidden">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Sudden ranking drops can be caused by Google algorithm updates, new competitors entering your space, technical issues like crawl errors or page speed problems, lost backlinks, or content becoming outdated. Check Google Search Console for manual actions or crawl issues first, then review whether competitors have published better content.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+         
+         <!-- Internal Links -->
+         <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Boost your SEO and development workflow with these free tools.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/meta-tag-generator/" class="btn-primary text-xs py-2 px-4">Meta Tag Generator</a>
+               <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
+               <a href="/text-formatter/" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
+               <a href="/blog/seo-meta-tag-guide/" class="btn-secondary text-xs py-2 px-4">SEO Meta Tags Guide</a>
+               <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+               <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
+               <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+             </div>
+         </section>
+         
+      </div>
+      <!-- End SEO Content -->
+      
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
+<script src="/assets/js/common.js"></script>
+
+  <script>
+  (function() {
+    'use strict';
+
+    /* ========== DATA STORE ========== */
+    var keywords = [];
+    var currentFilter = 'all';
+    var searchQuery = '';
+    var chartInstance = null;
+    var chartColors = [
+      '#10b981','#3b82f6','#8b5cf6','#f59e0b','#ef4444',
+      '#06b6d4','#ec4899','#14b8a6','#f97316','#6366f1'
+    ];
+
+    /* ========== DOM CACHE ========== */
+    var el = {
+      input: document.getElementById('keyword-input'),
+      trackBtn: document.getElementById('track-btn'),
+      searchInput: document.getElementById('search-keywords'),
+      refreshBtn: document.getElementById('refresh-btn'),
+      exportBtn: document.getElementById('export-csv-btn'),
+      emptyState: document.getElementById('empty-state'),
+      loadingState: document.getElementById('loading-state'),
+      listContainer: document.getElementById('keywords-list'),
+      countBadge: document.getElementById('keyword-count-badge'),
+      topGaining: document.getElementById('top-gaining'),
+      topGainingName: document.getElementById('top-gaining-name'),
+      topGainingChange: document.getElementById('top-gaining-change'),
+      chartEmpty: document.getElementById('chart-empty'),
+      chartContainer: document.getElementById('chart-container'),
+      chartCanvas: document.getElementById('ranking-chart'),
+      chartLegend: document.getElementById('chart-legend'),
+      statTotal: document.getElementById('stat-total'),
+      statAvg: document.getElementById('stat-avg'),
+      statTop10: document.getElementById('stat-top10'),
+      statImproving: document.getElementById('stat-improving')
+    };
+
+    /* ========== HELPERS ========== */
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function timeAgo() {
+      var units = ['seconds','minutes','hours'];
+      var val = randomInt(1,59);
+      var u = units[randomInt(0,2)];
+      return val + ' ' + u + ' ago';
+    }
+
+    function generateHistory(basePos) {
+      var hist = [];
+      for (var i = 6; i >= 0; i--) {
+        var d = new Date();
+        d.setDate(d.getDate() - i);
+        var label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        var pos = Math.max(1, Math.min(100, basePos + randomInt(-8, 8)));
+        hist.push({ label: label, position: pos });
+      }
+      hist[hist.length - 1].position = basePos;
+      return hist;
+    }
+
+    function escapeHtml(s) {
+      if (!s) return '';
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function showToast(msg, type) {
+      var c = document.getElementById('toast-container');
+      if (!c) return;
+      var bg = type === 'success' ? 'bg-emerald-500' : type === 'error' ? 'bg-red-500' : 'bg-slate-700';
+      var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+      var t = document.createElement('div');
+      t.className = bg + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
+      t.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(msg);
+      c.appendChild(t);
+      requestAnimationFrame(function() { t.style.transform = 'translateX(0)'; });
+      setTimeout(function() {
+        t.style.transform = 'translateX(120%)';
+        setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
+      }, 2500);
+    }
+
+    /* ========== KEYWORD CRUD ========== */
+    function addKeyword(term) {
+      term = term.trim();
+      if (!term) { showToast('Please enter a keyword', 'error'); return; }
+      if (term.length < 2) { showToast('Keyword must be at least 2 characters', 'error'); return; }
+      var exists = keywords.some(function(k) { return k.keyword.toLowerCase() === term.toLowerCase(); });
+      if (exists) { showToast('Keyword already tracked', 'error'); return; }
+
+      var position = randomInt(1, 100);
+      var change = randomInt(-5, 5);
+      var kw = {
+        id: Date.now() + '_' + Math.random().toString(36).substr(2,5),
+        keyword: term,
+        position: position,
+        change: change,
+        lastUpdated: timeAgo(),
+        history: generateHistory(position)
+      };
+      keywords.unshift(kw);
+      el.input.value = '';
+      renderAll();
+      showToast('"' + term + '" added to tracking', 'success');
+    }
+
+    function removeKeyword(id) {
+      keywords = keywords.filter(function(k) { return k.id !== id; });
+      renderAll();
+      showToast('Keyword removed', 'success');
+    }
+
+    function refreshData() {
+      if (keywords.length === 0) { showToast('No keywords to refresh', 'error'); return; }
+      el.loadingState.classList.remove('hidden');
+      el.listContainer.classList.add('hidden');
+      el.emptyState.classList.add('hidden');
+
+      setTimeout(function() {
+        keywords.forEach(function(k) {
+          var oldPos = k.position;
+          k.position = Math.max(1, Math.min(100, k.position + randomInt(-5, 5)));
+          k.change = oldPos - k.position;
+          k.lastUpdated = 'just now';
+          k.history.push({ label: 'Now', position: k.position });
+          if (k.history.length > 10) k.history.shift();
+        });
+        el.loadingState.classList.add('hidden');
+        renderAll();
+        showToast('Ranking data refreshed', 'success');
+      }, 800);
+    }
+
+    /* ========== FILTERING ========== */
+    function getFiltered() {
+      var list = keywords;
+      if (currentFilter === 'top10') {
+        list = list.filter(function(k) { return k.position <= 10; });
+      } else if (currentFilter === 'top50') {
+        list = list.filter(function(k) { return k.position <= 50; });
+      }
+      if (searchQuery) {
+        var q = searchQuery.toLowerCase();
+        list = list.filter(function(k) { return k.keyword.toLowerCase().indexOf(q) !== -1; });
+      }
+      return list;
+    }
+
+    /* ========== STATS ========== */
+    function updateStats() {
+      var total = keywords.length;
+      el.statTotal.textContent = total;
+
+      if (total === 0) {
+        el.statAvg.textContent = '—';
+        el.statTop10.textContent = '0';
+        el.statImproving.textContent = '0';
+        return;
+      }
+
+      var sum = 0;
+      var top10 = 0;
+      var improving = 0;
+      keywords.forEach(function(k) {
+        sum += k.position;
+        if (k.position <= 10) top10++;
+        if (k.change > 0) improving++;
+      });
+
+      el.statAvg.textContent = (sum / total).toFixed(1);
+      el.statTop10.textContent = top10;
+      el.statImproving.textContent = improving;
+    }
+
+    /* ========== TOP GAINING ========== */
+    function updateTopGaining() {
+      if (keywords.length < 2) {
+        el.topGaining.classList.add('hidden');
+        return;
+      }
+      var best = keywords.reduce(function(a, b) { return a.change > b.change ? a : b; });
+      if (best.change <= 0) {
+        el.topGaining.classList.add('hidden');
+        return;
+      }
+      el.topGaining.classList.remove('hidden');
+      el.topGainingName.textContent = best.keyword;
+      el.topGainingChange.textContent = '+' + best.change;
+    }
+
+    /* ========== RENDER LIST ========== */
+    function renderList() {
+      var filtered = getFiltered();
+      el.countBadge.textContent = filtered.length + ' keyword' + (filtered.length !== 1 ? 's' : '');
+
+      if (keywords.length === 0) {
+        el.emptyState.classList.remove('hidden');
+        el.listContainer.classList.add('hidden');
+        return;
+      }
+
+      el.emptyState.classList.add('hidden');
+
+      if (filtered.length === 0) {
+        el.listContainer.classList.remove('hidden');
+        el.listContainer.innerHTML = '<div class="text-center py-10"><i class="fas fa-search text-2xl text-slate-300 dark:text-slate-600 mb-3"></i><p class="text-sm text-slate-400">No keywords match your filter</p></div>';
+        return;
+      }
+
+      el.listContainer.classList.remove('hidden');
+      var html = '';
+
+      filtered.forEach(function(k, idx) {
+        var posBadge, changeHtml;
+        if (k.position <= 3) {
+          posBadge = 'bg-emerald-500 text-white';
+        } else if (k.position <= 10) {
+          posBadge = 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400';
+        } else if (k.position <= 50) {
+          posBadge = 'bg-amber-500/10 text-amber-600 dark:text-amber-400';
+        } else {
+          posBadge = 'bg-red-500/10 text-red-600 dark:text-red-400';
+        }
+
+        if (k.change > 0) {
+          changeHtml = '<span class="text-emerald-500 text-sm font-semibold"><i class="fas fa-arrow-up text-xs mr-1"></i>+' + k.change + '</span>';
+        } else if (k.change < 0) {
+          changeHtml = '<span class="text-red-500 text-sm font-semibold"><i class="fas fa-arrow-down text-xs mr-1"></i>' + k.change + '</span>';
+        } else {
+          changeHtml = '<span class="text-slate-400 text-sm">—</span>';
+        }
+
+        html += '<div class="group flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-emerald-500/30 hover:bg-emerald-500/[0.02] transition-all">' +
+          '<div class="w-10 h-10 rounded-lg ' + posBadge + ' flex items-center justify-center font-bold text-sm flex-shrink-0">#' + k.position + '</div>' +
+          '<div class="flex-1 min-w-0">' +
+            '<p class="font-medium text-sm truncate">' + escapeHtml(k.keyword) + '</p>' +
+            '<p class="text-xs text-slate-400 mt-0.5"><i class="fas fa-clock mr-1"></i>' + k.lastUpdated + '</p>' +
+          '</div>' +
+          changeHtml +
+          '<button data-remove="' + k.id + '" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 dark:text-slate-600 hover:text-red-500 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" title="Remove"><i class="fas fa-trash-alt text-xs pointer-events-none"></i></button>' +
+        '</div>';
+      });
+
+      el.listContainer.innerHTML = html;
+    }
+
+    /* ========== CHART ========== */
+    function renderChart() {
+      if (keywords.length === 0) {
+        el.chartEmpty.classList.remove('hidden');
+        el.chartContainer.classList.add('hidden');
+        el.chartLegend.classList.add('hidden');
+        if (chartInstance) { chartInstance.destroy(); chartInstance = null; }
+        return;
+      }
+
+      el.chartEmpty.classList.add('hidden');
+      el.chartContainer.classList.remove('hidden');
+      el.chartLegend.classList.remove('hidden');
+
+      var topKw = keywords.slice(0, 5);
+      var labels = topKw[0].history.map(function(h) { return h.label; });
+
+      var datasets = topKw.map(function(k, i) {
+        var color = chartColors[i % chartColors.length];
+        return {
+          label: k.keyword,
+          data: k.history.map(function(h) { return h.position; }),
+          borderColor: color,
+          backgroundColor: color + '20',
+          borderWidth: 2,
+          pointRadius: 4,
+          pointBackgroundColor: color,
+          pointBorderColor: '#fff',
+          pointBorderWidth: 2,
+          tension: 0.3,
+          fill: false
+        };
+      });
+
+      if (chartInstance) { chartInstance.destroy(); }
+
+      var isDark = document.documentElement.classList.contains('dark');
+      var gridColor = isDark ? 'rgba(148,163,184,0.08)' : 'rgba(0,0,0,0.06)';
+      var tickColor = isDark ? '#94a3b8' : '#64748b';
+
+      chartInstance = new Chart(el.chartCanvas, {
+        type: 'line',
+        data: { labels: labels, datasets: datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: isDark ? '#1e293b' : '#ffffff',
+              titleColor: isDark ? '#f1f5f9' : '#0f172a',
+              bodyColor: isDark ? '#94a3b8' : '#475569',
+              borderColor: isDark ? '#334155' : '#e2e8f0',
+              borderWidth: 1,
+              padding: 12,
+              cornerRadius: 10,
+              callbacks: {
+                label: function(ctx) {
+                  return ctx.dataset.label + ': #' + ctx.parsed.y;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              reverse: true,
+              min: 1,
+              max: 100,
+              grid: { color: gridColor },
+              ticks: {
+                color: tickColor,
+                font: { size: 11, family: 'Inter' },
+                callback: function(v) { return '#' + v; }
+              },
+              title: {
+                display: true,
+                text: 'Position (lower is better)',
+                color: tickColor,
+                font: { size: 11, family: 'Inter' }
+              }
+            },
+            x: {
+              grid: { display: false },
+              ticks: {
+                color: tickColor,
+                font: { size: 11, family: 'Inter' }
+              }
+            }
+          }
+        }
+      });
+
+      // Legend
+      var legendHtml = '';
+      topKw.forEach(function(k, i) {
+        var color = chartColors[i % chartColors.length];
+        legendHtml += '<span class="inline-flex items-center gap-1.5 text-xs text-slate-500"><span class="w-3 h-3 rounded-full" style="background:' + color + '"></span>' + escapeHtml(k.keyword) + '</span>';
+      });
+      el.chartLegend.innerHTML = legendHtml;
+    }
+
+    /* ========== EXPORT CSV ========== */
+    function exportCSV() {
+      if (keywords.length === 0) { showToast('No data to export', 'error'); return; }
+      var csv = 'Keyword,Position,Change,Last Updated\n';
+      keywords.forEach(function(k) {
+        csv += '"' + k.keyword.replace(/"/g,'""') + '",' + k.position + ',' + k.change + ',"' + k.lastUpdated + '"\n';
+      });
+      var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = 'ranking-data-' + new Date().toISOString().slice(0,10) + '.csv';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+      showToast('CSV file downloaded!', 'success');
+    }
+
+    /* ========== MASTER RENDER ========== */
+    function renderAll() {
+      updateStats();
+      renderList();
+      updateTopGaining();
+      renderChart();
+    }
+
+    /* ========== EVENTS ========== */
+    el.trackBtn.addEventListener('click', function() { addKeyword(el.input.value); });
+    el.input.addEventListener('keydown', function(e) { if (e.key === 'Enter') addKeyword(el.input.value); });
+    el.refreshBtn.addEventListener('click', refreshData);
+    el.exportBtn.addEventListener('click', exportCSV);
+
+    el.searchInput.addEventListener('input', function() {
+      searchQuery = this.value.trim();
+      renderList();
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) {
+          b.classList.remove('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
+          b.classList.add('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+        });
+        this.classList.add('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
+        this.classList.remove('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+        currentFilter = this.getAttribute('data-filter');
+        renderList();
+      });
+    });
+
+    el.listContainer.addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-remove]');
+      if (btn) {
+        e.stopPropagation();
+        removeKeyword(btn.getAttribute('data-remove'));
+      }
+    });
+
+    // FAQ toggles
+    document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var content = this.nextElementSibling;
+        var icon = this.querySelector('i');
+        var isOpen = !content.classList.contains('hidden');
+        document.querySelectorAll('.faq-toggle').forEach(function(b) {
+          b.nextElementSibling.classList.add('hidden');
+          b.querySelector('i').style.transform = 'rotate(0deg)';
+        });
+        if (!isOpen) {
+          content.classList.remove('hidden');
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    /* ========== INIT ========== */
+    renderAll();
+
+  })();
+  </script>
+</body>
+</html>
+
+
+

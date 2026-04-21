@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="canonical" href="https://devpalettes.com/color-usage-preview/">
+  <meta name="description" content="Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.">
+  <meta name="author" content="Devpalettes">
+  
+  <title>Color Usage Preview Tool – UI Palette Tester & Theme Preview</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Color Usage Preview Tool – UI Palette Tester & Theme Preview">
+  <meta property="og:description" content="Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.">
+  <meta property="og:url" content="https://devpalettes.com/color-usage-preview/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/devpalettes_zoom_180.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Color Usage Preview Tool – UI Palette Tester & Theme Preview">
+  <meta name="twitter:description" content="Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/assets/images/devpalettes_zoom_180.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+
+  <!-- JSON-LD WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Color Usage Preview Tool",
+    "description": "Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.",
+    "url": "https://devpalettes.com/color-usage-preview/",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is color usage in UI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Color usage in UI refers to how colors are applied to various interface elements like backgrounds, text, buttons, and icons to create visual hierarchy, guide user actions, and establish brand identity."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to preview a color palette?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can preview a color palette by applying its hex or RGB values to real UI components like buttons, cards, and navigation bars. Our Color Usage Preview tool automates this, allowing you to input primary, secondary, and accent colors to see a live mockup instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why test colors before using?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Testing colors before implementing them ensures sufficient contrast for readability, checks for visual harmony, and prevents accessibility issues. It helps identify if certain color combinations cause eye strain or confusion in the user interface."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to ensure accessibility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To ensure accessibility, maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text against their backgrounds. Avoid using color as the only means of conveying information, and test your palette using tools that simulate color blindness."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <!-- Header -->
+      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-4xl font-bold mb-4">Color Usage Preview</h1>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
+          See your colors in action on real UI components. Test contrast and accessibility.
+        </p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <div class="grid lg:grid-cols-4 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="lg:col-span-1 space-y-4 animate-on-scroll">
+          <div class="glass-card p-6 shimmer-card sticky top-24">
+             <h3 class="font-bold mb-4 text-lg">Palette Input</h3>
+             
+             <div class="space-y-3">
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Primary</label>
+                   <div class="flex gap-2">
+                      <input type="color" id="c-primary" value="#4f46e5" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                      <input type="text" id="t-primary" value="#4f46e5" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('primary')">
+                   </div>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Secondary</label>
+                   <div class="flex gap-2">
+                      <input type="color" id="c-secondary" value="#06b6d4" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                      <input type="text" id="t-secondary" value="#06b6d4" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('secondary')">
+                   </div>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Accent</label>
+                   <div class="flex gap-2">
+                      <input type="color" id="c-accent" value="#22c55e" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                      <input type="text" id="t-accent" value="#22c55e" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('accent')">
+                   </div>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
+                   <div class="flex gap-2">
+                      <input type="color" id="c-bg" value="#ffffff" class="w-12 h-10 rounded cursor-pointer bg-transparent">
+                      <input type="text" id="t-bg" value="#ffffff" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('bg')">
+                   </div>
+                </div>
+             </div>
+             
+             <div class="mt-4 space-y-2">
+                <button onclick="applyColors()" class="btn-primary w-full justify-center py-2 text-sm"><i class="fas fa-check mr-1"></i>Apply</button>
+                <button onclick="randomize()" class="btn-secondary w-full justify-center py-2 text-sm"><i class="fas fa-random mr-1"></i>Randomize</button>
+             </div>
+          </div>
+        </div>
+        
+        <!-- Right: Preview Area -->
+        <div class="lg:col-span-3 space-y-6 animate-on-scroll">
+          
+          <!-- Live Preview Container -->
+          <div id="preview-container" class="glass-card p-0 overflow-hidden min-h-[600px] transition-colors duration-500" style="background-color: #ffffff;">
+             
+             <!-- Navbar Preview -->
+             <div id="prev-navbar" class="p-4 flex justify-between items-center transition-colors duration-500" style="background-color: #4f46e5;">
+                <span class="font-bold text-white">MyApp</span>
+                <div class="flex gap-4 text-sm text-white/80">
+                   <span>Home</span>
+                   <span>About</span>
+                   <span>Contact</span>
+                </div>
+             </div>
+             
+             <!-- Content -->
+             <div class="p-8 space-y-8">
+                <!-- Cards Grid -->
+                <div class="grid md:grid-cols-3 gap-6">
+                   <div class="p-4 rounded-xl shadow-lg transition-colors duration-500" style="background-color: #f8fafc;">
+                      <div class="w-full h-20 rounded-lg mb-3 transition-colors duration-500" style="background-color: #e2e8f0;"></div>
+                      <h3 class="font-bold text-slate-800 mb-1">Card Title</h3>
+                      <p class="text-xs text-slate-500">Card subtitle text</p>
+                   </div>
+                   <div class="p-4 rounded-xl shadow-lg transition-colors duration-500" style="background-color: #f8fafc;">
+                      <div class="w-full h-20 rounded-lg mb-3 transition-colors duration-500" style="background-color: #e2e8f0;"></div>
+                      <h3 class="font-bold text-slate-800 mb-1">Analytics</h3>
+                      <p class="text-xs text-slate-500">Data overview</p>
+                   </div>
+                   <div class="p-4 rounded-xl shadow-lg transition-colors duration-500" style="background-color: #f8fafc;">
+                      <div class="w-full h-20 rounded-lg mb-3 transition-colors duration-500" style="background-color: #e2e8f0;"></div>
+                      <h3 class="font-bold text-slate-800 mb-1">Settings</h3>
+                      <p class="text-xs text-slate-500">User config</p>
+                   </div>
+                </div>
+                
+                <!-- Buttons & Alerts -->
+                <div class="flex flex-wrap gap-4 items-center">
+                   <button id="btn-pri" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #4f46e5;">Primary</button>
+                   <button id="btn-sec" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #06b6d4;">Secondary</button>
+                   <button id="btn-acc" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #22c55e;">Accent</button>
+                   
+                   <div id="alert-prev" class="ml-auto px-4 py-2 rounded-lg text-white text-xs transition-colors duration-500" style="background-color: #4f46e5;">
+                      <i class="fas fa-info-circle mr-1"></i> Alert Message
+                   </div>
+                </div>
+                
+                <!-- Chart -->
+                <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
+                   <h4 class="font-bold mb-4 text-slate-700">Chart Preview</h4>
+                   <canvas id="chart-canvas" width="400" height="150"></canvas>
+                </div>
+             </div>
+          </div>
+          
+          <!-- Code Output -->
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated CSS Variables</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4"><i class="fas fa-copy mr-1"></i>Copy</button>
+             </div>
+             <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+          </div>
+          
+        </div>
+        
+      </div>
+
+      <!-- SEO Content Section -->
+      <div class="glass-card p-6 shimmer-card animate-on-scroll mt-8">
+        <h2 class="text-2xl font-bold mb-4">Understanding Color Usage in UI Design</h2>
+
+        <h3 class="text-lg font-semibold mb-2 mt-4">What is Color Usage in UI Design?</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
+          Color usage in user interface (UI) design refers to the strategic application of color to various digital elements—such as buttons, backgrounds, text, and icons—to create visual hierarchy, evoke emotion, and guide the user journey. A well-defined color system uses a primary color for main actions, a secondary color for supporting elements, and an accent color for highlights or warnings. Before you <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a>, it is essential to understand the psychological impact of different hues and how they interact with each other on a digital screen.
+        </p>
+
+        <h3 class="text-lg font-semibold mb-2">Why Previewing Colors is Important</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
+          Looking at isolated hex codes or small color swatches can be incredibly deceptive. A color that looks vibrant and perfect in a small circle might appear overwhelming or washed out when applied to a full-width header or a large button. Previewing colors in context allows designers to see how hues behave under different scales and adjacent to other elements. It helps in identifying whether a selected palette creates enough contrast between the background and foreground elements. Using a real-time UI preview tool ensures that your theoretical color combinations translate effectively into practical, usable interfaces.
+        </p>
+
+        <h3 class="text-lg font-semibold mb-2">How to Test Color Palettes Effectively</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
+          Effective color testing goes beyond simply looking at the screen. You should test your palette across multiple mockup scenarios, including data-heavy components like charts and tables, minimal text areas, and interactive states like hover and active buttons. If you <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> or HSL values, you can better understand the structural makeup of your colors. Always test your palette in both light and dark modes to guarantee versatility, and ensure that text remains legible over your chosen background colors.
+        </p>
+
+        <h3 class="text-lg font-semibold mb-2">Common Mistakes in UI Color Usage</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
+          One of the most common mistakes is using too many colors, which leads to a cluttered and inconsistent interface. Another frequent error is relying solely on color to convey meaning (e.g., red for error) without supporting text or icons, which severely harms accessibility for colorblind users. Designers also often forget to test their UI in different lighting environments or on various screen calibrations, leading to unexpected visual results. To <a href="/blog/color-palettes-guide/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that avoid these pitfalls, it is crucial to rely on structured testing rather than guesswork.
+        </p>
+
+        <h3 class="text-lg font-semibold mb-2">How This Tool Helps Designers</h3>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          This Color Usage Preview tool bridges the gap between abstract color selection and practical UI design. By allowing you to input primary, secondary, accent, and background colors, the tool instantly renders a realistic interface mockup—including navigation bars, cards, buttons, alerts, and data charts. Furthermore, it automatically generates the corresponding CSS variables, allowing you to seamlessly export your tested palette directly into your codebase. It is an indispensable step in the modern design workflow, saving hours of manual adjustments and ensuring your final product is visually harmonious and accessible.
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="glass-card p-6 shimmer-card animate-on-scroll mt-8">
+        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              What is color usage in UI?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              Color usage in UI refers to how colors are applied to various interface elements like backgrounds, text, buttons, and icons to create visual hierarchy, guide user actions, and establish brand identity.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              How to preview a color palette?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              You can preview a color palette by applying its hex or RGB values to real UI components like buttons, cards, and navigation bars. Our Color Usage Preview tool automates this, allowing you to input primary, secondary, and accent colors to see a live mockup instantly.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              Why test colors before using?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              Testing colors before implementing them ensures sufficient contrast for readability, checks for visual harmony, and prevents accessibility issues. It helps identify if certain color combinations cause eye strain or confusion in the user interface.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              How to ensure accessibility?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              To ensure accessibility, maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text against their backgrounds. Avoid using color as the only means of conveying information, and test your palette using tools that simulate color blindness.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  
+  <div id="footer-container"></div>
+  
+<script src="/assets/js/common.js"></script>
+  <script src="/assets/js/color-preview.js"></script>
+</body>
+</html>
+
+
+

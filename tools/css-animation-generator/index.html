@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'G-F252PEQ1JC');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>CSS Animation Generator – Create Keyframes Online</title>
+  <meta name="description" content="Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/css-animation-generator/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CSS Animation Generator – Create Keyframes Online">
+  <meta property="og:description" content="Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly.">
+  <meta property="og:url" content="https://devpalettes.com/css-animation-generator/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://devpalettes.com/assets/images/css-animation-generator-og.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CSS Animation Generator – Create Keyframes Online">
+  <meta name="twitter:description" content="Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/assets/images/css-animation-generator-og.png">
+
+  <!-- JSON-LD: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "CSS Animation Generator",
+    "url": "https://devpalettes.com/css-animation-generator/",
+    "description": "Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly.",
+    "applicationCategory": "DesignApplication",
+    "creator": "Devpalettes",
+    "browserRequirements": "Requires JavaScript",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
+  <!-- JSON-LD: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is CSS animation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CSS animation is a method of animating HTML elements without using JavaScript. It uses @keyframes to define styles at various points in the animation cycle and the animation property to apply those keyframes with timing, duration, and repetition settings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to create keyframes in CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use the @keyframes rule followed by a name, then define percentage-based steps (0%, 50%, 100%) with the CSS properties you want to change at each step. For example: @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(100px); } }"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is animation timing function?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The animation-timing-function defines the speed curve of an animation. Common values include linear (constant speed), ease (slow start and end), ease-in (slow start), ease-out (slow end), and ease-in-out (slow both ends)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How to optimize animations for performance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Only animate transform and opacity properties which are handled by the compositor thread. Use will-change on animated elements, avoid animating width, height, top, or left, and respect the prefers-reduced-motion media query."
+        }
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/assets/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/devpalettes_zoom_180.png">
+  <script src="/assets/js/tailwind.js"></script>
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
+    }
+  </script>
+  
+<link rel="stylesheet" href="/assets/css/common.css">
+  
+  <style>
+    .preview-bg {
+       background-color: #e2e8f0;
+       background-image: radial-gradient(#94a3b8 1px, transparent 1px);
+       background-size: 20px 20px;
+    }
+    .dark .preview-bg {
+       background-color: #1e293b;
+       background-image: radial-gradient(#475569 1px, transparent 1px);
+    }
+    .anim-box {
+       width: 80px;
+       height: 80px;
+       background: #3b82f6;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       color: white;
+       font-weight: bold;
+       font-size: 12px;
+       will-change: transform;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <div id="navbar-container"></div>
+  
+  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
+      
+      <!-- Header -->
+      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-2">CSS Animation Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Create and export custom CSS animations with live preview • Copy code instantly</p>
+        <div class="spectrum-line max-w-md mx-auto mb-4"></div>
+        <p class="text-slate-500 dark:text-slate-500 max-w-2xl mx-auto text-sm">
+           Our <strong>CSS Animation Generator</strong> lets you create keyframes for move, rotate, scale, pulse, bounce, and more. Customize timing, duration, and direction—then copy the <strong>ready-to-use CSS code</strong>. <strong>Free tool, no signup required.</strong>
+        </p>
+      </div>
+      
+      <div class="grid lg:grid-cols-2 gap-8">
+        
+        <!-- Left: Controls -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-6 shimmer-card">
+             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500"></i>
+                Configuration
+             </h3>
+             
+             <div class="mb-5">
+                <label class="block text-sm font-semibold mb-2 text-slate-500">Animation Type</label>
+                <select id="anim-type" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                   <option value="moveRight">Move Right</option>
+                   <option value="moveLeft">Move Left</option>
+                   <option value="rotate">Rotate</option>
+                   <option value="scaleUp">Scale Up</option>
+                   <option value="pulse">Pulse</option>
+                   <option value="shake">Shake</option>
+                   <option value="bounce">Bounce</option>
+                   <option value="flip">Flip</option>
+                   <option value="swing">Swing</option>
+                   <option value="fade">Fade Out/In</option>
+                </select>
+             </div>
+             
+             <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Duration (s)</label>
+                   <input type="number" id="anim-duration" value="1" step="0.1" min="0.1" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Timing Function</label>
+                   <select id="anim-timing" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="linear">Linear</option>
+                      <option value="ease">Ease</option>
+                      <option value="ease-in">Ease In</option>
+                      <option value="ease-out">Ease Out</option>
+                      <option value="ease-in-out">Ease In Out</option>
+                   </select>
+                </div>
+             </div>
+             
+             <div class="grid grid-cols-2 gap-4 mb-5">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Iteration Count</label>
+                   <select id="anim-iter" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="infinite">Infinite</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Direction</label>
+                   <select id="anim-dir" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="normal">Normal</option>
+                      <option value="reverse">Reverse</option>
+                      <option value="alternate">Alternate</option>
+                   </select>
+                </div>
+             </div>
+             
+             <div class="grid grid-cols-2 gap-4">
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Shape</label>
+                   <select id="anim-shape" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                      <option value="16px">Rounded</option>
+                      <option value="50%">Circle</option>
+                      <option value="0px">Square</option>
+                   </select>
+                </div>
+                <div>
+                   <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                   <input type="color" id="anim-color" value="#3b82f6" onchange="updateAll()" class="w-full h-9 rounded cursor-pointer bg-transparent">
+                </div>
+             </div>
+             
+          </div>
+          
+          <div class="flex gap-3 animate-on-scroll">
+             <button onclick="playAnim()" class="btn-primary btn-glow flex-1 justify-center">
+                <i class="fas fa-play mr-2"></i>Play
+             </button>
+             <button onclick="stopAnim()" class="btn-secondary flex-1 justify-center">
+                <i class="fas fa-stop mr-2"></i>Stop
+             </button>
+          </div>
+          
+        </div>
+        
+        <!-- Right: Preview & Code -->
+        <div class="space-y-6 animate-on-scroll">
+          
+          <div class="glass-card p-0 shimmer-card overflow-hidden">
+             <div class="p-4 border-b border-slate-100 dark:border-slate-700">
+                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+             </div>
+             <div class="preview-bg h-72 flex items-center justify-center overflow-hidden relative">
+                <div class="w-full h-full flex items-center justify-center">
+                   <div id="preview-box" class="anim-box">
+                      Hi
+                   </div>
+                </div>
+             </div>
+          </div>
+          
+          <div class="glass-card p-6 shimmer-card">
+             <div class="flex justify-between items-center mb-2">
+                <h3 class="font-bold text-lg">Generated CSS</h3>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn">
+                   <i class="fas fa-copy mr-1"></i>Copy
+                </button>
+             </div>
+             <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-60">
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap"></pre>
+             </div>
+          </div>
+          
+        </div>
+        
+      </div>
+
+      <!-- SEO Content -->
+      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+         
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What is CSS Animation?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               CSS animation is a method for animating HTML elements using only CSS—no JavaScript required for the core motion. It works by defining a set of styles at various points in the animation cycle using the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> rule, then applying those keyframes to an element with the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation</code> property. CSS animations run independently of the main thread when optimized correctly, making them smoother and more performant than JavaScript-driven animations for common use cases like hover effects, loading indicators, and page transitions.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">What Are Keyframes?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Keyframes define the styles that an element will have at specific points during the animation. You use percentage values to mark those points: 0% is the start, 100% is the end, and you can add intermediate steps like 25%, 50%, or 75% for more complex motion paths.
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>0% (from):</strong> The starting state of the element before the animation begins.</li>
+               <li><strong>50%:</strong> The midpoint—useful for bounce, pulse, or shake effects where the element reverses direction.</li>
+               <li><strong>100% (to):</strong> The ending state. The browser interpolates all properties between keyframes automatically.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+               You can change any CSS property inside keyframes—transform, opacity, color, border-radius, box-shadow, and more. However, for performance, animating only <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> is strongly recommended.
+            </p>
+         </section>
+
+         <section>
+            <h2 class="text-2xl font-bold mb-6 text-center">Common Animation Types</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-arrows-alt-h"></i></span>
+                     Move / Slide
+                  </h3>
+                  <p class="text-xs text-slate-500">Translates an element along the X or Y axis. Used for sliding panels, tooltips, and entrance effects.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-sync-alt"></i></span>
+                     Rotate
+                  </h3>
+                  <p class="text-xs text-slate-500">Spins an element around its center point. Common for loading spinners and refresh icons.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-expand-arrows-alt"></i></span>
+                     Scale / Pulse
+                  </h3>
+                  <p class="text-xs text-slate-500">Grows or shrinks an element. Pulse animations cycle between normal and enlarged states for attention.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-arrow-down"></i></span>
+                     Bounce
+                  </h3>
+                  <p class="text-xs text-slate-500">Moves an element up and down to simulate a bouncing ball. Great for scroll indicators and notifications.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-exchange-alt"></i></span>
+                     Flip
+                  </h3>
+                  <p class="text-xs text-slate-500">Rotates an element in 3D perspective. Used for card flips, toggles, and reveal effects.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-eye"></i></span>
+                     Fade
+                  </h3>
+                  <p class="text-xs text-slate-500">Gradually changes opacity from visible to hidden. The simplest and most widely used animation type.</p>
+               </div>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">How CSS Animations Work</h2>
+            
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A CSS animation is controlled by several sub-properties that work together:
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>animation-name:</strong> References the @keyframes rule to apply.</li>
+               <li><strong>animation-duration:</strong> How long one cycle takes (e.g., 1s, 500ms).</li>
+               <li><strong>animation-timing-function:</strong> The speed curve—ease, linear, ease-in-out, or custom cubic-bezier values.</li>
+               <li><strong>animation-iteration-count:</strong> How many times to repeat (a number or infinite).</li>
+               <li><strong>animation-direction:</strong> Whether to play normal, reverse, or alternate back and forth.</li>
+               <li><strong>animation-delay:</strong> Time to wait before starting.</li>
+               <li><strong>animation-fill-mode:</strong> What styles apply before/after the animation (forwards, backwards, both).</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Best Practices for Web Animations</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Animate only transform and opacity:</strong> These properties are handled by the compositor thread and skip layout and paint, resulting in 60fps animations.</li>
+               <li><strong>Keep durations short:</strong> UI animations should be between 200ms and 500ms. Longer durations feel sluggish; shorter ones feel jarring.</li>
+               <li><strong>Use ease-out for entrances:</strong> Elements entering the screen feel natural with a fast start that decelerates. Use ease-in for exits.</li>
+               <li><strong>Respect prefers-reduced-motion:</strong> Wrap animations in a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@media (prefers-reduced-motion: no-preference)</code> query to disable motion for users who need it.</li>
+               <li><strong>Avoid animating layout properties:</strong> Never animate width, height, margin, padding, or top/left. These trigger expensive layout recalculations.</li>
+            </ul>
+            <p class="mt-4 text-slate-500 text-sm">When designing animated components, make sure to <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a> that look good in both static and animated states—subtle color shifts during animation feel more polished than dramatic changes.</p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Performance Tips</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Use will-change sparingly:</strong> Add <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change: transform</code> to elements you know will animate, but remove it after the animation ends to free memory.</li>
+               <li><strong>Promote to its own layer:</strong> Elements with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform: translateZ(0)</code> get their own compositing layer, preventing repaints of sibling elements.</li>
+               <li><strong>Avoid simultaneous animations:</strong> Too many elements animating at once can overwhelm mobile GPUs. Stagger animations with animation-delay instead.</li>
+               <li><strong>Test on low-end devices:</strong> What runs smooth on a desktop may lag on a budget phone. Always test on real devices, not just browser simulators.</li>
+            </ul>
+            <p class="mt-4 text-slate-500 text-sm">If your animations involve color transitions, you may need to <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> or HSL for smoother interpolation between color stops. To <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that work well in animated UIs, read our palette guide.</p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-5">
+               <div>
+                  <h3 class="font-semibold mb-1">What is CSS animation?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">CSS animation is a method of animating HTML elements without JavaScript. It uses @keyframes to define styles at various points in the animation cycle and the animation property to apply those keyframes with timing, duration, and repetition settings.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How to create keyframes in CSS?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Use the @keyframes rule followed by a name, then define percentage-based steps (0%, 50%, 100%) with the CSS properties you want to change at each step. For example: @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(100px); } }</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What is animation timing function?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">The animation-timing-function defines the speed curve of an animation. Common values include linear (constant speed), ease (slow start and end), ease-in (slow start), ease-out (slow end), and ease-in-out (slow both ends).</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How to optimize animations for performance?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Only animate transform and opacity properties. Use will-change on animated elements, avoid animating width, height, top, or left, and respect the prefers-reduced-motion media query for accessibility.</p>
+               </div>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card text-center">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                  <i class="fab fa-pinterest-p"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                  <i class="fas fa-link"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
+
+         <section class="glass-card p-8 shimmer-card text-center">
+            <h2 class="text-2xl font-bold mb-4">Explore More Color Tools</h2>
+            <p class="text-slate-500 mb-4 text-sm">Take your designs further with these resources:</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/blog/color-palettes-in-design/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
+            </div>
+         </section>
+         
+      </div>
+      <!-- End SEO Content -->
+
+    </div>
+  </main>
+  <div id="footer-container"></div>
+<script src="/assets/js/common.js"></script>
+  <script src="/assets/js/css-animation-generator.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
