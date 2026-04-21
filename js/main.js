@@ -413,6 +413,9 @@ const NAV_CATEGORIES = [
       { label: 'SEO Analyzer', path: 'seo-analyzer/' },
       { label: 'Open Graph Generator', path: 'open-graph-generator/' },
       { label: 'JSON Formatter', path: 'json-formatter/' },
+      { label: 'Robots Txt Generator', path: 'robots-txt-generator/' },
+      { label: 'Sitemap Generator', path: 'sitemap-xml-generator/'},
+      { label: 'UTM Builder', path: 'utm-builder/'},
     ]
   },
   {
@@ -420,8 +423,6 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Test', path: 'color-accessibility/' },
-      { label: 'Robots Txt Generator', path: 'robots-txt-generator/' },
-      { label: 'Sitemap Generator', path: 'sitemap-xml-generator/'},
       // { label: 'Opacity Checker', path: 'color-opacity/' },
       // { label: 'Color Diff', path: 'color-diff-checker/' },
       // { label: 'Color Preview', path: 'color-preview/' }
