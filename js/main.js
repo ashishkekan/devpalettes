@@ -377,90 +377,88 @@ const Navbar = {
 
 const NAV_CATEGORIES = [
   {
-    label: 'Color Lab',
+    label: 'Color Tools',
     tools: [
-      { label: 'Color from image', path: 'color-from-image/' },
-      { label: 'AI Palette generator', path: 'palettes/' },
-      { label: 'Gradient Maker', path: 'gradient/' },
-      { label: 'Color Converter', path: 'converter/' },
-      { label: 'Color Wheel', path: 'color-wheel/' },
+      { label: 'Extract Colors from Image', path: 'color-from-image/' },
+      { label: 'AI Color Palette Generator', path: 'palettes/' },
+      { label: 'CSS Gradient Generator', path: 'gradient/' },
+      { label: 'HEX to RGB Color Converter', path: 'converter/' },
+      { label: 'Interactive Color Wheel Tool', path: 'color-wheel/' },
     ]
   },
   {
-    label: 'UI Forge',
+    label: 'CSS Generators',
     tools: [
-      { label: 'Box Shadow Generator', path: 'box-shadow-generator/' },
+      { label: 'Box Shadow CSS Generator', path: 'box-shadow-generator/' },
       { label: 'Border Radius Generator', path: 'border-radius-generator/' },
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
-      { label: 'Glassmorphism', path: 'glassmorphism-generator/' },
-      { label: 'Neumorphism', path: 'neumorphism-generator/' },
+      { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
+      { label: 'Neumorphism CSS Generator', path: 'neumorphism-generator/' },
       // { label: 'Button Maker', path: 'button-generator/' },
       // { label: 'Card UI', path: 'card-generator/' },
       // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
     ]
   },
   {
-    label: 'Dev Utilities',
+    label: 'SEO Tools',
     tools: [
-      // { label: 'Lorem Ipsum', path: 'lorem-ipsum-generator/' },
-      // { label: 'REM ↔ PX', path: 'rem-px-converter/' },
-      // { label: 'Text Diff', path: 'text-diff-checker/' },
-      { label: 'Snippets', path: 'code-snippet-manager/' },
-      // { label: 'Scroll Bar', path: 'scroll-progress-generator/' },
-      { label: 'Meta Tags Generator', path: 'meta-tag-generator/' },
-      { label: 'Keyword Checker', path: 'keyword-density-checker/' },
-      // { label: 'Text Formatter', path: 'text-formatter/' },
-      { label: 'SEO Analyzer', path: 'seo-analyzer/' },
-      { label: 'Open Graph Generator', path: 'open-graph-generator/' },
-      { label: 'JSON Formatter', path: 'json-formatter/' },
-      { label: 'Robots Txt Generator', path: 'robots-txt-generator/' },
-      { label: 'Sitemap Generator', path: 'sitemap-xml-generator/'},
-      { label: 'UTM Builder', path: 'utm-builder/'},
+      // { label: 'Lorem Ipsum Generator', path: 'lorem-ipsum-generator/' },
+      // { label: 'REM to PX Converter', path: 'rem-px-converter/' },
+      // { label: 'Text Difference Checker', path: 'text-diff-checker/' },
+      // { label: 'Scroll Progress Bar Generator', path: 'scroll-progress-generator/' },
+      { label: 'Meta Tags Generator Tool', path: 'meta-tag-generator/' },
+      // { label: 'Text Formatter Tool', path: 'text-formatter/' },
+      { label: 'SEO Analyzer Tool', path: 'seo-analyzer/' },
+      { label: 'Open Graph Meta Generator', path: 'open-graph-generator/' },
+      { label: 'Robots.txt Generator Tool', path: 'robots-txt-generator/' },
+      { label: 'XML Sitemap Generator', path: 'sitemap-xml-generator/' },
+      { label: 'UTM URL Builder', path: 'utm-builder/' },
     ]
   },
   {
-    label: 'Accessibility',
+    label: 'Accessibility Tools',
     tools: [
-      { label: 'WCAG Contrast Checker', path: 'wcag-contrast-checker/' },
-      { label: 'Color Accessibility Test', path: 'color-accessibility/' },
-      // { label: 'Opacity Checker', path: 'color-opacity/' },
-      // { label: 'Color Diff', path: 'color-diff-checker/' },
-      // { label: 'Color Preview', path: 'color-preview/' }
+      { label: 'WCAG Contrast Checker Tool', path: 'wcag-contrast-checker/' },
+      { label: 'Color Accessibility Checker', path: 'color-accessibility/' },
+      // { label: 'Opacity Checker Tool', path: 'color-opacity/' },
+      { label: 'Color Difference Checker', path: 'color-diff-checker/' },
+      // { label: 'Color Preview Tool', path: 'color-preview/' }
     ]
   },
   {
-    label: 'Layout',
+    label: 'CSS Layout Tools',
     tools: [
-      { label: 'Flexbox', path: 'flexbox/' },
-      { label: 'CSS Grid Generator', path: 'css-grid-generator/' },
-      // { label: 'Aspect Ratio', path: 'aspect-ratio-calculator/' },
-      { label: '3D Transform Tool', path: 'css-3d-transform-tool/' },
-      { label: 'Clip Path Generator', path: 'clip-path-generator/' },
-      // { label: 'CSS Filters', path: 'css-filter-generator/' }
+      { label: 'Flexbox Layout Generator', path: 'flexbox/' },
+      { label: 'CSS Grid Generator Tool', path: 'css-grid-generator/' },
+      // { label: 'Aspect Ratio Calculator', path: 'aspect-ratio-calculator/' },
+      { label: 'CSS 3D Transform Tool', path: 'css-3d-transform-tool/' },
+      { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
+      // { label: 'CSS Filter Generator', path: 'css-filter-generator/' }
     ]
   },
   {
-    label: 'Palettes',
+    label: 'Color Palettes',
     tools: [
-      { label: 'Pastel Color Palette', path: 'pastel-color-palettes/' },
-      { label: 'Dark Color Palette', path: 'dark-color-palettes/' },
-      { label: 'Neon Color Palette', path: 'neon-color-palettes/' },
-      { label: 'Aesthetic Color Palette', path: 'aesthetic-color-palettes/' },
-      { label: 'Gradient Color Palette', path: 'gradient-color-palettes/' },
-      { label: 'Minimal Color Palette', path: 'minimal-color-palettes/' },
+      { label: 'Pastel Color Palettes', path: 'pastel-color-palettes/' },
+      { label: 'Dark Color Palettes', path: 'dark-color-palettes/' },
+      { label: 'Neon Color Palettes', path: 'neon-color-palettes/' },
+      { label: 'Aesthetic Color Palettes', path: 'aesthetic-color-palettes/' },
+      { label: 'Gradient Color Palettes', path: 'gradient-color-palettes/' },
+      { label: 'Minimal Color Palettes', path: 'minimal-color-palettes/' },
     ]
   },
   {
-    label: 'Pro Tools',
+    label: 'AI & Pro Tools',
     tools: [
-      { label: 'Image to Gradient', path: 'image-to-gradient-generator/' },
-      { label: 'Extract Brand Colors', path: 'brand-color-extractor/' },
-      // { label: 'Tailwind Colors', path: 'tailwind-color-palette-generator/' },
-      // { label: 'Bootstrap Colors', path: 'bootstrap-color-palette-generator/' },
-      // { label: 'SVG Editor', path: 'svg-color-editor/' },
-      { label: 'Social Preview Maker', path: 'social-meta-preview/' },
-      { label: 'Landing Page Builder', path: 'page-builder/' },
-      { label: 'ATS Resume Checker', path: 'ats-checker/' },
+      { label: 'Image to Gradient Generator', path: 'image-to-gradient-generator/' },
+      { label: 'Brand Color Extractor Tool', path: 'brand-color-extractor/' },
+      // { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
+      // { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
+      // { label: 'SVG Color Editor Tool', path: 'svg-color-editor/' },
+      { label: 'Code Snippet Manager', path: 'code-snippet-manager/' },
+      { label: 'Social Media Preview Generator', path: 'social-meta-preview/' },
+      { label: 'Landing Page Builder Tool', path: 'page-builder/' },
+      { label: 'ATS Resume Checker Tool', path: 'ats-checker/' },
     ]
   }
 ];
@@ -667,7 +665,7 @@ function renderNavbar() {
   const navHTML = `
     <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-14 sm:h-12">
+        <div class="flex items-center justify-between h-14 sm:h-11">
           <!-- Logo -->
           <a href="${navHref('')}" class="flex items-center gap-2 group">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">
