@@ -575,7 +575,7 @@
         </div>
       </div>
       <!-- FAQ Section -->
-          <section id="faq-section" class="glass-card p-8 shimmer-card">
+          <section id="faq-section" class="glass-card p-8 shimmer-card mt-8">
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4">
               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
@@ -625,9 +625,53 @@
               </div>
             </div>
           </section>
+
+      <!-- SEO ADDITION: Social Sharing Section -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-3">Share This Guide</h2>
+        <p class="text-slate-500 mb-5 text-sm">Found this SEO meta tags guide useful? Share it with developers and marketers in your network.</p>
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/seo-meta-tag-guide/&text=SEO%20Meta%20Tags%20Guide%20%E2%80%93%20complete%20reference%202026" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+            <i class="fab fa-x-twitter"></i> Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/seo-meta-tag-guide/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/seo-meta-tag-guide/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.reddit.com/submit?url=https://devpalettes.com/seo-meta-tag-guide/&title=SEO%20Meta%20Tags%20Guide%20%E2%80%93%20Complete%20Reference" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Reddit">
+            <i class="fab fa-reddit-alien"></i> Reddit
+          </a>
+          <a href="https://t.me/share/url?url=https://devpalettes.com/seo-meta-tag-guide/&text=SEO%20meta%20tags%20guide%20%E2%80%93%20complete%20reference%202026" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Telegram">
+            <i class="fab fa-telegram-plane"></i> Telegram
+          </a>
+          <a href="mailto:?subject=SEO%20Meta%20Tags%20Guide&body=Check%20out%20this%20guide%3A%20https://devpalettes.com/seo-meta-tag-guide/" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share via Email">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+            <i class="fas fa-link"></i> Copy Link
+          </button>
+        </div>
+      </section>
+
+      <!-- SEO ADDITION: Share & Reference This Guide -->
+      <section class="glass-card p-8 shimmer-card mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-4">Share & Reference This Guide</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          If you found this SEO meta tags guide helpful, consider linking to it from your blog, resource page, or developer community. Natural backlinks from educational and professional communities help more creators discover proper meta tag implementation.
+        </p>
+        <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
+          <p class="text-xs text-slate-500 mb-2 font-semibold">Link to this page:</p>
+          <code class="text-sm font-mono text-slate-600 dark:text-slate-300 break-all select-all">https://devpalettes.com/seo-meta-tag-guide/</code>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mt-4">
+          You are free to reference or excerpt portions of this guide in your own content with a proper link back to the original source. This helps us keep updating and expanding these free resources for the community.
+        </p>
+      </section>
          
          <!-- Internal Links -->
-         <section class="glass-card p-8 shimmer-card text-center">
+         <section class="glass-card p-8 shimmer-card text-center mt-12">
             <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Put your meta tag knowledge into practice with these free tools.</p>
             <div class="flex flex-wrap justify-center gap-3">
@@ -653,5 +697,41 @@
   <script src="../../js/main.js"></script>
   <script src="../../js/seo-meta-tags-guide.js"></script>
   <script src="../../js/enhancements.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
