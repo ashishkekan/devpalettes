@@ -115,26 +115,16 @@
   </script>
   
   <!-- CRITICAL: Inline fallback CSS - ensures content ALWAYS renders -->
-  <!-- This covers: prose typography, animate-on-scroll visibility, glass-card styling, spectrum line -->
-  <!-- Without this, if external CSS fails, content is invisible -->
   <style>
-    /* animate-on-scroll: local works via enhancements.js revealing, but if JS fails content stays hidden.
-       This makes content visible by default; enhancements.js adds animation on top. */
     .animate-on-scroll {
       opacity: 1 !important;
       transform: none !important;
       filter: none !important;
     }
-
-    /* shimmer-card */
     .shimmer-card {
       position: relative;
       overflow: hidden;
     }
-
-    /* Prose typography - mirrors @tailwindcss/typography plugin.
-       The Tailwind CDN does NOT include this plugin by default, so `prose` class alone
-       would strip all typography styles. This fallback ensures content always looks correct. */
     .prose { color: #334155; line-height: 1.75; max-width: 65ch; }
     .prose h1 { font-size: 2.25em; font-weight: 800; margin-top: 0; margin-bottom: 0.8889em; line-height: 1.1; color: #0f172a; }
     .prose h2 { font-size: 1.5em; font-weight: 700; margin-top: 2em; margin-bottom: 1em; line-height: 1.3; color: #0f172a; }
@@ -155,8 +145,6 @@
     .prose pre code { background: none; padding: 0; color: inherit; }
     .prose > *:first-child { margin-top: 0 !important; }
     .prose > *:last-child { margin-bottom: 0 !important; }
-
-    /* Dark mode prose */
     .dark .prose { color: #94a3b8; }
     .dark .prose h1, .dark .prose h2 { color: #f1f5f9; }
     .dark .prose h3, .dark .prose h4 { color: #e2e8f0; }
@@ -166,8 +154,6 @@
     .dark .prose blockquote { border-left-color: #334155; }
     .dark .prose hr { border-color: #1e293b; }
     .dark .prose code { background-color: #1e293b; color: #34d399; }
-
-    /* Glass card */
     .glass-card {
       background: rgba(255, 255, 255, 0.8);
       backdrop-filter: blur(16px);
@@ -192,8 +178,6 @@
       .glass-card { padding: 1rem !important; margin: 0.5rem 0; border-radius: 12px; }
       .glass-card:hover { transform: none; }
     }
-
-    /* Spectrum line */
     .spectrum-line {
       height: 4px;
       background: linear-gradient(90deg, #10b981, #0d9488, #f97316, #ec4899, #8b5cf6, #10b981);
@@ -205,8 +189,6 @@
       0% { background-position: 0% 50%; }
       100% { background-position: 200% 50%; }
     }
-
-    /* Div margin */
     .div-margin { margin-top: 40px; }
   </style>
 
@@ -216,9 +198,7 @@
 
   <!-- Local Tailwind as enhancement (non-blocking, won't block page) -->
   <script>
-    // Only load local tailwind if CDN fails or for development
     window.addEventListener('load', function() {
-      // If Tailwind CDN classes are working, skip local
       var testEl = document.createElement('div');
       testEl.className = 'bg-red-500 text-white p-4';
       testEl.style.display = 'none';
@@ -266,23 +246,23 @@
         <div class="prose dark:prose-invert max-w-none">
           
           <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Colors are far more than visual decoration—they are powerful communicators that influence our emotions, behaviors, and decisions in profound ways. The field of color psychology explores these effects, providing designers with valuable insights for creating more effective and emotionally resonant work. This comprehensive guide examines the psychological impact of colors and offers practical strategies for leveraging color psychology in your design projects.
+            Colors are far more than visual decoration—they are powerful communicators that influence our emotions, behaviors, and decisions in profound ways. The field of <a href="https://en.wikipedia.org/wiki/Color_psychology" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">color psychology</a> explores these effects, providing designers with valuable insights for creating more effective and emotionally resonant work. This comprehensive guide examines the psychological impact of colors and offers practical strategies for leveraging color psychology in your design projects. Once your design is ready for launch, ensure it reaches your audience by running it through an <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO analyzer</a> and setting up proper <a href="/meta-tag-generator/" class="text-emerald-500 hover:underline">meta tags</a>.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">The Science Behind Color Psychology</h2>
           
           <p>
-            Color psychology is rooted in both biological and cultural factors. Our eyes perceive color through specialized cells called cones, which send signals to the brain that trigger various physiological and psychological responses. These responses can include changes in heart rate, appetite, and mood. Research has shown that exposure to certain colors can affect hormone production, including cortisol (stress) and melatonin (sleep), demonstrating the tangible physiological impact of color perception.
+            Color psychology is rooted in both biological and cultural factors. Our eyes perceive color through specialized cells called cones, which send signals to the brain that trigger various physiological and psychological responses. These responses can include changes in heart rate, appetite, and mood. Research has shown that exposure to certain colors can affect hormone production, including cortisol (stress) and melatonin (sleep), demonstrating the tangible physiological impact of color perception. For a technical look at how browsers interpret and render color values in web design, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">MDN CSS color value reference</a> is an excellent resource.
           </p>
           
           <p>
-            However, color psychology is not purely biological—cultural associations play a significant role in how we interpret and respond to colors. White, for example, symbolizes purity and weddings in Western cultures but is associated with mourning in many Eastern cultures. Understanding both the universal and culturally-specific aspects of color psychology is essential for designers working in global contexts or targeting diverse audiences.
+            However, color psychology is not purely biological—cultural associations play a significant role in how we interpret and respond to colors. White, for example, symbolizes purity and weddings in Western cultures but is associated with mourning in many Eastern cultures. Understanding both the universal and culturally-specific aspects of color psychology is essential for designers working in global contexts or targeting diverse audiences. When working with global teams, a <a href="/url-tool/" class="text-emerald-500 hover:underline">URL encoder</a> can help ensure your international URLs and localized parameters are correctly formatted.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Color Meanings Cheat Sheet</h2>
           
           <p>
-             Quickly reference the core emotions associated with common design colors. This cheat sheet is a great starting point when conceptualizing your next project. To experiment with these hues, you can use our <a href="/palettes/" class="text-emerald-500 hover:underline">color palette generator</a>.
+             Quickly reference the core emotions associated with common design colors. This cheat sheet is a great starting point when conceptualizing your next project. To experiment with these hues and generate harmonious combinations, you can use our <a href="/palettes/" class="text-emerald-500 hover:underline">color palette generator</a>. If you want to identify the exact name of any color you encounter, our <a href="/color-namer/" class="text-emerald-500 hover:underline">color name finder</a> can help.
           </p>
           
           <!-- Color cards grid -->
@@ -338,33 +318,33 @@
           </p>
           
           <p>
-            In branding, red communicates passion, energy, and boldness. Brands like Coca-Cola, Netflix, and YouTube use red to project confidence and vitality. In UI design, red is the universal color for errors and warnings, leveraging its association with danger to capture attention. When using red, consider the specific shade—bright reds feel energetic and modern, while deeper reds convey sophistication and tradition.
+            In branding, red communicates passion, energy, and boldness. Brands like Coca-Cola, Netflix, and YouTube use red to project confidence and vitality. In UI design, red is the universal color for errors and warnings, leveraging its association with danger to capture attention. When using red, consider the specific shade—bright reds feel energetic and modern, while deeper reds convey sophistication and tradition. You can precisely tweak red's saturation and lightness using our <a href="/converter/" class="text-emerald-500 hover:underline">HSL/HEX to RGB converter</a>, or compare different red variations with a <a href="/color-diff-checker/" class="text-emerald-500 hover:underline">color difference checker</a> to ensure your reds are distinct enough from one another.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Blue: Trust, Calm, and Professionalism</h2>
           
           <p>
-            Blue is consistently rated as the most popular color across cultures, and its psychological effects help explain this widespread appeal. Blue has been shown to lower blood pressure and heart rate, creating a sense of calm and relaxation. This makes blue ideal for healthcare environments, financial services, and any context where trust and stability are paramount. The association of blue with the sky and ocean gives it a timeless, universal quality.
+            Blue is consistently rated as the most popular color across cultures, and its psychological effects help explain this widespread appeal. Blue has been shown to lower blood pressure and heart rate, creating a sense of calm and relaxation. This makes blue ideal for healthcare environments, financial services, and any context where trust and stability are paramount. The association of blue with the sky and ocean gives it a timeless, universal quality. For a deeper look at how blue and other colors work in dark interfaces specifically, read our <a href="/blog/dark-mode-color-guide/" class="text-emerald-500 hover:underline">dark mode color guide</a>.
           </p>
           
           <p>
-            Tech companies, banks, and healthcare providers frequently choose blue for their branding, leveraging its associations with trust, intelligence, and reliability. Facebook, LinkedIn, Intel, and countless financial institutions use various shades of blue. In interface design, blue is commonly used for links and interactive elements because users intuitively understand that blue indicates clickability. Different blues convey different messages—navy suggests authority and tradition, while brighter blues feel more modern and approachable.
+            Tech companies, banks, and healthcare providers frequently choose blue for their branding, leveraging its associations with trust, intelligence, and reliability. Facebook, LinkedIn, Intel, and countless financial institutions use various shades of blue. In interface design, blue is commonly used for links and interactive elements because users intuitively understand that blue indicates clickability. Different blues convey different messages—navy suggests authority and tradition, while brighter blues feel more modern and approachable. To explore the full range of blue tones, our <a href="/tints-and-shades/" class="text-emerald-500 hover:underline">tints and shades generator</a> lets you visualize every variation from a single blue starting point.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Best Colors for UI Design</h2>
           
           <p>
-             In User Interface (UI) design, color psychology must balance aesthetics with function. <strong>Blue</strong> is the safest choice for primary actions and navigation due to its high trust factor. <strong>Green</strong> is reserved for success states (e.g., "Payment Successful"). <strong>Red</strong> is critical for errors but should be used sparingly to avoid alarm fatigue. For backgrounds, neutral colors like white, light gray, or soft pastels reduce cognitive load, allowing the eye to focus on interactive elements.
+             In User Interface (UI) design, color psychology must balance aesthetics with function. <strong>Blue</strong> is the safest choice for primary actions and navigation due to its high trust factor. <strong>Green</strong> is reserved for success states (e.g., "Payment Successful"). <strong>Red</strong> is critical for errors but should be used sparingly to avoid alarm fatigue. For backgrounds, neutral colors like white, light gray, or soft pastels reduce cognitive load, allowing the eye to focus on interactive elements. If you want to explore pastel approaches, our <a href="/blog/pastel-color-guide/" class="text-emerald-500 hover:underline">pastel color guide</a> covers soft palettes in depth.
           </p>
           
           <p>
-             When designing interfaces, ensure sufficient contrast for accessibility. A common mistake is using color alone to convey meaning; always pair color with text or icons. For example, a "Delete" button should be red but also labeled clearly. For generating accessible UI palettes quickly, you can use our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> or check contrast with our <a href="/blog/color-blindness-in-ui-design/" class="text-emerald-500 hover:underline">accessibility guide</a>.
+             When designing interfaces, ensure sufficient contrast for accessibility. The <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">W3C WCAG contrast guidelines</a> require specific minimum ratios for text readability. A common mistake is using color alone to convey meaning; always pair color with text or icons. For example, a "Delete" button should be red but also labeled clearly. For generating accessible UI palettes quickly, you can use our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a>, verify contrast with our <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline">contrast checker</a>, and preview how your color choices appear to users with color vision deficiencies using a <a href="/color-blindness/" class="text-emerald-500 hover:underline">color blindness simulator</a>. For more on designing inclusively, check our <a href="/blog/color-blindness-in-ui-design/" class="text-emerald-500 hover:underline">accessibility guide</a>.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Green: Nature, Growth, and Balance</h2>
           
           <p>
-            Green's strong association with nature gives it unique psychological properties. Research suggests that exposure to green can reduce stress and improve focus, which explains why green is often used in educational and healthcare settings. Green represents growth, renewal, and environmental consciousness—associations that make it particularly effective for brands focused on sustainability, health, and wellness.
+            Green's strong association with nature gives it unique psychological properties. Research suggests that exposure to green can reduce stress and improve focus, which explains why green is often used in educational and healthcare settings. Green represents growth, renewal, and environmental consciousness—associations that make it particularly effective for brands focused on sustainability, health, and wellness. To create harmonious green-based palettes.
           </p>
           
           <p>
@@ -374,37 +354,41 @@
           <h2 class="text-2xl font-bold mt-8 mb-4">Yellow and Orange: Optimism and Energy</h2>
           
           <p>
-            Yellow and orange are among the most visible colors, capturing attention quickly and evoking feelings of warmth, optimism, and creativity. Yellow is processed first by the human eye, making it excellent for warning signs and attention-grabbing elements. However, yellow can also cause eye fatigue in large amounts and is associated with caution—think of traffic signs and hazard warnings.
+            Yellow and orange are among the most visible colors, capturing attention quickly and evoking feelings of warmth, optimism, and creativity. Yellow is processed first by the human eye, making it excellent for warning signs and attention-grabbing elements. However, yellow can also cause eye fatigue in large amounts and is associated with caution—think of traffic signs and hazard warnings. To see how yellow transforms across different tint levels, our <a href="/tints-and-shades/" class="text-emerald-500 hover:underline">tints and shades generator</a> is a practical tool.
           </p>
           
           <p>
-            Orange combines the energy of red with the cheerfulness of yellow, creating a color that feels friendly and approachable. It's associated with creativity, enthusiasm, and affordability. Brands targeting younger audiences or emphasizing value often use orange effectively. In UI design, orange is a popular alternative to red for calls-to-action when you want to encourage action without creating urgency.
+            Orange combines the energy of red with the cheerfulness of yellow, creating a color that feels friendly and approachable. It's associated with creativity, enthusiasm, and affordability. Brands targeting younger audiences or emphasizing value often use orange effectively. In UI design, orange is a popular alternative to red for calls-to-action when you want to encourage action without creating urgency. For best results, use a <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline">contrast checker</a> to verify that yellow and orange elements remain readable against light backgrounds.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Purple: Luxury, Creativity, and Mystery</h2>
           
           <p>
-            Purple occupies a unique space in color psychology, combining the stability of blue with the energy of red. Historically, purple dye was expensive and rare, making purple the color of royalty and luxury. These associations persist today—purple conveys sophistication, creativity, and premium quality. Brands in beauty, luxury goods, and creative industries often leverage purple's unique psychological profile.
+            Purple occupies a unique space in color psychology, combining the stability of blue with the energy of red. Historically, purple dye was expensive and rare, making purple the color of royalty and luxury. These associations persist today—purple conveys sophistication, creativity, and premium quality. Brands in beauty, luxury goods, and creative industries often leverage purple's unique psychological profile. Lighter purples and lavenders have their own nuanced effects—explore these in our <a href="/blog/pastel-color-guide/" class="text-emerald-500 hover:underline">pastel color guide</a>.
           </p>
           
           <p>
-            Lighter purples, like lavender, evoke feelings of nostalgia, romance, and calm. Deeper purples suggest richness and drama. Purple is also associated with spirituality and mindfulness, making it popular for wellness and meditation applications. When using purple, balance is key—too much can feel artificial or overwhelming, but strategic use adds sophistication and depth.
+            Lighter purples, like lavender, evoke feelings of nostalgia, romance, and calm. Deeper purples suggest richness and drama. Purple is also associated with spirituality and mindfulness, making it popular for wellness and meditation applications. When using purple, balance is key—too much can feel artificial or overwhelming, but strategic use adds sophistication and depth. To convert between color formats when working with purple values, our <a href="/converter/" class="text-emerald-500 hover:underline">HEX to RGB converter</a> and <a href="/converter/" class="text-emerald-500 hover:underline">color converter</a> handle the calculations instantly.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Neutral Colors: Sophistication and Balance</h2>
           
           <p>
-            Black, white, and gray may not be on the color wheel, but they play crucial roles in design psychology. Black conveys sophistication, power, and elegance. It's favored by luxury brands and is associated with exclusivity and timelessness. Studies have shown that black packaging can increase perceived product value by up to 10%. In web design, black creates dramatic contrast and draws attention to colorful elements.
+            Black, white, and gray may not be on the color wheel, but they play crucial roles in design psychology. Black conveys sophistication, power, and elegance. It's favored by luxury brands and is associated with exclusivity and timelessness. Studies have shown that black packaging can increase perceived product value by up to 10%. In web design, black creates dramatic contrast and draws attention to colorful elements. For dark interfaces built around black and near-black tones, our <a href="/blog/dark-mode-color-guide/" class="text-emerald-500 hover:underline">dark mode color guide</a> covers elevation, contrast, and accent color strategies in detail.
           </p>
           
           <p>
-            White represents purity, cleanliness, and simplicity. It creates a sense of space and allows other colors to shine. Apple's use of white in product design and branding exemplifies how white can communicate premium simplicity. Gray serves as a sophisticated neutral that can feel either warm or cool depending on its undertones. It provides a contemporary backdrop that lets content take center stage while adding more depth than pure white.
+            White represents purity, cleanliness, and simplicity. It creates a sense of space and allows other colors to shine. Apple's use of white in product design and branding exemplifies how white can communicate premium simplicity. Gray serves as a sophisticated neutral that can feel either warm or cool depending on its undertones. It provides a contemporary backdrop that lets content take center stage while adding more depth than pure white. If your neutral-heavy design uses gradient transitions, our <a href="/css-gradient-generator/" class="text-emerald-500 hover:underline">CSS gradient generator</a> can help you build smooth gray-to-color blends.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">How to Choose Colors for Your Brand</h2>
           
           <p>
-             Selecting a brand color palette is a critical strategic decision. Start by defining your brand's personality—are you bold and loud, or calm and reliable? If your brand is adventurous, reds and oranges are suitable. If it is professional and secure, blues and greys are better. Look at your competitors; while you want to stand out, understanding industry norms helps you signal the right message. Finally, test your choices. Use our tools to create variations and see what resonates with your audience. Explore more tips in our <a href="/blog/" class="text-emerald-500 hover:underline">Design Guides</a>.
+             Selecting a brand color palette is a critical strategic decision. Start by defining your brand's personality—are you bold and loud, or calm and reliable? If your brand is adventurous, reds and oranges are suitable. If it is professional and secure, blues and greys are better. Look at your competitors; while you want to stand out, understanding industry norms helps you signal the right message. For comprehensive guidance on how branding intersects with search visibility, <a href="https://moz.com/learn/seo" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">Moz's SEO learning center</a> covers the relationship between brand signals and organic performance. You should also check your branded content's keyword usage with a <a href="/keyword-density-checker/" class="text-emerald-500 hover:underline">keyword density checker</a> to ensure your color-themed pages rank for relevant search queries.
+          </p>
+          
+          <p>
+             Finally, test your choices. Use our tools to create variations and see what resonates with your audience. Explore more tips in our <a href="/blog/" class="text-emerald-500 hover:underline">Design Guides</a>, including our guide on the <a href="/blog/best-color-combinations/" class="text-emerald-500 hover:underline">best color combinations</a> and <a href="/blog/color-temperature-ui/" class="text-emerald-500 hover:underline">color temperature in UI</a>. To keep your color-rich pages loading fast, use a <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS minifier</a> and <a href="/js-minifier/" class="text-emerald-500 hover:underline">JavaScript minifier</a> to reduce asset sizes.
           </p>
           
           <h2 class="text-2xl font-bold mt-8 mb-4">Frequently Asked Questions</h2>
@@ -419,7 +403,7 @@
             <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
               <h3 class="font-bold text-lg mb-2">Which color is best for call-to-action buttons?</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm">
-                Red and orange are often best for call-to-action buttons because they create urgency and attract attention. However, the best color depends on the background contrast and overall brand palette.
+                Red and orange are often best for call-to-action buttons because they create urgency and attract attention. However, the best color depends on the background contrast and overall brand palette. Always verify your button contrast with a <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline">contrast checker</a>, and monitor how your landing pages perform in <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">Google Search Console</a>.
               </p>
             </div>
             <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
@@ -433,20 +417,127 @@
           <h2 class="text-2xl font-bold mt-8 mb-4">Conclusion</h2>
           
           <p>
-            Color psychology offers powerful insights for creating designs that resonate emotionally and drive desired behaviors. By understanding how different colors affect perception and emotion, designers can make more informed choices that support their objectives. Whether you're designing a brand identity, user interface, or marketing campaign, thoughtful color selection based on psychological principles can significantly enhance effectiveness. Use our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> to explore different palettes and discover the perfect colors for your next project.
+            Color psychology offers powerful insights for creating designs that resonate emotionally and drive desired behaviors. By understanding how different colors affect perception and emotion, designers can make more informed choices that support their objectives. Whether you're designing a brand identity, user interface, or marketing campaign, thoughtful color selection based on psychological principles can significantly enhance effectiveness. Use our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> to explore different palettes and discover the perfect colors for your next project. Before launching, run a final <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO audit</a> and configure your <a href="/robots-txt-generator/" class="text-emerald-500 hover:underline">robots.txt</a> and <a href="/sitemap-xml-generator/" class="text-emerald-500 hover:underline">XML sitemap</a> so search engines can properly crawl and index your content.
           </p>
           
         </div>
       </div>
+
+      <!-- SEO ADDITION: Social Sharing Section -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-3">Share This Guide</h2>
+        <p class="text-slate-500 mb-5 text-sm">Found this color psychology guide useful? Share it with fellow designers and developers.</p>
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/blog/color-psychology/&text=How%20colors%20affect%20emotions%20in%20design%20%E2%80%93%20color%20psychology%20guide" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+            <i class="fab fa-x-twitter"></i> Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/blog/color-psychology/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/blog/color-psychology/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.reddit.com/submit?url=https://devpalettes.com/blog/color-psychology/&title=Color%20Psychology%20in%20Design%3A%20How%20Colors%20Affect%20Emotions" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Reddit">
+            <i class="fab fa-reddit-alien"></i> Reddit
+          </a>
+          <a href="https://t.me/share/url?url=https://devpalettes.com/blog/color-psychology/&text=Color%20psychology%20guide%20for%20designers" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Telegram">
+            <i class="fab fa-telegram-plane"></i> Telegram
+          </a>
+          <a href="mailto:?subject=Color%20Psychology%20in%20Design&body=Check%20out%20this%20color%20psychology%20guide%3A%20https://devpalettes.com/blog/color-psychology/" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share via Email">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+            <i class="fas fa-link"></i> Copy Link
+          </button>
+        </div>
+      </section>
+
+      <!-- SEO ADDITION: Share & Reference This Guide -->
+      <section class="glass-card p-8 shimmer-card mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-4">Share & Reference This Guide</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          If you found this color psychology guide helpful, consider linking to it from your own blog, design resources page, or tutorial. Natural backlinks from design communities and educational content help others discover these principles.
+        </p>
+        <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
+          <p class="text-xs text-slate-500 mb-2 font-semibold">Link to this page:</p>
+          <code class="text-sm font-mono text-slate-600 dark:text-slate-300 break-all select-all">https://devpalettes.com/blog/color-psychology/</code>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mt-4">
+          You are free to reference or excerpt portions of this guide in your own content with a proper link back to the original source. This helps us keep updating and expanding these free design resources for the community.
+        </p>
+      </section>
+
+      <!-- SEO ADDITION: Related Tools -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-4">Related Design & SEO Tools</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm">Explore more tools to complement your color psychology and design workflow:</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
+          <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
+          <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
+          <a href="/color-diff-checker/" class="btn-secondary text-xs py-2 px-4">Color Difference Checker</a>
+          <a href="/color-names-chart/" class="btn-secondary text-xs py-2 px-4">Color Name Finder</a>
+          <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+          <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">CSS Gradient Generator</a>
+          <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
+          <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+          <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+          <a href="/robots-txt-generator/" class="btn-secondary text-xs py-2 px-4">Robots.txt Generator</a>
+          <a href="/sitemap-xml-generator/" class="btn-secondary text-xs py-2 px-4">Sitemap Generator</a>
+          <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
+          <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+          <a href="/js-minifier/" class="btn-secondary text-xs py-2 px-4">JavaScript Minifier</a>
+          <a href="/url-tool/" class="btn-secondary text-xs py-2 px-4">URL Encoder/Decoder</a>
+        </div>
+      </section>
+
     </div>
   </main>
   
   <!-- Footer -->
   <div id="footer-container"></div>
   
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
   <!-- These load normally as blocking scripts — main.js injects navbar/footer into the DOM -->
-  <!-- They run after all HTML is parsed so getElementById works correctly -->
   <script src="../../js/main.js"></script>
   <script src="../../js/enhancements.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
