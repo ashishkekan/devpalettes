@@ -394,6 +394,10 @@ const NAV_CATEGORIES = [
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
       { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
       { label: 'Neumorphism CSS Generator', path: 'neumorphism-generator/' },
+      { label: 'HTML Minifier', path: 'html-minifier/' },
+      { label: 'CSS Minifier', path: 'css-minifier/' },
+      { label: 'JavaScript Minifier', path: 'js-minifier/' },
+      { label: 'Image Compressor', path: 'image-compressor/' },
       // { label: 'Button Maker', path: 'button-generator/' },
       // { label: 'Card UI', path: 'card-generator/' },
       // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
