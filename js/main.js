@@ -394,13 +394,20 @@ const NAV_CATEGORIES = [
       { label: 'CSS Animation Generator', path: 'css-animation-generator/' },
       { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
       { label: 'Neumorphism CSS Generator', path: 'neumorphism-generator/' },
-      { label: 'HTML Minifier', path: 'html-minifier/' },
-      { label: 'CSS Minifier', path: 'css-minifier/' },
-      { label: 'JavaScript Minifier', path: 'js-minifier/' },
-      { label: 'Image Compressor', path: 'image-compressor/' },
+      { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
       // { label: 'Button Maker', path: 'button-generator/' },
       // { label: 'Card UI', path: 'card-generator/' },
       // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
+    ]
+  },
+  {
+    label: 'Dev Tools',
+    tools: [
+      { label: 'HTML Minifier', path: 'html-minifier/' },
+      { label: 'CSS Minifier', path: 'css-minifier/' },
+      { label: 'JavaScript Minifier', path: 'js-minifier/' },
+      { label: 'JSON Formatter', path: 'json-formatter/' },
+      { label: 'Code Snippet Manager', path: 'code-snippet-manager/' },
     ]
   },
   {
@@ -416,7 +423,8 @@ const NAV_CATEGORIES = [
       { label: 'Open Graph Meta Generator', path: 'open-graph-generator/' },
       { label: 'Robots.txt Generator Tool', path: 'robots-txt-generator/' },
       { label: 'XML Sitemap Generator', path: 'sitemap-xml-generator/' },
-      { label: 'UTM URL Builder', path: 'utm-builder/' },
+      { label: 'UTM Builder', path: 'utm-builder/' },
+      { label: 'Social Media Preview', path: 'social-meta-preview/' },
     ]
   },
   {
@@ -436,33 +444,20 @@ const NAV_CATEGORIES = [
       { label: 'CSS Grid Generator Tool', path: 'css-grid-generator/' },
       // { label: 'Aspect Ratio Calculator', path: 'aspect-ratio-calculator/' },
       { label: 'CSS 3D Transform Tool', path: 'css-3d-transform-tool/' },
-      { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
       // { label: 'CSS Filter Generator', path: 'css-filter-generator/' }
     ]
   },
   {
-    label: 'Palettes',
-    tools: [
-      { label: 'Pastel Color Palettes', path: 'pastel-color-palettes/' },
-      { label: 'Dark Color Palettes', path: 'dark-color-palettes/' },
-      { label: 'Neon Color Palettes', path: 'neon-color-palettes/' },
-      { label: 'Aesthetic Color Palettes', path: 'aesthetic-color-palettes/' },
-      { label: 'Gradient Color Palettes', path: 'gradient-color-palettes/' },
-      { label: 'Minimal Color Palettes', path: 'minimal-color-palettes/' },
-    ]
-  },
-  {
-    label: 'AI & Pro Tools',
+    label: 'Pro Tools',
     tools: [
       { label: 'Image to Gradient Generator', path: 'image-to-gradient-generator/' },
       { label: 'Brand Color Extractor Tool', path: 'brand-color-extractor/' },
       // { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
       // { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
       // { label: 'SVG Color Editor Tool', path: 'svg-color-editor/' },
-      { label: 'Code Snippet Manager', path: 'code-snippet-manager/' },
-      { label: 'Social Media Preview Generator', path: 'social-meta-preview/' },
       { label: 'Landing Page Builder Tool', path: 'page-builder/' },
       { label: 'ATS Resume Checker Tool', path: 'ats-checker/' },
+      { label: 'Image Compressor', path: 'image-compressor/' },
     ]
   }
 ];
