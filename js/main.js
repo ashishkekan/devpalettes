@@ -440,11 +440,11 @@ const NAV_CATEGORIES = [
   {
     label: 'Layouts Tools',
     tools: [
+      { label: 'Aspect Ratio Calculator', path: 'aspect-ratio-calculator/' },
       { label: 'Flexbox Layout Generator', path: 'flexbox/' },
       { label: 'CSS Grid Generator Tool', path: 'css-grid-generator/' },
-      // { label: 'Aspect Ratio Calculator', path: 'aspect-ratio-calculator/' },
       { label: 'CSS 3D Transform Tool', path: 'css-3d-transform-tool/' },
-      // { label: 'CSS Filter Generator', path: 'css-filter-generator/' }
+      { label: 'CSS Filter Generator', path: 'css-filter-generator/' }
     ]
   },
   {
