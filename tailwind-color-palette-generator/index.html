@@ -7,6 +7,7 @@
   <!-- SEO Meta Tags -->
   <title>Tailwind Color Palette Generator – Create Shades 50-950 Instantly</title>
   <meta name="description" content="Generate a complete Tailwind CSS color palette (50-950) from any base color. Export ready-to-use tailwind.config.js code with one click.">
+  <meta name="keywords" content="Tailwind color palette, shade generator, tailwind.config.js, custom colors, CSS color scale, 50-950 shades, brand colors, UI color tokens">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/tailwind-color-palette-generator/">
   
@@ -175,7 +176,7 @@
       <!-- Export Config -->
       <div class="glass-card p-6 shimmer-card animate-on-scroll">
          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 mb-4">
-            <h3 class="text-lg font-bold">tailwind.config.js</h3>
+            <span class="text-lg font-bold">tailwind.config.js</span>
             <div class="flex gap-2">
                <button onclick="copyConfig()" class="btn-secondary text-sm py-2 px-4 copy-btn" aria-label="Copy Tailwind config">
                   <i class="fas fa-copy mr-1"></i>Copy
@@ -191,9 +192,9 @@
       <div class="prose prose-slate dark:prose-invert max-w-7xl mx-auto my-16 animate-on-scroll">
          <h2 class="text-2xl font-bold mb-4">What is the Tailwind CSS Color System?</h2>
          <p>Unlike traditional CSS frameworks that use a handful of named colors, Tailwind CSS employs a numeric shade system ranging from <code>50</code> (lightest) to <code>950</code> (darkest). Each number represents a specific brightness level, and the entire scale is designed to be perceptually uniform — meaning the visual difference between 100 and 200 should feel similar to the difference between 700 and 800.</p>
-         <p>This approach gives developers fine-grained control over color usage. Need a subtle background? Use <code>bg-blue-50</code>. Need a bold heading? Use <code>text-blue-800</code>. The 500 shade serves as the base identity of the color, and all other shades are derived from it. If you are migrating from another framework, check out our <a href="/bootstrap-color-generator/">Bootstrap color generator</a> for a semantic color approach.</p><br>
+         <p>This approach gives developers fine-grained control over color usage. Need a subtle background? Use <code>bg-blue-50</code>. Need a bold heading? Use <code>text-blue-800</code>. The 500 shade serves as the base identity of the color, and all other shades are derived from it. If you are migrating from another framework, check out our <a href="/bootstrap-color-generator/">Bootstrap color generator</a> for a semantic color approach. To explore more palettes beyond this tool, browse our <a href="/palettes/">color palette generator</a>.</p><br>
 
-         <h2 class="text-2xl font-bold mb-4">How to Add Custom Colors to Tailwind CSS</h2>
+         <h2 class="text-2xl font-bold mb-4">Adding Custom Colors</h2>
          <p>To add a custom color palette to your Tailwind project, you extend the <code>theme</code> object inside <code>tailwind.config.js</code>. Under <code>theme.extend.colors</code>, you define a key (like <code>brand</code> or <code>primary</code>) and provide an object with shade values from 50 to 950. Here is an example:</p>
          <pre>
             <code class="language-js">module.exports = {
@@ -212,39 +213,39 @@
                 }
               }</code>
          </pre>
-         <p>Once configured, you can use utility classes like <code>bg-brand-500</code>, <code>text-brand-900</code>, or <code>border-brand-200</code> anywhere in your HTML. Our generator produces exactly this format, so you can copy-paste it directly into your config file. Need to find the right base color first? Try our <a href="/color-converter/">color converter tool</a> to switch between HEX, RGB, and HSL formats.</p><br>
+         <p>Once configured, you can use utility classes like <code>bg-brand-500</code>, <code>text-brand-900</code>, or <code>border-brand-200</code> anywhere in your HTML. Our generator produces exactly this format, so you can copy-paste it directly into your config file. For the official documentation on extending themes, see the <a href="https://tailwindcss.com/docs/customizing-colors" target="_blank" rel="noopener noreferrer">Tailwind CSS color customization guide</a>. Need to find the right base color first? Try our <a href="/color-converter/">color converter tool</a> to switch between HEX, RGB, and HSL formats.</p><br>
 
          <h2 class="text-2xl font-bold mb-4">What Do the Shade Numbers (50–950) Mean?</h2>
-         <p>Each shade number in Tailwind's color scale corresponds to a specific role in UI design:</p>
+         <p>Each shade number in the color scale corresponds to a specific role in UI design:</p>
          <ul>
             <li><strong>50–100:</strong> Very light tints — ideal for subtle backgrounds, hover states on light surfaces, and disabled element backgrounds.</li>
-            <li><strong>200–300:</strong> Light variants — suitable for borders, dividers, and secondary backgrounds in cards and panels.</li>
+            <li><strong>200–300:</strong> Light variants — suitable for borders, dividers, and secondary backgrounds in cards and panels. Explore <a href="/dark-color-palettes/">dark color palettes</a> to see how these tints behave on dark surfaces.</li>
             <li><strong>400:</strong> A lighter accent — works well for placeholder text, icons, and secondary interactive elements.</li>
             <li><strong>500:</strong> The base color — your primary brand identity. Used for primary buttons, links, active states, and key UI elements.</li>
             <li><strong>600–700:</strong> Darker accents — great for button hover states, selected items, and text that needs emphasis without being too heavy.</li>
             <li><strong>800–900:</strong> Dark shades — perfect for headings, dark backgrounds, and high-contrast text on light surfaces.</li>
-            <li><strong>950:</strong> The darkest shade — introduced in Tailwind v3.3, used for very dark backgrounds, deep shadows, and near-black surfaces with a color tint.</li>
+            <li><strong>950:</strong> The darkest shade — introduced in Tailwind v3.3, used for very dark backgrounds, deep shadows, and near-black surfaces with a color tint. Always verify these shades meet <a href="/wcag-contrast-checker/">WCAG contrast requirements</a> for accessibility.</li>
          </ul><br>
 
-         <h2 class="text-2xl font-bold mb-4">Why Use a Tailwind Palette Generator?</h2>
-         <p>Creating a perceptually uniform color scale by hand is tedious and error-prone. Simply lightening or darkening a hex value in equal steps does not produce visually consistent results — human color perception is non-linear. A dedicated generator solves this by:</p>
+         <h2 class="text-2xl font-bold mb-4">Why Use a Generator?</h2>
+         <p>Creating a perceptually uniform color scale by hand is tedious and error-prone. Simply lightening or darkening a hex value in equal steps does not produce visually consistent results — human color perception is non-linear, as explained in <a href="https://en.wikipedia.org/wiki/Color_vision" target="_blank" rel="noopener noreferrer">Wikipedia's overview of color vision</a>. A dedicated generator solves this by:</p>
          <ul>
             <li><strong>Accuracy:</strong> Using weighted mix ratios that approximate Tailwind's own perceptual curve for each shade level.</li>
             <li><strong>Speed:</strong> Generating all 11 shades (50–950) in under a second from a single color pick.</li>
-            <li><strong>Consistency:</strong> Ensuring your custom palette feels as cohesive as Tailwind's built-in colors like blue, slate, or emerald.</li>
+            <li><strong>Consistency:</strong> Ensuring your custom palette feels as cohesive as Tailwind's built-in colors like blue, slate, or emerald. Pair your palette with matching <a href="/gradient/">CSS gradients</a> for cohesive page designs.</li>
             <li><strong>Zero Setup:</strong> No design tools, no color theory knowledge, no manual calculations — just pick and export.</li>
          </ul><br>
 
          <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
-         <p>Generating a custom Tailwind color palette takes three simple steps:</p>
+         <p>Generating a custom color palette takes three simple steps:</p>
          <ol>
             <li><strong>Pick a Base Color:</strong> Use the color picker at the top to select your brand color. This automatically becomes the 500 shade in your palette.</li>
             <li><strong>Generate:</strong> Click the "Generate" button. The tool calculates all 11 shades (50 through 950) and displays them as clickable swatches.</li>
             <li><strong>Copy & Paste:</strong> Click "Copy" on the config output to copy the <code>tailwind.config.js</code> snippet. Paste it directly into your project's config file under <code>theme.extend.colors</code>.</li>
          </ol>
-         <p>You can also click any individual swatch to copy its hex value to your clipboard — handy for quick prototyping outside of Tailwind.</p><br>
+         <p>You can also click any individual swatch to copy its hex value to your clipboard — handy for quick prototyping or when building <a href="/button-generator/">custom button styles</a> outside of Tailwind utilities.</p><br>
 
-         <h2 class="text-2xl font-bold mb-4">Tailwind v3 vs v4 Color Configuration</h2>
+         <h2 class="text-2xl font-bold mb-4">v3 vs v4 Color Configuration</h2>
          <p>In Tailwind CSS v3, colors are configured via <code>tailwind.config.js</code> using JavaScript objects, which is exactly what this generator outputs. Tailwind v4 introduces a CSS-first configuration approach where you define custom themes using CSS custom properties and the <code>@theme</code> directive:</p>
          <pre>
             <code class="language-css">@theme {
@@ -254,17 +255,17 @@
               --color-brand-900: #1e3a5f;
             }</code>
          </pre>
-         <p>The hex values generated by this tool work in both versions — you just need to format them according to your preferred configuration style. For more on color theory behind these scales, read our <a href="/blog/color-palettes-in-design/">guide to color palettes</a>.</p>
+         <p>The hex values generated by this tool work in both versions — you just need to format them according to your preferred configuration style. For a deep dive into CSS custom properties, refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener noreferrer">MDN guide on CSS custom properties</a>. For more on color theory behind these scales, read our <a href="/blog/color-palettes-in-design/">guide to color palettes</a>.</p>
       </div>
 
       <!-- Use Cases Section -->
       <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
-         <h2 class="text-2xl font-bold mb-6 text-center">Use Cases for Custom Tailwind Palettes</h2>
+         <h2 class="text-2xl font-bold mb-6 text-center">Common Use Cases</h2>
          <div class="grid md:grid-cols-3 gap-6">
             <div class="glass-card p-6 text-center">
                <i class="fas fa-palette text-3xl text-cyan-500 mb-4"></i>
                <h3 class="font-bold mb-2">Brand Identity Systems</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Translate your brand guidelines into a Tailwind-ready palette. Ensure every shade of your primary color is available as a utility class across your entire design system.</p>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Translate your brand guidelines into a Tailwind-ready palette. Ensure every shade of your primary color is available as a utility class across your entire design system. Use alongside a <a href="/card-generator/" class="text-emerald-500 hover:text-emerald-600 underline">card generator</a> to build branded component sets.</p>
             </div>
             <div class="glass-card p-6 text-center">
                <i class="fas fa-layer-group text-3xl text-violet-500 mb-4"></i>
@@ -274,7 +275,7 @@
             <div class="glass-card p-6 text-center">
                <i class="fas fa-rocket text-3xl text-rose-500 mb-4"></i>
                <h3 class="font-bold mb-2">SaaS & Startup MVPs</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Ship polished UIs fast. Pick your brand color, generate the full scale, and have a professional-looking theme ready in seconds — no designer needed.</p>
+               <p class="text-sm text-slate-600 dark:text-slate-400">Ship polished UIs fast. Pick your brand color, generate the full scale, and have a professional-looking theme ready in seconds — no designer needed. Combine with a <a href="/pastel-color-palettes/" class="text-emerald-500 hover:text-emerald-600 underline">pastel palette</a> for friendly, approachable interfaces.</p>
             </div>
          </div>
       </div>
@@ -306,33 +307,54 @@
          </div>
       </div>
 
+      <!-- Share Section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll">
+        <div class="glass-card p-8 shimmer-card text-center">
+          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/tailwind-color-palette-generator/&text=Generate%20complete%20Tailwind%20CSS%20color%20palettes%20(50-950)%20from%20any%20color%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter"></i> Twitter
+            </a>
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/tailwind-color-palette-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/tailwind-color-palette-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f"></i> Facebook
+            </a>
+            <a href="https://www.reddit.com/submit?url=https://devpalettes.com/tailwind-color-palette-generator/&title=Free%20Tailwind%20Color%20Palette%20Generator%20(50-950)" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Reddit">
+              <i class="fab fa-reddit-alien"></i> Reddit
+            </a>
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/tailwind-color-palette-generator/&description=Generate%20complete%20Tailwind%20CSS%20color%20palettes%20(50-950)%20from%20any%20color%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+              <i class="fab fa-pinterest-p"></i> Pinterest
+            </a>
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+              <i class="fas fa-link"></i> Copy Link
+            </button>
+          </div>
+        </div>
+      </section>
+
       <!-- Related Tools -->
-      <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
-         <h2 class="text-2xl font-bold mb-6 text-center">Related Tools</h2>
-         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <a href="/bootstrap-color-palette-generator/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
-               <i class="fab fa-bootstrap text-2xl text-purple-500"></i>
-               <div>
-                  <h4 class="font-bold group-hover:text-primary transition-colors">Bootstrap Generator</h4>
-                  <p class="text-xs text-slate-500">Create Bootstrap 5 SCSS themes.</p>
-               </div>
-            </a>
-            <a href="/gradient/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
-               <i class="fas fa-fill-drip text-2xl text-pink-500"></i>
-               <div>
-                  <h4 class="font-bold group-hover:text-primary transition-colors">Gradient Generator</h4>
-                  <p class="text-xs text-slate-500">Build smooth CSS gradients.</p>
-               </div>
-            </a>
-            <a href="/wcag-contrast-checker/" class="glass-card p-4 hover:scale-105 transition-transform flex items-center gap-4 group">
-               <i class="fas fa-adjust text-2xl text-amber-500"></i>
-               <div>
-                  <h4 class="font-bold group-hover:text-primary transition-colors">Contrast Checker</h4>
-                  <p class="text-xs text-slate-500">Verify WCAG accessibility compliance.</p>
-               </div>
-            </a>
-         </div>
-      </div>
+      <section class="glass-card p-8 shimmer-card text-center mt-12 animate-on-scroll" aria-label="Related tools">
+        <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+
+          <a href="/neon-color-palettes/" class="btn-secondary text-xs py-2 px-4">Neon Color Palettes</a>
+
+          <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">CSS Gradient Generator</a>
+
+          <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">WCAG Contrast Checker</a>
+
+          <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
+
+          <a href="/dark-color-palettes/" class="btn-secondary text-xs py-2 px-4">Dark Color Palettes</a>
+
+          <a href="/minimal-color-palettes/" class="btn-secondary text-xs py-2 px-4">Minimal Color Palettes</a>
+
+          <a href="/aesthetic-color-palettes/" class="btn-secondary text-xs py-2 px-4">Aesthetic Color Palettes</a>
+        </div>
+      </section>
 
     </div>
   </main>
@@ -462,6 +484,42 @@
       generatePalette();
       
     })();
+  </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
   </script>
 </body>
 </html>

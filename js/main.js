@@ -452,7 +452,7 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'Image to Gradient Generator', path: 'image-to-gradient-generator/' },
       { label: 'Brand Color Extractor Tool', path: 'brand-color-extractor/' },
-      // { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
+      { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
       // { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
       // { label: 'SVG Color Editor Tool', path: 'svg-color-editor/' },
       { label: 'Landing Page Builder Tool', path: 'page-builder/' },
