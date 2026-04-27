@@ -425,7 +425,6 @@ const NAV_CATEGORIES = [
       { label: 'WCAG Contrast Checker Tool', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Checker', path: 'color-accessibility/' },
       { label: 'Color Difference Checker', path: 'color-diff-checker/' },
-      // { label: 'Color Preview Tool', path: 'color-preview/' }
     ]
   },
   {
