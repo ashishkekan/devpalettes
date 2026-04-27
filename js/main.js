@@ -395,9 +395,6 @@ const NAV_CATEGORIES = [
       { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
       { label: 'Neumorphism CSS Generator', path: 'neumorphism-generator/' },
       { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
-      // { label: 'Button Maker', path: 'button-generator/' },
-      // { label: 'Card UI', path: 'card-generator/' },
-      // { label: 'Gradient Border Generator', path: 'gradient-border-generator/' }
     ]
   },
   {
@@ -413,12 +410,7 @@ const NAV_CATEGORIES = [
   {
     label: 'SEO Tools',
     tools: [
-      // { label: 'Lorem Ipsum Generator', path: 'lorem-ipsum-generator/' },
-      // { label: 'REM to PX Converter', path: 'rem-px-converter/' },
-      // { label: 'Text Difference Checker', path: 'text-diff-checker/' },
-      // { label: 'Scroll Progress Bar Generator', path: 'scroll-progress-generator/' },
       { label: 'Meta Tags Generator Tool', path: 'meta-tag-generator/' },
-      // { label: 'Text Formatter Tool', path: 'text-formatter/' },
       { label: 'SEO Analyzer Tool', path: 'seo-analyzer/' },
       { label: 'Open Graph Meta Generator', path: 'open-graph-generator/' },
       { label: 'Robots.txt Generator Tool', path: 'robots-txt-generator/' },
@@ -432,7 +424,6 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'WCAG Contrast Checker Tool', path: 'wcag-contrast-checker/' },
       { label: 'Color Accessibility Checker', path: 'color-accessibility/' },
-      // { label: 'Opacity Checker Tool', path: 'color-opacity/' },
       { label: 'Color Difference Checker', path: 'color-diff-checker/' },
       // { label: 'Color Preview Tool', path: 'color-preview/' }
     ]
@@ -454,8 +445,7 @@ const NAV_CATEGORIES = [
       { label: 'ATS Resume Checker Tool', path: 'ats-checker/' },
       { label: 'Brand Color Extractor Tool', path: 'brand-color-extractor/' },
       { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
-      // { label: 'Bootstrap Color Palette Generator', path: 'bootstrap-color-palette-generator/' },
-      // { label: 'SVG Color Editor Tool', path: 'svg-color-editor/' },
+      { label: 'SVG Color Editor Tool', path: 'svg-color-editor/' },
       { label: 'Landing Page Builder Tool', path: 'page-builder/' },
       { label: 'Image to Gradient Generator', path: 'image-to-gradient-generator/' },
     ]
