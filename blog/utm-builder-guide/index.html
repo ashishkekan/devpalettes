@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>UTM Builder: Create Trackable URLs for Better Marketing Analytics | Devpalettes</title>
+  <meta name="description" content="Build UTM links easily with a free UTM Builder. Track campaigns, measure traffic sources, and improve marketing performance with proper UTM parameters.">
+  <meta name="author" content="Devpalettes">
+  <link rel="canonical" href="https://devpalettes.com/blog/utm-builder/"/>
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="UTM Builder: Create Trackable URLs for Better Marketing Analytics | Devpalettes">
+  <meta property="og:description" content="Generate trackable UTM links in seconds. Learn UTM parameters, see real examples, and stop guessing where your traffic comes from.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://devpalettes.com/blog/utm-builder/">
+  <meta property="og:image" content="https://devpalettes.com/og-blog.png">
+  
+  <!-- Favicon & Apple Touch Icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-F252PEQ1JC');
+  </script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Structured Data: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "UTM Builder: Create Trackable URLs for Better Marketing Analytics",
+    "description": "Learn how to use a UTM builder to create trackable links. Understand UTM parameters, see real URL examples, and improve your marketing campaign tracking.",
+    "author": {
+      "@type": "Organization",
+      "name": "Devpalettes"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://devpalettes.com/images/devpalettes.png"
+      }
+    },
+    "datePublished": "2026-01-15",
+    "dateModified": "2026-01-15",
+    "image": "https://devpalettes.com/og-blog.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://devpalettes.com/blog/utm-builder/"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "UTM Builder",
+    "url": "https://devpalettes.com/utm-builder/",
+    "description": "Free UTM link generator. Add source, medium, campaign, term, and content parameters to any URL and copy the trackable link instantly.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Devpalettes"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a UTM link?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A UTM link is a regular URL with tracking parameters appended to it. These parameters — utm_source, utm_medium, utm_campaign, utm_term, and utm_content — tell analytics tools like Google Analytics exactly where the visitor came from, which campaign drove them, and what specific link or ad they clicked."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does adding UTM parameters affect SEO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Google treats UTM parameters as query strings, not as part of the canonical URL. They do not affect your rankings. However, if UTM and non-UTM versions of the same URL get indexed separately, it can create duplicate content issues. Use canonical tags to prevent this."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I shorten UTM URLs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Long UTM URLs can be shortened using services like Bitly or your own URL shortener. The tracking parameters are preserved through the redirect. Short URLs are especially useful for email marketing, social media posts, and print materials where space is limited."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is UTM tracking free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. UTM parameters are a free standard supported by Google Analytics, Adobe Analytics, and most other analytics platforms. There is no cost to add UTM tags to your URLs or to view the data in your analytics dashboard."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do I see UTM data in Google Analytics?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In Google Analytics 4, go to Reports > Acquisition > Traffic acquisition. You will see your UTM source, medium, and campaign data in the dimensions. For campaign-specific reports, go to Explore > Campaigns. You can also create custom reports filtered by utm_source or utm_campaign."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script src="../../js/tailwind.js"></script>
+  
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/animations.css">
+
+  <style>
+    .animate-on-scroll { opacity: 1 !important; transform: none !important; }
+    .shimmer-card { position: relative; overflow: hidden; }
+    .glass-card { background: rgba(255,255,255,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.3); border-radius: 1rem; }
+    .dark .glass-card { background: rgba(15,23,42,0.6); border-color: rgba(255,255,255,0.08); }
+    .spectrum-line { height: 4px; background: linear-gradient(90deg, #10b981, #3b82f6, #8b5cf6, #f59e0b, #10b981); border-radius: 9999px; }
+    .gradient-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none; z-index: 0; }
+    .dark .gradient-blob { opacity: 0.15; }
+    .blob-1 { width: 400px; height: 400px; background: #10b981; top: -100px; left: -100px; }
+    .blob-2 { width: 350px; height: 350px; background: #3b82f6; bottom: -50px; right: -80px; }
+    .blob-3 { width: 300px; height: 300px; background: #8b5cf6; top: 40%; left: 50%; transform: translateX(-50%); }
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 600; color: #fff; background: linear-gradient(to right, #10b981, #14b8a6); transition: all 0.3s; }
+    .btn-primary:hover { background: linear-gradient(to right, #059669, #0d9488); box-shadow: 0 10px 25px -5px rgba(16,185,129,0.3); }
+    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 0.625rem 1.25rem; border-radius: 0.75rem; font-size: 0.875rem; font-weight: 600; color: #475569; background: #fff; border: 2px solid #e2e8f0; transition: all 0.3s; }
+    .dark .btn-secondary { color: #94a3b8; background: transparent; border-color: rgba(255,255,255,0.1); }
+    .btn-secondary:hover { border-color: #10b981; color: #10b981; }
+    .btn-glow { box-shadow: 0 0 20px rgba(16,185,129,0.2); }
+    #hero-visualizer { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+    .code-block { position: relative; }
+    .code-block pre { margin: 0; }
+    .code-block .copy-code-btn { position: absolute; top: 12px; right: 12px; opacity: 0; transition: opacity 0.2s; z-index: 2; }
+    .code-block:hover .copy-code-btn { opacity: 1; }
+    .tag-label { display: inline-block; padding: 2px 10px; border-radius: 6px; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .faq-item { transition: border-color 0.2s; }
+    .faq-item.active { border-color: #10b981; }
+    .dark .faq-item.active { border-color: #34d399; }
+    .faq-toggle .fa-chevron-down { transition: transform 0.3s; }
+    .faq-item.active .faq-toggle .fa-chevron-down { transform: rotate(180deg); }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  
+  <!-- Navbar -->
+  <div id="navbar-container"></div>
+  
+  <!-- Main Content -->
+  <main class="pt-20 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
+      
+      <!-- Heading -->
+      <div class="text-center mb-12 animate-on-scroll">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">UTM Builder: Create Trackable URLs for Better Marketing Analytics</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto">Your traffic is going up. But which campaign is actually driving it? Stop guessing. Learn how to build UTM links that tell you exactly where every visitor comes from.</p>
+        <div class="flex items-center justify-center gap-4 text-sm text-slate-400 mb-6">
+          <span><i class="fas fa-clock mr-1"></i>10 min read</span>
+          <span><i class="fas fa-calendar mr-1"></i>Jan 2026</span>
+          <span><i class="fas fa-user mr-1"></i>Devpalettes Team</span>
+        </div>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+      
+      <!-- Single glass-card wrapper -->
+      <div class="glass-card p-8 shimmer-card">
+        <div class="prose dark:prose-invert max-w-none">
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">The Dangerous Guessing Game in Marketing</h2>
+          
+          <p class="text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            You ran a Facebook ad, sent an email newsletter, posted on LinkedIn, and paid an influencer. Your site traffic spiked. But when your boss asks which channel drove the most conversions, you have no answer. You look at Google Analytics and see "direct" and "organic" for most of your traffic. The data is useless.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            This happens because without tracking parameters, analytics tools cannot tell the difference between a visitor from your email campaign and a visitor who typed your URL directly. You are flying blind. A <strong>UTM builder</strong> fixes this by attaching tiny tags to your URLs that tell analytics exactly where each click came from. No more guessing, no more attributing revenue to the wrong channel. Just clean, accurate data you can act on.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">What Are UTM Parameters?</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            UTM parameters are short text tags appended to a URL as query strings. They were created by Urchin Software Corporation (later acquired by Google) and became the standard way to track campaign traffic in analytics tools.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            When you add UTM parameters to a link, you are essentially attaching a label to every click that passes through that link. When the visitor lands on your site, your analytics tool reads the label and records the source, medium, and campaign name. As <a href="https://support.google.com/analytics/answer/1033863" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">Google's official documentation</a> explains, UTM parameters are the primary way to identify campaigns in Google Analytics.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A URL without UTM looks like this:
+          </p>
+          <pre class="bg-slate-900 dark:bg-slate-800 text-emerald-400 p-4 rounded-lg text-sm my-4 overflow-x-auto"><code>https://example.com/product</code></pre>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A URL with UTM parameters looks like this:
+          </p>
+          <pre class="bg-slate-900 dark:bg-slate-800 text-emerald-400 p-4 rounded-lg text-sm my-4 overflow-x-auto"><code>https://example.com/product?utm_source=facebook&utm_medium=cpc&utm_campaign=spring_sale</code></pre>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The page content is identical. But the second URL carries tracking data that tells you this visitor came from a Facebook paid campaign called "spring_sale." That distinction is everything.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Why UTM Tracking Is Important</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Without UTM tracking, your analytics data is a black box. Here is what you gain when you <strong>create utm parameters</strong> for every link you share.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Track individual campaigns.</strong> You can see exactly how many visitors, signups, and purchases each campaign generated. Not "social media traffic" as a vague bucket — but "LinkedIn Q2 campaign" versus "Facebook retargeting Q2" as separate, measurable efforts.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Measure ROI accurately.</strong> If you spent $500 on a Google Ad and it generated 50 conversions, you know your cost per acquisition. If you spent $200 on an influencer and got 10 conversions, you can compare directly. Without UTM, you cannot tie revenue to specific marketing spend.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Understand traffic sources beyond default reporting.</strong> Analytics tools classify traffic into broad categories: organic, direct, referral, social. But "social" could mean your Twitter profile, a Reddit post, or a LinkedIn ad. UTM breaks these into specific sources so you know which social channel actually works. According to <a href="https://moz.com/beginners-guide-to-seo/how-search-engines-work" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">Moz's guide</a>, understanding traffic attribution is critical for improving marketing efficiency.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Improve decision making.</strong> When you have data on which campaigns, channels, and creatives drive results, you can double down on what works and cut what does not. This is not a theory — it is how data-driven marketing operates.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">What Is a UTM Builder?</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            A <strong>UTM builder</strong> is a tool that generates properly formatted UTM-tagged URLs without requiring you to manually type query strings. You enter your base URL, fill in the UTM parameters through input fields, and the tool assembles the complete trackable link.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The value is error prevention. Manually typing <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">?utm_source=facebook&amp;utm_medium=cpc</code> seems simple, but a missing ampersand, a misspelled parameter name, or an unencoded space will break the tracking silently. Your link works, the page loads, but the data never gets recorded. A <strong>utm link generator</strong> eliminates these errors by handling URL encoding and syntax automatically.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">How This UTM Builder Works</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            The tool follows a simple six-step process from base URL to copyable trackable link.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-6 not-prose">
+            <div class="glass-card p-4 flex items-center gap-4">
+              <div class="flex rounded-lg overflow-hidden h-12 w-24 flex-shrink-0 bg-emerald-500/10 items-center justify-center">
+                <i class="fa-solid fa-link text-emerald-500 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Enter Website URL</h4>
+                <p class="text-xs text-slate-500">Paste the page URL you want to track traffic to</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-center gap-4">
+              <div class="flex rounded-lg overflow-hidden h-12 w-24 flex-shrink-0 bg-blue-500/10 items-center justify-center">
+                <i class="fa-solid fa-bullhorn text-blue-500 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Add Source (utm_source)</h4>
+                <p class="text-xs text-slate-500">The platform sending traffic: google, facebook, newsletter</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-center gap-4">
+              <div class="flex rounded-lg overflow-hidden h-12 w-24 flex-shrink-0 bg-amber-500/10 items-center justify-center">
+                <i class="fa-solid fa-share-nodes text-amber-500 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Add Medium (utm_medium)</h4>
+                <p class="text-xs text-slate-500">The marketing channel: cpc, email, social, referral</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-center gap-4">
+              <div class="flex rounded-lg overflow-hidden h-12 w-24 flex-shrink-0 bg-purple-500/10 items-center justify-center">
+                <i class="fa-solid fa-tag text-purple-500 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Add Campaign (utm_campaign)</h4>
+                <p class="text-xs text-slate-500">The specific campaign name: spring_sale, launch_2026</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-center gap-4">
+              <div class="flex rounded-lg overflow-hidden h-12 w-24 flex-shrink-0 bg-cyan-500/10 items-center justify-center">
+                <i class="fa-solid fa-sliders text-cyan-500 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Optional: Term & Content</h4>
+                <p class="text-xs text-slate-500">utm_term for keywords, utm_content for A/B variants</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-center gap-4">
+              <div class="flex rounded-lg overflow-hidden h-12 w-24 flex-shrink-0 bg-rose-500/10 items-center justify-center">
+                <i class="fa-solid fa-copy text-rose-500 text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-sm">Generate & Copy Link</h4>
+                <p class="text-xs text-slate-500">Get the full UTM-tagged URL and copy it instantly</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">UTM Parameters Explained</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            There are five UTM parameters. Two are required for meaningful tracking, and three are optional but valuable in specific situations.
+          </p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800 dark:text-slate-200">utm_source (Required)</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Identifies the platform sending the traffic. This is the "who." Examples: <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">google</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">facebook</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">newsletter</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">reddit</code>. This is the most fundamental parameter — without it, your data has no source attribution.
+          </p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800 dark:text-slate-200">utm_medium (Required)</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Identifies the marketing medium or channel. This is the "how." Examples: <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">cpc</code> (paid search), <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">email</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">social</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">referral</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">organic</code>. The combination of source + medium creates the "source/medium" dimension you see in Google Analytics reports.
+          </p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800 dark:text-slate-200">utm_campaign (Required)</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Identifies the specific marketing campaign. This is the "why." Examples: <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">spring_sale</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">product_launch_q2</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">black_friday_email</code>. This is what lets you compare different campaigns within the same source and medium.
+          </p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800 dark:text-slate-200">utm_term (Optional)</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Identifies the paid search keyword that triggered the ad. This is primarily used for Google Ads keyword tracking. Example: <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">utm_term=css+grid+generator</code>. If you are not running paid search, you can skip this.
+          </p>
+
+          <h3 class="text-xl font-semibold mt-6 mb-3 text-slate-800 dark:text-slate-200">utm_content (Optional)</h3>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Differentiates between different versions of the same link. This is used for A/B testing ad creatives, email subject lines, or link placements. Examples: <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">header_banner</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">cta_button_v2</code>, <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">sidebar_ad</code>.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">UTM URL Example</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Here is a complete <strong>utm tracking url</strong> with all five parameters, broken down so you can see exactly how each piece fits together.
+          </p>
+
+          <pre class="bg-slate-900 dark:bg-slate-800 text-emerald-400 p-4 rounded-lg text-sm my-4 overflow-x-auto"><code>https://example.com/product
+  ?utm_source=google
+  &utm_medium=cpc
+  &utm_campaign=spring_sale_2026
+  &utm_term=css+tools
+  &utm_content=text_ad_v1</code></pre>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Here is what each part tells your analytics:
+          </p>
+
+          <div class="my-6 not-prose space-y-3">
+            <div class="glass-card p-4 flex items-start gap-4">
+              <div class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0 mt-1"></div>
+              <div>
+                <span class="font-bold text-sm">utm_source=google</span>
+                <p class="text-xs text-slate-500">The visitor came from Google (the platform)</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-start gap-4">
+              <div class="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0 mt-1"></div>
+              <div>
+                <span class="font-bold text-sm">utm_medium=cpc</span>
+                <p class="text-xs text-slate-500">It was a paid click (cost per click)</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-start gap-4">
+              <div class="w-3 h-3 rounded-full bg-amber-500 flex-shrink-0 mt-1"></div>
+              <div>
+                <span class="font-bold text-sm">utm_campaign=spring_sale_2026</span>
+                <p class="text-xs text-slate-500">It was part of the spring sale campaign in 2026</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-start gap-4">
+              <div class="w-3 h-3 rounded-full bg-purple-500 flex-shrink-0 mt-1"></div>
+              <div>
+                <span class="font-bold text-sm">utm_term=css+tools</span>
+                <p class="text-xs text-slate-500">The ad was triggered by the keyword "css tools"</p>
+              </div>
+            </div>
+            <div class="glass-card p-4 flex items-start gap-4">
+              <div class="w-3 h-3 rounded-full bg-cyan-500 flex-shrink-0 mt-1"></div>
+              <div>
+                <span class="font-bold text-sm">utm_content=text_ad_v1</span>
+                <p class="text-xs text-slate-500">The visitor clicked the text ad, version 1</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            When this link generates a purchase, your analytics records all five dimensions against that conversion. You now know exactly which keyword, ad version, campaign, and platform drove the sale. If you need to encode special characters in your URLs, use our <a href="/url-tool/" class="text-emerald-500 hover:underline">URL Encoder/Decoder</a> tool.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Real Use Cases for UTM Links</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Facebook and Instagram ads.</strong> Add utm_source=facebook, utm_medium=cpc, and a campaign name for each ad set. This separates your paid social traffic from organic social traffic — a distinction that default analytics cannot make.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Google Ads.</strong> Google automatically adds some UTM parameters, but manually setting them gives you more control over naming. Use utm_term to track which keywords convert, and utm_content to compare text ads versus display ads.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Email marketing.</strong> Every link in your newsletter should have utm_source=newsletter, utm_medium=email, and a campaign name matching the email send. Use utm_content to differentiate between the header link, body CTA, and footer link within the same email.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Influencer campaigns.</strong> Give each influencer a unique UTM link with their name as the source. This tells you exactly how much traffic and conversions each individual influencer drove — not just "influencer marketing" as a vague category.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Affiliate tracking.</strong> Use utm_content with the affiliate ID to track which affiliates are performing. This is lighter than dedicated affiliate platforms and works natively with your existing analytics.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Common UTM Mistakes to Avoid</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            These mistakes will silently corrupt your data. Fixing them after the fact is often impossible because historical data cannot be re-attributed.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Inconsistent naming.</strong> Using "Facebook" in one campaign and "facebook" in another creates two separate sources in your analytics. Always use lowercase and pick one name per platform. Establish a naming document and stick to it.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Using spaces in values.</strong> Spaces in URLs break things. "Spring Sale" becomes "Spring%20Sale" which works in some tools but not others. Use underscores or hyphens: <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">spring_sale</code>. A <strong>utm builder</strong> handles encoding automatically, but if you build links manually, this is the most common error.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Not tracking all campaigns.</strong> Tracking your paid ads but not your email, social posts, and partner links means you have incomplete data. Every external link you control should have UTM parameters.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Overcomplicating tags.</strong> Using campaign names like <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">q2_fb_cpc_brand_us_mobile_v2</code> might seem detailed, but it becomes unreadable in reports. Keep names descriptive but concise. Three to four segments separated by underscores is enough.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Best Practices for UTM Tracking</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Always use lowercase.</strong> Google Analytics is case-sensitive for UTM values. "Facebook" and "facebook" become two different sources. Lowercase eliminates this problem entirely.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Keep a consistent naming convention.</strong> Use a standard format like <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">{platform}_{medium}_{campaign}_{date}</code>. Write it down, share it with your team, and enforce it. Consistency is more important than the specific format you choose.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Use a spreadsheet to track all UTMs.</strong> Every link you create should be logged in a shared spreadsheet with columns for URL, source, medium, campaign, term, content, and the team member who created it. This prevents duplicates and provides a reference when analyzing data later.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Track everything you control.</strong> If you can add UTM parameters to a link, you should. Email, social posts, paid ads, partner links, QR codes, PDF links — every external touchpoint should be tagged. You cannot analyze data you did not collect.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Use canonical tags on landing pages.</strong> UTM parameters create URL variants. Without a canonical tag, search engines might index <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">/product?utm_source=facebook</code> as a separate page from <code class="text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-sm">/product</code>. Add a canonical tag pointing to the clean URL. Our <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a> can check for missing canonical tags on your pages.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">How to Use UTM Data in Google Analytics</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            Building UTM links is only half the process. You also need to know where to find the data. As <a href="https://developers.google.com/analytics/devguides/collection/ga4/traffic-sources" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">Google's developer documentation</a> describes, GA4 uses UTM parameters to populate the traffic source dimensions.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Traffic acquisition report.</strong> In GA4, go to Reports > Acquisition > Traffic acquisition. You will see a table with Session source, Session medium, Session campaign, and other UTM dimensions. This is your primary view for understanding where traffic comes from.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Campaign explorer.</strong> Go to Explore > Campaigns to see a dedicated view of all your utm_campaign values with engagement metrics. This is where you compare campaign performance side by side.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Source/medium breakdown.</strong> The combination of utm_source and utm_medium creates the "source/medium" dimension: google/cpc, facebook/social, newsletter/email. This is the standard way marketers segment traffic. If you see "google/organic" in your reports, that is default tracking — UTM-tagged links show the specific values you set.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            For deeper content analysis on your landing pages, pair your UTM strategy with our <a href="/keyword-density-checker/" class="text-emerald-500 hover:underline">Keyword Density Checker</a> to ensure your pages are optimized for the terms driving paid traffic.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Why Use a UTM Builder Tool</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Avoid manual errors.</strong> A missing ampersand between parameters means only the first tag gets recorded. A misspelled parameter name like "utm_sorce" is silently ignored. A <strong>google analytics utm</strong> builder catches these issues by enforcing correct syntax.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Faster link creation.</strong> Typing out query strings for 20 links in a campaign is tedious. A UTM builder lets you change one parameter and regenerate the link instantly. For agencies managing multiple client campaigns, this speed is essential.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Consistent structure.</strong> The tool enforces the correct order of parameters (source, medium, campaign, term, content) and proper URL encoding. This consistency makes your data cleaner and easier to analyze.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Beginner-friendly.</strong> If you have never used UTM parameters before, the tool teaches you what each field means through labels and examples. You learn by doing, not by reading documentation. Once you have built a few links, the concept clicks permanently.
+          </p>
+
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Who Should Use This Tool?</h2>
+          
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Marketers</strong> running campaigns across multiple channels who need to attribute traffic and conversions accurately. UTM tracking is the foundation of marketing analytics.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Founders and startup teams</strong> who cannot afford to waste marketing budget on untracked channels. Every dollar spent should be traceable to a result.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Bloggers and content creators</strong> who share links on social media, in email, and through partners. Knowing which promotion channel drives readers helps you focus your distribution efforts.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Agencies</strong> managing client campaigns who need standardized UTM structures across accounts. A shared tool ensures every team member follows the same format.
+          </p>
+
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            <strong>Affiliate marketers</strong> who promote products across multiple platforms and need to track which placements generate clicks and sales. Combine UTM tracking with clean landing pages optimized using our <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a>, <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a>, and <a href="/js-minifier/" class="text-emerald-500 hover:underline">JS Minifier</a> for faster loading. For structured data in API responses, use the <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a>. Ensure your site is discoverable with the <a href="/sitemap-xml-generator/" class="text-emerald-500 hover:underline">Sitemap Generator</a> and <a href="/robots-txt-generator/" class="text-emerald-500 hover:underline">Robots.txt Generator</a>.
+          </p>
+          
+          <h2 class="text-2xl font-bold mt-8 mb-4 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+          
+          <div class="space-y-4">
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <span>What is a UTM link?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-sm text-slate-600 dark:text-slate-400">A UTM link is a regular URL with tracking parameters appended to it. These parameters — utm_source, utm_medium, utm_campaign, utm_term, and utm_content — tell analytics tools like Google Analytics exactly where the visitor came from, which campaign drove them, and what specific link or ad they clicked.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <span>Does adding UTM parameters affect SEO?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-sm text-slate-600 dark:text-slate-400">No. Google treats UTM parameters as query strings, not as part of the canonical URL. They do not affect your rankings. However, if UTM and non-UTM versions of the same URL get indexed separately, it can create duplicate content issues. Use canonical tags to prevent this.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <span>Can I shorten UTM URLs?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-sm text-slate-600 dark:text-slate-400">Yes. Long UTM URLs can be shortened using services like Bitly or your own URL shortener. The tracking parameters are preserved through the redirect. Short URLs are especially useful for email marketing, social media posts, and print materials where space is limited.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <span>Is UTM tracking free?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-sm text-slate-600 dark:text-slate-400">Yes. UTM parameters are a free standard supported by Google Analytics, Adobe Analytics, and most other analytics platforms. There is no cost to add UTM tags to your URLs or to view the data in your analytics dashboard.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                <span>Where do I see UTM data in Google Analytics?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+              </button>
+              <div class="faq-content px-6 pb-4 hidden">
+                <p class="text-sm text-slate-600 dark:text-slate-400">In Google Analytics 4, go to Reports > Acquisition > Traffic acquisition. You will see your UTM source, medium, and campaign data in the dimensions. For campaign-specific reports, go to Explore > Campaigns. You can also create custom reports filtered by utm_source or utm_campaign.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- Social Sharing Section -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-3">Share This Guide</h2>
+        <p class="text-slate-500 mb-5 text-sm">Found this UTM tracking guide useful? Share it with marketers and founders in your network.</p>
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fblog%2Futm-builder%2F&text=UTM%20Builder%3A%20Create%20Trackable%20URLs%20for%20Better%20Marketing%20Analytics" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+            <i class="fab fa-x-twitter"></i> Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fblog%2Futm-builder%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+            <i class="fab fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fblog%2Futm-builder%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+            <i class="fab fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fdevpalettes.com%2Fblog%2Futm-builder%2F&title=UTM%20Builder%3A%20Create%20Trackable%20URLs" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Reddit">
+            <i class="fab fa-reddit-alien"></i> Reddit
+          </a>
+          <a href="https://t.me/share/url?url=https%3A%2F%2Fdevpalettes.com%2Fblog%2Futm-builder%2F&text=UTM%20Builder%3A%20Create%20Trackable%20URLs" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Telegram">
+            <i class="fab fa-telegram-plane"></i> Telegram
+          </a>
+          <a href="mailto:?subject=UTM%20Builder%20Guide&body=Check%20out%20this%20guide%20to%20UTM%20tracking%3A%20https%3A%2F%2Fdevpalettes.com%2Fblog%2Futm-builder%2F" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share via Email">
+            <i class="fas fa-envelope"></i> Email
+          </a>
+          <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+            <i class="fas fa-link"></i> Copy Link
+          </button>
+        </div>
+      </section>
+
+      <!-- Share & Reference This Guide -->
+      <section class="glass-card p-8 shimmer-card mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-4">Share & Reference This Guide</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          If you found this UTM builder guide helpful, consider linking to it from your marketing blog, resource page, or team wiki. Natural backlinks from professional and educational communities help more marketers discover proper UTM tracking and stop wasting budget on unattributed traffic.
+        </p>
+        <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
+          <p class="text-xs text-slate-500 mb-2 font-semibold">Link to this page:</p>
+          <code class="text-sm font-mono text-slate-600 dark:text-slate-300 break-all select-all">https://devpalettes.com/blog/utm-builder/</code>
+        </div>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mt-4">
+          You are free to reference or excerpt portions of this guide in your own content with a proper link back to the original source. This helps us keep updating and expanding these free resources for the community.
+        </p>
+      </section>
+
+      <!-- Related Tools & Resources -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12 animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-3">Related Tools & Resources</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 text-sm">Put your UTM knowledge into practice with these free tools.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/url-tool/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-link text-slate-400"></i> URL Encoder
+          </a>
+          <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-magnifying-glass-chart text-slate-400"></i> SEO Analyzer
+          </a>
+          <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-tags text-slate-400"></i> Meta Tag Generator
+          </a>
+          <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-key text-slate-400"></i> Keyword Density
+          </a>
+          <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-brackets-curly text-slate-400"></i> JSON Formatter
+          </a>
+          <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-code text-slate-400"></i> HTML Minifier
+          </a>
+          <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-compress text-slate-400"></i> CSS Minifier
+          </a>
+          <a href="/js-minifier/" class="btn-secondary text-xs py-2 px-4 inline-flex items-center gap-2">
+            <i class="fas fa-file-code text-slate-400"></i> JS Minifier
+          </a>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <div class="mt-12 not-prose text-center animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white">Track Everything, Guess Nothing</h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl mx-auto mb-6">
+          Every untracked link is a data point lost forever. You cannot reconstruct it later, and you cannot make better decisions without it. The <a href="/utm-builder/" class="text-emerald-500 hover:underline">Devpalettes UTM Builder</a> makes adding tracking to your links so fast that there is no excuse not to do it. Enter your URL, fill in the fields, copy the link, and share it. That thirty-second habit transforms your marketing from opinion-based to data-driven. It is free, requires no sign-up, and works entirely in your browser.
+        </p>
+        <a href="/utm-builder/" class="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-8 py-3.5 rounded-xl transition-colors text-base btn-primary btn-glow">
+          <i class="fa-solid fa-link"></i>
+          Try the Free UTM Builder
+        </a>
+      </div>
+
+    </div>
+  </main>
+  
+  <!-- Footer -->
+  <div id="footer-container"></div>
+  
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  
+  <script src="../../js/main.js"></script>
+  <script src="../../js/enhancements.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+      // FAQ Accordion Toggle
+      document.querySelectorAll('.faq-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          var item = this.closest('.faq-item');
+          var content = item.querySelector('.faq-content');
+          var isActive = item.classList.contains('active');
+
+          // Close all others
+          document.querySelectorAll('.faq-item.active').forEach(function(otherItem) {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+              otherItem.querySelector('.faq-content').classList.add('hidden');
+            }
+          });
+
+          // Toggle current
+          if (isActive) {
+            item.classList.remove('active');
+            content.classList.add('hidden');
+          } else {
+            item.classList.add('active');
+            content.classList.remove('hidden');
+          }
+        });
+      });
+
+      // Copy Link Button
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText('https://devpalettes.com/blog/utm-builder/').then(function() {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = 'https://devpalettes.com/blog/utm-builder/';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+            setTimeout(function() {
+              copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+            }, 2000);
+          }
+        });
+      }
+
+      // Code Block Copy Buttons
+      document.querySelectorAll('.copy-code-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var codeBlock = this.closest('.code-block');
+          var codeEl = codeBlock.querySelector('code');
+          if (codeEl) {
+            var text = codeEl.textContent;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                btn.innerHTML = '<i class="fas fa-check mr-1"></i>Copied!';
+                setTimeout(function() {
+                  btn.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy';
+                }, 2000);
+              });
+            } else {
+              var range = document.createRange();
+              range.selectNode(codeEl);
+              window.getSelection().removeAllRanges();
+              range.addRange(range);
+              document.execCommand('copy');
+              btn.innerHTML = '<i class="fas fa-check mr-1"></i>Copied!';
+              setTimeout(function() {
+                btn.innerHTML = '<i class="fas fa-copy mr-1"></i>Copy';
+              }, 2000);
+            }
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
