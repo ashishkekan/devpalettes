@@ -223,7 +223,7 @@
 
     if (includeTwitter) {
       tags.push('');
-      tags.push('<!-- Twitter Card -->');
+      tags.push('');
       tags.push('<meta name="twitter:card" content="' + escapeHtml(twitterType) + '">'); tagCount++;
       if (title) { tags.push('<meta name="twitter:title" content="' + escapeHtml(title) + '">'); tagCount++; }
       if (desc) { tags.push('<meta name="twitter:description" content="' + escapeHtml(desc) + '">'); tagCount++; }
@@ -276,7 +276,7 @@
 
     if (includeTwitter) {
       lines.push('');
-      lines.push('  <!-- Twitter Card -->');
+      lines.push('  ');
       lines.push('  <meta name="twitter:card" content="' + escapeHtml(twitterType) + '">');
       if (title) lines.push('  <meta name="twitter:title" content="' + escapeHtml(title) + '">');
       if (desc) lines.push('  <meta name="twitter:description" content="' + escapeHtml(desc) + '">');
