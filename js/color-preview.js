@@ -1,4 +1,4 @@
-// js/color-usage-preview.js
+// js/color-preview.js
 (function() {
   const inputs = {
      pri: { c: document.getElementById('c-primary'), t: document.getElementById('t-primary') },
