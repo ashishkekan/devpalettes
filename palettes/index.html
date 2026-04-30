@@ -4,30 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Primary Meta Tags -->
   <title>Free Color Palette Generator - Create Schemes & Export CSS</title>
   <meta name="description" content="Generate free color palettes online. Create schemes, lock colors, and export CSS variables. No login required.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/palettes/"/>
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/palettes/">
   <meta property="og:title" content="Free Color Palette Generator - Create Schemes">
   <meta property="og:description" content="Generate unlimited color palettes, lock your favorites, and export code instantly.">
   <meta property="og:image" content="https://devpalettes.com/images/og-palette.png">
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/palettes/">
   <meta property="twitter:title" content="Color Palette Generator">
   <meta property="twitter:description" content="Generate unlimited color palettes, lock your favorites, and export code instantly.">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Favicon & Apple Touch Icon -->
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
@@ -41,14 +37,11 @@
     gtag('js', new Date());
     gtag('config', 'G-F252PEQ1JC');
   </script>
-  <!-- Font Awesome -->
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
-  <!-- Tailwind CSS -->
   <script src="../js/tailwind.js"></script>
    
-  <!-- Theme Initialization -->
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
@@ -61,7 +54,6 @@
     }
   </script>
 
-  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -88,7 +80,6 @@
   }
   </script>
 
-  <!-- Structured Data: FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -122,18 +113,12 @@
   }
   </script>
 
-  <!-- Custom Styles -->
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-
-  <!-- Navbar -->
   <div id="navbar-container"></div>
-
-  <!-- Main Content -->
   <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -141,7 +126,6 @@
     <div id="particles-container"></div>
     
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
-      <!-- Header -->
       <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">Free Color Palette Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-2">
@@ -151,12 +135,10 @@
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <!-- Palette Display -->
       <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8 animate-on-scroll" style="min-height: 60vh;">
         <!-- Colors rendered by JS -->
       </div>
 
-      <!-- Controls -->
       <div class="flex flex-wrap items-center justify-center gap-4 mb-8 animate-on-scroll">
         <button id="generate-btn" class="btn-primary btn-glow text-lg px-8 py-4">
           <i class="fas fa-sync-alt"></i>
@@ -172,7 +154,6 @@
         </button>
       </div>
 
-      <!-- Export Options -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-12 animate-on-scroll">
         <button id="export-css-btn" class="btn-secondary text-sm">
           <i class="fas fa-code"></i>
@@ -192,7 +173,6 @@
         </button>
       </div>
 
-      <!-- Saved Palettes Section -->
       <div id="saved-palettes-section" class="hidden animate-on-scroll mb-12">
         <h2 class="text-xl font-bold mb-4">Saved Palettes</h2>
         <div id="saved-palettes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -201,16 +181,12 @@
       </div>
 
       <div class="seo-content space-y-12 mt-16 animate-on-scroll">
-         
-         <!-- What is -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">What is a Color Palette Generator?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
                A <strong>Color Palette Generator</strong> is a tool used by designers and developers to create harmonious color schemes automatically. Instead of spending hours picking colors manually, you can generate endless combinations with a single click. This tool helps you find the perfect <strong>color scheme</strong> for your website, app, or graphic design project.
             </p>
          </section>
-
-         <!-- How to Use -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
             <div class="grid md:grid-cols-2 gap-6">
@@ -230,8 +206,6 @@
                </div>
             </div>
          </section>
-
-         <!-- Features -->
          <section>
             <h2 class="text-2xl font-bold mb-6 text-center">Why Use Our Palette Generator?</h2>
             <div class="grid md:grid-cols-3 gap-6">
@@ -259,26 +233,6 @@
             </div>
          </section>
 
-         <!-- FAQ -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Frequently Asked Questions (FAQ)</h2>
-            <div class="space-y-4">
-               <div>
-                  <h3 class="font-bold text-slate-800 dark:text-white">How do I export colors to CSS?</h3>
-                  <p class="text-sm text-slate-500 mt-1">Click the "Copy CSS" button. This copies CSS variables (e.g., --color-1: #FF5733) to your clipboard, ready to paste into your stylesheet.</p>
-               </div>
-               <div>
-                  <h3 class="font-bold text-slate-800 dark:text-white">Can I save my palettes?</h3>
-                  <p class="text-sm text-slate-500 mt-1">Yes! Click "Save Palette" to store it in your browser's local storage. You can reload it anytime from the "Saved Palettes" section.</p>
-               </div>
-               <div>
-                  <h3 class="font-bold text-slate-800 dark:text-white">Is this tool free?</h3>
-                  <p class="text-sm text-slate-500 mt-1">Absolutely. This is a free tool for designers and developers with no usage limits.</p>
-               </div>
-            </div>
-         </section>
-
-         <!-- Added Social Sharing Section (After CTA or before Footer) -->
           <section class="glass-card p-8 shimmer-card text-center">
             <div class="max-w-7xl mx-auto px-4 text-center">
               <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
@@ -306,7 +260,6 @@
             </div>
           </section>
 
-         <!-- Related Tools -->
          <section class="glass-card p-8 shimmer-card text-center">
             <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Once you have your palette, try these tools:</p>
@@ -319,15 +272,11 @@
          </div>
 
       </div>
-      <!-- End SEO Content -->
-
     </div>
   </main>
 
-  <!-- Footer -->
   <div id="footer-container"></div>
 
-  <!-- Export Modal -->
   <div id="export-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50">
     <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-lg w-full max-h-[80vh] overflow-auto shimmer-card">
       <div class="flex justify-between items-center mb-4">
@@ -344,7 +293,6 @@
     </div>
   </div>
 
-  <!-- Scripts -->
   <script src="../js/main.js"></script>
   <script src="../js/palette.js"></script>
   <script src="../js/enhancements.js"></script>
