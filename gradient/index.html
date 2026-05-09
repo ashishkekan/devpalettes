@@ -3,21 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
 
   <title>CSS Gradient Generator - Free Linear & Radial Gradient Tool</title>
   <meta name="description" content="Create beautiful CSS gradients for free. Generate linear and radial gradients with multiple color stops. Get instant CSS code.">
   <meta name="author" content="Dev Palettes">
   <link rel="canonical" href="https://devpalettes.com/gradient/"/>
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/gradient/">
   <meta property="og:title" content="CSS Gradient Generator - Free Tool">
   <meta property="og:description" content="Create stunning linear and radial CSS gradients with our free online tool.">
   <meta property="og:image" content="https://devpalettes.com/images/og-gradient.png">
 
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/gradient/">
   <meta property="twitter:title" content="CSS Gradient Generator">
@@ -38,7 +35,6 @@
     gtag('config', 'G-F252PEQ1JC');
   </script>
   
-  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,18 +88,13 @@
   }
   </script>
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
   <script src="../js/tailwind.js"></script>
    
-  <!-- Theme Initialization -->
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -127,12 +118,8 @@
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  <!-- Navbar -->
   <div id="navbar-container"></div>
-  
-  <!-- Main Content -->
   <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -140,17 +127,14 @@
     <div id="particles-container"></div>
     
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
-      <!-- Header -->
-      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-8 " style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">CSS Gradient Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">
           Create stunning CSS gradients with ease • Copy code instantly
         </p>
         <div class="spectrum-line max-w-md mx-auto mb-4"></div>
       </div>
-
-      <!-- [ADDED] Content-first SEO section — replaces the thin intro paragraph, placed above the tool -->
-      <section class="glass-card p-8 animate-on-scroll shimmer-card mb-8">
+      <section class="glass-card p-8  shimmer-card mb-8">
         <h2 class="text-2xl font-bold mb-4">What is a CSS Gradient Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           A CSS gradient generator is a visual design tool that lets you create smooth color transitions for website backgrounds, buttons, and UI elements without writing the CSS syntax manually. Instead of guessing angle values and color stop positions in your code editor, you adjust sliders and pick colors in a live preview, and the tool produces the exact <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-sm">linear-gradient()</code> or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-sm">radial-gradient()</code> code ready to paste into your stylesheet.
@@ -164,12 +148,10 @@
       </section>
 
       <div class="grid lg:grid-cols-2 gap-8">
-        <!-- Preview Panel (Left Side) -->
-        <div class="order-2 lg:order-1 animate-on-scroll">
+        <div class="order-2 lg:order-1 ">
           <div id="gradient-preview" class="w-full aspect-square lg:aspect-auto lg:h-[500px] rounded-2xl shadow-2xl transition-all duration-300" style="background: linear-gradient(135deg, #10b981 0%, #0ea5e9 100%);">
           </div>
           
-          <!-- CSS Output -->
           <div class="mt-6 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 shimmer-card">
             <div class="flex justify-between items-center mb-2">
               <span class="text-sm font-semibold">CSS Code</span>
@@ -183,10 +165,8 @@
           </div>
         </div>
         
-        <!-- Controls Panel (Right Side) -->
         <div class="order-1 lg:order-2">
-          <!-- Gradient Type -->
-          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
+          <div class="mb-6  shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Type</label>
             <div class="flex gap-2">
               <button class="gradient-type-btn flex-1 py-3 rounded-xl font-medium transition-all bg-emerald-500 text-white" data-type="linear">
@@ -198,8 +178,7 @@
             </div>
           </div>
           
-          <!-- Angle (for linear) -->
-          <div id="angle-control" class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
+          <div id="angle-control" class="mb-6  shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Angle: <span id="angle-value">135</span>deg</label>
             <input type="range" id="angle-slider" min="0" max="360" value="135" class="w-full accent-emerald-500">
             <div class="flex justify-between text-xs text-slate-500 mt-1">
@@ -209,8 +188,7 @@
             </div>
           </div>
           
-          <!-- Color Stops -->
-          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
+          <div class="mb-6  shimmer-card glass-card p-4 rounded-xl">
             <div class="flex justify-between items-center mb-2">
               <label class="text-sm font-semibold">Color Stops</label>
               <button id="add-stop-btn" class="text-sm text-emerald-500 hover:text-emerald-600 font-medium">
@@ -222,8 +200,7 @@
             </div>
           </div>
           
-          <!-- Presets -->
-          <div class="mb-6 animate-on-scroll shimmer-card glass-card p-4 rounded-xl">
+          <div class="mb-6  shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Quick Presets</label>
             <div class="grid grid-cols-4 gap-2">
               <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" title="Purple Dream Gradient"></button>
@@ -237,8 +214,7 @@
             </div>
           </div>
           
-          <!-- Actions -->
-          <div class="flex gap-3 animate-on-scroll">
+          <div class="flex gap-3 ">
             <button id="random-gradient-btn" class="btn-secondary flex-1 justify-center">
               <i class="fas fa-random"></i>
               Random
@@ -251,8 +227,7 @@
         </div>
       </div>
 
-      <!-- [ADDED] "Why I Built This Tool" — human touch section -->
-      <section class="glass-card p-8 animate-on-scroll shimmer-card mt-12">
+      <section class="glass-card p-8  shimmer-card mt-12">
         <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           I've lost count of how many times I've typed out <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-sm">linear-gradient(135deg, ...)</code> only to reload the page and realize the angle was slightly off, or the colors didn't transition where I expected. Gradient syntax isn't hard, but getting it right by trial and error in a text editor is slow — especially when you're working with three or more color stops and trying to hit a specific mood.
@@ -265,10 +240,7 @@
         </p>
       </section>
       
-      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
-         
-         
-         <!-- [MODIFIED] Renamed H2 to avoid duplicate with new section above tool, fixed repeated sentence, expanded content -->
+      <div class="seo-content space-y-12 mt-16 ">
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How CSS Gradients Work Under the Hood</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -282,7 +254,6 @@
             </p>
          </section>
 
-         <!-- Linear vs Radial -->
          <section>
             <h2 class="text-2xl font-bold mb-6 text-center">Linear vs. Radial Gradients</h2>
             <div class="grid md:grid-cols-2 gap-6">
@@ -305,7 +276,6 @@
             </div>
          </section>
 
-         <!-- [ADDED] Use cases section for deeper content coverage -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">When to Use CSS Gradients in Your Projects</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
@@ -320,7 +290,6 @@
             </p>
          </section>
 
-         <!-- How to Use -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How to Use This Generator</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
@@ -332,7 +301,6 @@
             </ol>
          </section>
 
-         <!-- [ADDED] Benefits section -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Benefits of Using a Visual Gradient Builder</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
@@ -373,8 +341,6 @@
             </div>
           </section>
          
-         
-         <!-- [MODIFIED] Added Contrast Checker and Color Blindness Simulator to related tools -->
          <section class="glass-card p-8 shimmer-card text-center">
             <h2 class="text-2xl font-bold mb-4">Explore More Color Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Take your designs further with these resources:</p>
@@ -390,7 +356,6 @@
          
       </div>
 
-      <!-- [ADDED] Trust signal — placed before footer for AdSense credibility -->
       <div class="text-center py-10 mt-4">
         <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
           <span class="text-slate-400 text-sm">Built by</span>
@@ -398,7 +363,6 @@
           <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
         </div>
       </div>
-      
 
     </div>
   </main>

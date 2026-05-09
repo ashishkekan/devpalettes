@@ -7,21 +7,18 @@
   <meta name="description" content="Free online color wheel tool to generate color harmonies. Create complementary, triadic & analogous color schemes instantly.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/color-wheel/">
-
  
   <meta property="og:title" content="Color Wheel Tool - Color Harmony Generator">
   <meta property="og:description" content="Free online color wheel tool to generate color harmonies. Create complementary, triadic & analogous color schemes instantly.">
   <meta property="og:url" content="https://devpalettes.com/color-wheel/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/color-wheel-tool-preview.png">
-
   
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Color Wheel Tool - Color Harmony Generator">
   <meta name="twitter:description" content="Free online color wheel tool to generate color harmonies. Create complementary, triadic & analogous color schemes instantly.">
   <meta name="twitter:image" content="https://devpalettes.com/images/color-wheel-tool-preview.png">
 
-  <!-- JSON-LD: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -39,7 +36,6 @@
   }
   </script>
 
-  <!-- JSON-LD: FAQ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -108,7 +104,6 @@
     gtag('js', new Date());
     gtag('config', 'G-F252PEQ1JC');
   </script>
-  <!-- Performance Note: For production, replace this script with a generated Tailwind CSS build file -->
   <script src="../js/tailwind.js"></script>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
@@ -131,12 +126,11 @@
   <link rel="stylesheet" href="../css/animations.css">
   
   <style>
-    /* Specific Styles for Color Wheel */
     .wheel-wrapper {
       position: relative;
       width: 320px;
       height: 320px;
-      touch-action: none; /* Prevent scrolling while dragging */
+      touch-action: none;
     }
     
     #color-wheel-canvas {
@@ -154,7 +148,7 @@
       box-shadow: 0 2px 10px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(0,0,0,0.2);
       pointer-events: none;
       transform: translate(-50%, -50%);
-      transition: background-color 0.05s; /* Smooth color update */
+      transition: background-color 0.05s;
       z-index: 10;
     }
     
@@ -189,30 +183,22 @@
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
   <div id="navbar-container"></div>
-  
   <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
     <div class="gradient-blob blob-3"></div>
     <div id="particles-container"></div>
-    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <!-- Header -->
-      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-10 " style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">Interactive Color Wheel</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">
           Drag the marker or click anywhere on the wheel. Select a harmony rule below.
         </p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
-
-      <!-- [ADDED] Content-first SEO section — placed above the tool for AdSense approval -->
-      <section class="glass-card p-8 animate-on-scroll shimmer-card mb-8">
+      <section class="glass-card p-8  shimmer-card mb-8">
         <h2 class="text-2xl font-bold mb-4">What is an Interactive Color Wheel?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           An interactive color wheel is a digital version of the traditional color wheel — a circular diagram that organizes hues by their chromatic relationship. Unlike a static image, an interactive one lets you click or drag to select any point on the wheel, then instantly see which colors harmonize with your selection based on geometric rules. The horizontal position controls hue (the color family — red, blue, green, etc.), while the distance from the center controls saturation (how vivid or muted the color appears).
@@ -224,13 +210,8 @@
           The color wheel has been the foundation of color theory since Isaac Newton first arranged the spectrum into a circle in 1666. Every design system, brand guideline, and UI framework is ultimately built on the relationships this wheel visualizes. This tool makes those relationships tangible and immediately useful.
         </p>
       </section>
-      
       <div class="grid lg:grid-cols-3 gap-8">
-        
-        <!-- Left: Wheel & Harmony -->
-        <div class="lg:col-span-2 space-y-6 animate-on-scroll">
-          
-          <!-- Harmony Selector -->
+        <div class="lg:col-span-2 space-y-6 ">
           <div class="glass-card p-6 shimmer-card">
             <h3 class="font-bold mb-3 text-xs uppercase tracking-wider text-slate-500">Harmony Rule</h3>
             <div class="flex flex-wrap gap-2">
@@ -243,14 +224,12 @@
             </div>
           </div>
           
-          <!-- Wheel Area -->
           <div class="glass-card p-8 flex flex-col items-center justify-center shimmer-card">
              <div class="wheel-wrapper">
                <canvas id="color-wheel-canvas" width="320" height="320"></canvas>
                <div id="marker-base" class="wheel-marker"></div>
              </div>
              
-             <!-- Lightness Slider -->
              <div class="w-full max-w-xs mt-8">
                 <label class="block text-sm font-medium mb-2 text-slate-500">Lightness</label>
                 <input type="range" id="lightness-slider" min="10" max="90" value="50" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer">
@@ -258,11 +237,8 @@
           </div>
           
         </div>
-        
-        <!-- Right: Results -->
-        <div class="space-y-6 animate-on-scroll">
-          
-          <!-- Base Color -->
+  
+        <div class="space-y-6 ">
           <div class="glass-card p-6 shimmer-card">
             <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
               <div id="preview-swatch" class="w-6 h-6 rounded-md border border-white/20" style="background: #2a9d8f"></div>
@@ -287,7 +263,6 @@
             </div>
           </div>
           
-          <!-- Scheme Colors -->
           <div class="glass-card p-6 shimmer-card">
             <h3 class="font-bold mb-4 text-lg">Color Scheme</h3>
             <div id="scheme-output" class="space-y-2 max-h-80 overflow-y-auto">
@@ -303,8 +278,7 @@
         
       </div>
 
-      <!-- [ADDED] "Why I Built This Tool" — human touch section -->
-      <section class="glass-card p-8 mt-12 animate-on-scroll shimmer-card">
+      <section class="glass-card p-8 mt-12  shimmer-card">
         <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           I built this color wheel because every other one I found online was either broken on mobile, covered in pop-up ads, or so overloaded with features that the actual wheel was crammed into a tiny corner. I just wanted a clean, large wheel I could drag my finger across on my phone and instantly see matching colors — no account, no paywall, no "download our app" banner.
@@ -317,12 +291,9 @@
         </p>
       </section>
 
-      <!-- SEO Content Section -->
-      <section class="mt-16 animate-on-scroll">
+      <section class="mt-16 ">
         <div class="glass-card p-8 shimmer-card">
           <div class="prose dark:prose-invert max-w-none">
-
-            <!-- [MODIFIED] Renamed H2 to avoid duplicate with new section above the tool -->
             <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How the Color Wheel Organizes Color Relationships</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               A color wheel arranges primary colors (red, yellow, blue), secondary colors (green, orange, purple), and tertiary colors in a continuous spectrum around a circle. The position of any color on the wheel tells you everything about how it relates to every other color — which ones will contrast sharply, which will blend smoothly, and which will create tension. This geometric predictability is what makes the wheel useful: instead of relying on subjective taste, you follow spatial relationships that have been validated by centuries of art and design practice. If you need to <a href="/converter/" class="text-emerald-500 hover:underline">convert colors between HEX, RGB, and HSL formats</a> after picking them from the wheel, a dedicated converter tool keeps your workflow smooth.
@@ -364,15 +335,10 @@
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               Click or drag anywhere on the wheel to pick a base color — the horizontal position controls hue, and the distance from the center controls saturation. Then choose a harmony rule from the buttons above the wheel: the tool instantly calculates the matching colors and displays their HEX, RGB, and HSL values on the right panel. Use the lightness slider to adjust brightness across the entire scheme. When you find a combination you like, copy the HEX codes directly into your CSS or design tool, or click Export Scheme to save the full set. The entire process takes seconds — no guesswork, no manual calculations.
             </p>
-
-            <!-- [REMOVED] Duplicate FAQ section — already covered by structured data JSON-LD, keeping it here created redundant content that adds no SEO value and risks being flagged as thin/duplicated content by AdSense reviewers -->
-
           </div>
         </div>
       </section>
 
-      <!-- Added Social Sharing Section (After CTA or before Footer) -->
-      <!-- [MODIFIED] Fixed incorrect title attributes on share buttons -->
       <section class="glass-card p-8 my-16 shimmer-card text-center">
         <div class="max-w-7xl mx-auto px-4 text-center">
           <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
@@ -400,8 +366,6 @@
         </div>
       </section>
       
-      
-      <!-- [MODIFIED] Removed self-referencing /color-wheel/ link, added Color from Image -->
       <section class="glass-card p-8 shimmer-card text-center">
         <h2 class="text-2xl font-bold mb-4">Related Design Tools</h2>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your design workflow with these free tools built for creators and developers.</p>
@@ -415,7 +379,6 @@
         </div>
       </section>
 
-      <!-- [ADDED] Trust signal — placed before footer for AdSense credibility -->
       <div class="text-center py-10 mt-4">
         <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
           <span class="text-slate-400 text-sm">Built by</span>
@@ -423,6 +386,7 @@
           <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
         </div>
       </div>
+
     </div>
   </main>
   
