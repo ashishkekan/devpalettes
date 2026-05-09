@@ -441,11 +441,11 @@ const NAV_CATEGORIES = [
     label: 'Pro Tools',
     tools: [
       { label: 'Image Compressor', path: 'image-compressor/' },
+      { label: 'PDF Compressor', path: 'pdf-compressor/' },
       { label: 'ATS Resume Checker Tool', path: 'ats-checker/' },
       { label: 'Brand Color Extractor Tool', path: 'brand-color-extractor/' },
       { label: 'Tailwind Color Palette Generator', path: 'tailwind-color-palette-generator/' },
       { label: 'SVG Color Editor Tool', path: 'svg-color-editor/' },
-      { label: 'Landing Page Builder Tool', path: 'page-builder/' },
       { label: 'Image to Gradient Generator', path: 'image-to-gradient-generator/' },
     ]
   }
