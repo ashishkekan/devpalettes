@@ -126,7 +126,7 @@
     <div id="particles-container"></div>
     
     <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
-      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-8 " style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">Free Color Palette Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-2">
           Press <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate • Click colors to copy • Lock colors to keep them
@@ -135,11 +135,24 @@
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8 animate-on-scroll" style="min-height: 60vh;">
+      <section class="glass-card p-8  shimmer-card mb-8">
+        <h2 class="text-2xl font-bold mb-4">What is a Color Palette Generator?</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          A color palette generator is an online design tool that creates harmonious color combinations automatically. Instead of guessing which colors work together or manually adjusting values on a <a href="/color-wheel/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color wheel</a>, you get ready-to-use schemes in a single click. Each generated palette includes exact HEX codes that you can copy directly into your CSS, HTML, or design files — no conversion step needed.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          This type of tool is essential for web developers building interfaces, graphic designers creating brand identities, and anyone who needs consistent color schemes across a project. Whether you're starting a new website from scratch, refreshing an existing design system, or just looking for fresh color inspiration, a palette generator eliminates the trial-and-error that usually slows down the creative process.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Our generator goes beyond basic randomization — you can lock colors you like, add or remove slots to match your layout needs, and export finished palettes as CSS custom properties, JSON objects, or PNG images. No account required, no downloads, no usage limits.
+        </p>
+      </section>
+
+      <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8 " style="min-height: 60vh;">
         <!-- Colors rendered by JS -->
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-8 animate-on-scroll">
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-8 ">
         <button id="generate-btn" class="btn-primary btn-glow text-lg px-8 py-4">
           <i class="fas fa-sync-alt"></i>
           Generate
@@ -154,7 +167,7 @@
         </button>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-3 mb-12 animate-on-scroll">
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12 ">
         <button id="export-css-btn" class="btn-secondary text-sm">
           <i class="fas fa-code"></i>
           Copy CSS
@@ -173,18 +186,37 @@
         </button>
       </div>
 
-      <div id="saved-palettes-section" class="hidden animate-on-scroll mb-12">
+      <div id="saved-palettes-section" class="hidden mb-12">
         <h2 class="text-xl font-bold mb-4">Saved Palettes</h2>
         <div id="saved-palettes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <!-- Saved palettes rendered by JS -->
         </div>
       </div>
 
-      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+      <section class="glass-card p-8 shimmer-card mb-12">
+        <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          I built this tool because I kept hitting the same wall on every new project: spending 20 minutes in Figma picking colors, then another 10 converting them to CSS variables, then realizing two of the colors looked terrible next to each other on an actual page. I'd start over. Repeat. It was a dumb, repetitive problem that ate into my actual design time.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          I wanted something dead simple — hit spacebar, get five colors that actually work together, lock the ones I like, keep going until it clicks. No login screen, no "upgrade to pro" popup after three uses, no bloated interface with 40 options I'll never touch. Just a fast, clean palette generator that respects my time.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          The CSS export came from the same frustration — every time I generated a palette on another site, I'd manually type out custom properties one by one. So I built that into one click. The PNG export exists because I wanted to drop palette images directly into Slack threads and Figma files without taking screenshots. If you also need palettes pulled from photos rather than generated randomly, I built a separate <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color extractor from image</a> tool for that workflow too.
+        </p>
+      </section>
+
+      <div class="seo-content space-y-12 mt-16 ">
          <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">What is a Color Palette Generator?</h2>
+            <h2 class="text-2xl font-bold mb-4">How Color Palettes Improve Your Design Workflow</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A well-constructed color palette is the foundation of every polished digital product. It creates visual consistency across pages, establishes brand recognition, and communicates hierarchy — guiding users toward important actions through deliberate color contrast. Without a defined palette, designs tend to accumulate random colors over time, leading to a disjointed, unprofessional appearance.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Using a generator speeds up the hardest part of the process: the initial selection. Instead of starting from a blank canvas, you begin with a curated set of colors that are mathematically balanced. From there, the lock-and-regenerate workflow lets you refine the palette interactively — keeping what works and swapping what doesn't until you have exactly the right combination.
+            </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               A <strong>Color Palette Generator</strong> is a tool used by designers and developers to create harmonious color schemes automatically. Instead of spending hours picking colors manually, you can generate endless combinations with a single click. This tool helps you find the perfect <strong>color scheme</strong> for your website, app, or graphic design project.
+               Once your palette is finalized, run it through a <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to make sure text and background pairings meet accessibility standards. A beautiful palette that fails contrast requirements can exclude users with low vision — so this step matters as much as the colors themselves.
             </p>
          </section>
          <section class="glass-card p-8 shimmer-card">
@@ -206,6 +238,21 @@
                </div>
             </div>
          </section>
+
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Common Use Cases for Generated Palettes</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Website and app design:</strong> Establish a primary, secondary, and accent color system before writing a single line of CSS. Export directly as custom properties.</li>
+               <li><strong>Brand identity projects:</strong> Quickly explore multiple color directions for a client, save the best candidates, and present them as PNG swatches.</li>
+               <li><strong>Presentation and slide decks:</strong> Generate a cohesive 3–4 color scheme so your slides look intentional rather than default-template.</li>
+               <li><strong>Data visualization:</strong> Build distinct, readable color series for charts and graphs where each data point needs to be visually separable.</li>
+               <li><strong>Marketing materials:</strong> Create on-brand social media graphics, email templates, and ad creatives using a locked palette that matches your website.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               For backgrounds that need more depth, pair your flat palette colors with a <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradient generator</a> to create smooth transitions between your primary and secondary tones.
+            </p>
+         </section>
+
          <section>
             <h2 class="text-2xl font-bold mb-6 text-center">Why Use Our Palette Generator?</h2>
             <div class="grid md:grid-cols-3 gap-6">
@@ -266,11 +313,20 @@
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
                <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
                <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
                <a href="/color-names-chart/" class="btn-secondary text-xs py-2 px-4">HTML Color Names</a>
             </div>
-         </div>
+         </section>
 
+      </div>
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+          <span class="text-slate-400 text-sm">Built by</span>
+          <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+          <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
       </div>
     </div>
   </main>

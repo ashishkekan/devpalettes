@@ -132,14 +132,14 @@
     .particle { position: absolute; border-radius: 50%; pointer-events: none; animation: particleFloat linear infinite; }
     @keyframes particleFloat { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
     
-    .animate-on-scroll { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
-    .animate-on-scroll.animate-in { opacity: 1; transform: translateY(0); }
+    . { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    ..animate-in { opacity: 1; transform: translateY(0); }
     
     .shimmer-card { position: relative; overflow: hidden; }
     .shimmer-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%); transform: translateX(-100%); animation: shimmerEffect 3s ease-in-out infinite; pointer-events: none; z-index: 10; }
     @keyframes shimmerEffect { 0% { transform: translateX(-100%); } 50%, 100% { transform: translateX(100%); } }
     
-    @media (prefers-reduced-motion: reduce) { .gradient-blob, .spectrum-line, .particle, .shimmer-card::before { animation: none !important; } .animate-on-scroll { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .gradient-blob, .spectrum-line, .particle, .shimmer-card::before { animation: none !important; } . { opacity: 1; transform: none; } }
     @media (max-width: 768px) { .gradient-blob { filter: blur(60px); opacity: 0.4; } .blob-1 { width: 250px; height: 250px; } .blob-2 { width: 200px; height: 200px; } .blob-3 { width: 180px; height: 180px; } }
   </style>
 </head>
@@ -158,7 +158,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       
       <!-- Page Header -->
-      <header class="text-center mb-12 animate-on-scroll">
+      <header class="text-center mb-12 ">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">
           Color Design Guides, UI Trends & Palette Ideas
         </h1>
@@ -176,7 +176,7 @@
       </header>
       
       <!-- Featured Article -->
-      <section class="mb-12 animate-on-scroll">
+      <section class="mb-12 ">
         <a href="/blog/best-color-combinations/" class="block bg-white dark:bg-slate-800/50 rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 group shimmer-card">
           <div class="grid lg:grid-cols-2 gap-0">
             <div class="h-64 lg:h-auto relative" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);">
@@ -209,7 +209,7 @@
       <section class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         
         <!-- Article Card 1 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/ui-color-trends-2026/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -229,7 +229,7 @@
         </article>
         
         <!-- Article Card 2 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/pastel-color-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
@@ -249,7 +249,7 @@
         </article>
         
         <!-- Article Card 3 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/dark-mode-color-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #0c0f14 0%, #1a1a2e 50%, #0f3460 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
@@ -269,7 +269,7 @@
         </article>
         
         <!-- Article Card 4 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/color-psychology/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -289,7 +289,7 @@
         </article>
         
         <!-- Article Card 5 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/color-temperature-ui/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #66dbea 0%, #4ba255 50%, #405745 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -313,7 +313,7 @@
         </article>
 
         <!-- Article Card  6-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/color-blindness-in-ui-design/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #3b82f6 0%, #f59e0b 50%, #10b981 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -341,7 +341,7 @@
         </article>
 
         <!-- Article Card  7-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/color-converter-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #fbbf24 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -369,7 +369,7 @@
         </article>
 
         <!-- Article Card  8-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/color-palettes-in-design/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #f72ce6 0%, #635085 50%, #fb2424 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -397,7 +397,7 @@
         </article>
 
         <!-- Article Card  9-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/extract-color-from-image/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #7c7c7c 0%, #97dace 50%, #fbbf24 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -425,7 +425,7 @@
         </article>
 
         <!-- Article Card  10-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/gradient-colors-in-ui-design/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #e8ff14 0%, #301788 50%, #24fbc5 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -453,7 +453,7 @@
         </article>
 
         <!-- Article Card  11-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/seo-meta-tag-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #ff7a14 0%, #b7ff1c 50%, #fb24d7 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -481,7 +481,7 @@
         </article>
        
         <!-- Article Card  12-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/css-flexbox-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #ffa2d8 0%, #6e7957 50%, #7320f8 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -509,7 +509,7 @@
         </article>
 
         <!-- Article Card  13-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/code-snippet-manager-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #fbbf24 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -537,7 +537,7 @@
         </article>
 
         <!-- Article Card  14-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/seo-analyzer-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #7c7c7c 0%, #97dace 50%, #fbbf24 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -565,7 +565,7 @@
         </article>
 
         <!-- Article Card  15-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/best-landing-page-design-tips/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #e8ff14 0%, #301788 50%, #24fbc5 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -593,7 +593,7 @@
         </article>
 
         <!-- Article Card  16-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/ats-resume-checker-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -621,7 +621,7 @@
         </article>
 
         <!-- Article Card  17-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/robots-txt-generator-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #f72ce6 0%, #635085 50%, #fb2424 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -649,7 +649,7 @@
         </article>
 
         <!-- Article Card  18-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/sitemap-generator-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #e8ff14 0%, #301788 50%, #24fbc5 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -677,7 +677,7 @@
         </article>
 
         <!-- Article Card  19-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/color-diff-checker-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #e8ff14 0%, #301788 50%, #24fbc5 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -705,7 +705,7 @@
         </article>
 
         <!-- Article Card 20 -->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
             <a href="/blog/top-css-generators/" class="block">
                 <div class="h-48 relative" style="background: linear-gradient(135deg, #ff7e5f 0%, #6a11cb 50%, #2575fc 100%);">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -733,7 +733,7 @@
         </article>
 
         <!-- Article Card  21-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/minifiers-complete-optimization-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #e8ff14 0%, #301788 50%, #24fbc5 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -761,7 +761,7 @@
         </article>
 
         <!-- Article Card  22-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/utm-builder-guide/" class="block">
             <div class="h-48 relative" style="background: linear-gradient(135deg, #6ecbe7 0%, #841788 50%, #fb3224 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -789,7 +789,7 @@
         </article>
 
         <!-- Article Card  23-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/css-grid-generator-guide/" class="block"> 
             <div class="h-48 relative" style="background: linear-gradient(135deg, #6ecbe7 0%, #841788 50%, #fb3224 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -817,7 +817,7 @@
         </article>
 
         <!-- Article Card  24-->
-        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group animate-on-scroll shimmer-card">
+        <article class="bg-white dark:bg-slate-800/50 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 group  shimmer-card">
           <a href="/blog/box-shadow-generator-guide/" class="block">  
             <div class="h-48 relative" style="background: linear-gradient(135deg, #6ecbe7 0%, #841788 50%, #fb3224 100%);">
               <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -845,7 +845,7 @@
         </article>
 
         <!-- Article Card  25- Coming Soon -->
-        <article class="bg-slate-100 dark:bg-slate-800/30 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 overflow-hidden animate-on-scroll">
+        <article class="bg-slate-100 dark:bg-slate-800/30 rounded-2xl border-2 border-dashed border-slate-300 dark:border-slate-600 overflow-hidden ">
           <div class="p-5 text-center py-12">
             <div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center mx-auto mb-4">
               <i class="fas fa-pen-nib text-2xl text-slate-400"></i>
@@ -859,7 +859,7 @@
       </section>
       
       <!-- Newsletter Section -->
-      <section class="mt-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl p-8 text-center text-white animate-on-scroll">
+      <section class="mt-16 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl p-8 text-center text-white ">
         <h2 class="text-2xl font-bold mb-2">Stay Updated</h2>
         <p class="mb-6 text-white/90">Get the latest color tips and design guides delivered to your inbox.</p>
         <form action="https://formspree.io/f/mrbklgzn" method="POST" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto" id="newsletter-form">

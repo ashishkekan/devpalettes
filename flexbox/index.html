@@ -23,7 +23,6 @@
   <meta name="twitter:description" content="Free CSS Flexbox generator to learn flexbox visually. Adjust properties in this interactive CSS flexbox tool, preview layouts, and copy code instantly.">
   <meta name="twitter:image" content="https://devpalettes.com/images/og-flexbox-playground.png">
   
-  <!-- JSON-LD Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -168,7 +167,6 @@
   <link rel="stylesheet" href="../css/animations.css">
   
   <style>
-    /* Checkerboard background for preview to visualize stretch */
     .preview-bg-grid {
        background-color: #ffffff;
        background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
@@ -191,7 +189,6 @@
   <div id="navbar-container"></div>
   
   <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -200,19 +197,34 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <!-- Header -->
-      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+      <header class="text-center mb-6 " style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">CSS Flexbox Generator – Flexbox Layout Tool</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
           Interactive tool to master CSS Flexbox. Adjust properties and see the layout change instantly.
         </p>
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </header>
+
+      <section class="mb-10 max-w-7xl mx-auto " aria-label="Introduction to CSS Flexbox">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What is CSS Flexbox?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            CSS Flexbox is a one-dimensional layout system that makes it straightforward to arrange items in rows or columns, distribute space between them, and align them within a container. With just a <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">display: flex</code> declaration, you unlock powerful alignment and spacing properties that work consistently across all modern browsers — no floats, no clearfix hacks, no fragile positioning.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            Whether you're building a navigation bar, centering a login form, or creating a responsive card row, Flexbox handles it with minimal code. The trade-off is remembering which property controls which axis — and that's exactly where this visual generator helps. Adjust any property below and watch the layout respond in real time. For a deeper explanation of the underlying concepts, <a href="/blog/css-flexbox-guide/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">check out our complete Flexbox guide</a>. If your layout needs control over both rows and columns simultaneously, <a href="/css-grid-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">try our CSS Grid generator</a> instead.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            This free online Flexbox generator was designed for developers who learn by doing. Instead of reading documentation and mentally mapping properties to results, you can tweak every container and item property directly — and copy the generated CSS when you're satisfied with the layout. It works right in your browser with zero setup required.
+          </p>
+        </div>
+      </section>
+      <!-- END NEW: Content-first intro section -->
       
       <div class="grid lg:grid-cols-3 gap-8">
         
         
-        <aside class="lg:col-span-1 space-y-6 animate-on-scroll" aria-label="Flexbox container and item controls">
+        <aside class="lg:col-span-1 space-y-6 " aria-label="Flexbox container and item controls">
           
           <div class="glass-card p-6 shimmer-card">
              <h2 class="font-bold mb-6 text-lg flex items-center gap-2">
@@ -308,7 +320,7 @@
         </aside>
         
        
-        <section class="lg:col-span-2 space-y-6 animate-on-scroll" aria-label="Flexbox preview and generated CSS code">
+        <section class="lg:col-span-2 space-y-6 " aria-label="Flexbox preview and generated CSS code">
           
           <!-- Preview Area -->
           <div class="glass-card p-0 shimmer-card overflow-hidden">
@@ -343,50 +355,131 @@
       </div>
       
       <!-- SEO Content Section -->
-      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to CSS Flexbox layout">
+      <section class="mt-16 max-w-7xl mx-auto " aria-label="Guide to CSS Flexbox layout">
         <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
           
           <h2 class="text-2xl font-bold mb-4">What Is CSS Flexbox?</h2>
-          <p>CSS Flexbox, formally known as the <strong>Flexible Box Layout Module</strong>, is a one-dimensional layout system designed for distributing space and aligning items within a container. Unlike traditional layout methods like floats or inline-block, Flexbox operates along a single axis — either horizontally or vertically — and automatically calculates how available space should be shared among child elements. This makes it exceptionally well-suited for responsive designs where container sizes change dynamically based on viewport width or user interaction.</p>
-          <p>Flexbox simplifies tasks that were historically difficult in CSS: vertically centering an element, distributing equal space between items, reordering elements without changing HTML structure, and making layouts that adapt gracefully to different screen sizes. Since its widespread browser support, Flexbox has become the standard approach for component-level layouts — navigation bars, form rows, card groups, and footer layouts. For a deeper dive into the fundamentals, <a href="/blog/css-flexbox-guide/" title="Read our complete CSS Flexbox guide with examples">read our CSS Flexbox guide</a> that covers every property in detail.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">CSS Flexbox, formally known as the <strong>Flexible Box Layout Module</strong>, is a one-dimensional layout system designed for distributing space and aligning items within a container. Unlike traditional layout methods like floats or inline-block, Flexbox operates along a single axis — either horizontally or vertically — and automatically calculates how available space should be shared among child elements. This makes it exceptionally well-suited for responsive designs where container sizes change dynamically based on viewport width or user interaction.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Flexbox simplifies tasks that were historically difficult in CSS: vertically centering an element, distributing equal space between items, reordering elements without changing HTML structure, and making layouts that adapt gracefully to different screen sizes. Since its widespread browser support, Flexbox has become the standard approach for component-level layouts — navigation bars, form rows, card groups, and footer layouts. For a deeper dive into the fundamentals, <a href="/blog/css-flexbox-guide/" title="Read our complete CSS Flexbox guide with examples">read our CSS Flexbox guide</a> that covers every property in detail.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Why Flexbox Is Important</h2>
-          <p>Before Flexbox, developers relied on floats, table layouts, and absolute positioning to achieve anything beyond simple block-and-inline flow. These methods required hacks, clearfix solutions, and fragile media queries. Flexbox eliminates these workarounds by providing a purpose-built layout model. A single <strong>display: flex</strong> declaration on a container unlocks a complete set of alignment and distribution properties that work predictably across browsers.</p>
-          <p>Flexbox also introduces the concept of a <strong>main axis</strong> and a <strong>cross axis</strong>. The main axis is determined by the flex-direction property — it runs horizontally for row layouts and vertically for column layouts. The cross axis runs perpendicular to it. Understanding this two-axis model is the key to mastering Flexbox, because every alignment property is defined in terms of one axis or the other. When you need two-dimensional control over both axes simultaneously, a <a href="/css-grid-generator/" title="Use our free CSS Grid generator for 2D layouts">CSS Grid generator</a> is the better choice for page-level structures.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Before Flexbox, developers relied on floats, table layouts, and absolute positioning to achieve anything beyond simple block-and-inline flow. These methods required hacks, clearfix solutions, and fragile media queries. Flexbox eliminates these workarounds by providing a purpose-built layout model. A single <strong>display: flex</strong> declaration on a container unlocks a complete set of alignment and distribution properties that work predictably across browsers.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Flexbox also introduces the concept of a <strong>main axis</strong> and a <strong>cross axis</strong>. The main axis is determined by the flex-direction property — it runs horizontally for row layouts and vertically for column layouts. The cross axis runs perpendicular to it. Understanding this two-axis model is the key to mastering Flexbox, because every alignment property is defined in terms of one axis or the other. When you need two-dimensional control over both axes simultaneously, a <a href="/css-grid-generator/" title="Use our free CSS Grid generator for 2D layouts">CSS Grid generator</a> is the better choice for page-level structures.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Understanding Flexbox Container Properties</h2>
           
           <h3 class="text-2xl font-bold mb-4">flex-direction</h3>
-          <p>The <strong>flex-direction</strong> property sets the main axis of the flex container. The default value is <strong>row</strong>, which arranges items horizontally from left to right. <strong>row-reverse</strong> flips the order so items flow right to left. <strong>column</strong> switches the main axis to vertical, stacking items top to bottom, while <strong>column-reverse</strong> stacks them bottom to top. The direction property also determines the behavior of justify-content (which always operates on the main axis) and align-items (which always operates on the cross axis).</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">The <strong>flex-direction</strong> property sets the main axis of the flex container. The default value is <strong>row</strong>, which arranges items horizontally from left to right. <strong>row-reverse</strong> flips the order so items flow right to left. <strong>column</strong> switches the main axis to vertical, stacking items top to bottom, while <strong>column-reverse</strong> stacks them bottom to top. The direction property also determines the behavior of justify-content (which always operates on the main axis) and align-items (which always operates on the cross axis).</p><br>
           
           <h3 class="text-2xl font-bold mb-4">justify-content</h3>
-          <p>The <strong>justify-content</strong> property controls how items are distributed along the main axis. <strong>flex-start</strong> groups all items at the beginning of the axis. <strong>flex-end</strong> pushes them to the end. <strong>center</strong> places them in the middle. <strong>space-between</strong> distributes equal spacing between adjacent items while leaving no space at the edges — ideal for navigation bars where the first and last items should touch the container walls. <strong>space-around</strong> applies equal spacing around each item, which means the edges get half the spacing of between items. <strong>space-evenly</strong> applies identical spacing everywhere, including between items and at the edges. This flexbox generator lets you toggle between all these values and see the result instantly.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">The <strong>justify-content</strong> property controls how items are distributed along the main axis. <strong>flex-start</strong> groups all items at the beginning of the axis. <strong>flex-end</strong> pushes them to the end. <strong>center</strong> places them in the middle. <strong>space-between</strong> distributes equal spacing between adjacent items while leaving no space at the edges — ideal for navigation bars where the first and last items should touch the container walls. <strong>space-around</strong> applies equal spacing around each item, which means the edges get half the spacing of between items. <strong>space-evenly</strong> applies identical spacing everywhere, including between items and at the edges. This flexbox generator lets you toggle between all these values and see the result instantly.</p><br>
           
           <h3 class="text-2xl font-bold mb-4">align-items</h3>
-          <p>The <strong>align-items</strong> property positions items along the cross axis. <strong>stretch</strong> (the default) forces items to expand and fill the full cross-axis dimension of the container, which is why flex items without an explicit height will stretch to match the tallest sibling in a row layout. <strong>flex-start</strong> aligns items to the top of the container, <strong>flex-end</strong> to the bottom, and <strong>center</strong> to the middle. <strong>baseline</strong> aligns items based on their text baseline, which is useful when items have different font sizes but should appear to sit on the same line.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">The <strong>align-items</strong> property positions items along the cross axis. <strong>stretch</strong> (the default) forces items to expand and fill the full cross-axis dimension of the container, which is why flex items without an explicit height will stretch to match the tallest sibling in a row layout. <strong>flex-start</strong> aligns items to the top of the container, <strong>flex-end</strong> to the bottom, and <strong>center</strong> to the middle. <strong>baseline</strong> aligns items based on their text baseline, which is useful when items have different font sizes but should appear to sit on the same line.</p><br>
           
           <h3 class="text-2xl font-bold mb-4">flex-wrap</h3>
-          <p>By default, flex items try to fit on a single line. The <strong>flex-wrap</strong> property changes this behavior. <strong>nowrap</strong> keeps all items on one line, potentially shrinking them if the container is too narrow. <strong>wrap</strong> allows items to flow onto new lines when they exceed the container width. <strong>wrap-reverse</strong> does the same but wraps in the opposite direction. Wrapping is essential for responsive card grids and tag clouds where the number of items is unpredictable. When designing individual cards for wrapped layouts, our <a href="/card-generator/" title="Generate responsive card components with custom styles">card generator</a> can help you create polished item designs.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">By default, flex items try to fit on a single line. The <strong>flex-wrap</strong> property changes this behavior. <strong>nowrap</strong> keeps all items on one line, potentially shrinking them if the container is too narrow. <strong>wrap</strong> allows items to flow onto new lines when they exceed the container width. <strong>wrap-reverse</strong> does the same but wraps in the opposite direction. Wrapping is essential for responsive card grids and tag clouds where the number of items is unpredictable. When designing individual cards for wrapped layouts, our <a href="/card-generator/" title="Generate responsive card components with custom styles">card generator</a> can help you create polished item designs.</p><br>
           
           <h3 class="text-2xl font-bold mb-4">align-content</h3>
-          <p>The <strong>align-content</strong> property controls how multiple wrapped lines are distributed along the cross axis. It has no effect when flex-wrap is set to nowrap because there is only one line. When wrapping is active, align-content works similarly to justify-content but on the cross axis: <strong>stretch</strong> expands lines to fill the container, <strong>flex-start</strong> groups lines at the top, <strong>center</strong> centers them vertically, and <strong>space-between</strong> and <strong>space-around</strong> distribute spacing between lines.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">The <strong>align-content</strong> property controls how multiple wrapped lines are distributed along the cross axis. It has no effect when flex-wrap is set to nowrap because there is only one line. When wrapping is active, align-content works similarly to justify-content but on the cross axis: <strong>stretch</strong> expands lines to fill the container, <strong>flex-start</strong> groups lines at the top, <strong>center</strong> centers them vertically, and <strong>space-between</strong> and <strong>space-around</strong> distribute spacing between lines.</p><br>
           
           <h3 class="text-2xl font-bold mb-4">gap</h3>
-          <p>The <strong>gap</strong> property sets spacing between flex items without adding margins to the items themselves. It accepts one or two values: a single value applies equal spacing in both directions, while two values set row-gap and column-gap independently. Gap is cleaner than margin-based spacing because it does not create extra space at the container edges, and it collapses naturally at line breaks in wrapped layouts. It is supported in all modern browsers for both Flexbox and Grid. To better understand how gap interacts with padding and margins in your layouts, our <a href="/flexbox/" title="Visualize the CSS box model with padding, border, and margin">flexbox generator</a> provides a clear visual reference.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">The <strong>gap</strong> property sets spacing between flex items without adding margins to the items themselves. It accepts one or two values: a single value applies equal spacing in both directions, while two values set row-gap and column-gap independently. Gap is cleaner than margin-based spacing because it does not create extra space at the container edges, and it collapses naturally at line breaks in wrapped layouts. It is supported in all modern browsers for both Flexbox and Grid. To better understand how gap interacts with padding and margins in your layouts, our <a href="/flexbox/" title="Visualize the CSS box model with padding, border, and margin">flexbox generator</a> provides a clear visual reference.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Real-World Use Cases for Flexbox</h2>
-          <p>Flexbox excels in component-level layouts. <strong>Navigation bars</strong> use Flexbox to space logo, links, and action buttons across a row with align-items to vertically center everything. <strong>Form rows</strong> pair labels and inputs side by side, using justify-content to distribute spacing. <strong>Card grids</strong> with flex-wrap create responsive layouts that reflow based on available width. <strong>Footer layouts</strong> use Flexbox to push copyright text to one side and social links to the other with a single space-between declaration. <strong>Centering content</strong> — both horizontally and vertically — is trivially easy with Flexbox, requiring only display: flex, justify-content: center, and align-items: center on the parent. For buttons within flex containers, our <a href="/button-generator/" title="Design styled buttons with custom CSS properties">button generator</a> helps you create consistent interactive elements.</p>
-          <p>When combining Flexbox with other layout tools, you can build complete page structures. Use this <strong>flexbox layout generator</strong> for component-level arrangements, then switch to a <a href="/page-builder/" title="Build complete landing pages with a visual editor">landing page builder</a> to assemble everything into a full page. Adding subtle background effects to your flex containers — like a <a href="/gradient/" title="Generate beautiful CSS gradients for backgrounds">CSS gradient</a> — can give depth to otherwise flat layouts. For items that need visual elevation within a flex row, our <a href="/box-shadow-generator/" title="Create CSS box shadows with adjustable parameters">shadow generator</a> makes it easy to add consistent depth.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Flexbox excels in component-level layouts. <strong>Navigation bars</strong> use Flexbox to space logo, links, and action buttons across a row with align-items to vertically center everything. <strong>Form rows</strong> pair labels and inputs side by side, using justify-content to distribute spacing. <strong>Card grids</strong> with flex-wrap create responsive layouts that reflow based on available width. <strong>Footer layouts</strong> use Flexbox to push copyright text to one side and social links to the other with a single space-between declaration. <strong>Centering content</strong> — both horizontally and vertically — is trivially easy with Flexbox, requiring only display: flex, justify-content: center, and align-items: center on the parent. For buttons within flex containers, our <a href="/button-generator/" title="Design styled buttons with custom CSS properties">button generator</a> helps you create consistent interactive elements.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">When combining Flexbox with other layout tools, you can build complete page structures. Use this <strong>flexbox layout generator</strong> for component-level arrangements, then switch to a <a href="/page-builder/" title="Build complete landing pages with a visual editor">landing page builder</a> to assemble everything into a full page. Adding subtle background effects to your flex containers — like a <a href="/gradient/" title="Generate beautiful CSS gradients for backgrounds">CSS gradient</a> — can give depth to otherwise flat layouts. For items that need visual elevation within a flex row, our <a href="/box-shadow-generator/" title="Create CSS box shadows with adjustable parameters">shadow generator</a> makes it easy to add consistent depth.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Common Mistakes Beginners Make</h2>
-          <p>One frequent mistake is confusing the main axis and cross axis. When flex-direction is set to column, justify-content controls vertical spacing and align-items controls horizontal alignment — the opposite of the default row direction. Another common error is using align-content on a single-line container and wondering why nothing changes; align-content only works with wrapping enabled. Beginners also sometimes add margins to flex items when gap would be more appropriate, leading to inconsistent edge spacing. Finally, forgetting to set display: flex on the container — or accidentally setting it on the items instead — is a simple but frustrating oversight that prevents all flex properties from taking effect.</p>
-          <p>When building flex-based layouts with color-coded items for testing or documentation, <a href="/palettes/" title="Generate harmonious color palettes for your projects">generate color palettes</a> to ensure consistent, distinguishable colors for each item. If you need to translate colors from design tools into CSS, <a href="/converter/" title="Convert color formats between HEX, RGB, and HSL">convert HEX to RGB</a> for precise control over opacity values. For a broader approach to color selection across your layout projects, <a href="/palettes/" title="Create custom color palettes from a base color">use our color palette generator</a> to build cohesive schemes. To develop a deeper color sense for your UI components, <a href="/blog/color-palettes-in-design/" title="Learn how to create effective color combinations">learn color combinations</a> that create visual harmony across flex-based interfaces.</p><br>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">One frequent mistake is confusing the main axis and cross axis. When flex-direction is set to column, justify-content controls vertical spacing and align-items controls horizontal alignment — the opposite of the default row direction. Another common error is using align-content on a single-line container and wondering why nothing changes; align-content only works with wrapping enabled. Beginners also sometimes add margins to flex items when gap would be more appropriate, leading to inconsistent edge spacing. Finally, forgetting to set display: flex on the container — or accidentally setting it on the items instead — is a simple but frustrating oversight that prevents all flex properties from taking effect.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">When building flex-based layouts with color-coded items for testing or documentation, <a href="/palettes/" title="Generate harmonious color palettes for your projects">generate color palettes</a> to ensure consistent, distinguishable colors for each item. If you need to translate colors from design tools into CSS, <a href="/converter/" title="Convert color formats between HEX, RGB, and HSL">convert HEX to RGB</a> for precise control over opacity values. For a broader approach to color selection across your layout projects, <a href="/palettes/" title="Create custom color palettes from a base color">use our color palette generator</a> to build cohesive schemes. To develop a deeper color sense for your UI components, <a href="/blog/color-palettes-in-design/" title="Learn how to create effective color combinations">learn color combinations</a> that create visual harmony across flex-based interfaces.</p><br>
           
         </article>
       </section>
+
+      <!-- NEW: How to Use section -->
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="How to use the Flexbox generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">How to Use This Flexbox Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Set Container Properties</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Use the dropdowns in the left panel to choose values for flex-direction, justify-content, align-items, flex-wrap, align-content, and gap. The preview updates instantly as you change each property — no page reload needed.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Adjust the Number of Items</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click the Add or Remove buttons to control how many flex items appear in the preview. This is especially useful for testing how spacing properties like space-between and space-around behave with different item counts.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Preview the Layout</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The large preview area shows your flex container in real time. Resize your browser window to test how the layout responds at different viewport widths — useful for checking wrapping behavior and responsive breakpoints.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Copy the CSS</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Once you're happy with the layout, click the Copy button next to the generated CSS code. Paste it directly into your stylesheet — the output is production-ready and uses standard flex properties. If you need matching <a href="/button-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">styled buttons</a> inside your flex container, our button generator pairs well with this workflow.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: How to Use section -->
+
+      <!-- NEW: Benefits section -->
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="Benefits of using a visual Flexbox generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Benefits of Using a Visual Flexbox Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-eye text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Learn by Seeing</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Reading about Flexbox properties is one thing. Watching them change a layout in real time builds understanding that sticks. This generator makes the relationship between each property and its visual result immediately obvious — no guesswork involved.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Faster Prototyping</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Instead of writing CSS, saving, refreshing, and adjusting, you can experiment with dozens of property combinations in seconds. When the layout looks right, copy the code and move on. No back-and-forth between your editor and browser.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-code text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Clean, Production-Ready CSS</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The generated code uses only standard Flexbox properties — no vendor prefixes, no hacks, no unnecessary wrappers. Paste it into any project and it works immediately. You can also pair the output with a <a href="/box-shadow-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">box shadow generator</a> to add depth to individual flex items.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-mobile-alt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Test Responsive Behavior</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Resize your browser window while the generator is open to see how your flex layout responds at different widths. This is especially helpful for understanding how wrapping and gap behave when the container narrows — something that's hard to visualize from code alone.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: Benefits section -->
+
+      <!-- NEW: Why I Built This Tool section -->
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="Why I built this Flexbox generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            I kept running into the same problem every time I worked with Flexbox: I'd forget which property controls which axis, especially after switching between <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">row</code> and <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">column</code> directions. I'd open the MDN docs, read through the spec, set a property in my editor, switch to the browser to check the result, then go back and tweak — over and over. It was a slow, tedious loop that ate up my afternoons.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            So I built this generator to be the thing I wished I had while learning: a single screen where you change a dropdown and instantly see what happens. No tab-switching, no mental gymnastics mapping documentation to results. Just pick your properties, watch the layout respond, and copy the code when it looks right. I use it almost daily now — for quick prototyping, for debugging layout issues, and honestly for reminding myself how <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">align-content</code> behaves when wrapping is enabled.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            If you're learning Flexbox for the first time or just need a faster way to prototype a layout, I hope this saves you the back-and-forth that used to slow me down. It's free, it runs entirely in your browser, and I'm always adding improvements based on feedback from other developers. Feel free to <a href="/css-grid-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">check out the CSS Grid generator</a> too if your layouts need two-dimensional control.
+          </p>
+        </article>
+      </section>
+      <!-- END NEW: Why I Built This Tool section -->
       
       <!-- FAQ Section -->
-      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about CSS Flexbox">
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="Frequently asked questions about CSS Flexbox">
         <div class="glass-card p-8 shimmer-card">
           <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
           <div class="space-y-6">
@@ -452,6 +545,14 @@
           <a href="/box-shadow-generator/" title="Generate CSS box shadows with fine-tuned controls" class="btn-secondary text-xs py-2 px-4">Shadow Generator</a>
         </div>
       </section>
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
 
     </div>
   </main>
