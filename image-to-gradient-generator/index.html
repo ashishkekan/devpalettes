@@ -25,7 +25,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -138,11 +140,28 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-6 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">Image to CSS Gradient Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Extract colors from your images and generate beautiful CSS gradients instantly.</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
+      <!-- NEW: Content-first intro section ABOVE the tool UI for SEO & AdSense -->
+      <section class="mb-10 max-w-3xl mx-auto animate-on-scroll" aria-label="Introduction to the Image to Gradient Generator">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What Is This Image to Gradient Generator?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            This free tool analyzes any image you upload, extracts its dominant colors, and automatically generates a matching CSS gradient you can copy and use immediately. Instead of manually guessing which colors complement your photos or brand assets, you get an algorithmically derived gradient that is guaranteed to feel cohesive — because it comes directly from the image itself.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            Upload a sunset and get a warm orange-to-purple blend. Drop in a corporate logo and receive a gradient that matches the brand identity perfectly. The tool runs entirely in your browser using the HTML5 Canvas API — your images are never uploaded to any server. You can choose between linear and radial gradients, adjust the angle, and copy the production-ready CSS with one click. For manually building gradients from scratch, try our <a href="/gradient/" class="text-pink-600 dark:text-pink-400 underline hover:no-underline">advanced gradient builder</a>. To extract a full color palette instead, <a href="/color-from-image/" class="text-pink-600 dark:text-pink-400 underline hover:no-underline">the color from image tool</a> pulls every dominant shade.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Whether you are designing a website hero section, a mobile app background, or a social media banner, image-derived gradients create visual harmony that hand-picked colors rarely achieve. And because the output is standard CSS, it works with any framework — Tailwind, Bootstrap, or vanilla stylesheets.
+          </p>
+        </div>
+      </section>
+      <!-- END NEW: Content-first intro section -->
       
       <div class="block md:grid md:grid-cols-3 gap-8">
         <!-- Controls -->
@@ -212,6 +231,70 @@
         </div>
       </div>
 
+      <!-- NEW: How to Use section (structured for readability) -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="How to use the image to gradient generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">How to Use This Image to Gradient Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Upload Your Image</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Drag and drop any JPG, PNG, or WebP image into the upload zone, or click to browse your files. The image stays in your browser — nothing is sent to a server. You will see a thumbnail preview once the file loads.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Watch the Colors Appear</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The tool automatically scans the pixel data and identifies the dominant colors. These appear as swatches in the Extracted Colors section. Each color is a key stop in the generated gradient.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Customize the Gradient</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Switch between Linear and Radial gradient types using the dropdown. For linear gradients, drag the Angle slider to change the direction of the blend. The live preview updates instantly so you can find the perfect orientation.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-pink-100 dark:bg-pink-900/40 text-pink-600 dark:text-pink-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Copy the CSS</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click the Copy button next to the CSS code output. Paste it directly into your stylesheet — the code is production-ready and uses standard CSS syntax. Need to convert a color format before using it? <a href="/converter/" class="text-pink-600 dark:text-pink-400 underline hover:no-underline">Our color converter</a> handles HEX, RGB, and HSL.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: How to Use section -->
+
+      <!-- NEW: Benefits section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Benefits of image-based gradients">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Benefits of Using Image-Based Gradients</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-palette text-pink-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Guaranteed Color Harmony</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Because the gradient colors are extracted directly from your image, they are mathematically guaranteed to work together. No more guessing which hex codes complement a photo — the palette is derived from the content itself.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-moon text-pink-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Mood Matching</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Images carry emotional weight — a sunset feels warm, a glacier feels cool. An extracted gradient preserves that temperature automatically, so your UI background supports the content instead of fighting it.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-bolt text-pink-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Faster Design Decisions</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Instead of browsing gradient galleries or trial-and-error in your editor, drop in an image and get a usable gradient in seconds. The output is standard CSS, ready for any project. Pair it with a <a href="/color-from-image/" class="text-pink-600 dark:text-pink-400 underline hover:no-underline">color extraction tool</a> for the full palette.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-lock text-pink-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">100% Private Processing</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">All image analysis happens locally in your browser using the Canvas API. Your photos never leave your device, making this tool safe for client work, confidential assets, or any images you do not want uploaded to a third-party server.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: Benefits section -->
+
       <!-- SEO Content Section -->
       <div class="prose prose-slate dark:prose-invert max-w-7xl mx-auto my-16 animate-on-scroll">
          <h2 class="text-2xl font-bold mb-4">What is a Gradient in Design?</h2>
@@ -249,6 +332,23 @@
          <pre><code>background: radial-gradient(shape size at position, color1, color2);</code></pre>
          <p>By default, browsers use an ellipse shape at the center. Radial gradients are excellent for buttons or spotlight effects. Check out our <a href="/gradient/">Advanced Gradient Builder</a> or the <a href="/brand-color-extractor/">Brand Color Extractor</a> for pulling palettes from entire websites.</p>
       </div>
+
+      <!-- NEW: Why I Built This Tool section -->
+      <section class="max-w-7xl mx-auto my-16 animate-on-scroll" aria-label="Why I built this image to gradient generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            I was working on a landing page for a client and I had this great hero photo — but the solid background behind it felt flat. I wanted a gradient that matched the image, so I opened the photo in a design tool, used the eyedropper to pick two colors, typed them into a CSS gradient, and checked the result. The colors were technically from the image, but the gradient felt off — too harsh in the middle, not enough transition. I kept tweaking hex values for 20 minutes before giving up and using a generic gray.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            That frustration led to this tool. Instead of manually picking colors and hoping the blend looks good, I wanted something that analyzes the actual pixel distribution and generates a gradient that represents the whole image — not just two points I happened to click on. The first version was a rough script I used myself, but it saved me so much time I decided to clean it up and share it.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Now I use it whenever a design calls for a background that complements a specific image. If you have ever spent more than a few minutes trying to match a gradient to a photo by hand, this tool should save you that effort. And if you need a more manually controlled gradient afterward, <a href="/gradient/" class="text-pink-600 dark:text-pink-400 underline hover:no-underline">our gradient builder</a> gives you full control over every stop.
+          </p>
+        </article>
+      </section>
+      <!-- END NEW: Why I Built This Tool section -->
 
       <!-- Use Cases Section -->
       <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
@@ -295,25 +395,25 @@
          </div>
       </div>
 
-      <!-- Added Social Sharing Section (After CTA or before Footer) -->
+      <!-- Social Sharing Section (FIXED: URLs now point to this specific tool page) -->
       <section class="glass-card p-8 shimmer-card text-center">
         <div class="max-w-7xl mx-auto px-4 text-center">
           <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
           <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
           <div class="flex items-center justify-center gap-3 flex-wrap">
-            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/image-to-gradient-generator/&text=Turn%20any%20image%20into%20a%20CSS%20gradient%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
               <i class="fab fa-x-twitter"></i> Twitter
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/image-to-gradient-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
               <i class="fab fa-facebook-f"></i> Facebook
             </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/image-to-gradient-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
               <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
-            <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20image%20to%20gradient%20generator%20https://devpalettes.com/image-to-gradient-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
               <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/image-to-gradient-generator/&description=Turn%20any%20image%20into%20a%20CSS%20gradient%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
               <i class="fab fa-pinterest-p"></i> Pinterest
             </a>
             <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
@@ -332,6 +432,15 @@
             <a href="/converter/" class="btn-secondary text-xs py-2 px-4">HEX to RGB Converter</a>
          </div>
       </section>
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+
     </div>
   </main>
   <div id="footer-container"></div>

@@ -154,13 +154,32 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Header -->
-      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+      <header class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">ATS Resume Checker – Free AI Resume Score Tool</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
           Optimize your resume for Applicant Tracking Systems. Upload your PDF, paste the job description, and get an instant score to boost your interview chances.
         </p>
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </header>
+
+      <!-- ========================================================== -->
+      <!-- ADDED: Content-First SEO Section ABOVE the Tool UI         -->
+      <!-- "What Is the ATS Resume Checker?" — 3 paragraphs,         -->
+      <!-- ~195 words, placed before the tool for content-first       -->
+      <!-- ========================================================== -->
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10 animate-on-scroll max-w-7xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4">What Is the ATS Resume Checker?</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          The ATS Resume Checker is a free tool that simulates how Applicant Tracking Systems scan your resume against a specific job description. Upload your PDF, paste the job posting, and you get an instant score from 0 to 100 showing how well your resume matches — plus a breakdown of matched keywords, missing skills, and formatting issues that could trip up the parser.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          Over 75% of resumes are rejected by ATS software before a human ever sees them. Not because the candidate is unqualified, but because the resume doesn't contain the right keywords, uses formatting the parser can't read, or buries critical information in headers and graphics. This checker catches those problems before you hit submit, so you can tailor your resume for each application and actually get it in front of a recruiter.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Everything runs in your browser — your resume and job description are never uploaded to any server. For deeper keyword analysis beyond resume optimization, the <a href="/keyword-density-checker/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">keyword density checker</a> can help you analyze content across any page. And if you're preparing application materials, the <a href="/text-formatter/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">text formatter</a> cleans up your cover letter formatting.
+        </p>
+      </section>
+      <!-- END: Content-First SEO Section -->
       
       <div class="grid lg:grid-cols-3 gap-8">
         
@@ -201,7 +220,6 @@
           </div>
           
           <!-- Analyze Button -->
-          <!-- ✅ FIX: Added aria-label for accessibility -->
           <button id="analyze-btn" class="w-full py-4 rounded-xl bg-gradient-to-r from-blue-600 to-emerald-500 text-white font-bold text-lg shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transform hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2" aria-label="Analyze resume against job description">
             <i class="fas fa-search"></i> Analyze Resume
           </button>
@@ -212,7 +230,6 @@
         <section class="lg:col-span-2 space-y-6 animate-on-scroll" aria-label="ATS Analysis Results Dashboard">
           
           <!-- Empty State -->
-          <!-- ✅ FIX: Responsive min-height so it doesn't take excessive space on mobile -->
           <div id="results-empty" class="glass-card p-12 shimmer-card text-center min-h-[300px] md:min-h-[400px] flex flex-col items-center justify-center">
             <div class="w-24 h-24 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center mb-4">
               <i class="fas fa-chart-pie text-4xl text-slate-300 dark:text-slate-600"></i>
@@ -228,32 +245,23 @@
              <div class="glass-card p-6 shimmer-card relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 to-emerald-500"></div>
                 
-                <!-- ✅ FIX: Changed justify-between to justify-center md:justify-between so items don't spread to edges on mobile flex-col -->
                 <div class="flex flex-col md:flex-row items-center justify-center md:justify-between gap-8">
                    
-                   <!-- ✅ FIX: Responsive circle sizing — smaller on mobile, full size on desktop -->
                    <div class="flex-shrink-0 relative w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 flex items-center justify-center">
-                      <!-- ✅ FIX: Added viewBox for proper SVG scaling; removed CSS transform -rotate-90 from SVG element -->
                       <svg class="w-full h-full" viewBox="0 0 160 160" aria-hidden="true">
                         <circle cx="80" cy="80" r="70" stroke="currentColor" stroke-width="12" fill="transparent" class="text-slate-200 dark:text-slate-700" />
-                        <!-- ✅ FIX: Rotation moved to SVG transform attribute for reliable cross-browser rendering (fixes mobile Safari/Chrome) -->
                         <circle id="score-circle" cx="80" cy="80" r="70" stroke="currentColor" stroke-width="12" fill="transparent" stroke-dasharray="440" stroke-dashoffset="440" class="text-blue-600 dark:text-blue-400 progress-ring__circle" transform="rotate(-90 80 80)" />
                       </svg>
-                      <!-- ✅ FIX: Added inset-0 + justify-center for reliable centering at all sizes -->
                       <div class="absolute inset-0 flex flex-col items-center justify-center">
-                        <!-- ✅ FIX: Responsive text sizing inside circle -->
                         <span id="score-value" class="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">0</span>
                         <span class="text-[10px] sm:text-xs font-medium text-slate-500">/ 100</span>
                       </div>
                    </div>
                    
-                   <!-- ✅ FIX: Added min-w-0 to prevent flex child overflow on narrow screens -->
                    <div class="flex-1 w-full text-center md:text-left min-w-0">
                       <h2 class="text-lg font-semibold text-slate-500 uppercase tracking-wider mb-2">Overall ATS Score</h2>
-                      <!-- ✅ FIX: Responsive message text -->
                       <p id="score-message" class="text-lg sm:text-xl font-medium mb-4"></p>
                       
-                      <!-- ✅ FIX: Added min-w-0 to grid children to prevent overflow -->
                       <div class="grid grid-cols-2 gap-3 sm:gap-4">
                          <div class="bg-slate-50 dark:bg-slate-800/50 p-3 rounded-lg border border-slate-200 dark:border-slate-700 min-w-0">
                             <p class="text-xs text-slate-500 uppercase">Keyword Match</p>
@@ -268,20 +276,17 @@
                 </div>
              </div>
 
-             <!-- ✅ FIX: Responsive max-height for keywords panel on mobile -->
              <div class="glass-card p-6 shimmer-card max-h-[220px] sm:max-h-[300px] overflow-y-auto custom-scroll">
                 <h3 class="font-bold text-lg mb-3 flex items-center gap-2">
                    <i class="fas fa-key text-amber-500" aria-hidden="true"></i> Keyword Analysis
                 </h3>
                 
-                <!-- Matched -->
                 <div class="mb-4">
                    <p class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2 uppercase">Matched Keywords</p>
                    <div id="matched-keywords" class="flex flex-wrap gap-2">
                    </div>
                 </div>
                 
-                <!-- Missing -->
                 <div>
                    <p class="text-xs font-semibold text-red-500 dark:text-red-400 mb-2 uppercase">Missing Keywords</p>
                    <div id="missing-keywords" class="flex flex-wrap gap-2">
@@ -311,39 +316,121 @@
         </section>
         
       </div>
+
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll">
+        <h2 class="font-bold text-2xl mb-6 text-center">Benefits of Using an ATS Resume Checker</h2>
+        <div class="grid sm:grid-cols-2 gap-6 mt-6 max-w-7xl mx-auto">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-blue-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Privacy First</h3>
+              <p class="text-sm text-slate-500">Your resume and job description never leave your browser. No server uploads, no data collection, no accounts required. Safe for confidential job searches.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-bolt text-emerald-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Instant Feedback</h3>
+              <p class="text-sm text-slate-500">Get your score in seconds. See exactly which keywords match and which are missing, so you can fix gaps before submitting your application.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-crosshairs text-amber-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Targeted Optimization</h3>
+              <p class="text-sm text-slate-500">Each job posting uses different keywords. This checker scores your resume against the specific job you're applying for — not a generic checklist.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-file-lines text-purple-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Format Validation</h3>
+              <p class="text-sm text-slate-500">ATS parsers struggle with tables, columns, and graphics. The format score tells you if your layout is machine-readable before you submit.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-key text-red-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Missing Keyword Alerts</h3>
+              <p class="text-sm text-slate-500">Every missing keyword is a missed opportunity. The tool highlights exactly what's absent so you can add it naturally into your experience and skills sections.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-infinity text-teal-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Free and Unlimited</h3>
+              <p class="text-sm text-slate-500">No sign-up, no usage caps, no paywalls. Check as many resumes against as many job descriptions as you need — every application deserves a tailored resume.</p>
+            </div>
+          </div>
+        </div>
+      </section>
       
       <!-- SEO Content Section -->
-      <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to ATS and Resume Optimization">
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to ATS and Resume Optimization">
         <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
-          
-          <h2 class="text-2xl font-bold mb-4">What Is an ATS Resume Checker?</h2>
-          <p>An ATS (Applicant Tracking System) Resume Checker is a tool designed to simulate how hiring software scans your resume. Companies large and small use ATS software to filter the hundreds of resumes they receive for a single job opening. This tool analyzes your resume text against a specific job description to determine how likely you are to pass the initial automated screening.</p>
-          <p>Our free ATS Resume Checker uses client-side technology to ensure your data remains private. It extracts text from your PDF resume and compares it against the keywords found in the job description. It provides a score from 0 to 100, highlights missing skills, and offers actionable suggestions to help you tailor your application for the specific role you are applying for. Unlike standard spell-checkers, this tool focuses on semantic relevance and structural compatibility with parsing algorithms. Explore more <a href="/css-grid-generator/">CSS tools</a> and <a href="/palettes/">design generators</a> to enhance your broader developer workflow.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Why ATS Scoring Is Important</h2>
           <p>In the modern hiring landscape, up to 75% of resumes are rejected by ATS software before a human ever sees them. If your resume doesn't contain the right keywords or if the formatting is too complex for the parser to read, you could be the perfect candidate but still get rejected. An ATS score acts as a diagnostic tool; it tells you if your resume speaks the same language as the job posting.</p>
-          <p>Recruiters set specific criteria—like required skills, education level, or years of experience—into their systems. The ATS then scores candidates based on these criteria. By using a checker before you apply, you can identify gaps in your resume, such as missing "hard skills" or software proficiencies, and fill them in. This proactive approach significantly increases your visibility to recruiters. To further optimize your application materials, you might use our <a href="/json-formatter/" title="Format JSON data for developer resumes">JSON Formatter</a> if you are including code samples, or a <a href="/text-formatter/" title="Clean up text for cover letters">Text Formatter</a> for your cover letters. These <a href="/box-shadow-generator/">resume tools</a> complement your job application strategy.</p><br>
+          <p>Recruiters set specific criteria—like required skills, education level, or years of experience—into their systems. The ATS then scores candidates based on these criteria. By using a checker before you apply, you can identify gaps in your resume, such as missing "hard skills" or software proficiencies, and fill them in. This proactive approach significantly increases your visibility to recruiters. To further optimize your application materials, you might use our <a href="/json-formatter/" title="Format JSON data for developer resumes">JSON formatter</a> if you are including code samples, or a <a href="/text-formatter/" title="Clean up text for cover letters">text formatter</a> for your cover letters.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Understanding the Scoring Algorithm</h2>
           
-          <h3 class="text-2xl font-bold mb-4">Keyword Matching</h3>
-          <p>The core of any ATS is keyword extraction. The system scans the job description for important terms—usually nouns like "Python," "Project Management," "Customer Service," or specific software names. It then searches your resume for these exact terms. Our checker highlights these matches in green and missing terms in red. It's not just about volume; it's about relevance. A resume that lists 20 irrelevant skills but misses the 5 core requirements of the job will score lower than a focused resume that hits all 5 requirements. Just as our <a href="/flexbox/">flexbox layout helper</a> ensures clean CSS structure, this checker ensures your resume has the right structural keyword alignment.</p><br>
+          <!-- FIXED: Was <h3 class="text-2xl font-bold">, now proper <h3> sizing for heading hierarchy -->
+          <h3 class="text-lg font-bold mt-6 mb-2">Keyword Matching</h3>
+          <p>The core of any ATS is keyword extraction. The system scans the job description for important terms—usually nouns like "Python," "Project Management," "Customer Service," or specific software names. It then searches your resume for these exact terms. Our checker highlights these matches in green and missing terms in red. It's not just about volume; it's about relevance. A resume that lists 20 irrelevant skills but misses the 5 core requirements of the job will score lower than a focused resume that hits all 5 requirements. For a deeper look at keyword distribution in any content, the <a href="/keyword-density-checker/" class="text-emerald-500 hover:text-emerald-600 underline">keyword density checker</a> breaks down term frequency across any page.</p><br>
           
-          <h3 class="text-2xl font-bold mb-4">Formatting Signals</h3>
-          <p>While keywords are king, formatting determines if the king can be read. ATS parsers struggle with two-column layouts, tables, text boxes, and graphics. They prefer a clean, single-column layout with standard headings (e.g., "Work Experience" rather than "My Journey"). Our tool checks for basic formatting signals, such as the presence of standard section headers and contact information, assigning a portion of your score to "Readability." Think of it like using a <a href="/box-shadow-generator/">box shadow creator</a>—small adjustments can have a big visual impact on how your content is perceived.</p><br>
+          <!-- FIXED: Was <h3 class="text-2xl font-bold">, now proper <h3> sizing for heading hierarchy -->
+          <h3 class="text-lg font-bold mt-6 mb-2">Formatting Signals</h3>
+          <p>While keywords are king, formatting determines if the king can be read. ATS parsers struggle with two-column layouts, tables, text boxes, and graphics. They prefer a clean, single-column layout with standard headings (e.g., "Work Experience" rather than "My Journey"). Our tool checks for basic formatting signals, such as the presence of standard section headers and contact information, assigning a portion of your score to "Readability." If you're also optimizing your online presence, the <a href="/meta-tag-generator/" class="text-emerald-500 hover:text-emerald-600 underline">meta tag generator</a> ensures your personal site communicates the right signals to search engines.</p><br>
           
-          <h3 class="text-2xl font-bold mb-4">Keyword Density</h3>
-          <p>This metric measures how frequently your matched keywords appear relative to the total word count. A healthy density suggests that the keywords are integrated naturally into your experience and skills sections rather than just stuffed into a list. However, excessive repetition can sometimes trigger spam filters, so balance is key. This principle of balanced emphasis is similar to how <a href="/palettes/">developer utilities</a> help you find the right balance of colors in your projects.</p><br>
+          <!-- FIXED: Was <h3 class="text-2xl font-bold">, now proper <h3> sizing for heading hierarchy -->
+          <h3 class="text-lg font-bold mt-6 mb-2">Keyword Density</h3>
+          <p>This metric measures how frequently your matched keywords appear relative to the total word count. A healthy density suggests that the keywords are integrated naturally into your experience and skills sections rather than just stuffed into a list. However, excessive repetition can sometimes trigger spam filters, so balance is key.</p><br>
+          
+          <h2 class="text-2xl font-bold mb-4">How to Use This ATS Checker</h2>
+          <ol class="list-decimal list-inside space-y-2 text-slate-600 dark:text-slate-400">
+            <li><strong>Upload your resume PDF:</strong> Drag and drop your resume file into the upload zone, or click to browse. The tool extracts text using PDF.js — your file never leaves your browser.</li>
+            <li><strong>Paste the job description:</strong> Copy the full job posting into the text area. Include the requirements, responsibilities, and qualifications sections — that's where the critical keywords live.</li>
+            <li><strong>Click "Analyze Resume":</strong> The checker extracts keywords from the job description, matches them against your resume text, and calculates your ATS score in seconds.</li>
+            <li><strong>Review the results:</strong> Check your overall score, matched and missing keywords, formatting signals, and the suggestions panel. Each missing keyword is an actionable fix.</li>
+            <li><strong>Iterate and re-check:</strong> Update your resume to address the gaps, then re-anze. There's no limit on how many times you can check — use it for every application.</li>
+          </ol><br>
           
           <h2 class="text-2xl font-bold mb-4">Real-World Use Cases</h2>
-          <p><strong>Tech Jobs:</strong> Developers often need to list specific stacks (e.g., React, Node.js, AWS). An ATS checker ensures you haven't abbreviated these in a way the parser won't recognize (e.g., writing "JS" instead of "JavaScript" if the JD asks for the full word). If you build portfolio pages to showcase your work, our <a href="/css-grid-generator/">grid layout builder</a> can help you present projects cleanly.</p>
-          <p><strong>Marketing Roles:</strong> Marketers must match industry buzzwords like "SEO," "Content Strategy," or "B2B". The checker helps you align your terminology with the specific niche you are applying to. For marketers who also handle web design, having the right <a href="/palettes/">color palette maker</a> on hand can streamline creative tasks.</p>
-          <p><strong>Management Positions:</strong> For leadership roles, soft skills like "Strategic Planning," "Team Building," and "P&L Management" are critical keywords. The tool verifies these high-level competencies are prominent in your resume.</p><br>
+          <p><strong>Tech Jobs:</strong> Developers often need to list specific stacks (e.g., React, Node.js, AWS). An ATS checker ensures you haven't abbreviated these in a way the parser won't recognize (e.g., writing "JS" instead of "JavaScript" if the JD asks for the full word).</p>
+          <p><strong>Marketing Roles:</strong> Marketers must match industry buzzwords like "SEO," "Content Strategy," or "B2B". The checker helps you align your terminology with the specific niche you are applying to.</p>
+          <p><strong>Management Positions:</strong> For leadership roles, soft skills like "Strategic Planning," "Team Building," and "P&L Management" are critical keywords. The tool verifies these high-level competencies are prominent in your resume.</p>
+          <p><strong>Career Changers:</strong> If you're transitioning between industries, you may not naturally use the terminology of your target field. The checker reveals which domain-specific keywords you're missing so you can translate your experience into the right language.</p><br>
           
           <h2 class="text-2xl font-bold mb-4">Common Mistakes to Avoid</h2>
-          <p>A major mistake is relying solely on graphics. An infographic resume might look great to a human, but to an ATS, it looks like a blank page. Another error is using acronyms without spelling them out at least once (e.g., "CRM" vs "Customer Relationship Management"). Finally, hiding dates or contact information in headers or footers can lead to that data being ignored by the parser. Always use the body of the document for critical info. Keep in mind that just as our <a href="/flexbox/">flexbox generator</a> produces parser-friendly code, your resume needs to produce parser-friendly text—avoiding decorative elements that serve no keyword purpose.</p>
+          <p>A major mistake is relying solely on graphics. An infographic resume might look great to a human, but to an ATS, it looks like a blank page. Another error is using acronyms without spelling them out at least once (e.g., "CRM" vs "Customer Relationship Management"). Finally, hiding dates or contact information in headers or footers can lead to that data being ignored by the parser. Always use the body of the document for critical info. And before you submit your resume online, make sure the pages you link to — like your portfolio — are properly tagged with <a href="/open-graph-generator/" class="text-emerald-500 hover:text-emerald-600 underline">Open Graph meta tags</a> so they look professional when recruiters click through.</p>
 
         </article>
+      </section>
+
+      <section class="glass-card p-8 shimmer-card mt-12 max-w-7xl mx-auto animate-on-scroll">
+        <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          A friend of mine applied to over 80 jobs in three months and got exactly two callbacks. He was qualified for most of those roles — his resume just wasn't making it past the screening software. When I looked at his resume, the problem was obvious: he'd written "JS" everywhere instead of "JavaScript," his skills section was buried at the bottom, and he'd used a two-column layout that the parser couldn't read. Every single application was a waste of time.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          I went looking for a free ATS checker he could use, and everything I found either required an account, uploaded his resume to some server he didn't trust, or gave a generic score without showing what was actually wrong. He didn't need a "72/100" — he needed to know which five keywords were missing so he could add them. The whole point of checking is getting actionable feedback, not just a number.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          So I built exactly what he needed: upload a PDF, paste the job description, see matched and missing keywords instantly, and get specific suggestions. No sign-up, no server uploads, no vague scores. Your resume stays on your machine. It's one of the free tools I maintain at DevPalettes — if you're also working on the technical side of your job search, the <a href="/sitemap-xml-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">sitemap generator</a> and <a href="/robots-txt-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">robots.txt tool</a> handle the SEO infrastructure for your personal site.
+        </p>
       </section>
       
       <!-- FAQ Section -->
@@ -365,6 +452,16 @@
             <div>
               <h3 class="font-semibold text-base mb-2">Is my data private?</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes. This tool runs entirely in your browser using JavaScript. Your resume and job description are never uploaded to any server.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Does this tool work with Word documents?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Currently, the tool only supports PDF uploads. If you have a Word document, save it as a PDF first — which is also the format most job applications request. PDF ensures your formatting stays consistent across different systems.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">How accurate is the ATS score?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The score provides a strong directional indicator based on keyword matching and formatting signals. Different ATS platforms (Workday, Greenhouse, iCIMS) weight factors differently, so the exact number may vary — but the missing keywords and suggestions are universally actionable regardless of which system the employer uses.</p>
             </div>
             
           </div>
@@ -403,17 +500,23 @@
       <section class="glass-card p-8 shimmer-card text-center">
         <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
         <div class="flex flex-wrap justify-center gap-3">
-          <a href="/json-formatter/" title="Format and beautify JSON data" class="btn-secondary text-xs py-2 px-4">Beautify JSON Data</a>
-          <a href="/text-formatter/" title="Clean and format text online" class="btn-secondary text-xs py-2 px-4">Clean Up Text</a>
-          <a href="/meta-tag-generator/" title="Generate SEO meta tags for your website" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
           <a href="/keyword-density-checker/" title="Analyze keyword density in your content" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
-          <a href="/css-grid-generator/" title="Build CSS Grid layouts visually" class="btn-secondary text-xs py-2 px-4">CSS Grid Builder</a>
-          <a href="/box-shadow-generator/" title="Design box shadows for your projects" class="btn-secondary text-xs py-2 px-4">Box Shadow Tool</a>
-          <a href="/flexbox/" title="Experiment with Flexbox layouts" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
-          <a href="/palettes/" title="Browse and create color palettes" class="btn-secondary text-xs py-2 px-4">Color Scheme Explorer</a>
+          <a href="/text-formatter/" title="Clean and format text online" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
+          <a href="/json-formatter/" title="Format and beautify JSON data" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+          <a href="/meta-tag-generator/" title="Generate SEO meta tags for your website" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+          <a href="/open-graph-generator/" title="Generate Open Graph tags for social sharing" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
+          <a href="/seo-analyzer/" title="Audit your page SEO score" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
         </div>
       </section>
 
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+      
     </div>
   </main>
   <div id="footer-container"></div>

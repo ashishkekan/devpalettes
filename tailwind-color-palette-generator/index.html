@@ -26,8 +26,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -142,13 +143,30 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Header -->
-      <div class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-6 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">Tailwind Palette Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">
           Generate a complete Tailwind CSS color scale (50–950) from a single base color. Export ready-to-use <code class="text-sm bg-slate-200 dark:bg-slate-700 px-1.5 py-0.5 rounded">tailwind.config.js</code> code instantly.
         </p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
+      <!-- NEW: Content-first intro section ABOVE the tool UI for SEO & AdSense -->
+      <section class="mb-10 max-w-3xl mx-auto animate-on-scroll" aria-label="Introduction to the Tailwind Color Palette Generator">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What Is This Tailwind Color Palette Generator?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            This free tool generates a complete Tailwind CSS color scale — shades 50 through 950 — from a single base color of your choice. Pick any color, click Generate, and you instantly get 11 perceptually uniform swatches ready to paste into your <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">tailwind.config.js</code>. No manual hex calculations, no trial-and-error in a design tool, no guessing whether shade 200 looks right next to shade 300.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            Tailwind's numeric shade system is what makes its utility classes so powerful — <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">bg-brand-50</code> for subtle backgrounds, <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">text-brand-700</code> for readable text, <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">border-brand-200</code> for soft dividers. But creating those 11 shades by hand is slow and error-prone because human color perception is non-linear. This generator handles the math for you. If you need a broader set of palettes to start from, <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">browse our color palette collection</a> first, then bring your favorite into this tool to build the full Tailwind scale.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            The output works with both Tailwind CSS v3 and v4. For v3, copy the JavaScript config object directly. For v4, the same hex values can be used in CSS custom properties with the <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">@theme</code> directive. Need to convert a color format before picking your base? <a href="/color-converter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Our color converter</a> handles HEX, RGB, and HSL in either direction.
+          </p>
+        </div>
+      </section>
+      <!-- END NEW: Content-first intro section -->
       
       <!-- Controls -->
       <div class="max-w-2xl mx-auto mb-10 animate-on-scroll">
@@ -187,6 +205,70 @@
             <pre id="config-output" class="text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-pre"></pre>
          </div>
       </div>
+
+      <!-- NEW: How to Use section (structured for readability) -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="How to use the Tailwind palette generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">How to Use This Tailwind Palette Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Pick Your Base Color</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Use the color picker at the top of the page to select your brand color. This becomes shade 500 — the middle of the scale and the identity of your palette. If you have a hex code from a design file, you can type it directly into the picker's hex field.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Generate the Scale</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click the Generate button and the tool instantly produces all 11 shades (50 through 950). Lighter shades are created by blending toward white, darker shades by blending toward black, with weighted ratios that approximate Tailwind's perceptual uniformity curve.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Copy Individual Hex Values</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click any swatch in the palette grid to copy its hex value to your clipboard. This is useful for quick prototyping, one-off color references, or when building <a href="/button-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">custom button styles</a> outside of Tailwind utilities.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Export the Config</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click the Copy button next to the generated <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">tailwind.config.js</code> snippet. Paste it under <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">theme.extend.colors</code> in your project. Then verify contrast ratios with our <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">WCAG contrast checker</a> to ensure accessibility.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: How to Use section -->
+
+      <!-- NEW: Benefits section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Benefits of using a Tailwind palette generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Benefits of Using a Tailwind Palette Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-bullseye text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Perceptually Uniform Scales</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The visual gap between shade 100 and 200 feels the same as between 700 and 800. This consistency is hard to achieve by eye — the generator uses weighted blend ratios that approximate Tailwind's own curve, so your custom palette feels as cohesive as the built-in colors.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Seconds Instead of Hours</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Manually selecting 11 shades that work together requires testing each one against backgrounds, text, and borders. This tool produces the full scale from a single color pick — then outputs production-ready config code you can paste directly into your project.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-code text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Copy-Paste Config Output</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No reformatting needed. The generated code follows Tailwind's exact config structure with shade keys and hex values. Works in v3 projects as-is, and the hex values plug directly into v4's <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs font-mono">@theme</code> directive.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-universal-access text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Accessibility Built In</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A full shade scale makes it easier to meet WCAG contrast requirements — use shade 50 or 100 for backgrounds and shade 700 or 800 for text on top of them. Pair the output with a <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">contrast checker</a> to verify every combination passes.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: Benefits section -->
 
       <!-- SEO Content Section -->
       <div class="prose prose-slate dark:prose-invert max-w-7xl mx-auto my-16 animate-on-scroll">
@@ -257,6 +339,23 @@
          </pre>
          <p>The hex values generated by this tool work in both versions — you just need to format them according to your preferred configuration style. For a deep dive into CSS custom properties, refer to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener noreferrer">MDN guide on CSS custom properties</a>. For more on color theory behind these scales, read our <a href="/blog/color-palettes-in-design/">guide to color palettes</a>.</p>
       </div>
+
+      <!-- NEW: Why I Built This Tool section -->
+      <section class="max-w-7xl mx-auto my-16 animate-on-scroll" aria-label="Why I built this Tailwind palette generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            Every time I started a new Tailwind project, I'd hit the same wall: I had a brand color, but I needed the whole scale. So I'd open a design tool, create a rectangle filled with my base color, then manually create 10 more rectangles and try to lighten and darken them in even steps. The result never looked right — shade 200 would look fine but shade 300 would feel like a jump. I'd tweak individual values, squint at the screen, adjust again. Twenty minutes later I'd have a palette that still felt off compared to Tailwind's built-in colors.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            I built this generator to solve that specific friction. One click, 11 shades, a config snippet I can paste directly into my project. The mix ratios are tuned to approximate Tailwind's perceptual uniformity curve, so the output actually feels like a native Tailwind palette — not a lopsided gradient. I use it on every new project now, and I keep coming back when a client sends a new brand hex and says "make it work in Tailwind."
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            If you've ever spent more than five minutes building a color scale by hand, this tool is for you. And if you need inspiration for a starting color, <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">our palette gallery</a> has hundreds of combinations to browse before you commit.
+          </p>
+        </article>
+      </section>
+      <!-- END NEW: Why I Built This Tool section -->
 
       <!-- Use Cases Section -->
       <div class="max-w-7xl mx-auto my-16 animate-on-scroll">
@@ -355,6 +454,14 @@
           <a href="/aesthetic-color-palettes/" class="btn-secondary text-xs py-2 px-4">Aesthetic Color Palettes</a>
         </div>
       </section>
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
 
     </div>
   </main>

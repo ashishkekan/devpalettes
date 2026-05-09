@@ -181,7 +181,9 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -214,11 +216,29 @@
     <div class="gradient-blob blob-2"></div>
     <div id="particles-container"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <header class="text-center mb-10 animate-on-scroll" style="margin-top: 45px;">
+      <header class="text-center mb-6 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">CSS Grid Generator – Create Grid Layouts Online</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Build complex grid layouts visually.</p>
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </header>
+
+      <!-- NEW: Content-first section ABOVE the tool UI for SEO & AdSense approval -->
+      <section class="mb-10 max-w-3xl mx-auto animate-on-scroll" aria-label="Introduction to CSS Grid Generator">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What Is This CSS Grid Generator?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            This CSS Grid generator is a free, browser-based tool that lets you design two-dimensional layouts visually. Instead of writing <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">grid-template-columns</code> and <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">grid-template-rows</code> by hand and refreshing the page to check results, you drag sliders to set column count, row count, and gap — and watch the layout update instantly. When it looks right, copy the generated CSS with one click.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            CSS Grid is the most powerful layout system available in CSS today. It controls both rows and columns at the same time, making it the right choice for page skeletons, dashboard panels, image galleries, and any layout where items need to align in two directions. If your layout only flows in one direction — a navbar or a row of buttons — <a href="/flexbox/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">our Flexbox playground</a> is the better fit. For a deeper walkthrough of Grid concepts and syntax, <a href="/blog/css-grid-guide/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">read our complete CSS Grid guide</a>.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            No sign-up, no installation, no framework dependencies. The tool runs entirely in your browser and generates clean, production-ready CSS that works with any project. Whether you're prototyping a new layout or teaching yourself Grid for the first time, this generator removes the friction between idea and result.
+          </p>
+        </div>
+      </section>
+      <!-- END NEW: Content-first section -->
+
       <div class="grid lg:grid-cols-3 gap-8">
         <!-- Controls -->
         <aside class="space-y-4 animate-on-scroll" aria-label="Grid settings controls">
@@ -256,6 +276,123 @@
           </div>
         </section>
       </div>
+
+      <!-- NEW: How to Use section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="How to use the CSS Grid generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">How to Use This Grid Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Set Your Column Count</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Drag the Columns slider to choose how many vertical tracks your grid should have. The preview updates immediately so you can see how your content distributes across the available columns. Start with 3 or 4 columns for most page-level layouts.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Set Your Row Count</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Use the Rows slider to define how many horizontal tracks the grid has. For page layouts, you might want 3 rows (header, content, footer). For card grids, let the rows auto-generate based on content and just control the columns.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Adjust the Gap</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The Gap slider controls spacing between grid cells. Start around 16–24px for most layouts. Unlike margins, gap only creates space between tracks — never at the container edges — so your spacing stays consistent without extra fixes.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Copy the CSS</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">When the preview matches the layout you need, click the Copy button next to the generated code. Paste it directly into your stylesheet — the output uses standard Grid properties with no framework dependencies. You can then style individual cells using <a href="/box-shadow-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">box shadows</a> or <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">gradient backgrounds</a> for a polished look.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: How to Use section -->
+
+      <!-- NEW: Use Cases section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="CSS Grid use cases">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Common Use Cases for CSS Grid</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-th-large text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Page Layouts</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The classic use case: a header spanning the full width, a sidebar next to main content, and a footer at the bottom. Grid handles this with a few lines — no floats, no calc hacks, no negative margins.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-images text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Image Galleries</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Grid makes it easy to create uniform image grids where every cell is the same size. Combine it with <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs font-mono">object-fit: cover</code> on images and you get a clean, responsive gallery with minimal effort.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-chart-bar text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Dashboard Panels</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Admin dashboards need panels of different sizes that align on both axes. Grid lets you span cells across rows and columns to create the exact arrangement you need — charts, stats, and tables all lining up cleanly.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-store text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Product Grids</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">E-commerce product listings reflow naturally with Grid and <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs font-mono">auto-fit</code>. Pair this generator's output with <a href="/card-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">styled cards</a> for each product to build a complete listing layout.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-table text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Pricing Tables</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Pricing comparisons need feature labels to align vertically across columns. Grid's two-dimensional control ensures each row lines up, something that's awkward to achieve with Flexbox alone.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-mobile-alt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Responsive Card Grids</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Using <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs font-mono">repeat(auto-fit, minmax(250px, 1fr))</code> creates card grids that reflow from 4 columns on desktop down to 1 on mobile without a single media query.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: Use Cases section -->
+
+      <!-- NEW: Benefits section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Benefits of using a visual Grid generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Benefits of Using a Visual Grid Generator</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-eye text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">See Changes Instantly</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Reading the Grid spec is one thing. Watching your layout shift as you drag a slider builds understanding that actually sticks. This tool closes the gap between "I think this property does that" and "now I can see exactly what it does."</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Skip the Save-Refresh Loop</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Instead of editing a CSS file, saving, switching to the browser, and refreshing — you adjust a slider and the result is already there. What used to take minutes of back-and-forth now takes seconds.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-code text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Production-Ready Output</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The generated CSS uses standard Grid properties — no vendor prefixes, no framework classes, no extra wrappers. Paste it into any project and it works. Combine it with tools like our <a href="/button-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">button generator</a> to style interactive elements inside your grid cells.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-graduation-cap text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Learn Grid by Experimenting</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">If you're new to CSS Grid, this generator is the fastest way to build intuition. Toggle between 2 and 4 columns, crank the gap from 0 to 50px, add rows — every change teaches you something about how Grid distributes space.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: Benefits section -->
+
       <!-- SEO Content Section -->
       <section class="mt-16 max-w-7xl mx-auto animate-on-scroll" aria-label="Guide to CSS Grid layout">
         <article class="glass-card p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
@@ -291,6 +428,24 @@
           
         </article>
       </section>
+
+      <!-- NEW: Why I Built This Tool section -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Why I built this CSS Grid generator">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            I kept making the same mistake with CSS Grid: I'd set up a <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">grid-template-columns</code> value in my editor, save the file, switch to the browser, and realize the columns were too narrow. So I'd go back, change the value, save again, refresh again — and now the gap was wrong. It was this constant back-and-forth that made building grids feel slow and tedious, even though I understood the properties.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+            I wanted something dead simple: drag a slider, see the grid change, copy the code when it looks right. No setup, no account, no framework-specific output. Just standard CSS Grid properties that I can drop into any project. That's exactly what this tool does. I use it almost every time I start a new layout — even if it's just to quickly confirm that a 3-column grid with 24px gap looks the way I think it will.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            If you're learning Grid for the first time, or just tired of the save-refresh cycle, I hope this saves you some friction. And if your layout only needs to flow in one direction, <a href="/flexbox/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the Flexbox playground</a> covers that case. Both tools are free and run entirely in your browser.
+          </p>
+        </article>
+      </section>
+      <!-- END NEW: Why I Built This Tool section -->
+
       <!-- FAQ Section -->
       <section class="mt-12 max-w-7xl mx-auto animate-on-scroll" aria-label="Frequently asked questions about CSS Grid">
         <div class="glass-card p-8 shimmer-card">
@@ -335,25 +490,26 @@
           </div>
         </div>
       </section>
-      <!-- Added Social Sharing Section (After CTA or before Footer) -->
+
+      <!-- Social Sharing Section (FIXED: updated URLs to point to this specific tool page) -->
       <section class="glass-card p-8 my-16 shimmer-card text-center">
         <div class="max-w-7xl mx-auto px-4 text-center">
           <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
           <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
           <div class="flex items-center justify-center gap-3 flex-wrap">
-            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/css-grid-generator/&text=Create%20responsive%20CSS%20Grid%20layouts%20with%20this%20free%20visual%20generator!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
               <i class="fab fa-x-twitter"></i> Twitter
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/css-grid-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
               <i class="fab fa-facebook-f"></i> Facebook
             </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/css-grid-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
               <i class="fab fa-linkedin-in"></i> LinkedIn
             </a>
-            <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20CSS%20Grid%20generator%20https://devpalettes.com/css-grid-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
               <i class="fab fa-whatsapp"></i> WhatsApp
             </a>
-            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/css-grid-generator/&description=Free%20CSS%20Grid%20generator%20with%20live%20preview" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
               <i class="fab fa-pinterest-p"></i> Pinterest
             </a>
             <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
@@ -371,6 +527,15 @@
           <a href="/button-generator/" class="btn-secondary text-xs py-2 px-4">Button Generator</a>
         </div>
       </section>
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+
     </div>
   </main>
   <div id="footer-container"></div>

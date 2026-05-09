@@ -107,7 +107,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script src="../js/tailwind.js"></script>
@@ -149,11 +151,28 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-12 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Image Compressor – Reduce Image Size Online Free</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Use this free online image compressor to reduce image size instantly. Compress JPG, PNG, and WebP files in your browser with real-time preview — no upload needed, completely free.</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
+      <!-- NEW: Content-first intro section ABOVE the tool UI for SEO & AdSense -->
+      <section class="mb-10 max-w-3xl mx-auto animate-on-scroll" aria-label="Introduction to image compression">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What Is This Image Compressor?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            This free online image compressor reduces the file size of JPG, PNG, and WebP images directly in your browser — no upload, no account, no server processing. Drag in a photo, adjust the quality slider, pick an output format, and download the compressed version in seconds. Everything runs locally on your device using the HTML5 Canvas API, so your images never leave your screen.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            Image compression is one of the simplest and highest-impact optimizations you can make for website performance. Uncompressed images account for over half the weight of an average web page, and cutting their size by even 40–60% can shave full seconds off load times. That means better Core Web Vitals scores, lower bounce rates, and improved search rankings. If you're optimizing a full page, pair compressed images with proper <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">meta tags</a> and run an <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">SEO audit</a> to see the combined impact.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Whether you're preparing product photos for an online store, shrinking blog images before publishing, or converting a folder of PNGs to WebP for a modern build, this tool handles it without installing anything. For extracting colors from your compressed images afterward, <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the color from image tool</a> picks palettes straight from any photo.
+          </p>
+        </div>
+      </section>
+      <!-- END NEW: Content-first intro section -->
 
       <!-- Quick Stats Row -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
@@ -428,7 +447,7 @@
                 <span class="text-slate-400">File size under 20MB</span>
               </div>
               <div class="flex items-center gap-3 text-sm" data-check="compressed">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+                <i class="fas fa-circle text-[8px] text-slate-400"></i>
                 <span class="text-slate-400">Image compressed successfully</span>
               </div>
               <div class="flex items-center gap-3 text-sm" data-check="size-reduced">
@@ -570,6 +589,21 @@
             </ul>
          </section>
 
+         <!-- NEW: Why I Built This Tool section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               I kept running into the same problem: I'd finish a blog post or a landing page, drop in a few screenshots, and suddenly the page weighed 8MB. I'd open a desktop app to compress the images, wait for it to load, batch-process everything, then realize I'd compressed them too aggressively and the hero shot looked blurry. So I'd start over. It was this tedious cycle that broke my writing flow every time.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               I wanted something simpler — a web page where I drop an image, drag a slider, see the result immediately, and download. No install, no account, no waiting for a server to process my file. I also didn't love the idea of uploading client work to a random compression service, so building it with the Canvas API and keeping everything local was important to me from day one.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               That's exactly what this tool does now. I use it almost daily — for blog images, project mockups, and anything headed for the web. If you're tired of the same back-and-forth, I hope it saves you some time too. And if you need to pull colors from your optimized images afterward, <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the color extraction tool</a> pairs nicely with this one.
+            </p>
+         </section>
+         <!-- END NEW: Why I Built This Tool section -->
+
          <!-- FAQ Section -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
@@ -674,7 +708,14 @@
 
       </div>
       
-      
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+
     </div>
   </main>
   
