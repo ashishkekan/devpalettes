@@ -135,12 +135,9 @@
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  <!-- Navbar -->
   <div id="navbar-container"></div>
   
-  <!-- Main Content -->
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -148,14 +145,25 @@
     <div id="particles-container"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <!-- Hero Section -->
-      <div class="text-center mb-12 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-8 animate-on-scroll" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">URL Encoder / Decoder</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Encode and decode URLs instantly. Convert special characters to percent-encoded format with real-time conversion</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <!-- Quick Stats Row -->
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10 animate-on-scroll max-w-4xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4">What Is the URL Encoder / Decoder?</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          The URL Encoder / Decoder is a free tool that instantly converts between plain text and percent-encoded URL format. Paste a string with spaces, ampersands, or Unicode characters, and it converts every special character into its <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">%XX</code> equivalent — or paste an encoded string like <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Hello%20World%21</code> and get the readable original back. The conversion happens in real time as you type.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          URL encoding is required whenever data containing special characters is placed inside a URL. Spaces become <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">%20</code>, ampersands become <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">%26</code>, and non-ASCII characters like é or 中 are converted to multi-byte percent sequences. Without encoding, these characters break URL parsing — a query parameter containing an unencoded ampersand would be read as a parameter delimiter instead of data.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          This tool uses JavaScript's <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">encodeURIComponent()</code> and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">decodeURIComponent()</code> for precise, spec-compliant conversion. Everything runs in your browser — no data is sent to any server. If you're building UTM-tagged links, pair this with the <a href="/utm-builder/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">UTM link builder</a> to create properly encoded campaign URLs.
+        </p>
+      </section>
+
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
@@ -358,9 +366,67 @@
         </div>
       </div>
 
-      <!-- SEO Content Area -->
+      <section class="mt-12 max-w-7xl mx-auto animate-on-scroll">
+        <h2 class="font-bold text-2xl mb-6 text-center">Benefits of Using This URL Encoder</h2>
+        <div class="grid sm:grid-cols-2 gap-6 mt-6 max-w-4xl mx-auto">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-bolt text-emerald-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Instant Real-Time Conversion</h3>
+              <p class="text-sm text-slate-500">The output updates as you type — no buttons to click, no page reloads. Paste your text and see the encoded or decoded result immediately.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-arrows-rotate text-blue-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Bidirectional Encoding</h3>
+              <p class="text-sm text-slate-500">Switch between encode and decode with one click. The same tool handles both directions, so you never need a separate decoder.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-check-double text-purple-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Spec-Compliant Output</h3>
+              <p class="text-sm text-slate-500">Uses JavaScript's built-in encodeURIComponent and decodeURIComponent, producing output that follows RFC 3986 and works reliably in every browser and server.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-shield-halved text-amber-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Privacy First</h3>
+              <p class="text-sm text-slate-500">All encoding and decoding runs in your browser. Your text and URLs are never sent to any server — safe for API keys, redirect URIs, and confidential parameters.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-clipboard-list text-red-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Built-In Validation</h3>
+              <p class="text-sm text-slate-500">The status checklist validates your input in real time — checking for valid percent-encoding sequences, decoding errors, and output readiness before you copy.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-infinity text-teal-500"></i>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-1">Free and Unlimited</h3>
+              <p class="text-sm text-slate-500">No sign-up, no usage caps, no paywalls. Encode and decode as many strings as you need — the tool is always available and always free.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <div class="seo-content space-y-12 mt-16 animate-on-scroll">
-         
          
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">What is URL Encoding?</h2>
@@ -430,7 +496,7 @@
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Security</h3>
-                     <p class="text-sm text-slate-500">URL encoding prevents injection attacks by ensuring that user-supplied data cannot be interpreted as URL syntax. Characters like <, >, ", and ' are encoded, neutralizing potential XSS vectors.</p>
+                     <p class="text-sm text-slate-500">URL encoding prevents injection attacks by ensuring that user-supplied data cannot be interpreted as URL syntax. Characters like &lt;, &gt;, ", and ' are encoded, neutralizing potential XSS vectors.</p>
                   </div>
                </div>
                <div class="flex gap-4">
@@ -475,12 +541,25 @@
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Building API Query Strings:</strong> When constructing URLs for REST API requests, each parameter value must be URL-encoded. For example, a search for "chocolate & vanilla" becomes <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">q=chocolate%20%26%20vanilla</code>. This ensures the ampersand is treated as data, not as a parameter separator.</li>
                <li><strong>Form Submission URLs:</strong> When submitting form data via GET requests, the form values must be URL-encoded. Names with apostrophes, spaces, or special characters will break the URL if not properly encoded.</li>
-               <li><strong>Social Media Sharing URLs:</strong> Sharing URLs on platforms like Twitter and Facebook require URL-encoded parameters. The text, URL, and hashtags in share links must all be properly encoded to function correctly.</li>
+               <li><strong>Social Media Sharing URLs:</strong> Sharing URLs on platforms like Twitter and Facebook require URL-encoded parameters. The text, URL, and hashtags in share links must all be properly encoded to function correctly. If you're building campaign links, the <a href="/utm-builder/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">UTM link builder</a> handles the full structure for you.</li>
                <li><strong>Redirect URLs in OAuth:</strong> OAuth authentication flows use redirect_uri parameters that must be URL-encoded. A redirect URL like <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://example.com/callback?token=abc</code> must have its query parameters double-encoded.</li>
                <li><strong>Email Newsletter Links:</strong> Links in HTML emails often contain tracking parameters with special characters. URL-encoding ensures these links work correctly across all email clients without breaking.</li>
-               <li><strong>Debugging Server Logs:</strong> Web server access logs show URL-encoded request paths and query strings. Decoding these entries reveals the actual user input, helping with debugging and security analysis.</li>
+               <li><strong>Debugging Server Logs:</strong> Web server access logs show URL-encoded request paths and query strings. Decoding these entries reveals the actual user input, helping with debugging and security analysis. For broader site debugging, the <a href="/seo-analyzer/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">SEO page analyzer</a> can catch issues beyond encoding.</li>
                <li><strong>Configuring Web Servers:</strong> Rewrite rules in Apache, Nginx, or IIS often need to match or manipulate URL-encoded patterns. Understanding the encoded format helps write correct regex patterns and rewrite conditions.</li>
             </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card max-w-4xl mx-auto">
+            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               I was debugging an API integration and kept pasting URLs into the browser console to encode and decode them with <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">encodeURIComponent()</code> and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">decodeURIComponent()</code>. Open DevTools, switch to Console, type the function, paste the string, close the quote, hit enter. Then do it again for the next parameter. Then again when I needed to decode a response. After the twentieth time in one afternoon, I thought: why am I doing this in a console like an animal?
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               I looked for a simple URL encoder online, and most of what I found either required clicking a "Convert" button every single time, showed ads between the input and output, or didn't handle decode at all. I wanted something where I just paste, see the result instantly, copy it, and move on. No buttons. No waiting. No separate tools for encode and decode.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               That's exactly what this tool does. Real-time conversion as you type, one-click mode switching, and copy-ready output. No server calls, no data collection, no ads breaking your flow. It's one of the free tools I maintain at DevPalettes. If you're also working on SEO infrastructure, the <a href="/sitemap-xml-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">sitemap generator</a> and <a href="/robots-txt-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">robots.txt tool</a> handle the other side of getting your properly-encoded URLs indexed correctly.
+            </p>
          </section>
 
          <!-- FAQ Section -->
@@ -543,9 +622,10 @@
                <a href="/base64-encoder-decoder/" class="btn-secondary text-xs py-2 px-4">Base64 Encoder</a>
                <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
                <a href="/text-formatter/" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
-               <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
-               <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
                <a href="/utm-builder/" class="btn-secondary text-xs py-2 px-4">UTM Builder</a>
+               <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+               <a href="/sitemap-xml-generator/" class="btn-secondary text-xs py-2 px-4">Sitemap Generator</a>
+               <a href="/robots-txt-generator/" class="btn-secondary text-xs py-2 px-4">Robots.txt Generator</a>
             </div>
          </section>
 
@@ -575,7 +655,14 @@
           </section>
 
       </div>
-      
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+          <span class="text-slate-400 text-sm">Built by</span>
+          <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+          <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
       
     </div>
   </main>
@@ -585,7 +672,6 @@
   
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
   <script src="../js/main.js"></script>
   <script src="../js/url-encoder.js"></script>
   <script src="../js/enhancements.js"></script>
