@@ -37,8 +37,8 @@
     gtag('config', 'G-F252PEQ1JC');
   </script>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2390881516968474"
-  crossorigin="anonymous"></script>
+  <!-- REMOVED: AdSense script removed for clean AdSense approval -->
+  
 
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
@@ -103,7 +103,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script src="../js/tailwind.js"></script>
@@ -153,12 +155,8 @@
 
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  <!-- Navbar -->
   <div id="navbar-container"></div>
-  
-  <!-- Main Content -->
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -166,12 +164,26 @@
     <div id="particles-container"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <!-- Hero Section -->
-      <div class="text-center mb-12 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">JSON Formatter - Free Online JSON Beautifier Tool</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Format, beautify, minify, and validate JSON data instantly with syntax highlighting</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
+
+      <section class="mb-10 max-w-7xl mx-auto " aria-label="Introduction to the JSON Formatter tool">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What Is This JSON Formatter?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            This free online JSON formatter takes raw, minified, or messy JSON and converts it into clean, indented, human-readable output — instantly, in your browser, with no server upload. Paste your JSON, click Format, and get beautifully syntax-highlighted code with proper line breaks. You can also minify JSON for production, validate it to catch syntax errors, sort keys alphabetically, or switch to a collapsible tree view for navigating deeply nested structures.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            JSON is the backbone of modern web development — API responses, configuration files, and data payloads all use it. But the compact JSON that servers return is nearly impossible to read without a formatter. This tool bridges that gap, giving you instant readability plus built-in validation that pinpoints the exact line and column of any syntax error. If you are working with API payloads that also need Base64 encoding, <a href="/base64-encoder-decoder/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the Base64 encoder/decoder</a> handles that alongside your JSON workflow. For formatting other text formats like HTML or CSS, <a href="/text-formatter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the text formatter</a> covers those.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            No sign-up, no API key, no data leaves your device. Every operation runs locally using your browser's built-in JSON.parse() and JSON.stringify() methods, so your API keys, credentials, and sensitive configuration data stay private.
+          </p>
+        </div>
+      </section>
 
       <!-- Stats Row -->
       <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 ">
@@ -191,7 +203,7 @@
             </div>
             <span class="text-xs text-slate-500">Keys</span>
           </div>
-          <p id="stat-keys" class="text-2xl font-bold text-slate-400">0</p>
+          <p id="stat-keys" class="text2xl font-bold text-slate-400">0</p>
         </div>
         <div class="glass-card p-4 shimmer-card">
           <div class="flex items-center gap-2 mb-2">
@@ -393,9 +405,118 @@
         </div>
       </div>
 
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="How to use the JSON formatter">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">How to Use This JSON Formatter</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Paste Your JSON</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Copy JSON from an API response, a config file, or anywhere else and paste it into the input area. The character and line counts update as you type.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Click an Action</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Format / Beautify to pretty-print, Minify to compress, Validate to check syntax only, or Sort Keys to alphabetize all object keys. Choose your indent size (2, 4, 8 spaces, or tabs) before formatting.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Review the Output</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The formatted output appears on the right with syntax highlighting. Switch to Tree View to explore nested structures with collapsible nodes. If validation fails, the error panel shows the exact line and column.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Copy or Download</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Copy to grab the output to your clipboard, or Download to save it as a .json file. Use Swap to Input to chain operations — format first, then sort, then minify — without re-pasting. For encoding JSON values for API headers, <a href="/base64-encoder-decoder/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the Base64 tool</a> works alongside this one.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="Benefits of using this JSON formatter">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Benefits of Using This JSON Formatter</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Instant Formatting</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click one button and your JSON is formatted, validated, and syntax-highlighted. No waiting, no server round-trip — everything runs locally in your browser for immediate results.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-bug text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Precise Error Reporting</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">When validation fails, the tool shows the exact line number, column, and error description — not just a generic "invalid JSON" message. This makes fixing syntax errors fast instead of frustrating.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-lock text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Completely Private</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Your JSON never leaves your browser. No data is sent to any server. This makes the tool safe for formatting API responses, credentials, tokens, and sensitive configuration data.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-sitemap text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Tree View for Deep Structures</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Collapse and expand nested objects and arrays visually instead of scrolling through hundreds of lines of formatted text. This is especially useful for large API responses with multiple nesting levels.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="Common use cases for a JSON formatter">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Common Use Cases</h2>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-server text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Debugging API Responses</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">REST APIs return compact, single-line JSON. Pasting it here instantly reveals the structure, error codes, and nested data that are invisible in raw form.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-file-code text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Reviewing Config Files</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">package.json, tsconfig.json, .eslintrc — format and validate any JSON configuration file to spot missing commas or typos before they break your build.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-compress-alt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Production Minification</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Format during development for readability, then minify before deploying to reduce payload size by up to 70%. Chained operations make this a one-click workflow.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-code-branch text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Cleaner Version Control Diffs</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Sort keys alphabetically before committing JSON files to Git. Consistent key order means cleaner diffs and fewer merge conflicts in team projects.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-graduation-cap text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Learning JSON Structure</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Beginners can paste example JSON and use Tree View to understand how objects, arrays, and nesting work — the visual structure makes the syntax click faster than reading documentation alone.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-clipboard-list text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Log Analysis</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Application logs often contain JSON objects on a single line. Formatting them reveals patterns, errors, and anomalies that are impossible to spot in raw form.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
       <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16 ">
-         
          
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">What is a JSON Formatter?</h2>
@@ -454,8 +575,8 @@
                      <p class="text-sm text-slate-500">Reduce JSON file size by up to 70% by removing whitespace for faster API responses and smaller payloads.</p>
                   </div>
                </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+               <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="flex gap-4">
                      <i class="fas fa-sort-alpha-down text-amber-500"></i>
                   </div>
                   <div>
@@ -511,6 +632,19 @@
             </ol>
          </section>
 
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               I was debugging a third-party API that returned a 4,000-character JSON response on a single line. I pasted it into the first online formatter I found, and it crashed my browser tab. The second one worked but couldn't handle the nested arrays — the output was still barely readable. The third one sent my data to a server, which made me uncomfortable since the payload contained API keys and user tokens.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               So I built this one. It processes everything locally using the browser's native JSON.parse and JSON.stringify methods — no server, no data transfer, no tab crashes. I added tree view because scrolling through 200 lines of formatted JSON to find one nested field was killing my productivity. I added Sort Keys because my Git diffs were a mess when teammates committed the same JSON file with keys in different orders.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               If you have ever squinted at a minified API response trying to find a missing comma, this tool is for you. And if you need to encode values from your JSON for headers or data URIs, <a href="/base64-encoder-decoder/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">our Base64 encoder</a> handles the conversion without switching tools.
+            </p>
+         </section>
+
          <!-- FAQ Section -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
@@ -560,19 +694,19 @@
               <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/json-formatter/&text=Free%20JSON%20formatter%20with%20tree%20view%20and%20validation!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
                   <i class="fab fa-x-twitter"></i> Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
                   <i class="fab fa-facebook-f"></i> Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
                   <i class="fab fa-linkedin-in"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                <a href="https://wa.me/?text=Check%20out%20this%20free%20JSON%20formatter%20https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
                   <i class="fab fa-whatsapp"></i> WhatsApp
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/json-formatter/&description=Free%20online%20JSON%20formatter%20with%20tree%20view" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
                   <i class="fab fa-pinterest-p"></i> Pinterest
                 </a>
                 <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
@@ -598,7 +732,14 @@
          
       </div>
       
-      
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+
     </div>
   </main>
   
