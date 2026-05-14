@@ -107,7 +107,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <script src="../js/tailwind.js"></script>
@@ -149,14 +151,31 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-12 animate-on-scroll" style="margin-top: 45px;">
+      <div class="text-center mb-8 " style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Base64 Encoder / Decoder</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Encode text to Base64 and decode Base64 strings back to plain text instantly with real-time conversion</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
+      <!-- NEW: Content-first intro section ABOVE the tool UI for SEO & AdSense -->
+      <section class="mb-10 max-w-7xl mx-auto " aria-label="Introduction to the Base64 encoder decoder tool">
+        <div class="glass-card p-6 shimmer-card">
+          <h2 class="text-xl font-bold mb-3">What Is This Base64 Encoder / Decoder?</h2>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            This free online tool converts plain text to Base64 and decodes Base64 strings back to readable text — instantly, in your browser, with no server upload. Type or paste your text, pick Encode or Decode mode, and the output updates in real time as you type. When you are satisfied, click Copy and paste the result into your project. The tool handles full UTF-8, so Unicode characters, accented letters, and emojis all encode and decode correctly.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
+            Base64 encoding is used everywhere in web development — data URIs for embedding images in CSS, Basic Authentication headers, JWT token segments, email MIME attachments, and JSON API payloads carrying binary data. It is not encryption; it is a format conversion that makes binary data safe for text-only channels. If you need to inspect or format the JSON payloads that often contain Base64 strings, our <a href="/json-formatter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">JSON formatter</a> cleans up the structure. For the meta tags and Open Graph headers that sometimes carry Base64-encoded values, <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the meta tag generator</a> builds those for you.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            No sign-up, no API key, no data leaves your device. Every encode and decode operation runs locally using your browser's built-in <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">btoa()</code> and <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-xs font-mono">atob()</code> functions with proper UTF-8 handling.
+          </p>
+        </div>
+      </section>
+      <!-- END NEW: Content-first intro section -->
+
       <!-- Quick Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
@@ -197,7 +216,7 @@
 
       <div class="block md:grid md:grid-cols-2 gap-8">
         <!-- Left: Inputs -->
-        <div class="space-y-6 animate-on-scroll">
+        <div class="space-y-6 ">
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
               <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
@@ -259,7 +278,7 @@
         </div>
 
         <!-- Right: Output -->
-        <div class="space-y-6 animate-on-scroll">
+        <div class="space-y-6 ">
           <!-- Generated Output -->
           <div class="glass-card p-8 shimmer-card">
             <div class="flex items-center justify-between mb-6">
@@ -358,8 +377,72 @@
         </div>
       </div>
 
+      <!-- NEW: How to Use section (structured for readability) -->
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="How to use the Base64 encoder decoder">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">How to Use This Base64 Tool</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Pick Your Mode</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Encode to convert plain text into a Base64 string, or Decode to convert a Base64 string back into readable text. The mode toggle is at the top of the input panel — switch any time and the output updates immediately.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Type or Paste Your Text</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Enter any text in the input box — plain English, JSON, emojis, or a Base64 string you want to decode. The output converts in real time as you type, so there is no need to press a convert button.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Review the Result</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Switch between the Result tab (styled preview) and the Raw tab (plain text). In decode mode, the status checklist validates whether your input is proper Base64 and flags any errors.</p>
+            </div>
+            <div>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Copy and Use</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click the Copy button to grab the output. Paste it into your code, API request, config file, or <a href="/json-formatter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">JSON formatter</a> for further processing. Hit Clear All to start over.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: How to Use section -->
+
+      <!-- NEW: Benefits section -->
+      <section class="mt-12 max-w-7xl mx-auto " aria-label="Benefits of using this Base64 tool">
+        <article class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6">Benefits of Using This Base64 Encoder / Decoder</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-3">
+              <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Real-Time Conversion</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The output updates character by character as you type — no convert button, no waiting. Paste a string and the result appears instantly, making it fast for quick lookups during development.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-lock text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">100% Private Processing</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">All encoding and decoding runs in your browser using the native btoa() and atob() APIs. Your text never leaves your device, making this tool safe for API keys, credentials, and sensitive configuration values.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-globe text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Full Unicode and Emoji Support</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The tool handles the complete UTF-8 spectrum — accented letters, Cyrillic, CJK characters, and emojis all encode and decode correctly through automatic UTF-8 byte conversion.</p>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <i class="fas fa-check-double text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
+              <div>
+                <h3 class="font-semibold text-sm mb-1">Built-In Validation</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The status checklist monitors your input in real time. In decode mode, it validates that the input is proper Base64 and flags errors immediately, so you never paste a broken string into your project.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- END NEW: Benefits section -->
+
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
+      <div class="seo-content space-y-12 mt-16 ">
          
          
          <section class="glass-card p-8 shimmer-card">
@@ -455,7 +538,7 @@
             </div>
          </section>
 
-         <!-- How to Use -->
+         <!-- How to Use (existing detailed version) -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How to Use This Base64 Tool</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
@@ -483,6 +566,21 @@
                <li><strong>Working with Configuration Files:</strong> Some configuration systems (like Kubernetes Secrets, Docker configs, or CI/CD pipelines) store values as Base64. Use this tool to encode sensitive values before adding them to configuration, or decode existing values to verify their contents.</li>
             </ul>
          </section>
+
+         <!-- NEW: Why I Built This Tool section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               I was debugging an API that returned a Base64-encoded payload inside a JSON response, and I needed to decode it quickly. I opened a terminal, typed out a Node one-liner, and got the result — but the next day I had the same problem and couldn't remember the exact syntax. I tried an online decoder, but it couldn't handle the emoji in the payload and spat out garbled characters. Then I tried another one that required me to click a "Convert" button every time I changed the input.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               That was enough. I wanted a tool where I paste a string and the answer appears immediately — no button, no waiting, no broken Unicode. So I built this one using the browser's built-in btoa/atob functions with proper UTF-8 handling via TextEncoder. It runs entirely locally, which means I can use it for API keys and config values without worrying about the text being sent somewhere.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               If you work with Base64 regularly — debugging JWTs, constructing Auth headers, or embedding data URIs — I hope this saves you the same friction it saved me. And if you need to format or validate the JSON that often wraps Base64 payloads, <a href="/json-formatter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">our JSON formatter</a> is the natural next step.
+            </p>
+         </section>
+         <!-- END NEW: Why I Built This Tool section -->
 
          <!-- FAQ Section -->
          <section class="glass-card p-8 shimmer-card">
@@ -521,7 +619,7 @@
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
                   </button>
                   <div class="faq-content px-6 pb-4 hidden">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Base64 is commonly used in data URIs for embedding small images directly in HTML or CSS, in email attachments (MIME encoding), in API responses that carry binary data as JSON strings, in HTTP Basic Authentication headers (Authorization: Basic <base64>), in JWT token structures (header and payload segments), in CSS and JavaScript where binary data needs to be represented as text strings, and in configuration systems like Kubernetes Secrets that store values as Base64-encoded strings.</p>
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Base64 is commonly used in data URIs for embedding small images directly in HTML or CSS, in email attachments (MIME encoding), in API responses that carry binary data as JSON strings, in HTTP Basic Authentication headers (Authorization: Basic &lt;base64&gt;), in JWT token structures (header and payload segments), in CSS and JavaScript where binary data needs to be represented as text strings, and in configuration systems like Kubernetes Secrets that store values as Base64-encoded strings.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
@@ -577,7 +675,14 @@
 
       </div>
       
-      
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+
     </div>
   </main>
   
@@ -590,5 +695,41 @@
   <script src="../js/main.js" defer></script>
   <script src="../js/base64-tool.js" defer></script>
   <script src="../js/enhancements.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(window.location.href).then(function() {
+              if (window.Devpalettes && window.Devpalettes.Toast) {
+                window.Devpalettes.Toast.show('Link copied!');
+              } else {
+                copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                setTimeout(function() {
+                  copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+                }, 2000);
+              }
+            });
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            if (window.Devpalettes && window.Devpalettes.Toast) {
+              window.Devpalettes.Toast.show('Link copied!');
+            } else {
+              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+              setTimeout(function() {
+                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
+              }, 2000);
+            }
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>

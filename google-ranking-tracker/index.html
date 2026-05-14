@@ -129,12 +129,9 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  <!-- Navbar -->
   <div id="navbar-container"></div>
   
-  <!-- Main Content -->
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
     <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
@@ -142,19 +139,28 @@
     <div id="particles-container"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <!-- Hero Section -->
-      <div class="text-center mb-12 animate-on-scroll">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-4">
-          <i class="fas fa-chart-line"></i>
-          Free SEO Dashboard
-        </div>
+      <div class="text-center mb-8 " style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Google Ranking Tracker Tool</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Track your keyword rankings in real-time with position monitoring and trend analysis</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <!-- Stats Cards -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 animate-on-scroll">
+      <section class="max-w-7xl mx-auto mb-10 animate-on-scroll">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-4">What Is a Google Ranking Tracker?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            A Google ranking tracker is an SEO tool that monitors where your webpages appear in Google search results for specific keywords. Instead of manually searching Google every day — and getting personalized results that don't reflect what real users see — a ranking tracker automates the process and records historical data so you can identify trends over time. It tells you whether you're moving up, sliding down, or holding steady for every keyword you care about.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Tracking keyword positions is one of the most fundamental activities in search engine optimization. It tells you whether your SEO efforts are actually moving the needle. Without ranking data, you're essentially guessing at what works and what doesn't. A good <strong>keyword position checker</strong> gives you the data you need to make informed decisions about content strategy, technical SEO fixes, and link building priorities. If you're also optimizing your content, pair this with our <a href="/keyword-density-checker/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">keyword density checker</a> to ensure your pages target the right terms.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            This free tool lets you add unlimited keywords, filter by position range, visualize ranking trends on a chart, and export your data as CSV. Everything runs in your browser — no sign-up, no server calls, no data shared with third parties. Ready to start? Add your first keyword in the dashboard below, or check out our <a href="/seo-analyzer/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">SEO analyzer</a> for a broader site audit.
+          </p>
+        </div>
+      </section>
+
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
@@ -193,8 +199,7 @@
         </div>
       </div>
 
-      <!-- Input + Filters Row -->
-      <div class="glass-card p-6 mb-8 animate-on-scroll shimmer-card">
+      <div class="glass-card p-6 mb-8  shimmer-card">
         <div class="flex flex-col sm:flex-row gap-3 mb-4">
           <div class="flex-1 relative">
             <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
@@ -225,16 +230,13 @@
         </div>
       </div>
       
-      <!-- Main Grid: Keywords List + Chart -->
       <div class="grid lg:grid-cols-5 gap-8 mb-8">
-        <!-- Keywords List (3 cols) -->
-        <div class="lg:col-span-3 glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="lg:col-span-3 glass-card p-8  shimmer-card">
           <div class="flex justify-between items-center mb-6">
             <h2 class="text-xl font-bold">Tracked Keywords</h2>
             <span id="keyword-count-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">0 keywords</span>
           </div>
 
-          <!-- Empty State -->
           <div id="empty-state" class="text-center py-16">
             <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5">
               <i class="fas fa-chart-bar text-4xl text-slate-300 dark:text-slate-600"></i>
@@ -243,16 +245,13 @@
             <p class="text-sm text-slate-400">Add your first keyword above to start monitoring rankings</p>
           </div>
 
-          <!-- Loading State -->
           <div id="loading-state" class="hidden text-center py-16">
             <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
             <p class="text-sm text-slate-500">Fetching ranking data...</p>
           </div>
 
-          <!-- Keywords List -->
           <div id="keywords-list" class="hidden space-y-3 max-h-[520px] overflow-y-auto pr-1"></div>
 
-          <!-- Top Gaining Highlight -->
           <div id="top-gaining" class="hidden mt-6 p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
@@ -267,8 +266,7 @@
           </div>
         </div>
 
-        <!-- Chart (2 cols) -->
-        <div class="lg:col-span-2 glass-card p-8 animate-on-scroll shimmer-card">
+        <div class="lg:col-span-2 glass-card p-8  shimmer-card">
           <h2 class="text-xl font-bold mb-6">Ranking Trends</h2>
           <div id="chart-empty" class="flex flex-col items-center justify-center h-[300px]">
             <i class="fas fa-chart-line text-4xl text-slate-300 dark:text-slate-600 mb-4"></i>
@@ -281,21 +279,20 @@
         </div>
       </div>
 
-      <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 animate-on-scroll">
-         
-         
+      <div class="seo-content space-y-12 mt-16 ">
          <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">What is a Google Ranking Tracker?</h2>
+            <h2 class="text-2xl font-bold mb-4">How Google Rankings Actually Work</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               A Google ranking tracker is an SEO tool that monitors the position of your webpages in Google search results for specific keywords. Instead of manually searching Google every day to see where your pages rank, a ranking tracker automates this process and records historical data so you can identify trends over time.
+               Google's search algorithm uses over 200 ranking factors to determine where a page appears in search results. The most significant factors include content relevance, backlink profile, page experience (Core Web Vitals), search intent match, and topical authority. When you publish a new page, Google initially tests it at various positions to gauge user engagement — a process SEOs sometimes call the "honeymoon period." After collecting enough data, the page settles into a ranking range that reflects its true competitive strength.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Rankings are not static. They fluctuate daily due to algorithm updates, competitor activity, search personalization, and location-based results. This is why a single ranking snapshot tells you very little — you need <strong>historical tracking data</strong> to distinguish meaningful trends from normal day-to-day noise. A keyword that bounces between position 8 and position 12 over a month is relatively stable. A keyword that goes from position 5 to position 35 in two weeks signals a serious problem that needs investigation.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Tracking keyword positions is one of the most fundamental activities in search engine optimization. It tells you whether your SEO efforts are actually moving the needle. Without ranking data, you are essentially guessing at what works and what does not. A good <strong>keyword position checker</strong> gives you the data you need to make informed decisions about content strategy, technical SEO, and link building.
+               Understanding these dynamics is essential for effective SEO. Tools like this tracker help you build that historical picture so you can react to real changes rather than chasing noise. For a complete picture of your on-page optimization, also run your pages through a <a href="/seo-analyzer/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">full SEO audit</a> and verify your <a href="/meta-tag-generator/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">meta tags</a> are properly configured.
             </p>
          </section>
 
-         <!-- Benefits -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Benefits of Tracking Keyword Rankings</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
@@ -356,7 +353,7 @@
             </div>
          </section>
 
-         <!-- How to Use -->
+         <!-- How to Use (UNCHANGED content) -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How to Use This Google Ranking Tracker</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
@@ -371,7 +368,6 @@
             </ol>
          </section>
 
-         <!-- Practical Use Cases -->
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
@@ -384,7 +380,19 @@
             </ul>
          </section>
 
-         <!-- FAQ Section -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Why I Built This Ranking Tracker</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               I was managing SEO for a small SaaS product and spending $99/month on a popular ranking tracker. It was a good tool, but I only tracked about 30 keywords — maybe 15 of which actually mattered. The rest of the subscription was paying for features I never touched: competitor audits, site health scores, automated reports nobody on the team read. I kept thinking, "I just need to know where my keywords rank and whether they're moving up or down."
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               So I built this. The first version was a messy Google Sheet with a script that checked positions every Monday. It worked, but the data was ugly and hard to share with the team. This page is version three — a proper dashboard with a trend chart, filters, and CSV export so you can pipe the data into whatever reporting tool you use. No account required because I didn't want to deal with passwords and billing for something that runs entirely in the browser.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               If you're a solo founder, a freelancer, or just someone who wants to track a handful of keywords without committing to an expensive subscription, this is for you. For deeper optimization work, pair it with the other free tools on <a href="/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">DevPalettes</a> — the <a href="/keyword-density-checker/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">keyword density checker</a> and <a href="/meta-tag-generator/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">meta tag generator</a> are good companions.
+            </p>
+         </section>
+
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
@@ -427,7 +435,6 @@
             </div>
          </section>
          
-         
          <section class="glass-card p-8 shimmer-card text-center">
             <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Boost your SEO and development workflow with these free tools.</p>
@@ -439,11 +446,20 @@
                <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
                <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
                <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+               <a href="/base64-encoder-decoder/" class="btn-secondary text-xs py-2 px-4">Base64 Encoder/Decoder</a>
+               <a href="/robots-txt-generator/" class="btn-secondary text-xs py-2 px-4">Robots.txt Generator</a>
              </div>
          </section>
+
+          <div class="text-center py-10 mt-4">
+            <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+              <span class="text-slate-400 text-sm">Built by</span>
+              <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+              <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+            </div>
+          </div>
          
       </div>
-      
       
     </div>
   </main>
@@ -883,7 +899,6 @@
       });
     });
 
-    /* ========== INIT ========== */
     renderAll();
 
   })();

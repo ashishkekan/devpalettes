@@ -412,6 +412,7 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'Meta Tags Generator Tool', path: 'meta-tag-generator/' },
       { label: 'SEO Analyzer Tool', path: 'seo-analyzer/' },
+      { label: 'Google Ranking Tracker', path: 'google-ranking-tracker/' },
       { label: 'Open Graph Meta Generator', path: 'open-graph-generator/' },
       { label: 'Robots.txt Generator Tool', path: 'robots-txt-generator/' },
       { label: 'XML Sitemap Generator', path: 'sitemap-xml-generator/' },
