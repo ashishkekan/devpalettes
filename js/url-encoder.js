@@ -442,32 +442,4 @@
     });
   }, 50);
 
-  // ─── Copy Link ───
-  document.addEventListener('DOMContentLoaded', function () {
-    var copyLinkBtn = document.getElementById('copy-link-btn');
-    if (copyLinkBtn) {
-      copyLinkBtn.addEventListener('click', function () {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(window.location.href).then(function () {
-            copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            setTimeout(function () {
-              copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-            }, 2000);
-          });
-        } else {
-          var tempInput = document.createElement('input');
-          tempInput.value = window.location.href;
-          document.body.appendChild(tempInput);
-          tempInput.select();
-          document.execCommand('copy');
-          document.body.removeChild(tempInput);
-          copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-          setTimeout(function () {
-            copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-          }, 2000);
-        }
-      });
-    }
-  });
-
 })();

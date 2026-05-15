@@ -524,28 +524,5 @@
   <script src="../js/main.js" defer></script>
   <script src="../js/enhancements.js" defer></script>
   <script src="../js/landing-page-builder.js" defer></script>
-  
-  <script>
-    // Copy Link Logic (Inline minimal script)
-    document.addEventListener('DOMContentLoaded', function() {
-      var copyLinkBtn = document.getElementById('copy-link-btn');
-      if (copyLinkBtn) {
-        copyLinkBtn.addEventListener('click', function() {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(window.location.href).then(function() {
-               if (window.Devpalettes && window.Devpalettes.Toast) {
-                  window.Devpalettes.Toast.show('Link copied!');
-               } else {
-                  copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                  setTimeout(function() {
-                    copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-                  }, 2000);
-               }
-            });
-          }
-        });
-      }
-    });
-  </script>
 </body>
 </html>

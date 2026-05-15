@@ -262,6 +262,30 @@ const Clipboard = {
   }
 };
 
+const CopyLinkButton = {
+  init() {
+    document.addEventListener('click', async (e) => {
+      const button = e.target.closest('#copy-link-btn');
+      if (!button) return;
+
+      e.preventDefault();
+
+      if (!button.dataset.originalHtml) {
+        button.dataset.originalHtml = button.innerHTML;
+      }
+
+      const ok = await Clipboard.copy(window.location.href, 'Link copied!');
+      if (!ok) return;
+
+      button.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied!';
+      window.clearTimeout(button._copyLinkResetTimer);
+      button._copyLinkResetTimer = window.setTimeout(() => {
+        button.innerHTML = button.dataset.originalHtml || '<i class="fas fa-link" aria-hidden="true"></i> Copy Link';
+      }, 2000);
+    });
+  }
+};
+
 
 const Navbar = {
   init() {
@@ -865,7 +889,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Initialize toast
   Toast.init();
-  
+
+  // Global "Copy Link" button handler
+  CopyLinkButton.init();
+
   // Render navbar and footer
   renderNavbar();
   renderFooter();
@@ -898,6 +925,7 @@ window.Devpalettes = {
   Toast,
   ColorUtils,
   Clipboard,
+  CopyLinkButton,
   Storage,
   KeyboardShortcuts
 };
