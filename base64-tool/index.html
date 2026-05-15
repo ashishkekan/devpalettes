@@ -227,10 +227,10 @@
               <div>
                 <label class="block text-sm font-semibold mb-2">Mode</label>
                 <div class="grid grid-cols-2 gap-2">
-                  <button id="mode-encode" class="mode-btn px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-2" data-mode="encode">
+                  <button id="mode-encode" class="mode-btn px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-2" data-mode="encode" aria-label="Encode Mode">
                     <i class="fas fa-lock"></i> Encode
                   </button>
-                  <button id="mode-decode" class="mode-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400 flex items-center justify-center gap-2" data-mode="decode">
+                  <button id="mode-decode" class="mode-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400 flex items-center justify-center gap-2" data-mode="decode" aria-label="Decode Mode">
                     <i class="fas fa-lock-open"></i> Decode
                   </button>
                 </div>
@@ -246,7 +246,7 @@
               </div>
               <!-- Clear Button -->
               <div class="pt-2 flex gap-3">
-                <button id="b64-clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
+                <button id="b64-clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2" aria-label="All Clear">
                   <i class="fas fa-rotate-left"></i> Clear All
                 </button>
               </div>
@@ -261,16 +261,16 @@
             </h2>
             <p class="text-sm text-slate-500 mb-4">Try these sample inputs to see Base64 encoding in action</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="hello">
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="hello" aria-label="Hello Preset btn">
                 <i class="fas fa-hand-wave text-blue-500 mr-2"></i>Hello World
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="json">
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="json" aria-label="Json Preset btn">
                 <i class="fas fa-brackets-curly text-purple-500 mr-2"></i>JSON String
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="emoji">
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="emoji" aria-label="Emoji Preset btn">
                 <i class="fas fa-face-smile text-amber-500 mr-2"></i>Emoji Text
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="special">
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="special" aria-label="Special Preset btn">
                 <i class="fas fa-hashtag text-emerald-500 mr-2"></i>Special Chars
               </button>
             </div>
@@ -287,10 +287,10 @@
                 Output
               </h2>
               <div class="flex gap-1.5">
-                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result">
+                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result" aria-label="Result Preset btn">
                   <i class="fas fa-file-lines mr-1"></i>Result
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw">
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw" aria-label="Raw Preset btn">
                   <i class="fas fa-code mr-1"></i>Raw
                 </button>
               </div>
@@ -316,7 +316,7 @@
               <div id="view-raw" class="preview-panel hidden">
                 <div class="relative">
                   <pre id="b64-raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Enter text and select a mode to see the raw output here</pre>
-                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100">
+                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Raw Copy Preset btn">
                     <i class="fas fa-copy"></i>
                   </button>
                 </div>
@@ -331,7 +331,7 @@
                 <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-copy"></i></span>
                 Copy Output
               </h2>
-              <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3">
+              <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3" aria-label="Copy btn">
                 <i class="fas fa-copy mr-1"></i>Copy
               </button>
             </div>
@@ -587,7 +587,7 @@
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-label="Faq Toggle">
                      <span>What is Base64 encoding?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
                   </button>
@@ -596,7 +596,7 @@
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-label="Encryption Toggle">
                      <span>Is Base64 encoding the same as encryption?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
                   </button>
@@ -605,7 +605,7 @@
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-label="Increase File Size">
                      <span>Does Base64 encoding increase file size?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
                   </button>
@@ -614,7 +614,7 @@
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-label="Commonly Used Base64">
                      <span>Where is Base64 commonly used?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
                   </button>
@@ -623,7 +623,7 @@
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-label="Unicode Base64">
                      <span>Can Base64 encode special characters and Unicode?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
                   </button>

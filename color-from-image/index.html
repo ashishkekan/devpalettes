@@ -183,31 +183,31 @@
           <div class="mt-6">
             <label class="font-medium mb-3 block">Extraction Method</label>
             <div class="grid grid-cols-2 gap-3">
-              <button class="method-btn active px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium transition-all" data-method="dominant">
+              <button class="method-btn active px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium transition-all" data-method="dominant" aria-label="Dominant method">
                 <i class="fas fa-palette mr-2"></i>Dominant
               </button>
-              <button class="method-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-method="vibrant">
+              <button class="method-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium transition-all hover:border-emerald-500/50" data-method="vibrant" aria-label="Vibrant method">
                 <i class="fas fa-bolt mr-2"></i>Vibrant
               </button>
             </div>
           </div>
-          <button id="extract-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled>
+          <button id="extract-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled aria-label="Extracted Colors">
             <i class="fas fa-magic mr-2"></i>
             Extract Colors
           </button>
           <div class="mt-8">
             <p class="text-sm text-slate-500 mb-3">Try sample images:</p>
             <div class="flex gap-2 flex-wrap">
-              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset">
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset" aria-label="Sunset Button">
                 <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover">
               </button>
-              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="forest">
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="forest" aria-label="Forest Button">
                 <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover">
               </button>
-              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="ocean">
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="ocean" aria-label="Ocean Button">
                 <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover">
               </button>
-              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="city">
+              <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="city" aria-label="City Button">
                 <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover">
               </button>
             </div>
@@ -248,13 +248,13 @@
               </div>
             </div>
             <div class="flex flex-wrap gap-3">
-              <button id="copy-all-btn" class="btn-primary btn-glow flex-1 justify-center">
+              <button id="copy-all-btn" class="btn-primary btn-glow flex-1 justify-center" aria-label="Copy btn">
                 <i class="fas fa-copy"></i> Copy
               </button>
-              <button id="export-css-btn" class="btn-secondary flex-1 justify-center">
+              <button id="export-css-btn" class="btn-secondary flex-1 justify-center" aria-label="export css">
                 <i class="fas fa-code"></i> CSS
               </button>
-              <button id="export-json-btn" class="btn-secondary flex-1 justify-center">
+              <button id="export-json-btn" class="btn-secondary flex-1 justify-center" aria-label="export json">
                 <i class="fas fa-file-code"></i> JSON
               </button>
             </div>
@@ -265,22 +265,22 @@
                   <p class="text-sm text-slate-500">Share it with friends</p>
                 </div>
                 <div class="flex gap-2 flex-wrap justify-end">
-                  <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter" aria-label="Share on twitter">
                     <i class="fab fa-twitter"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="facebook">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="facebook" aria-label="Share on facebook">
                     <i class="fab fa-facebook-f"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="linkedin">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="linkedin" aria-label="Share on linkedin">
                     <i class="fab fa-linkedin-in"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="whatsapp">
+                  <button class="share-btn w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="whatsapp" aria-label="Share on whatsapp">
                     <i class="fab fa-whatsapp"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="pinterest">
+                  <button class="share-btn w-10 h-10 rounded-full bg-red-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="pinterest" aria-label="Share on pinterest">
                     <i class="fab fa-pinterest-p"></i>
                   </button>
-                  <button class="share-btn w-10 h-10 rounded-full bg-slate-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="copylink">
+                  <button class="share-btn w-10 h-10 rounded-full bg-slate-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="copylink" aria-label="Copylink">
                     <i class="fas fa-link"></i>
                   </button>
                 </div>
@@ -306,7 +306,7 @@
           <div>
             <div class="flex justify-between items-center mb-4">
               <h3 class="font-semibold">Picked Colors</h3>
-              <button id="clear-picked-btn" class="text-sm text-slate-500 hover:text-red-500 transition-colors">
+              <button id="clear-picked-btn" class="text-sm text-slate-500 hover:text-red-500 transition-colors" aria-label="Clear Picked colors">
                 <i class="fas fa-trash-alt mr-1"></i>Clear
               </button>
             </div>
