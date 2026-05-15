@@ -602,32 +602,6 @@
         });
       });
 
-      // Copy Link Button
-      var copyLinkBtn = document.getElementById('copy-link-btn');
-      if (copyLinkBtn) {
-        copyLinkBtn.addEventListener('click', function() {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText('https://devpalettes.com/blog/css-grid-generator/').then(function() {
-              copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-              setTimeout(function() {
-                copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-              }, 2000);
-            });
-          } else {
-            var tempInput = document.createElement('input');
-            tempInput.value = 'https://devpalettes.com/blog/css-grid-generator/';
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            copyLinkBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            setTimeout(function() {
-              copyLinkBtn.innerHTML = '<i class="fas fa-link"></i> Copy Link';
-            }, 2000);
-          }
-        });
-      }
-
       // Code Block Copy Buttons
       document.querySelectorAll('.copy-code-btn').forEach(function(btn) {
         btn.addEventListener('click', function(e) {

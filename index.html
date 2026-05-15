@@ -764,34 +764,6 @@
       });
     });
 
-    var copyLinkBtn = document.getElementById('copy-link-btn');
-    if (copyLinkBtn) {
-      copyLinkBtn.addEventListener('click', function() {
-        var btn = this;
-        function showCopied() {
-          if (window.Devpalettes && window.Devpalettes.Toast) {
-            window.Devpalettes.Toast.show('Link copied!');
-          } else {
-            btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied!';
-            setTimeout(function() { btn.innerHTML = '<i class="fas fa-link" aria-hidden="true"></i> Copy Link'; }, 2000);
-          }
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(window.location.href).then(showCopied);
-        } else {
-          var tempInput = document.createElement('input');
-          tempInput.value = window.location.href;
-          tempInput.style.position = 'fixed';
-          tempInput.style.opacity = '0';
-          document.body.appendChild(tempInput);
-          tempInput.select();
-          document.execCommand('copy');
-          document.body.removeChild(tempInput);
-          showCopied();
-        }
-      });
-    }
-
     var rIC = window.requestIdleCallback || function(cb) { return setTimeout(cb, 200); };
 
     rIC(function initVisualEffects() {
