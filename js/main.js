@@ -93,8 +93,8 @@ const ColorUtils = {
   // Generate random HSL (better for pleasing colors)
   randomHSL(saturation = null, lightness = null) {
     const h = Math.floor(Math.random() * 360);
-    const s = saturation ?? Math.floor(Math.random() * 30) + 50; // 50-80%
-    const l = lightness ?? Math.floor(Math.random() * 30) + 40; // 40-70%
+    const s = saturation ?? Math.floor(Math.random() * 30) + 50;
+    const l = lightness ?? Math.floor(Math.random() * 30) + 40;
     return { h, s, l };
   },
   
@@ -128,7 +128,6 @@ const ColorUtils = {
     }).join('');
   },
   
-  // RGB to HSL
   rgbToHsl(r, g, b) {
     r /= 255;
     g /= 255;
@@ -158,7 +157,6 @@ const ColorUtils = {
     };
   },
   
-  // HSL to RGB
   hslToRgb(h, s, l) {
     h /= 360;
     s /= 100;
@@ -193,18 +191,15 @@ const ColorUtils = {
     };
   },
   
-  // Calculate contrast color (black or white)
   getContrastColor(hex) {
     const rgb = this.hexToRgb(hex);
     if (!rgb) return '#000000';
     
-    // Calculate relative luminance
     const luminance = (0.299 * rgb.r + 0.587 * rgb.g + 0.114 * rgb.b) / 255;
     
     return luminance > 0.5 ? '#000000' : '#ffffff';
   },
   
-  // Get color name (simplified)
   getColorName(hex) {
     const rgb = this.hexToRgb(hex);
     if (!rgb) return 'Unknown';
@@ -240,7 +235,6 @@ const Clipboard = {
       Toast.show(message, 'success');
       return true;
     } catch (err) {
-      // Fallback for older browsers
       const textarea = document.createElement('textarea');
       textarea.value = text;
       textarea.style.position = 'fixed';
@@ -288,6 +282,8 @@ const CopyLinkButton = {
 
 
 const Navbar = {
+  _isToggling: false,
+
   init() {
     this.navbar = document.querySelector('.navbar');
     this.hamburger = document.querySelector('.hamburger');
@@ -301,7 +297,18 @@ const Navbar = {
 
     // Mobile menu toggle
     if (this.hamburger && this.mobileMenu) {
-      this.hamburger.addEventListener('click', () => this.toggleMobile());
+
+      this.mobileMenu.classList.add('no-transition');
+      void this.mobileMenu.offsetHeight;
+      requestAnimationFrame(() => {
+        this.mobileMenu.classList.remove('no-transition');
+      });
+
+      this.hamburger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.preventDefault();
+        this.toggleMobile();
+      });
 
       // Close on link click
       this.mobileMenu.querySelectorAll('a').forEach(link => {
@@ -310,12 +317,16 @@ const Navbar = {
 
       // Mobile dropdown toggles
       this.mobileMenu.querySelectorAll('[data-mobile-dropdown-button]').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
           const key = btn.getAttribute('data-mobile-dropdown-button');
           const menu = this.mobileMenu.querySelector(`[data-mobile-dropdown-menu="${key}"]`);
           if (!menu) return;
-          const isOpen = !menu.classList.contains('hidden');
+          
+          const isOpen = menu.classList.contains('flex');
           menu.classList.toggle('hidden', isOpen);
+          menu.classList.toggle('flex', !isOpen);
+          menu.classList.toggle('flex-col', !isOpen);
           btn.setAttribute('aria-expanded', String(!isOpen));
         });
       });
@@ -374,19 +385,29 @@ const Navbar = {
   },
 
   toggleMobile() {
-    const isOpen = !this.mobileMenu.classList.contains('translate-x-0');
+    if (this._isToggling) return;
+    this._isToggling = true;
 
-    if (isOpen) {
-      this.mobileMenu.classList.remove('translate-x-full');
-      this.mobileMenu.classList.add('translate-x-0');
-      document.body.style.overflow = 'hidden';
-    } else {
+    const isCurrentlyOpen = this.mobileMenu.classList.contains('translate-x-0');
+
+    if (isCurrentlyOpen) {
+      // Close the menu
       this.mobileMenu.classList.remove('translate-x-0');
       this.mobileMenu.classList.add('translate-x-full');
+      this.hamburger.classList.remove('active');
       document.body.style.overflow = '';
+    } else {
+      // Open the menu
+      this.mobileMenu.classList.remove('translate-x-full');
+      this.mobileMenu.classList.add('translate-x-0');
+      this.hamburger.classList.add('active');
+      document.body.style.overflow = 'hidden';
     }
 
-    this.hamburger.classList.toggle('active');
+    // Release the guard after the CSS transition finishes (300ms + 50ms buffer)
+    setTimeout(() => {
+      this._isToggling = false;
+    }, 350);
   },
 
   closeMobile() {
@@ -395,6 +416,16 @@ const Navbar = {
       this.mobileMenu.classList.add('translate-x-full');
       this.hamburger.classList.remove('active');
       document.body.style.overflow = '';
+      
+      this.mobileMenu.querySelectorAll('[data-mobile-dropdown-menu]').forEach(menu => {
+        menu.classList.add('hidden');
+        menu.classList.remove('flex', 'flex-col');
+      });
+      this.mobileMenu.querySelectorAll('[data-mobile-dropdown-button]').forEach(btn => {
+        btn.setAttribute('aria-expanded', 'false');
+      });
+
+      this._isToggling = false;
     }
   }
 };
@@ -502,17 +533,14 @@ const KeyboardShortcuts = {
   
   init() {
     document.addEventListener('keydown', (e) => {
-      // Check if user is typing in an input
       const isTyping = ['INPUT', 'TEXTAREA'].includes(e.target.tagName) || 
                        e.target.isContentEditable;
       
-      // Spacebar shortcut
       if (e.code === 'Space' && !isTyping && this.callbacks.space) {
         e.preventDefault();
         this.callbacks.space();
       }
       
-      // Other shortcuts
       if (!isTyping) {
         Object.entries(this.callbacks).forEach(([key, callback]) => {
           if (e.key.toLowerCase() === key.toLowerCase()) {
@@ -558,7 +586,6 @@ const ScrollButtons = {
   btnBottom: null,
 
   init() {
-    // --- Create Back to Top Button ---
     this.btnTop = document.createElement('button');
     this.btnTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
     this.btnTop.className = 'back-to-top';
@@ -569,9 +596,8 @@ const ScrollButtons = {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // --- Create Back to Bottom Button ---
     this.btnBottom = document.createElement('button');
-    this.btnBottom.innerHTML = '<i class="fas fa-arrow-down"></i>'; // Down Arrow
+    this.btnBottom.innerHTML = '<i class="fas fa-arrow-down"></i>';
     this.btnBottom.className = 'back-to-bottom';
     this.btnBottom.setAttribute('aria-label', 'Back to bottom');
     document.body.appendChild(this.btnBottom);
@@ -580,10 +606,7 @@ const ScrollButtons = {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     });
 
-    // --- Scroll Event Listener ---
     window.addEventListener('scroll', () => this.handleScroll());
-    
-    // Initial check on load
     this.handleScroll();
   },
 
@@ -591,32 +614,17 @@ const ScrollButtons = {
     const scrollY = window.scrollY;
     const windowHeight = window.innerHeight;
     const docHeight = document.body.scrollHeight;
-    
-    // Threshold for showing buttons (e.g., 100px)
     const threshold = 100;
-    
-    // Check if at Top
     const isAtTop = scrollY < threshold;
-    
-    // Check if at Bottom (with a small threshold)
     const isAtBottom = (scrollY + windowHeight) >= (docHeight - threshold);
 
-    // --- Visibility Logic ---
-    // Requirement: "at a time ek hi dikhana hai"
-    
     if (isAtTop) {
-      // We are at the top: Show "Back to Bottom", Hide "Back to Top"
       this.btnBottom.classList.add('visible');
       this.btnTop.classList.remove('visible');
     } else {
-      // We have scrolled down: Show "Back to Top", Hide "Back to Bottom"
       this.btnTop.classList.add('visible');
       this.btnBottom.classList.remove('visible');
     }
-    
-    // Optional: If strictly at the very bottom, we can hide both if you want, 
-    // but usually keeping "Back to Top" at the bottom is standard UX.
-    // Current logic keeps "Back to Top" visible whenever scrolled down.
   }
 };
 
@@ -668,7 +676,7 @@ function renderNavbar() {
           <span>${category.label}</span>
           <i class="fas fa-chevron-down text-xs opacity-70"></i>
         </button>
-        <div class="hidden flex flex-col gap-2 pb-2" data-mobile-dropdown-menu="${idx}">
+        <div class="hidden gap-2 pb-2" data-mobile-dropdown-menu="${idx}">
           ${toolLinks}
         </div>
       </div>
@@ -752,7 +760,6 @@ function renderFooter() {
     <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div class="grid grid-cols-2 md:grid-cols-5">
-          <!-- Product -->
           <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Product</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
@@ -763,7 +770,6 @@ function renderFooter() {
             </ul>
           </div>
           
-          <!-- Resources -->
           <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
@@ -774,7 +780,6 @@ function renderFooter() {
             </ul>
           </div>
           
-          <!-- Legal -->
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Legal</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
@@ -785,7 +790,6 @@ function renderFooter() {
             </ul>
           </div>
 
-          <!-- Support -->
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Support</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
@@ -795,7 +799,6 @@ function renderFooter() {
             </ul>
           </div>
           
-          <!-- Newsletter -->
           <div class="col-span-2 md:col-span-1 mt-6 sm:mt-0">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Stay Updated</h3>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 sm:mb-4">Get the latest color trends and updates.</p>
@@ -884,32 +887,16 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize theme
   ThemeManager.init();
-  
-  // Initialize toast
   Toast.init();
-
-  // Global "Copy Link" button handler
   CopyLinkButton.init();
-
-  // Render navbar and footer
   renderNavbar();
   renderFooter();
-  
-  // Render Author Bio if container exists (for blog pages)
   renderAuthorBio();
-  
-  // Initialize navbar
   Navbar.init();
-  
-  // Initialize keyboard shortcuts
   KeyboardShortcuts.init();
-  
-  // Initialize Back to Top Button
   ScrollButtons.init();
   
-  // Theme toggle button
   document.addEventListener('click', (e) => {
     if (e.target.closest('#theme-toggle')) {
       ThemeManager.toggle();
@@ -919,7 +906,6 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('Devpalettes initialized successfully');
 });
 
-// Export utilities for use in other scripts
 window.Devpalettes = {
   ThemeManager,
   Toast,
