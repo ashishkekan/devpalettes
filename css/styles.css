@@ -438,6 +438,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
   display: none;
 }
 
+/* Ensure hamburger never shows on desktop (fallback if utility CSS order changes) */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+}
+
 .hamburger span {
   position: absolute;
   width: 100%;
