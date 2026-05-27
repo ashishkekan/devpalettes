@@ -132,6 +132,7 @@ const CookieConsent = {
       if (action === 'accept') {
         this.set('accepted');
         this._applyGoogleConsent('accepted');
+        ThirdPartyAnalytics.load();
         this.hide();
       } else if (action === 'reject') {
         this.set('rejected');
@@ -147,9 +148,57 @@ const CookieConsent = {
     const choice = this.get();
     if (choice === 'accepted' || choice === 'rejected') {
       this._applyGoogleConsent(choice);
+      if (choice === 'accepted') ThirdPartyAnalytics.load();
       return;
     }
+    // Default to denied until user chooses (prevents accidental early init if any page includes gtag)
+    window[`ga-disable-G-F252PEQ1JC`] = true;
     this.show();
+  }
+};
+
+// ==========================================
+// Third-party Analytics (consent-aware)
+// ==========================================
+
+const ThirdPartyAnalytics = {
+  _loaded: false,
+
+  load() {
+    if (this._loaded) return;
+    this._loaded = true;
+
+    const run = () => {
+      if (document.querySelector('script[data-gtag-loader]')) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+
+      // Consent Mode defaults (granted only after user acceptance; banner already applied update)
+      try {
+        window.gtag('consent', 'default', {
+          ad_storage: 'granted',
+          analytics_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted'
+        });
+      } catch {}
+
+      const s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC';
+      s.setAttribute('data-gtag-loader', 'true');
+      s.onload = () => {
+        try {
+          window.gtag('js', new Date());
+          window.gtag('config', 'G-F252PEQ1JC');
+        } catch {}
+      };
+      document.head.appendChild(s);
+    };
+
+    const rIC = window.requestIdleCallback || function(cb){ return setTimeout(cb, 250); };
+    rIC(run);
   }
 };
 
@@ -873,8 +922,11 @@ function renderNavbar() {
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="${navHref('images/devpalettes_zoom_180.png')}" 
+                <img src="${navHref('images/devpalettes_zoom_180.png')}"
                   alt="Devpalettes Logo"
+                  width="20"
+                  height="20"
+                  decoding="async"
                   class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto"/>
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
@@ -1000,8 +1052,11 @@ function renderFooter() {
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="/images/devpalettes_zoom_180.png" 
+                <img src="/images/devpalettes_zoom_180.png"
                   alt="Devpalettes Logo"
+                  width="20"
+                  height="20"
+                  decoding="async"
                   class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto" />
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">

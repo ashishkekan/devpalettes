@@ -83,7 +83,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
@@ -91,29 +92,15 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F252PEQ1JC');
-  </script>
-
-  <script src="../js/tailwind.js"></script>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
-  </script>
-  
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
+
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
   
@@ -213,7 +200,7 @@
                    <option value="cta">Call to Action</option>
                    <option value="footer">Simple Footer</option>
                 </select>
-                <button onclick="addSection()" class="btn-primary px-4 py-2 text-sm" title="Add selected section">
+                <button onclick="addSection()" class="btn-primary px-4 py-2 text-sm" title="Add selected section" aria-label="Add selected section">
                    <i class="fas fa-plus"></i>
                 </button>
              </div>
@@ -230,7 +217,7 @@
                 <h2 class="font-bold text-lg flex items-center gap-2 text-emerald-500" id="prop-panel-title">
                    <i class="fas fa-edit" aria-hidden="true"></i> Properties
                 </h2>
-                <button onclick="deleteActiveSection()" class="text-red-500 hover:text-red-400 text-sm" title="Delete this section">
+                <button onclick="deleteActiveSection()" class="text-red-500 hover:text-red-400 text-sm" title="Delete this section" aria-label="Delete this section">
                    <i class="fas fa-trash"></i>
                 </button>
              </div>

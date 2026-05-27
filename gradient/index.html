@@ -26,15 +26,6 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F252PEQ1JC');
-  </script>
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
      crossorigin="anonymous"></script>
   
@@ -93,30 +84,19 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <script src="../js/tailwind.js"></script>
-   
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-  
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
+
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
@@ -206,14 +186,14 @@
           <div class="mb-6  shimmer-card glass-card p-4 rounded-xl">
             <label class="block text-sm font-semibold mb-2">Quick Presets</label>
             <div class="grid grid-cols-4 gap-2">
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" title="Purple Dream Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" title="Pink Sunset Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" title="Blue Sky Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" title="Green Mint Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)" title="Peach Glow Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" title="Pastel Mix Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);" data-gradient="linear-gradient(135deg, #ff0844 0%, #ffb199 100%)" title="Red Flame Gradient"></button>
-              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)" title="Dark Night Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);" data-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)" title="Purple Dream Gradient" aria-label="Purple Dream Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);" data-gradient="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" title="Pink Sunset Gradient" aria-label="Pink Sunset Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);" data-gradient="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" title="Blue Sky Gradient" aria-label="Blue Sky Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);" data-gradient="linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" title="Green Mint Gradient" aria-label="Green Mint Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);" data-gradient="linear-gradient(135deg, #fa709a 0%, #fee140 100%)" title="Peach Glow Gradient" aria-label="Peach Glow Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);" data-gradient="linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" title="Pastel Mix Gradient" aria-label="Pastel Mix Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);" data-gradient="linear-gradient(135deg, #ff0844 0%, #ffb199 100%)" title="Red Flame Gradient" aria-label="Red Flame Gradient"></button>
+              <button class="preset-btn aspect-square rounded-lg transition-transform hover:scale-105" style="background: linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%);" data-gradient="linear-gradient(135deg, #0c0f14 0%, #1e3a5f 100%)" title="Dark Night Gradient" aria-label="Dark Night Gradient"></button>
             </div>
           </div>
           
