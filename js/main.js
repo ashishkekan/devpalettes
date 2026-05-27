@@ -39,6 +39,178 @@ const ThemeManager = {
   }
 };
 
+// ==========================================
+// Cookie Consent (GDPR-friendly, lightweight)
+// ==========================================
+
+const CookieConsent = {
+  STORAGE_KEY: 'devpalettes-cookie-consent-v1', // accepted | rejected
+
+  get() {
+    try { return localStorage.getItem(this.STORAGE_KEY); } catch { return null; }
+  },
+
+  set(value) {
+    try { localStorage.setItem(this.STORAGE_KEY, value); } catch {}
+  },
+
+  _deleteCookie(name) {
+    const base = `${name}=; Max-Age=0; path=/; samesite=lax`;
+    document.cookie = base;
+    document.cookie = `${base}; domain=${location.hostname}`;
+    document.cookie = `${base}; domain=.${location.hostname}`;
+  },
+
+  _applyGoogleConsent(choice) {
+    const allowed = choice === 'accepted';
+
+    // Best-effort opt-out toggle for GA4
+    window[`ga-disable-G-F252PEQ1JC`] = !allowed;
+
+    // Update Google Consent Mode if available
+    try {
+      if (typeof window.gtag === 'function') {
+        window.gtag('consent', 'update', {
+          ad_storage: allowed ? 'granted' : 'denied',
+          analytics_storage: allowed ? 'granted' : 'denied',
+          ad_user_data: allowed ? 'granted' : 'denied',
+          ad_personalization: allowed ? 'granted' : 'denied'
+        });
+      }
+    } catch {}
+
+    if (!allowed) {
+      ['_ga', '_ga_G-F252PEQ1JC', '_gid', '_gat', '__gads', '__gpi', '__gpi_optout'].forEach((c) => {
+        this._deleteCookie(c);
+      });
+    }
+  },
+
+  hide() {
+    document.getElementById('cookie-consent')?.remove();
+  },
+
+  show() {
+    if (document.getElementById('cookie-consent')) return;
+
+    const wrapper = document.createElement('div');
+    wrapper.id = 'cookie-consent';
+    wrapper.className = 'fixed inset-x-0 bottom-0 z-[9998] px-4 pb-4 sm:pb-6';
+    wrapper.setAttribute('role', 'dialog');
+    wrapper.setAttribute('aria-modal', 'true');
+    wrapper.setAttribute('aria-label', 'Cookie consent');
+
+    wrapper.innerHTML = `
+      <div class="max-w-3xl mx-auto glass-card p-4 sm:p-5 shadow-2xl border border-slate-200/70 dark:border-slate-700/70">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div class="min-w-0">
+            <p class="font-semibold text-sm sm:text-base text-slate-900 dark:text-slate-100">
+              We use cookies to improve Devpalettes
+            </p>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
+              We use cookies for basic site functionality and, with your consent, analytics and ads measurement. Read our
+              <a href="/privacy-policy/" class="text-emerald-500 hover:underline font-medium">Privacy Policy</a>
+              and
+              <a href="/cookie-policy/" class="text-emerald-500 hover:underline font-medium">Cookie Policy</a>.
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center shrink-0">
+            <a href="/cookie-policy/" class="btn-secondary text-sm py-2 px-4 justify-center" aria-label="Learn more about cookies">Learn more</a>
+            <button type="button" class="btn-secondary text-sm py-2 px-4 justify-center" data-consent="reject">Reject</button>
+            <button type="button" class="btn-primary btn-glow text-sm py-2 px-4 justify-center" data-consent="accept">Accept</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(wrapper);
+
+    wrapper.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-consent]');
+      if (!btn) return;
+      const action = btn.getAttribute('data-consent');
+      if (action === 'accept') {
+        this.set('accepted');
+        this._applyGoogleConsent('accepted');
+        this.hide();
+      } else if (action === 'reject') {
+        this.set('rejected');
+        this._applyGoogleConsent('rejected');
+        this.hide();
+      }
+    });
+
+    wrapper.querySelector('button[data-consent="accept"]')?.focus({ preventScroll: true });
+  },
+
+  init() {
+    const choice = this.get();
+    if (choice === 'accepted' || choice === 'rejected') {
+      this._applyGoogleConsent(choice);
+      return;
+    }
+    this.show();
+  }
+};
+
+// ==========================================
+// Breadcrumbs (in-page navigation aid)
+// ==========================================
+
+const Breadcrumbs = {
+  _titleToLabel(title) {
+    if (!title) return 'Page';
+    return title.split('|')[0].split('–')[0].split('-')[0].trim() || 'Page';
+  },
+
+  _pathToLabel(pathPart) {
+    return decodeURIComponent(String(pathPart || ''))
+      .replace(/[-_]+/g, ' ')
+      .replace(/\b\w/g, (c) => c.toUpperCase())
+      .trim();
+  },
+
+  init() {
+    const main = document.querySelector('main');
+    if (!main) return;
+    if (document.getElementById('breadcrumb-nav')) return;
+
+    const path = location.pathname.replace(/\/+$/, '') || '/';
+    if (path === '/') return;
+
+    const segments = path.split('/').filter(Boolean);
+    const container = main.querySelector('.max-w-7xl') || main.querySelector('.max-w-6xl') || main;
+
+    const nav = document.createElement('nav');
+    nav.id = 'breadcrumb-nav';
+    nav.className = 'mb-6 text-xs sm:text-sm';
+    nav.setAttribute('aria-label', 'Breadcrumb');
+
+    const label = this._titleToLabel(document.title);
+    const items = [{ name: 'Home', url: '/' }];
+
+    let acc = '';
+    segments.forEach((seg, idx) => {
+      acc += `/${seg}`;
+      const isLast = idx === segments.length - 1;
+      items.push({ name: isLast ? label : this._pathToLabel(seg), url: `${acc}/` });
+    });
+
+    nav.innerHTML = `
+      <ol class="flex flex-wrap items-center gap-2 text-slate-500 dark:text-slate-400">
+        ${items.map((it, idx) => {
+          const isLast = idx === items.length - 1;
+          const sep = idx === 0 ? '' : '<span class="opacity-60" aria-hidden="true">/</span>';
+          if (isLast) return `${sep}<li class="text-slate-700 dark:text-slate-200 font-medium" aria-current="page">${it.name}</li>`;
+          return `${sep}<li><a class="hover:text-emerald-500 transition-colors" href="${it.url}">${it.name}</a></li>`;
+        }).join('')}
+      </ol>
+    `;
+
+    container.insertBefore(nav, container.firstChild);
+  }
+};
+
 
 const Toast = {
   container: null,
@@ -395,12 +567,16 @@ const Navbar = {
       this.mobileMenu.classList.remove('translate-x-0');
       this.mobileMenu.classList.add('translate-x-full');
       this.hamburger.classList.remove('active');
+      this.hamburger.setAttribute('aria-expanded', 'false');
+      this.hamburger.setAttribute('aria-label', 'Open menu');
       document.body.style.overflow = '';
     } else {
       // Open the menu
       this.mobileMenu.classList.remove('translate-x-full');
       this.mobileMenu.classList.add('translate-x-0');
       this.hamburger.classList.add('active');
+      this.hamburger.setAttribute('aria-expanded', 'true');
+      this.hamburger.setAttribute('aria-label', 'Close menu');
       document.body.style.overflow = 'hidden';
     }
 
@@ -415,6 +591,8 @@ const Navbar = {
       this.mobileMenu.classList.remove('translate-x-0');
       this.mobileMenu.classList.add('translate-x-full');
       this.hamburger.classList.remove('active');
+      this.hamburger.setAttribute('aria-expanded', 'false');
+      this.hamburger.setAttribute('aria-label', 'Open menu');
       document.body.style.overflow = '';
       
       this.mobileMenu.querySelectorAll('[data-mobile-dropdown-menu]').forEach(menu => {
@@ -684,7 +862,8 @@ function renderNavbar() {
   }).join('');
 
   const navHTML = `
-    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]">
+    <a href="#main-content" class="skip-link">Skip to content</a>
+    <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]" aria-label="Primary navigation">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-14 sm:h-11">
           <!-- Logo -->
@@ -721,18 +900,18 @@ function renderNavbar() {
               <i class="fas fa-palette"></i>
               Create Free
             </a>
-            <div class="hamburger md:hidden h-5 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer">
+            <button type="button" class="hamburger md:hidden h-5 px-2 flex items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors cursor-pointer" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white mb-1.5 transition-all"></span>
               <span class="block w-6 h-0.5 bg-slate-800 dark:bg-white transition-all"></span>
-            </div>
+            </button>
           </div>
         </div>
       </div>
     </nav>
     
     <!-- Mobile Menu -->
-    <div class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16">
+    <div id="mobile-menu" class="mobile-menu fixed inset-0 z-40 bg-white dark:bg-slate-900 transform transition-transform duration-300 translate-x-full md:hidden pt-16" role="dialog" aria-label="Mobile menu">
       <div class="flex flex-col gap-4 p-6 h-full overflow-y-auto">
         ${mobileCategoriesHTML}
         <hr class="border-slate-200 dark:border-slate-700 my-4">
@@ -878,8 +1057,8 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
         </p>
       </div>
       <div class="flex gap-3">
-         <a href="https://x.com/AshishKekaan99" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-twitter text-lg sm:text-xl"></i></a>
-         <a href="https://github.com/ashishkekan/devpalettes" target="_blank" class="text-slate-400 hover:text-emerald-500 transition-colors"><i class="fab fa-github text-lg sm:text-xl"></i></a>
+         <a href="https://x.com/AshishKekaan99" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Creator Twitter"><i class="fab fa-twitter text-lg sm:text-xl" aria-hidden="true"></i></a>
+         <a href="https://github.com/ashishkekan/devpalettes" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Project GitHub"><i class="fab fa-github text-lg sm:text-xl" aria-hidden="true"></i></a>
       </div>
     </div>
   `;
@@ -887,6 +1066,9 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
 
 
 document.addEventListener('DOMContentLoaded', () => {
+  const main = document.querySelector('main');
+  if (main && !main.id) main.id = 'main-content';
+
   ThemeManager.init();
   Toast.init();
   CopyLinkButton.init();
@@ -896,6 +1078,8 @@ document.addEventListener('DOMContentLoaded', () => {
   Navbar.init();
   KeyboardShortcuts.init();
   ScrollButtons.init();
+  Breadcrumbs.init();
+  CookieConsent.init();
   
   document.addEventListener('click', (e) => {
     if (e.target.closest('#theme-toggle')) {
@@ -908,6 +1092,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.Devpalettes = {
   ThemeManager,
+  CookieConsent,
+  Breadcrumbs,
   Toast,
   ColorUtils,
   Clipboard,

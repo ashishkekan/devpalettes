@@ -45,6 +45,33 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Accessible focus styles */
+:focus-visible {
+  outline: 3px solid rgba(16, 185, 129, 0.85);
+  outline-offset: 3px;
+}
+
+/* Skip link (visible on keyboard focus only) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  z-index: 1001;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transform: translateY(-140%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-primary);
