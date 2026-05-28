@@ -202,65 +202,6 @@ const ThirdPartyAnalytics = {
   }
 };
 
-// ==========================================
-// Breadcrumbs (in-page navigation aid)
-// ==========================================
-
-const Breadcrumbs = {
-  _titleToLabel(title) {
-    if (!title) return 'Page';
-    return title.split('|')[0].split('–')[0].split('-')[0].trim() || 'Page';
-  },
-
-  _pathToLabel(pathPart) {
-    return decodeURIComponent(String(pathPart || ''))
-      .replace(/[-_]+/g, ' ')
-      .replace(/\b\w/g, (c) => c.toUpperCase())
-      .trim();
-  },
-
-  init() {
-    const main = document.querySelector('main');
-    if (!main) return;
-    if (document.getElementById('breadcrumb-nav')) return;
-
-    const path = location.pathname.replace(/\/+$/, '') || '/';
-    if (path === '/') return;
-
-    const segments = path.split('/').filter(Boolean);
-    const container = main.querySelector('.max-w-7xl') || main.querySelector('.max-w-6xl') || main;
-
-    const nav = document.createElement('nav');
-    nav.id = 'breadcrumb-nav';
-    nav.className = 'mb-6 text-xs sm:text-sm';
-    nav.setAttribute('aria-label', 'Breadcrumb');
-
-    const label = this._titleToLabel(document.title);
-    const items = [{ name: 'Home', url: '/' }];
-
-    let acc = '';
-    segments.forEach((seg, idx) => {
-      acc += `/${seg}`;
-      const isLast = idx === segments.length - 1;
-      items.push({ name: isLast ? label : this._pathToLabel(seg), url: `${acc}/` });
-    });
-
-    nav.innerHTML = `
-      <ol class="flex flex-wrap items-center gap-2 text-slate-500 dark:text-slate-400">
-        ${items.map((it, idx) => {
-          const isLast = idx === items.length - 1;
-          const sep = idx === 0 ? '' : '<span class="opacity-60" aria-hidden="true">/</span>';
-          if (isLast) return `${sep}<li class="text-slate-700 dark:text-slate-200 font-medium" aria-current="page">${it.name}</li>`;
-          return `${sep}<li><a class="hover:text-emerald-500 transition-colors" href="${it.url}">${it.name}</a></li>`;
-        }).join('')}
-      </ol>
-    `;
-
-    container.insertBefore(nav, container.firstChild);
-  }
-};
-
-
 const Toast = {
   container: null,
   
@@ -1133,7 +1074,6 @@ document.addEventListener('DOMContentLoaded', () => {
   Navbar.init();
   KeyboardShortcuts.init();
   ScrollButtons.init();
-  Breadcrumbs.init();
   CookieConsent.init();
   
   document.addEventListener('click', (e) => {
@@ -1148,7 +1088,6 @@ document.addEventListener('DOMContentLoaded', () => {
 window.Devpalettes = {
   ThemeManager,
   CookieConsent,
-  Breadcrumbs,
   Toast,
   ColorUtils,
   Clipboard,
