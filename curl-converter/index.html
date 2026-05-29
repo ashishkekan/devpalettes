@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curl to Code Converter - Convert Curl Commands to Python, JavaScript, PHP & More</title>
+  <meta name="description" content="Convert curl commands to Python, JavaScript, Node.js, PHP, Go, Java, C#, Ruby, Swift instantly. Free online curl converter. No signup required.">
+  <meta name="author" content="DevPalettes">
+  <link rel="canonical" href="https://devpalettes.com/curl-converter/"/>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devpalettes.com/curl-converter/">
+  <meta property="og:title" content="Curl to Code Converter - Convert Curl Commands to 9+ Languages">
+  <meta property="og:description" content="Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more. Free online tool.">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Curl to Code Converter",
+    "url": "https://devpalettes.com/curl-converter/",
+    "description": "Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more programming languages instantly.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How do I get a curl command from my browser?", "acceptedAnswer": { "@type": "Answer", "text": "Open Chrome or Firefox DevTools (F12), go to the Network tab, make your request, right-click on the request entry, and select Copy as cURL." }},
+      { "@type": "Question", "name": "Is my curl data sent to any server?", "acceptedAnswer": { "@type": "Answer", "text": "No. This tool runs entirely in your browser. The curl command is parsed and converted locally using JavaScript — nothing is sent to any server." }},
+      { "@type": "Question", "name": "Does this tool handle multipart/form-data?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, curl commands using the -F or --form flag are parsed and converted. File upload fields are included as comments in the generated code." }},
+      { "@type": "Question", "name": "Can I use this on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this tool is fully responsive and works on mobile browsers. For the best experience with long curl commands, we recommend using a desktop." }}
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <script>
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
+  </script>
+  <style>
+    .glass-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(226,232,240,0.8);
+      border-radius: 1.5rem;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .dark .glass-card {
+      background: rgba(15,23,42,0.6);
+      border: 1px solid rgba(51,65,85,0.5);
+    }
+    .shimmer-card { position: relative; overflow: hidden; }
+    .shimmer-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -150%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(16,185,129,0.04), transparent);
+      animation: shimmer 6s infinite;
+      pointer-events: none;
+    }
+    @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
+    .spectrum-line {
+      height: 4px;
+      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #06b6d4, #3b82f6, #8b5cf6);
+      border-radius: 2px;
+    }
+    .gradient-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
+    .dark .gradient-blob { opacity: 0.08; }
+    .blob-1 { width: 400px; height: 400px; background: #10b981; top: -100px; right: -100px; }
+    .blob-2 { width: 300px; height: 300px; background: #06b6d4; bottom: 200px; left: -80px; }
+    .blob-3 { width: 350px; height: 350px; background: #8b5cf6; bottom: -100px; right: 20%; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.75rem 1.5rem; border-radius: 0.75rem;
+      font-weight: 600; font-size: 0.875rem;
+      background: linear-gradient(135deg, #10b981, #14b8a6);
+      color: white; border: none; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 25px rgba(16,185,129,0.3); }
+    .btn-primary:active { transform: translateY(0); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 1rem; border-radius: 0.75rem;
+      font-weight: 500; font-size: 0.875rem;
+      background: rgba(241,245,249,0.8); color: #475569;
+      border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s;
+    }
+    .dark .btn-secondary { background: rgba(51,65,85,0.5); color: #94a3b8; border-color: #334155; }
+    .btn-secondary:hover { border-color: #10b981; color: #10b981; }
+    .btn-glow { box-shadow: 0 0 20px rgba(16,185,129,0.2); }
+    #curl-input {
+      font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      tab-size: 2;
+    }
+    #curl-input::placeholder { color: #64748b; }
+    .lang-tab {
+      padding: 0.5rem 1rem; border-radius: 0.625rem;
+      font-size: 0.8rem; font-weight: 600;
+      border: 2px solid transparent; cursor: pointer;
+      background: transparent; color: #64748b;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .dark .lang-tab { color: #94a3b8; }
+    .lang-tab:hover { border-color: rgba(16,185,129,0.4); color: #10b981; }
+    .lang-tab.active { border-color: #10b981; color: #10b981; background: rgba(16,185,129,0.1); }
+    .code-output-wrap { background: #282c34; border-radius: 0.75rem; overflow: hidden; position: relative; }
+    .code-output-wrap pre { margin: 0; padding: 1.25rem; overflow-x: auto; max-height: 480px; }
+    .code-output-wrap code { font-size: 0.8125rem; line-height: 1.6; }
+    .code-output-wrap .hljs { background: transparent; padding: 0; }
+    .copy-code-btn {
+      position: absolute; top: 0.75rem; right: 0.75rem;
+      padding: 0.4rem 0.75rem; border-radius: 0.5rem;
+      font-size: 0.75rem; font-weight: 600;
+      background: rgba(255,255,255,0.1); color: #abb2bf;
+      border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+      transition: all 0.2s; z-index: 5;
+    }
+    .copy-code-btn:hover { background: rgba(16,185,129,0.2); color: #10b981; border-color: #10b981; }
+    .sample-chip {
+      padding: 0.375rem 0.75rem; border-radius: 0.5rem;
+      font-size: 0.75rem; font-weight: 500;
+      background: rgba(241,245,249,0.8); color: #475569;
+      border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s;
+    }
+    .dark .sample-chip { background: rgba(51,65,85,0.4); color: #94a3b8; border-color: #334155; }
+    .sample-chip:hover { border-color: #10b981; color: #10b981; background: rgba(16,185,129,0.08); }
+    .toast {
+      padding: 0.75rem 1.25rem; border-radius: 0.75rem;
+      font-size: 0.875rem; font-weight: 500;
+      backdrop-filter: blur(12px);
+      animation: slideInRight 0.3s ease-out;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .toast-success { background: rgba(16,185,129,0.9); color: white; }
+    .toast-error { background: rgba(239,68,68,0.9); color: white; }
+    .toast-info { background: rgba(59,130,246,0.9); color: white; }
+    @keyframes slideInRight { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+    @keyframes fadeOut { from { opacity: 1; } to { opacity: 0; transform: translateY(-10px); } }
+    .error-msg {
+      padding: 1rem 1.25rem; border-radius: 0.75rem;
+      background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2);
+      color: #ef4444; font-size: 0.875rem;
+    }
+    .dark .error-msg { background: rgba(239,68,68,0.15); }
+    .nav-link { color: #64748b; font-weight: 500; font-size: 0.875rem; transition: color 0.2s; }
+    .nav-link:hover { color: #10b981; }
+    .dark .nav-link { color: #94a3b8; }
+    @media (max-width: 640px) { .code-output-wrap pre { max-height: 350px; } }
+    :focus-visible { outline: 2px solid #10b981; outline-offset: 2px; border-radius: 4px; }
+    @media (prefers-reduced-motion: reduce) {
+      .shimmer-card::before { animation: none; }
+      .gradient-blob { display: none; }
+      * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100 font-sans">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-[#0c0f14]/70 border-b border-slate-200/60 dark:border-slate-800/60">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2 text-lg font-bold">
+        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-sm font-black">D</span>
+        DevPalettes
+      </a>
+      <div class="hidden sm:flex items-center gap-6">
+        <a href="/palettes/" class="nav-link">Palettes</a>
+        <a href="/gradient/" class="nav-link">Gradient</a>
+        <a href="/converter/" class="nav-link">Converter</a>
+        <a href="/curl-converter/" class="nav-link text-emerald-600 dark:text-emerald-400 font-semibold">Curl Converter</a>
+        <a href="/wcag-contrast-checker/" class="nav-link">Contrast</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
+          <i class="fas fa-moon text-slate-600 dark:hidden"></i>
+          <i class="fas fa-sun text-yellow-400 hidden dark:inline"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <div class="gradient-blob blob-1"></div>
+    <div class="gradient-blob blob-2"></div>
+    <div class="gradient-blob blob-3"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <!-- Hero -->
+      <div class="text-center mb-12" style="margin-top:45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Curl to Code Converter</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more</p>
+        <div class="spectrum-line max-w-md mx-auto"></div>
+      </div>
+
+      <!-- What is Curl Converter -->
+      <section class="glass-card p-8 shimmer-card mb-8">
+        <h2 class="text-2xl font-bold mb-4">What is Curl Converter?</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          Curl Converter is a free online tool that transforms <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">curl</code> commands into ready-to-use code in 9 programming languages. Whether you're copying an API request from your browser's DevTools, converting a Postman export, or translating documentation examples into your preferred language — this tool parses the URL, method, headers, data, authentication, and cookies from your curl command and generates clean, idiomatic code instantly.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          Instead of manually rewriting <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://api.example.com</code> into Python's requests library or JavaScript's fetch API, paste it here and get production-ready code in one click. The converter handles JSON payloads, form data, multipart uploads, Basic and Bearer authentication, custom headers, and cookies.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          No signup, no downloads, no rate limits. Just paste your curl command and copy the converted code. It works entirely in your browser — your commands never leave your machine.
+        </p>
+      </section>
+
+      <!-- Main Tool -->
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Left: Input -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-5">Enter Curl Command</h2>
+          <div class="relative">
+            <textarea id="curl-input" class="w-full h-64 bg-slate-900 text-emerald-400 font-mono text-sm p-4 rounded-xl border border-slate-700 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none resize-y placeholder:text-slate-500" placeholder="Paste your curl command here...&#10;&#10;Example: curl https://api.example.com/users -H 'Authorization: Bearer token'" spellcheck="false"></textarea>
+            <button id="clear-input-btn" class="absolute top-3 right-3 w-8 h-8 rounded-lg bg-slate-800 hover:bg-red-500/20 hover:text-red-400 text-slate-500 flex items-center justify-center transition-colors text-xs" aria-label="Clear input">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          <div class="mt-5">
+            <p class="text-sm text-slate-500 mb-3">Try sample commands:</p>
+            <div class="flex gap-2 flex-wrap">
+              <button class="sample-chip" data-sample="get">Simple GET</button>
+              <button class="sample-chip" data-sample="post-json">POST JSON</button>
+              <button class="sample-chip" data-sample="auth">With Auth</button>
+              <button class="sample-chip" data-sample="form">Form Data</button>
+              <button class="sample-chip" data-sample="put">PUT Request</button>
+              <button class="sample-chip" data-sample="delete">DELETE</button>
+            </div>
+          </div>
+          <button id="convert-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all shadow-lg hover:shadow-xl btn-glow" aria-label="Convert curl command">
+            <i class="fas fa-exchange-alt mr-2"></i>
+            Convert
+          </button>
+          <p class="text-xs text-slate-400 mt-3 text-center"><i class="fas fa-bolt mr-1 text-emerald-500"></i>Auto-converts as you type</p>
+        </div>
+
+        <!-- Right: Output -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <div class="flex items-center justify-between mb-5">
+            <h2 class="text-2xl font-bold">Converted Code</h2>
+            <span id="lang-label" class="text-xs font-semibold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">Python</span>
+          </div>
+          <!-- Language Tabs -->
+          <div id="lang-tabs" class="flex gap-2 mb-5 overflow-x-auto pb-2 -mx-1 px-1" role="tablist">
+            <button class="lang-tab active" data-lang="python" role="tab" aria-selected="true">Python</button>
+            <button class="lang-tab" data-lang="javascript" role="tab" aria-selected="false">JavaScript</button>
+            <button class="lang-tab" data-lang="nodejs" role="tab" aria-selected="false">Node.js</button>
+            <button class="lang-tab" data-lang="php" role="tab" aria-selected="false">PHP</button>
+            <button class="lang-tab" data-lang="go" role="tab" aria-selected="false">Go</button>
+            <button class="lang-tab" data-lang="java" role="tab" aria-selected="false">Java</button>
+            <button class="lang-tab" data-lang="csharp" role="tab" aria-selected="false">C#</button>
+            <button class="lang-tab" data-lang="ruby" role="tab" aria-selected="false">Ruby</button>
+            <button class="lang-tab" data-lang="swift" role="tab" aria-selected="false">Swift</button>
+          </div>
+          <!-- Empty State -->
+          <div id="empty-state" class="text-center py-16">
+            <div class="w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-6">
+              <i class="fas fa-terminal text-5xl text-slate-300 dark:text-slate-600"></i>
+            </div>
+            <p class="text-lg text-slate-500 dark:text-slate-400">Paste a curl command to convert</p>
+            <p class="text-sm text-slate-400 mt-2">Your code will appear here</p>
+          </div>
+          <!-- Error State -->
+          <div id="error-state" class="hidden">
+            <div class="error-msg"><i class="fas fa-exclamation-circle mr-2"></i><span id="error-text"></span></div>
+          </div>
+          <!-- Output Code -->
+          <div id="output-container" class="hidden">
+            <div class="code-output-wrap">
+              <button id="copy-code-btn" class="copy-code-btn" aria-label="Copy code"><i class="fas fa-copy mr-1"></i> Copy</button>
+              <pre><code id="code-output" class="text-sm"></code></pre>
+            </div>
+            <div class="mt-5 p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
+              <div class="flex items-center justify-between flex-wrap gap-3">
+                <div>
+                  <p class="font-semibold text-emerald-600 dark:text-emerald-400">Useful conversion?</p>
+                  <p class="text-sm text-slate-500">Share it with other developers</p>
+                </div>
+                <div class="flex gap-2 flex-wrap justify-end">
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="twitter" aria-label="Share on Twitter"><i class="fab fa-twitter"></i></button>
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="facebook" aria-label="Share on Facebook"><i class="fab fa-facebook-f"></i></button>
+                  <button class="share-btn w-10 h-10 rounded-full bg-blue-700 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="linkedin" aria-label="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></button>
+                  <button class="share-btn w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="whatsapp" aria-label="Share on WhatsApp"><i class="fab fa-whatsapp"></i></button>
+                  <button class="share-btn w-10 h-10 rounded-full bg-slate-500 text-white flex items-center justify-center hover:scale-110 transition-transform" data-platform="copylink" aria-label="Copy link"><i class="fas fa-link"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Supported Languages -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">Supported Programming Languages</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">This curl converter supports 9 popular programming languages, generating idiomatic code that follows each language's conventions:</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-emerald-500"><i class="fab fa-python mr-2"></i>Python</h3>
+            <p class="text-sm text-slate-500">Uses the <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">requests</code> library with <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">json=</code> for JSON data</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-yellow-500"><i class="fab fa-js mr-2"></i>JavaScript</h3>
+            <p class="text-sm text-slate-500">Browser <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">fetch()</code> API with async/await</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-green-500"><i class="fab fa-node-js mr-2"></i>Node.js</h3>
+            <p class="text-sm text-slate-500">Uses the <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">axios</code> library with async/await</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-indigo-500"><i class="fab fa-php mr-2"></i>PHP</h3>
+            <p class="text-sm text-slate-500">Uses <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">curl_*</code> functions with <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">curl_setopt_array</code></p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-cyan-500"><i class="fab fa-golang mr-2"></i>Go</h3>
+            <p class="text-sm text-slate-500">Uses <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">net/http</code> standard library</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-red-500"><i class="fab fa-java mr-2"></i>Java</h3>
+            <p class="text-sm text-slate-500">Uses <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">OkHttp</code> library with builder pattern</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-purple-500"><i class="fas fa-code mr-2"></i>C#</h3>
+            <p class="text-sm text-slate-500">Uses <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">HttpClient</code> with async/await</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-red-400"><i class="fas fa-gem mr-2"></i>Ruby</h3>
+            <p class="text-sm text-slate-500">Uses <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">Net::HTTP</code> standard library</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
+            <h3 class="font-bold mb-1 text-orange-500"><i class="fab fa-swift mr-2"></i>Swift</h3>
+            <p class="text-sm text-slate-500">Uses <code class="text-xs bg-slate-200 dark:bg-slate-700 px-1 rounded">URLSession</code> with modern Swift</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why I Built This -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          As a developer who works across multiple languages daily, I found myself constantly converting curl commands by hand. I'd copy a request from Chrome DevTools, then manually translate it into Python for a script, JavaScript for a frontend, or PHP for a WordPress plugin. It was tedious, error-prone, and broke my flow every time.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          The existing curl converters online had issues — some didn't handle JSON data properly, others generated code that wouldn't actually run, and many were plastered with ads or required signups. I wanted something that just works: paste a curl command, get clean runnable code, and move on with my day.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          So I built this converter with a focus on accuracy and readability. It properly handles JSON payloads (using <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">json=</code> in Python, <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">JSON.stringify()</code> in JavaScript), form-encoded data, authentication headers, and cookies. Everything runs locally in your browser — your API keys and data never leave your machine.
+        </p>
+      </section>
+
+      <!-- How to Use -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">How to Use This Curl Converter</h2>
+        <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+          <li><strong>Copy your curl command</strong> — from terminal, browser DevTools (Network tab → Copy as cURL), Postman, or API documentation.</li>
+          <li><strong>Paste it</strong> into the input textarea on the left. The tool auto-converts as you type.</li>
+          <li><strong>Select your target language</strong> — click one of the 9 language tabs above the output.</li>
+          <li><strong>Copy the converted code</strong> — click the Copy button or select the code manually.</li>
+          <li>Adjust if needed — some languages may require installing dependencies like <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">pip install requests</code> or <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">npm install axios</code>.</li>
+        </ol>
+      </section>
+
+      <!-- Common Examples -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">Common Curl Command Examples</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Here are the most frequent curl patterns developers need to convert:</p>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
+            <p class="text-slate-500 mb-2"># Simple GET request</p>
+            <p>curl https://api.example.com/users</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
+            <p class="text-slate-500 mb-2"># POST with JSON body</p>
+            <p>curl -X POST https://api.example.com/users \</p>
+            <p>&nbsp; -H "Content-Type: application/json" \</p>
+            <p>&nbsp; -d '{"name":"John"}'</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
+            <p class="text-slate-500 mb-2"># With Bearer token</p>
+            <p>curl -H "Authorization: Bearer TOKEN" \</p>
+            <p>&nbsp; https://api.example.com/data</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
+            <p class="text-slate-500 mb-2"># With Basic auth</p>
+            <p>curl -u user:pass https://api.example.com</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Curl Flags -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">Curl Flags This Tool Handles</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">This converter parses all the commonly used curl flags and translates them into their language-specific equivalents:</p>
+        <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+          <li><strong>-X / --request</strong> — HTTP method (GET, POST, PUT, DELETE, PATCH, etc.)</li>
+          <li><strong>-H / --header</strong> — Request headers, including Content-Type, Authorization, and custom headers</li>
+          <li><strong>-d / --data / --data-raw</strong> — Request body for POST/PUT requests</li>
+          <li><strong>-F / --form</strong> — Multipart form data and file uploads</li>
+          <li><strong>-u / --user</strong> — Basic authentication (username:password)</li>
+          <li><strong>-b / --cookie</strong> — Cookie headers, parsed and included in the request</li>
+          <li><strong>-L / --location</strong> — Follow redirects flag</li>
+          <li><strong>-k / --insecure</strong> — Skip SSL verification</li>
+          <li><strong>--compressed</strong> — Accept compressed responses</li>
+        </ul>
+      </section>
+
+      <!-- Tips -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-4">Tips for Converting Curl Commands</h2>
+        <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+          <li><strong>Copy from DevTools</strong> — In Chrome/Firefox, open Network tab, right-click a request, and select "Copy as cURL" for the most accurate curl representation.</li>
+          <li><strong>Check Content-Type</strong> — If your curl has <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">-H "Content-Type: application/json"</code> but data isn't valid JSON, you may need to adjust the output manually.</li>
+          <li><strong>Watch for shell variables</strong> — curl commands with <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">$VAR</code> won't translate directly — replace them with actual values first.</li>
+          <li><strong>File uploads</strong> — The <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">@filename</code> syntax is noted as a comment since file handling differs between languages.</li>
+          <li><strong>Verify the output</strong> — Always review the generated code for correctness, especially with complex curl commands.</li>
+        </ul>
+      </section>
+
+      <!-- FAQ -->
+      <section class="glass-card p-8 mt-8 shimmer-card">
+        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-4" id="faq-container">
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false">
+              <span>How do I get a curl command from my browser?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Open Chrome or Firefox DevTools (F12), go to the Network tab, make your request, right-click on the request entry, and select "Copy as cURL" or "Copy as cURL (bash)". The copied command includes all headers, cookies, and request data — just paste it into this converter.
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false">
+              <span>Is my curl data sent to any server?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              No. This tool runs entirely in your browser. The curl command is parsed and converted locally using JavaScript — nothing is sent to any server. Your API keys, tokens, and request data stay on your machine.
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false">
+              <span>Why is my curl command not converting correctly?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Make sure your command starts with "curl" and follows standard syntax. Common issues include: unmatched quotes, shell variables ($VAR) that need to be replaced with actual values, and Windows-style curl commands. Try simplifying the command and adding complexity back step by step.
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false">
+              <span>Does this tool handle multipart/form-data?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Yes, curl commands using the -F or --form flag are parsed and converted. File upload fields (using @filename syntax) are included as comments in the generated code since file handling varies between languages and requires platform-specific code.
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false">
+              <span>Can I use this on mobile?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform"></i>
+            </button>
+            <div class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+              Yes, this tool is fully responsive and works on mobile browsers. However, for the best experience with curl commands (which can be long), we recommend using a desktop or laptop where you can more easily paste and edit commands.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Share -->
+      <section class="glass-card p-8 mt-8 shimmer-card text-center">
+        <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+        <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your developer community.</p>
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/curl-converter/&text=Convert%20curl%20commands%20to%209%2B%20programming%20languages%20instantly!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2"><i class="fab fa-x-twitter"></i> Twitter</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/curl-converter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2"><i class="fab fa-facebook-f"></i> Facebook</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/curl-converter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+          <a href="https://wa.me/?text=Check%20out%20this%20Curl%20Converter%20tool%20https://devpalettes.com/curl-converter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+          <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2"><i class="fas fa-link"></i> Copy Link</button>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <section class="glass-card p-8 mt-8 shimmer-card text-center">
+        <h2 class="text-2xl font-bold mb-4">Related Developer Tools</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your workflow with these free tools built for developers and designers.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
+          <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+          <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+          <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
+          <a href="/color-wheel/" class="btn-secondary text-xs py-2 px-4">Color Wheel</a>
+          <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color from Image</a>
+        </div>
+      </section>
+
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+          <span class="text-slate-400 text-sm">Built by</span>
+          <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+          <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200 dark:border-slate-800 py-8 mt-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-slate-500 text-sm">&copy; 2025 DevPalettes. All rights reserved. Free tools for developers and designers.</p>
+    </div>
+  </footer>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/ruby.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/swift.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/dart.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+
+  <script>
+  /* ===================== TOAST ===================== */
+  function showToast(msg, type) {
+    type = type || 'success';
+    var c = document.getElementById('toast-container');
+    var t = document.createElement('div');
+    t.className = 'toast toast-' + type;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(function() {
+      t.style.animation = 'fadeOut 0.3s ease-out forwards';
+      setTimeout(function() { t.remove(); }, 300);
+    }, 2500);
+  }
+
+  /* ===================== THEME ===================== */
+  document.getElementById('theme-toggle').addEventListener('click', function() {
+    document.documentElement.classList.toggle('dark');
+    var isDark = document.documentElement.classList.contains('dark');
+    localStorage.setItem('colorpallates-theme', isDark ? 'dark' : 'light');
+  });
+
+  /* ===================== FAQ ACCORDION ===================== */
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var ans = this.nextElementSibling;
+      var icon = this.querySelector('i');
+      var isOpen = !ans.classList.contains('hidden');
+      document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.add('hidden'); });
+      document.querySelectorAll('.faq-question i').forEach(function(i) { i.style.transform = ''; });
+      document.querySelectorAll('.faq-question').forEach(function(q) { q.setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) {
+        ans.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* ===================== COPY LINK ===================== */
+  document.getElementById('copy-link-btn').addEventListener('click', function() {
+    navigator.clipboard.writeText(window.location.href).then(function() { showToast('Link copied to clipboard!', 'success'); });
+  });
+
+  /* ===================== SHARE BUTTONS ===================== */
+  document.querySelectorAll('.share-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var p = this.getAttribute('data-platform');
+      var u = encodeURIComponent(window.location.href);
+      var t = encodeURIComponent('Convert curl commands to 9+ programming languages instantly!');
+      var su = '';
+      if (p === 'twitter') su = 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u;
+      else if (p === 'facebook') su = 'https://www.facebook.com/sharer/sharer.php?u=' + u;
+      else if (p === 'linkedin') su = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
+      else if (p === 'whatsapp') su = 'https://wa.me/?text=' + t + '%20' + u;
+      else if (p === 'copylink') { navigator.clipboard.writeText(window.location.href).then(function() { showToast('Link copied!', 'success'); }); return; }
+      if (su) window.open(su, '_blank', 'width=600,height=400');
+    });
+  });
+
+  /* ================================================================== */
+  /*                          CURL PARSER                                */
+  /* ================================================================== */
+  function tokenize(cmd) {
+    var tokens = [];
+    var i = 0, len = cmd.length;
+    while (i < len) {
+      while (i < len && /\s/.test(cmd[i])) i++;
+      if (i >= len) break;
+      if (cmd[i] === "'") {
+        i++;
+        var s = '';
+        while (i < len && cmd[i] !== "'") { s += cmd[i++]; }
+        if (i < len) i++;
+        tokens.push(s);
+      } else if (cmd[i] === '"') {
+        i++;
+        var s2 = '';
+        while (i < len && cmd[i] !== '"') {
+          if (cmd[i] === '\\' && i + 1 < len) {
+            var nx = cmd[i + 1];
+            if (nx === 'n') { s2 += '\n'; i += 2; }
+            else if (nx === 't') { s2 += '\t'; i += 2; }
+            else if (nx === 'r') { s2 += '\r'; i += 2; }
+            else { s2 += nx; i += 2; }
+          } else { s2 += cmd[i++]; }
+        }
+        if (i < len) i++;
+        tokens.push(s2);
+      } else if (cmd[i] === '$' && i + 1 < len && cmd[i + 1] === "'") {
+        i += 2;
+        var s3 = '';
+        while (i < len && cmd[i] !== "'") {
+          if (cmd[i] === '\\' && i + 1 < len) {
+            var nx2 = cmd[i + 1];
+            if (nx2 === 'n') { s3 += '\n'; i += 2; }
+            else if (nx2 === 't') { s3 += '\t'; i += 2; }
+            else { s3 += nx2; i += 2; }
+          } else { s3 += cmd[i++]; }
+        }
+        if (i < len) i++;
+        tokens.push(s3);
+      } else {
+        var s4 = '';
+        while (i < len && !/\s/.test(cmd[i])) {
+          if (cmd[i] === '\\' && i + 1 < len) { s4 += cmd[i + 1]; i += 2; }
+          else { s4 += cmd[i++]; }
+        }
+        tokens.push(s4);
+      }
+    }
+    return tokens;
+  }
+
+  function parseHeaderStr(result, h) {
+    var ci = h.indexOf(':');
+    if (ci > 0) {
+      var key = h.substring(0, ci).trim();
+      var val = h.substring(ci + 1).trim();
+      if (key.toLowerCase() === 'cookie') {
+        val.split(';').forEach(function(c) {
+          var eq = c.indexOf('=');
+          if (eq > 0) result.cookies[c.substring(0, eq).trim()] = c.substring(eq + 1).trim();
+        });
+      } else {
+        result.headers[key] = val;
+      }
+    }
+  }
+
+  function parseCurl(curlStr) {
+    var cmd = curlStr.trim();
+    if (!cmd.toLowerCase().startsWith('curl')) return null;
+    cmd = cmd.replace(/^curl\s*/i, '');
+    cmd = cmd.replace(/\\\s*\r?\n/g, ' ');
+    var tokens = tokenize(cmd);
+    var result = {
+      url: '', method: null, headers: {}, data: null, form: [],
+      auth: null, cookies: {}, followRedirects: false, insecure: false, compressed: false
+    };
+    var i = 0;
+    while (i < tokens.length) {
+      var token = tokens[i];
+      var flag = token;
+      var flagVal = null;
+      if (token.startsWith('--')) {
+        var eqIdx = token.indexOf('=');
+        if (eqIdx > 0) { flag = token.substring(0, eqIdx); flagVal = token.substring(eqIdx + 1); }
+      }
+      switch (flag) {
+        case '-X': case '--request':
+          i++; if (tokens[i]) result.method = tokens[i].toUpperCase(); break;
+        case '-H': case '--header':
+          if (flagVal) parseHeaderStr(result, flagVal); else { i++; if (tokens[i]) parseHeaderStr(result, tokens[i]); } break;
+        case '-d': case '--data': case '--data-raw': case '--data-binary': case '--data-urlencode':
+          if (flagVal) result.data = flagVal; else { i++; if (tokens[i]) result.data = tokens[i]; } break;
+        case '-F': case '--form':
+          if (flagVal) result.form.push(flagVal); else { i++; if (tokens[i]) result.form.push(tokens[i]); } break;
+        case '-u': case '--user':
+          if (flagVal) result.auth = flagVal; else { i++; if (tokens[i]) result.auth = tokens[i]; } break;
+        case '-b': case '--cookie':
+          var cv = flagVal;
+          if (!cv) { i++; cv = tokens[i]; }
+          if (cv) cv.split(';').forEach(function(c) { var eq = c.indexOf('='); if (eq > 0) result.cookies[c.substring(0, eq).trim()] = c.substring(eq + 1).trim(); });
+          break;
+        case '-L': case '--location': result.followRedirects = true; break;
+        case '-k': case '--insecure': result.insecure = true; break;
+        case '--compressed': result.compressed = true; break;
+        case '-s': case '--silent': case '-v': case '--verbose': case '-i': case '--include': case '-N': case '--no-buffer': break;
+        case '-o': case '--output': case '-w': case '--write-out': case '--connect-timeout': case '--max-time': case '-m': case '--retry': case '--limit-rate':
+          if (!flagVal) i++; break;
+        case '--url':
+          if (flagVal) result.url = flagVal; else { i++; if (tokens[i]) result.url = tokens[i]; } break;
+        default:
+          if (!token.startsWith('-') && !result.url) result.url = token; break;
+      }
+      i++;
+    }
+    if (!result.method) result.method = (result.data || result.form.length > 0) ? 'POST' : 'GET';
+    return result;
+  }
+
+  /* ================================================================== */
+  /*                          HELPERS                                    */
+  /* ================================================================== */
+  function escStr(s, q) {
+    q = q || '"';
+    return s.replace(/\\/g, '\\\\').replace(new RegExp(q, 'g'), '\\' + q).replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t');
+  }
+
+  function detectDataType(data, headers) {
+    var ctKey = Object.keys(headers).find(function(k) { return k.toLowerCase() === 'content-type'; });
+    if (ctKey) {
+      var ct = headers[ctKey].toLowerCase();
+      if (ct.includes('application/json')) return 'json';
+      if (ct.includes('application/x-www-form-urlencoded')) return 'form';
+      if (ct.includes('multipart/form-data')) return 'multipart';
+    }
+    if (data) {
+      try { JSON.parse(data); return 'json'; } catch(e) {}
+      if (data.includes('=') && data.includes('&') || (data.includes('=') && !data.includes('{'))) return 'form';
+    }
+    return 'raw';
+  }
+
+  function tryParseJSON(s) {
+    try { return JSON.parse(s); } catch(e) { return null; }
+  }
+
+  function formatPyVal(val, indent) {
+    indent = indent || 0;
+    var pad = '    '.repeat(indent);
+    var ipad = '    '.repeat(indent + 1);
+    if (val === null || val === undefined) return 'None';
+    if (typeof val === 'boolean') return val ? 'True' : 'False';
+    if (typeof val === 'number') return String(val);
+    if (typeof val === 'string') return '"' + escStr(val, '"') + '"';
+    if (Array.isArray(val)) {
+      if (val.length === 0) return '[]';
+      var items = val.map(function(v) { return ipad + formatPyVal(v, indent + 1); });
+      return '[\n' + items.join(',\n') + '\n' + pad + ']';
+    }
+    if (typeof val === 'object') {
+      var entries = Object.entries(val);
+      if (entries.length === 0) return '{}';
+      var items2 = entries.map(function(e) { return ipad + '"' + escStr(e[0], '"') + '": ' + formatPyVal(e[1], indent + 1); });
+      return '{\n' + items2.join(',\n') + '\n' + pad + '}';
+    }
+    return String(val);
+  }
+
+  /* ================================================================== */
+  /*                     LANGUAGE CONVERTERS                             */
+  /* ================================================================== */
+
+  /* ----- PYTHON ----- */
+  function toPython(p) {
+    var lines = ['import requests', '', 'url = "' + escStr(p.url) + '"'];
+    var hasHeaders = Object.keys(p.headers).length > 0 || Object.keys(p.cookies).length > 0 || p.auth;
+    if (hasHeaders) {
+      lines.push('headers = {');
+      var hEntries = Object.entries(p.headers);
+      if (p.auth) hEntries.push(['Authorization', 'Basic ' + btoa(p.auth)]);
+      hEntries.forEach(function(e, idx) {
+        lines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"' + (idx < hEntries.length - 1 ? ',' : ''));
+      });
+      lines.push('}');
+    }
+    if (Object.keys(p.cookies).length > 0) {
+      lines.push('cookies = {');
+      var cEntries = Object.entries(p.cookies);
+      cEntries.forEach(function(e, idx) {
+        lines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"' + (idx < cEntries.length - 1 ? ',' : ''));
+      });
+      lines.push('}');
+    }
+    var dataType = detectDataType(p.data, p.headers);
+    if (p.data && dataType === 'json') {
+      var parsed = tryParseJSON(p.data);
+      if (parsed !== null) lines.push('data = ' + formatPyVal(parsed));
+      else lines.push('data = "' + escStr(p.data) + '"');
+    } else if (p.data) {
+      lines.push('data = "' + escStr(p.data) + '"');
+    }
+    if (p.form.length > 0) {
+      lines.push('files = {');
+      p.form.forEach(function(f, idx) {
+        var eqI = f.indexOf('=');
+        var key = eqI > 0 ? f.substring(0, eqI) : f;
+        var val = eqI > 0 ? f.substring(eqI + 1) : '';
+        if (val.startsWith('@')) lines.push('    "' + escStr(key) + '": ("' + escStr(val.substring(1)) + '", open("' + escStr(val.substring(1)) + '", "rb"), "application/octet-stream")' + (idx < p.form.length - 1 ? ',' : ''));
+        else lines.push('    "' + escStr(key) + '": (None, "' + escStr(val) + '")' + (idx < p.form.length - 1 ? ',' : ''));
+      });
+      lines.push('}');
+    }
+    lines.push('');
+    var callParts = ['url'];
+    if (hasHeaders) callParts.push('headers=headers');
+    if (Object.keys(p.cookies).length > 0) callParts.push('cookies=cookies');
+    if (p.data && dataType === 'json' && tryParseJSON(p.data)) callParts.push('json=data');
+    else if (p.data) callParts.push('data=data');
+    if (p.form.length > 0) callParts.push('files=files');
+    if (p.method === 'GET' && hasHeaders) { /* already default */ }
+    else if (p.method !== 'GET') callParts.push('method="' + p.method + '"');
+    lines.push('response = requests.' + p.method.toLowerCase() + '(' + callParts.join(', ') + ')');
+    lines.push('print(response.status_code)');
+    lines.push('print(response.text)');
+    return lines.join('\n');
+  }
+
+  /* ----- JAVASCRIPT (Browser Fetch) ----- */
+  function toJavaScript(p) {
+    var lines = [];
+    var dataType = detectDataType(p.data, p.headers);
+    lines.push('const url = "' + escStr(p.url) + '";');
+    lines.push('');
+    var opts = ['  method: "' + p.method + '"'];
+    if (Object.keys(p.headers).length > 0 || p.auth) {
+      var hLines = [];
+      Object.entries(p.headers).forEach(function(e) { hLines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"'); });
+      if (p.auth) hLines.push('    "Authorization": "Basic ' + btoa(p.auth) + '"');
+      opts.push('  headers: {\n' + hLines.join(',\n') + '\n  }');
+    }
+    if (p.data) {
+      if (dataType === 'json') {
+        opts.push('  body: JSON.stringify(' + p.data + ')');
+      } else {
+        opts.push('  body: "' + escStr(p.data) + '"');
+      }
+    }
+    lines.push('const options = {');
+    lines.push(opts.join(',\n'));
+    lines.push('};');
+    lines.push('');
+    lines.push('try {');
+    lines.push('  const response = await fetch(url, options);');
+    lines.push('  const data = await response.json();');
+    lines.push('  console.log(data);');
+    lines.push('} catch (error) {');
+    lines.push('  console.error(error);');
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  /* ----- NODE.JS (Axios) ----- */
+  function toNodeJS(p) {
+    var lines = ['const axios = require("axios");', ''];
+    var dataType = detectDataType(p.data, p.headers);
+    lines.push('const url = "' + escStr(p.url) + '";');
+    var opts = [];
+    if (Object.keys(p.headers).length > 0 || p.auth) {
+      var hLines = [];
+      Object.entries(p.headers).forEach(function(e) { hLines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"'); });
+      if (p.auth) hLines.push('    "Authorization": "Basic ' + btoa(p.auth) + '"');
+      opts.push('  headers: {\n' + hLines.join(',\n') + '\n  }');
+    }
+    if (p.data && dataType === 'json') opts.push('  data: ' + p.data);
+    else if (p.data) opts.push('  data: "' + escStr(p.data) + '"');
+    if (p.form.length > 0) {
+      var fLines = [];
+      p.form.forEach(function(f) {
+        var eqI = f.indexOf('=');
+        var key = eqI > 0 ? f.substring(0, eqI) : f;
+        var val = eqI > 0 ? f.substring(eqI + 1) : '';
+        fLines.push('    "' + escStr(key) + '": "' + escStr(val) + '"');
+      });
+      opts.push('  data: new URLSearchParams({\n' + fLines.join(',\n') + '\n  }).toString()');
+    }
+    lines.push('');
+    lines.push('axios({');
+    lines.push('  method: "' + p.method.toLowerCase() + '",');
+    lines.push('  url: url' + (opts.length > 0 ? ',' : ''));
+    if (opts.length > 0) lines.push(opts.join(',\n'));
+    lines.push('})');
+    lines.push('  .then(function (response) {');
+    lines.push('    console.log(response.data);');
+    lines.push('  })');
+    lines.push('  .catch(function (error) {');
+    lines.push('    console.error(error);');
+    lines.push('  });');
+    return lines.join('\n');
+  }
+
+  /* ----- PHP ----- */
+  function toPHP(p) {
+    var lines = ['<?php', '', '$url = "' + escStr(p.url) + '";', ''];
+    var opts = [];
+    opts.push('  CURLOPT_URL => $url,');
+    opts.push('  CURLOPT_RETURNTRANSFER => true,');
+    if (p.method !== 'GET') opts.push('  CURLOPT_CUSTOMREQUEST => "' + p.method + '",');
+    if (p.followRedirects) opts.push('  CURLOPT_FOLLOWLOCATION => true,');
+    if (p.insecure) opts.push('  CURLOPT_SSL_VERIFYPEER => false,');
+    var dataType = detectDataType(p.data, p.headers);
+    if (p.data) {
+      if (dataType === 'json') opts.push('  CURLOPT_POSTFIELDS => \'' + p.data.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\',');
+      else opts.push('  CURLOPT_POSTFIELDS => "' + escStr(p.data, '"') + '",');
+    }
+    if (p.form.length > 0) {
+      var fArr = [];
+      p.form.forEach(function(f) {
+        var eqI = f.indexOf('=');
+        var key = eqI > 0 ? f.substring(0, eqI) : f;
+        var val = eqI > 0 ? f.substring(eqI + 1) : '';
+        fArr.push('    "' + escStr(key, '"') + '" => "' + escStr(val, '"') + '"');
+      });
+      opts.push('  CURLOPT_POSTFIELDS => http_build_query([');
+      opts.push(fArr.join(',\n'));
+      opts.push('  ]),');
+    }
+    var hArr = [];
+    Object.entries(p.headers).forEach(function(e) { hArr.push('    "' + escStr(e[0], '"') + ': ' + escStr(e[1], '"') + '"'); });
+    if (p.auth) hArr.push('    "Authorization: Basic ' + btoa(p.auth) + '"');
+    if (Object.keys(p.cookies).length > 0) {
+      var ck = Object.entries(p.cookies).map(function(e) { return e[0] + '=' + e[1]; }).join('; ');
+      hArr.push('    "Cookie: ' + escStr(ck, '"') + '"');
+    }
+    if (hArr.length > 0) {
+      opts.push('  CURLOPT_HTTPHEADER => [');
+      opts.push(hArr.join(',\n'));
+      opts.push('  ],');
+    }
+    lines.push('$ch = curl_init();');
+    lines.push('curl_setopt_array($ch, [');
+    lines.push(opts.join('\n'));
+    lines.push(']);');
+    lines.push('');
+    lines.push('$response = curl_exec($ch);');
+    lines.push('$error = curl_error($ch);');
+    lines.push('curl_close($ch);');
+    lines.push('');
+    lines.push('if ($error) {');
+    lines.push('    echo "cURL Error: " . $error;');
+    lines.push('} else {');
+    lines.push('    echo $response;');
+    lines.push('}');
+    lines.push('?>');
+    return lines.join('\n');
+  }
+
+  /* ----- GO ----- */
+  function toGo(p) {
+    var lines = ['package main', '', 'import ('];
+    var imports = ['  "fmt"', '  "io"', '  "net/http"'];
+    var dataType = detectDataType(p.data, p.headers);
+    if (p.data) imports.push('  "strings"');
+    if (p.data && dataType === 'json') imports.push('  "bytes"');
+    imports.sort();
+    lines.push(imports.join('\n'));
+    lines.push(')', '', 'func main() {');
+    if (p.data && dataType === 'json') {
+      lines.push('  body := bytes.NewBufferString(`' + p.data.replace(/`/g, '\\`') + '`)');
+      lines.push('  req, err := http.NewRequest("' + p.method + '", "' + escStr(p.url, '"') + '", body)');
+    } else if (p.data) {
+      lines.push('  body := strings.NewReader(`' + p.data.replace(/`/g, '\\`') + '`)');
+      lines.push('  req, err := http.NewRequest("' + p.method + '", "' + escStr(p.url, '"') + '", body)');
+    } else {
+      lines.push('  req, err := http.NewRequest("' + p.method + '", "' + escStr(p.url, '"') + '", nil)');
+    }
+    lines.push('  if err != nil {');
+    lines.push('    fmt.Println(err)');
+    lines.push('    return');
+    lines.push('  }');
+    Object.entries(p.headers).forEach(function(e) {
+      lines.push('  req.Header.Set("' + escStr(e[0], '"') + '", "' + escStr(e[1], '"') + '")');
+    });
+    if (p.auth) lines.push('  req.Header.Set("Authorization", "Basic ' + btoa(p.auth) + '")');
+    Object.entries(p.cookies).forEach(function(e) {
+      lines.push('  req.AddCookie(&http.Cookie{Name: "' + escStr(e[0], '"') + '", Value: "' + escStr(e[1], '"') + '"})');
+    });
+    if (p.insecure) {
+      lines.push('  client := &http.Client{Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}}');
+    } else {
+      lines.push('  client := &http.Client{}');
+    }
+    lines.push('  resp, err := client.Do(req)');
+    lines.push('  if err != nil {');
+    lines.push('    fmt.Println(err)');
+    lines.push('    return');
+    lines.push('  }');
+    lines.push('  defer resp.Body.Close()');
+    lines.push('  bodyBytes, _ := io.ReadAll(resp.Body)');
+    lines.push('  fmt.Println(string(bodyBytes))');
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  /* ----- JAVA (OkHttp) ----- */
+  function toJava(p) {
+    var lines = ['import okhttp3.*;', 'import java.io.IOException;', '', 'public class Main {', '  public static void main(String[] args) throws IOException {'];
+    var dataType = detectDataType(p.data, p.headers);
+    if (p.data && dataType === 'json') {
+      lines.push('    MediaType mediaType = MediaType.parse("application/json");');
+      lines.push('    RequestBody body = RequestBody.create(mediaType, "' + escStr(p.data, '"') + '");');
+    } else if (p.data) {
+      lines.push('    MediaType mediaType = MediaType.parse("text/plain");');
+      lines.push('    RequestBody body = RequestBody.create(mediaType, "' + escStr(p.data, '"') + '");');
+    } else if (p.form.length > 0) {
+      lines.push('    FormBody.Builder formBuilder = new FormBody.Builder();');
+      p.form.forEach(function(f) {
+        var eqI = f.indexOf('=');
+        var key = eqI > 0 ? f.substring(0, eqI) : f;
+        var val = eqI > 0 ? f.substring(eqI + 1) : '';
+        lines.push('    formBuilder.add("' + escStr(key, '"') + '", "' + escStr(val, '"') + '");');
+      });
+      lines.push('    RequestBody body = formBuilder.build();');
+    }
+    lines.push('');
+    var reqB = ['    Request.Builder requestBuilder = new Request.Builder()'];
+    reqB.push('        .url("' + escStr(p.url, '"') + '")');
+    if (p.data || p.form.length > 0) reqB.push('        .' + p.method.toLowerCase() + '(body)');
+    else if (p.method === 'GET') reqB.push('        .get()');
+    else reqB.push('        .method("' + p.method + '", null)');
+    lines.push(reqB.join('\n') + ';');
+    Object.entries(p.headers).forEach(function(e) {
+      lines.push('    requestBuilder.addHeader("' + escStr(e[0], '"') + '", "' + escStr(e[1], '"') + '");');
+    });
+    if (p.auth) lines.push('    requestBuilder.addHeader("Authorization", "Basic ' + btoa(p.auth) + '");');
+    lines.push('');
+    lines.push('    OkHttpClient client = new OkHttpClient();');
+    lines.push('    try (Response response = client.newCall(requestBuilder.build()).execute()) {');
+    lines.push('      System.out.println(response.body().string());');
+    lines.push('    }');
+    lines.push('  }');
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  /* ----- C# (HttpClient) ----- */
+  function toCSharp(p) {
+    var lines = ['using System;', 'using System.Net.Http;', 'using System.Text;', 'using System.Threading.Tasks;', '', 'class Program', '{', '    static async Task Main()', '    {', '        using var client = new HttpClient();'];
+    var dataType = detectDataType(p.data, p.headers);
+    if (Object.keys(p.headers).length > 0 || p.auth) {
+      Object.entries(p.headers).forEach(function(e) {
+        lines.push('        client.DefaultRequestHeaders.Add("' + escStr(e[0], '"') + '", "' + escStr(e[1], '"') + '");');
+      });
+      if (p.auth) lines.push('        client.DefaultRequestHeaders.Add("Authorization", "Basic ' + btoa(p.auth) + '");');
+    }
+    if (p.data && dataType === 'json') {
+      lines.push('        var content = new StringContent("' + escStr(p.data, '"') + '", Encoding.UTF8, "application/json");');
+    } else if (p.data) {
+      lines.push('        var content = new StringContent("' + escStr(p.data, '"') + '", Encoding.UTF8);');
+    }
+    lines.push('');
+    if (p.method === 'GET') lines.push('        var response = await client.GetAsync("' + escStr(p.url, '"') + '");');
+    else if (p.method === 'POST' && p.data) lines.push('        var response = await client.PostAsync("' + escStr(p.url, '"') + '", content);');
+    else if (p.method === 'PUT' && p.data) lines.push('        var response = await client.PutAsync("' + escStr(p.url, '"') + '", content);');
+    else if (p.method === 'DELETE') lines.push('        var response = await client.DeleteAsync("' + escStr(p.url, '"') + '");');
+    else {
+      var m = p.method.charAt(0) + p.method.slice(1).toLowerCase();
+      lines.push('        var request = new HttpRequestMessage(HttpMethod.' + m + ', "' + escStr(p.url, '"') + '");');
+      if (p.data) lines.push('        request.Content = content;');
+      lines.push('        var response = await client.SendAsync(request);');
+    }
+    lines.push('        var responseBody = await response.Content.ReadAsStringAsync();');
+    lines.push('        Console.WriteLine(responseBody);');
+    lines.push('    }');
+    lines.push('}');
+    return lines.join('\n');
+  }
+
+  /* ----- RUBY (Net::HTTP) ----- */
+  function toRuby(p) {
+    var lines = ['require "uri"', 'require "net/http"', 'require "json"', ''];
+    lines.push('url = URI("' + escStr(p.url, '"') + '")');
+    lines.push('http = Net::HTTP.new(url.host, url.port)');
+    if (p.url.startsWith('https')) {
+      lines.push('http.use_ssl = true');
+      if (p.insecure) lines.push('http.verify_mode = OpenSSL::SSL::VERIFY_NONE');
+    }
+    lines.push('');
+    var method = p.method.charAt(0).toUpperCase() + p.method.slice(1).toLowerCase();
+    lines.push('request = Net::HTTP::' + method + '.new(url)');
+    Object.entries(p.headers).forEach(function(e) {
+      lines.push('request["' + escStr(e[0], '"') + '"] = "' + escStr(e[1], '"') + '"');
+    });
+    if (p.auth) lines.push('request["Authorization"] = "Basic ' + btoa(p.auth) + '"');
+    var dataType = detectDataType(p.data, p.headers);
+    if (p.data) {
+      if (dataType === 'json') lines.push('request.body = JSON.generate(' + p.data + ')');
+      else lines.push('request.body = "' + escStr(p.data, '"') + '"');
+    }
+    if (p.form.length > 0) {
+      var fPairs = p.form.map(function(f) {
+        var eqI = f.indexOf('=');
+        var key = eqI > 0 ? f.substring(0, eqI) : f;
+        var val = eqI > 0 ? f.substring(eqI + 1) : '';
+        return '  ["' + escStr(key, '"') + '", "' + escStr(val, '"') + '"]';
+      });
+      lines.push('request.set_form_data({');
+      lines.push(fPairs.join(',\n'));
+      lines.push('})');
+    }
+    lines.push('');
+    lines.push('response = http.request(request)');
+    lines.push('puts response.read_body');
+    return lines.join('\n');
+  }
+
+  /* ----- SWIFT (URLSession) ----- */
+  function toSwift(p) {
+    var lines = ['import Foundation', ''];
+    lines.push('let url = URL(string: "' + escStr(p.url, '"') + '")!');
+    lines.push('var request = URLRequest(url: url)');
+    lines.push('request.httpMethod = "' + p.method + '"');
+    var dataType = detectDataType(p.data, p.headers);
+    Object.entries(p.headers).forEach(function(e) {
+      lines.push('request.setValue("' + escStr(e[1], '"') + '", forHTTPHeaderField: "' + escStr(e[0], '"') + '")');
+    });
+    if (p.auth) lines.push('request.setValue("Basic ' + btoa(p.auth) + '", forHTTPHeaderField: "Authorization")');
+    if (p.data) {
+      if (dataType === 'json') {
+        lines.push('let body = """');
+        lines.push(p.data);
+        lines.push('"""');
+        lines.push('request.httpBody = body.data(using: .utf8)');
+      } else {
+        lines.push('request.httpBody = "' + escStr(p.data, '"') + '".data(using: .utf8)');
+      }
+    }
+    lines.push('');
+    lines.push('let task = URLSession.shared.dataTask(with: request) { data, response, error in');
+    lines.push('    if let error = error {');
+    lines.push('        print(error)');
+    lines.push('        return');
+    lines.push('    }');
+    lines.push('    if let data = data {');
+    lines.push('        print(String(data: data, encoding: .utf8) ?? "")');
+    lines.push('    }');
+    lines.push('}');
+    lines.push('task.resume()');
+    return lines.join('\n');
+  }
+
+  /* ================================================================== */
+  /*                    CONVERTER DISPATCH                               */
+  /* ================================================================== */
+  var converters = {
+    python: toPython,
+    javascript: toJavaScript,
+    nodejs: toNodeJS,
+    php: toPHP,
+    go: toGo,
+    java: toJava,
+    csharp: toCSharp,
+    ruby: toRuby,
+    swift: toSwift
+  };
+  var hljsLangMap = {
+    python: 'python',
+    javascript: 'javascript',
+    nodejs: 'javascript',
+    php: 'php',
+    go: 'go',
+    java: 'java',
+    csharp: 'csharp',
+    ruby: 'ruby',
+    swift: 'swift'
+  };
+  var langNames = {
+    python: 'Python', javascript: 'JavaScript', nodejs: 'Node.js', php: 'PHP',
+    go: 'Go', java: 'Java', csharp: 'C#', ruby: 'Ruby', swift: 'Swift'
+  };
+
+  /* ================================================================== */
+  /*                       MAIN LOGIC                                    */
+  /* ================================================================== */
+  var currentLang = 'python';
+  var lastParsed = null;
+
+  function doConvert() {
+    var input = document.getElementById('curl-input').value.trim();
+    var emptyEl = document.getElementById('empty-state');
+    var errorEl = document.getElementById('error-state');
+    var outputEl = document.getElementById('output-container');
+    var codeEl = document.getElementById('code-output');
+
+    if (!input) {
+      emptyEl.classList.remove('hidden');
+      errorEl.classList.add('hidden');
+      outputEl.classList.add('hidden');
+      lastParsed = null;
+      return;
+    }
+    var parsed = parseCurl(input);
+    if (!parsed) {
+      emptyEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      outputEl.classList.add('hidden');
+      document.getElementById('error-text').textContent = 'Could not parse curl command. Make sure it starts with "curl" and uses valid syntax.';
+      lastParsed = null;
+      return;
+    }
+    if (!parsed.url) {
+      emptyEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      outputEl.classList.add('hidden');
+      document.getElementById('error-text').textContent = 'No URL found in the curl command. Please include a valid URL.';
+      lastParsed = null;
+      return;
+    }
+    lastParsed = parsed;
+    emptyEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    outputEl.classList.remove('hidden');
+    renderCode(parsed, currentLang);
+  }
+
+  function renderCode(parsed, lang) {
+    var codeEl = document.getElementById('code-output');
+    var converter = converters[lang];
+    if (!converter) return;
+    var code = converter(parsed);
+    // Remove previously added hljs classes for re-highlighting
+    codeEl.removeAttribute('class');
+    codeEl.className = 'text-sm';
+    codeEl.textContent = code;
+    codeEl.classList.add('language-' + (hljsLangMap[lang] || 'bash'));
+    hljs.highlightElement(codeEl);
+  }
+
+  function switchLang(lang) {
+    currentLang = lang;
+    document.getElementById('lang-label').textContent = langNames[lang] || lang;
+    document.querySelectorAll('.lang-tab').forEach(function(tab) {
+      var isActive = tab.getAttribute('data-lang') === lang;
+      tab.classList.toggle('active', isActive);
+      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    });
+    if (lastParsed) renderCode(lastParsed, lang);
+  }
+
+  /* ===================== EVENT LISTENERS ===================== */
+  // Language tabs
+  document.querySelectorAll('.lang-tab').forEach(function(tab) {
+    tab.addEventListener('click', function() { switchLang(this.getAttribute('data-lang')); });
+  });
+
+  // Auto-convert on input with debounce
+  var debounceTimer;
+  document.getElementById('curl-input').addEventListener('input', function() {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(doConvert, 400);
+  });
+
+  // Convert button
+  document.getElementById('convert-btn').addEventListener('click', doConvert);
+
+  // Clear button
+  document.getElementById('clear-input-btn').addEventListener('click', function() {
+    document.getElementById('curl-input').value = '';
+    lastParsed = null;
+    document.getElementById('empty-state').classList.remove('hidden');
+    document.getElementById('error-state').classList.add('hidden');
+    document.getElementById('output-container').classList.add('hidden');
+  });
+
+  // Copy code button
+  document.getElementById('copy-code-btn').addEventListener('click', function() {
+    var code = document.getElementById('code-output').textContent;
+    navigator.clipboard.writeText(code).then(function() {
+      showToast('Code copied to clipboard!', 'success');
+    });
+  });
+
+  // Sample commands
+  var samples = {
+    'get': 'curl https://api.example.com/users',
+    'post-json': "curl -X POST https://api.example.com/users \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"John Doe\",\"email\":\"john@example.com\"}'",
+    'auth': "curl https://api.example.com/data \\\n  -H 'Authorization: Bearer your_token_here' \\\n  -H 'Accept: application/json'",
+    'form': "curl -X POST https://api.example.com/upload \\\n  -F 'file=@photo.jpg' \\\n  -F 'description=My photo'",
+    'put': "curl -X PUT https://api.example.com/users/1 \\\n  -H 'Content-Type: application/json' \\\n  -H 'Authorization: Bearer your_token_here' \\\n  -d '{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\"}'",
+    'delete': "curl -X DELETE https://api.example.com/users/1 \\\n  -H 'Authorization: Bearer your_token_here'"
+  };
+  document.querySelectorAll('.sample-chip').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var key = this.getAttribute('data-sample');
+      if (samples[key]) {
+        document.getElementById('curl-input').value = samples[key];
+        doConvert();
+      }
+    });
+  });
+
+  // Handle Ctrl+Enter
+  document.getElementById('curl-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+      e.preventDefault();
+      doConvert();
+    }
+  });
+
+  // Handle Tab key in textarea
+  document.getElementById('curl-input').addEventListener('keydown', function(e) {
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      var start = this.selectionStart;
+      var end = this.selectionEnd;
+      this.value = this.value.substring(0, start) + '  ' + this.value.substring(end);
+      this.selectionStart = this.selectionEnd = start + 2;
+    }
+  });
+  </script>
+</body>
+</html>
