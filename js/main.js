@@ -627,6 +627,7 @@ const NAV_CATEGORIES = [
       { label: 'CSS Minifier', path: 'css-minifier/' },
       { label: 'JavaScript Minifier', path: 'js-minifier/' },
       { label: 'JSON Formatter', path: 'json-formatter/' },
+      { label: 'cURL Converter', path: 'curl-converter/' },
       { label: 'Code Snippet Manager', path: 'code-snippet-manager/' },
     ]
   },
