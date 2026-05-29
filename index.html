@@ -6,10 +6,19 @@
   <meta name="description" content="Devpalettes - Create beautiful color palettes and gradients for your designs. Free online color palette generator, gradient builder, and color converter tool.">
   <meta name="author" content="Devpalettes">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
   <meta property="og:title" content="Devpalettes - Professional Color Palette & Gradient Generator">
   <meta property="og:description" content="Create beautiful color palettes and gradients for your designs. Free online tools for designers and developers.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com">
+  <meta property="og:site_name" content="Devpalettes">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://devpalettes.com/images/devpalettes.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Devpalettes - Professional Color Palette & Gradient Generator">
+  <meta name="twitter:description" content="Create beautiful color palettes and gradients for your designs. Free online tools for designers and developers.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/devpalettes.png">
   <title>Devpalettes - Free Color Palette & Gradient Generator Tool</title>
 
   <link rel="canonical" href="https://devpalettes.com/">
@@ -20,10 +29,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
-
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Color+Emoji&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Color+Emoji&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
+
 
   <link rel="preload" href="css/styles.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="css/styles.css?v=2"></noscript>
@@ -99,29 +111,6 @@
   </script>
 
   <meta name="google-site-verification" content="wohbyekMYwIXhjhv2MbwZAcdDdxfPt6JpfrXk7c83Oc">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F252PEQ1JC');
-  </script>
-
-  <script src="/js/tailwind.js"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'Noto Color Emoji', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-
   <script>
     (function(){var t=localStorage.getItem('colorpallates-theme'),d=window.matchMedia&&window.matchMedia('(prefers-color-scheme:dark)').matches;if(t==='dark'||(!t&&d)){document.documentElement.classList.add('dark')}})();
   </script>
@@ -210,6 +199,7 @@
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
 
+  <main id="main-content">
   <section class="relative min-h-screen flex items-center pb-[13.5rem] md:pt-10 md:pb-0 overflow-hidden gradient-padding" aria-label="Hero Introduction">
     <canvas id="hero-visualizer" aria-hidden="true"></canvas>
     <div class="gradient-blob blob-1" aria-hidden="true"></div>
@@ -235,7 +225,7 @@
           The professional free color palette and gradient generator trusted by designers and developers worldwide.
           Generate, convert, and export beautiful colors instantly.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-on-scroll">
+        <div class="d-flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-on-scroll">
           <a href="#generator" class="btn-primary btn-glow w-full sm:w-auto justify-center">
             <i class="fas fa-palette" aria-hidden="true"></i>
             Generate Palette
@@ -669,6 +659,7 @@
       </a>
     </div>
   </section>
+  </main>
 
   <div id="footer-container"></div>
 

@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0c0f14" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
 
   <title>Contact Devpalettes — Support, Feedback & Business Inquiries | Free Color Tools</title>
   <meta name="description" content="Reach out to the Devpalettes team for support, bug reports, feature requests, or business inquiries. Founded by Ashish Kekaan — we respond within 24-48 hours. Free color tools for designers and developers.">
@@ -27,15 +29,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F252PEQ1JC');
-  </script>
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
      crossorigin="anonymous"></script>
 
@@ -168,26 +161,21 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <script src="../js/tailwind.js"></script>
-   
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } }
-    }
-  </script>
-  
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
+
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <div id="navbar-container"></div>
@@ -254,7 +242,7 @@
               </div>
               <div>
                 <h3 class="font-semibold">Email</h3>
-                <p class="text-slate-600 dark:text-slate-400">contact@devpalettes.com</p>
+                <a href="mailto:contact@devpalettes.com" class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors underline underline-offset-4 decoration-emerald-500/30 hover:decoration-emerald-500">contact@devpalettes.com</a>
               </div>
             </div>
           </div>
@@ -265,7 +253,7 @@
               </div>
               <div>
                 <h3 class="font-semibold">Twitter</h3>
-                <p class="text-slate-600 dark:text-slate-400">@devpalettes</p>
+                <a href="https://x.com/devpalettes" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors underline underline-offset-4 decoration-emerald-500/30 hover:decoration-emerald-500">@devpalettes</a>
               </div>
             </div>
           </div>
@@ -276,7 +264,7 @@
               </div>
               <div>
                 <h3 class="font-semibold">GitHub</h3>
-                <p class="text-slate-600 dark:text-slate-400">https://github.com/ashishkekan/devpalettes</p>
+                <a href="https://github.com/Devpalettes" target="_blank" rel="noopener noreferrer" class="text-slate-600 dark:text-slate-400 hover:text-emerald-500 transition-colors underline underline-offset-4 decoration-emerald-500/30 hover:decoration-emerald-500">github.com/Devpalettes</a>
               </div>
             </div>
           </div>
@@ -449,7 +437,7 @@
     </div>
   </main>
   <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
+  <script src="/js/main.js"></script>
   <script>
     document.getElementById('contact-form')?.addEventListener('submit', function(e) {
       e.preventDefault();
@@ -461,6 +449,6 @@
       this.reset();
     });
   </script>
-  <script src="../js/enhancements.js"></script>
+  <script src="/js/enhancements.js"></script>
 </body>
 </html>

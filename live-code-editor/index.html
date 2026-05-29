@@ -17,14 +17,12 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-F252PEQ1JC')</script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
 
@@ -34,14 +32,11 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"WebApplication","name":"Live Code Editor","description":"Free online code editor with live preview for HTML, CSS, and JavaScript.","url":"https://devpalettes.com/live-code-editor/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
   </script>
-
-  <script src="../js/tailwind.js"></script>
   <script>
     if(localStorage.getItem('colorpallates-theme')==='dark'||(!localStorage.getItem('colorpallates-theme')&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}
   </script>
-  <script>
-    tailwind.config={darkMode:'class',theme:{extend:{fontFamily:{sans:['Inter','sans-serif'],mono:['JetBrains Mono','monospace']}}}}
-  </script>
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
 
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
@@ -119,14 +114,14 @@
           <button id="ed-run-btn" class="ed-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold" title="Run (Ctrl+Enter)">
             <i class="fas fa-play text-[10px]"></i><span class="hidden sm:inline">Run</span>
           </button>
-          <button id="ed-copy-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Copy All Code">
+          <button id="ed-copy-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Copy All Code" aria-label="Ed Copy Btn">
             <i class="far fa-copy"></i>
           </button>
-          <button id="ed-dl-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Download HTML">
+          <button id="ed-dl-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Download HTML" aria-label="Ed Dl Btn">
             <i class="fas fa-download"></i>
           </button>
           <div class="relative">
-            <button id="ed-more-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="More Options">
+            <button id="ed-more-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="More Options" aria-label="Ed More Btn">
               <i class="fas fa-ellipsis-vertical"></i>
             </button>
             <div id="ed-more-menu" class="hidden absolute right-0 top-full mt-1.5 glass-card rounded-xl shadow-2xl shadow-black/10 dark:shadow-black/30 py-1.5 min-w-[180px] z-50">
@@ -142,7 +137,7 @@
             </div>
           </div>
           <div class="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-0.5 hidden sm:block"></div>
-          <button id="ed-fs-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Fullscreen Preview">
+          <button id="ed-fs-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Fullscreen Preview" aria-label="Ed Fs Btn">
             <i class="fas fa-expand"></i>
           </button>
         </div>
@@ -178,13 +173,13 @@
         <div id="ed-panel-r" class="ed-panel-r flex flex-col flex-1 min-w-0">
           <div class="glass-card border-b border-slate-200/30 dark:border-slate-700/30 flex items-center justify-between px-2 py-1.5">
             <div class="flex items-center gap-1">
-              <button data-device="desktop" class="ed-dev-btn active p-1.5 rounded-md text-[11px] text-emerald-500 dark:text-emerald-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Desktop">
+              <button data-device="desktop" class="ed-dev-btn active p-1.5 rounded-md text-[11px] text-emerald-500 dark:text-emerald-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Desktop" aria-label="Desktop">
                 <i class="fas fa-desktop"></i>
               </button>
-              <button data-device="tablet" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Tablet">
+              <button data-device="tablet" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Tablet" aria-label="Tablet">
                 <i class="fas fa-tablet-screen-button"></i>
               </button>
-              <button data-device="mobile" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Mobile">
+              <button data-device="mobile" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Mobile" aria-label="Mobile">
                 <i class="fas fa-mobile-screen-button"></i>
               </button>
             </div>

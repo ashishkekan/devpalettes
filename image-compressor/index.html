@@ -28,14 +28,6 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-F252PEQ1JC');
-  </script>
-
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
      crossorigin="anonymous"></script>
   
@@ -111,31 +103,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <script src="../js/tailwind.js"></script>
-   
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-          },
-        },
-      },
-    }
-  </script>
-  
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
+
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
@@ -247,7 +227,7 @@
                         <p id="drop-filename" class="text-sm font-medium truncate text-slate-700 dark:text-slate-300"></p>
                         <p id="drop-filesize" class="text-xs text-slate-400"></p>
                       </div>
-                      <button id="drop-remove" class="p-2 rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-400 transition-all flex-shrink-0" title="Remove">
+                      <button id="drop-remove" class="p-2 rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-400 transition-all flex-shrink-0" title="Remove" aria-label="Drop Remove">
                         <i class="fas fa-xmark"></i>
                       </button>
                     </div>

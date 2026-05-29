@@ -45,6 +45,33 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Accessible focus styles */
+:focus-visible {
+  outline: 3px solid rgba(16, 185, 129, 0.85);
+  outline-offset: 3px;
+}
+
+/* Skip link (visible on keyboard focus only) */
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  z-index: 1001;
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px var(--shadow-color);
+  transform: translateY(-140%);
+  transition: transform 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   background-color: var(--bg-primary);
@@ -53,6 +80,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   min-height: 100vh;
   overflow-x: hidden;
+}
+
+/* Improve placeholder contrast for accessibility audits */
+::placeholder {
+  color: #64748b; /* slate-500 */
+  opacity: 1;
+}
+
+.dark ::placeholder {
+  color: #94a3b8; /* slate-400 */
+  opacity: 1;
 }
 
 /* Custom Scrollbar */
@@ -398,6 +436,13 @@ input[type="range"]::-webkit-slider-thumb:hover {
   position: relative;
   cursor: pointer;
   display: none;
+}
+
+/* Ensure hamburger never shows on desktop (fallback if utility CSS order changes) */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
 }
 
 .hamburger span {
@@ -786,4 +831,15 @@ input[type="range"]::-webkit-slider-thumb:hover {
 
 .mobile-menu.no-transition {
   transition: none !important;
+}
+
+.create-free-btn{
+  display: none !important;
+}
+
+@media (min-width: 768px){
+  .create-free-btn{
+    display: flex !important;
+    align-items: center;
+  }
 }
