@@ -114,7 +114,7 @@ const CookieConsent = {
               <a href="/cookie-policy/" class="text-emerald-500 hover:underline font-medium">Cookie Policy</a>.
             </p>
           </div>
-          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center shrink-0">
+          <div class="d-flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center shrink-0">
             <a href="/cookie-policy/" class="btn-secondary text-sm py-2 px-4 justify-center" aria-label="Learn more about cookies">Learn more</a>
             <button type="button" class="btn-secondary text-sm py-2 px-4 justify-center" data-consent="reject">Reject</button>
             <button type="button" class="btn-primary btn-glow text-sm py-2 px-4 justify-center" data-consent="accept">Accept</button>
