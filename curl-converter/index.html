@@ -7,23 +7,42 @@
   <meta name="description" content="Convert curl commands to Python, JavaScript, Node.js, PHP, Go, Java, C#, Ruby, Swift instantly. Free online curl converter. No signup required.">
   <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/curl-converter/"/>
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/curl-converter/">
   <meta property="og:title" content="Curl to Code Converter - Convert Curl Commands to 9+ Languages">
   <meta property="og:description" content="Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more. Free online tool.">
+  <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://devpalettes.com/curl-converter/">
+  <meta property="twitter:title" content="Curl to Code Converter - Convert Curl Commands to 9+ Languages">
+  <meta property="twitter:description" content="Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more. Free online tool.">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
+     crossorigin="anonymous"></script>
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Curl to Code Converter",
     "url": "https://devpalettes.com/curl-converter/",
+    "logo": "https://devpalettes.com/images/devpalettes.png",
     "description": "Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more programming languages instantly.",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -36,6 +55,7 @@
     ]
   }
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -44,68 +64,19 @@
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+       (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { sans: ['Inter', 'sans-serif'] } } } }
-  </script>
+  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css">
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- Page-specific styles -->
   <style>
-    .glass-card {
-      background: rgba(255,255,255,0.6);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(226,232,240,0.8);
-      border-radius: 1.5rem;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .dark .glass-card {
-      background: rgba(15,23,42,0.6);
-      border: 1px solid rgba(51,65,85,0.5);
-    }
-    .shimmer-card { position: relative; overflow: hidden; }
-    .shimmer-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: -150%;
-      width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(16,185,129,0.04), transparent);
-      animation: shimmer 6s infinite;
-      pointer-events: none;
-    }
-    @keyframes shimmer { 0% { left: -150%; } 100% { left: 150%; } }
-    .spectrum-line {
-      height: 4px;
-      background: linear-gradient(90deg, #ef4444, #f97316, #eab308, #22c55e, #06b6d4, #3b82f6, #8b5cf6);
-      border-radius: 2px;
-    }
-    .gradient-blob { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.15; pointer-events: none; }
-    .dark .gradient-blob { opacity: 0.08; }
-    .blob-1 { width: 400px; height: 400px; background: #10b981; top: -100px; right: -100px; }
-    .blob-2 { width: 300px; height: 300px; background: #06b6d4; bottom: 200px; left: -80px; }
-    .blob-3 { width: 350px; height: 350px; background: #8b5cf6; bottom: -100px; right: 20%; }
-    .btn-primary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.5rem; border-radius: 0.75rem;
-      font-weight: 600; font-size: 0.875rem;
-      background: linear-gradient(135deg, #10b981, #14b8a6);
-      color: white; border: none; cursor: pointer;
-      transition: all 0.2s;
-    }
-    .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); box-shadow: 0 8px 25px rgba(16,185,129,0.3); }
-    .btn-primary:active { transform: translateY(0); }
-    .btn-secondary {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.5rem 1rem; border-radius: 0.75rem;
-      font-weight: 500; font-size: 0.875rem;
-      background: rgba(241,245,249,0.8); color: #475569;
-      border: 1px solid #e2e8f0; cursor: pointer; transition: all 0.2s;
-    }
-    .dark .btn-secondary { background: rgba(51,65,85,0.5); color: #94a3b8; border-color: #334155; }
-    .btn-secondary:hover { border-color: #10b981; color: #10b981; }
-    .btn-glow { box-shadow: 0 0 20px rgba(16,185,129,0.2); }
     #curl-input {
       font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       tab-size: 2;
@@ -160,49 +131,24 @@
       color: #ef4444; font-size: 0.875rem;
     }
     .dark .error-msg { background: rgba(239,68,68,0.15); }
-    .nav-link { color: #64748b; font-weight: 500; font-size: 0.875rem; transition: color 0.2s; }
-    .nav-link:hover { color: #10b981; }
-    .dark .nav-link { color: #94a3b8; }
     @media (max-width: 640px) { .code-output-wrap pre { max-height: 350px; } }
     :focus-visible { outline: 2px solid #10b981; outline-offset: 2px; border-radius: 4px; }
     @media (prefers-reduced-motion: reduce) {
-      .shimmer-card::before { animation: none; }
-      .gradient-blob { display: none; }
       * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
   </style>
 </head>
-<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100 font-sans">
-
-  <!-- Navbar -->
-  <nav class="sticky top-0 z-50 backdrop-blur-xl bg-white/70 dark:bg-[#0c0f14]/70 border-b border-slate-200/60 dark:border-slate-800/60">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-      <a href="/" class="flex items-center gap-2 text-lg font-bold">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-emerald-500 to-teal-500 flex items-center justify-center text-white text-sm font-black">D</span>
-        DevPalettes
-      </a>
-      <div class="hidden sm:flex items-center gap-6">
-        <a href="/palettes/" class="nav-link">Palettes</a>
-        <a href="/gradient/" class="nav-link">Gradient</a>
-        <a href="/converter/" class="nav-link">Converter</a>
-        <a href="/curl-converter/" class="nav-link text-emerald-600 dark:text-emerald-400 font-semibold">Curl Converter</a>
-        <a href="/wcag-contrast-checker/" class="nav-link">Contrast</a>
-      </div>
-      <div class="flex items-center gap-3">
-        <button id="theme-toggle" class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors" aria-label="Toggle theme">
-          <i class="fas fa-moon text-slate-600 dark:hidden"></i>
-          <i class="fas fa-sun text-yellow-400 hidden dark:inline"></i>
-        </button>
-      </div>
-    </div>
-  </nav>
+<body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <div id="navbar-container"></div>
 
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer"></canvas>
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
     <div class="gradient-blob blob-3"></div>
+    <div id="particles-container"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero -->
       <div class="text-center mb-12" style="margin-top:45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Curl to Code Converter</h1>
@@ -524,14 +470,13 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-slate-200 dark:border-slate-800 py-8 mt-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <p class="text-slate-500 text-sm">&copy; 2025 DevPalettes. All rights reserved. Free tools for developers and designers.</p>
-    </div>
-  </footer>
+  <div id="footer-container"></div>
 
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
@@ -559,13 +504,6 @@
       setTimeout(function() { t.remove(); }, 300);
     }, 2500);
   }
-
-  /* ===================== THEME ===================== */
-  document.getElementById('theme-toggle').addEventListener('click', function() {
-    document.documentElement.classList.toggle('dark');
-    var isDark = document.documentElement.classList.contains('dark');
-    localStorage.setItem('colorpallates-theme', isDark ? 'dark' : 'light');
-  });
 
   /* ===================== FAQ ACCORDION ===================== */
   document.querySelectorAll('.faq-question').forEach(function(btn) {
@@ -1233,16 +1171,17 @@
   }
 
   function renderCode(parsed, lang) {
-    var codeEl = document.getElementById('code-output');
-    var converter = converters[lang];
-    if (!converter) return;
-    var code = converter(parsed);
-    // Remove previously added hljs classes for re-highlighting
-    codeEl.removeAttribute('class');
-    codeEl.className = 'text-sm';
-    codeEl.textContent = code;
-    codeEl.classList.add('language-' + (hljsLangMap[lang] || 'bash'));
-    hljs.highlightElement(codeEl);
+      var codeEl = document.getElementById('code-output');
+      var converter = converters[lang];
+      if (!converter) return;
+      var code = converter(parsed);
+      // Remove previously added hljs classes for re-highlighting
+      codeEl.removeAttribute('class');
+      codeEl.className = 'text-sm';
+      codeEl.textContent = code;
+      codeEl.classList.add('language-' + (hljsLangMap[lang] || 'bash'));
+      codeEl.removeAttribute('data-highlighted');  // ← ADD THIS LINE
+      hljs.highlightElement(codeEl);
   }
 
   function switchLang(lang) {
