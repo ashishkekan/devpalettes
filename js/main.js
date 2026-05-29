@@ -109,7 +109,7 @@ const CookieConsent = {
             </p>
             <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1 leading-relaxed">
               We use cookies for basic site functionality and, with your consent, analytics and ads measurement. Read our
-              <a href="/privacy-policy.html" class="text-emerald-500 hover:underline font-medium">Privacy Policy</a>
+              <a href="/privacy-policy/" class="text-emerald-500 hover:underline font-medium">Privacy Policy</a>
               and
               <a href="/cookie-policy/" class="text-emerald-500 hover:underline font-medium">Cookie Policy</a>.
             </p>
@@ -948,8 +948,8 @@ function renderFooter() {
           <div class="mb-5">
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Resources</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/about.html" class="hover:text-emerald-500 transition-colors">About Us</a></li>
-              <li><a href="/contact.html" class="hover:text-emerald-500 transition-colors">Contact Us</a></li>
+              <li><a href="/about/" class="hover:text-emerald-500 transition-colors">About Us</a></li>
+              <li><a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact Us</a></li>
               <li><a href="/blog/" class="hover:text-emerald-500 transition-colors">Blog</a></li>
               <li><a href="/sitemap.html" class="hover:text-emerald-500 transition-colors">Sitemap</a></li>
             </ul>
@@ -958,8 +958,8 @@ function renderFooter() {
           <div>
             <h3 class="font-bold text-xs sm:text-sm uppercase tracking-wider text-slate-500 mb-3 sm:mb-4">Legal</h3>
             <ul class="space-y-2 sm:space-y-3 text-sm sm:text-base">
-              <li><a href="/privacy-policy.html" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms-and-conditions.html" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
+              <li><a href="/privacy-policy/" class="hover:text-emerald-500 transition-colors">Privacy Policy</a></li>
+              <li><a href="/terms/" class="hover:text-emerald-500 transition-colors">Terms of Service</a></li>
               <li><a href="/cookie-policy/" class="hover:text-emerald-500 transition-colors">Cookie Policy</a></li>
               <li><a href="/disclaimer/" class="hover:text-emerald-500 transition-colors">Disclaimer</a></li>
             </ul>
