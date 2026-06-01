@@ -84,7 +84,7 @@
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <!-- PRIMARY: Tailwind CDN - always loads, guarantees Tailwind classes work -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com"  defer></script>
   
   <!-- Dark mode FOUC prevention - MUST run before body renders -->
   <script>
@@ -167,8 +167,8 @@
   </style>
 
   <!-- External CSS as enhancement (non-blocking, won't break page if missing) -->
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css?v=3" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css?v=3">
 
   <link rel="preload" href="../../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.style.display='none'">
   <link rel="preload" href="../../css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'" onerror="this.style.display='none'">
@@ -460,7 +460,7 @@
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
   
   <!-- These load normally as blocking scripts — main.js injects navbar/footer into the DOM -->
-  <script src="../../js/main.js"></script>
-  <script src="../../js/enhancements.js"></script>
+  <script src="../../js/main.js"  defer></script>
+  <script src="../../js/enhancements.js"  defer></script>
 </body>
 </html>

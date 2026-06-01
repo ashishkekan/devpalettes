@@ -864,12 +864,16 @@ function renderNavbar() {
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="${navHref('images/devpalettes_zoom_180.png')}"
-                  alt="Devpalettes Logo"
-                  width="20"
-                  height="20"
-                  decoding="async"
-                  class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto"/>
+                <picture>
+                  <source srcset="${navHref('images/devpalettes_zoom_180.webp')}" type="image/webp">
+                  <img src="${navHref('images/devpalettes_zoom_180.png')}"
+                    alt="Devpalettes Logo"
+                    width="20"
+                    height="20"
+                    decoding="async"
+                    loading="eager"
+                    class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto"/>
+                </picture>
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
@@ -997,12 +1001,16 @@ function renderFooter() {
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="/images/devpalettes_zoom_180.png"
-                  alt="Devpalettes Logo"
-                  width="20"
-                  height="20"
-                  decoding="async"
-                  class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto" />
+                <picture>
+                  <source srcset="/images/devpalettes_zoom_180.webp" type="image/webp">
+                  <img src="/images/devpalettes_zoom_180.png"
+                    alt="Devpalettes Logo"
+                    width="20"
+                    height="20"
+                    decoding="async"
+                    loading="lazy"
+                    class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto" />
+                </picture>
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
