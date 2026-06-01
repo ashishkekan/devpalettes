@@ -33,17 +33,18 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Color+Emoji&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css?v=3" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css?v=3">
 
 
-  <link rel="preload" href="css/styles.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css?v=2"></noscript>
+  <link rel="preload" href="css/styles.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css?v=3"></noscript>
 
   <script type="application/ld+json">
-  [
+  {
+    "@context": "https://schema.org",
+    "@graph": [
     {
-      "@context": "https://schema.org",
       "@type": "WebPage",
       "name": "Devpalettes - Free Color Palette & Gradient Generator Tool",
       "description": "Create beautiful color palettes and gradients for your designs. Free online color palette generator, gradient builder, and color converter tool.",
@@ -107,7 +108,8 @@
         }
       ]
     }
-  ]
+    ]
+  }
   </script>
 
   <meta name="google-site-verification" content="wohbyekMYwIXhjhv2MbwZAcdDdxfPt6JpfrXk7c83Oc">
@@ -118,7 +120,8 @@
   <style>
     body{margin:0;font-family:Inter,'Noto Color Emoji',system-ui,sans-serif;-webkit-font-smoothing:antialiased;background:#f8fafc;color:#0f172a}
     .dark body{background:#0c0f14;color:#f1f5f9}
-    #navbar-container{min-height:64px}
+    #navbar-container{min-height:56px}
+    #footer-container{min-height:450px}
     .relative{position:relative}.min-h-screen{min-height:100vh}.flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.text-center{text-align:center}.overflow-hidden{overflow:hidden}.mx-auto{margin-left:auto;margin-right:auto}.grid{display:grid}.block{display:block}.inline-flex{display:inline-flex}
     .px-4{padding-left:1rem;padding-right:1rem}.pb-\[13\.5rem\]{padding-bottom:13.5rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mb-10{margin-bottom:2.5rem}.mb-12{margin-bottom:3rem}.mt-16{margin-top:4rem}
     .max-w-md{max-width:28rem}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-7xl{max-width:80rem}
@@ -184,7 +187,7 @@
     #particles-container{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
     .particle{position:absolute;border-radius:50%;pointer-events:none;animation:particleFloat linear infinite}
     @keyframes particleFloat{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
-    .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.34,1.56,.64,1)}
+    .animate-on-scroll{opacity:0;transition:all .8s cubic-bezier(.34,1.56,.64,1)}
     .animate-on-scroll.animate-in{opacity:1;transform:translateY(0)}
     .shimmer-card{position:relative;overflow:hidden}
     .shimmer-card::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.08) 50%,transparent 100%);transform:translateX(-100%);animation:shimmerEffect 3s ease-in-out infinite;pointer-events:none;z-index:10}
@@ -215,17 +218,17 @@
           <i class="fas fa-sparkles" aria-hidden="true"></i>
           <span>Trusted by 50,000+ designers</span>
         </div>
-        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6 animate-on-scroll gradient-padding">
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-tight mb-6 gradient-padding">
           Create Stunning
           <span class="block bg-gradient-to-r from-emerald-400 via-teal-400 to-orange-400 bg-clip-text text-transparent">Free Color Palettes</span>
           <span class="block">in Seconds</span>
         </h1>
-        <div class="spectrum-line max-w-md mx-auto mb-6 animate-on-scroll" aria-hidden="true"></div>
-        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10 animate-on-scroll">
+        <div class="spectrum-line max-w-md mx-auto mb-6" aria-hidden="true"></div>
+        <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
           The professional free color palette and gradient generator trusted by designers and developers worldwide.
           Generate, convert, and export beautiful colors instantly.
         </p>
-        <div class="d-flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-on-scroll">
+        <div class="d-flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
           <a href="#generator" class="btn-primary btn-glow w-full sm:w-auto justify-center">
             <i class="fas fa-palette" aria-hidden="true"></i>
             Generate Palette
@@ -235,7 +238,7 @@
             Explore Trends
           </a>
         </div>
-        <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm animate-on-scroll">
+        <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm">
           <div class="flex items-center gap-2">
             <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
             <span>100% Free</span>
@@ -663,7 +666,7 @@
 
   <div id="footer-container"></div>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=3"></script>
   <script>
   (function() {
     'use strict';
@@ -757,17 +760,31 @@
 
     var rIC = window.requestIdleCallback || function(cb) { return setTimeout(cb, 200); };
 
-    rIC(function initVisualEffects() {
-      initScrollAnimations();
-      if (!prefersReducedMotion && !isMobile) {
-        rIC(initHeroVisualizer);
-        rIC(initParticles);
-        rIC(initSpectrumEnhancement);
-        rIC(initParallaxBlobs);
-      }
-      initButtonEffects();
-      initGradientEffects();
-    });
+    const initVisualsDelayed = () => {
+      rIC(function initVisualEffects() {
+        initScrollAnimations();
+        if (!prefersReducedMotion && !isMobile) {
+          rIC(initHeroVisualizer);
+          rIC(initParticles);
+          rIC(initSpectrumEnhancement);
+          rIC(initParallaxBlobs);
+        }
+        initButtonEffects();
+        initGradientEffects();
+      });
+    };
+
+    const loadVisuals = () => {
+      initVisualsDelayed();
+      window.removeEventListener('scroll', loadVisuals);
+      window.removeEventListener('mousemove', loadVisuals);
+      window.removeEventListener('touchstart', loadVisuals);
+      clearTimeout(visualsTimeout);
+    };
+    const visualsTimeout = setTimeout(initVisualsDelayed, 3500);
+    window.addEventListener('scroll', loadVisuals, { passive: true, once: true });
+    window.addEventListener('mousemove', loadVisuals, { passive: true, once: true });
+    window.addEventListener('touchstart', loadVisuals, { passive: true, once: true });
 
     function initScrollAnimations() {
       var observer = new IntersectionObserver(function(entries) {
