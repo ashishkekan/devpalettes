@@ -869,6 +869,7 @@ function renderNavbar() {
                   width="20"
                   height="20"
                   decoding="async"
+                  loading="eager"
                   class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto"/>
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
@@ -1002,6 +1003,7 @@ function renderFooter() {
                   width="20"
                   height="20"
                   decoding="async"
+                  loading="lazy"
                   class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto" />
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
@@ -1013,13 +1015,13 @@ function renderFooter() {
             &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
-            <a href="https://x.com/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
+            <a href="https://x.com/devpalettes" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
               <i class="fab fa-twitter text-lg sm:text-xl"></i>
             </a>
-            <a href="https://github.com/Devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+            <a href="https://github.com/Devpalettes" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
               <i class="fab fa-github text-lg sm:text-xl"></i>
             </a>
-            <a href="https://www.instagram.com/devpalettes/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/devpalettes/" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
               <i class="fab fa-instagram text-lg sm:text-xl"></i>
             </a>
           </div>
