@@ -38,11 +38,11 @@
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) { document.documentElement.classList.add('dark'); }
   </script>
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css?v=3" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css?v=3">
 
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+  <link rel="stylesheet" href="../css/animations.css?v=3">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -165,7 +165,7 @@
                    <input type="file" id="image-input" accept="image/*" class="hidden">
                 </div>
                 <div id="preview-container" class="hidden">
-                   <img id="image-preview" src="" alt="Source Image" class="w-full h-32 object-contain rounded-lg bg-slate-100 dark:bg-slate-800">
+                   <img decoding="async" id="image-preview" src="" alt="Source Image" class="w-full h-32 object-contain rounded-lg bg-slate-100 dark:bg-slate-800">
                 </div>
              </div>
           </div>
@@ -436,8 +436,8 @@
     </div>
   </main>
   <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/image-to-gradient-generator.js"></script>
+  <script src="../js/main.js?v=3"></script>
+  <script src="../js/enhancements.js?v=3"></script>
+  <script src="../js/image-to-gradient-generator.js?v=3"></script>
 </body>
 </html>

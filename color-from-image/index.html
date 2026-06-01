@@ -101,11 +101,11 @@
       document.documentElement.classList.add('dark');
     }
   </script>
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css?v=3" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css?v=3">
 
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+  <link rel="stylesheet" href="../css/animations.css?v=3">
 
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
@@ -151,7 +151,7 @@
               <p class="text-sm text-slate-400">JPG, PNG, WebP, GIF</p>
             </div>
             <div id="preview-content" class="hidden">
-              <img id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview">
+              <img decoding="async" id="image-preview" class="w-full rounded-xl shadow-2xl mx-auto" alt="Preview">
               <p class="text-sm text-slate-500 mt-4">Click to change image</p>
             </div>
           </div>
@@ -181,16 +181,16 @@
             <p class="text-sm text-slate-500 mb-3">Try sample images:</p>
             <div class="flex gap-2 flex-wrap">
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="sunset" aria-label="Sunset Button">
-                <img src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover">
+                <img decoding="async" src="https://images.unsplash.com/photo-1507400492013-162706c8c05e?w=100&h=100&fit=crop" alt="Sunset" class="w-full h-full object-cover">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="forest" aria-label="Forest Button">
-                <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover">
+                <img decoding="async" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=100&h=100&fit=crop" alt="Forest" class="w-full h-full object-cover">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="ocean" aria-label="Ocean Button">
-                <img src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover">
+                <img decoding="async" src="https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=100&h=100&fit=crop" alt="Ocean" class="w-full h-full object-cover">
               </button>
               <button class="sample-btn w-16 h-16 rounded-xl overflow-hidden border-2 border-transparent hover:border-emerald-500 transition-all" data-sample="city" aria-label="City Button">
-                <img src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover">
+                <img decoding="async" src="https://images.unsplash.com/photo-1514565131-fce0801e5785?w=100&h=100&fit=crop" alt="City" class="w-full h-full object-cover">
               </button>
             </div>
           </div>
@@ -466,9 +466,9 @@
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
   
-  <script src="../js/main.js"></script>
-  <script src="../js/color-from-image.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <script src="../js/main.js?v=3"></script>
+  <script src="../js/color-from-image.js?v=3"></script>
+  <script src="../js/enhancements.js?v=3"></script>
 
   <!-- Enhanced Share Functionality -->
   <script>

@@ -148,12 +148,22 @@ const CookieConsent = {
     const choice = this.get();
     if (choice === 'accepted' || choice === 'rejected') {
       this._applyGoogleConsent(choice);
-      if (choice === 'accepted') ThirdPartyAnalytics.load();
+      if (choice === 'accepted') {
+        const loadAnalytics = () => {
+          ThirdPartyAnalytics.load();
+          window.removeEventListener('scroll', loadAnalytics);
+          window.removeEventListener('touchstart', loadAnalytics);
+        };
+        window.addEventListener('scroll', loadAnalytics, { passive: true, once: true });
+        window.addEventListener('touchstart', loadAnalytics, { passive: true, once: true });
+        setTimeout(loadAnalytics, 5000);
+      }
       return;
     }
     // Default to denied until user chooses (prevents accidental early init if any page includes gtag)
     window[`ga-disable-G-F252PEQ1JC`] = true;
-    this.show();
+    // Delay cookie banner to allow critical content to render first
+    setTimeout(() => this.show(), 2000);
   }
 };
 
