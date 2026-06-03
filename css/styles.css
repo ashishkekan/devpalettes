@@ -1,4 +1,20 @@
 /* CSS Variables for theming */
+@font-face {
+  font-family: "Font Awesome 6 Free";
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Font Awesome 6 Brands";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2") format("woff2");
+}
+
 :root {
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
@@ -93,6 +109,21 @@ body {
   opacity: 1;
 }
 
+.dark .text-slate-500,
+.dark .text-slate-400 {
+  color: #94a3b8;
+}
+
+footer .text-slate-500,
+footer .text-slate-400 {
+  color: #475569;
+}
+
+.dark footer .text-slate-500,
+.dark footer .text-slate-400 {
+  color: #cbd5e1;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
@@ -140,6 +171,12 @@ body {
 .glass-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 40px var(--shadow-color);
+}
+
+.glass-card,
+.gradient-preview,
+.color-block {
+  will-change: transform;
 }
 
 /* Navbar styles */
@@ -681,6 +718,17 @@ input[type="range"]::-webkit-slider-thumb:hover {
   .mobile-menu,
   .toast-container {
     display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
   }
 }
 

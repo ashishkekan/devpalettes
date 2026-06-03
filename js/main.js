@@ -115,7 +115,7 @@ const CookieConsent = {
             </p>
           </div>
           <div class="d-flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center shrink-0">
-            <a href="/cookie-policy/" class="btn-secondary text-sm py-2 px-4 justify-center" aria-label="Learn more about cookies">Learn more</a>
+            <a href="/cookie-policy/" class="btn-secondary text-sm py-2 px-4 justify-center" aria-label="Learn more about cookies">Cookie details</a>
             <button type="button" class="btn-secondary text-sm py-2 px-4 justify-center" data-consent="reject">Reject</button>
             <button type="button" class="btn-primary btn-glow text-sm py-2 px-4 justify-center" data-consent="accept">Accept</button>
           </div>
@@ -141,7 +141,12 @@ const CookieConsent = {
       }
     });
 
-    wrapper.querySelector('button[data-consent="accept"]')?.focus({ preventScroll: true });
+    wrapper.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      this.set('rejected');
+      this._applyGoogleConsent('rejected');
+      this.hide();
+    });
   },
 
   init() {
@@ -153,7 +158,8 @@ const CookieConsent = {
     }
     // Default to denied until user chooses (prevents accidental early init if any page includes gtag)
     window[`ga-disable-G-F252PEQ1JC`] = true;
-    this.show();
+    const rIC = window.requestIdleCallback || function(cb){ return setTimeout(cb, 600); };
+    rIC(() => this.show());
   }
 };
 
@@ -445,6 +451,7 @@ const CopyLinkButton = {
 
 const Navbar = {
   _isToggling: false,
+  _scrollScheduled: false,
 
   init() {
     this.navbar = document.querySelector('.navbar');
@@ -452,7 +459,7 @@ const Navbar = {
     this.mobileMenu = document.querySelector('.mobile-menu');
 
     // Scroll effect
-    window.addEventListener('scroll', () => this.handleScroll());
+    window.addEventListener('scroll', () => this.scheduleScroll(), { passive: true });
 
     // Desktop dropdowns
     this.initDropdowns();
@@ -537,6 +544,15 @@ const Navbar = {
       dropdown.querySelectorAll('a').forEach(a => {
         a.addEventListener('click', () => closeAll());
       });
+    });
+  },
+
+  scheduleScroll() {
+    if (this._scrollScheduled) return;
+    this._scrollScheduled = true;
+    requestAnimationFrame(() => {
+      this._scrollScheduled = false;
+      this.handleScroll();
     });
   },
 
@@ -753,10 +769,12 @@ const Storage = {
 const ScrollButtons = {
   btnTop: null,
   btnBottom: null,
+  _scrollScheduled: false,
 
   init() {
     this.btnTop = document.createElement('button');
-    this.btnTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    this.btnTop.type = 'button';
+    this.btnTop.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
     this.btnTop.className = 'back-to-top';
     this.btnTop.setAttribute('aria-label', 'Back to top');
     document.body.appendChild(this.btnTop);
@@ -766,7 +784,8 @@ const ScrollButtons = {
     });
 
     this.btnBottom = document.createElement('button');
-    this.btnBottom.innerHTML = '<i class="fas fa-arrow-down"></i>';
+    this.btnBottom.type = 'button';
+    this.btnBottom.innerHTML = '<i class="fas fa-arrow-down" aria-hidden="true"></i>';
     this.btnBottom.className = 'back-to-bottom';
     this.btnBottom.setAttribute('aria-label', 'Back to bottom');
     document.body.appendChild(this.btnBottom);
@@ -775,8 +794,17 @@ const ScrollButtons = {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     });
 
-    window.addEventListener('scroll', () => this.handleScroll());
+    window.addEventListener('scroll', () => this.scheduleScroll(), { passive: true });
     this.handleScroll();
+  },
+
+  scheduleScroll() {
+    if (this._scrollScheduled) return;
+    this._scrollScheduled = true;
+    requestAnimationFrame(() => {
+      this._scrollScheduled = false;
+      this.handleScroll();
+    });
   },
 
   handleScroll() {
@@ -864,12 +892,15 @@ function renderNavbar() {
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="${navHref('images/devpalettes_zoom_180.png')}"
-                  alt="Devpalettes Logo"
-                  width="20"
-                  height="20"
-                  decoding="async"
-                  class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto"/>
+                <picture>
+                  <source srcset="${navHref('images/devpalettes_zoom_180.webp')}" type="image/webp">
+                  <img src="${navHref('images/devpalettes_zoom_180.png')}"
+                    alt="Devpalettes Logo"
+                    width="20"
+                    height="20"
+                    decoding="async"
+                    class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto"/>
+                </picture>
               </div>
               <span class="text-lg sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
@@ -983,8 +1014,8 @@ function renderFooter() {
               class="input-field text-sm flex-1" required>
               <input type="hidden" name="_subject" value="New Newsletter Subscriber!">
               <input type="hidden" name="_captcha" value="false">
-              <button type="submit" class="btn-primary text-sm px-4 btn-size">
-              <i class="fas fa-arrow-right"></i>
+              <button type="submit" class="btn-primary text-sm px-4 btn-size" aria-label="Subscribe to newsletter">
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
               </button>
             </form>
           </div>
@@ -997,12 +1028,16 @@ function renderFooter() {
                 flex items-center justify-center
                 shadow-[0_0_15px_rgba(34,211,238,0.6)]
                 transition group-hover:shadow-[0_0_25px_rgba(34,211,238,1)] overflow-hidden">
-                <img src="/images/devpalettes_zoom_180.png"
-                  alt="Devpalettes Logo"
-                  width="20"
-                  height="20"
-                  decoding="async"
-                  class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto" />
+                <picture>
+                  <source srcset="/images/devpalettes_zoom_180.webp" type="image/webp">
+                  <img src="/images/devpalettes_zoom_180.png"
+                    alt="Devpalettes Logo"
+                    width="20"
+                    height="20"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-5 h-5 sm:w-5 sm:h-5 object-contain mx-auto" />
+                </picture>
               </div>
               <span class="text-xl sm:text-2xl font-bold text-cyan-400">
                 Devpalettes
@@ -1013,15 +1048,15 @@ function renderFooter() {
             &copy; ${new Date().getFullYear()} Devpalettes. All rights reserved.
           </p>
           <div class="flex items-center gap-4">
-            <a href="https://x.com/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
-              <i class="fab fa-twitter text-lg sm:text-xl"></i>
-            </a>
-            <a href="https://github.com/Devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
-              <i class="fab fa-github text-lg sm:text-xl"></i>
-            </a>
-            <a href="https://www.instagram.com/devpalettes/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
-              <i class="fab fa-instagram text-lg sm:text-xl"></i>
-            </a>
+	            <a href="https://x.com/devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Twitter">
+	              <i class="fab fa-twitter text-lg sm:text-xl" aria-hidden="true"></i>
+	            </a>
+	            <a href="https://github.com/Devpalettes" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="GitHub">
+	              <i class="fab fa-github text-lg sm:text-xl" aria-hidden="true"></i>
+	            </a>
+	            <a href="https://www.instagram.com/devpalettes/" class="text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Instagram">
+	              <i class="fab fa-instagram text-lg sm:text-xl" aria-hidden="true"></i>
+	            </a>
           </div>
         </div>
       </div>
@@ -1042,14 +1077,14 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
 
   container.innerHTML = `
     <div class="glass-card p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-6 sm:mt-8 not-prose">
-      <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg flex-shrink-0">
-        CPH
+      <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg flex-shrink-0" aria-hidden="true">
+        DP
       </div>
-      <div class="flex-1 texflex items-center gap-2 sm:gap-3 group cursor-pointert-center sm:text-left">
+      <div class="flex-1 text-center sm:text-left">
         <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1">Written by</p>
         <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">${author}</h4>
         <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center sm:justify-start gap-2">
-          <i class="far fa-calendar-alt"></i>
+          <i class="far fa-calendar-alt" aria-hidden="true"></i>
           Updated on ${displayDate}
         </p>
         <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
@@ -1077,8 +1112,11 @@ document.addEventListener('DOMContentLoaded', () => {
   renderAuthorBio();
   Navbar.init();
   KeyboardShortcuts.init();
-  ScrollButtons.init();
-  CookieConsent.init();
+  const rIC = window.requestIdleCallback || function(cb){ return setTimeout(cb, 600); };
+  rIC(() => {
+    ScrollButtons.init();
+    CookieConsent.init();
+  });
   
   document.addEventListener('click', (e) => {
     if (e.target.closest('#theme-toggle')) {
@@ -1086,7 +1124,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
   
-  console.log('Devpalettes initialized successfully');
 });
 
 window.Devpalettes = {

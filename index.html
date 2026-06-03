@@ -25,7 +25,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,12 +33,12 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Color+Emoji&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="preload" href="/css/tailwind.min.css?v=4" as="style">
+  <link rel="stylesheet" href="/css/tailwind.min.css?v=4">
 
 
-  <link rel="preload" href="css/styles.css?v=2" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css?v=2"></noscript>
+  <link rel="preload" href="css/styles.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="css/styles.css?v=4"></noscript>
 
   <script type="application/ld+json">
   [
@@ -254,7 +254,7 @@
         <p class="text-center text-sm text-slate-500 mb-4">
           <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate new colors
         </p>
-        <div id="hero-palette" class="grid grid-cols-5 gap-2 rounded-2xl overflow-hidden shadow-2xl" role="list" aria-label="Live Palette Preview" style="height:80px;"></div>
+        <div id="hero-palette" class="grid grid-cols-5 gap-2 rounded-2xl overflow-hidden shadow-2xl" aria-label="Live Palette Preview" style="height:80px;"></div>
       </div>
     </div>
   </section>
@@ -268,7 +268,7 @@
         </p>
       </div>
       <div class="max-w-5xl mx-auto animate-on-scroll">
-        <div id="main-palette" class="grid grid-cols-5 gap-0 rounded-2xl overflow-hidden shadow-2xl mb-6" role="list" aria-label="Generated Palette" style="min-height:300px;"></div>
+        <div id="main-palette" class="grid grid-cols-5 gap-0 rounded-2xl overflow-hidden shadow-2xl mb-6" aria-label="Generated Palette" style="min-height:300px;"></div>
         <div class="flex flex-wrap items-center justify-center gap-4 animate-on-scroll">
           <button id="generate-btn" class="btn-primary btn-glow" aria-label="Generate new color palette">
             <i class="fas fa-sync-alt" aria-hidden="true"></i>
@@ -295,7 +295,7 @@
       </div>
       <div class="grid md:grid-cols-3 gap-6">
         <article class="glass-card shimmer-card p-4 animate-on-scroll">
-          <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4" role="list" aria-label="Earthy Sunset palette">
+          <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4" aria-label="Earthy Sunset palette">
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#264653;--block-glow-color:rgba(38,70,83,.5)" role="button" tabindex="0" aria-label="Copy color #264653" data-color="#264653"></div>
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#2a9d8f;--block-glow-color:rgba(42,157,143,.5)" role="button" tabindex="0" aria-label="Copy color #2a9d8f" data-color="#2a9d8f"></div>
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#e9c46a;--block-glow-color:rgba(233,196,106,.5)" role="button" tabindex="0" aria-label="Copy color #e9c46a" data-color="#e9c46a"></div>
@@ -311,7 +311,7 @@
           </div>
         </article>
         <article class="glass-card shimmer-card p-4 animate-on-scroll">
-          <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4" role="list" aria-label="Vibrant Retro palette">
+          <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4" aria-label="Vibrant Retro palette">
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#003049;--block-glow-color:rgba(0,48,73,.5)" role="button" tabindex="0" aria-label="Copy color #003049" data-color="#003049"></div>
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#d62828;--block-glow-color:rgba(214,40,40,.5)" role="button" tabindex="0" aria-label="Copy color #d62828" data-color="#d62828"></div>
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#f77f00;--block-glow-color:rgba(247,127,0,.5)" role="button" tabindex="0" aria-label="Copy color #f77f00" data-color="#f77f00"></div>
@@ -327,7 +327,7 @@
           </div>
         </article>
         <article class="glass-card shimmer-card p-4 animate-on-scroll">
-          <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4" role="list" aria-label="Forest Glow palette">
+          <div class="grid grid-cols-5 gap-1 rounded-xl overflow-hidden mb-4" aria-label="Forest Glow palette">
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#606c38;--block-glow-color:rgba(96,108,56,.5)" role="button" tabindex="0" aria-label="Copy color #606c38" data-color="#606c38"></div>
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#283618;--block-glow-color:rgba(40,54,24,.5)" role="button" tabindex="0" aria-label="Copy color #283618" data-color="#283618"></div>
             <div class="color-block palette-block-enhanced aspect-square cursor-pointer" style="background:#fefae0;--block-glow-color:rgba(254,250,224,.5)" role="button" tabindex="0" aria-label="Copy color #fefae0" data-color="#fefae0"></div>
@@ -663,14 +663,16 @@
 
   <div id="footer-container"></div>
 
-  <script src="js/main.js?v=2"></script>
+  <script src="js/main.js?v=4" defer></script>
   <script>
   (function() {
     'use strict';
 
-    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var isMobile = window.innerWidth < 768;
-    var currentColors = [];
+	    var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	    var isMobile = window.innerWidth < 768;
+	    var currentColors = [];
+
+	    function initHomeExperience() {
 
     function generateColors() {
       var colors = [];
@@ -904,7 +906,14 @@
         });
       });
     }
-  })();
+	    }
+
+	    if (window.Devpalettes) {
+	      initHomeExperience();
+	    } else {
+	      document.addEventListener('DOMContentLoaded', initHomeExperience, { once: true });
+	    }
+	  })();
   </script>
 </body>
 </html>
