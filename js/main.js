@@ -9,7 +9,6 @@
 
 const ThemeManager = {
   init() {
-    // Check for saved preference or system preference
     const savedTheme = localStorage.getItem('colorpallates-theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -17,25 +16,16 @@ const ThemeManager = {
       document.documentElement.classList.add('dark');
     }
     
-    // Listen for system theme changes
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
       if (!localStorage.getItem('colorpallates-theme')) {
         document.documentElement.classList.toggle('dark', e.matches);
       }
     });
-    
-    this.updateToggleIcon();
   },
   
   toggle() {
     const isDark = document.documentElement.classList.toggle('dark');
     localStorage.setItem('colorpallates-theme', isDark ? 'dark' : 'light');
-    this.updateToggleIcon();
-  },
-  
-  updateToggleIcon() {
-    // Icons are handled by Tailwind classes (dark:hidden / dark:block)
-    // No JS changes needed
   }
 };
 
@@ -44,7 +34,7 @@ const ThemeManager = {
 // ==========================================
 
 const CookieConsent = {
-  STORAGE_KEY: 'devpalettes-cookie-consent-v1', // accepted | rejected
+  STORAGE_KEY: 'devpalettes-cookie-consent-v1',
 
   get() {
     try { return localStorage.getItem(this.STORAGE_KEY); } catch { return null; }
@@ -64,10 +54,8 @@ const CookieConsent = {
   _applyGoogleConsent(choice) {
     const allowed = choice === 'accepted';
 
-    // Best-effort opt-out toggle for GA4
     window[`ga-disable-G-F252PEQ1JC`] = !allowed;
 
-    // Update Google Consent Mode if available
     try {
       if (typeof window.gtag === 'function') {
         window.gtag('consent', 'update', {
@@ -125,7 +113,6 @@ const CookieConsent = {
 
     document.body.appendChild(wrapper);
 
-    // Accessibility: Focus trap and Escape key handler
     var focusableElements = wrapper.querySelectorAll('button, a[href], input');
     var firstFocusable = focusableElements[0];
     var lastFocusable = focusableElements[focusableElements.length - 1];
@@ -178,7 +165,6 @@ const CookieConsent = {
       if (choice === 'accepted') ThirdPartyAnalytics.load();
       return;
     }
-    // Default to denied until user chooses (prevents accidental early init if any page includes gtag)
     window[`ga-disable-G-F252PEQ1JC`] = true;
     this.show();
   }
@@ -201,7 +187,6 @@ const ThirdPartyAnalytics = {
       window.dataLayer = window.dataLayer || [];
       window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
 
-      // Consent Mode defaults (granted only after user acceptance; banner already applied update)
       try {
         window.gtag('consent', 'default', {
           ad_storage: 'granted',
@@ -233,11 +218,9 @@ const Toast = {
   container: null,
   
   init() {
-    // Create container if it doesn't exist
     if (!document.querySelector('.toast-container')) {
       this.container = document.createElement('div');
       this.container.className = 'toast-container';
-      // Accessibility: Make toast announcements for screen readers
       this.container.setAttribute('role', 'status');
       this.container.setAttribute('aria-live', 'polite');
       this.container.setAttribute('aria-atomic', 'true');
@@ -263,7 +246,6 @@ const Toast = {
     
     this.container.appendChild(toast);
     
-    // Remove toast after duration
     setTimeout(() => {
       if (toast.parentNode) {
         toast.remove();
@@ -273,17 +255,10 @@ const Toast = {
 };
 
 const ColorUtils = {
-  // Generate random hex color
   randomHex() {
-    const letters = '0123456789abcdef';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
+    return '#' + Math.floor(Math.random() * 0x1000000).toString(16).padStart(6, '0');
   },
   
-  // Generate random HSL (better for pleasing colors)
   randomHSL(saturation = null, lightness = null) {
     const h = Math.floor(Math.random() * 360);
     const s = saturation ?? Math.floor(Math.random() * 30) + 50;
@@ -291,7 +266,6 @@ const ColorUtils = {
     return { h, s, l };
   },
   
-  // HSL to HEX
   hslToHex(h, s, l) {
     l /= 100;
     const a = s * Math.min(l, 1 - l) / 100;
@@ -303,7 +277,6 @@ const ColorUtils = {
     return `#${f(0)}${f(8)}${f(4)}`;
   },
   
-  // HEX to RGB
   hexToRgb(hex) {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result ? {
@@ -313,7 +286,6 @@ const ColorUtils = {
     } : null;
   },
   
-  // RGB to HEX
   rgbToHex(r, g, b) {
     return '#' + [r, g, b].map(x => {
       const hex = x.toString(16);
@@ -473,6 +445,51 @@ const CopyLinkButton = {
   }
 };
 
+// ==========================================
+// Shared Scroll Handler (rAF-batched)
+// Batches all layout reads before writes
+// to eliminate forced reflow during scroll.
+// ==========================================
+const ScrollManager = {
+  _ticking: false,
+  _handlers: [],
+
+  register(fn) {
+    this._handlers.push(fn);
+  },
+
+  _process() {
+    // Batch all layout reads upfront, then call handlers (which write)
+    const scrollY = window.scrollY;
+    const windowHeight = window.innerHeight;
+    const docHeight = document.body.scrollHeight;
+    const state = { scrollY, windowHeight, docHeight };
+    for (let i = 0; i < this._handlers.length; i++) {
+      this._handlers[i](state);
+    }
+  },
+
+  init() {
+    window.addEventListener('scroll', () => {
+      if (!this._ticking) {
+        this._ticking = true;
+        requestAnimationFrame(() => {
+          this._process();
+          this._ticking = false;
+        });
+      }
+    }, { passive: true });
+  },
+
+  // Call synchronously to set initial state without waiting for scroll
+  triggerNow() {
+    this._process();
+  }
+};
+
+// ==========================================
+// Navbar
+// ==========================================
 
 const Navbar = {
   _isToggling: false,
@@ -482,19 +499,22 @@ const Navbar = {
     this.hamburger = document.querySelector('.hamburger');
     this.mobileMenu = document.querySelector('.mobile-menu');
 
-    // Scroll effect
-    window.addEventListener('scroll', () => this.handleScroll());
+    // Register with ScrollManager instead of adding own scroll listener
+    ScrollManager.register((state) => this.handleScroll(state.scrollY));
+    this.handleScroll(window.scrollY);
 
     // Desktop dropdowns
     this.initDropdowns();
 
-    // Mobile menu toggle
+    // Mobile menu toggle + delegation (replaces per-link/per-button listeners)
     if (this.hamburger && this.mobileMenu) {
 
+      // Double rAF avoids forced synchronous layout from void offsetHeight
       this.mobileMenu.classList.add('no-transition');
-      void this.mobileMenu.offsetHeight;
       requestAnimationFrame(() => {
-        this.mobileMenu.classList.remove('no-transition');
+        requestAnimationFrame(() => {
+          this.mobileMenu.classList.remove('no-transition');
+        });
       });
 
       this.hamburger.addEventListener('click', (e) => {
@@ -503,25 +523,28 @@ const Navbar = {
         this.toggleMobile();
       });
 
-      // Close on link click
-      this.mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => this.closeMobile());
-      });
-
-      // Mobile dropdown toggles
-      this.mobileMenu.querySelectorAll('[data-mobile-dropdown-button]').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+      // Single delegated listener for mobile menu links + dropdown buttons
+      this.mobileMenu.addEventListener('click', (e) => {
+        // Mobile dropdown toggle
+        const mobileBtn = e.target.closest('[data-mobile-dropdown-button]');
+        if (mobileBtn) {
           e.stopPropagation();
-          const key = btn.getAttribute('data-mobile-dropdown-button');
+          const key = mobileBtn.getAttribute('data-mobile-dropdown-button');
           const menu = this.mobileMenu.querySelector(`[data-mobile-dropdown-menu="${key}"]`);
           if (!menu) return;
-          
+
           const isOpen = menu.classList.contains('flex');
           menu.classList.toggle('hidden', isOpen);
           menu.classList.toggle('flex', !isOpen);
           menu.classList.toggle('flex-col', !isOpen);
-          btn.setAttribute('aria-expanded', String(!isOpen));
-        });
+          mobileBtn.setAttribute('aria-expanded', String(!isOpen));
+          return;
+        }
+
+        // Close on any link click inside mobile menu
+        if (e.target.closest('a')) {
+          this.closeMobile();
+        }
       });
     }
   },
@@ -540,6 +563,7 @@ const Navbar = {
       });
     };
 
+    // Single delegated document click handler for all dropdown interactions
     document.addEventListener('click', (e) => {
       const button = e.target.closest('[data-dropdown-button]');
       if (button) {
@@ -555,6 +579,12 @@ const Navbar = {
         return;
       }
 
+      // Close on link click inside dropdown (replaces per-link listeners)
+      if (e.target.closest('[data-dropdown] a')) {
+        closeAll();
+        return;
+      }
+
       if (!e.target.closest('[data-dropdown]')) {
         closeAll();
       }
@@ -563,17 +593,11 @@ const Navbar = {
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeAll();
     });
-
-    dropdowns.forEach(dropdown => {
-      dropdown.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => closeAll());
-      });
-    });
   },
 
-  handleScroll() {
+  handleScroll(scrollY) {
     if (this.navbar) {
-      this.navbar.classList.toggle('scrolled', window.scrollY > 20);
+      this.navbar.classList.toggle('scrolled', scrollY > 20);
     }
   },
 
@@ -584,7 +608,6 @@ const Navbar = {
     const isCurrentlyOpen = this.mobileMenu.classList.contains('translate-x-0');
 
     if (isCurrentlyOpen) {
-      // Close the menu
       this.mobileMenu.classList.remove('translate-x-0');
       this.mobileMenu.classList.add('translate-x-full');
       this.hamburger.classList.remove('active');
@@ -592,7 +615,6 @@ const Navbar = {
       this.hamburger.setAttribute('aria-label', 'Open menu');
       document.body.style.overflow = '';
     } else {
-      // Open the menu
       this.mobileMenu.classList.remove('translate-x-full');
       this.mobileMenu.classList.add('translate-x-0');
       this.hamburger.classList.add('active');
@@ -601,7 +623,6 @@ const Navbar = {
       document.body.style.overflow = 'hidden';
     }
 
-    // Release the guard after the CSS transition finishes (300ms + 50ms buffer)
     setTimeout(() => {
       this._isToggling = false;
     }, 350);
@@ -733,8 +754,9 @@ const KeyboardShortcuts = {
   
   init() {
     document.addEventListener('keydown', (e) => {
-      const isTyping = ['INPUT', 'TEXTAREA'].includes(e.target.tagName) || 
-                       e.target.isContentEditable;
+      const target = e.target;
+      const isTyping = target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || 
+                       target.isContentEditable;
       
       if (e.code === 'Space' && !isTyping && this.callbacks.space) {
         e.preventDefault();
@@ -742,11 +764,9 @@ const KeyboardShortcuts = {
       }
       
       if (!isTyping) {
-        Object.entries(this.callbacks).forEach(([key, callback]) => {
-          if (e.key.toLowerCase() === key.toLowerCase()) {
-            callback(e);
-          }
-        });
+        // Direct property lookup avoids Object.entries array allocation per keypress
+        const callback = this.callbacks[e.key.toLowerCase()];
+        if (callback) callback(e);
       }
     });
   },
@@ -786,34 +806,41 @@ const ScrollButtons = {
   btnBottom: null,
 
   init() {
+    // DocumentFragment: single reflow instead of two separate appendChild calls
+    const fragment = document.createDocumentFragment();
+
     this.btnTop = document.createElement('button');
     this.btnTop.innerHTML = '<i class="fas fa-arrow-up"></i>';
     this.btnTop.className = 'back-to-top';
     this.btnTop.setAttribute('aria-label', 'Back to top');
-    document.body.appendChild(this.btnTop);
-
     this.btnTop.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
+    fragment.appendChild(this.btnTop);
 
     this.btnBottom = document.createElement('button');
     this.btnBottom.innerHTML = '<i class="fas fa-arrow-down"></i>';
     this.btnBottom.className = 'back-to-bottom';
     this.btnBottom.setAttribute('aria-label', 'Back to bottom');
-    document.body.appendChild(this.btnBottom);
-
     this.btnBottom.addEventListener('click', () => {
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     });
+    fragment.appendChild(this.btnBottom);
 
-    window.addEventListener('scroll', () => this.handleScroll());
-    this.handleScroll();
+    document.body.appendChild(fragment);
+
+    // Register with ScrollManager — reads are batched in rAF, no per-scroll forced reflow
+    ScrollManager.register((state) => this.updateVisibility(state));
+
+    // Set initial visibility with a synchronous read (one-time cost during init)
+    this.updateVisibility({
+      scrollY: window.scrollY,
+      windowHeight: window.innerHeight,
+      docHeight: document.body.scrollHeight
+    });
   },
 
-  handleScroll() {
-    const scrollY = window.scrollY;
-    const windowHeight = window.innerHeight;
-    const docHeight = document.body.scrollHeight;
+  updateVisibility({ scrollY, windowHeight, docHeight }) {
     const threshold = 100;
     const isAtTop = scrollY < threshold;
     const isAtBottom = (scrollY + windowHeight) >= (docHeight - threshold);
@@ -1099,24 +1126,34 @@ document.addEventListener('DOMContentLoaded', () => {
   const main = document.querySelector('main');
   if (main && !main.id) main.id = 'main-content';
 
+  // ── Critical path: above-the-fold, must render before paint ──
   ThemeManager.init();
+  renderNavbar();
+  ScrollManager.init();
+  Navbar.init();
+  ScrollManager.triggerNow(); // Set initial navbar state for restored scroll position
+
+  // ── Quick setup: lightweight listener registration ──
   Toast.init();
   CopyLinkButton.init();
-  renderNavbar();
-  renderFooter();
-  renderAuthorBio();
-  Navbar.init();
   KeyboardShortcuts.init();
-  ScrollButtons.init();
-  CookieConsent.init();
-  
+
   document.addEventListener('click', (e) => {
     if (e.target.closest('#theme-toggle')) {
       ThemeManager.toggle();
     }
   });
-  
-  console.log('Devpalettes initialized successfully');
+
+  // ── Deferred: below-the-fold and non-critical (reduces long task / TBT) ──
+  const deferInit = window.requestIdleCallback || (cb => setTimeout(cb, 1));
+  deferInit(() => {
+    renderFooter();
+    renderAuthorBio();
+    ScrollButtons.init();
+    CookieConsent.init();
+
+    console.log('Devpalettes initialized successfully');
+  });
 });
 
 window.Devpalettes = {
