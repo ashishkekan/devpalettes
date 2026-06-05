@@ -125,6 +125,33 @@ const CookieConsent = {
 
     document.body.appendChild(wrapper);
 
+    // Accessibility: Focus trap and Escape key handler
+    var focusableElements = wrapper.querySelectorAll('button, a[href], input');
+    var firstFocusable = focusableElements[0];
+    var lastFocusable = focusableElements[focusableElements.length - 1];
+
+    wrapper.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        CookieConsent.set('rejected');
+        CookieConsent._applyGoogleConsent('rejected');
+        CookieConsent.hide();
+        return;
+      }
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === firstFocusable) {
+            e.preventDefault();
+            lastFocusable.focus();
+          }
+        } else {
+          if (document.activeElement === lastFocusable) {
+            e.preventDefault();
+            firstFocusable.focus();
+          }
+        }
+      }
+    });
+
     wrapper.addEventListener('click', (e) => {
       const btn = e.target.closest('button[data-consent]');
       if (!btn) return;
@@ -210,6 +237,10 @@ const Toast = {
     if (!document.querySelector('.toast-container')) {
       this.container = document.createElement('div');
       this.container.className = 'toast-container';
+      // Accessibility: Make toast announcements for screen readers
+      this.container.setAttribute('role', 'status');
+      this.container.setAttribute('aria-live', 'polite');
+      this.container.setAttribute('aria-atomic', 'true');
       document.body.appendChild(this.container);
     } else {
       this.container = document.querySelector('.toast-container');
@@ -853,7 +884,6 @@ function renderNavbar() {
   }).join('');
 
   const navHTML = `
-    <a href="#main-content" class="skip-link">Skip to content</a>
     <nav class="navbar glass shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_4px_25px_rgba(255,255,255,0.2)]" aria-label="Primary navigation">
       <div class="mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-14 sm:h-11">
