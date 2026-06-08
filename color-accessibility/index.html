@@ -3,32 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Color Accessibility Tester - Readability Checker</title>
-  <meta name="description" content="Free color accessibility tester to check text readability. Measure brightness difference between colors for accessible, legible UI designs.">
-  <meta name="author" content="Devpalettes">
+  <meta name="robots" content="index, follow">
+  <title>Color Accessibility Tester – Brightness & Readability Checker (2025) | DevPalettes</title>
+  <meta name="description" content="Free color accessibility tester. Check brightness difference between text and background colors instantly. Get a readability score from 0–255 and see a live preview. No signup required.">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/color-accessibility-tester/">
 
-  <meta property="og:title" content="Color Accessibility Tester - Readability Checker">
-  <meta property="og:description" content="Free color accessibility tester to check text readability. Measure brightness difference between colors for accessible, legible UI designs.">
+  <meta property="og:title" content="Color Accessibility Tester – Brightness & Readability Checker">
+  <meta property="og:description" content="Free color accessibility tester. Check brightness difference between text and background colors instantly. Get a readability score and live preview.">
   <meta property="og:url" content="https://devpalettes.com/color-accessibility-tester/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/color-accessibility-tester-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="DevPalettes">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Accessibility Tester - Readability Checker">
-  <meta name="twitter:description" content="Free color accessibility tester to check text readability. Measure brightness difference between colors for accessible, legible UI designs.">
+  <meta name="twitter:url" content="https://devpalettes.com/color-accessibility-tester/">
+  <meta name="twitter:title" content="Color Accessibility Tester – Brightness & Readability Checker">
+  <meta name="twitter:description" content="Free color accessibility tester. Check brightness difference between text and background colors instantly.">
   <meta name="twitter:image" content="https://devpalettes.com/images/color-accessibility-tester-preview.png">
 
-  <!-- JSON-LD: WebApplication -->
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/#tools"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Color Accessibility Tester",
+        "item": "https://devpalettes.com/color-accessibility-tester/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- WebApplication Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Color Accessibility Tester",
-    "description": "Free color accessibility tester to check text readability. Measure brightness difference between colors for accessible, legible UI designs.",
+    "description": "Free color accessibility tester to check text readability by measuring brightness difference between colors using the YIQ formula.",
     "url": "https://devpalettes.com/color-accessibility-tester/",
     "applicationCategory": "DesignApplication",
-    "operatingSystem": "Web Browser",
+    "operatingSystem": "Any",
+    "creator": {
+      "@type": "Organization",
+      "name": "DevPalettes",
+      "url": "https://devpalettes.com"
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -37,7 +75,7 @@
   }
   </script>
 
-  <!-- JSON-LD: FAQ -->
+  <!-- Expanded FAQPage Schema (matches on-page FAQ) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -48,7 +86,7 @@
         "name": "What is color accessibility?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Color accessibility is the practice of designing text and UI elements so they are readable and distinguishable for all users, including those with visual impairments, color blindness, or situational challenges like screen glare. It involves ensuring sufficient contrast, brightness difference, and color independence in your design."
+          "text": "Color accessibility is the practice of designing text and UI elements so they are readable and distinguishable for all users, including those with visual impairments, color blindness, or situational challenges like screen glare."
         }
       },
       {
@@ -56,7 +94,7 @@
         "name": "What is brightness difference?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Brightness difference is a calculation using the YIQ color model that measures how far apart two colors are in perceived brightness. The formula weights red at 299, green at 587, and blue at 114 to match human eye sensitivity. A difference above 125 is recommended for readable text."
+          "text": "Brightness difference is a calculation using the YIQ color model that measures how far apart two colors are in perceived brightness. The formula weights red at 299, green at 587, and blue at 114. A difference above 125 is recommended for readable text."
         }
       },
       {
@@ -64,70 +102,128 @@
         "name": "What is a good readability score?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A brightness difference of 125 or higher is considered good for readability. Scores below 125 indicate the text and background are too similar in brightness, making text hard to read—especially for users with low vision or in bright environments."
+          "text": "A brightness difference of 125 or higher is considered good for readability. Scores below 125 indicate the text and background are too similar in brightness."
         }
       },
       {
         "@type": "Question",
-        "name": "Is brightness better than contrast ratio?",
+        "name": "Is brightness difference better than contrast ratio?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Neither is strictly better—they measure different things. Contrast ratio (WCAG standard) accounts for relative luminance and is the legal compliance benchmark. Brightness difference is a simpler, faster check using the YIQ formula. For thorough accessibility testing, use both methods together."
+          "text": "Neither is better — they measure different things. Contrast ratio is the legal WCAG compliance benchmark. Brightness difference is a simpler quick-check method. For thorough testing, use both."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this color accessibility tester free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup required. All calculations run in your browser with no data sent to any server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the YIQ color model?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "YIQ is a color space used in television broadcasting that separates luminance (Y) from chrominance (I and Q). The brightness formula weights red at 299, green at 587, and blue at 114 to approximate how the human eye perceives brightness."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I fix a failing brightness score?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Darken the text color, lighten the background color, or both. Increasing the gap between the two brightness values raises the score. If darkening text isn't an option, try adding a semi-transparent overlay behind the text to create more contrast."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does brightness difference account for color blindness?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Partially. Brightness difference measures luminance contrast, which helps colorblind users distinguish elements even when they cannot see the hue difference. However, it does not test whether two colors are distinguishable from each other by people with specific types of color blindness. For that, use a dedicated color blindness simulator."
         }
       }
     ]
   }
   </script>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css.all.min.css"></noscript>
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
+  <link rel="preload" href="/css/tailwind.min.css" as="style" fetchpriority="high">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
-  <div id="navbar-container"></div>
-  
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+
+  <!-- Skip to Content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to main content</a>
+
+  <!-- Screen reader live region -->
+  <div id="a11y-announce" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
+
+  <main id="main-content" class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer" aria-hidden="true">Decorative background animation</canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-4 text-sm text-slate-500 dark:text-slate-400" style="margin-top: 45px;">
+        <ol class="flex items-center gap-1 flex-wrap" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/" itemprop="item" class="hover:text-emerald-500 transition-colors"><span itemprop="name">Home</span></a>
+            <meta itemprop="position" content="1"/>
+          </li>
+          <li class="mx-1" aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/#tools" itemprop="item" class="hover:text-emerald-500 transition-colors"><span itemprop="name">Tools</span></a>
+            <meta itemprop="position" content="2"/>
+          </li>
+          <li class="mx-1" aria-hidden="true">/</li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" aria-current="page">
+            <span itemprop="name" class="text-slate-800 dark:text-slate-200 font-medium">Color Accessibility Tester</span>
+            <meta itemprop="position" content="3"/>
+          </li>
+        </ol>
+      </nav>
+
       <!-- Header -->
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <header class="text-center mb-8">
         <h1 class="text-4xl font-bold mb-4">Color Accessibility Tester</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-4">
           Check brightness difference to ensure text readability for all users.
         </p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
-      </div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
+      </header>
 
-      <!-- ADDED: Content-first SEO section ABOVE the tool UI -->
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8  max-w-7xl mx-auto">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3">What Is Color Accessibility?</h2>
+      <!-- Content-first SEO section -->
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="what-is-heading">
+        <h2 id="what-is-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is Color Accessibility?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Color accessibility is the practice of designing digital interfaces so that text, icons, and interactive elements are readable and distinguishable for all users — regardless of visual ability. This includes people with color blindness, low vision, age-related vision decline, and situational impairments like viewing a screen in direct sunlight. Accessible design does not mean sacrificing aesthetics; it means making informed color choices so that content reaches the widest possible audience.
         </p>
@@ -138,118 +234,117 @@
           When you build a <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color palette</a>, testing each combination for accessibility should be a standard step in your workflow, not an afterthought. Pair this tool with a <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color format converter</a> to move between HEX, RGB, and HSL while you iterate.
         </p>
       </section>
-      <!-- END ADDED -->
-      
+
       <div class="grid lg:grid-cols-2 gap-8">
-        
-        
-        <div class="space-y-6 ">
-          
+
+        <!-- Left: Inputs -->
+        <div class="space-y-6">
+
           <div class="glass-card p-6 shimmer-card">
-            <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
-              <i class="fas fa-sliders-h text-emerald-500"></i>
+            <h2 class="font-bold mb-6 text-lg flex items-center gap-2" id="inputs-heading">
+              <i class="fas fa-sliders-h text-emerald-500" aria-hidden="true"></i>
               Color Inputs
-            </h3>
-            
+            </h2>
+
             <div class="grid grid-cols-2 gap-6 mb-6">
                <!-- Text Color -->
                <div>
-                  <label class="block text-sm font-semibold mb-2 text-slate-500">Text Color</label>
+                  <label for="text-color" class="block text-sm font-semibold mb-2 text-slate-500">Text Color</label>
                   <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                     <input type="color" id="text-color" value="#000000" class="absolute inset-0 w-full h-full cursor-pointer">
+                     <input type="color" id="text-color" value="#000000" class="absolute inset-0 w-full h-full cursor-pointer" aria-describedby="text-label">
                      <div class="absolute bottom-1 right-1 bg-black/30 text-white text-xs font-mono px-2 py-0.5 rounded pointer-events-none">
                         <span id="text-label">#000000</span>
                      </div>
                   </div>
                </div>
-               
+
                <!-- Background Color -->
                <div>
-                  <label class="block text-sm font-semibold mb-2 text-slate-500">Background</label>
+                  <label for="bg-color" class="block text-sm font-semibold mb-2 text-slate-500">Background</label>
                   <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                     <input type="color" id="bg-color" value="#ffffff" class="absolute inset-0 w-full h-full cursor-pointer">
+                     <input type="color" id="bg-color" value="#ffffff" class="absolute inset-0 w-full h-full cursor-pointer" aria-describedby="bg-label">
                      <div class="absolute bottom-1 right-1 bg-black/30 text-white text-xs font-mono px-2 py-0.5 rounded pointer-events-none">
                         <span id="bg-label">#FFFFFF</span>
                      </div>
                   </div>
                </div>
             </div>
-            
+
             <div class="flex gap-3">
-               <button onclick="switchColors()" class="btn-secondary flex-1 justify-center" aria-label="Switch Colors">
-                  <i class="fas fa-exchange-alt mr-2"></i>Switch
+               <button type="button" onclick="switchColors()" class="btn-secondary flex-1 justify-center" aria-label="Swap text and background colors">
+                  <i class="fas fa-exchange-alt mr-2" aria-hidden="true"></i>Switch
                </button>
-               <button onclick="randomTest()" class="btn-primary btn-glow flex-1 justify-center" aria-label="Random Colors">
-                  <i class="fas fa-random mr-2"></i>Random
+               <button type="button" onclick="randomTest()" class="btn-primary btn-glow flex-1 justify-center" aria-label="Test with random colors">
+                  <i class="fas fa-random mr-2" aria-hidden="true"></i>Random
                </button>
             </div>
           </div>
-          
+
           <!-- Info Card -->
           <div class="glass-card p-6 shimmer-card text-sm text-slate-500 dark:text-slate-400">
              <div class="flex items-start gap-3">
-                <i class="fas fa-info-circle text-indigo-500 mt-1"></i>
+                <i class="fas fa-info-circle text-indigo-500 mt-1" aria-hidden="true"></i>
                 <div>
                   <strong class="text-slate-700 dark:text-slate-200">Brightness Difference Method:</strong>
                   <p class="mt-1">This tool calculates the brightness difference between text and background. A difference greater than 125 is recommended for good readability.</p>
                 </div>
              </div>
           </div>
-          
+
         </div>
-        
+
         <!-- Right: Results & Preview -->
-        <div class="space-y-6 ">
-          
+        <div class="space-y-6">
+
           <!-- Live Preview -->
           <div class="glass-card p-6 shimmer-card">
-             <h3 class="text-xs font-semibold text-slate-500 mb-3 uppercase tracking-wider">Live Preview</h3>
-             <div id="preview-box" class="p-8 rounded-xl transition-colors text-center" style="background-color: #ffffff; color: #000000;">
-                <h2 class="text-2xl font-bold mb-2">Readability Sample</h2>
+             <h3 class="text-xs font-semibold text-slate-500 mb-3 uppercase tracking-wider" id="preview-heading">Live Preview</h3>
+             <div id="preview-box" class="p-8 rounded-xl transition-colors text-center" style="background-color: #ffffff; color: #000000;" role="img" aria-label="Text readability preview showing sample text in chosen colors">
+                <div class="text-2xl font-bold mb-2">Readability Sample</div>
                 <p class="text-sm opacity-80">The quick brown fox jumps over the lazy dog.</p>
              </div>
           </div>
-          
+
           <!-- Score Card -->
-          <div class="glass-card p-6 shimmer-card">
+          <div class="glass-card p-6 shimmer-card" aria-labelledby="score-heading">
+             <div class="sr-only" id="score-heading">Accessibility Score Results</div>
              <div class="flex justify-between items-end mb-4">
                 <div>
                    <span class="text-xs text-slate-500 block uppercase font-semibold">Brightness Difference</span>
-                   <div id="score-value" class="text-4xl font-extrabold text-slate-800 dark:text-white">255</div>
+                   <div id="score-value" class="text-4xl font-extrabold text-slate-800 dark:text-white" aria-live="polite">255</div>
                 </div>
-                <div id="status-badge" class="px-3 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300">
+                <div id="status-badge" class="px-3 py-1 rounded-full text-sm font-bold bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300" aria-live="polite">
                    Good Readability
                 </div>
              </div>
-             
+
              <!-- Progress Bar -->
-             <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-4 overflow-hidden">
+             <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-4 overflow-hidden" role="progressbar" aria-valuenow="255" aria-valuemin="0" aria-valuemax="255" aria-label="Brightness difference score" id="progress-container">
                 <div id="progress-bar" class="h-full rounded-full transition-all duration-500 bg-emerald-500" style="width: 100%"></div>
              </div>
-             <div class="flex justify-between text-xs text-slate-400 mt-1">
+             <div class="flex justify-between text-xs text-slate-400 mt-1" aria-hidden="true">
                 <span>0 (Poor)</span>
                 <span>125 (Min)</span>
                 <span>255 (Best)</span>
              </div>
           </div>
-          
+
         </div>
-        
+
       </div>
 
       <!-- SEO Content Section -->
-      <section class="mt-16  space-y-12">
+      <section class="mt-16 space-y-12" aria-label="Guide to color accessibility">
+
         <div class="glass-card p-8 shimmer-card">
           <div class="prose dark:prose-invert max-w-none">
 
-            <!-- CHANGED: "What is Color Accessibility?" section moved above tool UI — removed from here to avoid duplication -->
-
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What Is Brightness Difference?</h2>
+            <h2 class="text-2xl font-bold mb-4 text-slate-900 dark:text-white" id="brightness-heading">What Is Brightness Difference?</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               Brightness difference is a straightforward calculation that measures how far apart two colors are in perceived brightness. It uses the YIQ color model, which weights the red, green, and blue channels at 299, 587, and 114 respectively — reflecting the human eye's greater sensitivity to green light. The formula produces a single brightness value for each color, and the absolute difference between the two values gives you the score. The result ranges from 0 (identical brightness, completely unreadable) to 255 (maximum difference, like black on white). A threshold of 125 is widely recommended as the minimum for readable text. If you are working with color values that need <a href="/converter/" class="text-emerald-500 hover:underline">format conversion between HEX, RGB, and HSL</a>, use our converter tool to keep your workflow efficient before testing.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Contrast Ratio vs Brightness Difference</h2>
+            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white" id="contrast-heading">Contrast Ratio vs Brightness Difference</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               These are two different methods for evaluating color readability, and understanding the distinction helps you use the right tool for the right job. Contrast ratio (used in WCAG standards) calculates relative luminance using a non-linear formula that accounts for how the human eye perceives light intensity. It produces a ratio like 4.5:1 and is the legally recognized benchmark for accessibility compliance. Brightness difference uses the simpler YIQ linear formula and produces a single number from 0 to 255. It is faster to compute and easier to understand, making it a great quick-check method during the design process.
             </p>
@@ -257,7 +352,7 @@
               The key difference is that contrast ratio can catch issues that brightness difference misses, and vice versa. Two colors might have adequate brightness difference but poor contrast ratio because of how the non-linear luminance formula weights dark colors differently. For thorough accessibility testing, use both methods. Run your combinations through a WCAG contrast checker for compliance, and use this brightness tester as a fast sanity check during rapid prototyping. Following <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">color palette best practices from the start</a> reduces the number of failed tests later.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Readability Matters in UI/UX</h2>
+            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white" id="why-readability-heading">Why Readability Matters in UI/UX</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               Readability directly impacts user experience metrics. Studies show that users leave a webpage within 3 seconds if they cannot easily read the content. Poor color contrast increases cognitive load, causes eye strain, and dramatically reduces time-on-page. For e-commerce sites, unreadable product descriptions or unclear CTAs directly translate to lost revenue. In SaaS dashboards, low-contrast data labels lead to misinterpretation and errors. Beyond usability, accessibility is a legal requirement in many regions — ADA, Section 508, and the European Accessibility Act all reference color readability standards. Investing a few seconds in testing each color pair prevents costly redesigns and legal risk down the line.
             </p>
@@ -265,13 +360,13 @@
           </div>
         </div>
 
-        <!-- ADDED: Benefits section -->
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">Benefits of Testing Color Accessibility</h2>
+        <!-- Benefits section -->
+        <div class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+          <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Testing Color Accessibility</h2>
           <div class="grid sm:grid-cols-2 gap-6 mt-6">
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-universal-access text-emerald-500"></i>
+                   <i class="fas fa-universal-access text-emerald-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Reach More Users</h3>
@@ -280,7 +375,7 @@
              </div>
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-gavel text-blue-500"></i>
+                   <i class="fas fa-gavel text-blue-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Stay Compliant</h3>
@@ -289,7 +384,7 @@
              </div>
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-bolt text-purple-500"></i>
+                   <i class="fas fa-bolt text-purple-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Faster Design Decisions</h3>
@@ -298,7 +393,7 @@
              </div>
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-eye text-amber-500"></i>
+                   <i class="fas fa-eye text-amber-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Reduce Eye Strain</h3>
@@ -308,9 +403,9 @@
           </div>
         </div>
 
-        <!-- ADDED: How to Use section -->
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">How to Use This Color Accessibility Tester</h2>
+        <!-- How to Use section -->
+        <div class="glass-card p-8 shimmer-card" aria-labelledby="howto-heading">
+          <h2 id="howto-heading" class="text-2xl font-bold mb-4">How to Use This Color Accessibility Tester</h2>
           <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
              <li><strong>Pick your text color:</strong> Click the left color swatch to open your browser's color picker and choose the color you plan to use for text or foreground elements.</li>
              <li><strong>Pick your background color:</strong> Click the right color swatch to choose the background color behind the text.</li>
@@ -322,9 +417,9 @@
           </ol>
         </div>
 
-        <!-- ADDED: Use Cases section -->
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">When to Use This Tool</h2>
+        <!-- Use Cases section -->
+        <div class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+          <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">When to Use This Tool</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
              Use this brightness difference tester during early design stages when you are rapidly iterating on color choices. Here are the most common scenarios where a quick accessibility check saves time and prevents problems:
           </p>
@@ -338,9 +433,22 @@
           </ul>
         </div>
 
-        <!-- ADDED: "Why I Built This Tool" section for human trust signal -->
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+        <!-- Who Is This For -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="who-for-heading">
+          <h2 id="who-for-heading" class="text-2xl font-bold mb-6">Who Should Use This Color Accessibility Tester?</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">This tool solves real readability problems across a range of roles and project types:</p>
+          <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-3">
+            <li><strong>UI/UX designers</strong> who need to verify that every text-background pair in their design system meets readability thresholds before handing off to developers.</li>
+            <li><strong>Frontend developers</strong> implementing color themes and dark mode variants, who want a quick pass/fail check without opening a full WCAG audit tool for every combination.</li>
+            <li><strong>Brand designers</strong> creating style guides that specify text and background color pairings, and who need to document that each pairing is accessibility-compliant.</li>
+            <li><strong>QA engineers and accessibility auditors</strong> running spot-checks on color choices during the testing phase, before a product ships with unreadable text.</li>
+            <li><strong>Content creators and bloggers</strong> choosing text and background colors for featured images, social media graphics, and email templates where readability directly affects engagement.</li>
+          </ul>
+        </section>
+
+        <!-- Why I Built This Tool -->
+        <div class="glass-card p-8 shimmer-card" aria-labelledby="story-heading">
+          <h2 id="story-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
              I was reviewing a client's website after launch and realized the light gray text on their off-white background was nearly invisible on my laptop screen in the afternoon. It looked fine on my calibrated monitor in a dark room, but in real-world conditions it was unreadable. The client had approved the design, development was done, and fixing it meant reworking the entire color system.
           </p>
@@ -352,9 +460,10 @@
           </p>
         </div>
 
-        <div class="glass-card p-8 shimmer-card">
+        <!-- Expanded FAQ Section -->
+        <div class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
           <div class="prose dark:prose-invert max-w-none">
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-5">
                <div>
                   <h3 class="font-semibold mb-1">What is color accessibility?</h3>
@@ -376,13 +485,25 @@
                   <h3 class="font-semibold mb-1">Is this color accessibility tester free?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">Yes, completely free with no signup required. Pick your colors, check the score, and iterate — that is it. All calculations run in your browser with no data sent to any server.</p>
                </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What is the YIQ color model?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">YIQ is a color space used in television broadcasting that separates luminance (Y) from chrominance (I and Q). The brightness formula weights red at 299, green at 587, and blue at 114 to approximate how the human eye perceives brightness, since the eye is most sensitive to green light.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How do I fix a failing brightness score?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Darken the text color, lighten the background color, or both. Increasing the gap between the two brightness values raises the score. If darkening text is not an option, try adding a semi-transparent overlay behind the text to create more visual contrast.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Does brightness difference account for color blindness?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Partially. Brightness difference measures luminance contrast, which helps colorblind users distinguish elements even when they cannot see the hue difference. However, it does not test whether two colors are distinguishable from each other by people with specific types of color blindness. For that, use a dedicated color blindness simulator.</p>
+               </div>
             </div>
           </div>
         </div>
 
         <!-- Related Tools -->
-        <section class="glass-card p-8 shimmer-card text-center">
-           <h2 class="text-2xl font-bold mb-4">Explore More Color & Design Tools</h2>
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+           <h2 id="related-heading" class="text-2xl font-bold mb-4">Explore More Color & Design Tools</h2>
            <p class="text-slate-600 dark:text-slate-400 mb-6">Tested your colors? Try these tools to build and refine your full design system:</p>
            <div class="flex flex-wrap justify-center gap-3">
               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
@@ -394,48 +515,80 @@
         </section>
 
         <!-- Social Sharing Section -->
-        <!-- CHANGED: Updated share URLs to point to this specific tool page -->
-        <section class="glass-card p-8 shimmer-card text-center">
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
           <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+            <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
             <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
             <div class="flex items-center justify-center gap-3 flex-wrap">
               <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/color-accessibility-tester/&text=Check%20color%20accessibility%20and%20brightness%20difference%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                <i class="fab fa-x-twitter"></i> Twitter
+                <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
               </a>
               <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/color-accessibility-tester/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                <i class="fab fa-facebook-f"></i> Facebook
+                <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
               </a>
               <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/color-accessibility-tester/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                <i class="fab fa-linkedin-in"></i> LinkedIn
+                <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
               </a>
               <a href="https://wa.me/?text=Check%20out%20this%20free%20color%20accessibility%20tester%20https://devpalettes.com/color-accessibility-tester/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
               </a>
               <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/color-accessibility-tester/&description=Free%20color%20accessibility%20tester%20tool" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                <i class="fab fa-pinterest-p"></i> Pinterest
+                <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
               </a>
-              <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                <i class="fas fa-link"></i> Copy Link
+              <button type="button" id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                <i class="fas fa-link" aria-hidden="true"></i> Copy Link
               </button>
             </div>
           </div>
         </section>
 
-       <div class="text-center py-10 mt-4">
-          <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+        <!-- Enhanced Trust Signal -->
+        <div class="text-center py-10 mt-4">
+          <div class="inline-flex flex-col items-center gap-3 px-6 py-4 rounded-2xl bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <div class="flex items-center gap-2">
               <span class="text-slate-400 text-sm">Built by</span>
               <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
               <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+            </div>
+            <div class="flex items-center gap-4 text-xs text-slate-500">
+              <a href="/about/" class="hover:text-emerald-500 transition-colors">About</a>
+              <a href="/privacy-policy/" class="hover:text-emerald-500 transition-colors">Privacy Policy</a>
+              <a href="/contact/" class="hover:text-emerald-500 transition-colors">Contact</a>
+              <span class="text-slate-300 dark:text-slate-600">|</span>
+              <span>100% free · No signup · No data collection</span>
+            </div>
           </div>
         </div>
 
       </section>
     </div>
   </main>
-  <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/color-accessibility.js"></script>
+
+  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/color-accessibility.js" defer></script>
+
+  <!-- Copy link + Accessibility -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var copyLinkBtn = document.getElementById('copy-link-btn');
+      var announceRegion = document.getElementById('a11y-announce');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+          navigator.clipboard.writeText(window.location.href).then(function() {
+            var originalHTML = copyLinkBtn.innerHTML;
+            copyLinkBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied!';
+            if (announceRegion) announceRegion.textContent = 'Page link copied to clipboard';
+            setTimeout(function() {
+              copyLinkBtn.innerHTML = originalHTML;
+              if (announceRegion) announceRegion.textContent = '';
+            }, 2000);
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
