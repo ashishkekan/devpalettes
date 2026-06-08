@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   var STORAGE_KEY = 'devpalettes-code-snippets';
   
   var titleInput = document.getElementById('snippet-title');
@@ -7,6 +9,11 @@
   var searchInput = document.getElementById('search-input');
   var filterLang = document.getElementById('filter-lang');
   var snippetsGrid = document.getElementById('snippets-grid');
+  var saveBtn = document.getElementById('save-btn');
+  var copyInputBtn = document.getElementById('copy-input-btn');
+  var clearBtn = document.getElementById('clear-btn');
+  var snippetAnnouncer = document.getElementById('snippet-announcer');
+  var copyAnnouncer = document.getElementById('copy-announcer');
   
   function getSnippets() {
     try {
@@ -20,17 +27,27 @@
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(snippets));
     } catch (e) {
-      if (window.Devpalettes && window.Devpalettes.Toast) {
-        window.Devpalettes.Toast.show('Storage full. Delete some snippets.', 'error');
-      }
+      showToast('Storage full. Delete some snippets.', 'error');
     }
   }
   
   function showToast(message, type) {
     if (window.Devpalettes && window.Devpalettes.Toast) {
       window.Devpalettes.Toast.show(message, type || 'success');
-    } else {
-      alert(message);
+    }
+  }
+
+  function announceAction(message) {
+    if (snippetAnnouncer) {
+      snippetAnnouncer.textContent = message;
+      setTimeout(function() { snippetAnnouncer.textContent = ''; }, 3000);
+    }
+  }
+
+  function announceCopy(message) {
+    if (copyAnnouncer) {
+      copyAnnouncer.textContent = message;
+      setTimeout(function() { copyAnnouncer.textContent = ''; }, 3000);
     }
   }
   
@@ -41,10 +58,14 @@
     
     if (!title) {
       showToast('Please enter a title for the snippet.', 'error');
+      announceAction('Error: Please enter a title for the snippet.');
+      titleInput.focus();
       return;
     }
     if (!code.trim()) {
       showToast('Please enter some code to save.', 'error');
+      announceAction('Error: Please enter some code to save.');
+      codeInput.focus();
       return;
     }
     
@@ -65,6 +86,7 @@
     loadSnippets();
     
     showToast('Snippet Saved!', 'success');
+    announceAction('Snippet "' + title + '" saved successfully.');
   }
   
   function copySnippetInput() {
@@ -74,26 +96,34 @@
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(code).then(function() {
         showToast('Code Copied!', 'success');
+        announceCopy('Code from input copied to clipboard');
       });
     } else {
       codeInput.select();
       document.execCommand('copy');
       showToast('Code Copied!', 'success');
+      announceCopy('Code from input copied to clipboard');
     }
   }
   
   function clearInput() {
     titleInput.value = '';
     codeInput.value = '';
+    titleInput.focus();
+    announceAction('Input fields cleared');
   }
   
   function deleteSnippet(id) {
-    var snippets = getSnippets().filter(function(s) {
-      return s.id !== id;
+    var snippets = getSnippets();
+    var deleted = null;
+    var filtered = snippets.filter(function(s) {
+      if (s.id === id) { deleted = s; return false; }
+      return true;
     });
-    setSnippets(snippets);
+    setSnippets(filtered);
     loadSnippets();
     showToast('Snippet Deleted!', 'success');
+    announceAction(deleted ? 'Snippet "' + deleted.title + '" deleted' : 'Snippet deleted');
   }
   
   function copySavedSnippet(id) {
@@ -104,6 +134,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(snippet.code).then(function() {
         showToast('Code Copied!', 'success');
+        announceCopy('Snippet "' + snippet.title + '" copied to clipboard');
       });
     } else {
       var ta = document.createElement('textarea');
@@ -112,9 +143,10 @@
       ta.style.left = '-9999px';
       document.body.appendChild(ta);
       ta.select();
-      document.execCommand('copy');
+      try { document.execCommand('copy'); } catch(e) { /* silent */ }
       document.body.removeChild(ta);
       showToast('Code Copied!', 'success');
+      announceCopy('Snippet "' + snippet.title + '" copied to clipboard');
     }
   }
   
@@ -136,7 +168,7 @@
         ? 'No snippets found matching your search.'
         : 'No snippets saved yet. Create your first one!';
       snippetsGrid.innerHTML =
-        '<div class="sm:col-span-2 glass-card p-12 shimmer-card text-center">' +
+        '<div class="sm:col-span-2 glass-card p-12 shimmer-card text-center" role="listitem">' +
         '<i class="fas fa-folder-open text-4xl text-slate-300 dark:text-slate-600 mb-4" aria-hidden="true"></i>' +
         '<p class="text-slate-400 text-sm">' + msg + '</p>' +
         '</div>';
@@ -169,15 +201,15 @@
       var previewCode = s.code.substring(0, 150).replace(/</g, '&lt;').replace(/>/g, '&gt;');
       var colorClass = langColors[s.language] || langColors['Other'];
       
-      html += '<div class="glass-card p-5 shimmer-card flex flex-col gap-3">';
+      html += '<div class="glass-card p-5 shimmer-card flex flex-col gap-3" role="listitem">';
       html += '  <div class="flex justify-between items-start gap-2">';
       html += '    <h3 class="font-semibold text-sm">' + escapeHtml(s.title) + '</h3>';
       html += '    <span class="text-xs font-bold px-2 py-0.5 rounded ' + colorClass + ' shrink-0 whitespace-nowrap">' + escapeHtml(s.language) + '</span>';
       html += '  </div>';
       html += '  <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-3 snippet-preview"><code class="text-xs text-slate-600 dark:text-slate-300">' + previewCode + (s.code.length > 150 ? '...' : '') + '</code></div>';
       html += '  <div class="flex gap-2 mt-1">';
-      html += '    <button onclick="copySavedSnippet(' + s.id + ')" class="btn-secondary text-xs py-1.5 px-3 shrink-0" aria-label="Copy snippet"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>';
-      html += '    <button onclick="deleteSnippet(' + s.id + ')" class="text-xs py-1.5 px-3 rounded font-medium text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors shrink-0" aria-label="Delete snippet"><i class="fas fa-trash mr-1" aria-hidden="true"></i>Delete</button>';
+      html += '    <button data-action="copy" data-id="' + s.id + '" class="btn-secondary text-xs py-1.5 px-3 shrink-0" aria-label="Copy snippet ' + escapeHtml(s.title) + '"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>';
+      html += '    <button data-action="delete" data-id="' + s.id + '" class="text-xs py-1.5 px-3 rounded font-medium text-red-500 hover:bg-red-100 dark:hover:bg-red-900/30 transition-colors shrink-0" aria-label="Delete snippet ' + escapeHtml(s.title) + '"><i class="fas fa-trash mr-1" aria-hidden="true"></i>Delete</button>';
       html += '  </div>';
       html += '</div>';
     }
@@ -190,13 +222,73 @@
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
   }
+
+  // Event delegation for dynamically generated snippet buttons
+  function handleGridClick(e) {
+    var btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    
+    var action = btn.getAttribute('data-action');
+    var id = parseInt(btn.getAttribute('data-id'), 10);
+    
+    if (action === 'copy') {
+      copySavedSnippet(id);
+    } else if (action === 'delete') {
+      deleteSnippet(id);
+    }
+  }
+
+  function handleGridKeydown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      var btn = e.target.closest('button[data-action]');
+      if (btn) {
+        e.preventDefault();
+        btn.click();
+      }
+    }
+  }
+
+  // Copy link button handler
+  function handleCopyLink() {
+    var url = window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('Link copied to clipboard!', 'success');
+        announceCopy('Page link copied to clipboard');
+      });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.position = 'fixed';
+      ta.style.left = '-9999px';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch(e) { /* silent */ }
+      document.body.removeChild(ta);
+      showToast('Link copied to clipboard!', 'success');
+      announceCopy('Page link copied to clipboard');
+    }
+  }
   
-  window.saveSnippet = saveSnippet;
-  window.copySnippetInput = copySnippetInput;
-  window.clearInput = clearInput;
-  window.deleteSnippet = deleteSnippet;
-  window.copySavedSnippet = copySavedSnippet;
-  
+  // Bind all event listeners
+  function setupListeners() {
+    if (saveBtn) saveBtn.addEventListener('click', saveSnippet);
+    if (copyInputBtn) copyInputBtn.addEventListener('click', copySnippetInput);
+    if (clearBtn) clearBtn.addEventListener('click', clearInput);
+    
+    if (searchInput) searchInput.addEventListener('input', loadSnippets);
+    if (filterLang) filterLang.addEventListener('change', loadSnippets);
+    
+    if (snippetsGrid) {
+      snippetsGrid.addEventListener('click', handleGridClick);
+      snippetsGrid.addEventListener('keydown', handleGridKeydown);
+    }
+
+    var copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) copyLinkBtn.addEventListener('click', handleCopyLink);
+  }
+
+  // Populate filter dropdown
   (function populateFilters() {
     if (!filterLang) return;
     var langs = ['JavaScript', 'HTML', 'CSS', 'JSON', 'Python', 'TypeScript', 'Java', 'C++', 'C#', 'PHP', 'SQL', 'Go', 'Ruby', 'Swift', 'Bash / Shell', 'Other'];
@@ -208,6 +300,8 @@
     }
   })();
   
+  // Initialize
+  setupListeners();
   loadSnippets();
   
 })();
