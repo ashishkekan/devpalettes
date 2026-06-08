@@ -1,28 +1,36 @@
 (function() {
   var box = document.getElementById('ratio-box');
   var codeOutput = document.getElementById('code-output');
-  
+  var announceRegion = document.getElementById('a11y-announce');
+
+  function announce(msg) {
+    if (announceRegion) {
+      announceRegion.textContent = msg;
+      setTimeout(function() { announceRegion.textContent = ''; }, 2000);
+    }
+  }
+
   function setRatio(w, h) {
     document.getElementById('ctrl-w').value = w * 120;
     document.getElementById('ctrl-h').value = h * 120;
     calc();
   }
-  
+
   function calc() {
     var w = parseInt(document.getElementById('ctrl-w').value) || 1;
     var h = parseInt(document.getElementById('ctrl-h').value) || 1;
-    
+
     var gcd = function(a, b) { return b ? gcd(b, a % b) : a; };
     var d = gcd(w, h);
     var ratioW = w / d;
     var ratioH = h / d;
-    
+
     document.getElementById('result-ratio').textContent = ratioW + ':' + ratioH;
     document.getElementById('result-pixels').textContent = (w * h).toLocaleString();
-    
+
     var maxDisplaySize = 300;
     var displayW, displayH;
-    
+
     if (w > h) {
       displayW = maxDisplaySize;
       displayH = (h / w) * maxDisplaySize;
@@ -30,23 +38,24 @@
       displayH = maxDisplaySize;
       displayW = (w / h) * maxDisplaySize;
     }
-    
+
     box.style.width = displayW + 'px';
     box.style.height = displayH + 'px';
     box.textContent = ratioW + ':' + ratioH;
-    
+
     generateCode(ratioW, ratioH);
   }
-  
+
   function resize() {
     var origW = parseInt(document.getElementById('ctrl-w').value) || 1;
     var origH = parseInt(document.getElementById('ctrl-h').value) || 1;
     var newW = parseInt(document.getElementById('new-w').value) || 1;
-    
+
     var newH = Math.round((origH / origW) * newW);
     document.getElementById('new-h').textContent = newH + 'px';
+    announce('New height calculated: ' + newH + ' pixels');
   }
-  
+
   function generateCode(rw, rh) {
     var css = '.aspect-container {\n' +
       '  aspect-ratio: ' + rw + ' / ' + rh + '; /* Modern way */\n' +
@@ -61,19 +70,23 @@
       '}';
     codeOutput.textContent = css;
   }
-  
+
   function copyCode() {
     var text = codeOutput.textContent;
-    navigator.clipboard.writeText(text);
-    if (window.Devpalettes && window.Devpalettes.Toast) {
-      window.Devpalettes.Toast.show('Code Copied!', 'success');
-    }
+    navigator.clipboard.writeText(text).then(function() {
+      if (window.Devpalettes && window.Devpalettes.Toast) {
+        window.Devpalettes.Toast.show('Code Copied!', 'success');
+      }
+      announce('CSS code copied to clipboard');
+    }).catch(function() {
+      announce('Failed to copy code');
+    });
   }
-  
+
   window.setRatio = setRatio;
   window.calc = calc;
   window.resize = resize;
   window.copyCode = copyCode;
-  
+
   calc();
 })();

@@ -446,6 +446,14 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transform: translateY(-50%) rotate(-45deg);
 }
 
+/* ✅ ADD THIS BLOCK BACK */
+/* Ensure hamburger never shows on desktop (fallback if utility CSS order changes) */
+@media (min-width: 769px) {
+  .hamburger {
+    display: none !important;
+  }
+}
+
 /* Mobile menu */
 .mobile-menu {
   transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
