@@ -25,6 +25,8 @@
   var copyBtn = document.getElementById('copy-tags-btn');
   var copyInlineBtn = document.getElementById('copy-code-inline');
 
+  var announceRegion = document.getElementById('a11y-announce');
+
   // ─── State ───
   var currentMode = 'encode';
   var currentOutput = '';
@@ -37,6 +39,14 @@
     emoji: 'Base64 encoding works with emoji too! 🚀 🎉 ✨ 🎨',
     special: 'Special chars: <html>&"\'/\\ áéíóú ñ 中文 日本語'
   };
+
+  // ─── Accessibility Announcer ───
+  function announce(msg) {
+    if (announceRegion) {
+      announceRegion.textContent = msg;
+      setTimeout(function() { announceRegion.textContent = ''; }, 2500);
+    }
+  }
 
   // ─── UTF-8 Safe Base64 ───
   function utf8ToBase64(str) {
@@ -155,6 +165,8 @@
         setCheck('output-ready', true);
         setCheck('valid-decode', null);
         setCheck('valid-base64', null);
+
+        announce('Text encoded successfully. Output is ' + encoded.length + ' characters.');
       } else {
         hasError = true;
         previewContent.textContent = 'Error: Could not encode the input text.';
@@ -172,6 +184,8 @@
         setCheck('output-ready', false);
         setCheck('valid-decode', null);
         setCheck('valid-base64', null);
+
+        announce('Encoding failed. Could not encode the input text.');
       }
 
     } else {
@@ -196,6 +210,8 @@
         setCheck('no-errors', false);
         setCheck('output-ready', false);
         setCheck('valid-encode', null);
+
+        announce('Decoding failed. Input is not valid Base64.');
         return;
       }
 
@@ -217,6 +233,8 @@
         setCheck('no-errors', true);
         setCheck('output-ready', true);
         setCheck('valid-encode', null);
+
+        announce('Base64 decoded successfully. Output is ' + decoded.length + ' characters.');
       } else {
         hasError = true;
         previewContent.textContent = 'Error: Could not decode the Base64 string.\n\nThe string appears to be valid Base64 but the decoded bytes could not be interpreted as valid UTF-8 text.';
@@ -233,6 +251,8 @@
         setCheck('no-errors', false);
         setCheck('output-ready', false);
         setCheck('valid-encode', null);
+
+        announce('Decoding failed. The decoded bytes are not valid UTF-8 text.');
       }
     }
   }
@@ -244,12 +264,16 @@
     if (mode === 'encode') {
       modeEncodeBtn.className = 'mode-btn px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-2';
       modeDecodeBtn.className = 'mode-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400 flex items-center justify-center gap-2';
+      modeEncodeBtn.setAttribute('aria-checked', 'true');
+      modeDecodeBtn.setAttribute('aria-checked', 'false');
       inputHint.textContent = 'Enter plain text to encode to Base64';
       statMode.textContent = 'Encode';
       statMode.className = 'text-3xl font-bold text-emerald-500';
     } else {
       modeDecodeBtn.className = 'mode-btn px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-2';
       modeEncodeBtn.className = 'mode-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400 flex items-center justify-center gap-2';
+      modeDecodeBtn.setAttribute('aria-checked', 'true');
+      modeEncodeBtn.setAttribute('aria-checked', 'false');
       inputHint.textContent = 'Paste a Base64 string to decode to plain text';
       statMode.textContent = 'Decode';
       statMode.className = 'text-3xl font-bold text-blue-500';
@@ -271,6 +295,7 @@
     hasError = false;
     process();
     showToast('All fields cleared', 'info');
+    announce('All fields cleared');
   });
 
   // ─── Copy Buttons ───
@@ -290,15 +315,17 @@
     copyToClipboard(currentOutput, 'Output copied to clipboard');
   });
 
-  // ─── Preview Tabs ───
+  // ─── Preview Tabs with ARIA ───
   document.querySelectorAll('.preview-tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
       var view = this.getAttribute('data-view');
 
       document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+        t.setAttribute('aria-selected', 'false');
       });
       this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+      this.setAttribute('aria-selected', 'true');
 
       document.getElementById('view-result').classList.toggle('hidden', view !== 'result');
       document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
@@ -315,6 +342,7 @@
       inputEl.value = text;
       setMode('encode');
       showToast('Example loaded: ' + key, 'success');
+      announce('Example loaded: ' + key);
     });
   });
 
@@ -323,6 +351,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
         showToast(message, 'success');
+        announce(message);
       }).catch(function () {
         fallbackCopy(text, message);
       });
@@ -341,6 +370,7 @@
     try {
       document.execCommand('copy');
       showToast(message, 'success');
+      announce(message);
     } catch (e) {
       showToast('Failed to copy', 'error');
     }
@@ -362,7 +392,8 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.setAttribute('role', 'status');
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -382,7 +413,7 @@
   // ─── Initialize ───
   process();
 
-  // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  // ─── FAQ Toggle with proper ARIA ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -404,9 +435,11 @@
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
