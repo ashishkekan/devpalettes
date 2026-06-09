@@ -26,10 +26,19 @@
   var urlCountInfo = document.getElementById('url-count-info');
 
   var validationList = document.getElementById('validation-list');
+  var clipboardAnnouncer = document.getElementById('clipboard-announcer');
 
   // ─── State ───
   var urlEntries = [];
   var entryIdCounter = 0;
+
+  // ─── Announce to Screen Readers ───
+  function announce(message) {
+    if (clipboardAnnouncer) {
+      clipboardAnnouncer.textContent = message;
+      setTimeout(function() { clipboardAnnouncer.textContent = ''; }, 2000);
+    }
+  }
 
   // ─── Frequency Options ───
   var freqOptions = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never'];
@@ -129,6 +138,7 @@
     var row = document.createElement('div');
     row.setAttribute('data-entry-id', id);
     row.className = 'url-entry flex gap-2 items-start';
+    row.setAttribute('role', 'listitem');
 
     var freqOptionsHtml = freqOptions.map(function (f) {
       return '<option value="' + f + '"' + (f === entry.freq ? ' selected' : '') + '>' + f + '</option>';
@@ -138,20 +148,20 @@
 
     row.innerHTML =
       '<div class="flex-1 space-y-2">' +
-        '<input type="url" class="entry-url w-full px-3 py-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" placeholder="https://example.com/page/" value="' + escapeXml(entry.url) + '">' +
+        '<input type="url" class="entry-url w-full px-3 py-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" placeholder="https://example.com/page/" value="' + escapeXml(entry.url) + '" aria-label="Page URL">' +
         '<div class="flex gap-2">' +
-          '<select class="entry-freq flex-1 px-3 py-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-xs appearance-none cursor-pointer">' +
+          '<select class="entry-freq flex-1 px-3 py-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-xs appearance-none cursor-pointer" aria-label="Change frequency for this URL">' +
             freqOptionsHtml +
           '</select>' +
           '<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50">' +
-            '<span class="text-[10px] text-slate-400 font-medium">PRI</span>' +
-            '<input type="range" class="entry-priority w-16 h-1.5 rounded-full appearance-none cursor-pointer accent-emerald-500 bg-slate-200 dark:bg-slate-700" min="0" max="10" value="' + entry.priority + '">' +
-            '<span class="entry-pri-label text-xs font-bold text-emerald-600 dark:text-emerald-400 w-6 text-right">' + priVal + '</span>' +
+            '<span class="text-[10px] text-slate-400 font-medium" aria-hidden="true">PRI</span>' +
+            '<input type="range" class="entry-priority w-16 h-1.5 rounded-full appearance-none cursor-pointer accent-emerald-500 bg-slate-200 dark:bg-slate-700" min="0" max="10" value="' + entry.priority + '" aria-label="Priority for this URL">' +
+            '<span class="entry-pri-label text-xs font-bold text-emerald-600 dark:text-emerald-400 w-6 text-right" aria-hidden="true">' + priVal + '</span>' +
           '</div>' +
         '</div>' +
       '</div>' +
-      '<button class="remove-entry p-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm transition-all hover:border-red-400/50 hover:bg-red-500/5 hover:text-red-400 text-slate-400 flex-shrink-0 mt-0.5" title="Remove URL">' +
-        '<i class="fas fa-trash-can text-xs"></i>' +
+      '<button class="remove-entry p-2.5 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm transition-all hover:border-red-400/50 hover:bg-red-500/5 hover:text-red-400 text-slate-400 flex-shrink-0 mt-0.5" title="Remove URL" aria-label="Remove URL entry">' +
+        '<i class="fas fa-trash-can text-xs" aria-hidden="true"></i>' +
       '</button>';
 
     urlListEl.appendChild(row);
@@ -183,6 +193,7 @@
       urlEntries = urlEntries.filter(function (e) { return e.id !== id; });
       row.remove();
       generate();
+      announce('URL entry removed');
     });
 
     return entry;
@@ -258,7 +269,7 @@
       statUpdated.textContent = lastmod;
       statUpdated.className = 'text-lg font-bold text-blue-500';
     } else {
-      statUpdated.textContent = '—';
+      statUpdated.textContent = '\u2014';
       statUpdated.className = 'text-3xl font-bold text-slate-400';
     }
 
@@ -321,30 +332,20 @@
     // 5. Frequency set
     setCheck('freq-valid', freqSelect.value.length > 0);
 
-    // 6. Priority valid (always true since slider is 0-10, mapped to 0.0-1.0)
+    // 6. Priority valid (always true since slider enforces 0-10 → 0.0-1.0)
     setCheck('priority-valid', true);
 
-    // 7. XML well-formed (always true since we generate it)
+    // 7. XML well-formed
     if (totalUrls > 0) {
       setCheck('xml-valid', validUrls === totalUrls);
     } else {
       setNeutral('xml-valid');
-    }
-
-    // Fix priority check - always show green since slider enforces range
-    var priCheck = validationList.querySelector('[data-check="priority-valid"]');
-    if (priCheck) {
-      var icon = priCheck.querySelector('i');
-      var text = priCheck.querySelector('span');
-      icon.className = 'fas fa-circle-check text-[10px] text-emerald-500';
-      text.className = 'text-emerald-600 dark:text-emerald-400';
     }
   }
 
   // ─── Add URL Button ───
   addUrlBtn.addEventListener('click', function () {
     createEntryRow(null);
-    // Scroll to new entry
     var lastEntry = urlListEl.lastElementChild;
     if (lastEntry) {
       lastEntry.querySelector('.entry-url').focus();
@@ -375,6 +376,7 @@
     lastmodInput.value = yyyy + '-' + mm + '-' + dd;
     generate();
     showToast('Date set to today', 'success');
+    announce('Date set to today');
   });
 
   // ─── Base URL ───
@@ -394,6 +396,7 @@
     createEntryRow(null);
     generate();
     showToast('All fields reset', 'info');
+    announce('All fields reset to defaults');
   });
 
   // ─── Presets ───
@@ -425,21 +428,49 @@
 
       generate();
       showToast('Preset "' + key + '" applied', 'success');
+      announce(key + ' preset applied');
     });
   });
 
-  // ─── Preview Tabs ───
-  document.querySelectorAll('.preview-tab').forEach(function (tab) {
+  // ─── Preview Tabs with ARIA ───
+  var tabButtons = document.querySelectorAll('.preview-tab');
+  var tabPanels = document.querySelectorAll('.preview-panel');
+
+  function activateTab(targetTab) {
+    tabButtons.forEach(function (t) {
+      t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    targetTab.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+    targetTab.setAttribute('aria-selected', 'true');
+    targetTab.setAttribute('tabindex', '0');
+
+    var view = targetTab.getAttribute('data-view');
+    document.getElementById('view-preview').classList.toggle('hidden', view !== 'preview');
+    document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
+  }
+
+  tabButtons.forEach(function (tab) {
     tab.addEventListener('click', function () {
-      var view = this.getAttribute('data-view');
+      activateTab(this);
+    });
+    tab.addEventListener('keydown', function (e) {
+      var tabList = Array.from(tabButtons);
+      var currentIndex = tabList.indexOf(this);
+      var newIndex;
 
-      document.querySelectorAll('.preview-tab').forEach(function (t) {
-        t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
-      });
-      this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
-
-      document.getElementById('view-preview').classList.toggle('hidden', view !== 'preview');
-      document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % tabList.length;
+        tabList[newIndex].focus();
+        activateTab(tabList[newIndex]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+        tabList[newIndex].focus();
+        activateTab(tabList[newIndex]);
+      }
     });
   });
 
@@ -465,13 +496,28 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast('sitemap.xml downloaded', 'success');
+    announce('sitemap.xml file downloaded');
   });
+
+  // ─── Copy Link Button ───
+  var copyLinkBtn = document.getElementById('copy-link-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        showToast('Link copied to clipboard', 'success');
+        announce('Page link copied to clipboard');
+      }).catch(function () {
+        showToast('Failed to copy link', 'error');
+      });
+    });
+  }
 
   // ─── Copy Helper ───
   function copyToClipboard(text, message) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
         showToast(message, 'success');
+        announce(message);
       }).catch(function () {
         fallbackCopy(text, message);
       });
@@ -490,6 +536,7 @@
     try {
       document.execCommand('copy');
       showToast(message, 'success');
+      announce(message);
     } catch (e) {
       showToast('Failed to copy', 'error');
     }
@@ -499,6 +546,7 @@
   // ─── Toast Helper ───
   function showToast(message, type) {
     var container = document.getElementById('toast-container');
+    if (!container) return;
     var toast = document.createElement('div');
     var iconClass = 'fas fa-circle-check text-emerald-500';
     var borderClass = 'border-emerald-500/30';
@@ -510,7 +558,7 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -531,38 +579,48 @@
   createEntryRow(null);
   generate();
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
-  setTimeout(function initFaqToggles() {
+  // ─── FAQ Toggle with ARIA ───
+  function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
-    if (faqToggles.length === 0) {
-      setTimeout(initFaqToggles, 100);
-      return;
-    }
+    if (faqToggles.length === 0) return;
 
     faqToggles.forEach(function (toggle) {
-      var clone = toggle.cloneNode(true);
-      toggle.parentNode.replaceChild(clone, toggle);
-      clone.addEventListener('click', function (e) {
+      toggle.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
+        var isExpanded = this.getAttribute('aria-expanded') === 'true';
         if (!content) return;
 
-        var isHidden = content.classList.contains('hidden');
-        if (isHidden) {
-          content.classList.remove('hidden');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
-        } else {
+        if (isExpanded) {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
+        } else {
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
         }
       });
     });
-  }, 50);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqToggles);
+  } else {
+    initFaqToggles();
+  }
 
 })();

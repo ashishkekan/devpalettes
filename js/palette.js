@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let lockedColors = new Set();
   let minColors = 3;
   let maxColors = 8;
+  let modalTrigger = null; // Track element that opened modal for focus return
   
   // Elements
   const container = document.getElementById('palette-container');
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyExportBtn = document.getElementById('copy-export-btn');
   const savedPalettesSection = document.getElementById('saved-palettes-section');
   const savedPalettesGrid = document.getElementById('saved-palettes-grid');
+  const clipboardAnnouncer = document.getElementById('clipboard-announcer');
   
   // Initialize with 5 colors
   function init() {
@@ -46,6 +48,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return ColorUtils.hslToHex(hsl.h, hsl.s, hsl.l);
   }
   
+  // Announce to screen readers via aria-live region
+  function announce(message) {
+    if (clipboardAnnouncer) {
+      clipboardAnnouncer.textContent = message;
+      setTimeout(function() { clipboardAnnouncer.textContent = ''; }, 2000);
+    }
+  }
+  
   // Render palette
   function render() {
     container.innerHTML = '';
@@ -53,26 +63,30 @@ document.addEventListener('DOMContentLoaded', () => {
     colors.forEach((color, index) => {
       const isLocked = lockedColors.has(index);
       const textColor = ColorUtils.getContrastColor(color);
+      const colorUpper = color.toUpperCase();
       
       const block = document.createElement('div');
       block.className = 'color-block relative flex-1 flex flex-col items-center justify-end p-6 transition-all cursor-pointer group';
       block.style.backgroundColor = color;
       block.style.color = textColor;
+      block.setAttribute('tabindex', '0');
+      block.setAttribute('role', 'group');
+      block.setAttribute('aria-label', 'Color ' + colorUpper + ' — press Enter to copy hex code' + (isLocked ? ', locked' : ''));
       
       block.innerHTML = `
         <!-- Refresh button -->
-        <button class="refresh-btn absolute top-4 left-4 w-10 h-10 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center transition-all" data-action="refresh" data-index="${index}" title="Refresh color">
-          <i class="fas fa-sync-alt"></i>
+        <button class="refresh-btn absolute top-4 left-4 w-10 h-10 rounded-full bg-black/20 hover:bg-black/40 flex items-center justify-center transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2" data-action="refresh" data-index="${index}" aria-label="Refresh color at position ${index + 1}">
+          <i class="fas fa-sync-alt" aria-hidden="true"></i>
         </button>
         
         <!-- Lock button -->
-        <button class="lock-btn absolute top-4 right-4 w-10 h-10 rounded-full ${isLocked ? 'bg-emerald-500' : 'bg-black/20 hover:bg-black/40'} flex items-center justify-center transition-all" data-action="lock" data-index="${index}" title="${isLocked ? 'Unlock' : 'Lock'} color">
-          <i class="fas ${isLocked ? 'fa-lock' : 'fa-lock-open'}"></i>
+        <button class="lock-btn absolute top-4 right-4 w-10 h-10 rounded-full ${isLocked ? 'bg-emerald-500' : 'bg-black/20 hover:bg-black/40'} flex items-center justify-center transition-all focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2" data-action="lock" data-index="${index}" aria-label="${isLocked ? 'Unlock' : 'Lock'} color ${colorUpper} at position ${index + 1}">
+          <i class="fas ${isLocked ? 'fa-lock' : 'fa-lock-open'}" aria-hidden="true"></i>
         </button>
         
         <!-- Color info -->
-        <div class="text-center opacity-0 group-hover:opacity-100 transition-opacity">
-          <p class="font-mono text-lg font-bold mb-1">${color.toUpperCase()}</p>
+        <div class="text-center opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true">
+          <p class="font-mono text-lg font-bold mb-1">${colorUpper}</p>
           <p class="text-sm opacity-75">${ColorUtils.getColorName(color)}</p>
         </div>
       `;
@@ -80,7 +94,17 @@ document.addEventListener('DOMContentLoaded', () => {
       // Click to copy
       block.addEventListener('click', (e) => {
         if (e.target.closest('button')) return;
-        Clipboard.copy(color.toUpperCase(), `Copied ${color.toUpperCase()}`);
+        Clipboard.copy(colorUpper, 'Copied ' + colorUpper);
+        announce('Copied ' + colorUpper + ' to clipboard');
+      });
+      
+      // Keyboard: Enter to copy
+      block.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.target.closest('button')) {
+          e.preventDefault();
+          Clipboard.copy(colorUpper, 'Copied ' + colorUpper);
+          announce('Copied ' + colorUpper + ' to clipboard');
+        }
       });
       
       container.appendChild(block);
@@ -128,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       colors.push(generateRandomColor());
       render();
     } else {
-      Toast.show(`Maximum ${maxColors} colors allowed`, 'error');
+      Toast.show('Maximum ' + maxColors + ' colors allowed', 'error');
     }
   }
   
@@ -140,13 +164,13 @@ document.addEventListener('DOMContentLoaded', () => {
       colors.pop();
       render();
     } else {
-      Toast.show(`Minimum ${minColors} colors required`, 'error');
+      Toast.show('Minimum ' + minColors + ' colors required', 'error');
     }
   }
   
   // Export CSS
   function exportCSS() {
-    const css = `:root {\n${colors.map((c, i) => `  --color-${i + 1}: ${c};`).join('\n')}\n}`;
+    const css = ':root {\n' + colors.map((c, i) => '  --color-' + (i + 1) + ': ' + c + ';').join('\n') + '\n}';
     showExportModal(css);
   }
   
@@ -160,17 +184,56 @@ document.addEventListener('DOMContentLoaded', () => {
     showExportModal(json);
   }
   
-  // Show export modal
+  // Show export modal with focus management
   function showExportModal(code) {
+    modalTrigger = document.activeElement;
     exportCode.textContent = code;
     exportModal.classList.remove('hidden');
     exportModal.classList.add('flex');
+    // Focus the close button after a short delay to allow DOM update
+    setTimeout(function() {
+      if (closeModalBtn) closeModalBtn.focus();
+    }, 50);
   }
   
-  // Hide export modal
+  // Hide export modal with focus return
   function hideExportModal() {
     exportModal.classList.add('hidden');
     exportModal.classList.remove('flex');
+    if (modalTrigger) {
+      modalTrigger.focus();
+      modalTrigger = null;
+    }
+  }
+  
+  // Focus trap for modal
+  function handleModalFocusTrap(e) {
+    if (exportModal.classList.contains('hidden')) return;
+    
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const focusableElements = exportModal.querySelectorAll(focusableSelectors);
+    if (focusableElements.length === 0) return;
+    
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+    
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        if (document.activeElement === firstFocusable) {
+          lastFocusable.focus();
+          e.preventDefault();
+        }
+      } else {
+        if (document.activeElement === lastFocusable) {
+          firstFocusable.focus();
+          e.preventDefault();
+        }
+      }
+    }
+    
+    if (e.key === 'Escape') {
+      hideExportModal();
+    }
   }
   
   // Export PNG
@@ -191,11 +254,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Download
     const link = document.createElement('a');
-    link.download = `palette-${Date.now()}.png`;
+    link.download = 'palette-' + Date.now() + '.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
     
     Toast.show('PNG downloaded!');
+    announce('Palette PNG downloaded');
   }
   
   // Save palette to localStorage
@@ -208,6 +272,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     Storage.set('saved-palettes', savedPalettes);
     Toast.show('Palette saved!');
+    announce('Palette saved to browser storage');
     loadSavedPalettes();
   }
   
@@ -226,30 +291,49 @@ document.addEventListener('DOMContentLoaded', () => {
     savedPalettes.forEach(palette => {
       const card = document.createElement('div');
       card.className = 'glass-card p-4';
+      card.setAttribute('role', 'listitem');
+      
+      const dateStr = new Date(palette.created).toLocaleDateString();
       
       card.innerHTML = `
-        <div class="flex rounded-lg overflow-hidden mb-3">
-          ${palette.colors.map(c => `<div class="flex-1 h-16" style="background: ${c}"></div>`).join('')}
+        <div class="flex rounded-lg overflow-hidden mb-3" role="img" aria-label="Saved palette with ${palette.colors.length} colors from ${dateStr}">
+          ${palette.colors.map(c => '<div class="flex-1 h-16" style="background: ' + c + '"></div>').join('')}
         </div>
         <div class="flex justify-between items-center">
-          <span class="text-sm text-slate-500">${new Date(palette.created).toLocaleDateString()}</span>
+          <span class="text-sm text-slate-500">${dateStr}</span>
           <div class="flex gap-2">
-            <button class="text-slate-400 hover:text-emerald-500" onclick="loadPalette(${palette.id})" title="Load palette">
-              <i class="fas fa-upload"></i>
+            <button class="text-slate-400 hover:text-emerald-500" data-load-id="${palette.id}" aria-label="Load palette from ${dateStr}">
+              <i class="fas fa-upload" aria-hidden="true"></i>
             </button>
-            <button class="text-slate-400 hover:text-red-500" onclick="deletePalette(${palette.id})" title="Delete palette">
-              <i class="fas fa-trash"></i>
+            <button class="text-slate-400 hover:text-red-500" data-delete-id="${palette.id}" aria-label="Delete palette from ${dateStr}">
+              <i class="fas fa-trash" aria-hidden="true"></i>
             </button>
           </div>
         </div>
       `;
       
+      // Attach event listeners instead of inline onclick
+      const loadBtn = card.querySelector('[data-load-id]');
+      const deleteBtn = card.querySelector('[data-delete-id]');
+      
+      if (loadBtn) {
+        loadBtn.addEventListener('click', function() {
+          loadPalette(palette.id);
+        });
+      }
+      
+      if (deleteBtn) {
+        deleteBtn.addEventListener('click', function() {
+          deletePalette(palette.id);
+        });
+      }
+      
       savedPalettesGrid.appendChild(card);
     });
   }
   
-  // Global functions for saved palette actions
-  window.loadPalette = function(id) {
+  // Load a saved palette
+  function loadPalette(id) {
     const savedPalettes = Storage.get('saved-palettes', []);
     const palette = savedPalettes.find(p => p.id === id);
     if (palette) {
@@ -257,16 +341,19 @@ document.addEventListener('DOMContentLoaded', () => {
       lockedColors.clear();
       render();
       Toast.show('Palette loaded!');
+      announce('Palette loaded');
     }
-  };
+  }
   
-  window.deletePalette = function(id) {
+  // Delete a saved palette
+  function deletePalette(id) {
     let savedPalettes = Storage.get('saved-palettes', []);
     savedPalettes = savedPalettes.filter(p => p.id !== id);
     Storage.set('saved-palettes', savedPalettes);
     loadSavedPalettes();
     Toast.show('Palette deleted');
-  };
+    announce('Palette deleted');
+  }
   
   // Event listeners
   if (generateBtn) generateBtn.addEventListener('click', generatePalette);
@@ -280,6 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (copyExportBtn) {
     copyExportBtn.addEventListener('click', () => {
       Clipboard.copy(exportCode.textContent, 'Code copied!');
+      announce('Code copied to clipboard');
     });
   }
   
@@ -290,8 +378,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   
-  // Keyboard shortcuts
-  KeyboardShortcuts.on('space', generatePalette);
+  // Focus trap and Escape key for modal
+  document.addEventListener('keydown', handleModalFocusTrap);
+  
+  // Spacebar shortcut — only when not focused on interactive elements
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space' && !e.target.closest('button, input, textarea, select, a, [contenteditable]')) {
+      e.preventDefault();
+      generatePalette();
+    }
+  });
+  
+  // Copy link button
+  const copyLinkBtn = document.getElementById('copy-link-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        Toast.show('Link copied!');
+        announce('Page link copied to clipboard');
+      }).catch(function() {
+        Toast.show('Failed to copy link', 'error');
+      });
+    });
+  }
   
   // Initialize
   init();

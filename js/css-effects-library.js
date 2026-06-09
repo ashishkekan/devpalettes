@@ -1,6 +1,7 @@
 /* ============================================
    Devpalettes - CSS Effects Library
    198 Effects | 38 Categories | Pure CSS
+   Accessibility & Performance improvements applied
    ============================================ */
 
 const CATEGORIES = [
@@ -39,7 +40,6 @@ function generateEffectsData() {
     effects.push({ id: id++, name, category: cat, difficulty: diff, tags, css, html, js: js || "", react: toReact(html, name) });
   }
 
-  // Helper to add variations based on colors
   function addColorVariants(baseName, cat, diff, tags, cssFn, htmlFn, jsFn) {
     COLORS.forEach(c => {
       add(
@@ -358,7 +358,7 @@ function generateEffectsData() {
   );
 
   // ═══════════════════════════════════════════
-  // 193-198: Additional Unique Effects to hit exactly 198
+  // 193-198: Additional Unique Effects
   // ═══════════════════════════════════════════
   add("Flip Card", "Card Hover", "Advanced", ["card","hover","flip","3d"],
     `.c-flip-wrap { perspective: 600px; width: 100px; height: 60px; } .c-flip { width: 100%; height: 100%; background: #1e293b; border-radius: 10px; transition: transform .6s; transform-style: preserve-3d; color: #f1f5f9; display: flex; align-items: center; justify-content: center; font-weight: 600; } .c-flip-wrap:hover .c-flip { transform: rotateY(180deg); }`,
@@ -385,7 +385,7 @@ function generateEffectsData() {
     `<div class="sp-neumorphism">Neumorphism</div>`
   );
 
-  return effects.slice(0, 198); // Ensure exactly 198
+  return effects.slice(0, 198);
 }
 
 
@@ -411,26 +411,28 @@ const CssEffectsApp = {
   injectStyles() {
     const css = this.effects.map(e => e.css).join('\n');
     const el = document.getElementById('effect-styles-injection');
-    if (el) el.innerHTML = `<style>${css}</style>`;
+    if (el) el.innerHTML = '<style>' + css + '</style>';
   },
 
   renderCategoryFilters() {
     const container = document.getElementById('categoryFilters');
     if (!container) return;
     const cats = ["All Effects", ...CATEGORIES];
-    container.innerHTML = cats.map(c => 
-      `<button class="filter-pill ${c === this.activeCategory ? 'active' : ''}" data-cat="${c}">${c}</button>`
+    container.innerHTML = cats.map(c =>
+      '<button class="filter-pill ' + (c === this.activeCategory ? 'active' : '') + '" data-cat="' + c + '" type="button">' + c + '</button>'
     ).join('');
   },
 
   bindEvents() {
+    const self = this;
+
     // Category filter
     const catContainer = document.getElementById('categoryFilters');
     if (catContainer) {
-      catContainer.addEventListener('click', (e) => {
+      catContainer.addEventListener('click', function(e) {
         if (e.target.classList.contains('filter-pill')) {
-          this.activeCategory = e.target.dataset.cat;
-          this.updateFilters();
+          self.activeCategory = e.target.dataset.cat;
+          self.updateFilters();
         }
       });
     }
@@ -438,10 +440,10 @@ const CssEffectsApp = {
     // Difficulty filter
     const diffContainer = document.getElementById('difficultyFilters');
     if (diffContainer) {
-      diffContainer.addEventListener('click', (e) => {
+      diffContainer.addEventListener('click', function(e) {
         if (e.target.classList.contains('filter-pill')) {
-          this.activeDifficulty = e.target.dataset.diff;
-          this.updateFilters();
+          self.activeDifficulty = e.target.dataset.diff;
+          self.updateFilters();
         }
       });
     }
@@ -449,36 +451,36 @@ const CssEffectsApp = {
     // Search
     const searchInput = document.getElementById('effectsSearch');
     if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        this.searchQuery = e.target.value.toLowerCase();
-        this.updateFilters();
+      searchInput.addEventListener('input', function(e) {
+        self.searchQuery = e.target.value.toLowerCase();
+        self.updateFilters();
       });
     }
 
     // Random
     const randomBtn = document.getElementById('randomEffectBtn');
     if (randomBtn) {
-      randomBtn.addEventListener('click', () => {
-        const randEffect = this.effects[Math.floor(Math.random() * this.effects.length)];
-        this.activeCategory = "All Effects";
-        this.activeDifficulty = "all";
-        this.searchQuery = "";
+      randomBtn.addEventListener('click', function() {
+        var randEffect = self.effects[Math.floor(Math.random() * self.effects.length)];
+        self.activeCategory = "All Effects";
+        self.activeDifficulty = "all";
+        self.searchQuery = "";
         if (searchInput) searchInput.value = "";
-        this.updateFilters();
-        
-        setTimeout(() => {
-          const el = document.getElementById(`effect-${randEffect.id}`);
+        self.updateFilters();
+
+        setTimeout(function() {
+          var el = document.getElementById('effect-' + randEffect.id);
           if (el) {
             el.scrollIntoView({ behavior: 'smooth', block: 'center' });
             el.classList.add('highlight-pulse');
-            setTimeout(() => el.classList.remove('highlight-pulse'), 1000);
+            setTimeout(function() { el.classList.remove('highlight-pulse'); }, 1000);
           }
         }, 100);
       });
     }
 
     // Keyboard shortcut
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', function(e) {
       if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
         e.preventDefault();
         if (searchInput) searchInput.focus();
@@ -488,100 +490,145 @@ const CssEffectsApp = {
     // Reset
     const resetBtn = document.getElementById('resetFilters');
     if (resetBtn) {
-      resetBtn.addEventListener('click', () => {
-        this.activeCategory = "All Effects";
-        this.activeDifficulty = "all";
-        this.searchQuery = "";
+      resetBtn.addEventListener('click', function() {
+        self.activeCategory = "All Effects";
+        self.activeDifficulty = "all";
+        self.searchQuery = "";
         if (searchInput) searchInput.value = "";
-        this.updateFilters();
+        self.updateFilters();
       });
     }
 
-    // Code Tabs & Copy Delegation on the Grid
+    // Grid: Tab switching, copy, and keyboard navigation
     const grid = document.getElementById('effectsGrid');
     if (grid) {
-      grid.addEventListener('click', (e) => {
-        const card = e.target.closest('.effect-card');
+      // Click delegation
+      grid.addEventListener('click', function(e) {
+        var card = e.target.closest('.effect-card');
         if (!card) return;
 
         // Tab switch
         if (e.target.classList.contains('effect-tab-btn')) {
-          const tab = e.target.dataset.tab;
-          const id = card.dataset.id;
-          
-          e.target.closest('.tab-bar').querySelectorAll('.effect-tab-btn').forEach(b => b.classList.remove('active'));
+          var tab = e.target.dataset.tab;
+          var id = card.dataset.id;
+
+          // Accessibility: Update aria-selected on all tabs in this tablist
+          var tablist = e.target.closest('[role="tablist"]');
+          if (tablist) {
+            tablist.querySelectorAll('.effect-tab-btn').forEach(function(b) {
+              b.classList.remove('active');
+              b.setAttribute('aria-selected', 'false');
+            });
+          }
           e.target.classList.add('active');
-          
-          const codeBlock = card.querySelector('.effect-code-block');
-          const effect = this.effects.find(ef => ef.id == id);
+          e.target.setAttribute('aria-selected', 'true');
+
+          var codeBlock = card.querySelector('.effect-code-block');
+          var effect = self.effects.find(function(ef) { return ef.id == id; });
           if (effect && codeBlock) {
             codeBlock.textContent = effect[tab] || "/* Not available for this effect */";
+            // Accessibility: Announce tab change
+            var liveRegion = document.getElementById('toast-live-region');
+            if (liveRegion) liveRegion.textContent = tab.toUpperCase() + ' tab selected';
           }
         }
-        
+
         // Copy button
         if (e.target.closest('.copy-effect-btn')) {
-          const codeBlock = card.querySelector('.effect-code-block');
+          var codeBlock = card.querySelector('.effect-code-block');
           if (codeBlock) {
-            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-              const btn = e.target.closest('.copy-effect-btn');
-              const icon = btn.querySelector('i');
+            navigator.clipboard.writeText(codeBlock.textContent).then(function() {
+              var btn = e.target.closest('.copy-effect-btn');
+              var icon = btn.querySelector('i');
               if (icon) {
                 icon.className = 'fas fa-check';
-                setTimeout(() => icon.className = 'fas fa-copy', 1500);
+                setTimeout(function() { icon.className = 'fas fa-copy'; }, 1500);
               }
-              // Use Devpalettes global toast if available
               if (window.Devpalettes && window.Devpalettes.Toast) {
                 window.Devpalettes.Toast.show('Code copied to clipboard!', 'success');
               }
+              // Accessibility: Announce copy
+              var liveRegion = document.getElementById('toast-live-region');
+              if (liveRegion) liveRegion.textContent = 'Code copied to clipboard';
             });
           }
         }
+      });
+
+      // Accessibility: Arrow key navigation for code tabs
+      grid.addEventListener('keydown', function(e) {
+        if (!e.target.classList.contains('effect-tab-btn')) return;
+        var tablist = e.target.closest('[role="tablist"]');
+        if (!tablist) return;
+
+        var tabs = Array.from(tablist.querySelectorAll('.effect-tab-btn'));
+        var currentIndex = tabs.indexOf(e.target);
+        var newIndex;
+
+        if (e.key === 'ArrowRight') {
+          newIndex = (currentIndex + 1) % tabs.length;
+        } else if (e.key === 'ArrowLeft') {
+          newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        } else if (e.key === 'Home') {
+          newIndex = 0;
+        } else if (e.key === 'End') {
+          newIndex = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        e.preventDefault();
+        tabs[newIndex].focus();
+        tabs[newIndex].click();
       });
     }
   },
 
   updateFilters() {
+    var self = this;
+
     // Update UI Pills
-    const catContainer = document.getElementById('categoryFilters');
+    var catContainer = document.getElementById('categoryFilters');
     if (catContainer) {
-      catContainer.querySelectorAll('.filter-pill').forEach(p => {
-        p.classList.toggle('active', p.dataset.cat === this.activeCategory);
+      catContainer.querySelectorAll('.filter-pill').forEach(function(p) {
+        p.classList.toggle('active', p.dataset.cat === self.activeCategory);
+        p.setAttribute('aria-pressed', p.dataset.cat === self.activeCategory ? 'true' : 'false');
       });
     }
-    const diffContainer = document.getElementById('difficultyFilters');
+    var diffContainer = document.getElementById('difficultyFilters');
     if (diffContainer) {
-      diffContainer.querySelectorAll('.filter-pill').forEach(p => {
-        p.classList.toggle('active', p.dataset.diff === this.activeDifficulty);
+      diffContainer.querySelectorAll('.filter-pill').forEach(function(p) {
+        p.classList.toggle('active', p.dataset.diff === self.activeDifficulty);
+        p.setAttribute('aria-pressed', p.dataset.diff === self.activeDifficulty ? 'true' : 'false');
       });
     }
 
     // Filter Logic
-    this.filteredEffects = this.effects.filter(e => {
-      const matchCat = this.activeCategory === "All Effects" || e.category === this.activeCategory;
-      const matchDiff = this.activeDifficulty === "all" || e.difficulty === this.activeDifficulty;
-      const matchSearch = !this.searchQuery || 
-                         e.name.toLowerCase().includes(this.searchQuery) || 
-                         e.tags.some(t => t.includes(this.searchQuery)) ||
-                         e.category.toLowerCase().includes(this.searchQuery);
+    this.filteredEffects = this.effects.filter(function(e) {
+      var matchCat = self.activeCategory === "All Effects" || e.category === self.activeCategory;
+      var matchDiff = self.activeDifficulty === "all" || e.difficulty === self.activeDifficulty;
+      var matchSearch = !self.searchQuery ||
+                       e.name.toLowerCase().includes(self.searchQuery) ||
+                       e.tags.some(function(t) { return t.includes(self.searchQuery); }) ||
+                       e.category.toLowerCase().includes(self.searchQuery);
       return matchCat && matchDiff && matchSearch;
     });
 
     // Update Count & Reset visibility
-    const countEl = document.getElementById('effectCount');
-    if (countEl) countEl.textContent = `Showing ${this.filteredEffects.length} effects`;
-    
-    const resetBtn = document.getElementById('resetFilters');
+    var countEl = document.getElementById('effectCount');
+    if (countEl) countEl.textContent = 'Showing ' + this.filteredEffects.length + ' effects';
+
+    var resetBtn = document.getElementById('resetFilters');
     if (resetBtn) {
       resetBtn.classList.toggle('hidden', (this.activeCategory === "All Effects" && this.activeDifficulty === "all" && !this.searchQuery));
     }
-    
+
     this.renderEffects();
   },
 
   renderEffects() {
-    const grid = document.getElementById('effectsGrid');
-    const noRes = document.getElementById('noResults');
+    var grid = document.getElementById('effectsGrid');
+    var noRes = document.getElementById('noResults');
     if (!grid) return;
 
     if (this.filteredEffects.length === 0) {
@@ -591,46 +638,41 @@ const CssEffectsApp = {
     }
     if (noRes) noRes.classList.add('hidden');
 
-    grid.innerHTML = this.filteredEffects.map(effect => {
-      const diffClass = effect.difficulty === 'Beginner' ? 'diff-beginner' : effect.difficulty === 'Intermediate' ? 'diff-intermediate' : 'diff-advanced';
-      
-      return `
-      <div id="effect-${effect.id}" class="effect-card glass-card overflow-hidden flex flex-col transition-all hover:shadow-lg" data-id="${effect.id}">
-        <!-- Preview -->
-        <div class="preview-box border-b border-slate-200 dark:border-slate-700/50">
-          ${effect.html}
-        </div>
-        
-        <!-- Info -->
-        <div class="p-4 flex-1 flex flex-col">
-          <div class="flex justify-between items-start mb-2">
-            <h3 class="font-bold text-sm text-slate-800 dark:text-slate-100">${escHtml(effect.name)}</h3>
-            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-full ${diffClass} whitespace-nowrap">${effect.difficulty}</span>
-          </div>
-          <div class="flex flex-wrap gap-1 mb-3">
-            ${effect.tags.slice(0, 3).map(t => `<span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full">#${t}</span>`).join('')}
-          </div>
-          
-          <!-- Code Area -->
-          <div class="mt-auto rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700/50">
-            <div class="tab-bar flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700/50 px-2">
-              <div class="flex">
-                <button class="effect-tab-btn active" data-tab="html">HTML</button>
-                <button class="effect-tab-btn" data-tab="css">CSS</button>
-                ${effect.js ? `<button class="effect-tab-btn" data-tab="js">JS</button>` : ''}
-                <button class="effect-tab-btn" data-tab="react">React</button>
-              </div>
-              <button class="copy-effect-btn text-slate-400 hover:text-emerald-500 p-1 text-xs transition-colors" aria-label="Copy code">
-                <i class="fas fa-copy"></i>
-              </button>
-            </div>
-            <pre class="effect-code-block">${escHtml(effect.html)}</pre>
-          </div>
-        </div>
-      </div>`;
+    grid.innerHTML = this.filteredEffects.map(function(effect) {
+      var diffClass = effect.difficulty === 'Beginner' ? 'diff-beginner' : effect.difficulty === 'Intermediate' ? 'diff-intermediate' : 'diff-advanced';
+      var safeName = escHtml(effect.name);
+
+      return '<div id="effect-' + effect.id + '" class="effect-card glass-card overflow-hidden flex flex-col transition-all hover:shadow-lg" data-id="' + effect.id + '" role="listitem">' +
+        '<div class="preview-box border-b border-slate-200 dark:border-slate-700/50" role="region" aria-label="Live preview of ' + safeName + '">' +
+          effect.html +
+        '</div>' +
+        '<div class="p-4 flex-1 flex flex-col">' +
+          '<div class="flex justify-between items-start mb-2">' +
+            '<h3 class="font-bold text-sm text-slate-800 dark:text-slate-100">' + safeName + '</h3>' +
+            '<span class="text-[10px] font-semibold px-2 py-0.5 rounded-full ' + diffClass + ' whitespace-nowrap">' + effect.difficulty + '</span>' +
+          '</div>' +
+          '<div class="flex flex-wrap gap-1 mb-3">' +
+            effect.tags.slice(0, 3).map(function(t) { return '<span class="text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 px-2 py-0.5 rounded-full">#' + t + '</span>'; }).join('') +
+          '</div>' +
+          '<div class="mt-auto rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700/50">' +
+            '<div class="tab-bar flex items-center justify-between bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-700/50 px-2">' +
+              '<div class="flex" role="tablist" aria-label="Code format tabs for ' + safeName + '">' +
+                '<button class="effect-tab-btn active" data-tab="html" role="tab" aria-selected="true" type="button">HTML</button>' +
+                '<button class="effect-tab-btn" data-tab="css" role="tab" aria-selected="false" type="button">CSS</button>' +
+                (effect.js ? '<button class="effect-tab-btn" data-tab="js" role="tab" aria-selected="false" type="button">JS</button>' : '') +
+                '<button class="effect-tab-btn" data-tab="react" role="tab" aria-selected="false" type="button">React</button>' +
+              '</div>' +
+              '<button class="copy-effect-btn text-slate-400 hover:text-emerald-500 p-1 text-xs transition-colors" aria-label="Copy ' + safeName + ' code" type="button">' +
+                '<i class="fas fa-copy" aria-hidden="true"></i>' +
+              '</button>' +
+            '</div>' +
+            '<pre class="effect-code-block" role="tabpanel" aria-label="Code for ' + safeName + '">' + escHtml(effect.html) + '</pre>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
     }).join('');
   }
 };
 
 // Initialize on DOM load
-document.addEventListener('DOMContentLoaded', () => CssEffectsApp.init());
+document.addEventListener('DOMContentLoaded', function() { CssEffectsApp.init(); });

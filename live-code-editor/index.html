@@ -3,41 +3,187 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Code Editor – Write, Preview & Export HTML/CSS/JS | Devpalettes</title>
-  <meta name="description" content="Free online code editor with live preview. Write HTML, CSS, and JavaScript with instant rendering, console output, and one-click export.">
+  <meta name="robots" content="index, follow">
+
+  <!-- SEO: Optimized title — primary keyword first -->
+  <title>Free Live Code Editor Online — HTML, CSS & JS Playground | Devpalettes</title>
+
+  <!-- SEO: Expanded meta description with long-tail keywords -->
+  <meta name="description" content="Write HTML, CSS, and JavaScript with instant live preview. Free online code editor with syntax highlighting, console output, responsive device preview, and one-click export to HTML, ZIP, or CodePen. No signup required.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/live-code-editor/">
-  <meta property="og:title" content="Live Code Editor – Write, Preview & Export | Devpalettes">
-  <meta property="og:description" content="Free online code editor with live preview for HTML, CSS, and JS. Export, download, or share your code instantly.">
+
+  <!-- SEO: Open Graph -->
+  <meta property="og:title" content="Free Live Code Editor — HTML, CSS & JS Playground | Devpalettes">
+  <meta property="og:description" content="Write HTML, CSS, and JavaScript with instant live preview. Syntax highlighting, console, device preview, and export to HTML, ZIP, or CodePen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/live-code-editor/">
   <meta property="og:image" content="https://devpalettes.com/og-tool.png">
+  <meta property="og:site_name" content="Devpalettes">
+
+  <!-- SEO: Twitter Card (MISSING — now added) -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free Live Code Editor — HTML, CSS & JS Playground | Devpalettes">
+  <meta name="twitter:description" content="Write HTML, CSS, and JavaScript with instant live preview. Export to HTML, ZIP, or CodePen. No signup.">
+  <meta name="twitter:image" content="https://devpalettes.com/og-tool.png">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
+  <!-- Performance: Preconnect to CDNs -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <!-- Performance: Non-blocking font loading -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"></noscript>
+
+  <!-- Performance: Non-blocking Font Awesome -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
+  <!-- CodeMirror CSS (render-critical for editor layout) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css">
 
+  <!-- SEO: BreadcrumbList Schema (MISSING — now added) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is my code stored on any server?","acceptedAnswer":{"@type":"Answer","text":"No. All code stays in your browser's localStorage. Nothing is sent to any server."}},{"@type":"Question","name":"Can I use this editor offline?","acceptedAnswer":{"@type":"Answer","text":"Once loaded, the editor works offline. Your code is auto-saved locally and persists across sessions."}},{"@type":"Question","name":"How do I export my code as separate files?","acceptedAnswer":{"@type":"Answer","text":"Click the download icon and select Export as ZIP. You'll get a ZIP with separate index.html, style.css, and script.js files."}}]}
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Live Code Editor",
+        "item": "https://devpalettes.com/live-code-editor/"
+      }
+    ]
+  }
   </script>
+
+  <!-- SEO: Expanded FAQPage Schema (was 3, now 7) -->
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"WebApplication","name":"Live Code Editor","description":"Free online code editor with live preview for HTML, CSS, and JavaScript.","url":"https://devpalettes.com/live-code-editor/","applicationCategory":"DeveloperApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is my code stored on any server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All code stays in your browser's localStorage. Nothing is sent to any server. Your work is completely private and remains only on your device."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this editor offline?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Once loaded, the editor works offline. Your code is auto-saved locally and persists across sessions. You only need an internet connection for the initial page load."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I export my code as separate files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the download icon and select Export as ZIP. You'll get a ZIP archive with separate index.html, style.css, and script.js files."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What keyboard shortcuts are available?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ctrl+Enter (or Cmd+Enter on Mac) runs your code and refreshes the preview. Ctrl+S manually saves your work to localStorage. Escape exits fullscreen preview mode."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the editor support preprocessors like Sass or TypeScript?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The editor runs plain HTML, CSS, and JavaScript directly in the browser. It does not compile Sass, Less, TypeScript, or other preprocessors. For those, use a build tool or a full IDE."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I share my code with someone else?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the more options menu (three dots) and select Share URL. A URL containing your encoded code is copied to your clipboard. Anyone opening that link sees your exact code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there a file size or code length limit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no hard limit on code length. However, shareable URLs may fail if the encoded code exceeds roughly 8,000 characters. localStorage has a typical limit of 5 MB per origin."
+        }
+      }
+    ]
+  }
   </script>
+
+  <!-- SEO: WebApplication Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Live Code Editor",
+    "description": "Free online code editor with live preview for HTML, CSS, and JavaScript. Features syntax highlighting, integrated console, responsive device preview, and multiple export options.",
+    "url": "https://devpalettes.com/live-code-editor/",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "Live preview",
+      "Syntax highlighting",
+      "Integrated console",
+      "Responsive device preview",
+      "Auto-save to localStorage",
+      "Export as HTML file",
+      "Export as ZIP archive",
+      "Open in CodePen",
+      "Shareable URL",
+      "Dark mode support",
+      "Keyboard shortcuts"
+    ]
+  }
+  </script>
+
+  <!-- Dark mode init (must run before paint) -->
   <script>
     if(localStorage.getItem('colorpallates-theme')==='dark'||(!localStorage.getItem('colorpallates-theme')&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}
   </script>
+
+  <!-- Site CSS -->
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 
@@ -84,11 +230,24 @@
     @keyframes edPulse{0%,100%{opacity:1}50%{opacity:0.4}}
     .ed-save-dot{animation:edPulse 1.5s ease infinite}
 
+    /* Accessibility: Visible focus indicators */
+    .ed-btn:focus-visible,
+    .ed-tab:focus-visible,
+    .ed-dev-btn:focus-visible,
+    .ed-menu-item:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
     @media(max-width:768px){
       .ed-wrap{flex-direction:column!important}
       .ed-drag{width:100%!important;height:5px!important;cursor:row-resize!important}
       .ed-panel-l,.ed-panel-r{width:100%!important;min-height:200px!important}
     }
+
+    /* Screen-reader only utility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border-width:0}
   </style>
 </head>
 
@@ -96,49 +255,57 @@
 
   <div id="navbar-container"></div>
 
-  <main class="pt-16">
-    <section class="relative" style="height:calc(100vh - 64px)">
+  <main id="main-content" class="pt-16">
+
+    <!-- Accessibility: Screen-reader heading for SEO & a11y (toolbar H1 is hidden on mobile) -->
+    <h1 class="sr-only">Free Live Code Editor — Write HTML, CSS & JavaScript with Instant Preview</h1>
+
+    <section class="relative" aria-label="Code editor workspace" style="height:calc(100vh - 64px)">
 
       <!-- Toolbar -->
-      <div class="glass-card border-b border-slate-200/30 dark:border-slate-700/30 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 relative z-20">
+      <div class="glass-card border-b border-slate-200/30 dark:border-slate-700/30 px-3 sm:px-4 py-2 flex items-center justify-between gap-2 relative z-20" role="toolbar" aria-label="Editor toolbar">
         <div class="flex items-center gap-2 min-w-0">
-          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center flex-shrink-0">
-            <i class="fas fa-code text-white text-xs"></i>
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-emerald-500 to-blue-500 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+            <i class="fas fa-code text-white text-xs" aria-hidden="true"></i>
           </div>
-          <h1 class="text-sm font-bold truncate hidden sm:block">Live Code Editor</h1>
-          <span id="ed-save-ind" class="text-[10px] text-emerald-500 font-medium hidden items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 ed-save-dot inline-block"></span>Saved
+          <h2 class="text-sm font-bold truncate hidden sm:block">Live Code Editor</h2>
+          <!-- Accessibility: role="status" + aria-live for save indicator -->
+          <span id="ed-save-ind" class="text-[10px] text-emerald-500 font-medium hidden items-center gap-1" role="status" aria-live="polite">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 ed-save-dot inline-block" aria-hidden="true"></span>Saved
           </span>
         </div>
         <div class="flex items-center gap-1 sm:gap-1.5">
-          <button id="ed-run-btn" class="ed-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold" title="Run (Ctrl+Enter)">
-            <i class="fas fa-play text-[10px]"></i><span class="hidden sm:inline">Run</span>
+          <button id="ed-run-btn" class="ed-btn flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-semibold" title="Run (Ctrl+Enter)" aria-label="Run code">
+            <i class="fas fa-play text-[10px]" aria-hidden="true"></i><span class="hidden sm:inline">Run</span>
           </button>
-          <button id="ed-copy-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Copy All Code" aria-label="Ed Copy Btn">
-            <i class="far fa-copy"></i>
+          <!-- Accessibility: Fixed aria-labels (was "Ed Copy Btn") -->
+          <button id="ed-copy-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Copy All Code" aria-label="Copy all code to clipboard">
+            <i class="far fa-copy" aria-hidden="true"></i>
           </button>
-          <button id="ed-dl-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Download HTML" aria-label="Ed Dl Btn">
-            <i class="fas fa-download"></i>
+          <button id="ed-dl-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Download HTML" aria-label="Download as HTML file">
+            <i class="fas fa-download" aria-hidden="true"></i>
           </button>
           <div class="relative">
-            <button id="ed-more-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="More Options" aria-label="Ed More Btn">
-              <i class="fas fa-ellipsis-vertical"></i>
+            <!-- Accessibility: aria-expanded + aria-haspopup for menu toggle -->
+            <button id="ed-more-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="More Options" aria-label="More export options" aria-expanded="false" aria-haspopup="true">
+              <i class="fas fa-ellipsis-vertical" aria-hidden="true"></i>
             </button>
-            <div id="ed-more-menu" class="hidden absolute right-0 top-full mt-1.5 glass-card rounded-xl shadow-2xl shadow-black/10 dark:shadow-black/30 py-1.5 min-w-[180px] z-50">
-              <button data-action="zip" class="ed-menu-item w-full text-left px-3.5 py-2 text-xs hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 flex items-center gap-2.5 transition-colors">
-                <i class="fas fa-file-zipper text-emerald-500 w-4 text-center"></i>Export as ZIP
+            <!-- Accessibility: role="menu" on dropdown -->
+            <div id="ed-more-menu" class="hidden absolute right-0 top-full mt-1.5 glass-card rounded-xl shadow-2xl shadow-black/10 dark:shadow-black/30 py-1.5 min-w-[180px] z-50" role="menu" aria-label="Export options">
+              <button data-action="zip" class="ed-menu-item w-full text-left px-3.5 py-2 text-xs hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 flex items-center gap-2.5 transition-colors" role="menuitem">
+                <i class="fas fa-file-zipper text-emerald-500 w-4 text-center" aria-hidden="true"></i>Export as ZIP
               </button>
-              <button data-action="codepen" class="ed-menu-item w-full text-left px-3.5 py-2 text-xs hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 flex items-center gap-2.5 transition-colors">
-                <i class="fab fa-codepen text-blue-500 w-4 text-center"></i>Open in CodePen
+              <button data-action="codepen" class="ed-menu-item w-full text-left px-3.5 py-2 text-xs hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 flex items-center gap-2.5 transition-colors" role="menuitem">
+                <i class="fab fa-codepen text-blue-500 w-4 text-center" aria-hidden="true"></i>Open in CodePen
               </button>
-              <button data-action="share" class="ed-menu-item w-full text-left px-3.5 py-2 text-xs hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 flex items-center gap-2.5 transition-colors">
-                <i class="fas fa-link text-purple-500 w-4 text-center"></i>Share URL
+              <button data-action="share" class="ed-menu-item w-full text-left px-3.5 py-2 text-xs hover:bg-emerald-500/10 dark:hover:bg-emerald-500/10 text-slate-700 dark:text-slate-300 flex items-center gap-2.5 transition-colors" role="menuitem">
+                <i class="fas fa-link text-purple-500 w-4 text-center" aria-hidden="true"></i>Share URL
               </button>
             </div>
           </div>
-          <div class="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-0.5 hidden sm:block"></div>
-          <button id="ed-fs-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Fullscreen Preview" aria-label="Ed Fs Btn">
-            <i class="fas fa-expand"></i>
+          <div class="w-px h-5 bg-slate-200 dark:bg-slate-700 mx-0.5 hidden sm:block" aria-hidden="true"></div>
+          <button id="ed-fs-btn" class="ed-btn p-1.5 rounded-lg glass-card text-slate-600 dark:text-slate-300 text-xs" title="Fullscreen Preview" aria-label="Open fullscreen preview">
+            <i class="fas fa-expand" aria-hidden="true"></i>
           </button>
         </div>
       </div>
@@ -148,138 +315,224 @@
 
         <!-- Left: Editor -->
         <div id="ed-panel-l" class="ed-panel-l flex flex-col" style="width:50%">
-          <div class="glass-card border-b border-slate-200/30 dark:border-slate-700/30 flex items-center px-1">
-            <button data-tab="html" class="ed-tab active px-3 py-2 text-xs font-semibold border-b-2 border-transparent">
-              <i class="fab fa-html5 text-orange-500 mr-1.5"></i>HTML
+          <!-- Accessibility: ARIA tablist pattern -->
+          <div class="glass-card border-b border-slate-200/30 dark:border-slate-700/30 flex items-center px-1" role="tablist" aria-label="Editor language tabs">
+            <button data-tab="html" class="ed-tab active px-3 py-2 text-xs font-semibold border-b-2 border-transparent" role="tab" aria-selected="true" aria-controls="ed-html" id="ed-tab-html">
+              <i class="fab fa-html5 text-orange-500 mr-1.5" aria-hidden="true"></i>HTML
             </button>
-            <button data-tab="css" class="ed-tab px-3 py-2 text-xs font-semibold border-b-2 border-transparent text-slate-500 dark:text-slate-400">
-              <i class="fab fa-css3-alt text-blue-500 mr-1.5"></i>CSS
+            <button data-tab="css" class="ed-tab px-3 py-2 text-xs font-semibold border-b-2 border-transparent text-slate-500 dark:text-slate-400" role="tab" aria-selected="false" aria-controls="ed-css" id="ed-tab-css">
+              <i class="fab fa-css3-alt text-blue-500 mr-1.5" aria-hidden="true"></i>CSS
             </button>
-            <button data-tab="js" class="ed-tab px-3 py-2 text-xs font-semibold border-b-2 border-transparent text-slate-500 dark:text-slate-400">
-              <i class="fab fa-js text-yellow-500 mr-1.5"></i>JS
+            <button data-tab="js" class="ed-tab px-3 py-2 text-xs font-semibold border-b-2 border-transparent text-slate-500 dark:text-slate-400" role="tab" aria-selected="false" aria-controls="ed-js" id="ed-tab-js">
+              <i class="fab fa-js text-yellow-500 mr-1.5" aria-hidden="true"></i>JS
             </button>
           </div>
           <div class="flex-1 relative overflow-hidden">
-            <div id="ed-html" class="absolute inset-0"></div>
-            <div id="ed-css" class="absolute inset-0 hidden"></div>
-            <div id="ed-js" class="absolute inset-0 hidden"></div>
+            <!-- Accessibility: role="tabpanel" with aria-labelledby -->
+            <div id="ed-html" class="absolute inset-0" role="tabpanel" aria-labelledby="ed-tab-html"></div>
+            <div id="ed-css" class="absolute inset-0 hidden" role="tabpanel" aria-labelledby="ed-tab-css"></div>
+            <div id="ed-js" class="absolute inset-0 hidden" role="tabpanel" aria-labelledby="ed-tab-js"></div>
           </div>
         </div>
 
         <!-- Drag Handle -->
-        <div id="ed-drag" class="ed-drag bg-slate-200/50 dark:bg-slate-700/50"></div>
+        <div id="ed-drag" class="ed-drag bg-slate-200/50 dark:bg-slate-700/50" role="separator" aria-orientation="vertical" aria-label="Resize editor and preview panels" tabindex="0"></div>
 
         <!-- Right: Preview -->
         <div id="ed-panel-r" class="ed-panel-r flex flex-col flex-1 min-w-0">
           <div class="glass-card border-b border-slate-200/30 dark:border-slate-700/30 flex items-center justify-between px-2 py-1.5">
-            <div class="flex items-center gap-1">
-              <button data-device="desktop" class="ed-dev-btn active p-1.5 rounded-md text-[11px] text-emerald-500 dark:text-emerald-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Desktop" aria-label="Desktop">
-                <i class="fas fa-desktop"></i>
+            <div class="flex items-center gap-1" role="group" aria-label="Device preview modes">
+              <button data-device="desktop" class="ed-dev-btn active p-1.5 rounded-md text-[11px] text-emerald-500 dark:text-emerald-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Desktop" aria-label="Desktop preview" aria-pressed="true">
+                <i class="fas fa-desktop" aria-hidden="true"></i>
               </button>
-              <button data-device="tablet" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Tablet" aria-label="Tablet">
-                <i class="fas fa-tablet-screen-button"></i>
+              <button data-device="tablet" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Tablet" aria-label="Tablet preview" aria-pressed="false">
+                <i class="fas fa-tablet-screen-button" aria-hidden="true"></i>
               </button>
-              <button data-device="mobile" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Mobile" aria-label="Mobile">
-                <i class="fas fa-mobile-screen-button"></i>
+              <button data-device="mobile" class="ed-dev-btn p-1.5 rounded-md text-[11px] text-slate-600 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" title="Mobile" aria-label="Mobile preview" aria-pressed="false">
+                <i class="fas fa-mobile-screen-button" aria-hidden="true"></i>
               </button>
             </div>
-            <button id="ed-con-btn" class="flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors">
-              <i class="fas fa-terminal"></i>Console
-              <span id="ed-con-badge" class="hidden w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] items-center justify-center font-bold">0</span>
+            <button id="ed-con-btn" class="flex items-center gap-1.5 px-2 py-1 rounded-md text-[11px] font-medium text-slate-500 dark:text-slate-400 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" aria-label="Toggle console panel" aria-expanded="false">
+              <i class="fas fa-terminal" aria-hidden="true"></i>Console
+              <!-- Accessibility: Badge has aria-label -->
+              <span id="ed-con-badge" class="hidden w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] items-center justify-center font-bold" aria-label="0 console messages">0</span>
             </button>
           </div>
 
           <div class="flex-1 bg-white dark:bg-slate-900 overflow-hidden flex items-start justify-center">
             <div id="ed-device" class="ed-device w-full h-full bg-white dark:bg-slate-900 relative overflow-hidden">
-              <iframe id="ed-frame" class="w-full h-full border-0" sandbox="allow-scripts allow-modals"></iframe>
+              <!-- Accessibility: iframe title added -->
+              <iframe id="ed-frame" class="w-full h-full border-0" title="Live code preview" sandbox="allow-scripts allow-modals"></iframe>
             </div>
           </div>
 
-          <div id="ed-con-drag" class="ed-console-drag bg-slate-200/50 dark:bg-slate-700/50 hidden"></div>
+          <div id="ed-con-drag" class="ed-console-drag bg-slate-200/50 dark:bg-slate-700/50 hidden" role="separator" aria-orientation="horizontal" aria-label="Resize console panel"></div>
 
-          <div id="ed-con" class="hidden bg-slate-50 dark:bg-[#0d1117] border-t border-slate-200/30 dark:border-slate-700/30" style="height:150px">
+          <!-- Accessibility: Console panel with aria-label and aria-live on output -->
+          <div id="ed-con" class="hidden bg-slate-50 dark:bg-[#0d1117] border-t border-slate-200/30 dark:border-slate-700/30" style="height:150px" aria-label="Console output panel">
             <div class="flex items-center justify-between px-3 py-1.5 border-b border-slate-200/40 dark:border-slate-700/40">
               <span class="text-[11px] font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Console</span>
-              <button id="ed-con-clear" class="text-[11px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
-                <i class="fas fa-ban mr-1"></i>Clear
+              <button id="ed-con-clear" class="text-[11px] text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors" aria-label="Clear console output">
+                <i class="fas fa-ban mr-1" aria-hidden="true"></i>Clear
               </button>
             </div>
-            <div id="ed-con-out" class="console-scroll overflow-auto p-2 font-mono text-xs" style="height:calc(100% - 32px)"></div>
+            <div id="ed-con-out" class="console-scroll overflow-auto p-2 font-mono text-xs" style="height:calc(100% - 32px)" role="log" aria-live="polite" aria-label="Console messages"></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Fullscreen Modal -->
-    <div id="ed-fs-modal" class="hidden fixed inset-0 z-50 bg-white dark:bg-[#0c0f14]">
+    <!-- Accessibility: role="dialog" + aria-modal -->
+    <div id="ed-fs-modal" class="hidden fixed inset-0 z-50 bg-white dark:bg-[#0c0f14]" role="dialog" aria-modal="true" aria-label="Fullscreen code preview">
       <div class="absolute top-3 right-3 z-10">
-        <button id="ed-fs-close" class="glass-card px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors">
-          <i class="fas fa-compress mr-1.5"></i>Exit Fullscreen
+        <button id="ed-fs-close" class="glass-card px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 dark:text-slate-300 hover:bg-slate-200/50 dark:hover:bg-slate-700/50 transition-colors" aria-label="Exit fullscreen preview">
+          <i class="fas fa-compress mr-1.5" aria-hidden="true"></i>Exit Fullscreen
         </button>
       </div>
-      <iframe id="ed-fs-frame" class="w-full h-full border-0"></iframe>
+      <iframe id="ed-fs-frame" class="w-full h-full border-0" title="Fullscreen code preview" sandbox="allow-scripts allow-modals"></iframe>
     </div>
 
-    <!-- Content Sections -->
+    <!-- ============================================
+         CONTENT SECTIONS — Expanded for AdSense & SEO
+         ============================================ -->
     <section class="relative overflow-hidden py-16 sm:py-20">
-      <div class="absolute top-0 left-1/4 w-72 h-72 bg-emerald-400/20 rounded-full blur-[100px] ed-blob-a pointer-events-none"></div>
-      <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-400/15 rounded-full blur-[120px] ed-blob-b pointer-events-none"></div>
+      <div class="absolute top-0 left-1/4 w-72 h-72 bg-emerald-400/20 rounded-full blur-[100px] ed-blob-a pointer-events-none" aria-hidden="true"></div>
+      <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-blue-400/15 rounded-full blur-[120px] ed-blob-b pointer-events-none" aria-hidden="true"></div>
 
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin space-y-12">
 
-        <div class="glass-card p-6 sm:p-8  shimmer-card">
+        <!-- NEW: "What Is the Live Code Editor?" -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
           <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
-            <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-users text-emerald-500 text-sm"></i></span>
+            <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-circle-info text-emerald-500 text-sm" aria-hidden="true"></i></span>
+            What Is the Live Code Editor?
+          </h2>
+          <div class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed space-y-3">
+            <p>The <strong>Live Code Editor</strong> is a free, browser-based code playground that lets you write <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong> side by side with an instant live preview. Unlike locally installed editors, it requires zero setup—open the page and start coding immediately.</p>
+            <p>Powered by <strong>CodeMirror</strong> for syntax highlighting and intelligent editing, the editor features an integrated console for debugging, responsive device preview modes, and multiple export options including direct HTML download, ZIP archive, CodePen integration, and shareable URLs. Everything runs entirely client-side—your code never leaves the browser.</p>
+          </div>
+        </div>
+
+        <!-- NEW: "Key Features" -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center"><i class="fas fa-star text-blue-500 text-sm" aria-hidden="true"></i></span>
+            Key Features
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-eye text-emerald-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Live Preview</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">See your code rendered in real-time as you type, with auto-refresh after brief pauses.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-palette text-blue-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Syntax Highlighting</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">CodeMirror-powered color coding for HTML, CSS, and JavaScript with bracket matching and auto-close.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-terminal text-purple-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Integrated Console</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Capture console.log, errors, and warnings directly inside the editor—no browser DevTools needed.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-mobile-screen text-amber-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Responsive Device Preview</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Toggle between desktop, tablet, and mobile viewports to verify your layout adapts correctly.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-rose-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-floppy-disk text-rose-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Auto-Save</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Code persists in localStorage across browser sessions. Your work is saved automatically.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-teal-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-file-export text-teal-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Multiple Export Options</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Download as a single HTML file, export as a ZIP with separate files, open in CodePen, or share via URL.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-indigo-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-moon text-indigo-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Dark Mode</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Syncs with your system preference or site toggle. The editor theme switches automatically.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
+              <span class="w-6 h-6 rounded-md bg-sky-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-keyboard text-sky-500 text-[10px]" aria-hidden="true"></i></span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Keyboard Shortcuts</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Ctrl+Enter to run, Ctrl+S to save, Escape to exit fullscreen. Code efficiently without a mouse.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center"><i class="fas fa-users text-emerald-500 text-sm" aria-hidden="true"></i></span>
             Who Is This Tool For?
           </h2>
           <div class="grid sm:grid-cols-3 gap-4">
             <div class="p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <div class="text-2xl mb-2">🎓</div>
+              <div class="text-2xl mb-2" aria-hidden="true">🎓</div>
               <h3 class="font-semibold text-sm mb-1">Learners & Students</h3>
               <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Experiment with HTML, CSS, and JS concepts without setting up a local environment. See results instantly.</p>
             </div>
             <div class="p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <div class="text-2xl mb-2">💡</div>
+              <div class="text-2xl mb-2" aria-hidden="true">💡</div>
               <h3 class="font-semibold text-sm mb-1">Frontend Developers</h3>
               <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Quickly prototype UI components, test layout ideas, or debug CSS snippets before committing to your project.</p>
             </div>
             <div class="p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <div class="text-2xl mb-2">✍️</div>
+              <div class="text-2xl mb-2" aria-hidden="true">✍️</div>
               <h3 class="font-semibold text-sm mb-1">Technical Writers</h3>
               <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Create live code examples for tutorials, blog posts, or documentation. Export clean HTML files to embed anywhere.</p>
             </div>
           </div>
         </div>
 
-        <div class="glass-card p-6 sm:p-8  shimmer-card">
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
           <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
-            <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center"><i class="fas fa-bolt text-blue-500 text-sm"></i></span>
+            <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center"><i class="fas fa-bolt text-blue-500 text-sm" aria-hidden="true"></i></span>
             Common Use Cases
           </h2>
           <div class="grid sm:grid-cols-2 gap-3">
             <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <span class="w-6 h-6 rounded-md bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-emerald-500 text-[10px]"></i></span>
+              <span class="w-6 h-6 rounded-md bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-emerald-500 text-[10px]" aria-hidden="true"></i></span>
               <div>
                 <h3 class="font-semibold text-sm mb-0.5">Rapid UI Prototyping</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400">Build and iterate on card layouts, navbars, forms, or hero sections in seconds.</p>
               </div>
             </div>
             <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <span class="w-6 h-6 rounded-md bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-blue-500 text-[10px]"></i></span>
+              <span class="w-6 h-6 rounded-md bg-blue-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-blue-500 text-[10px]" aria-hidden="true"></i></span>
               <div>
                 <h3 class="font-semibold text-sm mb-0.5">CSS Debugging</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400">Isolate and fix tricky flexbox, grid, or animation issues without touching your main codebase.</p>
               </div>
             </div>
             <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <span class="w-6 h-6 rounded-md bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-purple-500 text-[10px]"></i></span>
+              <span class="w-6 h-6 rounded-md bg-purple-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-purple-500 text-[10px]" aria-hidden="true"></i></span>
               <div>
                 <h3 class="font-semibold text-sm mb-0.5">Code Snippet Sharing</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400">Generate a shareable URL to send working code examples to teammates or Stack Overflow answers.</p>
               </div>
             </div>
             <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5">
-              <span class="w-6 h-6 rounded-md bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-amber-500 text-[10px]"></i></span>
+              <span class="w-6 h-6 rounded-md bg-amber-500/10 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-check text-amber-500 text-[10px]" aria-hidden="true"></i></span>
               <div>
                 <h3 class="font-semibold text-sm mb-0.5">Responsive Testing</h3>
                 <p class="text-xs text-slate-500 dark:text-slate-400">Toggle between desktop, tablet, and mobile views to verify your layout adapts correctly.</p>
@@ -288,9 +541,47 @@
           </div>
         </div>
 
-        <div class="glass-card p-6 sm:p-8  shimmer-card">
+        <!-- NEW: "How It Works" -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
           <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
-            <span class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center"><i class="fas fa-lightbulb text-amber-500 text-sm"></i></span>
+            <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center"><i class="fas fa-list-ol text-purple-500 text-sm" aria-hidden="true"></i></span>
+            How It Works
+          </h2>
+          <ol class="space-y-4" role="list">
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-emerald-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">1</span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Write Your Code</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Select the HTML, CSS, or JS tab and start typing. Syntax highlighting and auto-close brackets help you code faster.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-blue-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">2</span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Preview Instantly</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">The right panel renders your code live. Changes auto-refresh after a short pause, or press Ctrl+Enter to run immediately.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-purple-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">3</span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Debug with Console</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Open the built-in console to see log output, errors, and warnings from your JavaScript code without switching to DevTools.</p>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="w-7 h-7 rounded-full bg-amber-500 text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5" aria-hidden="true">4</span>
+              <div>
+                <h3 class="font-semibold text-sm mb-0.5">Export or Share</h3>
+                <p class="text-xs text-slate-500 dark:text-slate-400">Download as HTML, export as ZIP with separate files, open in CodePen, or copy a shareable URL containing your code.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center"><i class="fas fa-lightbulb text-amber-500 text-sm" aria-hidden="true"></i></span>
             Quick Tips
           </h2>
           <div class="space-y-3">
@@ -308,25 +599,84 @@
             </div>
           </div>
         </div>
+
+        <!-- NEW: Privacy / Trust Signal -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-slate-500/10 flex items-center justify-center"><i class="fas fa-shield-halved text-slate-500 text-sm" aria-hidden="true"></i></span>
+            Privacy & Data
+          </h2>
+          <div class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed space-y-3">
+            <p><strong>Your code never leaves your browser.</strong> The Live Code Editor runs entirely client-side. All editing, previewing, and saving happens locally using your browser's localStorage. No code is transmitted to any server, and no account or signup is required.</p>
+            <p>When you use the Share URL feature, your code is encoded into the URL itself and is never stored on our servers. If you clear your browser data, your saved code will be removed. For more details, see our <a href="/privacy-policy/" class="text-emerald-600 dark:text-emerald-400 underline underline-offset-2 hover:text-emerald-700 dark:hover:text-emerald-300 transition-colors">Privacy Policy</a>.</p>
+          </div>
+        </div>
+
+        <!-- NEW: Internal Links — Related Tools -->
+        <div class="glass-card p-6 sm:p-8 shimmer-card">
+          <h2 class="text-xl sm:text-2xl font-bold mb-5 flex items-center gap-2.5">
+            <span class="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center"><i class="fas fa-wand-magic-sparkles text-teal-500 text-sm" aria-hidden="true"></i></span>
+            Explore More Dev Tools
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-3">
+            <a href="/color-palette-generator/" class="group p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
+              <div class="flex items-center gap-2 mb-1.5">
+                <i class="fas fa-palette text-emerald-500 text-sm" aria-hidden="true"></i>
+                <h3 class="font-semibold text-sm group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">Color Palette Generator</h3>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Create beautiful, cohesive color palettes from images or random seeds.</p>
+            </a>
+            <a href="/css-gradient-generator/" class="group p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 hover:border-blue-300 dark:hover:border-blue-700 transition-colors">
+              <div class="flex items-center gap-2 mb-1.5">
+                <i class="fas fa-fill-drip text-blue-500 text-sm" aria-hidden="true"></i>
+                <h3 class="font-semibold text-sm group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">CSS Gradient Generator</h3>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Design linear and radial gradients with a visual editor and copy the CSS.</p>
+            </a>
+            <a href="/box-shadow-generator/" class="group p-4 rounded-xl bg-slate-50/80 dark:bg-white/[0.02] border border-slate-100 dark:border-white/5 hover:border-purple-300 dark:hover:border-purple-700 transition-colors">
+              <div class="flex items-center gap-2 mb-1.5">
+                <i class="fas fa-clone text-purple-500 text-sm" aria-hidden="true"></i>
+                <h3 class="font-semibold text-sm group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">Box Shadow Generator</h3>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Craft precise box-shadow values with a real-time preview and one-click copy.</p>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    
-    <section class="pb-16 sm:pb-20">
+    <!-- EXPANDED FAQ: 3 → 7 questions -->
+    <section class="pb-16 sm:pb-20" aria-label="Frequently asked questions">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl font-bold text-center mb-8 ">Frequently Asked Questions</h2>
-        <div class="space-y-3">
-          <div class="glass-card p-5 ">
+        <h2 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h2>
+        <div class="max-w-3xl mx-auto space-y-3">
+          <div class="glass-card p-5">
             <h3 class="font-semibold text-sm mb-1.5">Is my code stored on any server?</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">No. All code stays in your browser's localStorage. Nothing is sent to any server.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">No. All code stays in your browser's localStorage. Nothing is sent to any server. Your work is completely private and remains only on your device.</p>
           </div>
-          <div class="glass-card p-5 ">
+          <div class="glass-card p-5">
             <h3 class="font-semibold text-sm mb-1.5">Can I use this editor offline?</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Once loaded, the editor works offline. Your code is auto-saved locally and persists across sessions.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Once loaded, the editor works offline. Your code is auto-saved locally and persists across sessions. You only need an internet connection for the initial page load.</p>
           </div>
-          <div class="glass-card p-5 ">
+          <div class="glass-card p-5">
             <h3 class="font-semibold text-sm mb-1.5">How do I export my code as separate files?</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Click the download icon and select "Export as ZIP". You'll get a ZIP with separate index.html, style.css, and script.js files.</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Click the download icon and select "Export as ZIP". You'll get a ZIP archive with separate index.html, style.css, and script.js files.</p>
+          </div>
+          <div class="glass-card p-5">
+            <h3 class="font-semibold text-sm mb-1.5">What keyboard shortcuts are available?</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Ctrl+Enter (or Cmd+Enter on Mac) runs your code and refreshes the preview. Ctrl+S manually saves your work. Escape exits fullscreen preview mode.</p>
+          </div>
+          <div class="glass-card p-5">
+            <h3 class="font-semibold text-sm mb-1.5">Does the editor support preprocessors like Sass or TypeScript?</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">The editor runs plain HTML, CSS, and JavaScript directly in the browser. It does not compile Sass, Less, TypeScript, or other preprocessors. For those, use a dedicated build tool or full IDE.</p>
+          </div>
+          <div class="glass-card p-5">
+            <h3 class="font-semibold text-sm mb-1.5">How do I share my code with someone else?</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Click the more options menu (three dots) and select "Share URL". A URL containing your encoded code is copied to your clipboard. Anyone who opens that link will see your exact code in the editor.</p>
+          </div>
+          <div class="glass-card p-5">
+            <h3 class="font-semibold text-sm mb-1.5">Is there a file size or code length limit?</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">There is no hard limit on how much code you can write. However, shareable URLs may fail if the encoded code exceeds roughly 8,000 characters. localStorage has a typical limit of 5 MB per origin, which is generous for code snippets.</p>
           </div>
         </div>
       </div>
@@ -334,24 +684,25 @@
   </main>
 
   <div id="footer-container"></div>
-  <div id="toast-container" class="fixed bottom-5 right-5 z-[60] space-y-2 pointer-events-none"></div>
+  <div id="toast-container" class="fixed bottom-5 right-5 z-[60] space-y-2 pointer-events-none" aria-live="polite"></div>
 
-  <!-- CodeMirror -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <!-- Performance: CodeMirror scripts moved to head with defer -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/xml/xml.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/css/css.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/javascript/javascript.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/htmlmixed/htmlmixed.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closetag.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+
+  <!-- Performance: JSZip lazy-loaded (removed from eager loading) -->
 
   <!-- Devpalettes site scripts -->
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <script defer src="../js/main.js"></script>
+  <script defer src="../js/enhancements.js"></script>
 
   <!-- Editor logic (separate file) -->
-  <script src="../js/live-code-editor.js"></script>
+  <script defer src="../js/live-code-editor.js"></script>
 </body>
 </html>

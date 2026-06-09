@@ -1,22 +1,21 @@
 // wcag-contrast.js
 (function() {
-  const textInput = document.getElementById('text-color');
-  const bgInput = document.getElementById('bg-color');
-  const textLabel = document.getElementById('text-label');
-  const bgLabel = document.getElementById('bg-label');
-  const previewBox = document.getElementById('preview-box');
-  const ratioDisplay = document.getElementById('ratio-display');
+  var textInput = document.getElementById('text-color');
+  var bgInput = document.getElementById('bg-color');
+  var textLabel = document.getElementById('text-label');
+  var bgLabel = document.getElementById('bg-label');
+  var previewBox = document.getElementById('preview-box');
+  var ratioDisplay = document.getElementById('ratio-display');
   
-  // Elements for Grades
-  const gradeAANormal = document.getElementById('grade-aa-normal');
-  const gradeAALarge = document.getElementById('grade-aa-large');
-  const gradeAAANormal = document.getElementById('grade-aaa-normal');
-  const gradeAAALarge = document.getElementById('grade-aaa-large');
+  var gradeAANormal = document.getElementById('grade-aa-normal');
+  var gradeAALarge = document.getElementById('grade-aa-large');
+  var gradeAAANormal = document.getElementById('grade-aaa-normal');
+  var gradeAAALarge = document.getElementById('grade-aaa-large');
   
-  const statusAANormal = document.getElementById('status-aa-normal');
-  const statusAALarge = document.getElementById('status-aa-large');
-  const statusAAANormal = document.getElementById('status-aaa-normal');
-  const statusAAALarge = document.getElementById('status-aaa-large');
+  var statusAANormal = document.getElementById('status-aa-normal');
+  var statusAALarge = document.getElementById('status-aa-large');
+  var statusAAANormal = document.getElementById('status-aaa-normal');
+  var statusAAALarge = document.getElementById('status-aaa-large');
   
   // --- Logic ---
   
@@ -29,9 +28,8 @@
     };
   }
   
-  // Relative Luminance
   function luminance(r, g, b) {
-    let a = [r, g, b].map(v => {
+    var a = [r, g, b].map(function(v) {
       v /= 255;
       return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
     });
@@ -39,22 +37,23 @@
   }
   
   function calculateRatio(hex1, hex2) {
-    const rgb1 = hexToRgb(hex1);
-    const rgb2 = hexToRgb(hex2);
-    const L1 = luminance(rgb1.r, rgb1.g, rgb1.b);
-    const L2 = luminance(rgb2.r, rgb2.g, rgb2.b);
-    const lighter = Math.max(L1, L2);
-    const darker = Math.min(L1, L2);
+    var rgb1 = hexToRgb(hex1);
+    var rgb2 = hexToRgb(hex2);
+    var L1 = luminance(rgb1.r, rgb1.g, rgb1.b);
+    var L2 = luminance(rgb2.r, rgb2.g, rgb2.b);
+    var lighter = Math.max(L1, L2);
+    var darker = Math.min(L1, L2);
     return (lighter + 0.05) / (darker + 0.05);
   }
   
   function updateUI(ratio) {
-     const rFixed = ratio.toFixed(2);
+     var rFixed = ratio.toFixed(2);
      ratioDisplay.textContent = rFixed;
      
      // Update Preview
      previewBox.style.backgroundColor = bgInput.value;
      previewBox.style.color = textInput.value;
+     previewBox.setAttribute('aria-label', 'Preview of ' + textInput.value.toUpperCase() + ' text on ' + bgInput.value.toUpperCase() + ' background');
      
      // Update Labels
      textLabel.textContent = textInput.value.toUpperCase();
@@ -83,13 +82,44 @@
      }
   }
   
+  // --- Clipboard helper ---
+  function copyToClipboard(text, message) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showCopyToast(message || 'Copied!');
+      }).catch(function() {
+        fallbackCopy(text, message);
+      });
+    } else {
+      fallbackCopy(text, message);
+    }
+  }
+  
+  function fallbackCopy(text, message) {
+    var textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.style.position = 'fixed';
+    textarea.style.left = '-9999px';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try { document.execCommand('copy'); showCopyToast(message || 'Copied!'); }
+    catch(e) { /* silent */ }
+    document.body.removeChild(textarea);
+  }
+  
+  function showCopyToast(message) {
+    if (window.Devpalettes && window.Devpalettes.Toast) {
+      window.Devpalettes.Toast.show(message, 'success');
+    }
+  }
+  
   window.checkContrast = function() {
-     const ratio = calculateRatio(textInput.value, bgInput.value);
+     var ratio = calculateRatio(textInput.value, bgInput.value);
      updateUI(ratio);
   };
   
   window.switchColors = function() {
-     const temp = textInput.value;
+     var temp = textInput.value;
      textInput.value = bgInput.value;
      bgInput.value = temp;
      checkContrast();
@@ -104,6 +134,58 @@
   // Event Listeners
   textInput.addEventListener('input', checkContrast);
   bgInput.addEventListener('input', checkContrast);
+  
+  // Copy Link button
+  var copyLinkBtn = document.getElementById('copy-link-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', function() {
+      var url = 'https://devpalettes.com/wcag-contrast-checker/';
+      copyToClipboard(url, 'Link copied!');
+      var originalHTML = copyLinkBtn.innerHTML;
+      copyLinkBtn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Copied!';
+      copyLinkBtn.setAttribute('aria-label', 'Link copied to clipboard');
+      setTimeout(function() {
+        copyLinkBtn.innerHTML = originalHTML;
+        copyLinkBtn.setAttribute('aria-label', 'Copy page link to clipboard');
+      }, 2000);
+    });
+  }
+  
+  // FAQ Toggle
+  setTimeout(function initFaqToggles() {
+    var faqToggles = document.querySelectorAll('.faq-toggle');
+    if (faqToggles.length === 0) {
+      setTimeout(initFaqToggles, 100);
+      return;
+    }
+
+    faqToggles.forEach(function(toggle) {
+      var clone = toggle.cloneNode(true);
+      toggle.parentNode.replaceChild(clone, toggle);
+      clone.addEventListener('click', function(e) {
+        e.preventDefault();
+        var content = this.nextElementSibling;
+        var icon = this.querySelector('i');
+        if (!content) return;
+
+        var isHidden = content.classList.contains('hidden');
+        if (isHidden) {
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
+          setTimeout(function() {
+            content.classList.add('hidden');
+            content.style.maxHeight = '';
+          }, 300);
+        }
+      });
+    });
+  }, 50);
   
   // Init
   checkContrast();

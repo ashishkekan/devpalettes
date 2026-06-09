@@ -3,22 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WCAG Contrast Checker - Color Accessibility Tool</title>
-  <meta name="description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for readable, inclusive UI designs instantly.">
+  <title>Free WCAG Contrast Checker – Color Accessibility Tool</title>
+  <meta name="description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/wcag-contrast-checker/">
 
- 
-  <meta property="og:title" content="WCAG Contrast Checker - Color Accessibility Tool">
-  <meta property="og:description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for readable, inclusive UI designs instantly.">
+  <meta property="og:title" content="Free WCAG Contrast Checker – Color Accessibility Tool">
+  <meta property="og:description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.">
   <meta property="og:url" content="https://devpalettes.com/wcag-contrast-checker/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/wcag-contrast-checker-preview.png">
+  <meta property="og:site_name" content="Devpalettes">
 
-  
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="WCAG Contrast Checker - Color Accessibility Tool">
-  <meta name="twitter:description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for readable, inclusive UI designs instantly.">
+  <meta name="twitter:title" content="Free WCAG Contrast Checker – Color Accessibility Tool">
+  <meta name="twitter:description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.">
   <meta name="twitter:image" content="https://devpalettes.com/images/wcag-contrast-checker-preview.png">
 
   <!-- JSON-LD: WebApplication -->
@@ -27,15 +26,85 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "WCAG Contrast Checker",
-    "description": "Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for readable, inclusive UI designs instantly.",
+    "description": "Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly.",
     "url": "https://devpalettes.com/wcag-contrast-checker/",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Web Browser",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "All",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "WCAG Contrast Checker",
+        "item": "https://devpalettes.com/wcag-contrast-checker/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Check WCAG Color Contrast",
+    "description": "Step-by-step guide to using the WCAG Contrast Checker to verify color accessibility compliance.",
+    "totalTime": "PT1M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Pick your text color",
+        "text": "Use the Text Color picker to select your foreground color."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Pick your background color",
+        "text": "Use the Background picker to select your background color."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Review the contrast ratio",
+        "text": "The contrast ratio and pass/fail status for all four WCAG thresholds update instantly."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Adjust if needed",
+        "text": "Use the Switch button to swap colors or Random to test new combinations until all thresholds pass."
+      }
+    ]
   }
   </script>
 
@@ -84,21 +153,29 @@
           "@type": "Answer",
           "text": "Yes. WCAG requires non-text elements like icons, buttons, form input borders, and graphical objects to have a contrast ratio of at least 3:1 against their adjacent colors. This ensures that interactive elements and meaningful graphics are distinguishable by users with low vision."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between AA and AAA compliance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AA is the widely accepted baseline standard requiring 4.5:1 for normal text and 3:1 for large text. AAA is the enhanced standard requiring 7:1 for normal text and 4.5:1 for large text. Most organizations target AA as the legal and practical baseline, while AAA is recommended where possible but often impractical for brand color constraints."
+        }
       }
     ]
   }
   </script>
-  
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <!-- Reduced from 7 weights to 4 -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
@@ -108,34 +185,42 @@
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    /* CLS prevention */
+    #navbar-container { min-height: 64px; }
+    .spectrum-line { height: 3px; background: linear-gradient(90deg, #10b981, #6366f1, #f59e0b, #ef4444); border-radius: 9999px; }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
+
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded">Skip to main content</a>
+
   <div id="navbar-container"></div>
   
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+  <main id="main-content" class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Decorative backgrounds — hidden from assistive technology -->
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
       <!-- Header -->
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">WCAG Contrast Checker</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">
-          Ensure your colors meet Web Content Accessibility Guidelines (WCAG) standards.
+          Ensure your colors meet Web Content Accessibility Guidelines (WCAG) standards. <span class="text-emerald-600 dark:text-emerald-400 font-medium">Free, instant, runs in your browser.</span>
         </p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10  max-w-7xl mx-auto">
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10 max-w-7xl mx-auto" aria-label="Tool introduction">
         <h2 class="text-2xl font-bold mb-4">What Is the WCAG Contrast Checker?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           The WCAG Contrast Checker is a free tool that instantly calculates the contrast ratio between any two colors and tells you whether they pass WCAG 2.1 accessibility standards. Pick a text color and a background color, and you get real-time pass/fail results for all four compliance thresholds — AA Normal, AA Large, AAA Normal, and AAA Large — alongside a live preview showing exactly how your text looks on that background.
@@ -150,15 +235,15 @@
       
       <div class="grid lg:grid-cols-2 gap-8">
         
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           
           <div class="glass-card p-6 shimmer-card">
             <div class="grid grid-cols-2 gap-6 mb-6">
                <!-- Foreground -->
                <div>
-                  <label class="block text-sm font-semibold mb-2 text-slate-500">Text Color</label>
+                  <label for="text-color" class="block text-sm font-semibold mb-2 text-slate-500">Text Color</label>
                   <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                     <input type="color" id="text-color" value="#000000" class="absolute inset-0 w-full h-full cursor-pointer">
+                     <input type="color" id="text-color" value="#000000" class="absolute inset-0 w-full h-full cursor-pointer" aria-label="Select text foreground color">
                      <div class="absolute bottom-1 right-1 bg-black/30 text-white text-xs font-mono px-2 py-0.5 rounded pointer-events-none">
                         <span id="text-label">#000000</span>
                      </div>
@@ -167,9 +252,9 @@
                
                <!-- Background -->
                <div>
-                  <label class="block text-sm font-semibold mb-2 text-slate-500">Background</label>
+                  <label for="bg-color" class="block text-sm font-semibold mb-2 text-slate-500">Background</label>
                   <div class="relative h-20 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700">
-                     <input type="color" id="bg-color" value="#ffffff" class="absolute inset-0 w-full h-full cursor-pointer">
+                     <input type="color" id="bg-color" value="#ffffff" class="absolute inset-0 w-full h-full cursor-pointer" aria-label="Select background color">
                      <div class="absolute bottom-1 right-1 bg-black/30 text-white text-xs font-mono px-2 py-0.5 rounded pointer-events-none">
                         <span id="bg-label">#FFFFFF</span>
                      </div>
@@ -178,11 +263,11 @@
             </div>
             
             <div class="flex gap-3">
-               <button onclick="switchColors()" class="btn-secondary flex-1 justify-center">
-                  <i class="fas fa-exchange-alt mr-2"></i>Switch
+               <button onclick="switchColors()" class="btn-secondary flex-1 justify-center" aria-label="Swap text and background colors">
+                  <i class="fas fa-exchange-alt mr-2" aria-hidden="true"></i>Switch
                </button>
-               <button onclick="randomCheck()" class="btn-primary btn-glow flex-1 justify-center">
-                  <i class="fas fa-random mr-2"></i>Random
+               <button onclick="randomCheck()" class="btn-primary btn-glow flex-1 justify-center" aria-label="Test random color combination">
+                  <i class="fas fa-random mr-2" aria-hidden="true"></i>Random
                </button>
             </div>
           </div>
@@ -190,7 +275,7 @@
           <!-- Live Preview Card -->
           <div class="glass-card p-6 shimmer-card">
              <h3 class="text-sm font-semibold text-slate-500 mb-3 uppercase tracking-wider">Live Preview</h3>
-             <div id="preview-box" class="p-8 rounded-xl text-center transition-colors" style="background-color: #ffffff; color: #000000;">
+             <div id="preview-box" class="p-8 rounded-xl text-center transition-colors" style="background-color: #ffffff; color: #000000;" role="img" aria-label="Preview of text on the selected background color">
                 <h2 class="text-2xl font-bold mb-2">Headline Text</h2>
                 <p class="text-base opacity-80">This is how your body text will look. Ensure readability.</p>
              </div>
@@ -199,43 +284,44 @@
         </div>
         
         <!-- Right: Results -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           
           <!-- Main Score -->
-          <div class="glass-card p-8 text-center shimmer-card">
+          <div class="glass-card p-8 text-center shimmer-card" role="status" aria-live="polite" aria-atomic="true">
              <h3 class="text-sm text-slate-500 uppercase tracking-wider mb-2">Contrast Ratio</h3>
-             <div id="ratio-display" class="text-6xl font-extrabold text-slate-800 dark:text-white mb-2">21.00</div>
-             <span class="text-xs text-slate-400">: 1</span>
+             <div class="text-6xl font-extrabold text-slate-800 dark:text-white mb-2">
+                <span id="ratio-display">21.00</span><span class="text-xs text-slate-400"> : 1</span>
+             </div>
           </div>
           
           <!-- WCAG Grades Grid -->
-          <div class="grid grid-cols-2 gap-4">
+          <div class="grid grid-cols-2 gap-4" role="group" aria-label="WCAG compliance grades">
              <!-- AA Normal -->
-             <div id="grade-aa-normal" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700">
+             <div id="grade-aa-normal" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700" aria-label="WCAG AA Normal Text compliance">
                 <span class="block text-xs text-slate-500 uppercase font-bold">AA Normal</span>
-                <span class="block text-sm font-bold text-slate-400 mt-1">< 4.5</span>
-                <div id="status-aa-normal" class="mt-2 text-lg font-bold">Fail</div>
+                <span class="block text-sm font-bold text-slate-400 mt-1">4.5:1 min</span>
+                <div id="status-aa-normal" class="mt-2 text-lg font-bold" aria-live="polite">Fail</div>
              </div>
              
              <!-- AA Large -->
-             <div id="grade-aa-large" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700">
+             <div id="grade-aa-large" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700" aria-label="WCAG AA Large Text compliance">
                 <span class="block text-xs text-slate-500 uppercase font-bold">AA Large</span>
-                <span class="block text-sm font-bold text-slate-400 mt-1">< 3</span>
-                <div id="status-aa-large" class="mt-2 text-lg font-bold">Fail</div>
+                <span class="block text-sm font-bold text-slate-400 mt-1">3:1 min</span>
+                <div id="status-aa-large" class="mt-2 text-lg font-bold" aria-live="polite">Fail</div>
              </div>
              
              <!-- AAA Normal -->
-             <div id="grade-aaa-normal" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700">
+             <div id="grade-aaa-normal" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700" aria-label="WCAG AAA Normal Text compliance">
                 <span class="block text-xs text-slate-500 uppercase font-bold">AAA Normal</span>
-                <span class="block text-sm font-bold text-slate-400 mt-1">< 7</span>
-                <div id="status-aaa-normal" class="mt-2 text-lg font-bold">Fail</div>
+                <span class="block text-sm font-bold text-slate-400 mt-1">7:1 min</span>
+                <div id="status-aaa-normal" class="mt-2 text-lg font-bold" aria-live="polite">Fail</div>
              </div>
              
              <!-- AAA Large -->
-             <div id="grade-aaa-large" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700">
+             <div id="grade-aaa-large" class="glass-card p-4 text-center shimmer-card border-l-4 border-slate-200 dark:border-slate-700" aria-label="WCAG AAA Large Text compliance">
                 <span class="block text-xs text-slate-500 uppercase font-bold">AAA Large</span>
-                <span class="block text-sm font-bold text-slate-400 mt-1">< 4.5</span>
-                <div id="status-aaa-large" class="mt-2 text-lg font-bold">Fail</div>
+                <span class="block text-sm font-bold text-slate-400 mt-1">4.5:1 min</span>
+                <div id="status-aaa-large" class="mt-2 text-lg font-bold" aria-live="polite">Fail</div>
              </div>
           </div>
           
@@ -249,22 +335,76 @@
         
       </div>
 
+      <!-- WCAG Thresholds Reference Table — NEW for technical depth -->
+      <section class="mt-12 max-w-4xl mx-auto" aria-label="WCAG contrast ratio thresholds reference">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-table text-indigo-500" aria-hidden="true"></i>
+            WCAG Contrast Ratio Thresholds
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700">
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Level</th>
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Text Size</th>
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Min Ratio</th>
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Use Case</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-500 dark:text-slate-400">
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4 font-semibold">AA</td>
+                  <td class="py-2.5 px-4">Normal (&lt;18pt)</td>
+                  <td class="py-2.5 px-4 font-mono font-bold">4.5:1</td>
+                  <td class="py-2.5 px-4">Body text, labels, captions</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4 font-semibold">AA</td>
+                  <td class="py-2.5 px-4">Large (≥18pt / 14pt bold)</td>
+                  <td class="py-2.5 px-4 font-mono font-bold">3:1</td>
+                  <td class="py-2.5 px-4">Headings, large UI text</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4 font-semibold">AAA</td>
+                  <td class="py-2.5 px-4">Normal (&lt;18pt)</td>
+                  <td class="py-2.5 px-4 font-mono font-bold">7:1</td>
+                  <td class="py-2.5 px-4">Enhanced readability body text</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4 font-semibold">AAA</td>
+                  <td class="py-2.5 px-4">Large (≥18pt / 14pt bold)</td>
+                  <td class="py-2.5 px-4 font-mono font-bold">4.5:1</td>
+                  <td class="py-2.5 px-4">Enhanced readability headings</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4 font-semibold">AA</td>
+                  <td class="py-2.5 px-4">Non-text elements</td>
+                  <td class="py-2.5 px-4 font-mono font-bold">3:1</td>
+                  <td class="py-2.5 px-4">Icons, borders, form controls, graphics</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
       <!-- SEO Content Section -->
-      <section class="mt-16 ">
+      <section class="mt-16" aria-label="Guide to WCAG contrast ratios">
         <div class="glass-card p-8 shimmer-card">
           <div class="prose dark:prose-invert max-w-none">
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What is WCAG Contrast Ratio?</h2>
+            <h2 id="what-is-contrast-ratio" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What is WCAG Contrast Ratio?</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               WCAG contrast ratio is a numerical value that measures the difference in luminance between two colors—typically text and its background. The ratio ranges from 1:1 (no contrast, identical colors) to 21:1 (maximum contrast, pure black on pure white). The formula accounts for how humans perceive brightness differently across red, green, and blue channels, weighting green most heavily because our eyes are most sensitive to it. A higher ratio means better readability and easier visual distinction. When you pick colors from a <a href="/palettes/" class="text-emerald-500 hover:underline">color palette</a>, running each text-background pair through a contrast checker ensures nothing slips through the cracks.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Accessibility Matters in UI Design</h2>
+            <h2 id="why-accessibility-matters" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Accessibility Matters in UI Design</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               Accessibility is not optional—it is a fundamental requirement of good design. Globally, over 1 billion people live with some form of visual impairment. Low contrast text is the most common accessibility failure on the web, affecting not only users with visual disabilities but also people viewing screens in bright sunlight, older adults with declining vision, and anyone using a low-brightness setting to save battery. Beyond ethics, accessibility is a legal requirement in many jurisdictions. The Americans with Disabilities Act (ADA), Section 508 in the US, and the European Accessibility Act all reference WCAG standards. Non-compliance can result in lawsuits, fines, and reputational damage. Designing with accessible contrast from the start is far cheaper than retrofitting it later. And it's not just your main site — make sure the text on your <a href="/social-meta-preview/" class="text-emerald-500 hover:underline">social media previews</a> meets contrast minimums too, since those cards represent your brand across every platform.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">WCAG AA vs AAA Explained</h2>
+            <h2 id="aa-vs-aaa" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">WCAG AA vs AAA Explained</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               WCAG 2.1 defines three conformance levels: A (minimum), AA (standard), and AAA (enhanced). Level A is so lenient that it is practically useless for real-world text readability. Level AA is the widely accepted baseline—most organizations, governments, and laws target AA compliance. It requires a 4.5:1 contrast ratio for normal text (under 18pt or under 14pt bold) and 3:1 for large text (18pt or 14pt bold and above). Level AAA is the gold standard: 7:1 for normal text and 4.5:1 for large text. AAA is recommended where possible but is often impractical for large-scale designs because it severely limits your color choices, especially for brand colors or decorative elements. Most teams aim for AA across the board and push for AAA on critical content like primary body text and navigation.
             </p>
@@ -274,71 +414,125 @@
               WCAG also applies to non-text elements like icons, buttons, form input borders, charts, and graphical components. These require a minimum 3:1 contrast ratio against adjacent colors. This ensures that a submit button is distinguishable from its background, or that an error icon is visible next to a form field. Many designers focus only on text contrast and overlook icons and UI components—a common audit failure.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Use This Contrast Checker Tool</h2>
+            <h2 id="how-to-use" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Use This Contrast Checker Tool</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               Using this tool is simple. Pick your text color and background color using the two color pickers at the top. The tool instantly calculates the contrast ratio and displays your pass/fail status for all four WCAG thresholds: AA Normal, AA Large, AAA Normal, and AAA Large. The live preview box shows exactly how your text will look with the chosen combination. Use the Switch button to swap foreground and background colors, or hit Random to test arbitrary combinations. If you are working with specific HEX codes from a <a href="/converter/" class="text-emerald-500 hover:underline">color converter</a>, you can also type them directly into the native color picker by clicking the HEX value field.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Best Practices for Readable UI Design</h2>
+            <h2 id="best-practices" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Best Practices for Readable UI Design</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
               Start by choosing your background color first, then select text colors that meet at least AA contrast against it. Avoid placing text over images or gradients without a solid or semi-transparent overlay—these variable backgrounds make contrast unpredictable. For dark mode interfaces, do not simply invert your light mode colors; test contrast separately because perception changes on dark surfaces. A grey that works on white may fail on dark grey. Maintain a minimum of 4.5:1 for body text and 3:1 for large headings and interactive elements. If you're working with established brand colors, use the <a href="/brand-color-extractor/" class="text-emerald-500 hover:underline">brand color extractor</a> to pull exact HEX values and test them here. When building a full color system, pair this checker with <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">proven palette-building strategies</a> to create schemes that are both beautiful and accessible from the start.
             </p>
-
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Frequently Asked Questions</h2>
-            <div class="space-y-4 text-slate-600 dark:text-slate-300">
-              <p><strong>Q: What is WCAG contrast ratio?</strong><br>A: It is a numerical measure of the luminance difference between two colors, ranging from 1:1 to 21:1. Higher ratios mean better readability.</p>
-              <p><strong>Q: What is an acceptable contrast ratio?</strong><br>A: WCAG AA requires 4.5:1 for normal text and 3:1 for large text. AAA requires 7:1 for normal text and 4.5:1 for large text.</p>
-              <p><strong>Q: How to pass WCAG AA and AAA?</strong><br>A: Verify every text-background pair meets the minimum ratio using a contrast checker. Adjust colors until all combinations pass the required threshold.</p>
-              <p><strong>Q: Why is contrast important in UI?</strong><br>A: Low contrast makes text unreadable for users with visual impairments, causes eye strain, increases bounce rates, and creates legal compliance risks.</p>
-              <p><strong>Q: Does WCAG apply to non-text elements?</strong><br>A: Yes. Icons, buttons, input borders, and graphical objects need at least 3:1 contrast against adjacent colors to be distinguishable.</p>
-            </div>
 
           </div>
         </div>
       </section>
 
-      <section class="mt-12 ">
+      <!-- FAQ Section — converted from inline Q&A to proper semantic HTML -->
+      <section class="mt-12 max-w-7xl mx-auto" aria-label="Frequently asked questions">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4" id="faq-container">
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
+                <span>What is WCAG contrast ratio?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">WCAG contrast ratio is a numerical measure of the luminance difference between two colors, ranging from 1:1 to 21:1. Higher ratios mean better readability. The formula weights green most heavily because human eyes are most sensitive to that channel.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
+                <span>What is an acceptable contrast ratio?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">WCAG AA requires 4.5:1 for normal text and 3:1 for large text. AAA requires 7:1 for normal text and 4.5:1 for large text. Most organizations target AA compliance as the baseline standard.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
+                <span>How to pass WCAG AA and AAA?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">Verify every text-background pair meets the minimum ratio using a contrast checker. Adjust colors until all combinations pass the required threshold. Pay special attention to links, buttons, form labels, and placeholder text.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
+                <span>Why is contrast important in UI?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">Low contrast makes text unreadable for users with visual impairments, causes eye strain, increases bounce rates, and creates legal compliance risks under the ADA and Section 508.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
+                <span>Does WCAG apply to non-text elements?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">Yes. Icons, buttons, input borders, and graphical objects need at least 3:1 contrast against adjacent colors to be distinguishable by users with low vision.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
+                <span>What is the difference between AA and AAA compliance?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">AA is the widely accepted baseline standard requiring 4.5:1 for normal text and 3:1 for large text. AAA is the enhanced standard requiring 7:1 for normal text and 4.5:1 for large text. Most organizations target AA as the legal and practical baseline, while AAA is recommended where possible but often impractical for brand color constraints.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-12" aria-label="Who uses this contrast checker">
          <h2 class="text-2xl font-bold mb-6 text-center">Who Uses This Contrast Checker?</h2>
          <div class="grid md:grid-cols-3 gap-6">
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-palette text-3xl text-blue-500 mb-4"></i>
+               <i class="fas fa-palette text-3xl text-blue-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">UI Designers</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Test color systems and design tokens before handoff. Catch contrast failures early when fixing them costs minutes instead of sprints.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-code text-3xl text-emerald-500 mb-4"></i>
+               <i class="fas fa-code text-3xl text-emerald-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">Front-End Developers</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Verify that implemented colors meet accessibility requirements. Confirm your CSS variables pass before pushing to production.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-clipboard-check text-3xl text-purple-500 mb-4"></i>
+               <i class="fas fa-clipboard-check text-3xl text-purple-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">QA & Accessibility Auditors</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Quickly test color combinations during manual audits. Pair this with a full <a href="/seo-analyzer/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">page SEO audit</a> for comprehensive compliance coverage.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-pen-nib text-3xl text-amber-500 mb-4"></i>
+               <i class="fas fa-pen-nib text-3xl text-amber-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">Content Teams</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Ensure blog posts, landing pages, and email campaigns are readable for every visitor — not just those with perfect vision on calibrated screens.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-briefcase text-3xl text-red-500 mb-4"></i>
+               <i class="fas fa-briefcase text-3xl text-red-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">Product Managers</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Validate that new features meet compliance standards before release. Avoid accessibility-related launch blockers and post-release hotfixes.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-graduation-cap text-3xl text-teal-500 mb-4"></i>
+               <i class="fas fa-graduation-cap text-3xl text-teal-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">Students & Educators</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Learn WCAG contrast requirements interactively. See the math come alive by testing real color pairs and understanding which thresholds apply where.</p>
             </div>
          </div>
       </section>
 
-      <section class="mt-12 ">
+      <section class="mt-12" aria-label="Benefits of using a contrast checker">
          <h2 class="text-2xl font-bold mb-6 text-center">Benefits of Using a Contrast Checker</h2>
          <div class="grid sm:grid-cols-2 gap-6 mt-6 max-w-7xl mx-auto">
             <div class="flex gap-4">
                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-bolt text-emerald-500"></i>
+                  <i class="fas fa-bolt text-emerald-500" aria-hidden="true"></i>
                </div>
                <div>
                   <h3 class="font-semibold mb-1">Instant Feedback</h3>
@@ -347,7 +541,7 @@
             </div>
             <div class="flex gap-4">
                <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-table-cells text-blue-500"></i>
+                  <i class="fas fa-table-cells text-blue-500" aria-hidden="true"></i>
                </div>
                <div>
                   <h3 class="font-semibold mb-1">All Four Thresholds at Once</h3>
@@ -356,7 +550,7 @@
             </div>
             <div class="flex gap-4">
                <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-eye text-purple-500"></i>
+                  <i class="fas fa-eye text-purple-500" aria-hidden="true"></i>
                </div>
                <div>
                   <h3 class="font-semibold mb-1">Live Text Preview</h3>
@@ -365,7 +559,7 @@
             </div>
             <div class="flex gap-4">
                <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-shield-halved text-amber-500"></i>
+                  <i class="fas fa-shield-halved text-amber-500" aria-hidden="true"></i>
                </div>
                <div>
                   <h3 class="font-semibold mb-1">Privacy First</h3>
@@ -374,7 +568,7 @@
             </div>
             <div class="flex gap-4">
                <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-scale-balanced text-red-500"></i>
+                  <i class="fas fa-scale-balanced text-red-500" aria-hidden="true"></i>
                </div>
                <div>
                   <h3 class="font-semibold mb-1">Legal Compliance</h3>
@@ -383,7 +577,7 @@
             </div>
             <div class="flex gap-4">
                <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-infinity text-teal-500"></i>
+                  <i class="fas fa-infinity text-teal-500" aria-hidden="true"></i>
                </div>
                <div>
                   <h3 class="font-semibold mb-1">Free and Unlimited</h3>
@@ -393,7 +587,7 @@
          </div>
       </section>
 
-      <section class="glass-card p-8 shimmer-card mt-12 max-w-7xl mx-auto ">
+      <section class="glass-card p-8 shimmer-card mt-12 max-w-7xl mx-auto" aria-label="Why this tool was built">
          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
             I once failed an accessibility audit because of a single shade of grey. The text looked perfectly fine on my calibrated monitor, but it didn't meet AA contrast against its background — and I had absolutely no idea until the audit report came back. That one finding cost more time to fix than the entire feature had taken to build.
@@ -406,28 +600,28 @@
          </p>
       </section>
 
-      <section class="glass-card p-8 shimmer-card text-center mt-12">
+      <section class="glass-card p-8 shimmer-card text-center mt-12" aria-label="Share this tool">
         <div class="max-w-7xl mx-auto px-4 text-center">
           <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
           <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
           <div class="flex items-center justify-center gap-3 flex-wrap">
             <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/wcag-contrast-checker/&text=Check%20WCAG%20color%20contrast%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-              <i class="fab fa-x-twitter"></i> Twitter
+              <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/wcag-contrast-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-              <i class="fab fa-facebook-f"></i> Facebook
+              <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
             </a>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/wcag-contrast-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-              <i class="fab fa-linkedin-in"></i> LinkedIn
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
             </a>
             <a href="https://wa.me/?text=Check%20out%20this%20free%20WCAG%20contrast%20checker%20https://devpalettes.com/wcag-contrast-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-              <i class="fab fa-whatsapp"></i> WhatsApp
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
             </a>
             <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/wcag-contrast-checker/&description=Free%20WCAG%20contrast%20checker%20for%20accessible%20design" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-              <i class="fab fa-pinterest-p"></i> Pinterest
+              <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
             </a>
-            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-              <i class="fas fa-link"></i> Copy Link
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+              <i class="fas fa-link" aria-hidden="true"></i> Copy Link
             </button>
           </div>
         </div>
@@ -444,8 +638,8 @@
     </div>
   </main>
   <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/wcag-contrast.js"></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/wcag-contrast.js" defer></script>
 </body>
 </html>

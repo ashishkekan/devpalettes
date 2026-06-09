@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10b981">
+
   <!-- Primary Meta Tags -->
-  <title>JavaScript Minifier – Minify JS Online Free</title>
+  <title>JavaScript Minifier – Minify JS Online Free | DevPalettes</title>
   <meta name="description" content="Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size with this free online JavaScript minifier tool.">
-  <meta name="author" content="Devpalettes">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/js-minifier/"/>
 
   <!-- Open Graph / Facebook -->
@@ -15,14 +17,18 @@
   <meta property="og:url" content="https://devpalettes.com/js-minifier/">
   <meta property="og:title" content="JavaScript Minifier – Minify JS Online Free">
   <meta property="og:description" content="Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size with this free tool.">
-  <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:image" content="https://devpalettes.com/images/og-js-minifier.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="DevPalettes">
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://devpalettes.com/js-minifier/">
-  <meta property="twitter:title" content="JavaScript Minifier – Minify JS Online Free">
-  <meta property="twitter:description" content="Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size with this free tool.">
-  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://devpalettes.com/js-minifier/">
+  <meta name="twitter:title" content="JavaScript Minifier – Minify JS Online Free">
+  <meta name="twitter:description" content="Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size with this free tool.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-js-minifier.png">
+
   <!-- Favicon & Apple Touch Icon -->
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
@@ -30,7 +36,29 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
      crossorigin="anonymous"></script>
-  
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "JavaScript Minifier",
+        "item": "https://devpalettes.com/js-minifier/"
+      }
+    ]
+  }
+  </script>
+
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
@@ -42,6 +70,12 @@
     "description": "A free online tool to minify JavaScript code. Remove whitespace, comments, and unnecessary characters to reduce JS file size for faster page loading with real-time preview.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "creator": {
+      "@type": "Organization",
+      "name": "DevPalettes",
+      "url": "https://devpalettes.com/"
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -50,7 +84,7 @@
   }
   </script>
 
-  <!-- Structured Data: FAQ -->
+  <!-- Structured Data: FAQ — expanded to 8 questions -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -95,6 +129,30 @@
           "@type": "Answer",
           "text": "For production, use build tools like Terser, esbuild, UglifyJS, or webpack's TerserPlugin as part of your build pipeline. Online minifiers are perfect for quick one-off minification, testing, or when you do not have a build system set up. Both approaches produce equivalent output."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I minify ES6 and modern JavaScript?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This minifier works with ES6+ syntax including arrow functions, template literals, destructuring, classes, async/await, import/export statements, and spread operators. It protects template literal contents and string values from accidental modification during the minification process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is my code sent to a server?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This JavaScript minifier runs entirely in your browser. No code is sent to any server, and no data leaves your machine. All minification happens client-side using JavaScript, making it safe for proprietary or sensitive code."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What types of comments does this minifier remove?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "This minifier removes both single-line comments (// comment) and multi-line comments (/* comment */). It is careful to not match comment syntax inside string literals or regex patterns, so comments embedded in strings are preserved."
+        }
       }
     ]
   }
@@ -102,6 +160,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -117,31 +176,39 @@
 
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    /* Skip link */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
+    .skip-link:focus{left:0;top:0;width:auto;height:auto;padding:.75rem 1.5rem;background:#10b981;color:#fff;font-weight:700;border-radius:0 0 .5rem 0;outline:2px solid #fff}
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Skip to content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navbar -->
-  <div id="navbar-container"></div>
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
   
   <!-- Main Content -->
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+  <main id="main-content" class="pt-8 pb-12 min-h-screen relative overflow-hidden" role="main">
     <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-10 " style="margin-top: 45px;">
+      <div class="text-center mb-10" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Online JavaScript Minifier – Minify JS Free</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size for faster page loading</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="max-w-7xl mx-auto mb-10 " aria-label="What is JavaScript minification">
+      <section class="max-w-7xl mx-auto mb-10" aria-labelledby="what-is-heading">
         <article class="glass-card p-6 sm:p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">What Is a JavaScript Minifier?</h2>
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What Is a JavaScript Minifier?</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
             A JavaScript minifier is a tool that removes unnecessary characters from JS source code without changing how the code executes. It strips out whitespace (spaces, tabs, and newlines), both single-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">// ...</code>) and multi-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/* ... */</code>), unnecessary semicolons, and empty lines. The result is a smaller JavaScript file that downloads faster, parses quicker, and uses less bandwidth — while executing identically in the browser.
           </p>
@@ -155,93 +222,93 @@
       </section>
 
       <!-- Quick Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Minification statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-              <i class="fas fa-file-code text-emerald-500"></i>
+              <i class="fas fa-file-code text-emerald-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Original Size</span>
           </div>
-          <p id="stat-original" class="text-3xl font-bold text-slate-400">0 B</p>
+          <p id="stat-original" class="text-3xl font-bold text-slate-400" aria-live="polite">0 B</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-              <i class="fas fa-compress text-blue-500"></i>
+              <i class="fas fa-compress text-blue-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Minified Size</span>
           </div>
-          <p id="stat-minified" class="text-3xl font-bold text-slate-400">0 B</p>
+          <p id="stat-minified" class="text-3xl font-bold text-slate-400" aria-live="polite">0 B</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
-              <i class="fas fa-percentage text-purple-500"></i>
+              <i class="fas fa-percentage text-purple-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Reduction</span>
           </div>
-          <p id="stat-reduction" class="text-3xl font-bold text-slate-400">0%</p>
+          <p id="stat-reduction" class="text-3xl font-bold text-slate-400" aria-live="polite">0%</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-              <i class="fas fa-circle-check text-amber-500"></i>
+              <i class="fas fa-circle-check text-amber-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Status</span>
           </div>
-          <p id="stat-status" class="text-3xl font-bold text-slate-400">Idle</p>
+          <p id="stat-status" class="text-3xl font-bold text-slate-400" aria-live="polite">Idle</p>
         </div>
       </div>
 
       <div class="block md:grid md:grid-cols-2 gap-8">
         <!-- Left: Inputs -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square" aria-hidden="true"></i></span>
               JavaScript Input
             </h2>
             <div class="space-y-5">
               <!-- Options -->
-              <div>
-                <label class="block text-sm font-semibold mb-2">Minification Options</label>
+              <fieldset>
+                <legend class="block text-sm font-semibold mb-2">Minification Options</legend>
                 <div class="space-y-2.5">
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label for="opt-whitespace" class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-whitespace" class="sr-only peer" checked>
                     <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove whitespace</span>
                   </label>
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label for="opt-comments" class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-comments" class="sr-only peer" checked>
                     <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove comments</span>
                   </label>
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label for="opt-semicolons" class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-semicolons" class="sr-only peer" checked>
                     <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove unnecessary semicolons</span>
                   </label>
-                  <label class="flex items-center gap-3 cursor-pointer group">
+                  <label for="opt-newlines" class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-newlines" class="sr-only peer">
                     <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Keep newlines (disable collapse)</span>
                   </label>
                 </div>
-              </div>
+              </fieldset>
               <!-- JS Textarea -->
               <div>
-                <label class="block text-sm font-semibold mb-2">JavaScript Code</label>
+                <label for="js-input" class="block text-sm font-semibold mb-2">JavaScript Code</label>
                 <textarea id="js-input" rows="14" placeholder="Paste your JavaScript code here..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm font-mono resize-none"></textarea>
                 <div class="flex justify-between mt-1.5">
                   <p class="text-xs text-slate-400">Paste JavaScript source code to minify</p>
-                  <p id="js-input-count" class="text-xs text-slate-400">0 chars</p>
+                  <p id="js-input-count" class="text-xs text-slate-400" aria-live="polite">0 chars</p>
                 </div>
               </div>
               <!-- Clear Button -->
               <div class="pt-2 flex gap-3">
-                <button id="js-clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
-                  <i class="fas fa-rotate-left"></i> Clear All
+                <button id="js-clear-btn" type="button" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
+                  <i class="fas fa-rotate-left" aria-hidden="true"></i> Clear All
                 </button>
               </div>
             </div>
@@ -250,48 +317,48 @@
           <!-- Presets -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
               Quick Examples
             </h2>
             <p class="text-sm text-slate-500 mb-4">Try these sample JavaScript snippets to see minification in action</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="basic">
-                <i class="fas fa-code text-blue-500 mr-2"></i>Basic JS
+              <button type="button" class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="basic">
+                <i class="fas fa-code text-blue-500 mr-2" aria-hidden="true"></i>Basic JS
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="comments">
-                <i class="fas fa-comment-slash text-purple-500 mr-2"></i>With Comments
+              <button type="button" class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="comments">
+                <i class="fas fa-comment-slash text-purple-500 mr-2" aria-hidden="true"></i>With Comments
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="functions">
-                <i class="fas fa-cube text-amber-500 mr-2"></i>Functions
+              <button type="button" class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="functions">
+                <i class="fas fa-cube text-amber-500 mr-2" aria-hidden="true"></i>Functions
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="es6">
-                <i class="fas fa-bolt text-emerald-500 mr-2"></i>ES6+ Syntax
+              <button type="button" class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="es6">
+                <i class="fas fa-bolt text-emerald-500 mr-2" aria-hidden="true"></i>ES6+ Syntax
               </button>
             </div>
           </div>
         </div>
 
         <!-- Right: Output -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <!-- Generated Output -->
           <div class="glass-card p-8 shimmer-card">
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye" aria-hidden="true"></i></span>
                 Minified Output
               </h2>
-              <div class="flex gap-1.5">
-                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result">
-                  <i class="fas fa-file-lines mr-1"></i>Result
+              <div class="flex gap-1.5" role="tablist" aria-label="Output view tabs">
+                <button type="button" class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result" role="tab" aria-selected="true" aria-controls="view-result">
+                  <i class="fas fa-file-lines mr-1" aria-hidden="true"></i>Result
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw">
-                  <i class="fas fa-code mr-1"></i>Raw
+                <button type="button" class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw" role="tab" aria-selected="false" aria-controls="view-raw">
+                  <i class="fas fa-code mr-1" aria-hidden="true"></i>Raw
                 </button>
               </div>
             </div>
             <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
               <!-- Result View -->
-              <div id="view-result" class="preview-panel">
+              <div id="view-result" class="preview-panel" role="tabpanel">
                 <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
                   <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
                     <div class="flex gap-1.5">
@@ -307,11 +374,11 @@
                 </div>
               </div>
               <!-- Raw View -->
-              <div id="view-raw" class="preview-panel hidden">
+              <div id="view-raw" class="preview-panel hidden" role="tabpanel">
                 <div class="relative">
                   <pre id="js-raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[500px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Paste JavaScript code to see the raw minified output here</pre>
-                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy Code Inline">
-                    <i class="fas fa-copy"></i>
+                  <button id="copy-code-inline" type="button" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs focus:opacity-100" aria-label="Copy minified code to clipboard">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -322,53 +389,53 @@
           <div class="glass-card p-8 shimmer-card">
             <div class="flex justify-between items-center mb-5">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-download"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-download" aria-hidden="true"></i></span>
                 Export
               </h2>
               <div class="flex gap-2">
-                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3">
-                  <i class="fas fa-copy mr-1"></i>Copy
+                <button id="copy-tags-btn" type="button" class="btn-primary btn-glow text-xs py-2 px-3">
+                  <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
                 </button>
-                <button id="download-file-btn" class="btn-secondary text-xs py-2 px-3">
-                  <i class="fas fa-file-arrow-down mr-1"></i>Download
+                <button id="download-file-btn" type="button" class="btn-secondary text-xs py-2 px-3">
+                  <i class="fas fa-file-arrow-down mr-1" aria-hidden="true"></i>Download
                 </button>
               </div>
             </div>
             <div class="relative">
               <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[120px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Paste JavaScript code to generate minified output</pre>
             </div>
-            <p id="js-output-info" class="text-xs text-slate-400 mt-3">No output generated yet</p>
+            <p id="js-output-info" class="text-xs text-slate-400 mt-3" aria-live="polite">No output generated yet</p>
           </div>
 
           <!-- Validation Status -->
           <div class="glass-card p-6 shimmer-card">
             <h3 class="font-bold mb-4 flex items-center gap-2">
-              <i class="fas fa-clipboard-check text-emerald-500"></i>
+              <i class="fas fa-clipboard-check text-emerald-500" aria-hidden="true"></i>
               Validation Checklist
             </h3>
-            <div id="validation-list" class="space-y-2.5">
-              <div class="flex items-center gap-3 text-sm" data-check="has-input">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+            <div id="validation-list" class="space-y-2.5" role="list" aria-label="Minification validation checklist">
+              <div class="flex items-center gap-3 text-sm" data-check="has-input" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">JavaScript input is provided</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-code">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-code" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Contains JavaScript code</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="minified">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="minified" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Minification completed</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="size-reduced">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="size-reduced" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">File size reduced</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="no-errors">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="no-errors" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">No processing errors</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="output-ready">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="output-ready" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Output is ready to copy</span>
               </div>
             </div>
@@ -376,9 +443,9 @@
         </div>
       </div>
 
-      <section class="mt-12 max-w-7xl mx-auto " aria-label="Why this tool was built">
+      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="whybuilt-heading">
         <article class="glass-card p-6 sm:p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">Why I Built This JavaScript Minifier</h2>
+          <h2 id="whybuilt-heading" class="text-2xl font-bold mb-4">Why I Built This JavaScript Minifier</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
             Most online JS minifiers either try to do too much (full AST parsing, variable renaming) and occasionally break code, or they're so basic they don't protect strings properly. I once pasted a JavaScript file into a random minifier and it collapsed whitespace inside a template literal, turning <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">`hello world`</code> into <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">`helloworld`</code>. That kind of bug is insidious because it doesn't throw an error — it just silently breaks your UI.
           </p>
@@ -392,11 +459,11 @@
       </section>
 
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 ">
-         
+      <div class="seo-content space-y-12 mt-16">
+
          <!-- What is -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">What is JavaScript Minification?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whatis-heading">
+            <h2 id="whatis-heading" class="text-2xl font-bold mb-4">What is JavaScript Minification?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. The JavaScript Minifier strips out whitespace (spaces, tabs, newlines), both single-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">// ...</code>) and multi-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/* ... */</code>), unnecessary semicolons, empty lines, and redundant spaces. The result is a compact JavaScript file that reduces JS size while executing identically in the browser. You can minify JS online free right here, and also try our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> and <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> for complete front-end optimization.
             </p>
@@ -409,8 +476,8 @@
          </section>
 
          <!-- How it Works -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Does JavaScript Minification Work?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howworks-heading">
+            <h2 id="howworks-heading" class="text-2xl font-bold mb-4">How Does JavaScript Minification Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This JavaScript minifier applies a series of careful text transformations to the input code, each targeting a specific type of removable content. As described on <a href="https://en.wikipedia.org/wiki/Minification_(programming)" target="_blank" rel="noopener noreferrer">Wikipedia's minification article</a>, the goal is to reduce JS size by eliminating characters that are not required for execution:
             </p>
@@ -428,12 +495,12 @@
          </section>
 
          <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of JavaScript Minification</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of JavaScript Minification</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-gauge-high text-emerald-500"></i>
+                     <i class="fas fa-gauge-high text-emerald-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Faster Page Loading</h3>
@@ -442,7 +509,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-chart-line text-blue-500"></i>
+                     <i class="fas fa-chart-line text-blue-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Better Core Web Vitals</h3>
@@ -451,7 +518,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-server text-purple-500"></i>
+                     <i class="fas fa-server text-purple-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Lower Bandwidth Costs</h3>
@@ -460,7 +527,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bolt text-amber-500"></i>
+                     <i class="fas fa-bolt text-amber-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Faster Parsing</h3>
@@ -469,7 +536,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-shield-halved text-red-500"></i>
+                     <i class="fas fa-shield-halved text-red-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Reduced Exposure</h3>
@@ -478,7 +545,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-mobile-screen text-teal-500"></i>
+                     <i class="fas fa-mobile-screen text-teal-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Mobile Performance</h3>
@@ -489,8 +556,8 @@
          </section>
 
          <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This JavaScript Minifier</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-heading">
+            <h2 id="howto-heading" class="text-2xl font-bold mb-4">How to Use This JavaScript Minifier</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Select Options:</strong> "Remove whitespace" and "Remove comments" are enabled by default. "Remove unnecessary semicolons" is recommended for most JavaScript. "Keep newlines" disables whitespace collapse if you need a single-line-per-statement output.</li>
                <li><strong>Paste JavaScript Code:</strong> Paste your JavaScript source code into the textarea. You can paste a complete script file, a module, or any JS fragment including ES6+ syntax.</li>
@@ -503,9 +570,27 @@
             </ol>
          </section>
 
+         <!-- NEW: Who Is This Tool For? -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whofor-heading">
+            <h2 id="whofor-heading" class="text-2xl font-bold mb-4">Who Is This JavaScript Minifier For?</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+               This tool serves a specific niche: developers who need fast, safe JavaScript minification without setting up a full build pipeline. Here are the audiences that benefit most:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Frontend developers</strong> deploying quick fixes or hot patches where spinning up a full build process is overkill. Paste the file, minify, download, deploy.</li>
+               <li><strong>Backend developers</strong> who occasionally touch frontend code and don't have webpack or Vite configured. This tool works instantly with zero configuration.</li>
+               <li><strong>WordPress and CMS site owners</strong> who want to reduce the size of custom JavaScript snippets in their theme without installing a plugin or modifying their build process.</li>
+               <li><strong>Students and educators</strong> teaching web performance concepts. The real-time stats and validation checklist make it easy to demonstrate the concrete impact of minification on file size.</li>
+               <li><strong>Security-conscious teams</strong> who need a minifier that runs entirely client-side. Since no code is transmitted to any server, proprietary or sensitive JavaScript never leaves the browser.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               For full production workflows, this tool pairs naturally with our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> and <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> to cover all three core front-end asset types. If you need to check your overall performance after minifying, the <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a> audits your page for common performance issues.
+            </p>
+         </section>
+
          <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
+            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Production Deployment:</strong> Minify JavaScript as part of your build process before deploying. Combined with <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML minification</a> and <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS minification</a>, this reduces total page weight and improves loading performance for all users.</li>
                <li><strong>JavaScript Libraries:</strong> Frameworks like React, Vue, Angular, and jQuery ship with already-minified production builds. If you are not using a framework, use this tool to minify your custom JavaScript before serving it.</li>
@@ -517,61 +602,88 @@
             </ul>
          </section>
 
-         <!-- FAQ Section -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <!-- FAQ Section — expanded to 8 questions with accessibility -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
                      <span>What is JavaScript minification?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-1-btn">
                      <p class="text-sm text-slate-600 dark:text-slate-400">JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. This includes removing whitespace, line breaks, comments, unnecessary semicolons, empty lines, and redundant spaces. The result is a smaller file that downloads and parses faster but executes identically in the browser.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
                      <span>Does JS minification break the code?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">No. JavaScript minification removes only non-functional characters. The browser executes the exact same code from minified and unminified files. All variables, functions, logic, and behavior are preserved. The only difference is the file size transmitted over the network. For production, pair this with a full minifier like Terser or UglifyJS for maximum optimization.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
                      <span>How much smaller does minified JS get?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">JavaScript minification typically reduces file size by 30-50%. Well-formatted code with extensive comments and indentation sees the largest reductions. Production-ready libraries that are already minified will see minimal additional savings. Custom application code with documentation often sees 40-60% reductions.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
                      <span>What is the difference between minification and obfuscation?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Minification removes whitespace and comments but keeps variable and function names readable. Obfuscation goes further by renaming variables to short meaningless names (like a, b, c) to make the code harder to understand while keeping functionality intact. Minification is safe and recommended for all production code; obfuscation adds a layer of difficulty for reverse engineering but is not a security measure. Professional tools like UglifyJS offer both options in one tool.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
                      <span>Should I use an online minifier or a build tool?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">For production, use build tools like Terser, esbuild, UglifyJS, or webpack's TerserPlugin as part of your build pipeline. Online minifiers are perfect for quick one-off minification, testing, debugging, or when you do not have a build system. Both approaches produce equivalent output — build tools just automate the process.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
+                     <span>Can I minify ES6 and modern JavaScript?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This minifier works with ES6+ syntax including arrow functions, template literals, destructuring, classes, async/await, import/export statements, and spread operators. It protects template literal contents and string values from accidental modification during the minification process.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
+                     <span>Is my code sent to a server?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">No. This JavaScript minifier runs entirely in your browser. No code is sent to any server, and no data leaves your machine. All minification happens client-side using JavaScript, making it safe for proprietary or sensitive code.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-8">
+                     <span>What types of comments does this minifier remove?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-8" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">This minifier removes both single-line comments (<code>// comment</code>) and multi-line comments (<code>/* comment */</code>). It is careful to not match comment syntax inside string literals or regex patterns, so comments embedded in strings are preserved.</p>
                   </div>
                </div>
             </div>
          </section>
          
          <!-- Related Tools -->
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
+         <nav class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Explore More Tools</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have minified your JavaScript, try these related tools to optimize website performance:</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
@@ -584,36 +696,38 @@
                <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
                <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
             </div>
-         </section>
+         </nav>
 
          <!-- Social Sharing Section -->
-          <section class="glass-card p-8 my-16 shimmer-card text-center">
+         <section class="glass-card p-8 my-16 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/js-minifier/&text=Minify%20JavaScript%20code%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/js-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/js-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
                 <a href="https://wa.me/?text=Check%20out%20this%20free%20JavaScript%20minifier%20https://devpalettes.com/js-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <button id="copy-link-btn" type="button" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
+              <!-- Live region for copy link feedback -->
+              <div id="copy-link-status" class="sr-only" aria-live="polite" role="status"></div>
             </div>
-          </section>
+         </section>
 
          <!-- Backlink Support Section -->
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-3">Free Tool for Developers</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="freetool-heading">
+            <h2 id="freetool-heading" class="text-2xl font-bold mb-3">Free Tool for Developers</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                This JavaScript Minifier is a free tool for developers to minify JS online free and optimize website performance. Reduce JS size instantly without sending code to any server — all processing happens locally in your browser. If you find this tool helpful, consider linking to it from your blog, documentation, or project README to help other developers discover this free online JavaScript minifier and optimize website performance across the web.
             </p>
@@ -623,13 +737,13 @@
             </div>
          </section>
 
-          <div class="text-center py-10 mt-4">
+         <div class="text-center py-10 mt-4">
             <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
               <span class="text-slate-400 text-sm">Built by</span>
               <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
               <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
             </div>
-          </div>
+         </div>
 
       </div>
       
@@ -637,13 +751,17 @@
   </main>
   
   <!-- Footer -->
-  <div id="footer-container"></div>
+  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
   
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
-  <script src="../js/main.js"></script>
-  <script src="../js/js-minifier.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" role="status"></div>
+
+  <noscript>
+    <p style="text-align:center;padding:2rem;font-size:1.1rem;color:#dc2626;">This JavaScript Minifier requires JavaScript to function. Please enable JavaScript in your browser settings.</p>
+  </noscript>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/js-minifier.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 </body>
 </html>

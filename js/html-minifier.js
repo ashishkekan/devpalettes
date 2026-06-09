@@ -56,12 +56,15 @@
     if (passed === true) {
       icon.className = 'fas fa-circle-check text-[10px] text-emerald-500';
       text.className = 'text-emerald-600 dark:text-emerald-400';
+      el.setAttribute('aria-label', text.textContent + ': passed');
     } else if (passed === false) {
       icon.className = 'fas fa-circle-xmark text-[10px] text-red-400';
       text.className = 'text-red-400';
+      el.setAttribute('aria-label', text.textContent + ': failed');
     } else {
       icon.className = 'fas fa-circle text-[8px] text-slate-300 dark:text-slate-600';
       text.className = 'text-slate-400';
+      el.setAttribute('aria-label', text.textContent + ': pending');
     }
   }
 
@@ -81,21 +84,17 @@
 
     // 1. Remove comments (must be done carefully to avoid script/style content)
     if (optComments.checked) {
-      // Simple comment removal - doesn't go inside script/style tags
       output = output.replace(/<!--[\s\S]*?-->/g, '');
     }
 
     // 2. Remove empty attributes
     if (optEmptyAttrs.checked) {
-      // Remove attributes with empty string values like type="" id="" class=""
       output = output.replace(/\s+(type|id|class|style|name|title|lang|dir|accesskey|tabindex|role|aria-\w+|data-\w+|draggable|spellcheck|contenteditable|translate)=""\s*/gi, ' ');
-      // Clean up double spaces from removals
       output = output.replace(/  +/g, ' ');
     }
 
     // 3. Remove optional quotes on simple attribute values
     if (optOptionalQuotes.checked) {
-      // Match attributes like class="simplevalue" where value has no spaces/quotes/special chars
       output = output.replace(/([a-zA-Z-]+)=(")([a-zA-Z0-9_-]+)(")/g, function (match, attr, q1, val, q2) {
         return attr + '=' + val;
       });
@@ -111,11 +110,9 @@
 
     // 5. Whitespace removal
     if (optWhitespace.checked) {
-      // Protect pre, code, script, style content
       var protectedBlocks = [];
       var placeholders = [];
 
-      // Protect <pre> blocks
       output = output.replace(/<pre[\s\S]*?<\/pre>/gi, function (match) {
         var idx = protectedBlocks.length;
         protectedBlocks.push(match);
@@ -123,7 +120,6 @@
         return '___PROTECTED_' + idx + '___';
       });
 
-      // Protect <script> blocks
       output = output.replace(/<script[\s\S]*?<\/script>/gi, function (match) {
         var idx = protectedBlocks.length;
         protectedBlocks.push(match);
@@ -131,7 +127,6 @@
         return '___PROTECTED_' + idx + '___';
       });
 
-      // Protect <style> blocks
       output = output.replace(/<style[\s\S]*?<\/style>/gi, function (match) {
         var idx = protectedBlocks.length;
         protectedBlocks.push(match);
@@ -139,14 +134,9 @@
         return '___PROTECTED_' + idx + '___';
       });
 
-      // Now safely remove whitespace
-      // Replace newlines and tabs with spaces
       output = output.replace(/[\r\n\t]+/g, ' ');
-
-      // Collapse multiple spaces into one
       output = output.replace(/  +/g, ' ');
 
-      // Remove spaces between block-level tags
       var blockTags = ['address', 'article', 'aside', 'blockquote', 'body', 'br', 'canvas', 'dd', 'div', 'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head', 'header', 'hr', 'html', 'legend', 'li', 'main', 'nav', 'noscript', 'ol', 'p', 'pre', 'section', 'table', 'tbody', 'td', 'tfoot', 'th', 'thead', 'tr', 'ul'];
       var blockPattern = new RegExp('\\s*</?(' + blockTags.join('|') + ')(?:\\s|>)\\s*', 'gi');
       output = output.replace(blockPattern, function (match, tag) {
@@ -156,22 +146,16 @@
         return '<' + tag + '>';
       });
 
-      // Remove space after opening tag and before closing tag (more aggressive)
       output = output.replace(/>\s+</g, '><');
-      // But restore space between inline elements that need it (add space between tags if there's text)
-      // Simple approach: add space between > and < when there's alphanumeric between
       output = output.replace(/>(<[a-z])/gi, '> $1');
 
-      // Remove leading and trailing whitespace
       output = output.trim();
 
-      // Restore protected blocks
       for (var i = placeholders.length - 1; i >= 0; i--) {
         output = output.replace(placeholders[i], protectedBlocks[i]);
       }
     }
 
-    // Final cleanup: remove spaces before closing tags
     output = output.replace(/\s+<\/>/g, '</>');
 
     return output;
@@ -185,17 +169,13 @@
     currentOutput = '';
     hasError = false;
 
-    // Input count
     inputCount.textContent = inputLen + ' char' + (inputLen !== 1 ? 's' : '');
 
-    // Stats
     statOriginal.textContent = formatBytes(inputBytes);
     statOriginal.className = 'text-3xl font-bold ' + (inputLen > 0 ? 'text-emerald-500' : 'text-slate-400');
 
-    // Reset checks
     resetChecks();
 
-    // Empty input
     if (inputLen === 0) {
       previewContent.textContent = 'Paste HTML code and select options to see the minified result here';
       rawContent.textContent = 'Paste HTML code to see the raw minified output here';
@@ -214,11 +194,9 @@
 
     setCheck('has-input', true);
 
-    // Check for HTML tags
     var hasTags = hasHtmlTags(input);
     setCheck('has-tags', hasTags);
 
-    // Minify
     var minified = '';
     try {
       minified = minifyHtml(input);
@@ -339,8 +317,10 @@
 
       document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+        t.setAttribute('aria-pressed', 'false');
       });
       this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+      this.setAttribute('aria-pressed', 'true');
 
       document.getElementById('view-result').classList.toggle('hidden', view !== 'result');
       document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
@@ -403,7 +383,7 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -422,7 +402,8 @@
 
   // ─── Initialize ───
   process();
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+
+  // ─── FAQ Toggle with full ARIA support ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -440,13 +421,33 @@
         if (!content) return;
 
         var isHidden = content.classList.contains('hidden');
+
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-toggle').forEach(function (otherToggle) {
+          if (otherToggle !== clone) {
+            var otherContent = otherToggle.nextElementSibling;
+            var otherIcon = otherToggle.querySelector('i');
+            if (otherContent && !otherContent.classList.contains('hidden')) {
+              otherContent.style.maxHeight = '0px';
+              if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+              otherToggle.setAttribute('aria-expanded', 'false');
+              setTimeout(function () {
+                otherContent.classList.add('hidden');
+                otherContent.style.maxHeight = '';
+              }, 300);
+            }
+          }
+        });
+
         if (isHidden) {
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
+          if (icon) icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
-          icon.style.transform = 'rotate(0deg)';
+          if (icon) icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';

@@ -26,21 +26,20 @@
   var copyBtn = document.getElementById('copy-tags-btn');
   var copyInlineBtn = document.getElementById('copy-code-inline');
   var downloadBtn = document.getElementById('download-file-btn');
+  var copyLinkBtn = document.getElementById('copy-link-btn');
+  var copyLinkStatus = document.getElementById('copy-link-status');
 
   // ─── State ───
   var currentOutput = '';
   var hasError = false;
 
-  // ─── Presets ───
+  // ─── Presets (FIXED: removed duplicate keys) ───
   var presets = {
     basic: '// A simple greeting function\nfunction greet(name) {\n  const message = "Hello, " + name + "!";\n  console.log(message);\n  return message;\n}\n// Call the function\ngreet("World");\n\n// Arrow function\nconst add = (a, b) => a + b;\nconsole.log(add(5, 3));\n\n// Object shorthand\nconst config = {\n  theme: "dark",\n  language: "en",\n  responsive: true\n};\nconsole.log(config.theme);',
-    comments: '/* ===================================\n   Navigation Module\n   Created by: UI Team\n   Description: Handles main navigation\n   Dependencies: none\n   Last updated: 2024-01-15\n   =================================== */\n\nconst nav = document.querySelector('.main-nav');\n\n/* Toggle mobile menu */\nnav.addEventListener('click', function () {\n  nav.classList.toggle('active');\n});\n\n/* Hover effects */\n.nav-link:hover {\n  color: var(--color-primary);\n  background: var(--color-primary);\n  border-radius: var(--radius-md);\n}',
+    comments: '/* ===================================\n   Navigation Module\n   Created by: UI Team\n   Description: Handles main navigation\n   Dependencies: none\n   Last updated: 2024-01-15\n   =================================== */\n\nconst nav = document.querySelector(\'.main-nav\');\n\n/* Toggle mobile menu */\nnav.addEventListener(\'click\', function () {\n  nav.classList.toggle(\'active\');\n});\n\n/* Hover effects */\n.nav-link:hover {\n  color: var(--color-primary);\n  background: var(--color-primary);\n  border-radius: var(--radius-md);\n}',
     functions: '// Function declaration\nfunction calculateTotal(items) {\n  let total = 0;\n  for (let i = 0; i < items.length; i++) {\n    total += items[i].price * items[i].quantity;\n  }\n  return total;\n}\n\n// Usage\nconst cart = [\n  { price: 29.99, quantity: 2 },\n  { price: 49.99, quantity: 1 },\n  { price: 14.99, quantity: 3 }\n];\nconst total = calculateTotal(cart);\nconsole.log(`Total: $${total.toFixed(2)}`);',
-    es6: '// ES6 Destructuring\nconst { log, warn, error } = console;\n\n// Named export\nexport function processOrder(order) {\n  const { items, customer } = order;\n  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);\n  log(`Order total: $${total.toFixed(2)}`);\n\n// Arrow function with default parameter\nfunction createURL(base, path) {\n  const url = new URL(path, base);\n  return url.toString();\n}\n\n// Template literal\nconst page = `${'https://example.com'}/${
-n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  })\n}`;\nconsole.log(page);',
-    es6full: '// Import statement\nimport { useState, useEffect, useCallback } from 'react';\n\n// Custom hook\nfunction useDebounce(callback, delay) {\n  const [timer, setTimer] = useState(null);\n  const debouncedFn = useCallback(() => {\n    if (timer) clearTimeout(timer);\n    setTimer(setTimeout(() => callback(), delay));\n  }, [callback, delay]);\n  return debouncedFn;\n}\n\n// Usage\nconst searchHandler = useDebounce((query) => {\n  fetch(`/api/search?q=${query}`);\n}, 300);\n\n// Spread operator\nconst defaultOptions = {\n  method: 'POST',\n  headers: { 'Content-Type': 'application/json' }\n};\n\nfunction fetchJSON(url, options) {\n  return fetch(url, { ...defaultOptions, ...options });\n}',
-    basic: '// Immediately Invoked Function Expression\n(function() {\n  console.log('Self-executing function');\n})();\n\n// Array methods\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled);\n\n// Object methods\nconst data = { name: "Tool", version: "1.0", tags: ["seo", "dev", "tool"] };\nconst keys = Object.keys(data);\nconsole.log(keys);',
-    es6full: '// Async/Await\nasync function fetchData(url) {\n  try {\n    const response = await fetch(url);\n    if (!response.ok) {\n      throw new Error(`HTTP error! status: ${response.status}`);\n    }\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error('Fetch error:', error);\n  }\n}\n\n// Usage\nconst data = await fetchData('/api/posts');\nconsole.log(data);'
+    es6: '// ES6 Destructuring\nconst { log, warn, error } = console;\n\n// Named export\nexport function processOrder(order) {\n  const { items, customer } = order;\n  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);\n  log(`Order total: $${total.toFixed(2)}`);\n\n// Arrow function with default parameter\nfunction createURL(base, path) {\n  const url = new URL(path, base);\n  return url.toString();\n}\n\n// Template literal\nconst page = `${\'https://example.com\'}/${\n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  })\n}`;\nconsole.log(page);',
+    iife: '// Immediately Invoked Function Expression\n(function() {\n  console.log(\'Self-executing function\');\n})();\n\n// Array methods\nconst numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled);\n\n// Object methods\nconst data = { name: "Tool", version: "1.0", tags: ["seo", "dev", "tool"] };\nconst keys = Object.keys(data);\nconsole.log(keys);'
   };
 
   // ─── Helpers ───
@@ -329,6 +328,29 @@ n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  
     showToast('script.min.js downloaded', 'success');
   });
 
+  // ─── Copy Link Button ───
+  function announceCopyLink(message) {
+    if (!copyLinkStatus) return;
+    copyLinkStatus.textContent = '';
+    setTimeout(function() { copyLinkStatus.textContent = message; }, 100);
+  }
+
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', function () {
+      var url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          announceCopyLink('Page link copied to clipboard');
+          showToast('Link copied!', 'success');
+        }).catch(function () {
+          fallbackCopy(url, 'Link copied!');
+        });
+      } else {
+        fallbackCopy(url, 'Link copied!');
+      }
+    });
+  }
+
   // ─── Preview Tabs ───
   document.querySelectorAll('.preview-tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
@@ -336,8 +358,10 @@ n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  
 
       document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+        t.setAttribute('aria-selected', 'false');
       });
       this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+      this.setAttribute('aria-selected', 'true');
 
       document.getElementById('view-result').classList.toggle('hidden', view !== 'result');
       document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
@@ -400,7 +424,8 @@ n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.setAttribute('role', 'alert');
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -420,7 +445,7 @@ n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  
   // ─── Initialize ───
   process();
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  // ─── FAQ Toggle (self-contained, with accessibility) ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -442,9 +467,11 @@ n  processOrder({\n    items: [...products],\n    customer: { name: "John" }\n  
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';

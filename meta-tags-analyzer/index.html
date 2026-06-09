@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
 
   <title>Meta Tags Analyzer – Analyze Website Meta Tags Online Free</title>
-  <meta name="description" content="Analyze meta tags of any website instantly. Check title, description, Open Graph, Twitter cards, canonical tags, and get a detailed SEO score with this free meta tag analyzer tool.">
+  <meta name="description" content="Analyze meta tags of any website instantly. Check title, description, Open Graph, Twitter cards, canonical tags, and get a detailed SEO score free.">
   <meta name="author" content="Devpalettes">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://devpalettes.com/meta-tags-analyzer/"/>
 
   <!-- Open Graph / Facebook -->
@@ -16,18 +16,22 @@
   <meta property="og:title" content="Meta Tags Analyzer – Analyze Website Meta Tags Online Free">
   <meta property="og:description" content="Analyze meta tags of any website instantly. Check title, description, OG, Twitter cards, and get a detailed SEO score with this free tool.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Devpalettes">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/meta-tags-analyzer/">
   <meta property="twitter:title" content="Meta Tags Analyzer – Analyze Website Meta Tags Online Free">
   <meta property="twitter:description" content="Analyze meta tags of any website instantly. Check title, description, OG, Twitter cards, and get a detailed SEO score with this free tool.">
-  
-  
+  <meta property="twitter:image" content="https://devpalettes.com/images/og-image.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
@@ -47,7 +51,76 @@
   }
   </script>
 
-  
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Meta Tags Analyzer",
+        "item": "https://devpalettes.com/meta-tags-analyzer/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Analyze Meta Tags",
+    "description": "Learn how to use the Meta Tags Analyzer to inspect and evaluate the meta tags of any website.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Enter URL",
+        "text": "Type or paste the full URL of the page you want to analyze, including the https:// scheme."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Click Analyze",
+        "text": "Press the Analyze Meta Tags button or hit Enter. The tool fetches the page HTML and begins parsing."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Review Tags",
+        "text": "See all extracted meta tags organized by category — Basic Meta, Open Graph, Twitter Card, and more."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Check SEO Score",
+        "text": "Review the overall SEO score (0-100) and read each warning to understand what needs improvement."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Export Report",
+        "text": "Copy or download the analysis report for your records or to share with your team."
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -94,7 +167,14 @@
         }
       }
     ]
+  }
   </script>
+
+  <!-- Skip-to-content styles (critical, must be inline) -->
+  <style>
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
+    .skip-link:focus{left:8px;top:8px;width:auto;height:auto;padding:12px 20px;background:#10b981;color:#fff;border-radius:8px;font-size:14px;font-weight:600;outline:3px solid #059669;outline-offset:2px}
+  </style>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,76 +182,98 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
-  <link rel="preload" href="/css/tailwind.min.css" as="style">
+
+  <!-- Critical CSS: render-blocking (layout depends on it) -->
   <link rel="stylesheet" href="/css/tailwind.min.css">
 
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <!-- Non-critical CSS: loaded asynchronously -->
+  <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
+  <link rel="preload" href="../css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../css/animations.css"></noscript>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Skip to Content (Accessibility) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navbar -->
-  <div id="navbar-container"></div>
-  
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
+
   <!-- Main Content -->
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+  <main id="main-content" role="main" class="pt-8 pb-12 min-h-screen relative overflow-hidden">
     <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+    <canvas id="hero-visualizer" width="1920" height="600" aria-hidden="true">Background animation</canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
+      <!-- Breadcrumb Navigation -->
+      <nav aria-label="Breadcrumb" class="mb-4" style="margin-top: 20px;">
+        <ol class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+          <li><a href="/" class="hover:text-emerald-500 transition-colors">Home</a></li>
+          <li aria-hidden="true"><i class="fas fa-chevron-right text-[10px] text-slate-300 dark:text-slate-600"></i></li>
+          <li><a href="/tools/" class="hover:text-emerald-500 transition-colors">Tools</a></li>
+          <li aria-hidden="true"><i class="fas fa-chevron-right text-[10px] text-slate-300 dark:text-slate-600"></i></li>
+          <li class="text-slate-700 dark:text-slate-200 font-medium" aria-current="page">Meta Tags Analyzer</li>
+        </ol>
+      </nav>
+
       <!-- Hero Section -->
       <div class="text-center mb-12 " style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Meta Tags Analyzer</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Analyze meta tags of any website instantly. Check title, description, Open Graph, Twitter cards, and get a detailed SEO score</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
+      <!-- Live region for screen reader announcements -->
+      <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
       <!-- Quick Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 " role="status" aria-label="Analysis statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-chart-simple text-emerald-500"></i>
             </div>
             <span class="text-sm text-slate-500">SEO Score</span>
           </div>
-          <p id="stat-score" class="text-3xl font-bold text-slate-400">—</p>
+          <p id="stat-score" class="text-3xl font-bold text-slate-400" aria-label="SEO Score: not analyzed">—</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-tags text-blue-500"></i>
             </div>
             <span class="text-sm text-slate-500">Tags Found</span>
           </div>
-          <p id="stat-tags" class="text-3xl font-bold text-slate-400">0</p>
+          <p id="stat-tags" class="text-3xl font-bold text-slate-400" aria-label="Tags found: 0">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-triangle-exclamation text-purple-500"></i>
             </div>
             <span class="text-sm text-slate-500">Warnings</span>
           </div>
-          <p id="stat-warnings" class="text-3xl font-bold text-slate-400">0</p>
+          <p id="stat-warnings" class="text-3xl font-bold text-slate-400" aria-label="Warnings: 0">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-circle-check text-amber-500"></i>
             </div>
             <span class="text-sm text-slate-500">Status</span>
           </div>
-          <p id="stat-status" class="text-3xl font-bold text-slate-400">Idle</p>
+          <p id="stat-status" class="text-3xl font-bold text-slate-400" aria-label="Status: Idle">Idle</p>
         </div>
       </div>
 
@@ -180,29 +282,29 @@
         <div class="space-y-6 ">
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm" aria-hidden="true"><i class="fas fa-pen-to-square"></i></span>
               URL Input
             </h2>
             <div class="space-y-5">
               <!-- URL Input -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Website URL</label>
+                <label for="url-input" class="block text-sm font-semibold mb-2">Website URL</label>
                 <div class="relative">
-                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"><i class="fas fa-globe"></i></span>
-                  <input type="url" id="url-input" placeholder="https://example.com" class="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" spellcheck="false" autocomplete="off">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"><i class="fas fa-globe"></i></span>
+                  <input type="url" id="url-input" name="url" placeholder="https://example.com" class="w-full pl-10 pr-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" spellcheck="false" autocomplete="off" aria-describedby="url-hint" aria-required="true">
                 </div>
                 <div class="flex justify-between mt-1.5">
-                  <p id="url-error" class="text-xs text-red-500 hidden"></p>
+                  <p id="url-error" class="text-xs text-red-500 hidden" role="alert"></p>
                   <p id="url-hint" class="text-xs text-slate-400">Enter the full URL including https://</p>
                 </div>
               </div>
               <!-- Analyze Button -->
               <div class="pt-2 flex gap-3">
-                <button id="analyze-btn" class="btn-primary btn-glow text-sm py-3 px-6 flex items-center gap-2 flex-1 justify-center">
-                  <i class="fas fa-magnifying-glass-chart"></i> Analyze Meta Tags
+                <button id="analyze-btn" type="button" class="btn-primary btn-glow text-sm py-3 px-6 flex items-center gap-2 flex-1 justify-center" aria-label="Analyze meta tags of the entered URL">
+                  <i class="fas fa-magnifying-glass-chart" aria-hidden="true"></i> Analyze Meta Tags
                 </button>
-                <button id="clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
-                  <i class="fas fa-rotate-left"></i> Clear
+                <button id="clear-btn" type="button" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2" aria-label="Clear all inputs and results">
+                  <i class="fas fa-rotate-left" aria-hidden="true"></i> Clear
                 </button>
               </div>
             </div>
@@ -211,22 +313,22 @@
           <!-- Quick Examples -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm" aria-hidden="true"><i class="fas fa-wand-magic-sparkles"></i></span>
               Quick Examples
             </h2>
             <p class="text-sm text-slate-500 mb-4">Try analyzing these well-known websites to see meta tag analysis in action</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://github.com">
-                <i class="fab fa-github text-slate-800 dark:text-slate-200 mr-2"></i>GitHub
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://github.com" aria-label="Analyze GitHub meta tags">
+                <i class="fab fa-github text-slate-800 dark:text-slate-200 mr-2" aria-hidden="true"></i>GitHub
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://stackoverflow.com">
-                <i class="fab fa-stack-overflow text-amber-500 mr-2"></i>Stack Overflow
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://stackoverflow.com" aria-label="Analyze Stack Overflow meta tags">
+                <i class="fab fa-stack-overflow text-amber-500 mr-2" aria-hidden="true"></i>Stack Overflow
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://developer.mozilla.org">
-                <i class="fas fa-book text-blue-600 mr-2"></i>MDN Web Docs
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://developer.mozilla.org" aria-label="Analyze MDN Web Docs meta tags">
+                <i class="fas fa-book text-blue-600 mr-2" aria-hidden="true"></i>MDN Web Docs
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://tailwindcss.com">
-                <i class="fas fa-wind text-cyan-500 mr-2"></i>Tailwind CSS
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-url="https://tailwindcss.com" aria-label="Analyze Tailwind CSS meta tags">
+                <i class="fas fa-wind text-cyan-500 mr-2" aria-hidden="true"></i>Tailwind CSS
               </button>
             </div>
           </div>
@@ -238,23 +340,23 @@
           <div class="glass-card p-8 shimmer-card">
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm" aria-hidden="true"><i class="fas fa-eye"></i></span>
                 Analysis Results
               </h2>
-              <div class="flex gap-1.5">
-                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result">
-                  <i class="fas fa-list mr-1"></i>Tags
+              <div class="flex gap-1.5" role="tablist" aria-label="View mode">
+                <button role="tab" class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result" id="tab-result" aria-selected="true" aria-controls="view-result">
+                  <i class="fas fa-list mr-1" aria-hidden="true"></i>Tags
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw">
-                  <i class="fas fa-code mr-1"></i>Raw
+                <button role="tab" class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw" id="tab-raw" aria-selected="false" aria-controls="view-raw" tabindex="-1">
+                  <i class="fas fa-code mr-1" aria-hidden="true"></i>Raw
                 </button>
               </div>
             </div>
             <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
               <!-- Tags View -->
-              <div id="view-result" class="preview-panel">
+              <div id="view-result" class="preview-panel" role="tabpanel" aria-labelledby="tab-result">
                 <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2" aria-hidden="true">
                     <div class="flex gap-1.5">
                       <div class="w-3 h-3 rounded-full bg-red-400"></div>
                       <div class="w-3 h-3 rounded-full bg-amber-400"></div>
@@ -270,11 +372,11 @@
                 </div>
               </div>
               <!-- Raw View -->
-              <div id="view-raw" class="preview-panel hidden">
+              <div id="view-raw" class="preview-panel hidden" role="tabpanel" aria-labelledby="tab-raw">
                 <div class="relative">
                   <pre id="raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[500px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Enter a URL to see raw meta tag HTML here</pre>
-                  <button id="copy-raw-btn" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy Raw Btn">
-                    <i class="fas fa-copy"></i>
+                  <button id="copy-raw-btn" type="button" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy raw HTML to clipboard">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -285,15 +387,15 @@
           <div class="glass-card p-8 shimmer-card">
             <div class="flex justify-between items-center mb-5">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-download"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm" aria-hidden="true"><i class="fas fa-download"></i></span>
                 Export
               </h2>
               <div class="flex gap-2">
-                <button id="copy-report-btn" class="btn-primary btn-glow text-xs py-2 px-3">
-                  <i class="fas fa-copy mr-1"></i>Copy Report
+                <button id="copy-report-btn" type="button" class="btn-primary btn-glow text-xs py-2 px-3" aria-label="Copy analysis report to clipboard">
+                  <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy Report
                 </button>
-                <button id="download-btn" class="btn-secondary text-xs py-2 px-3">
-                  <i class="fas fa-file-arrow-down mr-1"></i>Download
+                <button id="download-btn" type="button" class="btn-secondary text-xs py-2 px-3" aria-label="Download analysis report as text file">
+                  <i class="fas fa-file-arrow-down mr-1" aria-hidden="true"></i>Download
                 </button>
               </div>
             </div>
@@ -304,34 +406,34 @@
           </div>
 
           <!-- Validation Status -->
-          <div class="glass-card p-6 shimmer-card">
+          <div class="glass-card p-6 shimmer-card" role="region" aria-label="Validation checklist">
             <h3 class="font-bold mb-4 flex items-center gap-2">
-              <i class="fas fa-clipboard-check text-emerald-500"></i>
+              <i class="fas fa-clipboard-check text-emerald-500" aria-hidden="true"></i>
               Validation Checklist
             </h3>
-            <div id="validation-list" class="space-y-2.5">
-              <div class="flex items-center gap-3 text-sm" data-check="has-url">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+            <div id="validation-list" class="space-y-2.5" role="list">
+              <div class="flex items-center gap-3 text-sm" data-check="has-url" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Valid URL provided</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-title">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-title" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Title tag present</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-description">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-description" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Meta description present</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-og-tags">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-og-tags" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Open Graph tags present</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-twitter-tags">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-twitter-tags" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Twitter Card tags present</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-canonical">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-canonical" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Canonical URL set</span>
               </div>
             </div>
@@ -341,9 +443,24 @@
 
       <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16 ">
-         
-         
-         <section class="glass-card p-8 shimmer-card">
+
+         <!-- Table of Contents -->
+         <nav aria-label="Table of contents" class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Table of Contents</h2>
+            <ol class="list-decimal list-inside space-y-2 text-slate-600 dark:text-slate-400">
+               <li><a href="#what-is" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">What is a Meta Tags Analyzer?</a></li>
+               <li><a href="#how-it-works" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">How Does This Meta Tags Analyzer Work?</a></li>
+               <li><a href="#benefits" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">Benefits of Analyzing Meta Tags</a></li>
+               <li><a href="#how-to-use" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">How to Use This Meta Tags Analyzer</a></li>
+               <li><a href="#use-cases" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">Practical Use Cases</a></li>
+               <li><a href="#reference" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">Meta Tag Reference</a></li>
+               <li><a href="#best-practices" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">Best Practices Checklist</a></li>
+               <li><a href="#common-mistakes" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">Common Meta Tag Mistakes</a></li>
+               <li><a href="#faq" class="hover:text-emerald-500 transition-colors underline-offset-2 hover:underline">Frequently Asked Questions</a></li>
+            </ol>
+         </nav>
+
+         <section id="what-is" class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">What is a Meta Tags Analyzer?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                A meta tags analyzer is a tool that inspects the HTML source code of a webpage and extracts all metadata elements from its <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;head&gt;</code> section. Meta tags are HTML attributes that provide structured information about a page's content to search engines, social media platforms, browsers, and other software. The analyzer parses these tags, displays their values, and evaluates them against SEO best practices to produce an actionable report.
@@ -356,8 +473,7 @@
             </p>
          </section>
 
-         
-         <section class="glass-card p-8 shimmer-card">
+         <section id="how-it-works" class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How Does This Meta Tags Analyzer Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This tool follows a multi-step process to analyze the meta tags of any publicly accessible URL:
@@ -376,11 +492,11 @@
          </section>
 
          <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card">
+         <section id="benefits" class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Benefits of Analyzing Meta Tags</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-arrow-up-right-dots text-emerald-500"></i>
                   </div>
                   <div>
@@ -389,7 +505,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-share-nodes text-blue-500"></i>
                   </div>
                   <div>
@@ -398,7 +514,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-bug text-purple-500"></i>
                   </div>
                   <div>
@@ -407,7 +523,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-ruler text-amber-500"></i>
                   </div>
                   <div>
@@ -416,7 +532,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-clone text-red-500"></i>
                   </div>
                   <div>
@@ -425,7 +541,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-binoculars text-teal-500"></i>
                   </div>
                   <div>
@@ -437,7 +553,7 @@
          </section>
 
          <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card">
+         <section id="how-to-use" class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How to Use This Meta Tags Analyzer</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Enter URL:</strong> Type or paste the full URL of the page you want to analyze, including the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://</code> scheme. The tool accepts any publicly accessible URL. Pages behind authentication or firewalls cannot be analyzed.</li>
@@ -452,7 +568,7 @@
          </section>
 
          <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card">
+         <section id="use-cases" class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Pre-Launch QA:</strong> Before launching a new page or website, analyze it with this tool to verify that all meta tags are present, correctly formatted, and within optimal length limits. Catch issues before search engines index the page.</li>
@@ -465,58 +581,294 @@
             </ul>
          </section>
 
+         <!-- Meta Tag Reference Table (NEW for AdSense depth) -->
+         <section id="reference" class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Meta Tag Reference</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">A complete reference of the meta tags this analyzer checks, their purpose, and recommended usage.</p>
+            <div class="overflow-x-auto">
+               <table class="w-full text-sm border-collapse">
+                  <thead>
+                     <tr class="border-b-2 border-slate-200 dark:border-slate-700">
+                        <th class="text-left py-3 px-4 font-semibold">Tag</th>
+                        <th class="text-left py-3 px-4 font-semibold">Purpose</th>
+                        <th class="text-left py-3 px-4 font-semibold">Recommended Value</th>
+                        <th class="text-left py-3 px-4 font-semibold">Priority</th>
+                     </tr>
+                  </thead>
+                  <tbody class="text-slate-600 dark:text-slate-400">
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">&lt;title&gt;</td>
+                        <td class="py-3 px-4">Defines the page title in search results and browser tabs</td>
+                        <td class="py-3 px-4">30–60 characters, include primary keyword</td>
+                        <td class="py-3 px-4"><span class="text-red-500 font-semibold">Critical</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">meta description</td>
+                        <td class="py-3 px-4">Provides the search snippet below the title in SERPs</td>
+                        <td class="py-3 px-4">120–160 characters, compelling and accurate</td>
+                        <td class="py-3 px-4"><span class="text-red-500 font-semibold">Critical</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">meta viewport</td>
+                        <td class="py-3 px-4">Controls layout on mobile browsers</td>
+                        <td class="py-3 px-4">width=device-width, initial-scale=1</td>
+                        <td class="py-3 px-4"><span class="text-red-500 font-semibold">Critical</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">link canonical</td>
+                        <td class="py-3 px-4">Specifies the preferred URL to avoid duplicate content</td>
+                        <td class="py-3 px-4">Absolute URL of the preferred page</td>
+                        <td class="py-3 px-4"><span class="text-red-500 font-semibold">Critical</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">meta charset</td>
+                        <td class="py-3 px-4">Declares character encoding</td>
+                        <td class="py-3 px-4">UTF-8</td>
+                        <td class="py-3 px-4"><span class="text-amber-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">og:title</td>
+                        <td class="py-3 px-4">Title shown when link is shared on social media</td>
+                        <td class="py-3 px-4">Same as or similar to &lt;title&gt;</td>
+                        <td class="py-3 px-4"><span class="text-amber-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">og:description</td>
+                        <td class="py-3 px-4">Description shown in social media link previews</td>
+                        <td class="py-3 px-4">Same as or similar to meta description</td>
+                        <td class="py-3 px-4"><span class="text-amber-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">og:image</td>
+                        <td class="py-3 px-4">Image shown in social media link previews</td>
+                        <td class="py-3 px-4">1200×630px, absolute URL</td>
+                        <td class="py-3 px-4"><span class="text-amber-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">og:url</td>
+                        <td class="py-3 px-4">Canonical URL for social sharing</td>
+                        <td class="py-3 px-4">Absolute URL of the page</td>
+                        <td class="py-3 px-4"><span class="text-amber-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">og:type</td>
+                        <td class="py-3 px-4">Type of content (website, article, video, etc.)</td>
+                        <td class="py-3 px-4">"website" for most pages</td>
+                        <td class="py-3 px-4"><span class="text-amber-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">twitter:card</td>
+                        <td class="py-3 px-4">Defines the card format on Twitter</td>
+                        <td class="py-3 px-4">summary_large_image or summary</td>
+                        <td class="py-3 px-4"><span class="text-blue-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">twitter:title</td>
+                        <td class="py-3 px-4">Title for Twitter card</td>
+                        <td class="py-3 px-4">Same as og:title</td>
+                        <td class="py-3 px-4"><span class="text-blue-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">twitter:image</td>
+                        <td class="py-3 px-4">Image for Twitter card</td>
+                        <td class="py-3 px-4">Same as og:image, absolute URL</td>
+                        <td class="py-3 px-4"><span class="text-blue-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800">
+                        <td class="py-3 px-4 font-mono text-xs">meta robots</td>
+                        <td class="py-3 px-4">Controls search engine indexing and crawling</td>
+                        <td class="py-3 px-4">index, follow (default if omitted)</td>
+                        <td class="py-3 px-4"><span class="text-blue-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr>
+                        <td class="py-3 px-4 font-mono text-xs">meta theme-color</td>
+                        <td class="py-3 px-4">Sets browser UI color on mobile</td>
+                        <td class="py-3 px-4">Hex color matching brand</td>
+                        <td class="py-3 px-4"><span class="text-slate-400 font-semibold">Low</span></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
+         </section>
+
+         <!-- Best Practices Checklist (NEW for AdSense depth) -->
+         <section id="best-practices" class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Meta Tag Best Practices Checklist</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Follow these guidelines to ensure your meta tags are fully optimized for search engines and social platforms.</p>
+            <div class="grid sm:grid-cols-2 gap-4">
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Keep titles 30–60 characters</h3>
+                     <p class="text-xs text-slate-500">Titles under 30 chars waste SERP space. Over 60 chars get truncated. Aim for 50-60 for the best display.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Write descriptions 120–160 characters</h3>
+                     <p class="text-xs text-slate-500">Short descriptions waste space. Long ones get cut off. Include a call to action and primary keyword naturally.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Always set a canonical URL</h3>
+                     <p class="text-xs text-slate-500">Prevents duplicate content from http/https, www/non-www, and URL parameters. Use absolute URLs.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Include all five core OG tags</h3>
+                     <p class="text-xs text-slate-500">og:title, og:description, og:image, og:url, and og:type are essential for proper social sharing across all platforms.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Use og:image at 1200×630px</h3>
+                     <p class="text-xs text-slate-500">This is the recommended resolution for Facebook, LinkedIn, and most platforms. Images must be absolute URLs.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Set twitter:card to summary_large_image</h3>
+                     <p class="text-xs text-slate-500">This gives you the large image card format on Twitter, which has significantly higher engagement than the small summary card.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Make each page's title and description unique</h3>
+                     <p class="text-xs text-slate-500">Duplicate titles or descriptions across pages confuse search engines and reduce CTR. Every page should have distinct metadata.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-500/5 border border-emerald-100 dark:border-emerald-500/10">
+                  <i class="fas fa-check text-emerald-500 mt-0.5 flex-shrink-0" aria-hidden="true"></i>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Declare charset as UTF-8</h3>
+                     <p class="text-xs text-slate-500">Prevents character encoding issues. Use <code class="text-xs font-mono">&lt;meta charset="utf-8"&gt;</code> as early as possible in the head.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <!-- Common Mistakes (NEW for AdSense depth) -->
+         <section id="common-mistakes" class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Common Meta Tag Mistakes</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">These are the most frequent meta tag errors found during SEO audits. Check your site for these issues.</p>
+            <div class="space-y-4">
+               <div class="flex items-start gap-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-xmark text-red-500 text-sm"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Missing meta description entirely</h3>
+                     <p class="text-xs text-slate-500">Google will auto-generate a snippet from page content, which is often unhelpful or misleading. This is one of the most common and damaging meta tag omissions.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-xmark text-red-500 text-sm"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Duplicate title tags across pages</h3>
+                     <p class="text-xs text-slate-500">Every page should have a unique title. When multiple pages share the same title, search engines struggle to determine which page is most relevant for a query.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-xmark text-red-500 text-sm"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Keyword stuffing in title or description</h3>
+                     <p class="text-xs text-slate-500">Cramming keywords into meta tags looks spammy to users and search engines. Write natural, compelling copy that includes keywords strategically.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-xmark text-red-500 text-sm"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Using relative URLs for og:image</h3>
+                     <p class="text-xs text-slate-500">Open Graph image URLs must be absolute (starting with https://). Relative URLs cause broken images when content is shared on social platforms.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-xmark text-red-500 text-sm"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">No canonical tag on parameterized URLs</h3>
+                     <p class="text-xs text-slate-500">Pages accessible via multiple URLs (with UTM parameters, session IDs, sorting options) need canonical tags to consolidate link equity and prevent duplicate indexing.</p>
+                  </div>
+               </div>
+               <div class="flex items-start gap-4 p-4 rounded-xl bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
+                  <div class="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-xmark text-red-500 text-sm"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold text-sm mb-1">Forgetting viewport meta tag</h3>
+                     <p class="text-xs text-slate-500">Without the viewport tag, mobile browsers render the page at desktop width and scale down, making text unreadable. Google uses mobile-first indexing, making this tag essential.</p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
          <!-- FAQ Section -->
-         <section class="glass-card p-8 shimmer-card">
+         <section id="faq" class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-1" id="faq-btn-1">
                      <span>What are meta tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div class="faq-content px-6 pb-4 hidden" id="faq-answer-1" role="region" aria-labelledby="faq-btn-1">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Meta tags are HTML elements placed in the head section of a webpage that provide metadata about the page's content to search engines and social media platforms. The most important meta tags for SEO are the title tag, meta description, viewport tag, and canonical tag. Social media platforms use Open Graph and Twitter Card meta tags to control how links are displayed when shared.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-2" id="faq-btn-2">
                      <span>How does a meta tags analyzer work?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div class="faq-content px-6 pb-4 hidden" id="faq-answer-2" role="region" aria-labelledby="faq-btn-2">
                      <p class="text-sm text-slate-600 dark:text-slate-400">A meta tags analyzer fetches the HTML source code of a URL and parses the head section to extract all meta elements. It identifies the title, description, Open Graph properties, Twitter Card tags, canonical URL, viewport settings, and other metadata. It then evaluates each tag against SEO best practices — checking title length, description length, presence of required OG tags, image dimensions, and more — to produce an overall SEO score with specific recommendations.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-3" id="faq-btn-3">
                      <span>What is a good SEO score for meta tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div class="faq-content px-6 pb-4 hidden" id="faq-answer-3" role="region" aria-labelledby="faq-btn-3">
                      <p class="text-sm text-slate-600 dark:text-slate-400">A score of 80-100 indicates excellent meta tag implementation. A score of 60-79 is good with minor improvements needed. Below 60 means significant meta tag issues that could impact search rankings and social sharing appearance. Key factors that lower the score include missing title or description, title longer than 60 characters, description longer than 160 characters, missing Open Graph tags, missing Twitter Card tags, and missing canonical URL.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-4" id="faq-btn-4">
                      <span>Why is the meta description important?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div class="faq-content px-6 pb-4 hidden" id="faq-answer-4" role="region" aria-labelledby="faq-btn-4">
                      <p class="text-sm text-slate-600 dark:text-slate-400">The meta description is the short text snippet that appears below the page title in search engine results. While it is not a direct ranking factor for Google, a well-written meta description significantly improves click-through rate (CTR) from search results. Google typically displays up to 155-160 characters. A compelling, accurate meta description that includes relevant keywords can increase organic traffic by 5-20% compared to auto-generated snippets.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-5" id="faq-btn-5">
                      <span>What is the difference between Open Graph and Twitter Card tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div class="faq-content px-6 pb-4 hidden" id="faq-answer-5" role="region" aria-labelledby="faq-btn-5">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph (OG) tags were created by Facebook and are used by Facebook, LinkedIn, Pinterest, and most social platforms to control link preview appearance. Twitter Card tags were created by Twitter and control how links appear in tweets. They serve the same purpose but use different HTML attributes — OG uses property='og:title' while Twitter uses name='twitter:title'. Twitter falls back to OG tags if Twitter-specific tags are missing, so implementing OG tags first provides a baseline for all platforms.</p>
                   </div>
                </div>
             </div>
          </section>
-         
+
          <!-- Related Tools -->
          <section class="glass-card p-8 shimmer-card text-center">
             <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
@@ -538,38 +890,84 @@
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/meta-tags-analyzer/&text=Analyze%20meta%20tags%20of%20any%20website%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/meta-tags-analyzer/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/meta-tags-analyzer/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
                 <a href="https://wa.me/?text=Check%20out%20this%20free%20meta%20tags%20analyzer%20https://devpalettes.com/meta-tags-analyzer/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <button id="copy-link-btn" type="button" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
           </section>
 
+         <!-- Trust & Legal (NEW for AdSense) -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Trust & Transparency</h2>
+            <div class="grid sm:grid-cols-2 gap-6">
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-shield-halved text-emerald-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">100% Client-Side</h3>
+                     <p class="text-sm text-slate-500">All analysis runs in your browser. The only network request fetches the target page's HTML through a CORS proxy. No data about your analysis is stored or sent to our servers.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-lock text-blue-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">No Login Required</h3>
+                     <p class="text-sm text-slate-500">This tool is completely free with no registration, no API keys, and no usage limits. Enter a URL and get instant results.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-code text-purple-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Standards-Based Scoring</h3>
+                     <p class="text-sm text-slate-500">The SEO score is based on Google's documented best practices and widely accepted industry standards for meta tag optimization.</p>
+                  </div>
+               </div>
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-file-contract text-amber-500"></i>
+                  </div>
+                  <div>
+                     <h3 class="font-semibold mb-1">Legal</h3>
+                     <p class="text-sm text-slate-500">
+                        By using this tool you agree to our <a href="/privacy-policy/" class="text-emerald-500 hover:underline">Privacy Policy</a> and <a href="/terms/" class="text-emerald-500 hover:underline">Terms of Service</a>.
+                        For questions, visit our <a href="/contact/" class="text-emerald-500 hover:underline">Contact page</a>.
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </section>
+
       </div>
-      
-      
+
+
     </div>
   </main>
-  
+
   <!-- Footer -->
-  <div id="footer-container"></div>
-  
+  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
+
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
-  <script src="../js/main.js"></script>
-  <script src="../js/meta-tags-analyzer.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/meta-tags-analyzer.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 </body>
 </html>

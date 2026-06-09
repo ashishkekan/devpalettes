@@ -3,28 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Keyword Density Checker - Free SEO Keyword Analyzer</title>
-  <meta name="description" content="Check keyword density in your content instantly. Free SEO tool to analyze word frequency, phrase density, and optimize your content for search engines.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10b981">
+
+  <title>Free Keyword Density Checker – SEO Keyword Analyzer | DevPalettes</title>
+  <meta name="description" content="Free keyword density checker to analyze word frequency, 1-4 word phrase density, and stop word filtering. No sign-up — runs entirely in your browser. Optimize content for SEO instantly.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/keyword-density-checker/"/>
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/keyword-density-checker/">
-  <meta property="og:title" content="Keyword Density Checker - Free SEO Keyword Analyzer">
-  <meta property="og:description" content="Check keyword density in your content instantly. Free SEO tool to analyze word frequency, phrase density, and optimize content.">
+  <meta property="og:title" content="Free Keyword Density Checker – SEO Keyword Analyzer">
+  <meta property="og:description" content="Free keyword density checker to analyze word frequency, 1-4 word phrase density, and stop word filtering. No sign-up, runs entirely in your browser.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:site_name" content="DevPalettes">
 
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/keyword-density-checker/">
-  <meta property="twitter:title" content="Keyword Density Checker - Free SEO Keyword Analyzer">
-  <meta property="twitter:description" content="Check keyword density in your content instantly. Free SEO tool to analyze word frequency, phrase density, and optimize content.">
-  
-  
+  <meta property="twitter:title" content="Free Keyword Density Checker – SEO Keyword Analyzer">
+  <meta property="twitter:description" content="Free keyword density checker to analyze word frequency, 1-4 word phrase density, and stop word filtering. No sign-up required.">
+  <meta property="twitter:image" content="https://devpalettes.com/images/og-image.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
+     crossorigin="anonymous"></script>
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -33,7 +41,7 @@
     "url": "https://devpalettes.com/keyword-density-checker/",
     "logo": "https://devpalettes.com/images/devpalettes.png",
     "description": "A free tool to analyze keyword density, word frequency, and phrase usage in any text content for SEO optimization.",
-    "applicationCategory": "DesignApplication",
+    "applicationCategory": "BusinessApplication",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
@@ -43,7 +51,28 @@
   }
   </script>
 
-  
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Keyword Density Checker",
+        "item": "https://devpalettes.com/keyword-density-checker/"
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,41 +116,90 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="stylesheet" href="/css/tailwind.min.css" fetchpriority="high">
 
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      padding: 12px 24px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div id="navbar-container"></div>
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+
+  <main id="main-content" class="pt-8 pb-12 min-h-screen relative overflow-hidden" aria-label="Keyword Density Checker Tool">
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+
+      <nav aria-label="Breadcrumb" class="mb-4" style="margin-top: 45px;">
+        <ol class="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+          <li><a href="/" class="hover:text-emerald-500 transition-colors">Home</a></li>
+          <li aria-hidden="true"><i class="fas fa-chevron-right text-xs"></i></li>
+          <li class="text-slate-800 dark:text-slate-200 font-medium" aria-current="page">Keyword Density Checker</li>
+        </ol>
+      </nav>
+
+      <div class="text-center mb-8">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Keyword Density Checker - Free SEO Keyword Analyzer</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Analyze keyword frequency and optimize your content for search engines instantly</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">Analyze keyword frequency and optimize your content for search engines instantly</p>
+        <div class="flex flex-wrap justify-center gap-3 mb-6" role="list" aria-label="Key features">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm" role="listitem">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span>100% Free</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm" role="listitem">
+            <i class="fas fa-user-shield" aria-hidden="true"></i>
+            <span>No Sign-Up Required</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm" role="listitem">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span>Privacy First — No Data Sent to Servers</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm" role="listitem">
+            <i class="fas fa-layer-group" aria-hidden="true"></i>
+            <span>1-4 Word Phrase Analysis</span>
+          </div>
+        </div>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <section class="max-w-7xl mx-auto mb-10 ">
+      <section class="max-w-7xl mx-auto mb-10" aria-labelledby="what-is-heading">
         <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">What Is a Keyword Density Checker?</h2>
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What Is a Keyword Density Checker?</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
             A keyword density checker is a free SEO tool that analyzes how frequently specific words and phrases appear within a piece of content, expressed as a percentage of the total word count. For example, if your article has 1,000 words and your target keyword appears 15 times, the keyword density is 1.5%. This metric tells you whether your content is properly optimized for search engines — or whether you've crossed into keyword stuffing territory, which can hurt your rankings.
           </p>
@@ -134,68 +212,73 @@
         </div>
       </section>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Text statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-font text-emerald-500"></i>
             </div>
             <span class="text-sm text-slate-500">Words</span>
           </div>
-          <p id="stat-words" class="text-3xl font-bold">0</p>
+          <p id="stat-words" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-text-width text-blue-500"></i>
             </div>
             <span class="text-sm text-slate-500">Characters</span>
           </div>
-          <p id="stat-chars" class="text-3xl font-bold">0</p>
+          <p id="stat-chars" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-paragraph text-purple-500"></i>
             </div>
             <span class="text-sm text-slate-500">Sentences</span>
           </div>
-          <p id="stat-sentences" class="text-3xl font-bold">0</p>
+          <p id="stat-sentences" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-list-ol text-amber-500"></i>
             </div>
             <span class="text-sm text-slate-500">Unique Words</span>
           </div>
-          <p id="stat-unique" class="text-3xl font-bold">0</p>
+          <p id="stat-unique" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-8">
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen"></i></span>
+            <h2 id="content-heading" class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm" aria-hidden="true"><i class="fas fa-pen"></i></span>
               Your Content
             </h2>
-            <textarea id="content-input" rows="12" placeholder="Paste your article, blog post, or any text content here to analyze keyword density..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none leading-relaxed"></textarea>
+            <label for="content-input" class="sr-only">Paste your content to analyze keyword density</label>
+            <textarea id="content-input" rows="12" placeholder="Paste your article, blog post, or any text content here to analyze keyword density..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none leading-relaxed" aria-describedby="input-char-count"></textarea>
             <div class="flex items-center justify-between mt-3">
-              <p id="input-char-count" class="text-xs text-slate-400">0 characters</p>
-              <button id="clear-btn" class="text-xs text-slate-400 hover:text-red-500 transition-colors">
-                <i class="fas fa-eraser mr-1"></i>Clear
+              <p id="input-char-count" class="text-xs text-slate-400" aria-live="polite">0 characters</p>
+              <button id="clear-btn" class="text-xs text-slate-400 hover:text-red-500 transition-colors" aria-label="Clear all content">
+                <i class="fas fa-eraser mr-1" aria-hidden="true"></i>Clear
               </button>
             </div>
+            <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 text-center">
+              <i class="fas fa-lock mr-1" aria-hidden="true"></i>
+              All analysis runs in your browser. Your text is never sent to any server.
+            </p>
           </div>
 
-          <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-sliders-h"></i></span>
+          <div class="glass-card p-8 shimmer-card" aria-labelledby="options-heading">
+            <h2 id="options-heading" class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm" aria-hidden="true"><i class="fas fa-sliders-h"></i></span>
               Options
             </h2>
-            <div class="space-y-4">
-              <label class="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 cursor-pointer hover:border-emerald-500/50 transition-all">
+            <div class="space-y-4" role="group" aria-labelledby="options-heading">
+              <label class="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 cursor-pointer hover:border-emerald-500/50 transition-all" for="opt-stopwords">
                 <div class="flex items-center gap-3">
                   <input type="checkbox" id="opt-stopwords" checked class="w-4 h-4 accent-emerald-500 rounded">
                   <div>
@@ -204,7 +287,7 @@
                   </div>
                 </div>
               </label>
-              <label class="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 cursor-pointer hover:border-emerald-500/50 transition-all">
+              <label class="flex items-center justify-between px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 cursor-pointer hover:border-emerald-500/50 transition-all" for="opt-case">
                 <div class="flex items-center gap-3">
                   <input type="checkbox" id="opt-case" class="w-4 h-4 accent-emerald-500 rounded">
                   <div>
@@ -215,31 +298,31 @@
               </label>
               <div class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50">
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-medium">Min Word Length</span>
+                  <label for="opt-min-length" class="text-sm font-medium">Min Word Length</label>
                   <span id="min-length-val" class="text-sm font-mono text-emerald-600 dark:text-emerald-400 font-bold">2</span>
                 </div>
-                <input type="range" id="opt-min-length" min="1" max="6" value="2" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                <input type="range" id="opt-min-length" min="1" max="6" value="2" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500" aria-valuenow="2" aria-valuemin="1" aria-valuemax="6" aria-valuetext="2 characters">
               </div>
               <div class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50">
                 <div class="flex items-center justify-between mb-2">
-                  <span class="text-sm font-medium">Top Keywords to Show</span>
+                  <label for="opt-top-count" class="text-sm font-medium">Top Keywords to Show</label>
                   <span id="top-count-val" class="text-sm font-mono text-emerald-600 dark:text-emerald-400 font-bold">20</span>
                 </div>
-                <input type="range" id="opt-top-count" min="5" max="50" value="20" step="5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                <input type="range" id="opt-top-count" min="5" max="50" value="20" step="5" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500" aria-valuenow="20" aria-valuemin="5" aria-valuemax="50" aria-valuetext="20 keywords">
               </div>
             </div>
-            <button id="analyze-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled>
-              <i class="fas fa-search-plus mr-2"></i>
+            <button id="analyze-btn" class="mt-6 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled aria-label="Analyze keyword density">
+              <i class="fas fa-search-plus mr-2" aria-hidden="true"></i>
               Analyze Keywords
             </button>
           </div>
         </div>
 
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <!-- Empty State -->
           <div id="empty-state" class="glass-card p-8 shimmer-card">
             <div class="text-center py-16">
-              <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5">
+              <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5" aria-hidden="true">
                 <i class="fas fa-chart-pie text-4xl text-slate-300 dark:text-slate-600"></i>
               </div>
               <p class="text-lg font-medium text-slate-500 dark:text-slate-400 mb-2">No analysis yet</p>
@@ -250,18 +333,19 @@
           <!-- Results Container -->
           <div id="results-container" class="hidden space-y-6">
             <!-- Phrase Tabs -->
-            <div class="glass-card p-6 shimmer-card">
-              <div class="flex gap-2 flex-wrap mb-6">
-                <button class="phrase-tab active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-phrase="1">1-Word</button>
-                <button class="phrase-tab px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-phrase="2">2-Word</button>
-                <button class="phrase-tab px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-phrase="3">3-Word</button>
-                <button class="phrase-tab px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-phrase="4">4-Word</button>
+            <div class="glass-card p-6 shimmer-card" aria-labelledby="results-heading">
+              <h3 id="results-heading" class="sr-only">Keyword Density Results</h3>
+              <div class="flex gap-2 flex-wrap mb-6" role="group" aria-label="Phrase size filter">
+                <button class="phrase-tab active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-phrase="1" aria-pressed="true">1-Word</button>
+                <button class="phrase-tab px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-phrase="2" aria-pressed="false">2-Word</button>
+                <button class="phrase-tab px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-phrase="3" aria-pressed="false">3-Word</button>
+                <button class="phrase-tab px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-phrase="4" aria-pressed="false">4-Word</button>
               </div>
 
               <!-- Density Warning -->
-              <div id="density-warning" class="hidden mb-4 p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-sm">
+              <div id="density-warning" class="hidden mb-4 p-3 rounded-xl bg-amber-500/5 border border-amber-500/20 text-sm" role="alert">
                 <div class="flex items-start gap-2">
-                  <i class="fas fa-exclamation-triangle text-amber-500 mt-0.5"></i>
+                  <i class="fas fa-exclamation-triangle text-amber-500 mt-0.5" aria-hidden="true"></i>
                   <div>
                     <p class="font-semibold text-amber-600 dark:text-amber-400">Potential Keyword Stuffing</p>
                     <p id="warning-text" class="text-slate-500 text-xs mt-1"></p>
@@ -271,14 +355,14 @@
 
               <!-- Keywords Table -->
               <div class="overflow-x-auto">
-                <table class="w-full text-sm">
+                <table class="w-full text-sm" aria-label="Keyword density results">
                   <thead>
                     <tr class="border-b border-slate-200 dark:border-slate-700">
-                      <th class="text-left py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">#</th>
-                      <th class="text-left py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">Keyword</th>
-                      <th class="text-right py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">Count</th>
-                      <th class="text-right py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">Density</th>
-                      <th class="text-left py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider w-32">Bar</th>
+                      <th scope="col" class="text-left py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">#</th>
+                      <th scope="col" class="text-left py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">Keyword</th>
+                      <th scope="col" class="text-right py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">Count</th>
+                      <th scope="col" class="text-right py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider">Density</th>
+                      <th scope="col" class="text-left py-3 px-2 font-semibold text-slate-500 text-xs uppercase tracking-wider w-32">Bar</th>
                     </tr>
                   </thead>
                   <tbody id="keywords-tbody"></tbody>
@@ -289,39 +373,39 @@
             <!-- Actions -->
             <div class="glass-card p-6 shimmer-card">
               <div class="flex flex-wrap gap-3">
-                <button id="copy-report-btn" class="btn-primary btn-glow flex-1 justify-center">
-                  <i class="fas fa-copy"></i> Copy Report
+                <button id="copy-report-btn" class="btn-primary btn-glow flex-1 justify-center" aria-label="Copy keyword density report to clipboard">
+                  <i class="fas fa-copy" aria-hidden="true"></i> Copy Report
                 </button>
-                <button id="export-txt-btn" class="btn-secondary flex-1 justify-center">
-                  <i class="fas fa-file-alt"></i> Export TXT
+                <button id="export-txt-btn" class="btn-secondary flex-1 justify-center" aria-label="Export report as text file">
+                  <i class="fas fa-file-alt" aria-hidden="true"></i> Export TXT
                 </button>
-                <button id="export-csv-btn" class="btn-secondary flex-1 justify-center">
-                  <i class="fas fa-file-csv"></i> Export CSV
+                <button id="export-csv-btn" class="btn-secondary flex-1 justify-center" aria-label="Export report as CSV file">
+                  <i class="fas fa-file-csv" aria-hidden="true"></i> Export CSV
                 </button>
               </div>
             </div>
 
             <!-- SEO Density Guide -->
-            <div class="glass-card p-6 shimmer-card">
-              <h3 class="font-bold mb-4 flex items-center gap-2">
-                <i class="fas fa-info-circle text-emerald-500"></i>
+            <div class="glass-card p-6 shimmer-card" aria-labelledby="guide-heading">
+              <h3 id="guide-heading" class="font-bold mb-4 flex items-center gap-2">
+                <i class="fas fa-info-circle text-emerald-500" aria-hidden="true"></i>
                 Density Guide
               </h3>
               <div class="space-y-3">
                 <div class="flex items-center gap-3 text-sm">
-                  <span class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0" aria-hidden="true"></span>
                   <span class="text-slate-600 dark:text-slate-400"><strong class="text-emerald-600 dark:text-emerald-400">1% - 2%</strong> — Ideal range for primary keywords</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm">
-                  <span class="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0"></span>
+                  <span class="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0" aria-hidden="true"></span>
                   <span class="text-slate-600 dark:text-slate-400"><strong class="text-blue-600 dark:text-blue-400">0.5% - 1%</strong> — Good for secondary / LSI keywords</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm">
-                  <span class="w-3 h-3 rounded-full bg-amber-500 flex-shrink-0"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-500 flex-shrink-0" aria-hidden="true"></span>
                   <span class="text-slate-600 dark:text-slate-400"><strong class="text-amber-600 dark:text-amber-400">2% - 3%</strong> — Acceptable but monitor closely</span>
                 </div>
                 <div class="flex items-center gap-3 text-sm">
-                  <span class="w-3 h-3 rounded-full bg-red-500 flex-shrink-0"></span>
+                  <span class="w-3 h-3 rounded-full bg-red-500 flex-shrink-0" aria-hidden="true"></span>
                   <span class="text-slate-600 dark:text-slate-400"><span class="text-red-600 dark:text-red-400">Above 3%</span> — Risk of keyword stuffing penalty</span>
                 </div>
               </div>
@@ -330,10 +414,10 @@
         </div>
       </div>
 
-      <div class="seo-content space-y-12 mt-16 ">
-         
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Understanding Keyword Density in Modern SEO</h2>
+      <div class="seo-content space-y-12 mt-16">
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="understanding-heading">
+            <h2 id="understanding-heading" class="text-2xl font-bold mb-4">Understanding Keyword Density in Modern SEO</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Keyword density has been a foundational concept in SEO since the early days of search engines. In the late 1990s and early 2000s, repeating a keyword as many times as possible was a common — and effective — tactic. Search engines have evolved significantly since then. Google's algorithms now use natural language processing, semantic analysis, and hundreds of ranking signals to understand content. Simply stuffing a keyword no longer works and can actively harm your rankings.
             </p>
@@ -345,9 +429,8 @@
             </p>
          </section>
 
-         
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Does the Keyword Density Checker Work?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How Does the Keyword Density Checker Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This tool processes your text entirely in your browser using a multi-step analysis pipeline:
             </p>
@@ -364,11 +447,11 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a Keyword Density Checker</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a Keyword Density Checker</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-shield-alt text-emerald-500"></i>
                   </div>
                   <div>
@@ -377,25 +460,25 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-bullseye text-blue-500"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Optimize Targeting</h3>
-                     <p class="text-sm text-slate-500">Ensure your primary keyword appears often enough for search engines to understand your page's topic without overdoing it. Pair this with properly <a href="/meta-tag-generator/">configured meta tags</a> for maximum visibility.</p>
+                     <p class="text-sm text-slate-500">Ensure your primary keyword appears often enough for search engines to understand your page's topic without overdoing it. Pair this with properly <a href="/meta-tag-generator/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">configured meta tags</a> for maximum visibility.</p>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-project-diagram text-purple-500"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Discover LSI Keywords</h3>
-                     <p class="text-sm text-slate-500">Phrase analysis reveals related terms and variations you naturally used, helping you identify latent semantic indexing keywords to strengthen content. You can further enhance discoverability by <a href="/open-graph-generator/">setting up Open Graph metadata</a> for social sharing previews.</p>
+                     <p class="text-sm text-slate-500">Phrase analysis reveals related terms and variations you naturally used, helping you identify latent semantic indexing keywords to strengthen content. You can further enhance discoverability by <a href="/open-graph-generator/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">setting up Open Graph metadata</a> for social sharing previews.</p>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-balance-scale text-amber-500"></i>
                   </div>
                   <div>
@@ -404,8 +487,8 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-competitor text-red-500"></i>
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-users text-red-500"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Competitor Analysis</h3>
@@ -413,7 +496,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-tachometer-alt text-teal-500"></i>
                   </div>
                   <div>
@@ -424,20 +507,20 @@
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Blog Post Optimization:</strong> Before hitting publish, run your draft through the checker to verify your primary keyword density is in the 1-2% sweet spot and that you have naturally included related phrases. The same keyword-aware approach applies when using an <a href="/ats-checker/">ATS resume checker</a> to optimize job application materials.</li>
+               <li><strong>Blog Post Optimization:</strong> Before hitting publish, run your draft through the checker to verify your primary keyword density is in the 1-2% sweet spot and that you have naturally included related phrases. The same keyword-aware approach applies when using an <a href="/ats-checker/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">ATS resume checker</a> to optimize job application materials.</li>
                <li><strong>Product Page Descriptions:</strong> E-commerce product descriptions need to mention product names and features the right number of times — not so few that search engines miss the relevance, not so many that it reads like spam.</li>
                <li><strong>Content Audit:</strong> Analyze existing pages on your site that are underperforming in search. Often the issue is either too little or too much keyword repetition.</li>
                <li><strong>Freelance Writer QA:</strong> Editors and content managers can use this tool to verify that freelance writers have followed keyword guidelines without manually counting occurrences.</li>
                <li><strong>Competitor Research:</strong> Paste a competitor's top-ranking article to see their keyword strategy — what phrases they target, how dense their usage is, and what LSI keywords they include.</li>
-               <li><strong>PPC Landing Pages:</strong> Landing pages for paid campaigns need tight keyword focus. The density checker ensures your landing page content matches your ad targeting. If you're working with structured data like schema markup, our <a href="/json-formatter/">JSON formatting utility</a> can help validate your code.</li>
+               <li><strong>PPC Landing Pages:</strong> Landing pages for paid campaigns need tight keyword focus. The density checker ensures your landing page content matches your ad targeting. If you're working with structured data like schema markup, our <a href="/json-formatter/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">JSON formatting utility</a> can help validate your code.</li>
             </ul>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Keyword Density Checker</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
+            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Keyword Density Checker</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Paste Your Content:</strong> Copy your article, blog post, product description, or any text and paste it into the input area on the left.</li>
                <li><strong>Configure Options:</strong> Enable "Filter Stop Words" to exclude common filler words. Adjust the minimum word length to filter out very short words. Set how many top keywords to display.</li>
@@ -445,12 +528,12 @@
                <li><strong>Review Single Words:</strong> The 1-Word tab shows individual keyword frequency and density. Look for your target keyword and check it falls between 1-2%.</li>
                <li><strong>Check Phrase Densities:</strong> Switch to 2-Word, 3-Word, and 4-Word tabs to see phrase-level analysis. This reveals your natural LSI keyword usage.</li>
                <li><strong>Watch for Warnings:</strong> If any keyword exceeds 3% density, the tool shows a keyword stuffing warning. Consider replacing some instances with synonyms.</li>
-               <li><strong>Export Results:</strong> Copy the report, export as TXT, or download as CSV for your records or to share with your team. For more SEO best practices, read our <a href="../blog/seo-meta-tag-guide/">in-depth meta tags guide</a>.</li>
+               <li><strong>Export Results:</strong> Copy the report, export as TXT, or download as CSV for your records or to share with your team. For more SEO best practices, read our <a href="../blog/seo-meta-tag-guide/" class="text-blue-500 hover:text-blue-600 dark:text-blue-400 underline underline-offset-2">in-depth meta tags guide</a>.</li>
             </ol>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+            <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                A couple of years ago I was writing a series of blog posts for a client who kept insisting I hit an exact keyword density of 2.5%. I'd write the article, manually count the keyword occurrences, divide by the word count, realize I was at 1.8%, awkwardly shoehorn the keyword in three more times, re-count, and end up at 2.7%. Then I'd delete two instances and land at 2.3%. It was infuriating — and that was just one article.
             </p>
@@ -462,72 +545,72 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-1">
                      <span>How do I use the Keyword Density Checker?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-heading">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Paste your content into the text area, adjust any options like stop word filtering, then click "Analyze Keywords." The tool instantly shows word count, keyword frequency, density percentages, and phrase analysis in organized tabs.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-2">
                      <span>What is ideal keyword density for SEO?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Most SEO experts recommend a primary keyword density between 1% and 2%. Going above 3% risks being flagged as keyword stuffing. For secondary and LSI keywords, 0.5% to 1% is typically sufficient. The key is natural-sounding content that serves readers first. As noted by <a href="https://moz.com/learn/seo/keyword-density" target="_blank" rel="noopener noreferrer">Moz's guide on keyword density</a>, modern search engines use far more signals than just raw keyword frequency, but density remains a useful baseline metric.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-3">
                      <span>What are stop words and should I filter them?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Stop words are extremely common words like "the," "is," "at," "which," "on," and "a" that search engines typically ignore when analyzing content. Filtering them out gives you a much clearer picture of your meaningful keyword density. Without filtering, your top keywords would all be stop words, which is not useful for SEO analysis.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-4">
                      <span>Why does keyword density matter for SEO?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-4" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Keyword density helps search engines understand what your page is about. If your target keyword appears too rarely, search engines may not associate your page with that topic. If it appears too frequently, it triggers spam filters. The right density signals relevance without appearing manipulative, helping your page rank for the right queries.</p>
                   </div>
                </div>
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
+            <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
             <p class="text-slate-500 mb-4 text-sm">Help others optimize their content by sharing this free keyword density checker.</p>
             <div class="flex items-center justify-center gap-3 flex-wrap">
-              <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/keyword-density-checker/&text=Check%20your%20keyword%20density%20instantly%20with%20this%20free%20SEO%20tool!" target="_blank" rel="noopener noreferrer" title="Share this keyword density checker on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                <i class="fab fa-x-twitter"></i> Twitter
+              <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/keyword-density-checker/&text=Check%20your%20keyword%20density%20instantly%20with%20this%20free%20SEO%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
               </a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/keyword-density-checker/" target="_blank" rel="noopener noreferrer" title="Share this keyword density checker on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                <i class="fab fa-facebook-f"></i> Facebook
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/keyword-density-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
               </a>
-              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/keyword-density-checker/" target="_blank" rel="noopener noreferrer" title="Share this keyword density checker on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                <i class="fab fa-linkedin-in"></i> LinkedIn
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/keyword-density-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
               </a>
-              <a href="https://wa.me/?text=Check%20out%20this%20free%20Keyword%20Density%20Checker%20https://devpalettes.com/keyword-density-checker/" target="_blank" rel="noopener noreferrer" title="Share this keyword density checker on WhatsApp" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
+              <a href="https://wa.me/?text=Check%20out%20this%20free%20Keyword%20Density%20Checker%20https://devpalettes.com/keyword-density-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
               </a>
-              <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                <i class="fas fa-link"></i> Copy Link
+              <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                <i class="fas fa-link" aria-hidden="true"></i> Copy Link
               </button>
             </div>
          </section>
-         
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
+
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Tools &amp; Resources</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Boost your SEO and content workflow with these free tools.</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
@@ -548,18 +631,18 @@
             <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
           </div>
         </div>
-         
+
       </div>
-      
+
     </div>
   </main>
-  
+
   <!-- Footer -->
   <div id="footer-container"></div>
-  
+
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
   <script src="../js/main.js"></script>
   <script src="../js/keyword-density-checker.js"></script>
   <script src="../js/enhancements.js"></script>

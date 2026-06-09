@@ -51,7 +51,9 @@
     sortBtn: document.getElementById('sort-btn'),
     viewCodeBtn: document.getElementById('view-code-btn'),
     viewTreeBtn: document.getElementById('view-tree-btn'),
-    indentVal: document.getElementById('indent-val')
+    indentVal: document.getElementById('indent-val'),
+    copyLinkBtn: document.getElementById('copy-link-btn'),
+    copyLinkStatus: document.getElementById('copy-link-status')
   };
 
   /* ========== HELPERS ========== */
@@ -73,13 +75,20 @@
     var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
     var t = document.createElement('div');
     t.className = bg + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
-    t.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(msg);
+    t.setAttribute('role', 'alert');
+    t.innerHTML = '<i class="fas ' + icon + '" aria-hidden="true"></i>' + escapeHtml(msg);
     c.appendChild(t);
     requestAnimationFrame(function() { t.style.transform = 'translateX(0)'; });
     setTimeout(function() {
       t.style.transform = 'translateX(120%)';
       setTimeout(function() { if (t.parentNode) t.parentNode.removeChild(t); }, 300);
     }, 2500);
+  }
+
+  function announceCopyLink(message) {
+    if (!el.copyLinkStatus) return;
+    el.copyLinkStatus.textContent = '';
+    setTimeout(function() { el.copyLinkStatus.textContent = message; }, 100);
   }
 
   function getIndentStr() {
@@ -145,35 +154,22 @@
     while (i < len) {
       var ch = jsonStr[i];
 
-      // Whitespace
       if (ch === ' ' || ch === '\n' || ch === '\r' || ch === '\t') {
-        result += ch;
-        i++;
-        continue;
+        result += ch; i++; continue;
       }
 
-      // Brackets
       if (ch === '{' || ch === '}' || ch === '[' || ch === ']') {
-        result += '<span class="json-bracket">' + ch + '</span>';
-        i++;
-        continue;
+        result += '<span class="json-bracket">' + ch + '</span>'; i++; continue;
       }
 
-      // Comma
       if (ch === ',') {
-        result += '<span class="json-comma">,</span>';
-        i++;
-        continue;
+        result += '<span class="json-comma">,</span>'; i++; continue;
       }
 
-      // Colon
       if (ch === ':') {
-        result += '<span class="json-comma">:</span>';
-        i++;
-        continue;
+        result += '<span class="json-comma">:</span>'; i++; continue;
       }
 
-      // String (key or value)
       if (ch === '"') {
         var str = '"';
         i++;
@@ -182,13 +178,10 @@
             str += jsonStr[i] + (jsonStr[i + 1] || '');
             i += 2;
           } else {
-            str += jsonStr[i];
-            i++;
+            str += jsonStr[i]; i++;
           }
         }
         if (i < len) { str += '"'; i++; }
-
-        // Check if this is a key (followed by colon, possibly with whitespace)
         var j = i;
         while (j < len && (jsonStr[j] === ' ' || jsonStr[j] === '\t')) j++;
         if (j < len && jsonStr[j] === ':') {
@@ -199,30 +192,17 @@
         continue;
       }
 
-      // Number
       if (ch === '-' || (ch >= '0' && ch <= '9')) {
         var num = '';
-        while (i < len && /[0-9eE.+\-]/.test(jsonStr[i])) {
-          num += jsonStr[i];
-          i++;
-        }
-        result += '<span class="json-number">' + num + '</span>';
-        continue;
+        while (i < len && /[0-9eE.+\-]/.test(jsonStr[i])) { num += jsonStr[i]; i++; }
+        result += '<span class="json-number">' + num + '</span>'; continue;
       }
 
-      // Boolean or null
-      if (jsonStr.substr(i, 4) === 'true') {
-        result += '<span class="json-boolean">true</span>'; i += 4; continue;
-      }
-      if (jsonStr.substr(i, 5) === 'false') {
-        result += '<span class="json-boolean">false</span>'; i += 5; continue;
-      }
-      if (jsonStr.substr(i, 4) === 'null') {
-        result += '<span class="json-null">null</span>'; i += 4; continue;
-      }
+      if (jsonStr.substr(i, 4) === 'true') { result += '<span class="json-boolean">true</span>'; i += 4; continue; }
+      if (jsonStr.substr(i, 5) === 'false') { result += '<span class="json-boolean">false</span>'; i += 5; continue; }
+      if (jsonStr.substr(i, 4) === 'null') { result += '<span class="json-null">null</span>'; i += 4; continue; }
 
-      result += ch;
-      i++;
+      result += ch; i++;
     }
 
     return result;
@@ -233,7 +213,6 @@
     var html = '';
     var indent = '';
     for (var s = 0; s < depth; s++) indent += '  ';
-
     var comma = isLast ? '' : '<span class="json-comma">,</span>';
 
     if (data === null) {
@@ -249,34 +228,24 @@
       var bracket = data.length === 0 ? '<span class="json-bracket">[]</span>' + comma + '\n' :
         '<span class="tree-toggle json-bracket" data-target="' + uid + '">[</span>' + comma + '\n';
       html += indent + (key !== null ? '<span class="json-key">"' + escapeHtml(key) + '"</span><span class="json-comma">: </span>' : '') + bracket;
-
       if (data.length > 0) {
         html += '<div class="tree-children" id="' + uid + '">';
-        data.forEach(function(item, idx) {
-          html += buildTree(item, null, idx === data.length - 1, depth + 1);
-        });
+        data.forEach(function(item, idx) { html += buildTree(item, null, idx === data.length - 1, depth + 1); });
         html += '</div>';
       }
-      if (data.length > 0) {
-        html += indent + '<span class="json-bracket">]</span>' + comma + '\n';
-      }
+      if (data.length > 0) { html += indent + '<span class="json-bracket">]</span>' + comma + '\n'; }
     } else if (typeof data === 'object') {
       var keys = Object.keys(data);
       var uid2 = 'tree_' + Math.random().toString(36).substr(2, 8);
       var bracket2 = keys.length === 0 ? '<span class="json-bracket">{}</span>' + comma + '\n' :
         '<span class="tree-toggle json-bracket" data-target="' + uid2 + '">{</span>' + comma + '\n';
       html += indent + (key !== null ? '<span class="json-key">"' + escapeHtml(key) + '"</span><span class="json-comma">: </span>' : '') + bracket2;
-
       if (keys.length > 0) {
         html += '<div class="tree-children" id="' + uid2 + '">';
-        keys.forEach(function(k, idx) {
-          html += buildTree(data[k], k, idx === keys.length - 1, depth + 1);
-        });
+        keys.forEach(function(k, idx) { html += buildTree(data[k], k, idx === keys.length - 1, depth + 1); });
         html += '</div>';
       }
-      if (keys.length > 0) {
-        html += indent + '<span class="json-bracket">}</span>' + comma + '\n';
-      }
+      if (keys.length > 0) { html += indent + '<span class="json-bracket">}</span>' + comma + '\n'; }
     }
 
     return html;
@@ -391,15 +360,12 @@
   function doFormat() {
     var input = el.input.value.trim();
     if (!input) { showToast('Please paste JSON data first', 'error'); return; }
-
     var result = parseInput(input);
     if (!result.ok) { showError(result.error, result.position); resetStats(); showEmptyOutput(); return; }
-
     lastParsed = result.data;
     var ind = indentSize === 0 ? '\t' : indentSize;
     var formatted = JSON.stringify(result.data, null, ind);
     lastFormatted = formatted;
-
     showOutput(highlightJson(formatted));
     showTree(buildTree(result.data, null, true, 0));
     showSuccess(formatted.split('\n').length + ' lines, ' + countKeys(result.data) + ' keys');
@@ -410,14 +376,11 @@
   function doMinify() {
     var input = el.input.value.trim();
     if (!input) { showToast('Please paste JSON data first', 'error'); return; }
-
     var result = parseInput(input);
     if (!result.ok) { showError(result.error, result.position); resetStats(); showEmptyOutput(); return; }
-
     lastParsed = result.data;
     var minified = JSON.stringify(result.data);
     lastFormatted = minified;
-
     showOutput(highlightJson(minified));
     showTree(buildTree(result.data, null, true, 0));
     showSuccess('Minified to ' + formatBytes(minified.length) + ' (saved ' + formatBytes(input.length - minified.length) + ')');
@@ -428,10 +391,8 @@
   function doValidate() {
     var input = el.input.value.trim();
     if (!input) { showToast('Please paste JSON data first', 'error'); return; }
-
     var result = parseInput(input);
     if (!result.ok) { showError(result.error, result.position); resetStats(); return; }
-
     lastParsed = result.data;
     showSuccess('Valid JSON — ' + countKeys(result.data) + ' keys, depth ' + getDepth(result.data));
     updateStats(result.data, input.length);
@@ -441,16 +402,13 @@
   function doSort() {
     var input = el.input.value.trim();
     if (!input) { showToast('Please paste JSON data first', 'error'); return; }
-
     var result = parseInput(input);
     if (!result.ok) { showError(result.error, result.position); resetStats(); showEmptyOutput(); return; }
-
     var sorted = sortKeysDeep(result.data);
     lastParsed = sorted;
     var ind = indentSize === 0 ? '\t' : indentSize;
     var formatted = JSON.stringify(sorted, null, ind);
     lastFormatted = formatted;
-
     showOutput(highlightJson(formatted));
     showTree(buildTree(sorted, null, true, 0));
     showSuccess('Keys sorted alphabetically');
@@ -485,7 +443,6 @@
   function downloadJson() {
     var text = lastFormatted || el.input.value.trim();
     if (!text) { showToast('Nothing to download', 'error'); return; }
-    // Try to parse and re-stringify for clean output
     try { text = JSON.stringify(JSON.parse(text), null, indentSize === 0 ? '\t' : indentSize); } catch(e) {}
     var blob = new Blob([text], { type: 'application/json' });
     var url = URL.createObjectURL(blob);
@@ -554,20 +511,21 @@
           indentSize = parseInt(val, 10);
           el.indentVal.textContent = val + ' spaces';
         }
-        // Re-format if data exists
         if (lastParsed) doFormat();
       });
     });
 
-    // View toggles
+    // View toggles — added aria-selected
     el.viewCodeBtn.addEventListener('click', function() {
       currentView = 'code';
       el.codeView.classList.remove('hidden');
       el.treeView.classList.add('hidden');
       this.classList.add('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
       this.classList.remove('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+      this.setAttribute('aria-selected', 'true');
       el.viewTreeBtn.classList.remove('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
       el.viewTreeBtn.classList.add('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+      el.viewTreeBtn.setAttribute('aria-selected', 'false');
     });
 
     el.viewTreeBtn.addEventListener('click', function() {
@@ -577,17 +535,15 @@
       el.codeView.classList.add('hidden');
       this.classList.add('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
       this.classList.remove('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+      this.setAttribute('aria-selected', 'true');
       el.viewCodeBtn.classList.remove('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
       el.viewCodeBtn.classList.add('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+      el.viewCodeBtn.setAttribute('aria-selected', 'false');
     });
 
     // Copy
-    el.copyOutputBtn.addEventListener('click', function() {
-      copyText(lastFormatted);
-    });
-    el.copyAllBtn.addEventListener('click', function() {
-      copyText(lastFormatted);
-    });
+    el.copyOutputBtn.addEventListener('click', function() { copyText(lastFormatted); });
+    el.copyAllBtn.addEventListener('click', function() { copyText(lastFormatted); });
 
     // Download
     el.downloadBtn.addEventListener('click', downloadJson);
@@ -615,22 +571,41 @@
       });
     });
 
-    // FAQ toggles
+    // FAQ toggles — added aria-expanded support
     document.querySelectorAll('.faq-toggle').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
         var isOpen = !content.classList.contains('hidden');
+        // Close all other FAQs
         document.querySelectorAll('.faq-toggle').forEach(function(b) {
           b.nextElementSibling.classList.add('hidden');
           b.querySelector('i').style.transform = 'rotate(0deg)';
+          b.setAttribute('aria-expanded', 'false');
         });
         if (!isOpen) {
           content.classList.remove('hidden');
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         }
       });
     });
+
+    // Copy link button
+    if (el.copyLinkBtn) {
+      el.copyLinkBtn.addEventListener('click', function() {
+        var url = window.location.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function() {
+            announceCopyLink('Page link copied to clipboard');
+            showToast('Link copied!', 'success');
+          }).catch(function() { fallbackCopy(url); announceCopyLink('Page link copied to clipboard'); });
+        } else {
+          fallbackCopy(url);
+          announceCopyLink('Page link copied to clipboard');
+        }
+      });
+    }
 
     // Ctrl+Enter to format
     el.input.addEventListener('keydown', function(e) {

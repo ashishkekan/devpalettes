@@ -1,5 +1,4 @@
 // pdf-compressor.js
-
 (function () {
   'use strict';
 
@@ -10,7 +9,7 @@
       if (main) {
         var errDiv = document.createElement('div');
         errDiv.className = 'max-w-7xl mx-auto px-4 py-8';
-        errDiv.innerHTML = '<div class="glass-card p-8 text-center"><i class="fas fa-triangle-exclamation text-3xl text-red-400 mb-4"></i><h2 class="text-xl font-bold mb-2">Failed to Load PDF.js</h2><p class="text-slate-500 text-sm">The PDF rendering library could not be loaded. Please check your internet connection and refresh the page.</p></div>';
+        errDiv.innerHTML = '<div class="glass-card p-8 text-center"><i class="fas fa-triangle-exclamation text-3xl text-red-400 mb-4" aria-hidden="true"></i><h2 class="text-xl font-bold mb-2">Failed to Load PDF.js</h2><p class="text-slate-500 text-sm">The PDF rendering library could not be loaded. Please check your internet connection and refresh the page.</p></div>';
         main.prepend(errDiv);
       }
     });
@@ -23,7 +22,7 @@
       if (main) {
         var errDiv = document.createElement('div');
         errDiv.className = 'max-w-7xl mx-auto px-4 py-8';
-        errDiv.innerHTML = '<div class="glass-card p-8 text-center"><i class="fas fa-triangle-exclamation text-3xl text-red-400 mb-4"></i><h2 class="text-xl font-bold mb-2">Failed to Load pdf-lib</h2><p class="text-slate-500 text-sm">The PDF creation library could not be loaded. Please check your internet connection and refresh the page.</p></div>';
+        errDiv.innerHTML = '<div class="glass-card p-8 text-center"><i class="fas fa-triangle-exclamation text-3xl text-red-400 mb-4" aria-hidden="true"></i><h2 class="text-xl font-bold mb-2">Failed to Load pdf-lib</h2><p class="text-slate-500 text-sm">The PDF creation library could not be loaded. Please check your internet connection and refresh the page.</p></div>';
         main.prepend(errDiv);
       }
     });
@@ -82,6 +81,7 @@
   var infoSettings = document.getElementById('info-settings');
 
   var validationList = document.getElementById('validation-list');
+  var srAnnouncer = document.getElementById('sr-announcer');
 
   // ─── State ───
   var originalFile = null;
@@ -98,6 +98,13 @@
     strong:   { quality: 50, scale: 0.7 },
     maximum:  { quality: 25, scale: 0.5 }
   };
+
+  // ─── Screen Reader Announcements ───
+  function announce(message) {
+    if (srAnnouncer) {
+      srAnnouncer.textContent = message;
+    }
+  }
 
   // ─── Helpers ───
   function formatBytes(bytes) {
@@ -116,13 +123,19 @@
     var text = el.querySelector('span');
     if (passed === true) {
       icon.className = 'fas fa-circle-check text-[10px] text-emerald-500';
+      icon.setAttribute('aria-hidden', 'true');
       text.className = 'text-emerald-600 dark:text-emerald-400';
+      el.setAttribute('aria-label', text.textContent + ': passed');
     } else if (passed === false) {
       icon.className = 'fas fa-circle-xmark text-[10px] text-red-400';
+      icon.setAttribute('aria-hidden', 'true');
       text.className = 'text-red-400';
+      el.setAttribute('aria-label', text.textContent + ': failed');
     } else {
       icon.className = 'fas fa-circle text-[8px] text-slate-300 dark:text-slate-600';
+      icon.setAttribute('aria-hidden', 'true');
       text.className = 'text-slate-400';
+      el.setAttribute('aria-label', text.textContent + ': not checked');
     }
   }
 
@@ -136,6 +149,7 @@
   function showProgress() {
     progressOverlay.classList.remove('hidden');
     progressBar.style.width = '0%';
+    progressBar.parentElement.setAttribute('aria-valuenow', '0');
     progressPercent.textContent = '0%';
     progressText.textContent = 'Preparing...';
   }
@@ -143,6 +157,7 @@
   function updateProgress(current, total) {
     var pct = Math.round((current / total) * 100);
     progressBar.style.width = pct + '%';
+    progressBar.parentElement.setAttribute('aria-valuenow', pct);
     progressPercent.textContent = pct + '%';
     progressText.textContent = 'Processing page ' + current + ' of ' + total;
   }
@@ -171,17 +186,17 @@
   function handleFile(file) {
     if (!file) return;
 
-    // Validate type
     if (file.type !== 'application/pdf' && !file.name.toLowerCase().endsWith('.pdf')) {
       showToast('Invalid format. Please upload a PDF file.', 'error');
       setCheck('file-valid', false);
+      announce('Error: Invalid file format. Please upload a PDF.');
       return;
     }
 
-    // Validate size (50MB max)
     if (file.size > 50 * 1024 * 1024) {
       showToast('File too large. Maximum size is 50MB.', 'error');
       setCheck('file-size', false);
+      announce('Error: File too large. Maximum size is 50 megabytes.');
       return;
     }
 
@@ -190,28 +205,28 @@
     setCheck('file-valid', true);
     setCheck('file-size', true);
 
-    // Update drop zone UI
     dropContent.classList.add('hidden');
     dropLoaded.classList.remove('hidden');
     dropFilename.textContent = file.name;
     dropFilesize.textContent = formatBytes(file.size);
 
-    // Update file info
     infoName.textContent = file.name;
     infoName.className = 'text-sm font-medium text-slate-700 dark:text-slate-300 truncate';
     infoOriginal.textContent = formatBytes(file.size);
     infoOriginal.className = 'text-sm font-medium text-slate-700 dark:text-slate-300';
     statOriginal.textContent = formatBytes(file.size);
     statOriginal.className = 'text-3xl font-bold text-slate-700 dark:text-slate-300';
+    statOriginal.setAttribute('aria-label', 'Original file size: ' + formatBytes(file.size));
 
-    // Clear previous compressed data
     compressedBlob = null;
     downloadBtn.disabled = true;
     downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
     statCompressed.textContent = '—';
     statCompressed.className = 'text-3xl font-bold text-slate-400';
+    statCompressed.setAttribute('aria-label', 'Compressed file size: not available');
     statPercent.textContent = '—';
     statPercent.className = 'text-3xl font-bold text-slate-400';
+    statPercent.setAttribute('aria-label', 'Compression percentage: not available');
     infoCompressed.textContent = '—';
     infoCompressed.className = 'text-sm font-medium text-slate-400';
     infoSaved.textContent = '—';
@@ -226,13 +241,14 @@
     setCheck('size-reduced', null);
     setCheck('ready-download', null);
 
-    // Read and load PDF
     var reader = new FileReader();
     reader.onload = function (e) {
       var typedArray = new Uint8Array(e.target.result);
       loadPdf(typedArray);
     };
     reader.readAsArrayBuffer(file);
+
+    announce('PDF file "' + file.name + '" uploaded, size ' + formatBytes(file.size));
   }
 
   async function loadPdf(data) {
@@ -240,37 +256,37 @@
       pdfDoc = await pdfjsLib.getDocument({ data: data }).promise;
       pageCount = pdfDoc.numPages;
 
-      // Check if encrypted (pdf.js would have thrown, but let's be safe)
       setCheck('not-encrypted', true);
 
-      // Update page count
       statPages.textContent = pageCount;
       statPages.className = 'text-3xl font-bold text-amber-500';
+      statPages.setAttribute('aria-label', 'Page count: ' + pageCount);
       infoPages.textContent = pageCount + ' pages';
       infoPages.className = 'text-sm font-medium text-slate-700 dark:text-slate-300';
 
-      // Render first page preview
       var firstPage = await pdfDoc.getPage(1);
       await renderPageToCanvas(firstPage, beforeCanvas, 1.0);
 
       beforePlaceholder.classList.add('hidden');
       beforeImageWrap.classList.remove('hidden');
 
-      // Also render to compare-before canvas
       await renderPageToCanvas(firstPage, compareBeforeCanvas, 1.0);
 
-      // Enable compress button
       compressBtn.disabled = false;
       compressBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+
+      announce('PDF loaded with ' + pageCount + ' pages. Ready to compress.');
 
     } catch (err) {
       console.error('PDF load error:', err);
       if (err.name === 'PasswordException') {
         showToast('This PDF is password-protected. Please remove the password first.', 'error');
         setCheck('not-encrypted', false);
+        announce('Error: This PDF is password-protected and cannot be processed.');
       } else {
         showToast('Failed to load PDF. The file may be corrupted.', 'error');
         setCheck('file-valid', false);
+        announce('Error: Failed to load PDF. The file may be corrupted.');
       }
     }
   }
@@ -284,6 +300,7 @@
     compressBtn.disabled = true;
     compressBtn.classList.add('opacity-50', 'cursor-not-allowed');
     showProgress();
+    announce('Starting PDF compression...');
 
     var quality = parseInt(qualitySlider.value, 10) / 100;
     var scale = parseFloat(scaleSlider.value);
@@ -299,11 +316,9 @@
 
         var page = await pdfDoc.getPage(i);
 
-        // Create offscreen canvas for rendering
         var offCanvas = document.createElement('canvas');
         var viewport = page.getViewport({ scale: scale });
 
-        // Cap canvas dimensions to prevent memory issues
         var maxDim = 4000;
         var renderScale = scale;
         if (viewport.width > maxDim || viewport.height > maxDim) {
@@ -324,7 +339,6 @@
 
         await page.render(renderContext).promise;
 
-        // Convert to JPEG blob
         var blob = await new Promise(function (resolve) {
           offCanvas.toBlob(resolve, 'image/jpeg', quality);
         });
@@ -335,7 +349,6 @@
           origHeight: page.getViewport({ scale: 1 }).height
         });
 
-        // Clean up canvas
         offCanvas.width = 0;
         offCanvas.height = 0;
         offCanvas = null;
@@ -344,18 +357,18 @@
       if (cancelCompression) {
         hideProgress();
         showToast('Compression cancelled.', 'info');
+        announce('Compression cancelled.');
         isCompressing = false;
         compressBtn.disabled = false;
         compressBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         return;
       }
 
-      // Update progress for PDF assembly
       progressText.textContent = 'Assembling PDF...';
       progressBar.style.width = '95%';
+      progressBar.parentElement.setAttribute('aria-valuenow', '95');
       progressPercent.textContent = '95%';
 
-      // Create new PDF with pdf-lib
       for (var j = 0; j < jpegBlobs.length; j++) {
         var item = jpegBlobs[j];
         var arrayBuffer = await item.blob.arrayBuffer();
@@ -366,7 +379,6 @@
           jpgImage = await newPdf.embedJpg(jpgBytes);
         } catch (embedErr) {
           console.error('Failed to embed JPEG for page ' + (j + 1) + ':', embedErr);
-          // Skip this page if embedding fails
           continue;
         }
 
@@ -382,7 +394,6 @@
       var pdfBytes = await newPdf.save();
       compressedBlob = new Blob([pdfBytes], { type: 'application/pdf' });
 
-      // Render first page of compressed PDF for preview
       progressText.textContent = 'Generating preview...';
       progressBar.style.width = '98%';
       progressPercent.textContent = '98%';
@@ -395,7 +406,6 @@
         afterPlaceholder.classList.add('hidden');
         afterImageWrap.classList.remove('hidden');
 
-        // Compare view
         await renderPageToCanvas(compressedFirstPage, compareAfterCanvas, 1.0);
         comparePlaceholder.classList.add('hidden');
         compareWrap.classList.remove('hidden');
@@ -405,12 +415,12 @@
         console.error('Preview render error:', previewErr);
       }
 
-      // Update stats
       var originalSize = originalFile.size;
       var compressedSize = compressedBlob.size;
       var percentReduced = Math.max(0, ((originalSize - compressedSize) / originalSize) * 100);
 
       progressBar.style.width = '100%';
+      progressBar.parentElement.setAttribute('aria-valuenow', '100');
       progressPercent.textContent = '100%';
       progressText.textContent = 'Done!';
 
@@ -420,9 +430,11 @@
 
       statCompressed.textContent = formatBytes(compressedSize);
       statCompressed.className = 'text-3xl font-bold ' + (compressedSize < originalSize ? 'text-emerald-500' : 'text-amber-500');
+      statCompressed.setAttribute('aria-label', 'Compressed file size: ' + formatBytes(compressedSize));
 
       statPercent.textContent = percentReduced.toFixed(1) + '%';
       statPercent.className = 'text-3xl font-bold ' + (percentReduced > 0 ? 'text-emerald-500' : 'text-amber-500');
+      statPercent.setAttribute('aria-label', 'Compression: ' + percentReduced.toFixed(1) + ' percent reduction');
 
       infoCompressed.textContent = formatBytes(compressedSize);
       infoCompressed.className = 'text-sm font-medium ' + (compressedSize < originalSize ? 'text-emerald-600 dark:text-emerald-400' : 'text-amber-500');
@@ -439,7 +451,6 @@
       infoSettings.textContent = Math.round(quality * 100) + '% quality, ' + scale + 'x scale';
       infoSettings.className = 'text-sm font-medium text-blue-600 dark:text-blue-400';
 
-      // Validation
       setCheck('compressed', true);
       if (compressedSize < originalSize) {
         setCheck('size-reduced', true);
@@ -447,10 +458,11 @@
         downloadBtn.disabled = false;
         downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         showToast('PDF compressed! Saved ' + formatBytes(saved) + ' (' + percentReduced.toFixed(1) + '% reduction)', 'success');
+        announce('PDF compressed successfully. Saved ' + formatBytes(saved) + ', a ' + percentReduced.toFixed(1) + ' percent reduction. Ready to download.');
       } else {
         setCheck('size-reduced', false);
         showToast('Compressed PDF is larger than original. Try lowering quality or scale.', 'error');
-        // Still allow download in case user wants it
+        announce('Compressed PDF is larger than original. Try lowering quality or scale settings.');
         downloadBtn.disabled = false;
         downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         setCheck('ready-download', true);
@@ -461,6 +473,7 @@
       console.error('Compression error:', err);
       showToast('Compression failed: ' + (err.message || 'Unknown error'), 'error');
       setCheck('compressed', false);
+      announce('Compression failed: ' + (err.message || 'Unknown error'));
     }
 
     isCompressing = false;
@@ -516,6 +529,7 @@
     var val = this.value;
     qualityValue.textContent = val + '%';
     qualityBar.style.width = val + '%';
+    this.setAttribute('aria-valuenow', val);
 
     if (val >= 70) {
       qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-emerald-500';
@@ -530,8 +544,8 @@
   scaleSlider.addEventListener('input', function () {
     var val = parseFloat(this.value);
     scaleValue.textContent = val.toFixed(val % 1 === 0 ? 1 : 2) + 'x';
+    this.setAttribute('aria-valuenow', val);
 
-    // Map 0.5-2.0 range to 0-100% for bar width
     var pct = ((val - 0.5) / 1.5) * 100;
     scaleBar.style.width = pct + '%';
 
@@ -559,6 +573,7 @@
       qualitySlider.value = preset.quality;
       qualityValue.textContent = preset.quality + '%';
       qualityBar.style.width = preset.quality + '%';
+      qualitySlider.setAttribute('aria-valuenow', preset.quality);
       if (preset.quality >= 70) {
         qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-emerald-500';
       } else if (preset.quality >= 40) {
@@ -570,6 +585,7 @@
       scaleSlider.value = preset.scale;
       var scaleDisplay = preset.scale.toFixed(preset.scale % 1 === 0 ? 1 : 2);
       scaleValue.textContent = scaleDisplay + 'x';
+      scaleSlider.setAttribute('aria-valuenow', preset.scale);
       var scalePct = ((preset.scale - 0.5) / 1.5) * 100;
       scaleBar.style.width = scalePct + '%';
       if (preset.scale >= 1.0) {
@@ -581,24 +597,61 @@
       }
 
       showToast('Preset "' + key + '" applied', 'success');
+      announce(key + ' preset applied: ' + preset.quality + ' percent quality, ' + scaleDisplay + 'x scale');
     });
   });
 
-  // ─── Preview Tabs ───
-  document.querySelectorAll('.preview-tab').forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      var view = this.getAttribute('data-view');
+  // ─── Preview Tabs with ARIA and keyboard navigation ───
+  (function initTabNavigation() {
+    var tabs = document.querySelectorAll('.preview-tab');
 
-      document.querySelectorAll('.preview-tab').forEach(function (t) {
-        t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+    document.querySelectorAll('.preview-tab').forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        var view = this.getAttribute('data-view');
+
+        document.querySelectorAll('.preview-tab').forEach(function (t) {
+          t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+        this.setAttribute('aria-selected', 'true');
+        this.setAttribute('tabindex', '0');
+
+        document.getElementById('view-before').classList.toggle('hidden', view !== 'before');
+        document.getElementById('view-after').classList.toggle('hidden', view !== 'after');
+        document.getElementById('view-compare').classList.toggle('hidden', view !== 'compare');
+
+        announce('Switched to ' + view + ' view');
       });
-      this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
 
-      document.getElementById('view-before').classList.toggle('hidden', view !== 'before');
-      document.getElementById('view-after').classList.toggle('hidden', view !== 'after');
-      document.getElementById('view-compare').classList.toggle('hidden', view !== 'compare');
+      // Keyboard navigation for tabs
+      tab.addEventListener('keydown', function (e) {
+        var tabList = Array.from(tabs);
+        var currentIndex = tabList.indexOf(this);
+        var newIndex;
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          newIndex = (currentIndex + 1) % tabList.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          newIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          newIndex = 0;
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          newIndex = tabList.length - 1;
+        }
+
+        if (newIndex !== undefined) {
+          tabList[newIndex].focus();
+          tabList[newIndex].click();
+        }
+      });
     });
-  });
+  })();
 
   // ─── Download ───
   downloadBtn.addEventListener('click', function () {
@@ -617,6 +670,7 @@
     URL.revokeObjectURL(url);
 
     showToast('PDF downloaded: ' + fileName, 'success');
+    announce('Compressed PDF downloaded as ' + fileName);
   });
 
   // ─── Reset ───
@@ -634,19 +688,19 @@
 
     fileInput.value = '';
     qualitySlider.value = 75;
+    qualitySlider.setAttribute('aria-valuenow', '75');
     qualityValue.textContent = '75%';
     qualityBar.style.width = '75%';
     qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-emerald-500';
     scaleSlider.value = 1.0;
+    scaleSlider.setAttribute('aria-valuenow', '1');
     scaleValue.textContent = '1.0x';
     scaleBar.style.width = '33%';
     scaleBar.className = 'h-full rounded-full transition-all duration-300 bg-blue-500';
 
-    // Reset drop zone
     dropContent.classList.remove('hidden');
     dropLoaded.classList.add('hidden');
 
-    // Reset previews
     beforePlaceholder.classList.remove('hidden');
     beforeImageWrap.classList.add('hidden');
     beforeCanvas.width = 0;
@@ -662,17 +716,19 @@
     compareAfterCanvas.width = 0;
     compareAfterCanvas.height = 0;
 
-    // Reset stats
     statOriginal.textContent = '—';
     statOriginal.className = 'text-3xl font-bold text-slate-400';
+    statOriginal.setAttribute('aria-label', 'Original file size: not available');
     statCompressed.textContent = '—';
     statCompressed.className = 'text-3xl font-bold text-slate-400';
+    statCompressed.setAttribute('aria-label', 'Compressed file size: not available');
     statPercent.textContent = '—';
     statPercent.className = 'text-3xl font-bold text-slate-400';
+    statPercent.setAttribute('aria-label', 'Compression percentage: not available');
     statPages.textContent = '—';
     statPages.className = 'text-3xl font-bold text-slate-400';
+    statPages.setAttribute('aria-label', 'Page count: not available');
 
-    // Reset file info
     infoName.textContent = '—';
     infoName.className = 'text-sm font-medium text-slate-400';
     infoOriginal.textContent = '—';
@@ -686,16 +742,12 @@
     infoSettings.textContent = '—';
     infoSettings.className = 'text-sm font-medium text-slate-400';
 
-    // Disable buttons
     compressBtn.disabled = true;
     compressBtn.classList.add('opacity-50', 'cursor-not-allowed');
     downloadBtn.disabled = true;
     downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
-    // Hide progress
     hideProgress();
-
-    // Reset validation
     resetChecks();
   }
 
@@ -705,10 +757,12 @@
       setTimeout(function () {
         resetAll();
         showToast('All settings reset', 'info');
+        announce('All settings and file have been reset.');
       }, 500);
     } else {
       resetAll();
       showToast('All settings reset', 'info');
+      announce('All settings and file have been reset.');
     }
   });
 
@@ -726,7 +780,8 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.setAttribute('role', 'alert');
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -743,7 +798,21 @@
     }, 3000);
   }
 
-  // ─── FAQ Toggle ───
+  // ─── Copy Link Button ───
+  var copyLinkBtn = document.getElementById('copy-link-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', function () {
+      var pageUrl = window.location.href;
+      navigator.clipboard.writeText(pageUrl).then(function () {
+        showToast('Link copied to clipboard', 'success');
+        announce('Page link copied to clipboard');
+      }).catch(function () {
+        showToast('Failed to copy link', 'error');
+      });
+    });
+  }
+
+  // ─── FAQ Toggle with ARIA ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -754,6 +823,7 @@
     faqToggles.forEach(function (toggle) {
       var clone = toggle.cloneNode(true);
       toggle.parentNode.replaceChild(clone, toggle);
+
       clone.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
@@ -761,19 +831,30 @@
         if (!content) return;
 
         var isHidden = content.classList.contains('hidden');
+
         if (isHidden) {
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
         }
       });
+
+      // Initialize aria-expanded
+      var content = clone.nextElementSibling;
+      if (content && content.classList.contains('hidden')) {
+        clone.setAttribute('aria-expanded', 'false');
+      } else if (content) {
+        clone.setAttribute('aria-expanded', 'true');
+      }
     });
   }, 50);
 

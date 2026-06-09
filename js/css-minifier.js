@@ -32,7 +32,7 @@
   var currentOutput = '';
   var hasError = false;
 
-  // ─── Presets ───
+  // ─── Presets (unchanged) ───
   var presets = {
     basic: '/* Base Styles */\nbody {\n  font-family: Arial, sans-serif;\n  font-size: 16px;\n  line-height: 1.6;\n  color: #333333;\n  background-color: #ffffff;\n  margin: 0;\n  padding: 20px;\n}\n\n/* Typography */\nh1, h2, h3, h4, h5, h6 {\n  font-weight: 600;\n  margin-bottom: 16px;\n  line-height: 1.3;\n}\n\nh1 {\n  font-size: 36px;\n  color: #1a1a1a;\n}\n\nh2 {\n  font-size: 28px;\n  color: #2d2d2d;\n}\n\np {\n  margin-bottom: 16px;\n  color: #555555;\n}\n\n/* Links */\na {\n  color: #0066cc;\n  text-decoration: none;\n  transition: color 0.2s ease;\n}\n\na:hover {\n  color: #004499;\n  text-decoration: underline;\n}\n\n/* Container */\n.container {\n  max-width: 1200px;\n  margin: 0 auto;\n  padding: 0 20px;\n}',
     comments: '/* ========================================\n   Navigation Styles\n   Version: 2.1\n   Author: John Smith\n   Last Updated: 2024-01-15\n   ======================================== */\n\n/* Primary Navigation */\n.nav-primary {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  padding: 16px 24px;\n  background-color: #1a1a2e;\n  border-radius: 8px;\n  margin-bottom: 24px;\n}\n\n/* Logo styles */\n.nav-logo {\n  font-size: 24px;\n  font-weight: 700;\n  color: #ffffff;\n  text-decoration: none;\n}\n\n/* Navigation Links */\n.nav-links {\n  display: flex;\n  list-style: none;\n  gap: 8px;\n  margin: 0;\n  padding: 0;\n}\n\n.nav-links a {\n  color: #cccccc;\n  text-decoration: none;\n  padding: 8px 16px;\n  border-radius: 4px;\n  transition: all 0.2s ease;\n}\n\n.nav-links a:hover {\n  color: #ffffff;\n  background-color: rgba(255, 255, 255, 0.1);\n}\n\n/* Active state */\n.nav-links a.active {\n  color: #ffffff;\n  background-color: #4f46e5;\n}\n\n/* CTA Button */\n.nav-cta {\n  background-color: #4f46e5;\n  color: #ffffff;\n  padding: 10px 20px;\n  border-radius: 6px;\n  font-weight: 600;\n  text-decoration: none;\n  transition: background-color 0.2s ease;\n}\n\n.nav-cta:hover {\n  background-color: #4338ca;\n}',
@@ -47,6 +47,14 @@
     var i = Math.floor(Math.log(bytes) / Math.log(1024));
     var val = bytes / Math.pow(1024, i);
     return val.toFixed(i === 0 ? 0 : 1) + ' ' + sizes[i];
+  }
+
+  // Accessibility: Announce to aria-live region
+  function announce(message) {
+    var liveRegion = document.getElementById('toast-live-region');
+    if (liveRegion) {
+      liveRegion.textContent = message;
+    }
   }
 
   function setCheck(key, passed) {
@@ -76,47 +84,38 @@
     return /[^{}]*\{[^{}]*\}/.test(str);
   }
 
-  // ─── Minification Logic ───
+  // ─── Minification Logic (unchanged) ───
   function minifyCss(css) {
     var output = css;
 
-    // 1. Remove comments
     if (optComments.checked) {
       output = output.replace(/\/\*[\s\S]*?\*\//g, '');
     }
 
-    // 2. Remove empty rules: selector { }
     if (optEmptyRules.checked) {
       output = output.replace(/[^{}]+\{\s*}\s*/g, function (match) {
-        // Check if there are any declarations inside
         var inner = match.replace(/[^{}]*\{|\}/g, '');
         if (inner.trim().length === 0) return '';
         return match;
       });
-      // Also catch malformed patterns left behind
       output = output.replace(/\s*\{\s*\}\s*/g, function (match) {
         if (match.replace(/\s/g, '').length <= 2) return '';
         return match;
       });
     }
 
-    // 3. Remove trailing semicolons before closing brace
     if (optSemicolons.checked) {
       output = output.replace(/;(\s*\})/g, '$1');
     }
 
-    // 4. Shorten zero units (0px -> 0, 0em -> 0, 0rem -> 0, 0% -> 0)
     if (optUnits.checked) {
       output = output.replace(/:\s*0+(?:px|em|rem|vh|vw|vh|vmin|vmax|%|pt|pc|cm|mm|in|ms|s|ex|ch|fr|deg|grad|rad|turn)\s*([;}])/gi, ':0$2');
     }
 
-    // 5. Whitespace removal
     if (optWhitespace.checked) {
-      // Protect strings in content properties and url() functions
       var stringBlocks = [];
       var stringPlaceholders = [];
 
-      // Protect content: "..." and content: '...'
       output = output.replace(/content\s*:\s*([^;}{]*)/gi, function (match, val) {
         if (val.includes('"') || val.includes("'")) {
           var idx = stringBlocks.length;
@@ -127,42 +126,28 @@
         return match;
       });
 
-      // Protect url() values
-      output = output.replace(/url\s*\(\s*([^)]*)\s*\)/gi, function (match, val) {
+      output = output.replace(/url\s*\(\s*([^)]*)\s*\)/gi, function (match) {
         var idx = stringBlocks.length;
         stringBlocks.push(match);
         stringPlaceholders.push('___CSSSTR_' + idx + '___');
         return '___CSSSTR_' + idx + '___';
       });
 
-      // Replace newlines and tabs with spaces
       output = output.replace(/[\r\n\t]+/g, ' ');
-
-      // Collapse multiple spaces into one
       output = output.replace(/  +/g, ' ');
-
-      // Remove spaces around { } : ;
       output = output.replace(/\s*\{\s*/g, '{');
       output = output.replace(/\s*\}\s*/g, '}');
       output = output.replace(/\s*:\s*/g, ':');
       output = output.replace(/\s*;\s*/g, ';');
-
-      // Remove space before } (from trailing semicolon removal)
       output = output.replace(/\s+}/g, '}');
-
-      // Trim
       output = output.trim();
 
-      // Restore protected blocks
       for (var i = stringPlaceholders.length - 1; i >= 0; i--) {
         output = output.replace(stringPlaceholders[i], stringBlocks[i]);
       }
 
-      // Final cleanup: remove any double semicolons that may have appeared
       output = output.replace(/;+/g, ';');
-      // Remove semicolons before }
       output = output.replace(/;+\s*}/g, '}');
-      // Remove leading semicolons
       output = output.replace(/^;+/, '');
     }
 
@@ -177,17 +162,13 @@
     currentOutput = '';
     hasError = false;
 
-    // Input count
     inputCount.textContent = inputLen + ' char' + (inputLen !== 1 ? 's' : '');
 
-    // Stats
     statOriginal.textContent = formatBytes(inputBytes);
     statOriginal.className = 'text-3xl font-bold ' + (inputLen > 0 ? 'text-emerald-500' : 'text-slate-400');
 
-    // Reset checks
     resetChecks();
 
-    // Empty input
     if (inputLen === 0) {
       previewContent.textContent = 'Paste CSS code and select options to see the minified result here';
       rawContent.textContent = 'Paste CSS code to see the raw minified output here';
@@ -206,11 +187,9 @@
 
     setCheck('has-input', true);
 
-    // Check for CSS rules
     var hasRules = hasCssRules(input);
     setCheck('has-rules', hasRules);
 
-    // Minify
     var minified = '';
     try {
       minified = minifyCss(input);
@@ -251,6 +230,9 @@
       setCheck('minified', true);
       setCheck('no-errors', true);
       setCheck('output-ready', true);
+
+      // Accessibility: Announce result
+      announce('Minification complete. ' + formatBytes(inputBytes) + ' reduced to ' + formatBytes(minBytes) + ', ' + reduction.toFixed(1) + ' percent smaller.');
     } else {
       hasError = true;
       previewContent.textContent = 'Error: Could not minify the CSS input.';
@@ -269,6 +251,8 @@
       setCheck('no-errors', false);
       setCheck('output-ready', false);
       setCheck('size-reduced', false);
+
+      announce('Minification failed. Could not process the CSS input.');
     }
   }
 
@@ -287,12 +271,14 @@
     hasError = false;
     process();
     showToast('All fields cleared', 'info');
+    announce('All fields cleared');
   });
 
   // ─── Copy Buttons ───
   copyBtn.addEventListener('click', function () {
     if (!currentOutput) {
       showToast('No output to copy', 'error');
+      announce('No output to copy');
       return;
     }
     copyToClipboard(currentOutput, 'Minified CSS copied to clipboard');
@@ -301,6 +287,7 @@
   copyInlineBtn.addEventListener('click', function () {
     if (!currentOutput) {
       showToast('No output to copy', 'error');
+      announce('No output to copy');
       return;
     }
     copyToClipboard(currentOutput, 'Minified CSS copied to clipboard');
@@ -310,6 +297,7 @@
   downloadBtn.addEventListener('click', function () {
     if (!currentOutput) {
       showToast('No output to download', 'error');
+      announce('No output to download');
       return;
     }
     var blob = new Blob([currentOutput], { type: 'text/css' });
@@ -322,20 +310,43 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast('styles.min.css downloaded', 'success');
+    announce('File styles.min.css downloaded');
   });
 
-  // ─── Preview Tabs ───
+  // ─── Preview Tabs — Accessibility: ARIA tab pattern with arrow keys ───
   document.querySelectorAll('.preview-tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
       var view = this.getAttribute('data-view');
 
       document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+        t.setAttribute('aria-selected', 'false');
       });
       this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+      this.setAttribute('aria-selected', 'true');
 
       document.getElementById('view-result').classList.toggle('hidden', view !== 'result');
       document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
+
+      // Accessibility: Announce tab change
+      announce(view.charAt(0).toUpperCase() + view.slice(1) + ' view selected');
+    });
+
+    // Accessibility: Arrow key navigation for tabs
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var tabs = Array.from(document.querySelectorAll('.preview-tab'));
+        var currentIndex = tabs.indexOf(this);
+        var newIndex;
+        if (e.key === 'ArrowRight') {
+          newIndex = (currentIndex + 1) % tabs.length;
+        } else {
+          newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        }
+        e.preventDefault();
+        tabs[newIndex].focus();
+        tabs[newIndex].click();
+      }
     });
   });
 
@@ -349,6 +360,7 @@
       inputEl.value = text;
       process();
       showToast('Example loaded: ' + key, 'success');
+      announce('Example loaded: ' + key);
     });
   });
 
@@ -357,6 +369,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
         showToast(message, 'success');
+        announce(message);
       }).catch(function () {
         fallbackCopy(text, message);
       });
@@ -375,8 +388,10 @@
     try {
       document.execCommand('copy');
       showToast(message, 'success');
+      announce(message);
     } catch (e) {
       showToast('Failed to copy', 'error');
+      announce('Failed to copy');
     }
     document.body.removeChild(textarea);
   }
@@ -395,7 +410,8 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.setAttribute('role', 'status');
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -415,7 +431,7 @@
   // ─── Initialize ───
   process();
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  // ─── FAQ Toggle — Accessibility: aria-expanded + aria-controls ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -426,6 +442,7 @@
     faqToggles.forEach(function (toggle) {
       var clone = toggle.cloneNode(true);
       toggle.parentNode.replaceChild(clone, toggle);
+
       clone.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
@@ -437,13 +454,24 @@
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          // Accessibility: Update aria-expanded
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
+        }
+      });
+
+      // Accessibility: Keyboard Enter/Space for FAQ
+      clone.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
         }
       });
     });

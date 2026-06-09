@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <!-- ADDED: Explicit robots directive -->
+  <meta name="robots" content="index, follow">
+
   <title>Open Graph Generator - Free OG Tag Creator Tool</title>
   <meta name="description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared with this free OG tag generator.">
   <meta name="author" content="Devpalettes">
@@ -15,18 +17,51 @@
   <meta property="og:title" content="Open Graph Generator - Free OG Tag Creator Tool">
   <meta property="og:description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <!-- ADDED: og:site_name -->
+  <meta property="og:site_name" content="DevPalettes">
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://devpalettes.com/open-graph-generator/">
-  <meta property="twitter:title" content="Open Graph Generator - Free OG Tag Creator Tool">
-  <meta property="twitter:description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared.">
-  
+  <!-- FIXED: Twitter Card tags use name attribute per spec -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://devpalettes.com/open-graph-generator/">
+  <meta name="twitter:title" content="Open Graph Generator - Free OG Tag Creator Tool">
+  <meta name="twitter:description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared.">
+  <!-- ADDED: twitter:image -->
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-image.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-  <!-- Structured Data: WebApplication -->
+
+  <!-- ADDED: BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Open Graph Generator",
+        "item": "https://devpalettes.com/open-graph-generator/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: WebApplication — ADDED: browserRequirements, featureList -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,14 +72,28 @@
     "description": "A free tool to generate Open Graph meta tags for social media sharing. Preview how your links appear on Facebook, Twitter, LinkedIn and other platforms before publishing.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Requires HTML5.",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    }
+    },
+    "featureList": [
+      "Live social media preview",
+      "Facebook share preview",
+      "Twitter Card preview",
+      "LinkedIn share preview",
+      "Real-time validation checklist",
+      "Twitter Card tag generation",
+      "Quick presets for common page types",
+      "Character count with optimal range indicators",
+      "Copy OG tags or full HTML head snippet",
+      "Image URL preview"
+    ]
   }
   </script>
 
+  <!-- FIXED: FAQPage Schema (5→6 to match HTML FAQ count) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,7 +136,15 @@
         "name": "Where do I put Open Graph tags in my HTML?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Open Graph meta tags go inside the <head> section of your HTML document, alongside your other meta tags. They should appear before any closing </head> tag. Place them after your standard meta description and title tag for clean organization."
+          "text": "Open Graph meta tags go inside the head section of your HTML document, alongside your other meta tags. They should appear before any closing head tag. Place them after your standard meta description and title tag for clean organization."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this Open Graph generator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup or account required. Fill in the fields, preview your social card, copy the generated meta tags, and paste them into your project. No limits on how many times you use it."
         }
       }
     ]
@@ -96,6 +153,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- ADDED: Preconnect for Font Awesome CDN -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -108,33 +167,54 @@
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- ADDED: Focus-visible styles for accessibility -->
+  <style>
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .faq-toggle:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: -2px;
+    }
+    .preview-tab:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
-  
-  <!-- Main Content -->
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+
+  <!-- ADDED: aria-label on main landmark -->
+  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden" id="main-content" aria-label="Open Graph Generator Tool">
+    <!-- ADDED: aria-hidden on all decorative elements -->
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Open Graph Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-4">Generate OG meta tags and preview how your page looks when shared on Facebook, Twitter, and LinkedIn</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8  max-w-7xl mx-auto">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3">What Is an Open Graph Generator?</h2>
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="what-is-heading">
+        <h2 id="what-is-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is an Open Graph Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           An Open Graph generator is a free tool that helps you create the meta tags needed to control how your webpage appears when shared on social media platforms like Facebook, Twitter, LinkedIn, and Pinterest. These tags are part of the Open Graph protocol, originally developed by Facebook in 2010, which turns any web page into a rich object in a social graph. Instead of leaving it up to social platforms to guess what title, description, and image to display, you specify exactly what you want using OG meta tags.
         </p>
@@ -146,91 +226,94 @@
         </p>
       </section>
 
-      <!-- Quick Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <!-- Quick Stats Row — ADDED: aria-live for dynamic values -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Generator statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-code text-emerald-500"></i>
             </div>
             <span class="text-sm text-slate-500">Tags Generated</span>
           </div>
-          <p id="stat-tags" class="text-3xl font-bold text-slate-400">0</p>
+          <p id="stat-tags" class="text-3xl font-bold text-slate-400" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-eye text-blue-500"></i>
             </div>
             <span class="text-sm text-slate-500">Preview Ready</span>
           </div>
-          <p id="stat-preview" class="text-3xl font-bold text-slate-400">No</p>
+          <p id="stat-preview" class="text-3xl font-bold text-slate-400" aria-live="polite">No</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-twitter text-purple-500"></i>
             </div>
             <span class="text-sm text-slate-500">Twitter Cards</span>
           </div>
-          <p id="stat-twitter" class="text-3xl font-bold text-slate-400">No</p>
+          <p id="stat-twitter" class="text-3xl font-bold text-slate-400" aria-live="polite">No</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-check-double text-amber-500"></i>
             </div>
             <span class="text-sm text-slate-500">Fields Filled</span>
           </div>
-          <p id="stat-fields" class="text-3xl font-bold text-slate-400">0/7</p>
+          <p id="stat-fields" class="text-3xl font-bold text-slate-400" aria-live="polite">0/7</p>
         </div>
       </div>
 
       <div class="block md:grid md:grid-cols-2 gap-8">
         <!-- Left: Inputs -->
-        <div class="space-y-6 ">
+        <div class="space-y-6" role="region" aria-label="Open Graph input fields">
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square" aria-hidden="true"></i></span>
               Open Graph Properties
             </h2>
             <div class="space-y-5">
               <!-- OG Title -->
               <div>
-                <label class="block text-sm font-semibold mb-2">OG Title <span class="text-red-400">*</span></label>
-                <input type="text" id="og-title" maxlength="100" placeholder="My Awesome Page Title" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
+                <label for="og-title" class="block text-sm font-semibold mb-2">OG Title <span class="text-red-400" aria-hidden="true">*</span></label>
+                <input type="text" id="og-title" maxlength="100" placeholder="My Awesome Page Title" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" aria-describedby="og-title-hint">
                 <div class="flex justify-between mt-1.5">
-                  <p class="text-xs text-slate-400">Recommended: 40–60 characters</p>
-                  <p id="og-title-count" class="text-xs text-slate-400">0/100</p>
+                  <p id="og-title-hint" class="text-xs text-slate-400">Recommended: 40–60 characters</p>
+                  <!-- ADDED: aria-live on counter -->
+                  <p id="og-title-count" class="text-xs text-slate-400" aria-live="polite">0/100</p>
                 </div>
-                <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden">
+                <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden" aria-hidden="true">
                   <div id="og-title-bar" class="h-full rounded-full transition-all duration-300" style="width:0%;background:#e2e8f0"></div>
                 </div>
               </div>
               <!-- OG Description -->
               <div>
-                <label class="block text-sm font-semibold mb-2">OG Description <span class="text-red-400">*</span></label>
-                <textarea id="og-description" maxlength="200" rows="3" placeholder="A brief summary of your page content..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none"></textarea>
+                <label for="og-description" class="block text-sm font-semibold mb-2">OG Description <span class="text-red-400" aria-hidden="true">*</span></label>
+                <textarea id="og-description" maxlength="200" rows="3" placeholder="A brief summary of your page content..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none" aria-describedby="og-desc-hint"></textarea>
                 <div class="flex justify-between mt-1.5">
-                  <p class="text-xs text-slate-400">Recommended: 100–160 characters</p>
-                  <p id="og-desc-count" class="text-xs text-slate-400">0/200</p>
+                  <p id="og-desc-hint" class="text-xs text-slate-400">Recommended: 100–160 characters</p>
+                  <!-- ADDED: aria-live on counter -->
+                  <p id="og-desc-count" class="text-xs text-slate-400" aria-live="polite">0/200</p>
                 </div>
-                <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden">
+                <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden" aria-hidden="true">
                   <div id="og-desc-bar" class="h-full rounded-full transition-all duration-300" style="width:0%;background:#e2e8f0"></div>
                 </div>
               </div>
               <!-- OG URL -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Page URL <span class="text-red-400">*</span></label>
+                <label for="og-url" class="block text-sm font-semibold mb-2">Page URL <span class="text-red-400" aria-hidden="true">*</span></label>
                 <input type="url" id="og-url" placeholder="https://example.com/your-page" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
               </div>
               <!-- OG Image -->
               <div>
-                <label class="block text-sm font-semibold mb-2">OG Image URL <span class="text-red-400">*</span></label>
+                <label for="og-image" class="block text-sm font-semibold mb-2">OG Image URL <span class="text-red-400" aria-hidden="true">*</span></label>
                 <div class="flex gap-2">
                   <input type="url" id="og-image" placeholder="https://example.com/image.jpg" class="flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
-                  <button id="og-image-preview-btn" class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 flex items-center gap-1.5" title="Preview image" aria-label="Og Image Preview Btn">
-                    <i class="fas fa-image text-emerald-500"></i>
+                  <!-- FIXED: aria-label was machine-name "Og Image Preview Btn" -->
+                  <button id="og-image-preview-btn" class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 flex items-center gap-1.5" title="Preview image" aria-label="Preview OG image">
+                    <i class="fas fa-image text-emerald-500" aria-hidden="true"></i>
                   </button>
                 </div>
                 <p class="text-xs text-slate-400 mt-1.5">Recommended: 1200×630px, JPEG/PNG, under 5MB</p>
@@ -240,7 +323,7 @@
               </div>
               <!-- OG Type -->
               <div>
-                <label class="block text-sm font-semibold mb-2">OG Type</label>
+                <label for="og-type" class="block text-sm font-semibold mb-2">OG Type</label>
                 <select id="og-type" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm appearance-none cursor-pointer">
                   <option value="website">website</option>
                   <option value="article">article</option>
@@ -252,12 +335,12 @@
               </div>
               <!-- Site Name -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Site Name</label>
+                <label for="og-site-name" class="block text-sm font-semibold mb-2">Site Name</label>
                 <input type="text" id="og-site-name" maxlength="50" placeholder="My Website" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
               </div>
               <!-- Locale -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Locale</label>
+                <label for="og-locale" class="block text-sm font-semibold mb-2">Locale</label>
                 <select id="og-locale" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm appearance-none cursor-pointer">
                   <option value="en_US">en_US (English - US)</option>
                   <option value="en_GB">en_GB (English - UK)</option>
@@ -276,12 +359,13 @@
                 <label class="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" id="include-twitter" class="sr-only peer" checked>
                   <div class="w-11 h-6 bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                  <span class="sr-only">Include Twitter Card tags</span>
                 </label>
-                <span class="text-sm font-medium">Include Twitter Card tags</span>
+                <span class="text-sm font-medium" id="twitter-toggle-label">Include Twitter Card tags</span>
               </div>
               <!-- Twitter Card Type -->
               <div id="twitter-card-type-wrap">
-                <label class="block text-sm font-semibold mb-2">Twitter Card Type</label>
+                <label for="twitter-card-type" class="block text-sm font-semibold mb-2">Twitter Card Type</label>
                 <select id="twitter-card-type" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm appearance-none cursor-pointer">
                   <option value="summary_large_image">summary_large_image</option>
                   <option value="summary">summary</option>
@@ -295,55 +379,55 @@
           <!-- Presets -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i></span>
               Quick Presets
             </h2>
             <p class="text-sm text-slate-500 mb-4">Fill fields with sample data to see the generator in action</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="blog">
-                <i class="fas fa-blog text-blue-500 mr-2"></i>Blog Post
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="blog" aria-label="Load blog post preset">
+                <i class="fas fa-blog text-blue-500 mr-2" aria-hidden="true"></i>Blog Post
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="product">
-                <i class="fas fa-shopping-cart text-purple-500 mr-2"></i>Product Page
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="product" aria-label="Load product page preset">
+                <i class="fas fa-shopping-cart text-purple-500 mr-2" aria-hidden="true"></i>Product Page
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="portfolio">
-                <i class="fas fa-briefcase text-amber-500 mr-2"></i>Portfolio
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="portfolio" aria-label="Load portfolio preset">
+                <i class="fas fa-briefcase text-amber-500 mr-2" aria-hidden="true"></i>Portfolio
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="landing">
-                <i class="fas fa-rocket text-emerald-500 mr-2"></i>Landing Page
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="landing" aria-label="Load landing page preset">
+                <i class="fas fa-rocket text-emerald-500 mr-2" aria-hidden="true"></i>Landing Page
               </button>
             </div>
           </div>
         </div>
 
         <!-- Right: Preview + Output -->
-        <div class="space-y-6 ">
-          <!-- Social Previews -->
+        <div class="space-y-6" role="region" aria-label="Preview and generated output">
+          <!-- Social Previews — FIXED: ARIA tablist/tab/tabpanel pattern -->
           <div class="glass-card p-8 shimmer-card">
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye" aria-hidden="true"></i></span>
                 Social Preview
               </h2>
-              <div class="flex gap-1.5">
-                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-platform="facebook">
-                  <i class="fab fa-facebook-f mr-1"></i>Facebook
+              <div class="flex gap-1.5" role="tablist" aria-label="Social platform preview tabs">
+                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-platform="facebook" role="tab" aria-selected="true" aria-controls="preview-facebook" id="tab-facebook">
+                  <i class="fab fa-facebook-f mr-1" aria-hidden="true"></i>Facebook
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-platform="twitter">
-                  <i class="fab fa-x-twitter mr-1"></i>Twitter
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-platform="twitter" role="tab" aria-selected="false" aria-controls="preview-twitter" id="tab-twitter" tabindex="-1">
+                  <i class="fab fa-x-twitter mr-1" aria-hidden="true"></i>Twitter
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-platform="linkedin">
-                  <i class="fab fa-linkedin-in mr-1"></i>LinkedIn
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-platform="linkedin" role="tab" aria-selected="false" aria-controls="preview-linkedin" id="tab-linkedin" tabindex="-1">
+                  <i class="fab fa-linkedin-in mr-1" aria-hidden="true"></i>LinkedIn
                 </button>
               </div>
             </div>
             <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
               <!-- Facebook Preview -->
-              <div id="preview-facebook" class="preview-panel">
-                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div id="preview-facebook" class="preview-panel" role="tabpanel" aria-labelledby="tab-facebook">
+                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden" role="img" aria-label="Facebook share preview">
                   <div id="fb-preview-image" class="w-full aspect-[1.91/1] bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
                     <div class="text-center p-6">
-                      <i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2"></i>
+                      <i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2" aria-hidden="true"></i>
                       <p class="text-xs text-slate-400">Image preview</p>
                     </div>
                   </div>
@@ -355,11 +439,11 @@
                 </div>
               </div>
               <!-- Twitter Preview -->
-              <div id="preview-twitter" class="preview-panel hidden">
-                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div id="preview-twitter" class="preview-panel hidden" role="tabpanel" aria-labelledby="tab-twitter">
+                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden" role="img" aria-label="Twitter share preview">
                   <div id="tw-preview-image" class="w-full aspect-[2/1] bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
                     <div class="text-center p-6">
-                      <i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2"></i>
+                      <i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2" aria-hidden="true"></i>
                       <p class="text-xs text-slate-400">Image preview</p>
                     </div>
                   </div>
@@ -367,17 +451,17 @@
                     <p id="tw-preview-title" class="text-sm font-semibold text-slate-800 dark:text-slate-100 line-clamp-1 leading-snug">Your Page Title</p>
                     <p id="tw-preview-desc" class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mt-0.5 leading-relaxed">Your page description will appear here</p>
                     <p id="tw-preview-domain" class="text-xs text-slate-400 mt-1 flex items-center gap-1">
-                      <i class="fas fa-link text-[10px]"></i>example.com
+                      <i class="fas fa-link text-[10px]" aria-hidden="true"></i>example.com
                     </p>
                   </div>
                 </div>
               </div>
               <!-- LinkedIn Preview -->
-              <div id="preview-linkedin" class="preview-panel hidden">
-                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+              <div id="preview-linkedin" class="preview-panel hidden" role="tabpanel" aria-labelledby="tab-linkedin">
+                <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden" role="img" aria-label="LinkedIn share preview">
                   <div id="li-preview-image" class="w-full aspect-[1.91/1] bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
                     <div class="text-center p-6">
-                      <i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2"></i>
+                      <i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2" aria-hidden="true"></i>
                       <p class="text-xs text-slate-400">Image preview</p>
                     </div>
                   </div>
@@ -395,60 +479,61 @@
           <div class="glass-card p-8 shimmer-card">
             <div class="flex justify-between items-center mb-5">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-code"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-code" aria-hidden="true"></i></span>
                 Generated Meta Tags
               </h2>
               <div class="flex gap-2">
-                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3">
-                  <i class="fas fa-copy mr-1"></i>Copy
+                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3" aria-label="Copy generated meta tags to clipboard">
+                  <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
                 </button>
-                <button id="copy-html-btn" class="btn-secondary text-xs py-2 px-3">
-                  <i class="fas fa-file-code mr-1"></i>Copy Full
+                <button id="copy-html-btn" class="btn-secondary text-xs py-2 px-3" aria-label="Copy full HTML head section to clipboard">
+                  <i class="fas fa-file-code mr-1" aria-hidden="true"></i>Copy Full
                 </button>
               </div>
             </div>
             <div class="relative">
-              <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all"><!-- Fill in the fields to generate Open Graph meta tags --></pre>
-              <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy Code Inline">
-                <i class="fas fa-copy"></i>
+              <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all" role="region" aria-label="Generated Open Graph meta tag code" tabindex="0"><!-- Fill in the fields to generate Open Graph meta tags --></pre>
+              <!-- FIXED: aria-label was unclear "Copy Code Inline" -->
+              <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy generated code to clipboard">
+                <i class="fas fa-copy" aria-hidden="true"></i>
               </button>
             </div>
-            <p id="tag-count-info" class="text-xs text-slate-400 mt-3">0 meta tags generated</p>
+            <p id="tag-count-info" class="text-xs text-slate-400 mt-3" aria-live="polite">0 meta tags generated</p>
           </div>
 
-          <!-- Validation Status -->
+          <!-- Validation Status — ADDED: aria-live for dynamic updates -->
           <div class="glass-card p-6 shimmer-card">
             <h3 class="font-bold mb-4 flex items-center gap-2">
-              <i class="fas fa-clipboard-check text-emerald-500"></i>
+              <i class="fas fa-clipboard-check text-emerald-500" aria-hidden="true"></i>
               Validation Checklist
             </h3>
-            <div id="validation-list" class="space-y-2.5">
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+            <div id="validation-list" class="space-y-2.5" role="list" aria-label="OG tag validation checklist" aria-live="polite">
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">OG title provided</span>
               </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">OG description provided</span>
               </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Page URL is valid</span>
               </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">OG image URL provided</span>
               </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Title length optimal (40–60)</span>
               </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Description length optimal (100–160)</span>
               </div>
-              <div class="flex items-center gap-3 text-sm">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Twitter Card tags included</span>
               </div>
             </div>
@@ -457,10 +542,10 @@
       </div>
 
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 ">
-         
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Does the Open Graph Generator Work?</h2>
+      <div class="seo-content space-y-12 mt-16">
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How Does the Open Graph Generator Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This Open Graph generator works entirely in your browser with a simple input-output flow:
             </p>
@@ -477,11 +562,11 @@
          </section>
 
          <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using an Open Graph Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using an Open Graph Generator</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-paint-brush text-emerald-500"></i>
                   </div>
                   <div>
@@ -490,7 +575,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-chart-line text-blue-500"></i>
                   </div>
                   <div>
@@ -499,7 +584,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-eye text-purple-500"></i>
                   </div>
                   <div>
@@ -508,7 +593,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-clock text-amber-500"></i>
                   </div>
                   <div>
@@ -517,7 +602,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-shield-halved text-red-500"></i>
                   </div>
                   <div>
@@ -526,7 +611,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-globe text-teal-500"></i>
                   </div>
                   <div>
@@ -538,8 +623,8 @@
          </section>
 
          <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Open Graph Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
+            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Open Graph Generator</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Creating properly formatted OG tags takes less than a minute. Here is the step-by-step process:
             </p>
@@ -558,8 +643,8 @@
          </section>
 
          <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases for Open Graph Tags</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Use Cases for Open Graph Tags</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Open Graph tags make a tangible difference anywhere your links appear outside your website. Here are the most common scenarios where properly configured OG tags directly impact results:
             </p>
@@ -574,8 +659,8 @@
             </ul>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+            <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                I kept running into the same problem: I would publish a page, share it on Facebook or LinkedIn, and the preview would show the wrong image, a truncated title, or some random paragraph pulled from the middle of the page. Fixing it meant manually writing OG meta tags, looking up the correct property names and image dimensions every single time. It was a small thing, but it added up.
             </p>
@@ -587,69 +672,83 @@
             </p>
          </section>
 
-         <!-- FAQ Section -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <!-- ADDED: Privacy & Data trust signal section -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="privacy-heading">
+            <h2 id="privacy-heading" class="text-2xl font-bold mb-4 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-slate-500/10 flex items-center justify-center"><i class="fas fa-shield-halved text-slate-500 text-sm" aria-hidden="true"></i></span>
+              Privacy & Data
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              <strong>Your data never leaves your browser.</strong> This Open Graph Generator runs entirely client-side. All form inputs, generated code, and preview rendering happen locally using JavaScript. No data is sent to, stored on, or logged by any server. There is no account required and no usage tracking.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+              When you click "Copy," the clipboard action happens entirely in your browser. When you preview an image URL, your browser fetches that image directly from the URL you provide — it does not pass through our servers. If you close the tab, all entered data is gone. For full details on how DevPalettes handles data across the site, see our <a href="/privacy-policy/" class="text-emerald-600 dark:text-emerald-400 hover:underline">Privacy Policy</a>.
+            </p>
+         </section>
+
+         <!-- FAQ Section — FIXED: ARIA attributes on toggle buttons and panels -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-1" id="faq-btn-1">
                      <span>How do I use the Open Graph Generator?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-panel-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-1">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Fill in the fields for title, description, URL, image URL, type, site name, and locale. The tool generates valid Open Graph meta tags instantly and shows a live social media preview. Copy the generated HTML and paste it into your webpage's head section.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
                      <span>What is Open Graph and why does it matter?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-panel-2" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-2">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph is a protocol created by Facebook that allows web pages to become rich objects in social media platforms. When someone shares your link, Open Graph tags control what title, description, and image appear in the preview card. Without OG tags, platforms guess what to show, often resulting in poor or irrelevant previews that reduce click-through rates.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
                      <span>What size should my OG image be?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-panel-3" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-3">
                      <p class="text-sm text-slate-600 dark:text-slate-400">The recommended Open Graph image size is 1200x630 pixels with an aspect ratio of 1.91:1. This works well across Facebook, Twitter, LinkedIn, and most other platforms. Images should be under 5MB in JPEG or PNG format for reliable loading. Avoid very small images or non-standard aspect ratios as they may be cropped or appear blurry.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
                      <span>Does this generator include Twitter Card tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-panel-4" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-4">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Yes. The generator outputs both Open Graph and Twitter Card meta tags. Twitter uses its own tags (twitter:card, twitter:title, etc.) but falls back to Open Graph tags if Twitter-specific ones are missing. Including both ensures the best preview on all platforms. You can choose between summary_large_image and summary card types.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
                      <span>Where do I put Open Graph tags in my HTML?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-panel-5" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-5">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph meta tags go inside the &lt;head&gt; section of your HTML document, alongside your other meta tags. They should appear before any closing &lt;/head&gt; tag. Place them after your standard meta description and title tag for clean organization. The property attribute (not name) is used for OG tags: &lt;meta property="og:title" content="..."&gt;.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-6" id="faq-btn-6">
                      <span>Is this Open Graph generator free?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-panel-6" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-6">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Yes, completely free with no signup or account required. Fill in the fields, preview your social card, copy the generated meta tags, and paste them into your project — that is it. No limits on how many times you use it.</p>
                   </div>
                </div>
             </div>
          </section>
-         
+
          <!-- Related Tools -->
-         <section class="glass-card p-8 shimmer-card text-center">
+         <section class="glass-card p-8 shimmer-card text-center" aria-label="Related tools and resources">
             <h2 class="text-2xl font-bold mb-4">Explore More SEO & Developer Tools</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have your OG tags ready, try these related tools to complete your on-page setup:</p>
             <div class="flex flex-wrap justify-center gap-3">
@@ -664,28 +763,29 @@
          </section>
 
          <!-- Social Sharing Section -->
-          <section class="glass-card p-8 my-16 shimmer-card text-center">
+          <section class="glass-card p-8 my-16 shimmer-card text-center" aria-label="Share this tool">
             <div class="max-w-7xl mx-auto px-4 text-center">
               <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/open-graph-generator/&text=Generate%20Open%20Graph%20meta%20tags%20instantly%20with%20this%20free%20OG%20tag%20generator!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/open-graph-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/open-graph-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
                 <a href="https://wa.me/?text=Check%20out%20this%20free%20Open%20Graph%20generator%20https://devpalettes.com/open-graph-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
                 <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/open-graph-generator/&description=Free%20Open%20Graph%20generator%20tool%20for%20social%20media%20previews" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p"></i> Pinterest
+                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <!-- IMPROVED: More descriptive aria-label -->
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
@@ -700,18 +800,19 @@
         </div>
 
       </div>
-      
+
     </div>
   </main>
-  
+
   <!-- Footer -->
   <div id="footer-container"></div>
-  
-  <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
-  <script src="../js/main.js"></script>
-  <script src="../js/open-graph-generator.js"></script>
-  <script src="../js/enhancements.js"></script>
+
+  <!-- Toast Container — ADDED: aria-live -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
+
+  <!-- FIXED: Added defer to all scripts -->
+  <script src="../js/main.js" defer></script>
+  <script src="../js/open-graph-generator.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 </body>
 </html>

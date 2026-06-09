@@ -74,8 +74,9 @@
     const toast = document.createElement('div');
     const colors = { success: 'bg-emerald-500', error: 'bg-red-500', info: 'bg-blue-500' };
     toast.className = `${colors[type] || colors.info} text-white px-5 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 transform translate-x-full transition-transform duration-300`;
+    toast.setAttribute('role', 'alert');
     const icons = { success: 'fa-circle-check', error: 'fa-circle-xmark', info: 'fa-circle-info' };
-    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${message}`;
+    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}" aria-hidden="true"></i> ${message}`;
     container.appendChild(toast);
     requestAnimationFrame(() => {
       toast.classList.remove('translate-x-full');
@@ -96,9 +97,11 @@
       const text = item.querySelector('span');
       if (checks[key]) {
         icon.className = 'fas fa-circle-check text-[10px] text-emerald-500';
+        icon.setAttribute('aria-hidden', 'true');
         text.className = 'text-slate-700 dark:text-slate-300';
       } else {
         icon.className = 'fas fa-circle text-[8px] text-slate-300 dark:text-slate-600';
+        icon.setAttribute('aria-hidden', 'true');
         text.className = 'text-slate-400';
       }
     });
@@ -449,7 +452,7 @@
     els.pngPreviewContainer.innerHTML = `
       <div class="text-center">
         <div class="inline-block rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden shadow-sm" style="${checkerStyle}${solidBg}">
-          <img src="${state.pngDataUrl}" width="${displayW}" height="${displayH}" alt="PNG preview" class="block" style="${displayW <= 64 ? 'image-rendering:pixelated;' : ''}">
+          <img src="${state.pngDataUrl}" width="${displayW}" height="${displayH}" alt="PNG preview at ${state.outputWidth} by ${state.outputHeight} pixels" class="block" style="${displayW <= 64 ? 'image-rendering:pixelated;' : ''}">
         </div>
         <p class="text-xs text-slate-400 mt-3 font-mono">${state.outputWidth} × ${state.outputHeight} px · ${bgLabel}</p>
       </div>
@@ -490,6 +493,7 @@
       ta.value = state.pngDataUrl;
       ta.style.position = 'fixed';
       ta.style.left = '-9999px';
+      ta.setAttribute('aria-hidden', 'true');
       document.body.appendChild(ta);
       ta.select();
       try {
@@ -552,6 +556,14 @@
     }
   }
 
+  // ── Helper: Update toggle button group aria-pressed ──
+  function updateToggleGroup(selector, activeBtn) {
+    document.querySelectorAll(selector).forEach(b => {
+      b.setAttribute('aria-pressed', 'false');
+    });
+    if (activeBtn) activeBtn.setAttribute('aria-pressed', 'true');
+  }
+
   // ═══════════════════════════════════════
   //  EVENT LISTENERS
   // ═══════════════════════════════════════
@@ -561,6 +573,15 @@
     e.preventDefault();
     e.stopPropagation();
     els.fileInput.click();
+  });
+
+  // Keyboard support for drop zone
+  els.dropZone.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      e.stopPropagation();
+      els.fileInput.click();
+    }
   });
 
   els.fileInput.addEventListener('change', function () {
@@ -604,6 +625,8 @@
       });
       this.classList.add('border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
       this.classList.remove('border-slate-200', 'dark:border-slate-700', 'bg-white', 'dark:bg-slate-800/50', 'text-slate-600', 'dark:text-slate-400');
+
+      updateToggleGroup('.size-mode-btn', this);
 
       state.sizeMode = this.getAttribute('data-mode');
       document.querySelectorAll('.size-mode-panel').forEach(p => p.classList.add('hidden'));
@@ -702,6 +725,8 @@
       this.classList.add('border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
       this.classList.remove('border-slate-200', 'dark:border-slate-700', 'bg-white', 'dark:bg-slate-800/50', 'text-slate-600', 'dark:text-slate-400');
 
+      updateToggleGroup('.bg-mode-btn', this);
+
       state.background = this.getAttribute('data-bg');
       if (state.background === 'custom') {
         els.customBgRow.classList.remove('hidden');
@@ -760,6 +785,8 @@
       this.classList.add('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
       this.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
 
+      updateToggleGroup('.preview-tab', this);
+
       const view = this.getAttribute('data-view');
       document.querySelectorAll('.preview-panel').forEach(p => p.classList.add('hidden'));
       const panel = document.getElementById(`view-${view}`);
@@ -791,6 +818,8 @@
         activeBtn.classList.remove('border-slate-200', 'dark:border-slate-700', 'bg-white', 'dark:bg-slate-800/50', 'text-slate-600', 'dark:text-slate-400');
       }
 
+      updateToggleGroup('.size-mode-btn', activeBtn);
+
       state.sizeMode = preset.mode;
       document.querySelectorAll('.size-mode-panel').forEach(p => p.classList.add('hidden'));
       const panel = document.getElementById(`mode-${preset.mode}`);
@@ -817,6 +846,31 @@
     });
   });
 
+  // ── Copy link button ──
+  if (els.copyLinkBtn) {
+    els.copyLinkBtn.addEventListener('click', function () {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('Link copied to clipboard', 'success');
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = url;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        ta.setAttribute('aria-hidden', 'true');
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          showToast('Link copied to clipboard', 'success');
+        } catch (e) {
+          showToast('Failed to copy link', 'error');
+        }
+        document.body.removeChild(ta);
+      });
+    });
+  }
+
   // ── Keyboard shortcut: Ctrl/Cmd+Enter to convert ──
   document.addEventListener('keydown', function (e) {
     if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
@@ -835,31 +889,44 @@
     'ready-download': false
   });
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
-  setTimeout(function initFaqToggles() {
+  // ─── FAQ Toggle (self-contained, with aria support) ───
+  function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
-    if (faqToggles.length === 0) {
-      setTimeout(initFaqToggles, 100);
-      return;
-    }
+    if (faqToggles.length === 0) return;
 
     faqToggles.forEach(function (toggle) {
-      var clone = toggle.cloneNode(true);
-      toggle.parentNode.replaceChild(clone, toggle);
-      clone.addEventListener('click', function (e) {
+      toggle.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
         if (!content) return;
 
         var isHidden = content.classList.contains('hidden');
+
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-toggle').forEach(function (other) {
+          if (other !== toggle) {
+            var otherContent = other.nextElementSibling;
+            other.setAttribute('aria-expanded', 'false');
+            if (otherContent) {
+              otherContent.classList.add('hidden');
+              otherContent.style.maxHeight = '';
+            }
+            var otherIcon = other.querySelector('i');
+            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+          }
+        });
+
+        // Toggle current item
         if (isHidden) {
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
@@ -867,6 +934,13 @@
         }
       });
     });
-  }, 50);
+  }
+
+  // Initialize FAQ after a short delay to ensure DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqToggles);
+  } else {
+    setTimeout(initFaqToggles, 50);
+  }
 
 })();

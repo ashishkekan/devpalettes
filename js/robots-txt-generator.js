@@ -3,32 +3,41 @@
   'use strict';
 
   // ─── DOM Elements ───
-  const userAgentInput = document.getElementById('rt-user-agent');
-  const allowInput = document.getElementById('rt-allow');
-  const disallowInput = document.getElementById('rt-disallow');
-  const sitemapInput = document.getElementById('rt-sitemap');
-  const crawlDelayInput = document.getElementById('rt-crawl-delay');
-  const extraSitemapWrap = document.getElementById('rt-extra-sitemap-wrap');
-  const extraSitemapInput = document.getElementById('rt-extra-sitemap');
-  const sitemapListEl = document.getElementById('rt-sitemap-list');
+  var userAgentInput = document.getElementById('rt-user-agent');
+  var allowInput = document.getElementById('rt-allow');
+  var disallowInput = document.getElementById('rt-disallow');
+  var sitemapInput = document.getElementById('rt-sitemap');
+  var crawlDelayInput = document.getElementById('rt-crawl-delay');
+  var extraSitemapWrap = document.getElementById('rt-extra-sitemap-wrap');
+  var extraSitemapInput = document.getElementById('rt-extra-sitemap');
+  var sitemapListEl = document.getElementById('rt-sitemap-list');
 
-  const previewContent = document.getElementById('robots-preview-content');
-  const rawContent = document.getElementById('robots-raw-content');
-  const generatedCode = document.getElementById('generated-code');
+  var previewContent = document.getElementById('robots-preview-content');
+  var rawContent = document.getElementById('robots-raw-content');
+  var generatedCode = document.getElementById('generated-code');
 
-  const statRules = document.getElementById('stat-rules');
-  const statValid = document.getElementById('stat-valid');
-  const statSitemap = document.getElementById('stat-sitemap');
-  const statFields = document.getElementById('stat-fields');
-  const ruleCountInfo = document.getElementById('rule-count-info');
+  var statRules = document.getElementById('stat-rules');
+  var statValid = document.getElementById('stat-valid');
+  var statSitemap = document.getElementById('stat-sitemap');
+  var statFields = document.getElementById('stat-fields');
+  var ruleCountInfo = document.getElementById('rule-count-info');
 
-  const validationList = document.getElementById('validation-list');
+  var validationList = document.getElementById('validation-list');
+  var clipboardAnnouncer = document.getElementById('clipboard-announcer');
 
   // ─── State ───
-  let extraSitemaps = [];
+  var extraSitemaps = [];
+
+  // ─── Announce to Screen Readers ───
+  function announce(message) {
+    if (clipboardAnnouncer) {
+      clipboardAnnouncer.textContent = message;
+      setTimeout(function() { clipboardAnnouncer.textContent = ''; }, 2000);
+    }
+  }
 
   // ─── Presets ───
-  const presets = {
+  var presets = {
     wordpress: {
       userAgent: '*',
       allow: '/\n/wp-admin/admin-ajax.php',
@@ -61,12 +70,12 @@
 
   // ─── Generate robots.txt ───
   function generate() {
-    const ua = userAgentInput.value.trim() || '*';
-    const allowLines = allowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
-    const disallowLines = disallowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
-    const mainSitemap = sitemapInput.value.trim();
-    const crawlDelay = crawlDelayInput.value.trim();
-    const allSitemaps = [mainSitemap].concat(extraSitemaps).filter(function (s) { return s.length > 0; });
+    var ua = userAgentInput.value.trim() || '*';
+    var allowLines = allowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
+    var disallowLines = disallowInput.value.split('\n').map(function (l) { return l.trim(); }).filter(function (l) { return l.length > 0; });
+    var mainSitemap = sitemapInput.value.trim();
+    var crawlDelay = crawlDelayInput.value.trim();
+    var allSitemaps = [mainSitemap].concat(extraSitemaps).filter(function (s) { return s.length > 0; });
 
     var output = '';
     var ruleCount = 0;
@@ -230,11 +239,11 @@
     }
     sitemapListEl.classList.remove('hidden');
     sitemapListEl.innerHTML = extraSitemaps.map(function (url, i) {
-      return '<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 text-xs">' +
-        '<i class="fas fa-sitemap text-emerald-500 text-[10px]"></i>' +
+      return '<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/5 border border-emerald-500/20 text-xs" role="listitem">' +
+        '<i class="fas fa-sitemap text-emerald-500 text-[10px]" aria-hidden="true"></i>' +
         '<span class="flex-1 truncate text-slate-600 dark:text-slate-400">' + escapeHtml(url) + '</span>' +
-        '<button class="remove-sitemap text-slate-400 hover:text-red-400 transition-colors" data-index="' + i + '">' +
-        '<i class="fas fa-xmark"></i></button></div>';
+        '<button class="remove-sitemap text-slate-400 hover:text-red-400 transition-colors" data-index="' + i + '" aria-label="Remove sitemap ' + escapeHtml(url) + '">' +
+        '<i class="fas fa-xmark" aria-hidden="true"></i></button></div>';
     }).join('');
 
     sitemapListEl.querySelectorAll('.remove-sitemap').forEach(function (btn) {
@@ -271,6 +280,7 @@
 
       generate();
       showToast('Preset "' + key + '" applied', 'success');
+      announce(key + ' preset applied');
     });
   });
 
@@ -287,6 +297,7 @@
     extraSitemapInput.value = '';
     generate();
     showToast('All fields reset', 'info');
+    announce('All fields reset to defaults');
   });
 
   // ─── Add Sitemap Buttons ───
@@ -299,16 +310,19 @@
     var url = extraSitemapInput.value.trim();
     if (!url) {
       showToast('Please enter a sitemap URL', 'error');
+      announce('Please enter a sitemap URL');
       return;
     }
     try {
       new URL(url);
     } catch (e) {
       showToast('Please enter a valid URL', 'error');
+      announce('Invalid URL format');
       return;
     }
     if (extraSitemaps.indexOf(url) !== -1 || url === sitemapInput.value.trim()) {
       showToast('This sitemap URL already exists', 'error');
+      announce('This sitemap URL already exists');
       return;
     }
     extraSitemaps.push(url);
@@ -317,6 +331,7 @@
     renderSitemapList();
     generate();
     showToast('Sitemap added', 'success');
+    announce('Sitemap added');
   });
 
   // ─── Copy Buttons ───
@@ -341,13 +356,28 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast('robots.txt downloaded', 'success');
+    announce('robots.txt file downloaded');
   });
+
+  // ─── Copy Link Button ───
+  var copyLinkBtn = document.getElementById('copy-link-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', function () {
+      navigator.clipboard.writeText(window.location.href).then(function () {
+        showToast('Link copied to clipboard', 'success');
+        announce('Page link copied to clipboard');
+      }).catch(function () {
+        showToast('Failed to copy link', 'error');
+      });
+    });
+  }
 
   // ─── Copy Helper ───
   function copyToClipboard(text, message) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function () {
         showToast(message, 'success');
+        announce(message);
       }).catch(function () {
         fallbackCopy(text, message);
       });
@@ -366,6 +396,7 @@
     try {
       document.execCommand('copy');
       showToast(message, 'success');
+      announce(message);
     } catch (e) {
       showToast('Failed to copy', 'error');
     }
@@ -387,7 +418,7 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -404,18 +435,45 @@
     }, 2500);
   }
 
-  // ─── Preview Tabs ───
-  document.querySelectorAll('.preview-tab').forEach(function (tab) {
+  // ─── Preview Tabs with ARIA ───
+  var tabButtons = document.querySelectorAll('.preview-tab');
+  var tabPanels = document.querySelectorAll('.preview-panel');
+
+  function activateTab(targetTab) {
+    tabButtons.forEach(function (t) {
+      t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    targetTab.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+    targetTab.setAttribute('aria-selected', 'true');
+    targetTab.setAttribute('tabindex', '0');
+
+    var view = targetTab.getAttribute('data-view');
+    document.getElementById('view-preview').classList.toggle('hidden', view !== 'preview');
+    document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
+  }
+
+  tabButtons.forEach(function (tab) {
     tab.addEventListener('click', function () {
-      var view = this.getAttribute('data-view');
+      activateTab(this);
+    });
+    tab.addEventListener('keydown', function (e) {
+      var tabList = Array.from(tabButtons);
+      var currentIndex = tabList.indexOf(this);
+      var newIndex;
 
-      document.querySelectorAll('.preview-tab').forEach(function (t) {
-        t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
-      });
-      this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
-
-      document.getElementById('view-preview').classList.toggle('hidden', view !== 'preview');
-      document.getElementById('view-raw').classList.toggle('hidden', view !== 'raw');
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % tabList.length;
+        tabList[newIndex].focus();
+        activateTab(tabList[newIndex]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+        tabList[newIndex].focus();
+        activateTab(tabList[newIndex]);
+      }
     });
   });
 
@@ -428,40 +486,48 @@
   // ─── Initialize ───
   generate();
 
-  // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
-  setTimeout(function initFaqToggles() {
+  // ─── FAQ Toggle with ARIA ───
+  function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
-    if (faqToggles.length === 0) {
-      // Retry after a short delay in case DOM isn't ready
-      setTimeout(initFaqToggles, 100);
-      return;
-    }
+    if (faqToggles.length === 0) return;
 
     faqToggles.forEach(function (toggle) {
-      // Remove any existing listeners by cloning
-      var clone = toggle.cloneNode(true);
-      toggle.parentNode.replaceChild(clone, toggle);
-      clone.addEventListener('click', function (e) {
+      toggle.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
+        var isExpanded = this.getAttribute('aria-expanded') === 'true';
         if (!content) return;
 
-        var isHidden = content.classList.contains('hidden');
-        if (isHidden) {
-          content.classList.remove('hidden');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
-        } else {
+        if (isExpanded) {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
+        } else {
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      toggle.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
         }
       });
     });
-  }, 50);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqToggles);
+  } else {
+    initFaqToggles();
+  }
 
 })();

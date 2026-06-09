@@ -94,17 +94,17 @@
     } else if (len >= min && len <= max) {
       counter.className = 'text-xs font-mono px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold';
       feedback.className = 'text-xs mt-1.5 text-emerald-600 dark:text-emerald-400';
-      feedback.innerHTML = '<i class="fas fa-check-circle mr-1"></i>Optimal length';
+      feedback.innerHTML = '<i class="fas fa-check-circle mr-1" aria-hidden="true"></i>Optimal length';
       return 'good';
     } else if (len < min) {
       counter.className = 'text-xs font-mono px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 font-semibold';
       feedback.className = 'text-xs mt-1.5 text-amber-600 dark:text-amber-400';
-      feedback.innerHTML = '<i class="fas fa-exclamation-circle mr-1"></i>Too short (' + min + '-' + max + ' recommended)';
+      feedback.innerHTML = '<i class="fas fa-exclamation-circle mr-1" aria-hidden="true"></i>Too short (' + min + '-' + max + ' recommended)';
       return 'short';
     } else {
       counter.className = 'text-xs font-mono px-2 py-0.5 rounded-full bg-red-500/10 text-red-600 dark:text-red-400 font-semibold';
       feedback.className = 'text-xs mt-1.5 text-red-600 dark:text-red-400';
-      feedback.innerHTML = '<i class="fas fa-exclamation-triangle mr-1"></i>May be truncated in search results';
+      feedback.innerHTML = '<i class="fas fa-exclamation-triangle mr-1" aria-hidden="true"></i>May be truncated in search results';
       return 'long';
     }
   }
@@ -212,22 +212,22 @@
       }
     }
 
-    // Twitter
+    // Twitter — CHANGED: property→name per Twitter Card spec
     if (DOM.includeTwitter.checked) {
       lines.push('');
       lines.push('<!-- Twitter -->');
-      lines.push('<meta property="twitter:card" content="' + escapeHtml(twCard) + '">');
+      lines.push('<meta name="twitter:card" content="' + escapeHtml(twCard) + '">');
       if (twTitle) {
-        lines.push('<meta property="twitter:title" content="' + escapeHtml(twTitle) + '">');
+        lines.push('<meta name="twitter:title" content="' + escapeHtml(twTitle) + '">');
       }
       if (twDesc) {
-        lines.push('<meta property="twitter:description" content="' + escapeHtml(twDesc) + '">');
+        lines.push('<meta name="twitter:description" content="' + escapeHtml(twDesc) + '">');
       }
       if (twImage) {
-        lines.push('<meta property="twitter:image" content="' + escapeHtml(twImage) + '">');
+        lines.push('<meta name="twitter:image" content="' + escapeHtml(twImage) + '">');
       }
       if (ogUrl) {
-        lines.push('<meta property="twitter:url" content="' + escapeHtml(ogUrl) + '">');
+        lines.push('<meta name="twitter:url" content="' + escapeHtml(ogUrl) + '">');
       }
     }
 
@@ -327,10 +327,9 @@
     var result = calculateScore();
     var score = result.score;
     var checks = result.checks;
-    var circumference = 2 * Math.PI * 42; // ~263.89
+    var circumference = 2 * Math.PI * 42;
     var offset = circumference - (score / 100) * circumference;
 
-    // Ring color
     var ringColor = '#e2e8f0';
     var textColor = 'text-slate-400';
     if (score >= 80) {
@@ -349,7 +348,6 @@
     DOM.scoreNumber.textContent = score;
     DOM.scoreNumber.className = 'absolute inset-0 flex items-center justify-center text-2xl font-bold ' + textColor;
 
-    // Label
     if (score === 0) {
       DOM.scoreLabel.textContent = 'Fill in fields to see score';
       DOM.scoreSublabel.textContent = 'Start by adding a title and description';
@@ -368,7 +366,6 @@
       DOM.scoreLabel.className = 'font-semibold text-red-500';
     }
 
-    // Checks list
     var checksHtml = '';
     for (var i = 0; i < checks.length; i++) {
       var c = checks[i];
@@ -388,9 +385,10 @@
         textClass = 'text-slate-400';
       }
 
-      checksHtml += '<div class="flex items-center gap-3 text-sm">' +
+      /* CHANGED: Added role="listitem" to match HTML pattern */
+      checksHtml += '<div class="flex items-center gap-3 text-sm" role="listitem">' +
         '<span class="w-6 h-6 rounded-full ' + bgClass + ' flex items-center justify-center flex-shrink-0">' +
-        '<i class="fas ' + icon + ' text-xs"></i></span>' +
+        '<i class="fas ' + icon + ' text-xs" aria-hidden="true"></i></span>' +
         '<span class="' + textClass + '">' + c.text + '</span></div>';
     }
     DOM.seoChecks.innerHTML = checksHtml;
@@ -418,12 +416,13 @@
     var twDesc = getVal(DOM.twDesc, DOM.desc);
     var twImage = DOM.twImage.value.trim();
     var twCard = DOM.twCard.value;
+    var canonical = DOM.canonical.value.trim();
 
     // OG preview
     if (ogImage) {
       DOM.socialImageContainer.innerHTML = '<img src="' + escapeHtml(ogImage) + '" alt="OG Preview" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML=\'<i class=\\\'fas fa-exclamation-triangle text-3xl text-red-400\\\'></i><p class=\\\'text-xs text-red-400 mt-2\\\'>Image failed to load</p>\'">';
     } else {
-      DOM.socialImageContainer.innerHTML = '<i class="fas fa-image text-3xl text-slate-300 dark:text-slate-600"></i>';
+      DOM.socialImageContainer.innerHTML = '<i class="fas fa-image text-3xl text-slate-300 dark:text-slate-600" aria-hidden="true"></i>';
     }
 
     var domain = '';
@@ -442,12 +441,12 @@
     if (twImage) {
       DOM.twitterImageContainer.innerHTML = '<img src="' + escapeHtml(twImage) + '" alt="Twitter Preview" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML=\'<i class=\\\'fas fa-exclamation-triangle text-3xl text-red-400\\\'></i><p class=\\\'text-xs text-red-400 mt-2\\\'>Image failed to load</p>\'">';
     } else {
-      DOM.twitterImageContainer.innerHTML = '<i class="fas fa-image text-3xl text-slate-300 dark:text-slate-600"></i>';
+      DOM.twitterImageContainer.innerHTML = '<i class="fas fa-image text-3xl text-slate-300 dark:text-slate-600" aria-hidden="true"></i>';
     }
 
     DOM.socialTwTitle.textContent = twTitle || 'Twitter Title';
     DOM.socialTwDesc.textContent = twDesc || 'Twitter description will appear here';
-    DOM.socialTwCard.innerHTML = '<i class="fas fa-chart-bar mr-1"></i>' + twCard;
+    DOM.socialTwCard.innerHTML = '<i class="fas fa-chart-bar mr-1" aria-hidden="true"></i>' + twCard;
   }
 
   // Update code output
@@ -472,9 +471,11 @@
     var toast = document.createElement('div');
     var bgColor = type === 'success' ? 'bg-emerald-500' : type === 'error' ? 'bg-red-500' : 'bg-slate-700';
     toast.className = bgColor + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
+    /* ADDED: role="alert" for accessibility */
+    toast.setAttribute('role', 'alert');
 
     var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
-    toast.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(message);
+    toast.innerHTML = '<i class="fas ' + icon + '" aria-hidden="true"></i>' + escapeHtml(message);
 
     container.appendChild(toast);
 
@@ -509,6 +510,8 @@
     textarea.value = text;
     textarea.style.position = 'fixed';
     textarea.style.left = '-9999px';
+    /* ADDED: aria-hidden on offscreen textarea */
+    textarea.setAttribute('aria-hidden', 'true');
     document.body.appendChild(textarea);
     textarea.select();
     try {
@@ -602,7 +605,7 @@
     DOM.copyBtn.addEventListener('click', copyCode);
     DOM.downloadBtn.addEventListener('click', downloadCode);
 
-    // FAQ toggles
+    // FAQ toggles — CHANGED: Added aria-expanded management
     var faqToggles = document.querySelectorAll('.faq-toggle');
     faqToggles.forEach(function(btn) {
       btn.addEventListener('click', function() {
@@ -610,17 +613,43 @@
         var icon = this.querySelector('i');
         var isOpen = !content.classList.contains('hidden');
 
-        // Close all others
+        // Close all others and reset their aria-expanded
         faqToggles.forEach(function(otherBtn) {
           var otherContent = otherBtn.nextElementSibling;
           var otherIcon = otherBtn.querySelector('i');
           otherContent.classList.add('hidden');
           otherIcon.style.transform = 'rotate(0deg)';
+          otherBtn.setAttribute('aria-expanded', 'false'); /* ADDED */
         });
 
         if (!isOpen) {
           content.classList.remove('hidden');
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true'); /* ADDED */
+        }
+      });
+
+      /* ADDED: Keyboard support for FAQ — Enter/Space already works on <button>,
+         but add Arrow keys for navigating between FAQ items */
+      btn.addEventListener('keydown', function(e) {
+        var items = Array.from(faqToggles);
+        var currentIndex = items.indexOf(this);
+        var newIndex;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          newIndex = (currentIndex + 1) % items.length;
+          items[newIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          newIndex = (currentIndex - 1 + items.length) % items.length;
+          items[newIndex].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          items[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          items[items.length - 1].focus();
         }
       });
     });

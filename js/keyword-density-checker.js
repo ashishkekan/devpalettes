@@ -88,7 +88,7 @@
     var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
     var t = document.createElement('div');
     t.className = bg + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
-    t.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(msg);
+    t.innerHTML = '<i class="fas ' + icon + '" aria-hidden="true"></i>' + escapeHtml(msg);
     c.appendChild(t);
     requestAnimationFrame(function() { t.style.transform = 'translateX(0)'; });
     setTimeout(function() {
@@ -129,7 +129,6 @@
     for (var i = 0; i < items.length; i++) {
       var item = caseSensitive ? items[i] : items[i].toLowerCase();
 
-      // For single words, apply min length and stop word filter
       if (item.indexOf(' ') === -1) {
         if (item.length < minLen) continue;
         if (stopSet.indexOf(item) !== -1) continue;
@@ -158,7 +157,6 @@
     var totalChars = text.length;
     var totalSentences = sentences.length;
 
-    // Unique words (case-insensitive, no stop word filter for uniqueness count)
     var uniqueMap = {};
     words.forEach(function(w) {
       var key = caseSensitive ? w : w.toLowerCase();
@@ -166,17 +164,14 @@
     });
     var uniqueWords = Object.keys(uniqueMap).length;
 
-    // 1-word frequency
     var singleFreq = countFrequency(words, caseSensitive, filterStopWords, minLen);
 
-    // 2-word, 3-word, 4-word phrases
     var wordsLower = caseSensitive ? words.slice() : words.map(function(w) { return w.toLowerCase(); });
 
     var bigramFreq = countFrequency(getNgrams(wordsLower, 2), true, false, 1);
     var trigramFreq = countFrequency(getNgrams(wordsLower, 3), true, false, 1);
     var fourgramFreq = countFrequency(getNgrams(wordsLower, 4), true, false, 1);
 
-    // Sort each by count descending
     function sortFreq(freq) {
       var arr = [];
       for (var key in freq) {
@@ -252,13 +247,12 @@
         '<td class="py-3 px-2 font-medium text-sm">' + escapeHtml(item.word) + '</td>' +
         '<td class="py-3 px-2 text-right font-mono text-sm">' + item.count + '</td>' +
         '<td class="py-3 px-2 text-right font-mono text-sm font-semibold ' + densityColor + '">' + densityStr + '</td>' +
-        '<td class="py-3 px-2"><div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2"><div class="' + barColor + ' h-2 rounded-full transition-all duration-500" style="width:' + barWidth + '%"></div></div></td>' +
+        '<td class="py-3 px-2"><div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2" role="progressbar" aria-valuenow="' + item.density.toFixed(1) + '" aria-valuemin="0" aria-valuemax="100" aria-label="' + escapeHtml(item.word) + ' density ' + densityStr + '"><div class="' + barColor + ' h-2 rounded-full transition-all duration-500" style="width:' + barWidth + '%"></div></div></td>' +
         '</tr>';
     }
 
     el.keywordsTbody.innerHTML = html;
 
-    // Warning
     if (stuffedWords.length > 0) {
       el.densityWarning.classList.remove('hidden');
       var displayWords = stuffedWords.slice(0, 3).map(function(w) { return '"' + w + '"'; }).join(', ');
@@ -379,14 +373,12 @@
 
   /* ========== EVENT BINDING ========== */
   function bindEvents() {
-    // Input character count
     el.input.addEventListener('input', function() {
       var len = el.input.value.length;
       el.inputCharCount.textContent = len.toLocaleString() + ' characters';
       el.analyzeBtn.disabled = len < 10;
     });
 
-    // Clear
     el.clearBtn.addEventListener('click', function() {
       el.input.value = '';
       el.inputCharCount.textContent = '0 characters';
@@ -395,7 +387,6 @@
       analysisResult = null;
     });
 
-    // Analyze
     el.analyzeBtn.addEventListener('click', function() {
       var text = el.input.value.trim();
       if (text.length < 10) { showToast('Please enter at least 10 characters', 'error'); return; }
@@ -404,23 +395,29 @@
       showToast('Analysis complete!', 'success');
     });
 
-    // Range sliders
+    // Range sliders with ARIA updates
     el.optMinLength.addEventListener('input', function() {
       el.minLengthVal.textContent = this.value;
+      this.setAttribute('aria-valuenow', this.value);
+      this.setAttribute('aria-valuetext', this.value + ' characters');
     });
     el.optTopCount.addEventListener('input', function() {
       el.topCountVal.textContent = this.value;
+      this.setAttribute('aria-valuenow', this.value);
+      this.setAttribute('aria-valuetext', this.value + ' keywords');
     });
 
-    // Phrase tabs
+    // Phrase tabs with aria-pressed
     document.querySelectorAll('.phrase-tab').forEach(function(btn) {
       btn.addEventListener('click', function() {
         document.querySelectorAll('.phrase-tab').forEach(function(b) {
           b.classList.remove('active', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
           b.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+          b.setAttribute('aria-pressed', 'false');
         });
         this.classList.add('active', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
         this.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+        this.setAttribute('aria-pressed', 'true');
         currentPhraseSize = parseInt(this.getAttribute('data-phrase'), 10);
         if (analysisResult) renderTable(analysisResult);
       });
@@ -456,22 +453,45 @@
     el.optMinLength.addEventListener('change', debouncedReanalyze);
     el.optTopCount.addEventListener('change', debouncedReanalyze);
 
-    // FAQ toggles
+    // FAQ toggles with ARIA
     document.querySelectorAll('.faq-toggle').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
         var isOpen = !content.classList.contains('hidden');
+
+        // Close all
         document.querySelectorAll('.faq-toggle').forEach(function(b) {
           b.nextElementSibling.classList.add('hidden');
           b.querySelector('i').style.transform = 'rotate(0deg)';
+          b.setAttribute('aria-expanded', 'false');
         });
+
         if (!isOpen) {
           content.classList.remove('hidden');
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         }
       });
     });
+
+    // Copy Link button
+    var copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+      copyLinkBtn.addEventListener('click', function() {
+        var url = window.location.href;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(function() {
+            showToast('Page link copied!', 'success');
+          }).catch(function() {
+            showToast('Failed to copy link', 'error');
+          });
+        } else {
+          fallbackCopy(url);
+          showToast('Page link copied!', 'success');
+        }
+      });
+    }
   }
 
   /* ========== INIT ========== */

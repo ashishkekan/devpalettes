@@ -4,28 +4,55 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Free Robots.txt Generator - Create Robots File</title>
-  <meta name="description" content="Generate a robots.txt file in seconds. Control crawler access, set sitemaps, and configure allow/disallow rules with this free tool.">
-  <meta name="author" content="Devpalettes">
+  <title>Robots.txt Generator (2025) — Free Online Tool with Validation | DevPalettes</title>
+  <meta name="description" content="Free robots.txt generator with live preview and validation. Create allow/disallow rules, add sitemaps, set crawl-delay, and export a production-ready robots.txt file instantly. No signup required.">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/robots-txt-generator/"/>
+  <link rel="up" href="https://devpalettes.com/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/robots-txt-generator/">
-  <meta property="og:title" content="Free Robots.txt Generator - Create Robots File">
-  <meta property="og:description" content="Generate a robots.txt file in seconds. Control crawler access, set sitemaps, and configure allow/disallow rules with this free tool.">
+  <meta property="og:title" content="Free Robots.txt Generator — Live Preview & Validation">
+  <meta property="og:description" content="Generate a validated robots.txt file in seconds. Control crawler access, set sitemaps, configure allow/disallow rules with live preview.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/robots-txt-generator/">
-  <meta property="twitter:title" content="Free Robots.txt Generator - Create Robots File">
-  <meta property="twitter:description" content="Generate a robots.txt file in seconds. Control crawler access, set sitemaps, and configure allow/disallow rules with this free tool.">
+  <meta property="twitter:title" content="Free Robots.txt Generator — Live Preview & Validation">
+  <meta property="twitter:description" content="Generate a validated robots.txt file in seconds. Control crawler access, set sitemaps, and configure rules with live preview.">
+  <meta property="twitter:image" content="https://devpalettes.com/images/og-image.png">
   
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Robots.txt Generator",
+        "item": "https://devpalettes.com/robots-txt-generator/"
+      }
+    ]
+  }
+  </script>
+
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
@@ -35,13 +62,25 @@
     "url": "https://devpalettes.com/robots-txt-generator/",
     "logo": "https://devpalettes.com/images/devpalettes.png",
     "description": "A free tool to generate robots.txt files for websites. Control search engine crawler access, set allow and disallow rules, add sitemaps, and configure crawl-delay with live preview and validation.",
-    "applicationCategory": "DesignApplication",
+    "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    }
+    },
+    "featureList": [
+      "User-agent configuration",
+      "Allow and Disallow path rules",
+      "Multiple sitemap support",
+      "Crawl-delay setting",
+      "Live preview with syntax highlighting",
+      "Validation checklist",
+      "Quick presets (WordPress, Blog, E-commerce, General)",
+      "Copy to clipboard and download as file",
+      "Client-side only — no data sent to server"
+    ]
   }
   </script>
 
@@ -63,7 +102,7 @@
         "name": "How does robots.txt work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When a search engine crawler arrives at your website, it requests the robots.txt file before crawling any other pages. The file contains rules grouped by user-agent (the name of the crawler). Each rule specifies which paths are allowed or disallowed. The crawler follows the most specific matching rule for each URL it wants to visit."
+          "text": "When a search engine crawler arrives at your website, it requests the robots.txt file before crawling any other pages. The file contains rules grouped by user-agent. Each rule specifies which paths are allowed or disallowed. The crawler follows the most specific matching rule for each URL."
         }
       },
       {
@@ -71,7 +110,7 @@
         "name": "What is User-agent in robots.txt?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The User-agent directive identifies which crawler the rules apply to. Using an asterisk (*) applies the rules to all crawlers. You can also target specific bots like Googlebot, Bingbot, or Slurp with their exact user-agent names to set different rules for different search engines."
+          "text": "The User-agent directive identifies which crawler the rules apply to. Using an asterisk (*) applies the rules to all crawlers. You can target specific bots like Googlebot, Bingbot, or Slurp with their exact user-agent names."
         }
       },
       {
@@ -79,7 +118,7 @@
         "name": "What is the difference between Allow and Disallow?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Allow explicitly permits a crawler to access a specific path, while Disallow blocks access. If a path is not mentioned at all, it is treated as allowed by default. When both Allow and Disallow match a URL, the most specific (longer) path wins."
+          "text": "Allow explicitly permits a crawler to access a specific path, while Disallow blocks access. If a path is not mentioned, it is treated as allowed by default. When both match a URL, the most specific (longer) path wins."
         }
       },
       {
@@ -87,7 +126,23 @@
         "name": "Where should I place my robots.txt file?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory — crawlers only look for it at the domain root. If your site is on a subdomain, you need a separate robots.txt for that subdomain."
+          "text": "The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory. Each subdomain needs its own robots.txt file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is robots.txt the same as meta robots tags?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Robots.txt controls crawler access at the URL path level before pages are crawled, while meta robots tags control indexing and link-following behavior at the individual page level. Robots.txt cannot prevent indexing if a page was discovered through other means."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I test my robots.txt file before going live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use this tool's built-in preview and validation, then test with Google Search Console's robots.txt tester after uploading. You can also run a full SEO audit to verify everything is configured correctly."
         }
       }
     ]
@@ -96,12 +151,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -110,33 +163,34 @@
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to main content</a>
+
   <!-- Navbar -->
-  <div id="navbar-container"></div>
+  <div id="navbar-container" style="min-height: 80px;"></div>
   
   <!-- Main Content -->
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+  <main id="main-content" class="pt-8 pb-12 min-h-screen relative overflow-hidden">
     <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Free Robots.txt Generator — Create Your Robots File</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-4">Control crawler access, set sitemaps, and configure allow/disallow rules with live preview</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8  max-w-7xl mx-auto">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3">What Is a Robots.txt Generator?</h2>
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="what-is-heading">
+        <h2 id="what-is-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is a Robots.txt Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           A robots.txt generator is a free tool that helps you create a robots.txt file for your website without manually writing the syntax. The robots.txt file is a plain text file stored at the root of your website — at <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://example.com/robots.txt</code> — that tells search engine crawlers which pages they can access and which they should skip. Every time Googlebot or Bingbot visits your site, this is the first file they request.
         </p>
@@ -149,28 +203,28 @@
       </section>
 
       <!-- Quick Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Robots.txt generation statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-list-check text-emerald-500"></i>
             </div>
             <span class="text-sm text-slate-500">Rules Generated</span>
           </div>
-          <p id="stat-rules" class="text-3xl font-bold text-slate-400">0</p>
+          <p id="stat-rules" class="text-3xl font-bold text-slate-400" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-circle-check text-blue-500"></i>
             </div>
             <span class="text-sm text-slate-500">Valid Status</span>
           </div>
-          <p id="stat-valid" class="text-3xl font-bold text-slate-400">No</p>
+          <p id="stat-valid" class="text-3xl font-bold text-slate-400" aria-live="polite">No</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-sitemap text-purple-500"></i>
             </div>
             <span class="text-sm text-slate-500">Sitemap Added</span>
@@ -179,7 +233,7 @@
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-check-double text-amber-500"></i>
             </div>
             <span class="text-sm text-slate-500">Fields Filled</span>
@@ -190,63 +244,63 @@
 
       <div class="block md:grid md:grid-cols-2 gap-8">
         <!-- Left: Inputs -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+            <h2 id="properties-heading" class="text-xl font-bold mb-6 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm" aria-hidden="true"><i class="fas fa-pen-to-square"></i></span>
               Robots.txt Properties
             </h2>
             <div class="space-y-5">
               <!-- User-agent -->
               <div>
-                <label class="block text-sm font-semibold mb-2">User-agent <span class="text-red-400">*</span></label>
-                <input type="text" id="rt-user-agent" placeholder="*" value="*" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
-                <p class="text-xs text-slate-400 mt-1.5">Use * for all crawlers, or specify like Googlebot, Bingbot</p>
+                <label for="rt-user-agent" class="block text-sm font-semibold mb-2">User-agent <span class="text-red-400" aria-hidden="true">*</span></label>
+                <input type="text" id="rt-user-agent" placeholder="*" value="*" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" aria-required="true">
+                <p id="ua-hint" class="text-xs text-slate-400 mt-1.5">Use * for all crawlers, or specify like Googlebot, Bingbot</p>
               </div>
               <!-- Allow Paths -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Allow Paths</label>
-                <textarea id="rt-allow" rows="3" placeholder="/&#10;/blog/&#10;/products/" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none font-mono"></textarea>
-                <p class="text-xs text-slate-400 mt-1.5">One path per line. Prefix with / (e.g., /blog/)</p>
+                <label for="rt-allow" class="block text-sm font-semibold mb-2">Allow Paths</label>
+                <textarea id="rt-allow" rows="3" placeholder="/&#10;/blog/&#10;/products/" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none font-mono" aria-describedby="allow-hint"></textarea>
+                <p id="allow-hint" class="text-xs text-slate-400 mt-1.5">One path per line. Prefix with / (e.g., /blog/)</p>
               </div>
               <!-- Disallow Paths -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Disallow Paths</label>
-                <textarea id="rt-disallow" rows="3" placeholder="/wp-admin/&#10;/admin/&#10;/*.json$" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none font-mono"></textarea>
-                <p class="text-xs text-slate-400 mt-1.5">One path per line. Use * as wildcard, $ to end matching</p>
+                <label for="rt-disallow" class="block text-sm font-semibold mb-2">Disallow Paths</label>
+                <textarea id="rt-disallow" rows="3" placeholder="/wp-admin/&#10;/admin/&#10;/*.json$" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none font-mono" aria-describedby="disallow-hint"></textarea>
+                <p id="disallow-hint" class="text-xs text-slate-400 mt-1.5">One path per line. Use * as wildcard, $ to end matching</p>
               </div>
               <!-- Sitemap URL -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Sitemap URL</label>
-                <input type="url" id="rt-sitemap" placeholder="https://example.com/sitemap.xml" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
-                <p class="text-xs text-slate-400 mt-1.5">Full URL to your XML sitemap. You can add multiple sitemaps.</p>
-                <div id="rt-sitemap-list" class="mt-2 space-y-1.5 hidden"></div>
+                <label for="rt-sitemap" class="block text-sm font-semibold mb-2">Sitemap URL</label>
+                <input type="url" id="rt-sitemap" placeholder="https://example.com/sitemap.xml" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" aria-describedby="sitemap-hint">
+                <p id="sitemap-hint" class="text-xs text-slate-400 mt-1.5">Full URL to your XML sitemap. You can add multiple sitemaps.</p>
+                <div id="rt-sitemap-list" class="mt-2 space-y-1.5 hidden" role="list" aria-label="Additional sitemaps"></div>
               </div>
               <!-- Crawl-delay -->
               <div>
-                <label class="block text-sm font-semibold mb-2">Crawl-delay <span class="text-xs font-normal text-slate-400">(optional)</span></label>
+                <label for="rt-crawl-delay" class="block text-sm font-semibold mb-2">Crawl-delay <span class="text-xs font-normal text-slate-400">(optional)</span></label>
                 <div class="flex gap-2">
-                  <input type="number" id="rt-crawl-delay" min="0" step="1" placeholder="10" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
-                  <button id="rt-add-sitemap-btn" class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 flex items-center gap-1.5" title="Add another sitemap" aria-label="Rt Add Sitemap Btn">
-                    <i class="fas fa-plus text-emerald-500"></i>
+                  <input type="number" id="rt-crawl-delay" min="0" step="1" placeholder="10" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" aria-describedby="crawl-delay-hint">
+                  <button id="rt-add-sitemap-btn" class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 flex items-center gap-1.5" title="Add another sitemap" aria-label="Add another sitemap URL">
+                    <i class="fas fa-plus text-emerald-500" aria-hidden="true"></i>
                   </button>
                 </div>
-                <p class="text-xs text-slate-400 mt-1.5">Seconds between requests. Supported by Bingbot, Yandex. Google ignores this.</p>
+                <p id="crawl-delay-hint" class="text-xs text-slate-400 mt-1.5">Seconds between requests. Supported by Bingbot, Yandex. Google ignores this.</p>
               </div>
               <!-- Additional Sitemap Input (hidden by default) -->
               <div id="rt-extra-sitemap-wrap" class="hidden">
-                <label class="block text-sm font-semibold mb-2">Additional Sitemap URL</label>
+                <label for="rt-extra-sitemap" class="block text-sm font-semibold mb-2">Additional Sitemap URL</label>
                 <div class="flex gap-2">
                   <input type="url" id="rt-extra-sitemap" placeholder="https://example.com/sitemap-posts.xml" class="flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
-                  <button id="rt-add-extra-sitemap-btn" class="px-4 py-3 rounded-xl border-2 border-emerald-500/50 bg-emerald-500/10 text-sm font-medium transition-all hover:bg-emerald-500/20 flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400" title="Add this sitemap" aria-label="Rt Add Extra Sitemap Btn">
-                    <i class="fas fa-check"></i>
+                  <button id="rt-add-extra-sitemap-btn" class="px-4 py-3 rounded-xl border-2 border-emerald-500/50 bg-emerald-500/10 text-sm font-medium transition-all hover:bg-emerald-500/20 flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400" title="Add this sitemap" aria-label="Confirm add sitemap URL">
+                    <i class="fas fa-check" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
               <!-- Reset Button -->
               <div class="pt-2 flex gap-3">
-                <button id="rt-reset-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
-                  <i class="fas fa-rotate-left"></i> Reset All
+                <button id="rt-reset-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2" aria-label="Reset all robots.txt fields to defaults">
+                  <i class="fas fa-rotate-left" aria-hidden="true"></i> Reset All
                 </button>
               </div>
             </div>
@@ -254,51 +308,51 @@
 
           <!-- Presets -->
           <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+            <h2 id="presets-heading" class="text-xl font-bold mb-5 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm" aria-hidden="true"><i class="fas fa-wand-magic-sparkles"></i></span>
               Quick Presets
             </h2>
             <p class="text-sm text-slate-500 mb-4">Fill fields with common configurations to get started quickly</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="wordpress">
-                <i class="fab fa-wordpress text-blue-500 mr-2"></i>WordPress
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="wordpress" aria-label="Load WordPress robots.txt preset">
+                <i class="fab fa-wordpress text-blue-500 mr-2" aria-hidden="true"></i>WordPress
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="blog">
-                <i class="fas fa-blog text-purple-500 mr-2"></i>Blog
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="blog" aria-label="Load Blog robots.txt preset">
+                <i class="fas fa-blog text-purple-500 mr-2" aria-hidden="true"></i>Blog
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="ecommerce">
-                <i class="fas fa-shopping-cart text-amber-500 mr-2"></i>E-commerce
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="ecommerce" aria-label="Load E-commerce robots.txt preset">
+                <i class="fas fa-shopping-cart text-amber-500 mr-2" aria-hidden="true"></i>E-commerce
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="general">
-                <i class="fas fa-globe text-emerald-500 mr-2"></i>General
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="general" aria-label="Load General robots.txt preset">
+                <i class="fas fa-globe text-emerald-500 mr-2" aria-hidden="true"></i>General
               </button>
             </div>
           </div>
         </div>
 
         <!-- Right: Preview + Output -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <!-- Generated robots.txt Preview -->
           <div class="glass-card p-8 shimmer-card">
             <div class="flex items-center justify-between mb-6">
-              <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+              <h2 id="preview-heading" class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm" aria-hidden="true"><i class="fas fa-eye"></i></span>
                 Generated robots.txt
               </h2>
-              <div class="flex gap-1.5">
-                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="preview">
-                  <i class="fas fa-file-lines mr-1"></i>Preview
+              <div class="flex gap-1.5" role="tablist" aria-label="Preview view tabs">
+                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="preview" role="tab" aria-selected="true" aria-controls="view-preview" id="tab-preview">
+                  <i class="fas fa-file-lines mr-1" aria-hidden="true"></i>Preview
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw">
-                  <i class="fas fa-code mr-1"></i>Raw
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw" role="tab" aria-selected="false" aria-controls="view-raw" id="tab-raw">
+                  <i class="fas fa-code mr-1" aria-hidden="true"></i>Raw
                 </button>
               </div>
             </div>
             <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
               <!-- Preview View -->
-              <div id="view-preview" class="preview-panel">
+              <div id="view-preview" class="preview-panel" role="tabpanel" aria-labelledby="tab-preview">
                 <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2" aria-hidden="true">
                     <div class="flex gap-1.5">
                       <div class="w-3 h-3 rounded-full bg-red-400"></div>
                       <div class="w-3 h-3 rounded-full bg-amber-400"></div>
@@ -308,17 +362,17 @@
                       <div class="px-4 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-xs text-slate-400 font-mono">https://yourdomain.com/robots.txt</div>
                     </div>
                   </div>
-                  <pre id="robots-preview-content" class="p-4 text-sm font-mono leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-wrap min-h-[200px]">User-agent: *
+                  <pre id="robots-preview-content" class="p-4 text-sm font-mono leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-wrap min-h-[200px]" aria-label="Robots.txt styled preview">User-agent: *
 Disallow:</pre>
                 </div>
               </div>
               <!-- Raw View -->
-              <div id="view-raw" class="preview-panel hidden">
+              <div id="view-raw" class="preview-panel hidden" role="tabpanel" aria-labelledby="tab-raw">
                 <div class="relative">
-                  <pre id="robots-raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre">User-agent: *
+                  <pre id="robots-raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre" aria-label="Robots.txt raw text output">User-agent: *
 Disallow:</pre>
-                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy Code Inline">
-                    <i class="fas fa-copy"></i>
+                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy robots.txt content">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
@@ -328,21 +382,21 @@ Disallow:</pre>
           <!-- Generated Code Actions -->
           <div class="glass-card p-8 shimmer-card">
             <div class="flex justify-between items-center mb-5">
-              <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-download"></i></span>
+              <h2 id="export-heading" class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm" aria-hidden="true"><i class="fas fa-download"></i></span>
                 Export Options
               </h2>
               <div class="flex gap-2">
-                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3">
-                  <i class="fas fa-copy mr-1"></i>Copy
+                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3" aria-label="Copy robots.txt to clipboard">
+                  <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
                 </button>
-                <button id="download-file-btn" class="btn-secondary text-xs py-2 px-3">
-                  <i class="fas fa-file-arrow-down mr-1"></i>Download
+                <button id="download-file-btn" class="btn-secondary text-xs py-2 px-3" aria-label="Download robots.txt file">
+                  <i class="fas fa-file-arrow-down mr-1" aria-hidden="true"></i>Download
                 </button>
               </div>
             </div>
             <div class="relative">
-              <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[200px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">User-agent: *
+              <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[200px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all" aria-label="Generated robots.txt code">User-agent: *
 Disallow:</pre>
             </div>
             <p id="rule-count-info" class="text-xs text-slate-400 mt-3">0 rules generated</p>
@@ -350,37 +404,37 @@ Disallow:</pre>
 
           <!-- Validation Status -->
           <div class="glass-card p-6 shimmer-card">
-            <h3 class="font-bold mb-4 flex items-center gap-2">
-              <i class="fas fa-clipboard-check text-emerald-500"></i>
+            <h3 id="validation-heading" class="font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-clipboard-check text-emerald-500" aria-hidden="true"></i>
               Validation Checklist
             </h3>
-            <div id="validation-list" class="space-y-2.5">
-              <div class="flex items-center gap-3 text-sm" data-check="user-agent">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+            <div id="validation-list" class="space-y-2.5" role="list" aria-labelledby="validation-heading">
+              <div class="flex items-center gap-3 text-sm" data-check="user-agent" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">User-agent is specified</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-rules">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-rules" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">At least one rule is defined</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="paths-valid">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="paths-valid" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">All paths start with /</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="no-conflict">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="no-conflict" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">No conflicting Allow/Disallow rules</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="sitemap-valid">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="sitemap-valid" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Sitemap URL is valid (if provided)</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="crawl-delay-valid">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="crawl-delay-valid" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Crawl-delay is a positive number (if set)</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="no-empty-disallow">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="no-empty-disallow" role="listitem">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">No empty Disallow directives (blocks everything)</span>
               </div>
             </div>
@@ -389,12 +443,10 @@ Disallow:</pre>
       </div>
 
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 ">
-         
-         <!-- CHANGED: Original "What Is a Robots.txt Generator?" section removed from here — moved above tool UI to create content-first structure -->
+      <div class="seo-content space-y-12 mt-16">
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Does This Robots.txt Generator Work?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-does-heading">
+            <h2 id="how-does-heading" class="text-2xl font-bold mb-4">How Does This Robots.txt Generator Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This robots.txt generator follows a straightforward input-output process that runs entirely in your browser — similar to how our <a href="/json-formatter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">JSON formatter</a> processes data locally:
             </p>
@@ -414,11 +466,11 @@ Disallow:</pre>
          </section>
 
          <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a Robots.txt Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a Robots.txt Generator</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-shield-halved text-emerald-500"></i>
                   </div>
                   <div>
@@ -427,7 +479,7 @@ Disallow:</pre>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-gauge-high text-blue-500"></i>
                   </div>
                   <div>
@@ -436,7 +488,7 @@ Disallow:</pre>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-ban text-purple-500"></i>
                   </div>
                   <div>
@@ -445,7 +497,7 @@ Disallow:</pre>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-clock text-amber-500"></i>
                   </div>
                   <div>
@@ -454,7 +506,7 @@ Disallow:</pre>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-bug text-red-500"></i>
                   </div>
                   <div>
@@ -463,7 +515,7 @@ Disallow:</pre>
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-sitemap text-teal-500"></i>
                   </div>
                   <div>
@@ -475,8 +527,8 @@ Disallow:</pre>
          </section>
 
          <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Create a Robots.txt File With This Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
+            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Create a Robots.txt File With This Generator</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Generating a production-ready robots.txt file takes less than a minute. Follow these steps:
             </p>
@@ -494,9 +546,91 @@ Disallow:</pre>
             </ol>
          </section>
 
+         <!-- Directives Reference -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="directives-heading">
+            <h2 id="directives-heading" class="text-2xl font-bold mb-4">Robots.txt Directives Reference</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">A quick reference for every directive supported in robots.txt files. Use this while building your configuration in the generator above.</p>
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm border-collapse">
+                <thead>
+                  <tr class="border-b border-slate-200 dark:border-slate-700">
+                    <th class="text-left py-3 px-4 font-semibold">Directive</th>
+                    <th class="text-left py-3 px-4 font-semibold">Purpose</th>
+                    <th class="text-left py-3 px-4 font-semibold">Example</th>
+                    <th class="text-left py-3 px-4 font-semibold">Supported By</th>
+                  </tr>
+                </thead>
+                <tbody class="text-slate-600 dark:text-slate-400">
+                  <tr class="border-b border-slate-100 dark:border-slate-800">
+                    <td class="py-2.5 px-4 font-mono text-xs">User-agent</td>
+                    <td class="py-2.5 px-4">Identifies which crawler the rules apply to</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">User-agent: Googlebot</td>
+                    <td class="py-2.5 px-4">All crawlers</td>
+                  </tr>
+                  <tr class="border-b border-slate-100 dark:border-slate-800">
+                    <td class="py-2.5 px-4 font-mono text-xs">Disallow</td>
+                    <td class="py-2.5 px-4">Blocks crawlers from a specific path</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">Disallow: /admin/</td>
+                    <td class="py-2.5 px-4">All crawlers</td>
+                  </tr>
+                  <tr class="border-b border-slate-100 dark:border-slate-800">
+                    <td class="py-2.5 px-4 font-mono text-xs">Allow</td>
+                    <td class="py-2.5 px-4">Explicitly permits access to a path</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">Allow: /blog/</td>
+                    <td class="py-2.5 px-4">Google, Bing</td>
+                  </tr>
+                  <tr class="border-b border-slate-100 dark:border-slate-800">
+                    <td class="py-2.5 px-4 font-mono text-xs">Sitemap</td>
+                    <td class="py-2.5 px-4">Points crawlers to your XML sitemap URL</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">Sitemap: https://example.com/sitemap.xml</td>
+                    <td class="py-2.5 px-4">Google, Bing, Yandex</td>
+                  </tr>
+                  <tr class="border-b border-slate-100 dark:border-slate-800">
+                    <td class="py-2.5 px-4 font-mono text-xs">Crawl-delay</td>
+                    <td class="py-2.5 px-4">Sets seconds between consecutive requests</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">Crawl-delay: 10</td>
+                    <td class="py-2.5 px-4">Bing, Yandex (not Google)</td>
+                  </tr>
+                  <tr class="border-b border-slate-100 dark:border-slate-800">
+                    <td class="py-2.5 px-4 font-mono text-xs">* (wildcard)</td>
+                    <td class="py-2.5 px-4">Matches any sequence of characters in a path</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">Disallow: /*.pdf$</td>
+                    <td class="py-2.5 px-4">Google, Bing</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2.5 px-4 font-mono text-xs">$ (end anchor)</td>
+                    <td class="py-2.5 px-4">Matches the end of a URL path</td>
+                    <td class="py-2.5 px-4 font-mono text-xs">Disallow: /*.json$</td>
+                    <td class="py-2.5 px-4">Google, Bing</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mt-4 text-sm">
+               For the complete specification, see <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Google's robots.txt documentation</a> or <a href="https://www.robotstxt.org/robotstxt.html" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">robotstxt.org</a>.
+            </p>
+         </section>
+
+         <!-- Common Mistakes -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
+            <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Robots.txt Mistakes That Hurt Your SEO</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               These are the errors we see most often in robots.txt files. The validation checklist in this generator catches all of them before you upload.
+            </p>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Empty Disallow directive:</strong> Writing <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow:</code> with no path on a line by itself tells crawlers they can access everything. But writing <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow: /</code> blocks everything. The difference is a single slash — and it is the most destructive typo in SEO.</li>
+               <li><strong>Blocking CSS and JS files:</strong> Google needs access to your stylesheets and JavaScript to render pages properly. If you block <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/wp-content/</code> or <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/assets/</code> entirely, Google may not be able to index your pages correctly.</li>
+               <li><strong>Missing sitemap reference:</strong> Without a Sitemap directive, crawlers have to discover all your pages through links alone. Adding the sitemap URL dramatically speeds up indexing of new content.</li>
+               <li><strong>Conflicting Allow and Disallow rules:</strong> Having <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Allow: /blog/</code> and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow: /blog/</code> for the same user-agent creates ambiguity. The most specific path wins, but it is better to avoid the conflict entirely.</li>
+               <li><strong>Placing the file in the wrong location:</strong> Robots.txt must be at the domain root. A file at <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/assets/robots.txt</code> will be completely ignored by all crawlers.</li>
+               <li><strong>Using robots.txt to hide sensitive pages:</strong> Robots.txt is a suggestion, not a security measure. Malicious bots ignore it entirely. Sensitive pages should be protected with authentication, not just a Disallow rule.</li>
+               <li><strong>Not testing after deployment:</strong> Always verify your robots.txt at <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">yourdomain.com/robots.txt</code> and test it with Google Search Console after uploading. A misconfigured file can take days to get fixed in search results.</li>
+            </ul>
+         </section>
+
          <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Robots.txt Use Cases</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Robots.txt Use Cases</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                A well-configured robots.txt file is critical for many common website scenarios. Here are the situations where having one makes the biggest difference:
             </p>
@@ -511,8 +645,8 @@ Disallow:</pre>
             </ul>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+            <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                I once accidentally blocked an entire site from Google for two weeks because of a typo in a hand-written robots.txt file. The worst part? I did not even notice until traffic dropped off a cliff. That experience taught me that manually writing these files is a bad idea — the syntax looks simple, but one wrong character can take your site out of search results entirely.
             </p>
@@ -525,69 +659,69 @@ Disallow:</pre>
          </section>
 
          <!-- FAQ Section -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
                      <span>What is robots.txt?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Robots.txt is a plain text file placed at the root of a website (e.g., yourdomain.com/robots.txt) that tells search engine crawlers which pages or sections they are allowed or not allowed to crawl. It is one of the first files search engine bots look for when they visit a website. The file uses a simple format with User-agent declarations to identify crawlers and Allow/Disallow directives to specify access rules. Alongside <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tags</a>, it forms a foundational part of technical SEO.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
                      <span>How does robots.txt work?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">When a search engine crawler arrives at your website, it requests the robots.txt file before crawling any other pages. The file contains rules grouped by user-agent (the name of the crawler). Each rule specifies which paths are allowed or disallowed. The crawler follows the most specific matching rule for each URL it wants to visit. If no robots.txt file exists, crawlers assume they have full access to the entire site. It is important to note that robots.txt is a suggestion, not a mandate — malicious bots may ignore it, so sensitive content should also be protected with authentication. Use our <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> to verify your site's overall crawl health.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
                      <span>What is User-agent in robots.txt?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">The User-agent directive identifies which crawler the rules apply to. Using an asterisk (*) applies the rules to all crawlers. You can also target specific bots like Googlebot (Google's web crawler), Bingbot (Microsoft's crawler), or Slurp (Yahoo's crawler) with their exact user-agent names. This allows you to set different rules for different search engines — for example, blocking all crawlers from a test directory except Googlebot for testing purposes.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
                      <span>What is the difference between Allow and Disallow?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Allow explicitly permits a crawler to access a specific path, while Disallow blocks access to a path. If a path is not mentioned at all, it is treated as allowed by default. When both Allow and Disallow match a URL, the most specific (longer) path wins. For example, if you disallow /admin/ but allow /admin/settings/, crawlers can access /admin/settings/ but not other /admin/ subdirectories. A Disallow with no value (just "Disallow:") means allow everything for that user-agent.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
                      <span>Where should I place my robots.txt file?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory — crawlers only look for it at the domain root. If your site is on a subdomain like blog.yourdomain.com, you need a separate robots.txt for that subdomain at https://blog.yourdomain.com/robots.txt. After uploading, always verify by visiting the URL directly in a browser to confirm it returns the correct content.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
                      <span>Is robots.txt the same as meta robots tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">No, they serve different purposes. Robots.txt controls crawler access at the URL path level before pages are crawled, while meta robots tags (like noindex, nofollow) control indexing and link-following behavior at the individual page level. Robots.txt cannot prevent a page from being indexed if it was already discovered through other means — you need a noindex meta tag for that. Use our <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tag generator</a> to create proper meta robots directives, and this robots.txt generator to manage crawl access. Both work together as part of a complete <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO strategy</a>.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
                      <span>Can I test my robots.txt file before going live?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Yes. After generating your robots.txt file with this tool, you can preview it in the built-in preview panel to verify the output. Once uploaded, use <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Google Search Console</a>'s robots.txt testing tool to simulate how Googlebot will interpret your rules. You can also check for broader SEO issues with our <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> to ensure your entire site is optimized for search engines.</p>
                   </div>
                </div>
@@ -595,8 +729,8 @@ Disallow:</pre>
          </section>
          
          <!-- Related Tools -->
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Related SEO & Developer Tools</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related SEO & Developer Tools</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have your robots.txt ready, try these related tools to strengthen your site's SEO and performance:</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
@@ -615,28 +749,28 @@ Disallow:</pre>
          </section>
 
          <!-- Social Sharing Section -->
-          <section class="glass-card p-8 my-16 shimmer-card text-center">
+         <section class="glass-card p-8 my-16 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this robots.txt generator useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/robots-txt-generator/&text=Generate%20your%20robots.txt%20file%20in%20seconds%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/robots-txt-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/robots-txt-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
                 <a href="https://wa.me/?text=Check%20out%20this%20free%20robots.txt%20generator%20https://devpalettes.com/robots-txt-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
                 <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/robots-txt-generator/&description=Free%20robots.txt%20generator%20tool%20for%20your%20website" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p"></i> Pinterest
+                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
                 </a>
                 <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
@@ -656,10 +790,13 @@ Disallow:</pre>
   </main>
   
   <!-- Footer -->
-  <div id="footer-container"></div>
+  <div id="footer-container" style="min-height: 200px;"></div>
   
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" aria-atomic="true"></div>
+  
+  <!-- Clipboard Announcer for Screen Readers -->
+  <div id="clipboard-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
   
   <script src="../js/main.js" defer></script>
   <script src="../js/robots-txt-generator.js" defer></script>

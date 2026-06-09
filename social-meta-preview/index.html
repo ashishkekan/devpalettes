@@ -5,28 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Social Media Preview Tool – Open Graph & Twitter Cards</title>
-  <meta name="description" content="Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.">
+  <title>Free Social Media Preview Tool – Open Graph Checker & Twitter Card Validator</title>
+  <meta name="description" content="Preview how your website appears on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack. Test Open Graph and Twitter Card meta tags instantly for free.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/social-meta-preview/">
   
- 
-  <meta property="og:title" content="Social Media Preview Tool – Open Graph & Twitter Cards">
-  <meta property="og:description" content="Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.">
+  <meta property="og:title" content="Free Social Media Preview Tool – Open Graph Checker & Twitter Card Validator">
+  <meta property="og:description" content="Preview how your website appears on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack. Test Open Graph and Twitter Card meta tags instantly.">
   <meta property="og:url" content="https://devpalettes.com/social-meta-preview/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/social-preview-og.png">
-  
+  <meta property="og:site_name" content="Devpalettes">
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Social Media Preview Tool – Open Graph & Twitter Cards">
-  <meta name="twitter:description" content="Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.">
+  <meta name="twitter:title" content="Free Social Media Preview Tool – Open Graph Checker & Twitter Card Validator">
+  <meta name="twitter:description" content="Preview how your website appears on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack. Test Open Graph and Twitter Card meta tags instantly.">
   <meta name="twitter:image" content="https://devpalettes.com/images/social-preview-og.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
+  <!-- Reduced from 7 weights to 4; added explicit font-display -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -38,11 +38,16 @@
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 
-  <!-- JSON-LD Structured Data: WebApplication -->
+  <!-- CLS prevention -->
+  <style>
+    #navbar-container { min-height: 64px; }
+    .spectrum-line { height: 3px; background: linear-gradient(90deg, #10b981, #6366f1, #f59e0b, #ef4444); border-radius: 9999px; }
+  </style>
+
+  <!-- JSON-LD: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,28 +58,30 @@
     "operatingSystem": "All",
     "creator": {
       "@type": "Organization",
-      "name": "Devpalettes"
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
     },
-    "description": "A tool to preview how your website appears on Facebook, Twitter, and LinkedIn by testing Open Graph and Twitter Card meta tags."
+    "description": "Preview how your website appears on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack. Test Open Graph and Twitter Card meta tags instantly for free.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
 
-  <!-- JSON-LD Structured Data: WebPage -->
+  <!-- JSON-LD: WebPage (breadcrumb removed — standalone version below is canonical) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Social Media Preview Tool – Open Graph Checker & Twitter Card Validator",
-    "description": "Preview how your website appears on Facebook, Twitter, and LinkedIn. Test Open Graph and Twitter Card meta tags instantly.",
+    "name": "Free Social Media Preview Tool – Open Graph Checker & Twitter Card Validator",
+    "description": "Preview how your website appears on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack. Test Open Graph and Twitter Card meta tags instantly for free.",
     "url": "https://devpalettes.com/social-meta-preview/",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Devpalettes",
       "url": "https://devpalettes.com/"
-    },
-    "about": {
-      "@type": "Thing",
-      "name": "Social Media Preview Tool"
     },
     "primaryImageOfPage": {
       "@type": "ImageObject",
@@ -82,28 +89,11 @@
     },
     "datePublished": "2024-01-15",
     "dateModified": "2025-06-18",
-    "inLanguage": "en",
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://devpalettes.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Social Media Preview Tool",
-          "item": "https://devpalettes.com/social-meta-preview/"
-        }
-      ]
-    }
+    "inLanguage": "en"
   }
   </script>
 
-  <!-- JSON-LD Structured Data: BreadcrumbList -->
+  <!-- JSON-LD: BreadcrumbList (standalone — single source of truth) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -118,6 +108,12 @@
       {
         "@type": "ListItem",
         "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
         "name": "Social Media Preview Tool",
         "item": "https://devpalettes.com/social-meta-preview/"
       }
@@ -125,7 +121,44 @@
   }
   </script>
 
-  <!-- JSON-LD Structured Data: FAQPage -->
+  <!-- JSON-LD: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Preview Social Media Link Cards",
+    "description": "Step-by-step guide to testing how your website appears when shared on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack.",
+    "totalTime": "PT1M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Enter your page details",
+        "text": "Input your page title, description, and image URL into the control panel on the left."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Review live previews",
+        "text": "Observe the real-time previews for Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack on the right."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Check for issues",
+        "text": "Look for text truncation, image cropping, or missing descriptions across each platform's unique card layout."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Implement the meta tags",
+        "text": "Once satisfied, use the Open Graph tag generator or meta tag generator to produce production-ready HTML for your page's head section."
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -200,20 +233,26 @@
   </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+
+  <!-- Skip Navigation -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-emerald-600 focus:text-white focus:px-4 focus:py-2 focus:rounded">Skip to main content</a>
+
   <div id="navbar-container"></div>
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div id="particles-container"></div>
+  <main id="main-content" class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <!-- Decorative backgrounds — hidden from assistive technology -->
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">Social Media Preview Tool – Open Graph Checker & Twitter Card Validator</h1>
-        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Test how your links appear on Facebook, Twitter, and LinkedIn.</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Test how your links appear on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack — free, instant, no sign-up.</p>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10  max-w-7xl mx-auto">
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10 max-w-7xl mx-auto" aria-label="Tool introduction">
         <h2 class="text-2xl font-bold mb-4">What Is the Social Meta Preview Tool?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           The Social Meta Preview Tool lets you see exactly how your website will look when someone shares it on Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack — all before you publish a single line of code. You enter your page title, description, and image URL, and the tool renders real-time previews that mirror how each platform displays link cards. No more guessing whether your image will get cropped or your title will truncate.
@@ -228,35 +267,38 @@
 
       <div class="grid lg:grid-cols-3 gap-8">
         <!-- Controls -->
-        <div class="space-y-4 ">
+        <aside class="space-y-4" aria-label="Social meta tag inputs">
           <div class="glass-card p-6 shimmer-card">
-             <h3 class="font-bold mb-4 text-lg">Details</h3>
+             <h2 class="font-bold mb-4 text-lg">Details</h2>
              <div class="space-y-3">
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Page Title</label>
-                   <input type="text" id="meta-title" value="My Awesome Website" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                   <label for="meta-title" class="block text-xs font-semibold text-slate-500 mb-1">Page Title</label>
+                   <input type="text" id="meta-title" value="My Awesome Website" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" aria-describedby="title-hint">
+                   <span id="title-hint" class="text-[10px] text-slate-400 mt-0.5 block">Appears as the heading in social card previews</span>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Description</label>
-                   <textarea id="meta-desc" rows="2" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">This is a description of the page content.</textarea>
+                   <label for="meta-desc" class="block text-xs font-semibold text-slate-500 mb-1">Description</label>
+                   <textarea id="meta-desc" rows="2" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" aria-describedby="desc-hint">This is a description of the page content.</textarea>
+                   <span id="desc-hint" class="text-[10px] text-slate-400 mt-0.5 block">Shown below the title; may truncate on some platforms</span>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Image URL</label>
-                   <input type="text" id="meta-img" value="https://source.unsplash.com/random/1200x630" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm">
+                   <label for="meta-img" class="block text-xs font-semibold text-slate-500 mb-1">Image URL</label>
+                   <input type="url" id="meta-img" value="https://placehold.co/1200x630/1e293b/ffffff?text=OG+Image+1200x630" oninput="updatePreview()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500" aria-describedby="img-hint">
+                   <span id="img-hint" class="text-[10px] text-slate-400 mt-0.5 block">Recommended: 1200×630px, under 8MB</span>
                 </div>
              </div>
           </div>
-        </div>
+        </aside>
         
-        <div class="lg:col-span-2 space-y-6 ">
+        <div class="lg:col-span-2 space-y-6" aria-label="Platform preview cards">
           <!-- Facebook Card -->
           <div class="glass-card p-0 overflow-hidden">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
-                <i class="fab fa-facebook text-blue-600"></i> Facebook Preview
+                <i class="fab fa-facebook text-blue-600" aria-hidden="true"></i> Facebook Preview
              </div>
              <div class="p-4 bg-white dark:bg-slate-800">
-                <div id="fb-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-                   <div id="fb-img" class="h-48 bg-slate-200 bg-cover bg-center"></div>
+                <div id="fb-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden" role="img" aria-label="Facebook link card preview">
+                   <div id="fb-img" class="h-48 bg-slate-200 bg-cover bg-center" role="presentation"></div>
                    <div class="p-3">
                       <div class="text-xs text-slate-500 uppercase">example.com</div>
                       <div id="fb-title" class="font-bold text-slate-800 truncate">My Awesome Website</div>
@@ -268,11 +310,11 @@
           
           <div class="glass-card p-0 overflow-hidden">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
-                <i class="fab fa-twitter text-sky-500"></i> Twitter Preview
+                <i class="fab fa-twitter text-sky-500" aria-hidden="true"></i> Twitter Preview
              </div>
              <div class="p-4 bg-white dark:bg-slate-800">
-                <div id="tw-card" class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden grid md:grid-cols-2">
-                   <div id="tw-img" class="h-32 bg-slate-200 bg-cover bg-center"></div>
+                <div id="tw-card" class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden grid md:grid-cols-2" role="img" aria-label="Twitter link card preview">
+                   <div id="tw-img" class="h-32 bg-slate-200 bg-cover bg-center" role="presentation"></div>
                    <div class="p-3 flex flex-col justify-center">
                       <div class="text-xs text-slate-500 mb-1">Website</div>
                       <div id="tw-title" class="font-bold text-slate-800 text-sm">My Awesome Website</div>
@@ -281,14 +323,15 @@
                 </div>
              </div>
           </div>
+
           <!-- LinkedIn Card -->
           <div class="glass-card p-0 overflow-hidden">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
-                <i class="fab fa-linkedin text-blue-700"></i> LinkedIn Preview
+                <i class="fab fa-linkedin text-blue-700" aria-hidden="true"></i> LinkedIn Preview
              </div>
              <div class="p-4 bg-white dark:bg-slate-800">
-                <div id="linkedin-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
-                   <div id="linkedin-img" class="h-48 bg-slate-200 bg-cover bg-center"></div>
+                <div id="linkedin-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden" role="img" aria-label="LinkedIn link card preview">
+                   <div id="linkedin-img" class="h-48 bg-slate-200 bg-cover bg-center" role="presentation"></div>
                    <div class="p-3">
                       <div class="text-xs text-slate-500 uppercase">example.com</div>
                       <div id="linkedin-title" class="font-bold text-slate-800 truncate">My Awesome Website</div>
@@ -301,11 +344,11 @@
           <!-- WhatsApp Card -->
           <div class="glass-card p-0 overflow-hidden">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
-                <i class="fab fa-whatsapp text-green-500"></i> WhatsApp Preview
+                <i class="fab fa-whatsapp text-green-500" aria-hidden="true"></i> WhatsApp Preview
              </div>
              <div class="p-4 bg-white dark:bg-slate-800">
-                <div id="whatsapp-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden flex">
-                   <div id="whatsapp-img" class="w-24 h-24 min-w-[96px] bg-slate-200 bg-cover bg-center"></div>
+                <div id="whatsapp-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden flex" role="img" aria-label="WhatsApp link card preview">
+                   <div id="whatsapp-img" class="w-24 h-24 min-w-[96px] bg-slate-200 bg-cover bg-center" role="presentation"></div>
                    <div class="p-3 flex flex-col justify-center min-w-0">
                       <div class="text-xs text-slate-500 mb-0.5">example.com</div>
                       <div id="whatsapp-title" class="font-bold text-slate-800 text-sm truncate">My Awesome Website</div>
@@ -318,12 +361,12 @@
           <!-- Pinterest Card -->
           <div class="glass-card p-0 overflow-hidden">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
-                <i class="fab fa-pinterest text-red-600"></i> Pinterest Preview
+                <i class="fab fa-pinterest text-red-600" aria-hidden="true"></i> Pinterest Preview
              </div>
              <div class="p-4 bg-white dark:bg-slate-800">
-                <div id="pinterest-card" class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <div id="pinterest-card" class="border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden" role="img" aria-label="Pinterest link card preview">
                    <div class="relative">
-                      <div id="pinterest-img" class="h-64 bg-slate-200 bg-cover bg-center"></div>
+                      <div id="pinterest-img" class="h-64 bg-slate-200 bg-cover bg-center" role="presentation"></div>
                    </div>
                    <div class="p-3">
                       <div id="pinterest-title" class="font-bold text-slate-800 text-sm truncate">My Awesome Website</div>
@@ -337,15 +380,15 @@
           <!-- Slack Card -->
           <div class="glass-card p-0 overflow-hidden">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700 text-xs text-slate-500 flex items-center gap-2">
-                <i class="fab fa-slack text-purple-600"></i> Slack Preview
+                <i class="fab fa-slack text-purple-600" aria-hidden="true"></i> Slack Preview
              </div>
              <div class="p-4 bg-white dark:bg-slate-800">
-                <div id="slack-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden">
+                <div id="slack-card" class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden" role="img" aria-label="Slack link card preview">
                    <div class="p-3 border-b border-slate-100 dark:border-slate-700">
                       <div class="text-xs text-slate-500 mb-0.5 flex items-center gap-1"><i class="fas fa-globe text-[10px]" aria-hidden="true"></i> example.com</div>
                       <div id="slack-title" class="font-bold text-slate-800 text-sm">My Awesome Website</div>
                    </div>
-                   <div id="slack-img" class="h-32 bg-slate-200 bg-cover bg-center"></div>
+                   <div id="slack-img" class="h-32 bg-slate-200 bg-cover bg-center" role="presentation"></div>
                    <div class="p-3">
                       <div id="slack-desc" class="text-xs text-slate-500 line-clamp-2">This is a description of the page content.</div>
                    </div>
@@ -355,17 +398,107 @@
           
         </div>
       </div>
+
+      <!-- Benefits Section — NEW for AdSense depth -->
+      <section class="max-w-7xl mx-auto my-16" aria-label="Benefits of using this tool">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
+            Benefits of Using This Tool
+          </h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Catch Errors Before Publishing</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Spot truncated titles, missing images, and wrong descriptions before your page goes live — not after your audience already shared it with a broken preview.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Six Platforms in One View</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Facebook, Twitter, LinkedIn, WhatsApp, Pinterest, and Slack all render link cards differently. This tool shows every layout side by side so nothing slips through.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Zero Data Leaves Your Browser</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Everything runs client-side. Your URLs, titles, and images are never sent to a server, making it safe for staging environments and unreleased content.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-100 dark:bg-slate-800">
+              <h3 class="font-semibold text-sm mb-2">Instant Feedback Loop</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Edit any field and see the preview update in real time. No page reloads, no API calls, no waiting — just type and see the result immediately.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Platform Image Requirements — NEW for AdSense depth -->
+      <section class="max-w-7xl mx-auto my-16" aria-label="Platform image requirements">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-image text-indigo-500" aria-hidden="true"></i>
+            Platform Image Requirements
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700">
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Platform</th>
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Recommended Size</th>
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Aspect Ratio</th>
+                  <th class="py-3 px-4 font-semibold text-slate-600 dark:text-slate-300">Max File Size</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-500 dark:text-slate-400">
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4">Facebook</td>
+                  <td class="py-2.5 px-4">1200 × 630px</td>
+                  <td class="py-2.5 px-4">1.91:1</td>
+                  <td class="py-2.5 px-4">8MB</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4">Twitter</td>
+                  <td class="py-2.5 px-4">1200 × 628px</td>
+                  <td class="py-2.5 px-4">1.91:1</td>
+                  <td class="py-2.5 px-4">5MB</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4">LinkedIn</td>
+                  <td class="py-2.5 px-4">1200 × 627px</td>
+                  <td class="py-2.5 px-4">1.91:1</td>
+                  <td class="py-2.5 px-4">5MB</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4">WhatsApp</td>
+                  <td class="py-2.5 px-4">1200 × 630px</td>
+                  <td class="py-2.5 px-4">1.91:1</td>
+                  <td class="py-2.5 px-4">8MB</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-2.5 px-4">Pinterest</td>
+                  <td class="py-2.5 px-4">1000 × 1500px</td>
+                  <td class="py-2.5 px-4">2:3</td>
+                  <td class="py-2.5 px-4">20MB</td>
+                </tr>
+                <tr>
+                  <td class="py-2.5 px-4">Slack</td>
+                  <td class="py-2.5 px-4">1200 × 630px</td>
+                  <td class="py-2.5 px-4">1.91:1</td>
+                  <td class="py-2.5 px-4">5MB</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-slate-400 mt-4">Tip: Use 1200 × 630px as a universal default — it renders well on all platforms except Pinterest, which prefers a taller 2:3 ratio.</p>
+        </div>
+      </section>
+
       <!-- SEO Content Section -->
-      <div class="prose prose-slate dark:prose-invert max-w-7xl mx-auto my-16 ">
-         <h2 class="text-2xl font-bold mb-4">What is Open Graph?</h2>
+      <article class="prose prose-slate dark:prose-invert max-w-7xl mx-auto my-16" aria-label="Guide to Open Graph and Twitter Cards">
+         <h2 id="what-is-open-graph" class="text-2xl font-bold mb-4">What is Open Graph?</h2>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Open Graph is a protocol introduced by Facebook that allows any web page to become a rich object in a social graph. As defined in the <a href="https://ogp.me/" target="_blank" rel="noopener noreferrer">official Open Graph protocol specification</a>, it gives developers control over how their content appears when shared on social media platforms like Facebook, LinkedIn, and Twitter. Without Open Graph tags, social platforms would scrape the page content and guess which title, image, and description to display, often resulting in incorrect or unappealing previews.</p>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Using an <strong>open graph checker</strong> before publishing ensures your tags are properly formatted and your social sharing preview looks right across all platforms. The protocol relies on specific meta tags placed in the <code>&lt;head&gt;</code> section of an HTML document. Key tags include <code>og:title</code>, <code>og:description</code>, <code>og:image</code>, and <code>og:url</code>. These tags ensure that the visual representation of your link is consistent and engaging, regardless of where it is shared. For visually rich cards, you can also <a href="/gradient/">generate matching gradients</a> to use as attention-grabbing background images. And if you need to adjust color formats for your assets, you can use our tool to <a href="/converter/">convert HEX to RGB</a>.</p><br>
 
-         <h2 class="text-2xl font-bold mb-4">What are Twitter Cards?</h2>
+         <h2 id="what-are-twitter-cards" class="text-2xl font-bold mb-4">What are Twitter Cards?</h2>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Twitter Cards are similar to Open Graph tags but are specifically designed for the Twitter platform. They allow you to attach media experiences to Tweets that link to your content. There are several types of Twitter Cards, such as "Summary Card with Large Image," which provides a prominent image alongside the title and description, and "Player Card," which allows for video and audio media. A <strong>twitter card validator</strong> helps you confirm that your implementation renders correctly before your audience encounters it. If you want to <a href="/image-to-gradient-generator/">create social card backgrounds</a> that stand out in timelines, our image-to-gradient tool can help.</p>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">While Twitter falls back on Open Graph tags if specific Twitter Card tags (like <code>twitter:title</code> or <code>twitter:image</code>) are missing, it is best practice to implement both. This ensures optimal display and allows you to tailor the messaging specifically for Twitter's audience and UI constraints. Implementing these correctly can significantly increase click-through rates compared to standard text-only tweets. You can also pair your card designs with a consistent <a href="/gradient/">CSS gradient</a> system for a polished, on-brand look across every platform.</p><br>
 
-         <h2 class="text-2xl font-bold mb-4">Why Social Media Preview Matters for SEO</h2>
+         <h2 id="social-seo" class="text-2xl font-bold mb-4">Why Social Media Preview Matters for SEO</h2>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">While social signals (likes, shares) are not a direct ranking factor in Google's algorithm, the indirect benefits of optimizing your social media previews are immense for SEO. A well-optimized preview leads to higher engagement:</p>
          <ul>
             <li><strong>Higher Click-Through Rate (CTR):</strong> Engaging images and compelling titles encourage users to click. Higher traffic signals to search engines that your content is valuable. This social media preview tool helps you fine-tune those elements before going live.</li>
@@ -374,7 +507,7 @@
          </ul>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Furthermore, accessibility and readability play a role. Ensuring your preview text is readable over the background image is vital. You should always <a href="/wcag-contrast-checker/">check color contrast</a> of your social images to ensure they are accessible to all users. For developers building design systems, pairing these checks with a <a href="/box-shadow-generator/">CSS box shadow generator</a> can help create cards with proper depth and visual hierarchy.</p><br>
 
-         <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+         <h2 id="how-to-use" class="text-2xl font-bold mb-4">How to Use This Tool</h2>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Using the Social Media Preview Tool is simple and helps you debug your implementation before going live:</p>
          <ol>
             <li><strong>Enter Your Data:</strong> Input the desired Page Title, Description, and Image URL into the control panel on the left.</li>
@@ -383,7 +516,7 @@
             <li><strong>Implement:</strong> Once satisfied, copy the values into your website's <code>&lt;head&gt;</code> section using the correct meta tag syntax. You can use our <a href="/meta-tag-generator/">meta tag generator</a> to produce the final code snippet instantly, or run a full <a href="/seo-analyzer/">SEO audit</a> to catch any other issues on your page.</li>
          </ol><br>
 
-         <h2 class="text-2xl font-bold mb-4">Common Mistakes in Social Sharing</h2>
+         <h2 id="common-mistakes" class="text-2xl font-bold mb-4">Common Mistakes in Social Sharing</h2>
          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Even experienced developers make mistakes when implementing social meta tags. Avoid these common pitfalls:</p>
          <ul>
             <li><strong>Wrong Image Size:</strong> Uploading images that are too small (e.g., 200x200) results in poor quality or no image display. Ideally, use 1200x630 pixels for Open Graph. Having a <a href="/palettes/">curated color palette</a> ready can streamline your image design workflow.</li>
@@ -391,31 +524,31 @@
             <li><strong>Ignoring Caching:</strong> Social platforms cache link previews aggressively. If you update your tags but still see the old preview, use Facebook's Sharing Debugger or Twitter's Card Validator to force a re-crawl instead of assuming your changes didn't work.</li>
             <li><strong>Missing alt Text on og:image:</strong> While not always displayed, adding <code>og:image:alt</code> improves accessibility and can be read by screen readers on certain platforms.</li>
          </ul>
-      </div>
+      </article>
 
       <!-- Use Cases Section -->
-      <div class="max-w-7xl mx-auto my-16 ">
+      <section class="max-w-7xl mx-auto my-16" aria-label="Use cases">
          <h2 class="text-2xl font-bold mb-6 text-center">Use Cases</h2>
          <div class="grid md:grid-cols-3 gap-6">
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-search text-3xl text-blue-500 mb-4"></i>
+               <i class="fas fa-search text-3xl text-blue-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">SEO Optimization</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">SEO specialists can test how blog posts and landing pages will appear before launching campaigns, then verify their entire setup with a <a href="/seo-analyzer/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">full page audit</a>.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-pen-nib text-3xl text-blue-500 mb-4"></i>
+               <i class="fas fa-pen-nib text-3xl text-blue-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">Bloggers & Writers</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Content creators can ensure their articles look professional and enticing when shared by readers across any platform.</p>
             </div>
             <div class="glass-card p-6 text-center">
-               <i class="fas fa-code text-3xl text-blue-500 mb-4"></i>
+               <i class="fas fa-code text-3xl text-blue-500 mb-4" aria-hidden="true"></i>
                <h3 class="font-bold mb-2">Web Developers</h3>
                <p class="text-sm text-slate-600 dark:text-slate-400">Developers can validate the implementation of meta tags during the build process to avoid bugs before deployment.</p>
             </div>
          </div>
-      </div>
+      </section>
 
-      <section class="glass-card p-8 shimmer-card my-16  max-w-7xl mx-auto">
+      <section class="glass-card p-8 shimmer-card my-16 max-w-7xl mx-auto" aria-label="Why this tool was built">
          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
             I can't count the number of times I've launched a page, shared the link on Slack or Twitter, and then immediately winced at the preview. Wrong image. Truncated title. Description pulling in some random paragraph from the footer. And then the worst part — waiting days for the platform cache to clear so the fix would actually show up.
@@ -429,7 +562,7 @@
       </section>
 
       <!-- FAQ Section -->
-      <div class="max-w-7xl mx-auto my-16  glass-card p-8">
+      <section class="max-w-7xl mx-auto my-16 glass-card p-8" aria-label="Frequently asked questions">
          <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
          <div class="space-y-4">
             <div>
@@ -465,38 +598,38 @@
                <p class="text-slate-600 dark:text-slate-400">The og:image tag is part of the Open Graph protocol used by Facebook and LinkedIn, while twitter:image is specific to Twitter Cards. If twitter:image is not present, Twitter will fall back to og:image. Using both allows you to specify different images optimized for each platform's layout.</p>
             </div>
          </div>
-      </div>
+      </section>
 
-      <!-- Social Sharing Section — FIXED: URLs now point to the correct tool page -->
-      <section class="glass-card p-8 shimmer-card text-center">
+      <!-- Social Sharing Section -->
+      <section class="glass-card p-8 shimmer-card text-center" aria-label="Share this tool">
         <div class="max-w-7xl mx-auto px-4 text-center">
           <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
           <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
           <div class="flex items-center justify-center gap-3 flex-wrap">
             <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/social-meta-preview/&text=Preview%20how%20your%20links%20look%20on%20every%20social%20platform%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-              <i class="fab fa-x-twitter"></i> Twitter
+              <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
             </a>
             <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/social-meta-preview/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-              <i class="fab fa-facebook-f"></i> Facebook
+              <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
             </a>
             <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/social-meta-preview/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-              <i class="fab fa-linkedin-in"></i> LinkedIn
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
             </a>
             <a href="https://wa.me/?text=Check%20out%20this%20free%20social%20meta%20preview%20tool%20https://devpalettes.com/social-meta-preview/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-              <i class="fab fa-whatsapp"></i> WhatsApp
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
             </a>
             <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/social-meta-preview/&description=Free%20social%20media%20preview%20tool%20for%20Open%20Graph%20and%20Twitter%20Cards" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-              <i class="fab fa-pinterest-p"></i> Pinterest
+              <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
             </a>
-            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-              <i class="fas fa-link"></i> Copy Link
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+              <i class="fas fa-link" aria-hidden="true"></i> Copy Link
             </button>
           </div>
         </div>
       </section>
 
       <!-- Related Tools -->
-      <section class="glass-card p-8 my-16 shimmer-card text-center">
+      <section class="glass-card p-8 my-16 shimmer-card text-center" aria-label="Related tools">
          <h2 class="text-2xl font-bold mb-6 text-center">Related Tools</h2>
          <div class="flex flex-wrap justify-center gap-3">
             <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Generate Meta Tags</a>
@@ -516,8 +649,8 @@
     </div>
   </main>
   <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/social-meta-preview.js"></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/social-meta-preview.js" defer></script>
 </body>
 </html>

@@ -4,22 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>CSS Animation Generator – Free Keyframes Tool | DevPalettes</title>
-  <meta name="description" content="Free CSS Animation Generator — create custom keyframes with live preview. Customize move, rotate, scale, bounce, pulse, and more. Copy production-ready CSS instantly.">
+  <title>Free CSS Animation Generator – Create Keyframes with Live Preview</title>
+  <meta name="description" content="Free CSS animation generator with live preview. Create move, rotate, scale, bounce, pulse, and shake keyframes instantly. Copy production-ready CSS code.">
   <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/css-animation-generator/">
 
  
-  <meta property="og:title" content="CSS Animation Generator – Free Keyframes Tool">
-  <meta property="og:description" content="Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly. Free, no signup.">
+  <meta property="og:title" content="Free CSS Animation Generator – Create Keyframes with Live Preview">
+  <meta property="og:description" content="Free CSS animation generator with live preview. Create move, rotate, scale, bounce, pulse, and shake keyframes instantly. Copy production-ready CSS code.">
   <meta property="og:url" content="https://devpalettes.com/css-animation-generator/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/css-animation-generator-og.png">
 
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free CSS Animation Generator – Create Keyframes Online">
-  <meta name="twitter:description" content="Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly.">
+  <meta name="twitter:title" content="Free CSS Animation Generator – Create Keyframes with Live Preview">
+  <meta name="twitter:description" content="Free CSS animation generator with live preview. Create move, rotate, scale, bounce, pulse, and shake keyframes instantly. Copy production-ready CSS code.">
   <meta name="twitter:image" content="https://devpalettes.com/images/css-animation-generator-og.png">
 
   <script type="application/ld+json">
@@ -28,11 +28,12 @@
     "@type": "WebApplication",
     "name": "CSS Animation Generator",
     "url": "https://devpalettes.com/css-animation-generator/",
-    "description": "Create custom CSS animations and keyframes with live preview. Generate smooth animations for websites instantly.",
+    "description": "Free CSS animation generator with live preview. Create move, rotate, scale, bounce, pulse, and shake keyframes instantly. Copy production-ready CSS code.",
     "applicationCategory": "DesignApplication",
     "creator": {
       "@type": "Organization",
-      "name": "DevPalettes"
+      "name": "DevPalettes",
+      "url": "https://devpalettes.com"
     },
     "browserRequirements": "Requires JavaScript",
     "operatingSystem": "Any",
@@ -41,6 +42,63 @@
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "CSS Animation Generator",
+        "item": "https://devpalettes.com/css-animation-generator/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Use the CSS Animation Generator",
+    "description": "Step-by-step guide to creating CSS keyframe animations using the Devpalettes generator tool.",
+    "totalTime": "PT30S",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Choose an animation type",
+        "text": "Select from move, rotate, scale, pulse, shake, bounce, flip, swing, or fade from the dropdown."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Configure timing",
+        "text": "Set duration, timing function, iteration count, and direction using the controls."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Customize appearance",
+        "text": "Adjust shape and color to match your design system — the preview updates instantly."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Preview and copy",
+        "text": "Click Play to see the animation live, then click Copy to grab the production-ready CSS code."
+      }
+    ]
   }
   </script>
 
@@ -80,6 +138,14 @@
           "@type": "Answer",
           "text": "Only animate transform and opacity properties which are handled by the compositor thread. Use will-change on animated elements, avoid animating width, height, top, or left, and respect the prefers-reduced-motion media query."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this CSS animation generator free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup or account required. Select an animation type, customize the settings, preview it live, and copy the CSS code directly into your project."
+        }
       }
     ]
   }
@@ -87,6 +153,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -109,6 +176,30 @@
   <link rel="stylesheet" href="../css/animations.css">
   
   <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      padding: 8px 16px;
+      background: #3b82f6;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 0 0 8px 8px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
     .preview-bg {
        background-color: #e2e8f0;
        background-image: radial-gradient(#94a3b8 1px, transparent 1px);
@@ -133,26 +224,28 @@
   </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div id="navbar-container"></div>
   
-  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+  <main id="main-content" role="main" class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer" aria-hidden="true" width="0" height="0"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
       
-      <div class="text-center mb-6 " style="margin-top: 45px;">
+      <div class="text-center mb-6" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">CSS Animation Generator</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-4">Create custom CSS keyframes with live preview — copy production-ready animation code instantly</p>
-        <div class="spectrum-line max-w-md mx-auto mb-4"></div>
+        <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-4">Create custom CSS keyframes with live preview — copy production-ready animation code instantly</p>
+        <div class="spectrum-line max-w-md mx-auto mb-4" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-8 shimmer-card mb-10 ">
-        <h2 class="text-2xl font-bold mb-4">What is a CSS Animation Generator?</h2>
+      <section class="glass-card p-8 shimmer-card mb-10" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="text-2xl font-bold mb-4">What Is a CSS Animation Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           A CSS Animation Generator is a visual tool that lets you create CSS keyframe animations without hand-coding them. Instead of typing out <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> rules and guessing at timing values, you pick an animation type, adjust a few sliders, and see the result in real time. The generator outputs clean, copy-paste-ready CSS that you can drop directly into any project.
         </p>
@@ -166,17 +259,17 @@
       
       <div class="grid lg:grid-cols-2 gap-8">
         
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           
-          <div class="glass-card p-6 shimmer-card">
-             <h3 class="font-bold mb-6 text-lg flex items-center gap-2">
-                <i class="fas fa-sliders-h text-emerald-500"></i>
+          <div class="glass-card p-6 shimmer-card" aria-labelledby="config-heading">
+             <h3 id="config-heading" class="font-bold mb-6 text-lg flex items-center gap-2">
+                <i class="fas fa-sliders-h text-emerald-500" aria-hidden="true"></i>
                 Configuration
              </h3>
              
              <div class="mb-5">
-                <label class="block text-sm font-semibold mb-2 text-slate-500">Animation Type</label>
-                <select id="anim-type" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                <label for="anim-type" class="block text-sm font-semibold mb-2 text-slate-500">Animation Type</label>
+                <select id="anim-type" class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                    <option value="moveRight">Move Right</option>
                    <option value="moveLeft">Move Left</option>
                    <option value="rotate">Rotate</option>
@@ -192,12 +285,12 @@
              
              <div class="grid grid-cols-2 gap-4 mb-5">
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Duration (s)</label>
-                   <input type="number" id="anim-duration" value="1" step="0.1" min="0.1" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                   <label for="anim-duration" class="block text-xs font-semibold mb-1 text-slate-500">Duration (s)</label>
+                   <input type="number" id="anim-duration" value="1" step="0.1" min="0.1" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Timing Function</label>
-                   <select id="anim-timing" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                   <label for="anim-timing" class="block text-xs font-semibold mb-1 text-slate-500">Timing Function</label>
+                   <select id="anim-timing" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                       <option value="linear">Linear</option>
                       <option value="ease">Ease</option>
                       <option value="ease-in">Ease In</option>
@@ -209,8 +302,8 @@
              
              <div class="grid grid-cols-2 gap-4 mb-5">
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Iteration Count</label>
-                   <select id="anim-iter" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                   <label for="anim-iter" class="block text-xs font-semibold mb-1 text-slate-500">Iteration Count</label>
+                   <select id="anim-iter" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                       <option value="infinite">Infinite</option>
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -218,8 +311,8 @@
                    </select>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Direction</label>
-                   <select id="anim-dir" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                   <label for="anim-dir" class="block text-xs font-semibold mb-1 text-slate-500">Direction</label>
+                   <select id="anim-dir" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                       <option value="normal">Normal</option>
                       <option value="reverse">Reverse</option>
                       <option value="alternate">Alternate</option>
@@ -229,57 +322,56 @@
              
              <div class="grid grid-cols-2 gap-4">
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Shape</label>
-                   <select id="anim-shape" onchange="updateAll()" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none">
+                   <label for="anim-shape" class="block text-xs font-semibold mb-1 text-slate-500">Shape</label>
+                   <select id="anim-shape" class="w-full bg-slate-100 dark:bg-slate-800 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500">
                       <option value="16px">Rounded</option>
                       <option value="50%">Circle</option>
                       <option value="0px">Square</option>
                    </select>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
-                   <input type="color" id="anim-color" value="#3b82f6" onchange="updateAll()" class="w-full h-9 rounded cursor-pointer bg-transparent">
+                   <label for="anim-color" class="block text-xs font-semibold mb-1 text-slate-500">Color</label>
+                   <input type="color" id="anim-color" value="#3b82f6" class="w-full h-9 rounded cursor-pointer bg-transparent">
                 </div>
              </div>
              
           </div>
           
-          <div class="flex gap-3 ">
-             <button onclick="playAnim()" class="btn-primary btn-glow flex-1 justify-center">
-                <i class="fas fa-play mr-2"></i>Play
+          <div class="flex gap-3">
+             <button id="play-btn" class="btn-primary btn-glow flex-1 justify-center" aria-label="Play animation preview">
+                <i class="fas fa-play mr-2" aria-hidden="true"></i>Play
              </button>
-             <button onclick="stopAnim()" class="btn-secondary flex-1 justify-center">
-                <i class="fas fa-stop mr-2"></i>Stop
+             <button id="stop-btn" class="btn-secondary flex-1 justify-center" aria-label="Stop animation preview">
+                <i class="fas fa-stop mr-2" aria-hidden="true"></i>Stop
              </button>
           </div>
           
         </div>
-        
        
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           
-          <div class="glass-card p-0 shimmer-card overflow-hidden">
+          <div class="glass-card p-0 shimmer-card overflow-hidden" aria-labelledby="preview-heading">
              <div class="p-4 border-b border-slate-100 dark:border-slate-700">
-                <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
+                <h3 id="preview-heading" class="font-bold text-sm text-slate-500 uppercase tracking-wider">Live Preview</h3>
              </div>
              <div class="preview-bg h-72 flex items-center justify-center overflow-hidden relative">
                 <div class="w-full h-full flex items-center justify-center">
-                   <div id="preview-box" class="anim-box">
+                   <div id="preview-box" class="anim-box" role="img" aria-label="Animation preview element — plays the selected CSS animation">
                       Hi
                    </div>
                 </div>
              </div>
           </div>
           
-          <div class="glass-card p-6 shimmer-card">
+          <div class="glass-card p-6 shimmer-card" aria-labelledby="code-heading">
              <div class="flex justify-between items-center mb-2">
-                <h3 class="font-bold text-lg">Generated CSS</h3>
-                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn">
-                   <i class="fas fa-copy mr-1"></i>Copy
+                <h3 id="code-heading" class="font-bold text-lg">Generated CSS</h3>
+                <button id="copy-btn" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy CSS code to clipboard">
+                   <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
                 </button>
              </div>
              <div class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 overflow-auto max-h-60">
-                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap"></pre>
+                <pre id="code-output" class="text-xs font-mono text-slate-600 dark:text-slate-300 whitespace-pre-wrap" role="status" aria-live="polite"></pre>
              </div>
           </div>
           
@@ -287,11 +379,14 @@
         
       </div>
 
-      
-      <div class="seo-content space-y-12 mt-16 ">
+      <!-- ARIA live region for animation updates -->
+      <div id="anim-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This CSS Animation Generator</h2>
+      
+      <div class="seo-content space-y-12 mt-16">
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-heading">
+            <h2 id="howto-heading" class="text-2xl font-bold mb-4">How to Use This CSS Animation Generator</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Getting a production-ready CSS animation from this tool takes just a few seconds. No account, no install, no trial limits — everything runs right in your browser. Here is how:
             </p>
@@ -308,8 +403,8 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Use Cases for CSS Animations</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
+            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Use Cases for CSS Animations</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                CSS animations are everywhere in modern web design. Here are the most common scenarios where this generator saves you time:
             </p>
@@ -325,8 +420,8 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a CSS Animation Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a CSS Animation Generator</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                You could write keyframes by hand — plenty of developers do. But a visual generator eliminates the most tedious part of the workflow: the constant save-refresh-check cycle. When you can see the animation update in real time as you adjust duration, timing, and direction, you stop guessing and start designing.
             </p>
@@ -338,62 +433,62 @@
             </p>
          </section>
          
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">What Are Keyframes?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="keyframes-heading">
+            <h2 id="keyframes-heading" class="text-2xl font-bold mb-4">What Are Keyframes?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Keyframes define the styles that an element will have at specific points during the animation. You use percentage values to mark those points: 0% is the start, 100% is the end, and you can add intermediate steps like 25%, 50%, or 75% for more complex motion paths.
             </p>
             <ul class="space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>0% (from):</strong> The starting state of the element before the animation begins.</li>
-               <li><strong>50%:</strong> The midpoint—useful for bounce, pulse, or shake effects where the element reverses direction.</li>
+               <li><strong>50%:</strong> The midpoint — useful for bounce, pulse, or shake effects where the element reverses direction.</li>
                <li><strong>100% (to):</strong> The ending state. The browser interpolates all properties between keyframes automatically.</li>
             </ul>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
-               You can change any CSS property inside keyframes—transform, opacity, color, border-radius, box-shadow, and more. However, for performance, animating only <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> is strongly recommended. For detailed browser compatibility data, check the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" target="_blank" rel="noopener noreferrer">MDN reference on @keyframes</a>.
+               You can change any CSS property inside keyframes — transform, opacity, color, border-radius, box-shadow, and more. However, for performance, animating only <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> is strongly recommended. For detailed browser compatibility data, check the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" target="_blank" rel="noopener noreferrer">MDN reference on @keyframes</a>.
             </p>
          </section>
 
-         <section>
-            <h2 class="text-2xl font-bold mb-6 text-center">Common Animation Types</h2>
+         <section aria-labelledby="types-heading">
+            <h2 id="types-heading" class="text-2xl font-bold mb-6 text-center">Common Animation Types</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                <div class="glass-card p-6 text-center">
                   <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-arrows-alt-h"></i></span>
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-arrows-alt-h"></i></span>
                      Move / Slide
                   </h3>
                   <p class="text-xs text-slate-500">Translates an element along the X or Y axis. Used for sliding panels, tooltips, and entrance effects.</p>
                </div>
                <div class="glass-card p-6 text-center">
                   <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-sync-alt"></i></span>
+                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-sync-alt"></i></span>
                      Rotate
                   </h3>
                   <p class="text-xs text-slate-500">Spins an element around its center point. Common for loading spinners and refresh icons.</p>
                </div>
                <div class="glass-card p-6 text-center">
                   <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-expand-arrows-alt"></i></span>
+                     <span class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-expand-arrows-alt"></i></span>
                      Scale / Pulse
                   </h3>
                   <p class="text-xs text-slate-500">Grows or shrinks an element. Pulse animations cycle between normal and enlarged states for attention.</p>
                </div>
                <div class="glass-card p-6 text-center">
                   <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-arrow-down"></i></span>
+                     <span class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-arrow-down"></i></span>
                      Bounce
                   </h3>
                   <p class="text-xs text-slate-500">Moves an element up and down to simulate a bouncing ball. Great for scroll indicators and notifications.</p>
                </div>
                <div class="glass-card p-6 text-center">
                   <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-exchange-alt"></i></span>
+                     <span class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-exchange-alt"></i></span>
                      Flip
                   </h3>
                   <p class="text-xs text-slate-500">Rotates an element in 3D perspective. Used for card flips, toggles, and reveal effects.</p>
                </div>
                <div class="glass-card p-6 text-center">
                   <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center text-sm"><i class="fas fa-eye"></i></span>
+                     <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-eye"></i></span>
                      Fade
                   </h3>
                   <p class="text-xs text-slate-500">Gradually changes opacity from visible to hidden. The simplest and most widely used animation type.</p>
@@ -401,8 +496,8 @@
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How CSS Animations Work</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How CSS Animations Work</h2>
             
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                A CSS animation is controlled by several sub-properties that work together:
@@ -410,7 +505,7 @@
             <ul class="space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>animation-name:</strong> References the @keyframes rule to apply.</li>
                <li><strong>animation-duration:</strong> How long one cycle takes (e.g., 1s, 500ms).</li>
-               <li><strong>animation-timing-function:</strong> The speed curve—ease, linear, ease-in-out, or custom cubic-bezier values.</li>
+               <li><strong>animation-timing-function:</strong> The speed curve — ease, linear, ease-in-out, or custom cubic-bezier values.</li>
                <li><strong>animation-iteration-count:</strong> How many times to repeat (a number or infinite).</li>
                <li><strong>animation-direction:</strong> Whether to play normal, reverse, or alternate back and forth.</li>
                <li><strong>animation-delay:</strong> Time to wait before starting.</li>
@@ -418,8 +513,8 @@
             </ul>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Best Practices for Web Animations</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="bestpractices-heading">
+            <h2 id="bestpractices-heading" class="text-2xl font-bold mb-4">Best Practices for Web Animations</h2>
             <ul class="space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Animate only transform and opacity:</strong> These properties are handled by the compositor thread and skip layout and paint, resulting in 60fps animations.</li>
                <li><strong>Keep durations short:</strong> UI animations should be between 200ms and 500ms. Longer durations feel sluggish; shorter ones feel jarring.</li>
@@ -427,11 +522,11 @@
                <li><strong>Respect prefers-reduced-motion:</strong> Wrap animations in a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@media (prefers-reduced-motion: no-preference)</code> query to disable motion for users who need it.</li>
                <li><strong>Avoid animating layout properties:</strong> Never animate width, height, margin, padding, or top/left. These trigger expensive layout recalculations.</li>
             </ul>
-            <p class="mt-4 text-slate-500 text-sm">When designing animated components, make sure to <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a> that look good in both static and animated states—subtle color shifts during animation feel more polished than dramatic changes.</p>
+            <p class="mt-4 text-slate-500 text-sm">When designing animated components, make sure to <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a> that look good in both static and animated states — subtle color shifts during animation feel more polished than dramatic changes.</p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Performance Tips</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="perf-heading">
+            <h2 id="perf-heading" class="text-2xl font-bold mb-4">Performance Tips</h2>
             <ul class="space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Use will-change sparingly:</strong> Add <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change: transform</code> to elements you know will animate, but remove it after the animation ends to free memory.</li>
                <li><strong>Promote to its own layer:</strong> Elements with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform: translateZ(0)</code> get their own compositing layer, preventing repaints of sibling elements.</li>
@@ -441,8 +536,8 @@
             <p class="mt-4 text-slate-500 text-sm">If your animations involve color transitions, you may need to <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> or HSL for smoother interpolation between color stops. To <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that work well in animated UIs, read our palette guide.</p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-heading">
+            <h2 id="why-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                I was working on a dashboard project and needed five different animations — a fade-in for cards, a bounce for notification dots, a rotate for the loading spinner, a slide for the sidebar, and a pulse for a live status indicator. Each one is simple on its own, but writing and tweaking the keyframes one by one ate up an entire afternoon. I kept switching between my editor and the browser, changing a value, refreshing, checking, repeating.
             </p>
@@ -454,8 +549,8 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-5">
                <div>
                   <h3 class="font-semibold mb-1">What is CSS animation?</h3>
@@ -473,52 +568,56 @@
                   <h3 class="font-semibold mb-1">How to optimize animations for performance?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">Only animate transform and opacity properties. Use will-change on animated elements, avoid animating width, height, top, or left, and respect the prefers-reduced-motion media query for accessibility.</p>
                </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Is this CSS animation generator free?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Yes, completely free with no signup or account required. Select an animation type, customize the settings, preview it live, and copy the CSS code directly into your project.</p>
+               </div>
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card text-center">
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/css-animation-generator/&text=Create%20custom%20CSS%20animations%20with%20live%20preview%20using%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fcss-animation-generator%2F&text=Create%20custom%20CSS%20animations%20with%20live%20preview%20using%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter (opens in new tab)">
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/css-animation-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fcss-animation-generator%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook (opens in new tab)">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/css-animation-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fcss-animation-generator%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn (opens in new tab)">
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20CSS%20Animation%20Generator%20https://devpalettes.com/css-animation-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                <a href="https://wa.me/?text=Check%20out%20this%20free%20CSS%20Animation%20Generator%20https%3A%2F%2Fdevpalettes.com%2Fcss-animation-generator%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp (opens in new tab)">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
           </section>
 
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Related Tools</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Pair your animations with these free CSS tools:</p>
             <div class="flex flex-wrap justify-center gap-3">
-               <a href="/glassmorphism-generator/" title="Create frosted glass CSS effects" class="btn-secondary text-xs py-2 px-4">Glassmorphism Generator</a>
-               <a href="/neumorphism-generator/" title="Create soft UI neumorphism effects" class="btn-secondary text-xs py-2 px-4">Neumorphism Generator</a>
-               <a href="/box-shadow-generator/" title="Design box shadows visually" class="btn-secondary text-xs py-2 px-4">Box Shadow Generator</a>
-               <a href="/css-grid-generator/" title="Build CSS Grid layouts visually" class="btn-secondary text-xs py-2 px-4">CSS Grid Builder</a>
-               <a href="/gradient/" title="Create custom CSS gradients" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
-               <a href="/palettes/" title="Browse and create color palettes" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
-               <a href="/converter/" title="Convert HEX, RGB, and HSL colors" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-               <a href="/flexbox/" title="Experiment with Flexbox layouts" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
+               <a href="/glassmorphism-generator/" class="btn-secondary text-xs py-2 px-4">Glassmorphism Generator</a>
+               <a href="/neumorphism-generator/" class="btn-secondary text-xs py-2 px-4">Neumorphism Generator</a>
+               <a href="/box-shadow-generator/" class="btn-secondary text-xs py-2 px-4">Box Shadow Generator</a>
+               <a href="/css-grid-generator/" class="btn-secondary text-xs py-2 px-4">CSS Grid Builder</a>
+               <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+               <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/flexbox/" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
             </div>
          </section>
 
          <div class="text-center py-10 mt-4">
             <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
                <span class="text-slate-400 text-sm">Built by</span>
-               <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+               <a href="https://devpalettes.com" class="text-slate-800 dark:text-slate-200 text-sm font-bold hover:underline">DevPalettes</a>
                <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
             </div>
          </div>
@@ -529,8 +628,9 @@
     </div>
   </main>
   <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/css-animation-generator.js"></script>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/css-animation-generator.js" defer></script>
 </body>
 </html>
