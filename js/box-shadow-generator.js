@@ -7,15 +7,7 @@
   var codeStatus = document.getElementById('code-status');
   var ariaAnnouncer = document.getElementById('aria-announcer');
 
-  // Bind both input and change events for live slider feedback
-  var controls = ['sh-x', 'sh-y', 'sh-blur', 'sh-spread', 'sh-color', 'sh-op', 'sh-inset'];
-  controls.forEach(function(id) {
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('input', updateShadow);
-    el.addEventListener('change', updateShadow);
-  });
-
+  // Define updateShadow BEFORE referencing it in event listeners
   window.updateShadow = function() {
       var x = document.getElementById('sh-x').value;
       var y = document.getElementById('sh-y').value;
@@ -52,6 +44,15 @@
         }
       }, 300);
   };
+
+  // Bind both input and change events for live slider feedback
+  var controls = ['sh-x', 'sh-y', 'sh-blur', 'sh-spread', 'sh-color', 'sh-op', 'sh-inset'];
+  controls.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('input', updateShadow);
+    el.addEventListener('change', updateShadow);
+  });
   
   function generateCode(val) {
       var css = '.shadow-box {\n  box-shadow: ' + val + ';\n}';
