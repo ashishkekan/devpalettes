@@ -670,6 +670,7 @@ const NAV_CATEGORIES = [
       { label: 'Glassmorphism CSS Generator', path: 'glassmorphism-generator/' },
       { label: 'Neumorphism CSS Generator', path: 'neumorphism-generator/' },
       { label: 'CSS Clip Path Generator', path: 'clip-path-generator/' },
+      { label: 'CSS Effects Library', path: 'css-effects-library/'},
     ]
   },
   {
