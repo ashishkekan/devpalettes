@@ -50,14 +50,23 @@
     180: '180×180 — Apple'
   };
 
+  // ── Accessibility: Announce to aria-live region ──
+  function announce(message) {
+    var liveRegion = document.getElementById('toast-live-region');
+    if (liveRegion) {
+      liveRegion.textContent = message;
+    }
+  }
+
   // ── Toast ──
   function showToast(message, type) {
     const container = document.getElementById('toast-container');
     const toast = document.createElement('div');
     const colors = { success: 'bg-emerald-500', error: 'bg-red-500', info: 'bg-blue-500' };
     toast.className = `${colors[type] || colors.info} text-white px-5 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 transform translate-x-full transition-transform duration-300`;
+    toast.setAttribute('role', 'status');
     const icons = { success: 'fa-circle-check', error: 'fa-circle-xmark', info: 'fa-circle-info' };
-    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${message}`;
+    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}" aria-hidden="true"></i> ${message}`;
     container.appendChild(toast);
     requestAnimationFrame(() => {
       toast.classList.remove('translate-x-full');
@@ -68,6 +77,8 @@
       toast.classList.add('translate-x-full');
       setTimeout(() => toast.remove(), 300);
     }, 2500);
+    // Accessibility: Announce
+    announce(message);
   }
 
   // ── Format Bytes ──
@@ -127,14 +138,13 @@
         state.sourceWidth = img.naturalWidth;
         state.sourceHeight = img.naturalHeight;
 
-        // Show preview
         els.sourcePreview.src = e.target.result;
+        els.sourcePreview.alt = 'Preview of uploaded image: ' + file.name;
         els.sourceName.textContent = file.name;
         els.sourceDimensions.textContent = `${img.naturalWidth} × ${img.naturalHeight} px · ${formatBytes(file.size)}`;
         els.dropZoneContent.classList.add('hidden');
         els.dropZonePreview.classList.remove('hidden');
 
-        // Update stats
         setStat(els.statSource, formatBytes(file.size), true);
 
         updateValidation({
@@ -145,6 +155,8 @@
           'ico-created': false,
           'ready-download': false
         });
+
+        announce('Image loaded: ' + file.name + ', ' + img.naturalWidth + ' by ' + img.naturalHeight + ' pixels');
       };
       img.onerror = function () {
         showToast('Failed to load image. File may be corrupted.', 'error');
@@ -161,10 +173,8 @@
     canvas.height = size;
     const ctx = canvas.getContext('2d');
 
-    // Clear with transparent
     ctx.clearRect(0, 0, size, size);
 
-    // Calculate draw dimensions maintaining aspect ratio
     const srcW = state.sourceImage.naturalWidth;
     const srcH = state.sourceImage.naturalHeight;
     const aspect = srcW / srcH;
@@ -205,7 +215,6 @@
       const dirSize = dirEntrySize * count;
       let dataOffset = headerSize + dirSize;
 
-      // Calculate total size
       let totalPNGSize = 0;
       const pngArrays = [];
       let loadCount = 0;
@@ -227,10 +236,9 @@
         const view = new DataView(buffer);
         const uint8 = new Uint8Array(buffer);
 
-        // Header
-        view.setUint16(0, 0, true);       // Reserved
-        view.setUint16(2, 1, true);       // Type: ICO
-        view.setUint16(4, count, true);   // Count
+        view.setUint16(0, 0, true);
+        view.setUint16(2, 1, true);
+        view.setUint16(4, count, true);
 
         let offset = dataOffset;
         for (let i = 0; i < count; i++) {
@@ -238,19 +246,18 @@
           const pngSize = pngArrays[i].byteLength;
           const dirOffset = headerSize + (i * dirEntrySize);
 
-          uint8[dirOffset] = s >= 256 ? 0 : s;     // Width
-          uint8[dirOffset + 1] = s >= 256 ? 0 : s; // Height
-          uint8[dirOffset + 2] = 0;                 // Color palette
-          uint8[dirOffset + 3] = 0;                 // Reserved
-          view.setUint16(dirOffset + 4, 1, true);   // Color planes
-          view.setUint16(dirOffset + 6, 32, true);  // Bits per pixel
-          view.setUint32(dirOffset + 8, pngSize, true); // Image size
-          view.setUint32(dirOffset + 12, offset, true); // Offset
+          uint8[dirOffset] = s >= 256 ? 0 : s;
+          uint8[dirOffset + 1] = s >= 256 ? 0 : s;
+          uint8[dirOffset + 2] = 0;
+          uint8[dirOffset + 3] = 0;
+          view.setUint16(dirOffset + 4, 1, true);
+          view.setUint16(dirOffset + 6, 32, true);
+          view.setUint32(dirOffset + 8, pngSize, true);
+          view.setUint32(dirOffset + 12, offset, true);
 
           offset += pngSize;
         }
 
-        // Write PNG data
         let writeOffset = dataOffset;
         for (let i = 0; i < count; i++) {
           uint8.set(pngArrays[i], writeOffset);
@@ -278,8 +285,8 @@
     state.generateICO = els.optIco.checked;
     setStat(els.statStatus, 'Working...', false);
     els.statStatus.className = 'text-3xl font-bold text-amber-500';
+    announce('Generating favicons...');
 
-    // Small delay for UI update
     await new Promise(r => setTimeout(r, 50));
 
     try {
@@ -292,7 +299,6 @@
         state.generatedIcons.push({ size, blob, dataUrl });
       }
 
-      // Generate ICO
       state.icoBlob = null;
       if (state.generateICO) {
         const icoSizes = sizes.filter(s => s <= 256);
@@ -302,7 +308,6 @@
         }
       }
 
-      // Update stats
       const iconCount = state.generatedIcons.length;
       const formatCount = iconCount + (state.icoBlob ? 1 : 0);
       setStat(els.statIcons, iconCount, true);
@@ -310,13 +315,11 @@
       setStat(els.statStatus, 'Done', false);
       els.statStatus.className = 'text-3xl font-bold text-emerald-500';
 
-      // Render previews
       renderGridPreview();
       renderTabsPreview();
       renderExportList();
       renderHTMLCode();
 
-      // Validation
       updateValidation({
         'has-image': true,
         'valid-format': true,
@@ -352,7 +355,7 @@
       html += `
         <div class="flex flex-col items-center gap-2">
           <div class="flex items-center justify-center" style="width:${displaySize + 24}px;height:${displaySize + 24}px;">
-            <img src="${icon.dataUrl}" width="${icon.size}" height="${icon.size}" alt="${icon.size}x${icon.size} favicon" class="border border-slate-200 dark:border-slate-700 rounded" style="image-rendering: ${icon.size <= 32 ? 'pixelated' : 'auto'};">
+            <img src="${icon.dataUrl}" width="${icon.size}" height="${icon.size}" alt="${icon.size}x${icon.size} favicon preview" class="border border-slate-200 dark:border-slate-700 rounded" style="image-rendering: ${icon.size <= 32 ? 'pixelated' : 'auto'};">
           </div>
           <span class="text-xs text-slate-500 font-mono text-center">${sizeLabels[icon.size] || icon.size + '×' + icon.size}</span>
           <span class="text-[10px] text-slate-400">${formatBytes(icon.blob.size)}</span>
@@ -363,7 +366,7 @@
       html += `
         <div class="flex flex-col items-center gap-2">
           <div class="flex items-center justify-center" style="width:56px;height:56px;">
-            <div class="w-8 h-8 rounded border-2 border-dashed border-purple-400 dark:border-purple-500 flex items-center justify-center bg-purple-500/10">
+            <div class="w-8 h-8 rounded border-2 border-dashed border-purple-400 dark:border-purple-500 flex items-center justify-center bg-purple-500/10" aria-hidden="true">
               <i class="fas fa-file text-purple-500 text-xs"></i>
             </div>
           </div>
@@ -392,9 +395,9 @@
       const active = i === 0;
       tabsHtml += `
         <div class="flex items-center gap-2 px-4 py-2.5 text-xs whitespace-nowrap border-r border-slate-200 dark:border-slate-700 ${active ? 'bg-white dark:bg-slate-900 text-slate-700 dark:text-slate-200' : 'text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50'}" style="min-width:140px;">
-          ${tab.icon ? `<img src="${tab.icon}" width="16" height="16" alt="" class="flex-shrink-0" style="image-rendering:pixelated;">` : '<span class="w-4 h-4 flex-shrink-0"></span>'}
+          ${tab.icon ? `<img src="${tab.icon}" width="16" height="16" alt="" aria-hidden="true" class="flex-shrink-0" style="image-rendering:pixelated;">` : '<span class="w-4 h-4 flex-shrink-0" aria-hidden="true"></span>'}
           <span class="truncate">${tab.title}</span>
-          ${active ? '<span class="ml-auto text-slate-400 hover:text-slate-600"><i class="fas fa-xmark text-[10px]"></i></span>' : ''}
+          ${active ? '<span class="ml-auto text-slate-400 hover:text-slate-600" aria-hidden="true"><i class="fas fa-xmark text-[10px]"></i></span>' : ''}
         </div>
       `;
     });
@@ -412,12 +415,12 @@
       html += `
         <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
           <div class="flex items-center gap-3">
-            <img src="${icon.dataUrl}" width="16" height="16" alt="" style="image-rendering:${icon.size <= 32 ? 'pixelated' : 'auto'};" class="rounded">
+            <img src="${icon.dataUrl}" width="16" height="16" alt="" aria-hidden="true" style="image-rendering:${icon.size <= 32 ? 'pixelated' : 'auto'};" class="rounded">
             <span class="text-xs font-mono text-slate-600 dark:text-slate-400">${filename}</span>
             <span class="text-[10px] text-slate-400">${formatBytes(icon.blob.size)}</span>
           </div>
-          <button class="download-single p-1.5 rounded-lg hover:bg-emerald-500 hover:text-white transition-all text-slate-400 text-xs" data-size="${icon.size}" title="Download">
-            <i class="fas fa-download"></i>
+          <button class="download-single p-1.5 rounded-lg hover:bg-emerald-500 hover:text-white transition-all text-slate-400 text-xs" data-size="${icon.size}" aria-label="Download ${filename}" type="button">
+            <i class="fas fa-download" aria-hidden="true"></i>
           </button>
         </div>
       `;
@@ -427,12 +430,12 @@
       html += `
         <div class="flex items-center justify-between px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700">
           <div class="flex items-center gap-3">
-            <i class="fas fa-file text-purple-500 text-xs"></i>
+            <i class="fas fa-file text-purple-500 text-xs" aria-hidden="true"></i>
             <span class="text-xs font-mono text-slate-600 dark:text-slate-400">favicon.ico</span>
             <span class="text-[10px] text-slate-400">${formatBytes(state.icoBlob.size)}</span>
           </div>
-          <button class="download-ico p-1.5 rounded-lg hover:bg-emerald-500 hover:text-white transition-all text-slate-400 text-xs" title="Download">
-            <i class="fas fa-download"></i>
+          <button class="download-ico p-1.5 rounded-lg hover:bg-emerald-500 hover:text-white transition-all text-slate-400 text-xs" aria-label="Download favicon.ico" type="button">
+            <i class="fas fa-download" aria-hidden="true"></i>
           </button>
         </div>
       `;
@@ -498,7 +501,7 @@
 
     try {
       if (typeof JSZip === 'undefined') {
-        showToast('JSZip library not loaded', 'error');
+        showToast('JSZip library not loaded. Please refresh the page.', 'error');
         return;
       }
 
@@ -513,7 +516,6 @@
         zip.file('favicon.ico', state.icoBlob);
       }
 
-      // Add HTML code file
       const htmlCode = els.htmlCodeOutput.textContent;
       zip.file('favicon-code.html', `<!-- Place these tags in your <head> section -->\n${htmlCode}\n`);
 
@@ -536,6 +538,7 @@
     els.dropZoneContent.classList.remove('hidden');
     els.dropZonePreview.classList.add('hidden');
     els.sourcePreview.src = '';
+    els.sourcePreview.alt = 'Source preview';
     els.sourceName.textContent = '';
     els.sourceDimensions.textContent = '';
     els.fileInput.value = '';
@@ -562,12 +565,21 @@
     });
 
     showToast('All cleared', 'info');
+    announce('All fields cleared');
   }
 
   // ── Event Listeners ──
 
   // Drop zone click
   els.dropZone.addEventListener('click', () => els.fileInput.click());
+
+  // Accessibility: Drop zone keyboard activation
+  els.dropZone.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      els.fileInput.click();
+    }
+  });
 
   // File input change
   els.fileInput.addEventListener('change', function () {
@@ -616,19 +628,40 @@
   // Download ZIP
   els.downloadZipBtn.addEventListener('click', downloadZip);
 
-  // Preview Tabs
+  // Preview Tabs — Accessibility: ARIA tabs with arrow keys
   document.querySelectorAll('.preview-tab').forEach(tab => {
     tab.addEventListener('click', function () {
       document.querySelectorAll('.preview-tab').forEach(t => {
         t.classList.remove('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
         t.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+        t.setAttribute('aria-selected', 'false');
       });
       this.classList.add('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
       this.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+      this.setAttribute('aria-selected', 'true');
 
       const view = this.getAttribute('data-view');
       document.querySelectorAll('.preview-panel').forEach(p => p.classList.add('hidden'));
       document.getElementById(`view-${view}`).classList.remove('hidden');
+
+      announce(view.charAt(0).toUpperCase() + view.slice(1) + ' view selected');
+    });
+
+    // Accessibility: Arrow key navigation for tabs
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        var tabs = Array.from(document.querySelectorAll('.preview-tab'));
+        var currentIndex = tabs.indexOf(this);
+        var newIndex;
+        if (e.key === 'ArrowRight') {
+          newIndex = (currentIndex + 1) % tabs.length;
+        } else {
+          newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        }
+        e.preventDefault();
+        tabs[newIndex].focus();
+        tabs[newIndex].click();
+      }
     });
   });
 
@@ -659,7 +692,7 @@
     'ready-download': false
   });
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  // ── FAQ Toggle — Accessibility: aria-expanded + aria-controls + keyboard ──
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -670,6 +703,7 @@
     faqToggles.forEach(function (toggle) {
       var clone = toggle.cloneNode(true);
       toggle.parentNode.replaceChild(clone, toggle);
+
       clone.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
@@ -681,13 +715,23 @@
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
+        }
+      });
+
+      // Accessibility: Keyboard Enter/Space for FAQ
+      clone.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
         }
       });
     });

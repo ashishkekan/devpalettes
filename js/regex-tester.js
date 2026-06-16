@@ -33,10 +33,19 @@
     statFlags: document.getElementById('stat-flags'),
     statStatus: document.getElementById('stat-status'),
     validationList: document.getElementById('validation-list'),
-    copyLinkBtn: document.getElementById('copy-link-btn')
+    copyLinkBtn: document.getElementById('copy-link-btn'),
+    clipboardAnnouncer: document.getElementById('clipboard-announcer')
   };
 
   let debounceTimer = null;
+
+  // ── Announce to Screen Readers ──
+  function announce(message) {
+    if (els.clipboardAnnouncer) {
+      els.clipboardAnnouncer.textContent = message;
+      setTimeout(function() { els.clipboardAnnouncer.textContent = ''; }, 2000);
+    }
+  }
 
   // ── Build Flags String ──
   function buildFlags() {
@@ -67,7 +76,7 @@
 
     // Update char/line count
     const lines = testStr ? testStr.split('\n').length : 0;
-    els.testStringCount.textContent = `${testStr.length} chars · ${lines} line${lines !== 1 ? 's' : ''}`;
+    els.testStringCount.textContent = testStr.length + ' chars \u00B7 ' + lines + ' line' + (lines !== 1 ? 's' : '');
 
     // Update flags stat
     els.statFlags.textContent = flags || 'None';
@@ -96,6 +105,7 @@
       state.isValid = true;
       state.error = '';
       els.patternError.classList.add('hidden');
+      els.patternError.removeAttribute('role');
       els.statValid.textContent = 'Yes';
       els.statValid.className = 'text-3xl font-bold text-emerald-500';
     } catch (e) {
@@ -104,15 +114,16 @@
       state.matches = [];
       els.patternError.textContent = e.message;
       els.patternError.classList.remove('hidden');
+      els.patternError.setAttribute('role', 'alert');
       els.statValid.textContent = 'No';
       els.statValid.className = 'text-3xl font-bold text-red-500';
       els.statMatches.textContent = '0';
       els.statMatches.className = 'text-3xl font-bold text-slate-400';
       els.statStatus.textContent = 'Error';
       els.statStatus.className = 'text-3xl font-bold text-red-500';
-      els.highlightContent.innerHTML = `<span class="text-red-400"><i class="fas fa-triangle-exclamation mr-2"></i>Invalid regex: ${escapeHTML(e.message)}</span>`;
+      els.highlightContent.innerHTML = '<span class="text-red-400"><i class="fas fa-triangle-exclamation mr-2" aria-hidden="true"></i>Invalid regex: ' + escapeHTML(e.message) + '</span>';
       els.matchDetails.textContent = 'Fix the regex pattern to see match details';
-      els.generatedCode.textContent = `// Invalid regex pattern`;
+      els.generatedCode.textContent = '// Invalid regex pattern';
       els.outputInfo.textContent = 'Pattern contains syntax errors';
       updateValidation({
         'has-pattern': true,
@@ -209,8 +220,8 @@
 
     // Output info
     if (count > 0) {
-      const totalLen = matches.reduce((s, m) => s + m.value.length, 0);
-      els.outputInfo.textContent = `${count} match${count > 1 ? 'es' : ''} found · ${totalLen} characters matched`;
+      const totalLen = matches.reduce(function(s, m) { return s + m.value.length; }, 0);
+      els.outputInfo.textContent = count + ' match' + (count > 1 ? 'es' : '') + ' found \u00B7 ' + totalLen + ' characters matched';
     } else {
       els.outputInfo.textContent = 'Pattern is valid but no matches found';
     }
@@ -236,13 +247,13 @@
     let html = '';
     let lastIndex = 0;
 
-    matches.forEach((match, i) => {
+    matches.forEach(function(match, i) {
       // Text before match
       if (match.index > lastIndex) {
         html += escapeHTML(text.slice(lastIndex, match.index));
       }
       // Highlighted match
-      html += `<span class="regex-highlight bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 rounded px-0.5 border-b-2 border-emerald-500" title="Match ${i + 1}: index ${match.index}–${match.endIndex}">${escapeHTML(match.value)}</span>`;
+      html += '<span class="regex-highlight bg-emerald-500/25 text-emerald-700 dark:text-emerald-300 rounded px-0.5 border-b-2 border-emerald-500" title="Match ' + (i + 1) + ': index ' + match.index + '\u2013' + match.endIndex + '">' + escapeHTML(match.value) + '</span>';
       lastIndex = match.endIndex;
     });
 
@@ -264,32 +275,34 @@
     const displayMatches = matches.slice(0, 100);
     let html = '';
 
-    displayMatches.forEach((match, i) => {
-      html += `<div class="mb-4 pb-4 ${i < displayMatches.length - 1 ? 'border-b border-slate-200 dark:border-slate-700' : ''}">`;
-      html += `<div class="flex items-center gap-2 mb-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">${i + 1}</span><span class="font-semibold text-slate-800 dark:text-slate-200">"${escapeHTML(match.value)}"</span><span class="text-xs text-slate-400 ml-auto">index ${match.index}–${match.endIndex}</span></div>`;
+    displayMatches.forEach(function(match, i) {
+      html += '<div class="mb-4 pb-4 ' + (i < displayMatches.length - 1 ? 'border-b border-slate-200 dark:border-slate-700' : '') + '">';
+      html += '<div class="flex items-center gap-2 mb-2"><span class="inline-flex items-center justify-center w-6 h-6 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">' + (i + 1) + '</span><span class="font-semibold text-slate-800 dark:text-slate-200">"' + escapeHTML(match.value) + '"</span><span class="text-xs text-slate-400 ml-auto">index ' + match.index + '\u2013' + match.endIndex + '</span></div>';
 
       if (match.groups.length > 0) {
-        html += `<div class="ml-8 space-y-1">`;
-        match.groups.forEach((group, gi) => {
+        html += '<div class="ml-8 space-y-1">';
+        match.groups.forEach(function(group, gi) {
           if (group !== undefined) {
-            html += `<div class="flex items-center gap-2 text-xs"><span class="text-purple-500 font-mono">Group ${gi + 1}:</span><span class="bg-purple-500/10 px-2 py-0.5 rounded font-mono text-purple-700 dark:text-purple-300">"${escapeHTML(group)}"</span></div>`;
+            html += '<div class="flex items-center gap-2 text-xs"><span class="text-purple-500 font-mono">Group ' + (gi + 1) + ':</span><span class="bg-purple-500/10 px-2 py-0.5 rounded font-mono text-purple-700 dark:text-purple-300">"' + escapeHTML(group) + '"</span></div>';
           } else {
-            html += `<div class="flex items-center gap-2 text-xs"><span class="text-slate-400 font-mono">Group ${gi + 1}:</span><span class="text-slate-400">undefined</span></div>`;
+            html += '<div class="flex items-center gap-2 text-xs"><span class="text-slate-400 font-mono">Group ' + (gi + 1) + ':</span><span class="text-slate-400">undefined</span></div>';
           }
         });
         if (match.namedGroups) {
-          Object.entries(match.namedGroups).forEach(([name, val]) => {
-            html += `<div class="flex items-center gap-2 text-xs"><span class="text-blue-500 font-mono">&lt;${escapeHTML(name)}&gt;:</span><span class="bg-blue-500/10 px-2 py-0.5 rounded font-mono text-blue-700 dark:text-blue-300">"${escapeHTML(val)}"</span></div>`;
+          Object.entries(match.namedGroups).forEach(function(entry) {
+            var name = entry[0];
+            var val = entry[1];
+            html += '<div class="flex items-center gap-2 text-xs"><span class="text-blue-500 font-mono">&lt;' + escapeHTML(name) + '&gt;:</span><span class="bg-blue-500/10 px-2 py-0.5 rounded font-mono text-blue-700 dark:text-blue-300">"' + escapeHTML(val) + '"</span></div>';
           });
         }
-        html += `</div>`;
+        html += '</div>';
       }
 
-      html += `</div>`;
+      html += '</div>';
     });
 
     if (matches.length > 100) {
-      html += `<div class="text-xs text-slate-400 text-center pt-2">Showing first 100 of ${matches.length} matches</div>`;
+      html += '<div class="text-xs text-slate-400 text-center pt-2">Showing first 100 of ' + matches.length + ' matches</div>';
     }
 
     els.matchDetails.innerHTML = html;
@@ -307,7 +320,7 @@
     }
     const flags = state.flags || '';
     const escaped = state.pattern.replace(/\\/g, '\\\\').replace(/`/g, '\\`');
-    els.generatedCode.textContent = `const regex = new RegExp('${escaped}', '${flags}');`;
+    els.generatedCode.textContent = "const regex = new RegExp('" + escaped + "', '" + flags + "');";
   }
 
   // ── Reset Output ──
@@ -318,7 +331,7 @@
 
     els.statMatches.textContent = '0';
     els.statMatches.className = 'text-3xl font-bold text-slate-400';
-    els.statValid.textContent = '—';
+    els.statValid.textContent = '\u2014';
     els.statValid.className = 'text-3xl font-bold text-slate-400';
     els.statFlags.textContent = 'None';
     els.statFlags.className = 'text-3xl font-bold text-slate-400';
@@ -326,6 +339,7 @@
     els.statStatus.className = 'text-3xl font-bold text-slate-400';
 
     els.patternError.classList.add('hidden');
+    els.patternError.removeAttribute('role');
     els.highlightContent.innerHTML = '<span class="text-slate-400">Enter a regex pattern and test string to see highlighted matches here</span>';
     els.matchDetails.textContent = 'No match details yet';
     els.generatedCode.textContent = 'Enter a regex pattern to generate code snippets';
@@ -335,7 +349,7 @@
   // ── Validation Checklist ──
   function updateValidation(checks) {
     const items = els.validationList.querySelectorAll('[data-check]');
-    items.forEach(item => {
+    items.forEach(function(item) {
       const key = item.getAttribute('data-check');
       const icon = item.querySelector('i');
       const text = item.querySelector('span');
@@ -354,18 +368,18 @@
     const container = document.getElementById('toast-container');
     const toast = document.createElement('div');
     const colors = { success: 'bg-emerald-500', error: 'bg-red-500', info: 'bg-blue-500' };
-    toast.className = `${colors[type] || colors.info} text-white px-5 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 transform translate-x-full transition-transform duration-300`;
+    toast.className = (colors[type] || colors.info) + ' text-white px-5 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 transform translate-x-full transition-transform duration-300';
     const icons = { success: 'fa-circle-check', error: 'fa-circle-xmark', info: 'fa-circle-info' };
-    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${message}`;
+    toast.innerHTML = '<i class="fas ' + (icons[type] || icons.info) + '" aria-hidden="true"></i> ' + message;
     container.appendChild(toast);
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function() {
       toast.classList.remove('translate-x-full');
       toast.classList.add('translate-x-0');
     });
-    setTimeout(() => {
+    setTimeout(function() {
       toast.classList.remove('translate-x-0');
       toast.classList.add('translate-x-full');
-      setTimeout(() => toast.remove(), 300);
+      setTimeout(function() { toast.remove(); }, 300);
     }, 2500);
   }
 
@@ -377,7 +391,7 @@
     els.flagI.checked = false;
     els.flagM.checked = false;
     els.flagS.checked = false;
-    els.testStringCount.textContent = '0 chars · 0 lines';
+    els.testStringCount.textContent = '0 chars \u00B7 0 lines';
     resetOutput();
     updateValidation({
       'has-pattern': false,
@@ -388,17 +402,20 @@
       'ready-to-use': false
     });
     showToast('All fields cleared', 'info');
+    announce('All fields cleared');
   }
 
   // ── Copy ──
   function copyRegex() {
     if (!state.pattern || !state.isValid) {
       showToast('Enter a valid regex pattern first', 'error');
+      announce('Enter a valid regex pattern first');
       return;
     }
     const code = els.generatedCode.textContent;
-    navigator.clipboard.writeText(code).then(() => {
+    navigator.clipboard.writeText(code).then(function() {
       showToast('Regex code copied to clipboard', 'success');
+      announce('Regex code copied to clipboard');
     });
   }
 
@@ -450,21 +467,60 @@
     els.flagS.checked = preset.flags.includes('s');
 
     runRegex();
+    announce('Loaded ' + name + ' regex preset');
   }
 
-  // ── Preview Tabs ──
-  document.querySelectorAll('.preview-tab').forEach(tab => {
-    tab.addEventListener('click', function () {
-      document.querySelectorAll('.preview-tab').forEach(t => {
-        t.classList.remove('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
-        t.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
-      });
-      this.classList.add('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
-      this.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+  // ── Preview Tabs with ARIA ──
+  var tabButtons = document.querySelectorAll('.preview-tab');
+  var tabPanels = document.querySelectorAll('.preview-panel');
 
-      const view = this.getAttribute('data-view');
-      document.querySelectorAll('.preview-panel').forEach(p => p.classList.add('hidden'));
-      document.getElementById(`view-${view}`).classList.remove('hidden');
+  function activateTab(targetTab) {
+    tabButtons.forEach(function(t) {
+      t.classList.remove('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
+      t.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+      t.setAttribute('aria-selected', 'false');
+      t.setAttribute('tabindex', '-1');
+    });
+    targetTab.classList.add('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
+    targetTab.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+    targetTab.setAttribute('aria-selected', 'true');
+    targetTab.setAttribute('tabindex', '0');
+
+    var view = targetTab.getAttribute('data-view');
+    tabPanels.forEach(function(p) { p.classList.add('hidden'); });
+    var targetPanel = document.getElementById('view-' + view);
+    if (targetPanel) targetPanel.classList.remove('hidden');
+  }
+
+  tabButtons.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      activateTab(this);
+    });
+    // Keyboard navigation for tabs
+    tab.addEventListener('keydown', function(e) {
+      var tabList = Array.from(tabButtons);
+      var currentIndex = tabList.indexOf(this);
+      var newIndex;
+
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % tabList.length;
+        tabList[newIndex].focus();
+        activateTab(tabList[newIndex]);
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+        tabList[newIndex].focus();
+        activateTab(tabList[newIndex]);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        tabList[0].focus();
+        activateTab(tabList[0]);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        tabList[tabList.length - 1].focus();
+        activateTab(tabList[tabList.length - 1]);
+      }
     });
   });
 
@@ -485,11 +541,23 @@
   els.clearBtn.addEventListener('click', clearAll);
   els.copyBtn.addEventListener('click', copyRegex);
 
-  document.querySelectorAll('.preset-btn').forEach(btn => {
-    btn.addEventListener('click', function () {
+  document.querySelectorAll('.preset-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
       applyPreset(this.getAttribute('data-preset'));
     });
   });
+
+  // ── Copy Link Button ──
+  if (els.copyLinkBtn) {
+    els.copyLinkBtn.addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        showToast('Link copied to clipboard', 'success');
+        announce('Page link copied to clipboard');
+      }).catch(function() {
+        showToast('Failed to copy link', 'error');
+      });
+    });
+  }
 
   // ── Init ──
   updateValidation({
@@ -501,38 +569,52 @@
     'ready-to-use': false
   });
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
-  setTimeout(function initFaqToggles() {
+  // ─── FAQ Toggle with ARIA ───
+  function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
-    if (faqToggles.length === 0) {
-      setTimeout(initFaqToggles, 100);
-      return;
-    }
+    if (faqToggles.length === 0) return;
 
-    faqToggles.forEach(function (toggle) {
-      var clone = toggle.cloneNode(true);
-      toggle.parentNode.replaceChild(clone, toggle);
-      clone.addEventListener('click', function (e) {
+    faqToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function(e) {
         e.preventDefault();
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
+        var isExpanded = this.getAttribute('aria-expanded') === 'true';
         if (!content) return;
 
-        var isHidden = content.classList.contains('hidden');
-        if (isHidden) {
-          content.classList.remove('hidden');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
-        } else {
+        if (isExpanded) {
+          // Collapse
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
-          setTimeout(function () {
+          this.setAttribute('aria-expanded', 'false');
+          setTimeout(function() {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
+        } else {
+          // Expand
+          content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Keyboard: Enter or Space to toggle
+      toggle.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          this.click();
         }
       });
     });
-  }, 50);
+  }
+
+  // Initialize FAQ toggles after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFaqToggles);
+  } else {
+    initFaqToggles();
+  }
   
 })();

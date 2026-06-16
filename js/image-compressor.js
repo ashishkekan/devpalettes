@@ -120,7 +120,6 @@
   function handleFile(file) {
     if (!file) return;
 
-    // Validate type
     var validTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (validTypes.indexOf(file.type) === -1) {
       showToast('Invalid format. Please use JPG, PNG, or WebP.', 'error');
@@ -128,7 +127,6 @@
       return;
     }
 
-    // Validate size (20MB max)
     if (file.size > 20 * 1024 * 1024) {
       showToast('File too large. Maximum size is 20MB.', 'error');
       setCheck('file-size', false);
@@ -140,26 +138,21 @@
     setCheck('file-valid', true);
     setCheck('file-size', true);
 
-    // Update drop zone UI
     dropContent.classList.add('hidden');
     dropLoaded.classList.remove('hidden');
     dropFilename.textContent = file.name;
     dropFilesize.textContent = formatBytes(file.size);
 
-    // Read file
     var reader = new FileReader();
     reader.onload = function (e) {
       originalDataUrl = e.target.result;
-
-      // Set thumb
       dropThumb.src = originalDataUrl;
+      dropThumb.alt = 'Thumbnail of ' + file.name;
 
-      // Set before preview
       beforePlaceholder.classList.add('hidden');
       beforeImageWrap.classList.remove('hidden');
       beforeImage.src = originalDataUrl;
 
-      // Get dimensions
       var img = new Image();
       img.onload = function () {
         originalWidth = img.naturalWidth;
@@ -170,7 +163,6 @@
       };
       img.src = originalDataUrl;
 
-      // Update file info
       infoName.textContent = file.name;
       infoName.className = 'text-sm font-medium text-slate-700 dark:text-slate-300 truncate';
       infoOriginal.textContent = formatBytes(file.size);
@@ -197,7 +189,6 @@
       var w = img.naturalWidth;
       var h = img.naturalHeight;
 
-      // Resize if needed
       if (maxW > 0 && w > maxW) {
         var ratio = maxW / w;
         w = maxW;
@@ -213,7 +204,6 @@
       canvas.height = h;
       ctx.drawImage(img, 0, 0, w, h);
 
-      // For PNG, quality param is ignored by toBlob but we pass it anyway
       var qualityParam = outputFormat === 'png' ? undefined : quality;
 
       canvas.toBlob(function (blob) {
@@ -229,18 +219,15 @@
         urlReader.onload = function (e) {
           compressedDataUrl = e.target.result;
 
-          // Update after preview
           afterPlaceholder.classList.add('hidden');
           afterImageWrap.classList.remove('hidden');
           afterImage.src = compressedDataUrl;
 
-          // Update compare
           comparePlaceholder.classList.add('hidden');
           compareWrap.classList.remove('hidden');
           compareBefore.src = originalDataUrl;
           compareAfter.src = compressedDataUrl;
 
-          // Stats
           var originalSize = originalFile.size;
           var compressedSize = blob.size;
           var percentReduced = Math.max(0, ((originalSize - compressedSize) / originalSize) * 100);
@@ -274,12 +261,10 @@
           infoFormat.textContent = getFormatLabel(outputFormat) + ' (' + Math.round(quality * 100) + '% quality)';
           infoFormat.className = 'text-sm font-medium text-blue-600 dark:text-blue-400';
 
-          // Validation
           setCheck('compressed', true);
           setCheck('size-reduced', compressedSize < originalSize);
           setCheck('ready-download', true);
 
-          // Enable download
           downloadBtn.disabled = false;
           downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
         };
@@ -317,6 +302,14 @@
     }
   });
 
+  // Accessibility: Keyboard activation for drop zone
+  dropZone.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      fileInput.click();
+    }
+  });
+
   fileInput.addEventListener('change', function () {
     if (this.files.length > 0) {
       handleFile(this.files[0]);
@@ -335,8 +328,8 @@
     var val = this.value;
     qualityValue.textContent = val + '%';
     qualityBar.style.width = val + '%';
+    qualitySlider.setAttribute('aria-valuetext', val + ' percent quality');
 
-    // Color the bar based on value
     if (val >= 70) {
       qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-emerald-500';
     } else if (val >= 40) {
@@ -355,8 +348,10 @@
 
       document.querySelectorAll('.format-btn').forEach(function (b) {
         b.className = 'format-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400';
+        b.setAttribute('aria-checked', 'false');
       });
       this.className = 'format-btn active-format px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400';
+      this.setAttribute('aria-checked', 'true');
 
       debouncedCompress();
     });
@@ -376,6 +371,7 @@
       qualitySlider.value = preset.quality;
       qualityValue.textContent = preset.quality + '%';
       qualityBar.style.width = preset.quality + '%';
+      qualitySlider.setAttribute('aria-valuetext', preset.quality + ' percent quality');
 
       if (preset.quality >= 70) {
         qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-emerald-500';
@@ -385,12 +381,13 @@
         qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-red-500';
       }
 
-      // Set format
       outputFormat = preset.format;
       document.querySelectorAll('.format-btn').forEach(function (b) {
         b.className = 'format-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400';
+        b.setAttribute('aria-checked', 'false');
         if (b.getAttribute('data-format') === preset.format) {
           b.className = 'format-btn active-format px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400';
+          b.setAttribute('aria-checked', 'true');
         }
       });
 
@@ -406,8 +403,10 @@
 
       document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+        t.setAttribute('aria-selected', 'false');
       });
       this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+      this.setAttribute('aria-selected', 'true');
 
       document.getElementById('view-before').classList.toggle('hidden', view !== 'before');
       document.getElementById('view-after').classList.toggle('hidden', view !== 'after');
@@ -449,24 +448,25 @@
     qualityValue.textContent = '75%';
     qualityBar.style.width = '75%';
     qualityBar.className = 'h-full rounded-full transition-all duration-300 bg-emerald-500';
+    qualitySlider.setAttribute('aria-valuetext', '75 percent quality');
     maxWidthInput.value = '';
     maxHeightInput.value = '';
     outputFormat = 'jpeg';
 
-    // Reset format buttons
     document.querySelectorAll('.format-btn').forEach(function (b) {
       b.className = 'format-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 text-slate-600 dark:text-slate-400';
+      b.setAttribute('aria-checked', 'false');
       if (b.getAttribute('data-format') === 'jpeg') {
         b.className = 'format-btn active-format px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-sm font-medium transition-all text-emerald-600 dark:text-emerald-400';
+        b.setAttribute('aria-checked', 'true');
       }
     });
 
-    // Reset drop zone
     dropContent.classList.remove('hidden');
     dropLoaded.classList.add('hidden');
     dropThumb.src = '';
+    dropThumb.alt = '';
 
-    // Reset previews
     beforePlaceholder.classList.remove('hidden');
     beforeImageWrap.classList.add('hidden');
     beforeImage.src = '';
@@ -478,7 +478,6 @@
     compareBefore.src = '';
     compareAfter.src = '';
 
-    // Reset stats
     statOriginal.textContent = '—';
     statOriginal.className = 'text-3xl font-bold text-slate-400';
     statCompressed.textContent = '—';
@@ -488,7 +487,6 @@
     statFormat.textContent = '—';
     statFormat.className = 'text-3xl font-bold text-slate-400';
 
-    // Reset file info
     infoName.textContent = '—';
     infoName.className = 'text-sm font-medium text-slate-400';
     infoOriginal.textContent = '—';
@@ -502,11 +500,9 @@
     infoFormat.textContent = '—';
     infoFormat.className = 'text-sm font-medium text-slate-400';
 
-    // Disable download
     downloadBtn.disabled = true;
     downloadBtn.classList.add('opacity-50', 'cursor-not-allowed');
 
-    // Reset validation
     resetChecks();
   }
 
@@ -514,6 +510,61 @@
     resetAll();
     showToast('All settings reset', 'info');
   });
+
+  // ─── Copy Link ───
+  function copyLink() {
+    var url = window.location.href;
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() {
+        showToast('Link Copied!', 'success');
+      }).catch(function() {
+        fallbackCopyLink(url);
+      });
+    } else {
+      fallbackCopyLink(url);
+    }
+  }
+
+  function fallbackCopyLink(url) {
+    var textarea = document.createElement('textarea');
+    textarea.value = url;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      showToast('Link Copied!', 'success');
+    } catch (e) {
+      showToast('Copy failed. Please copy the URL from the address bar.', 'error');
+    }
+    document.body.removeChild(textarea);
+  }
+
+  var copyLinkBtn = document.getElementById('copy-link-btn');
+  if (copyLinkBtn) {
+    copyLinkBtn.addEventListener('click', copyLink);
+  }
+
+  // ─── Cookie Consent ───
+  var cookieConsent = document.getElementById('cookie-consent');
+  if (cookieConsent && !localStorage.getItem('cookie-consent')) {
+    cookieConsent.style.display = 'block';
+  }
+  var cookieAccept = document.getElementById('cookie-accept');
+  var cookieDecline = document.getElementById('cookie-decline');
+  if (cookieAccept) {
+    cookieAccept.addEventListener('click', function() {
+      localStorage.setItem('cookie-consent', 'accepted');
+      cookieConsent.style.display = 'none';
+    });
+  }
+  if (cookieDecline) {
+    cookieDecline.addEventListener('click', function() {
+      localStorage.setItem('cookie-consent', 'declined');
+      cookieConsent.style.display = 'none';
+    });
+  }
 
   // ─── Toast Helper ───
   function showToast(message, type) {
@@ -529,7 +580,8 @@
       borderClass = 'border-blue-400/30';
     }
     toast.className = 'flex items-center gap-3 px-5 py-3 rounded-xl border ' + borderClass + ' bg-white dark:bg-slate-800 shadow-lg text-sm transform translate-x-full transition-transform duration-300';
-    toast.innerHTML = '<i class="' + iconClass + '"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
+    toast.setAttribute('role', 'status');
+    toast.innerHTML = '<i class="' + iconClass + '" aria-hidden="true"></i><span class="text-slate-700 dark:text-slate-200">' + message + '</span>';
     container.appendChild(toast);
 
     requestAnimationFrame(function () {
@@ -546,7 +598,7 @@
     }, 2500);
   }
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  // ─── FAQ Toggle with ARIA ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -568,9 +620,11 @@
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';

@@ -4,58 +4,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://devpalettes.com/color-preview/">
-  <meta name="description" content="Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.">
+  <meta name="description" content="Free online color usage preview tool. Test your color palette on real UI components — buttons, navbars, cards, and charts. Check contrast and accessibility instantly.">
   <meta name="author" content="Devpalettes">
-  
-  <title>Color Usage Preview Tool – UI Palette Tester & Theme Preview</title>
+  <meta name="robots" content="index, follow">
 
- 
-  <meta property="og:title" content="Color Usage Preview Tool – UI Palette Tester & Theme Preview">
-  <meta property="og:description" content="Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.">
+  <title>Free Color Usage Preview Tool – UI Palette Tester & Theme Preview</title>
+
+  <meta property="og:title" content="Free Color Usage Preview Tool – UI Palette Tester & Theme Preview">
+  <meta property="og:description" content="Free online color preview tool. Test your palette on real UI components — buttons, navbars, cards, and charts. Check contrast and accessibility.">
   <meta property="og:url" content="https://devpalettes.com/color-preview/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://devpalettes.com/images/devpalettes_zoom_180.png">
+  <meta property="og:image" content="https://devpalettes.com/images/og-color-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Devpalettes">
+  <meta property="og:locale" content="en_US">
 
-  
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Usage Preview Tool – UI Palette Tester & Theme Preview">
-  <meta name="twitter:description" content="Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.">
-  <meta name="twitter:image" content="https://devpalettes.com/images/devpalettes_zoom_180.png">
-  
+  <meta name="twitter:title" content="Free Color Usage Preview Tool – UI Palette Tester & Theme Preview">
+  <meta name="twitter:description" content="Free online color preview tool. Test your palette on real UI components and check accessibility instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-color-preview.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
-  <script src="https://cdn.tailwindcss.com"></script>
-  
+  <!-- REMOVED: cdn.tailwindcss.com — was 300KB+ render-blocking; local tailwind.min.css already present -->
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
+
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
+  <link rel="preload" href="../css/styles.css" as="style">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 
-  <!-- JSON-LD WebApplication -->
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Color Preview",
+        "item": "https://devpalettes.com/color-preview/"
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Color Usage Preview Tool",
-    "description": "Preview your color palette on real UI components. Test buttons, layouts, and accessibility instantly.",
+    "description": "Free online color usage preview tool. Test your color palette on real UI components and check contrast and accessibility instantly.",
     "url": "https://devpalettes.com/color-preview/",
     "applicationCategory": "DesignApplication",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "browserRequirements": "Requires JavaScript",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
@@ -65,7 +97,49 @@
   }
   </script>
 
-  <!-- JSON-LD FAQPage -->
+  <!-- JSON-LD: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Preview Colors on UI Components",
+    "description": "Step-by-step guide to testing your color palette on real UI components using the Color Usage Preview tool.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Set Your Primary Color",
+        "text": "Use the color picker or type a hex value to set your primary color. This applies to the navbar, primary button, and alert components."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Choose Secondary and Accent Colors",
+        "text": "Set your secondary and accent colors. These apply to supporting buttons and highlight elements in the preview."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Set the Background Color",
+        "text": "Choose a background color to see how your palette works against different surface colors."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Click Apply",
+        "text": "Click the Apply button to render your colors on the live UI preview including navbar, cards, buttons, alerts, and a chart."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Copy CSS Variables",
+        "text": "Click Copy to grab the generated CSS custom properties and paste them directly into your project."
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage (expanded to 8 items) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -102,85 +176,186 @@
           "@type": "Answer",
           "text": "To ensure accessibility, maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text against their backgrounds. Avoid using color as the only means of conveying information, and test your palette using tools that simulate color blindness."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this color preview tool free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup or usage limits. Just open the page, set your colors, and preview them on real UI components instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What UI components does this tool preview?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool previews your colors on a navigation bar, three content cards, primary, secondary, and accent buttons, an alert banner, and a bar chart — giving you a realistic view of how your palette works across common interface elements."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I copy the CSS variables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool generates CSS custom properties (--primary, --secondary, --accent, --background) that you can copy with one click and paste directly into your stylesheet."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between primary, secondary, and accent colors?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Primary color is used for the most important UI elements like the main navigation and primary action buttons. Secondary color supports the primary, used for secondary actions and supporting elements. Accent color draws attention to highlights, notifications, or call-to-action elements that need to stand out from both primary and secondary."
+        }
       }
     ]
   }
   </script>
+
+  <style>
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Prevent CLS for navbar/footer */
+    #navbar-container {
+      min-height: 64px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .shimmer-card,
+      .gradient-blob,
+      #particles-container,
+      #hero-visualizer {
+        animation: none !important;
+        transition: none !important;
+      }
+      .spectrum-line {
+        animation: none !important;
+      }
+      [style*="transition"] {
+        transition: none !important;
+      }
+    }
+
+    /* Focus-visible */
+    :focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+    }
+
+    input[type="color"]:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+
+    /* Screen-reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
-  <div id="navbar-container"></div>
-  
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div id="particles-container"></div>
-    
+
+  <!-- Skip to Content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
+
+  <main id="main-content" class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer" width="0" height="0" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
       <!-- Header -->
-      <div class="text-center mb-10 " style="margin-top: 45px;">
+      <div class="text-center mb-10" style="margin-top: 25px;">
         <h1 class="text-4xl font-bold mb-4">Color Usage Preview</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">
           See your colors in action on real UI components. Test contrast and accessibility.
         </p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
-      
+
       <div class="grid lg:grid-cols-4 gap-8">
-        
-        
-        <div class="lg:col-span-1 space-y-4 ">
-          <div class="glass-card p-6 shimmer-card sticky top-24">
-             <h3 class="font-bold mb-4 text-lg">Palette Input</h3>
-             
+
+        <!-- Left: Palette Input -->
+        <div class="lg:col-span-1 space-y-4">
+          <div class="glass-card p-6 shimmer-card sticky top-24" role="region" aria-label="Palette input controls">
+             <h2 id="palette-heading" class="font-bold mb-4 text-lg">Palette Input</h2>
+
              <div class="space-y-3">
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Primary</label>
+                   <label for="c-primary" class="block text-xs font-semibold text-slate-500 mb-1">Primary</label>
                    <div class="flex gap-2">
-                      <input type="color" id="c-primary" value="#4f46e5" class="w-12 h-10 rounded cursor-pointer bg-transparent">
-                      <input type="text" id="t-primary" value="#4f46e5" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('primary')">
+                      <input type="color" id="c-primary" value="#4f46e5" class="w-12 h-10 rounded cursor-pointer bg-transparent" aria-label="Primary color picker">
+                      <input type="text" id="t-primary" value="#4f46e5" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" aria-label="Primary color hex value">
                    </div>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Secondary</label>
+                   <label for="c-secondary" class="block text-xs font-semibold text-slate-500 mb-1">Secondary</label>
                    <div class="flex gap-2">
-                      <input type="color" id="c-secondary" value="#06b6d4" class="w-12 h-10 rounded cursor-pointer bg-transparent">
-                      <input type="text" id="t-secondary" value="#06b6d4" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('secondary')">
+                      <input type="color" id="c-secondary" value="#06b6d4" class="w-12 h-10 rounded cursor-pointer bg-transparent" aria-label="Secondary color picker">
+                      <input type="text" id="t-secondary" value="#06b6d4" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" aria-label="Secondary color hex value">
                    </div>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Accent</label>
+                   <label for="c-accent" class="block text-xs font-semibold text-slate-500 mb-1">Accent</label>
                    <div class="flex gap-2">
-                      <input type="color" id="c-accent" value="#22c55e" class="w-12 h-10 rounded cursor-pointer bg-transparent">
-                      <input type="text" id="t-accent" value="#22c55e" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('accent')">
+                      <input type="color" id="c-accent" value="#22c55e" class="w-12 h-10 rounded cursor-pointer bg-transparent" aria-label="Accent color picker">
+                      <input type="text" id="t-accent" value="#22c55e" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" aria-label="Accent color hex value">
                    </div>
                 </div>
                 <div>
-                   <label class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
+                   <label for="c-bg" class="block text-xs font-semibold text-slate-500 mb-1">Background</label>
                    <div class="flex gap-2">
-                      <input type="color" id="c-bg" value="#ffffff" class="w-12 h-10 rounded cursor-pointer bg-transparent">
-                      <input type="text" id="t-bg" value="#ffffff" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" onchange="syncText('bg')">
+                      <input type="color" id="c-bg" value="#ffffff" class="w-12 h-10 rounded cursor-pointer bg-transparent" aria-label="Background color picker">
+                      <input type="text" id="t-bg" value="#ffffff" class="flex-1 bg-slate-100 dark:bg-slate-800 rounded px-2 text-xs font-mono" aria-label="Background color hex value">
                    </div>
                 </div>
              </div>
-             
+
              <div class="mt-4 space-y-2">
-                <button onclick="applyColors()" class="btn-primary w-full justify-center py-2 text-sm" aria-label="Apply Colors"><i class="fas fa-check mr-1"></i>Apply</button>
-                <button onclick="randomize()" class="btn-secondary w-full justify-center py-2 text-sm" aria-label="Randomize Colors"><i class="fas fa-random mr-1"></i>Randomize</button>
+                <button onclick="applyColors()" class="btn-primary w-full justify-center py-2 text-sm" aria-label="Apply colors to preview"><i class="fas fa-check mr-1" aria-hidden="true"></i>Apply</button>
+                <button onclick="randomize()" class="btn-secondary w-full justify-center py-2 text-sm" aria-label="Randomize all colors"><i class="fas fa-random mr-1" aria-hidden="true"></i>Randomize</button>
              </div>
           </div>
         </div>
-        
+
         <!-- Right: Preview Area -->
-        <div class="lg:col-span-3 space-y-6 ">
-          
+        <div class="lg:col-span-3 space-y-6" role="region" aria-label="Color preview and generated code">
+
           <!-- Live Preview Container -->
-          <div id="preview-container" class="glass-card p-0 overflow-hidden min-h-[600px] transition-colors duration-500" style="background-color: #ffffff;">
-             
+          <div id="preview-container" class="glass-card p-0 overflow-hidden min-h-[600px] transition-colors duration-500" style="background-color: #ffffff;" aria-label="Live UI component preview">
+
              <!-- Navbar Preview -->
-             <div id="prev-navbar" class="p-4 flex justify-between items-center transition-colors duration-500" style="background-color: #4f46e5;">
+             <div id="prev-navbar" class="p-4 flex justify-between items-center transition-colors duration-500" style="background-color: #4f46e5;" role="img" aria-label="Preview navbar with primary color">
                 <span class="font-bold text-white">MyApp</span>
                 <div class="flex gap-4 text-sm text-white/80">
                    <span>Home</span>
@@ -188,7 +363,7 @@
                    <span>Contact</span>
                 </div>
              </div>
-             
+
              <!-- Content -->
              <div class="p-8 space-y-8">
                 <!-- Cards Grid -->
@@ -209,42 +384,43 @@
                       <p class="text-xs text-slate-500">User config</p>
                    </div>
                 </div>
-                
+
                 <!-- Buttons & Alerts -->
                 <div class="flex flex-wrap gap-4 items-center">
-                   <button id="btn-pri" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #4f46e5;" aria-label="Primary Colors">Primary</button>
-                   <button id="btn-sec" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #06b6d4;" aria-label="Secondary Colors">Secondary</button>
-                   <button id="btn-acc" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #22c55e;" aria-label="Accent Colors">Accent</button>
-                   
-                   <div id="alert-prev" class="ml-auto px-4 py-2 rounded-lg text-white text-xs transition-colors duration-500" style="background-color: #4f46e5;">
-                      <i class="fas fa-info-circle mr-1"></i> Alert Message
+                   <button id="btn-pri" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #4f46e5;" aria-label="Primary button preview" tabindex="-1">Primary</button>
+                   <button id="btn-sec" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #06b6d4;" aria-label="Secondary button preview" tabindex="-1">Secondary</button>
+                   <button id="btn-acc" class="px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors duration-500" style="background-color: #22c55e;" aria-label="Accent button preview" tabindex="-1">Accent</button>
+
+                   <div id="alert-prev" class="ml-auto px-4 py-2 rounded-lg text-white text-xs transition-colors duration-500" style="background-color: #4f46e5;" role="img" aria-label="Alert preview with primary color">
+                      <i class="fas fa-info-circle mr-1" aria-hidden="true"></i> Alert Message
                    </div>
                 </div>
-                
+
                 <!-- Chart -->
                 <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50">
                    <h4 class="font-bold mb-4 text-slate-700">Chart Preview</h4>
-                   <canvas id="chart-canvas" width="400" height="150"></canvas>
+                   <canvas id="chart-canvas" width="400" height="150" role="img" aria-label="Bar chart preview using your selected colors"></canvas>
                 </div>
              </div>
           </div>
-          
-          
+
           <div class="glass-card p-6 shimmer-card">
              <div class="flex justify-between items-center mb-2">
-                <h3 class="font-bold text-lg">Generated CSS Variables</h3>
-                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4" aria-label="Copy btn"><i class="fas fa-copy mr-1"></i>Copy</button>
+                <h2 id="code-heading" class="font-bold text-lg">Generated CSS Variables</h2>
+                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4" aria-label="Copy CSS variables to clipboard"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>
              </div>
+             <label for="code-output" class="sr-only">Generated CSS custom properties code</label>
              <pre id="code-output" class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto max-h-40"></pre>
+             <div id="copy-status" class="sr-only" aria-live="polite"></div>
           </div>
-          
+
         </div>
-        
+
       </div>
 
       <!-- SEO Content Section -->
-      <div class="glass-card p-6 shimmer-card  mt-8">
-        <h2 class="text-2xl font-bold mb-4">Understanding Color Usage in UI Design</h2>
+      <div class="glass-card p-6 shimmer-card mt-8" aria-labelledby="understanding-heading">
+        <h2 id="understanding-heading" class="text-2xl font-bold mb-4">Understanding Color Usage in UI Design</h2>
 
         <h3 class="text-lg font-semibold mb-2 mt-4">What is Color Usage in UI Design?</h3>
         <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
@@ -263,7 +439,7 @@
 
         <h3 class="text-lg font-semibold mb-2">Common Mistakes in UI Color Usage</h3>
         <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
-          One of the most common mistakes is using too many colors, which leads to a cluttered and inconsistent interface. Another frequent error is relying solely on color to convey meaning (e.g., red for error) without supporting text or icons, which severely harms accessibility for colorblind users. Designers also often forget to test their UI in different lighting environments or on various screen calibrations, leading to unexpected visual results. To <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that avoid these pitfalls, it is crucial to rely on structured testing rather than guesswork.
+          One of the most common mistakes is using too many colors, which leads to a cluttered and inconsistent interface. Another frequent error is relying solely on color to convey meaning (e.g., red for error) without supporting text or icons, which severely harms accessibility for colorblind users. Designers also often forget to test their UI in different lighting environments or on various screen calibrations, leading to unexpected visual results. To <a href="../blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that avoid these pitfalls, it is crucial to rely on structured testing rather than guesswork.
         </p>
 
         <h3 class="text-lg font-semibold mb-2">How This Tool Helps Designers</h3>
@@ -272,14 +448,77 @@
         </p>
       </div>
 
-      <!-- FAQ Section -->
-      <div class="glass-card p-6 shimmer-card  mt-8">
-        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-        
+      <!-- NEW: How to Use -->
+      <section class="glass-card p-8 shimmer-card mt-8" aria-labelledby="how-to-use-heading">
+        <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Color Preview Tool</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+           Testing your palette on real components takes just a few seconds. Here is how:
+        </p>
+        <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+           <li><strong>Set your primary color:</strong> Use the color picker or type a hex value. This color applies to the navbar, primary button, and alert components in the preview.</li>
+           <li><strong>Choose secondary and accent colors:</strong> These apply to the secondary and accent buttons respectively, and appear in the chart bars.</li>
+           <li><strong>Set the background color:</strong> Choose a surface color to see how your palette works against different backgrounds — critical for testing contrast.</li>
+           <li><strong>Click Apply:</strong> The preview instantly updates all components with your chosen colors. No page reload needed.</li>
+           <li><strong>Try Randomize:</strong> Not sure where to start? Hit Randomize to generate unexpected combinations, then refine from there.</li>
+           <li><strong>Copy CSS Variables:</strong> Once satisfied, click Copy to grab the generated CSS custom properties and paste them into your stylesheet.</li>
+        </ol>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+           For the best results, start with a <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generated palette</a>, then fine-tune individual colors here. After previewing, verify your text-background contrast with our <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline font-medium">WCAG contrast checker</a>.
+        </p>
+      </section>
+
+      <!-- NEW: Primary vs Secondary vs Accent -->
+      <section class="glass-card p-8 shimmer-card mt-8" aria-labelledby="color-roles-heading">
+        <h2 id="color-roles-heading" class="text-2xl font-bold mb-4">Primary, Secondary, and Accent Colors Explained</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+           Every effective color system assigns specific roles to each color. Understanding these roles helps you make intentional decisions rather than arbitrary ones:
+        </p>
+        <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+           <li><strong>Primary color:</strong> The dominant color in your interface. It identifies your brand and draws attention to the most important elements — the main navigation, primary call-to-action buttons, and key interactive components. Most interfaces use their primary color on roughly 10–15% of the visible surface area.</li>
+           <li><strong>Secondary color:</strong> Supports the primary color by providing visual variety without competing for attention. Secondary colors are used for secondary actions, supporting navigation elements, and alternative button styles. They should complement the primary — either as an analogous hue (nearby on the color wheel) or a muted variant.</li>
+           <li><strong>Accent color:</strong> Draws the eye to specific elements that need to stand out from both the primary and secondary. Accents are used for notifications, badges, highlights, tooltips, and micro-interactions. A contrasting hue (opposite or far from primary on the color wheel) works best for accent colors to ensure they pop.</li>
+           <li><strong>Background color:</strong> The canvas on which everything sits. Light backgrounds (#FFFFFF, #F8FAFC) are standard for readability, while dark backgrounds (#0F172A, #1E293B) reduce eye strain in low-light environments. The background determines whether you need light or dark text for sufficient contrast.</li>
+        </ul>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+           Use this tool to see how each role plays out in a real interface. Adjust each color independently and watch how changing one role affects the overall balance. If you need help picking colors that work together, our <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">palette generator</a> creates harmonious combinations automatically.
+        </p>
+      </section>
+
+      <!-- NEW: Use Cases -->
+      <section class="glass-card p-8 shimmer-card mt-8" aria-labelledby="use-cases-heading">
+        <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Use Cases for Color Preview Testing</h2>
+        <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+           <li><strong>Design system creation:</strong> When building a new design system from scratch, preview your token colors on realistic components before committing. This catches contrast issues and visual imbalances early — when they are cheapest to fix.</li>
+           <li><strong>Brand color validation:</strong> Clients often provide brand colors without considering how they perform in digital interfaces. Preview them on buttons and text to verify they work at UI scale before building anything.</li>
+           <li><strong>Theme switching:</strong> Test how your palette performs when the background changes from light to dark. Colors that look great on white may become unreadable on dark surfaces.</li>
+           <li><strong>Client presentations:</strong> Show stakeholders a realistic preview of their brand colors in action rather than abstract swatches. This reduces revision cycles because clients can see exactly what they are getting.</li>
+           <li><strong>Accessibility auditing:</strong> Use the preview to visually assess whether text remains readable against your chosen backgrounds. Then verify with the <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline font-medium">contrast checker</a> for a pass/fail score.</li>
+           <li><strong>Quick prototyping:</strong> During early-stage design exploration, rapidly cycle through color combinations using the Randomize button to discover unexpected palettes you might not have considered.</li>
+        </ul>
+      </section>
+
+      <!-- NEW: Why I Built This -->
+      <section class="glass-card p-8 shimmer-card mt-8" aria-labelledby="why-built-heading">
+        <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+           I kept picking color palettes that looked beautiful as isolated swatches — five neat circles in a row — but fell apart the moment I applied them to a real interface. The primary was too aggressive for a full-width navbar. The accent clashed with the secondary. The background made the text unreadable. Every time, I had to build a quick HTML mockup from scratch just to see if my palette actually worked.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+           This tool eliminates that step. You pick four colors — primary, secondary, accent, background — and immediately see them applied to a realistic UI with a navbar, cards, buttons, alerts, and a chart. No setup, no Figma file, no code to write. If a color does not work at scale, you know in two seconds instead of two hours.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+           It is free, it runs entirely in your browser, and it generates ready-to-use CSS variables. If it saves you from building one throwaway mockup, it did its job. Share it with a teammate if you find it useful.
+        </p>
+      </section>
+
+      <!-- FAQ Section (expanded) -->
+      <div class="glass-card p-6 shimmer-card mt-8" aria-labelledby="faq-heading">
+        <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+
         <div class="space-y-6">
           <div>
             <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
               What is color usage in UI?
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -289,7 +528,7 @@
 
           <div>
             <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
               How to preview a color palette?
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -299,7 +538,7 @@
 
           <div>
             <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
               Why test colors before using?
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -309,23 +548,113 @@
 
           <div>
             <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-              <span class="text-indigo-500 mt-1"><i class="fas fa-circle-question"></i></span>
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
               How to ensure accessibility?
             </h3>
             <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
-              To ensure accessibility, maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text against their backgrounds. Avoid using color as the only means of conveying information, and test your palette using tools that simulate color blindness.
+              To ensure accessibility, maintain a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text against their backgrounds. Avoid using color as the only means of conveying information, and test your palette using our <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline font-medium">contrast checker</a> or <a href="/color-blindness/" class="text-emerald-500 hover:underline font-medium">color blindness simulator</a>.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+              Is this color preview tool free?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              Yes, completely free with no signup or usage limits. Just open the page, set your colors, and preview them on real UI components instantly. All processing runs in your browser.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+              What UI components does this tool preview?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              The tool previews your colors on a navigation bar, three content cards, primary/secondary/accent buttons, an alert banner, and a bar chart — giving you a realistic view of how your palette works across common interface elements.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+              Can I copy the CSS variables?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              Yes. The tool generates CSS custom properties (--primary, --secondary, --accent, --background) that you can copy with one click and paste directly into your stylesheet or design system tokens file.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+              <span class="text-indigo-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+              What is the difference between primary, secondary, and accent colors?
+            </h3>
+            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+              Primary color is used for the most important UI elements like the main navigation and primary action buttons. Secondary color supports the primary, used for secondary actions and supporting elements. Accent color draws attention to highlights, notifications, or call-to-action elements that need to stand out from both primary and secondary.
             </p>
           </div>
         </div>
       </div>
 
+      <!-- Share Section -->
+      <section class="glass-card p-8 shimmer-card mt-8 text-center" aria-labelledby="share-heading">
+        <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
+        <p class="text-slate-500 mb-4 text-sm">Found this color preview tool useful? Share it with your design and development community.</p>
+        <div class="flex items-center justify-center gap-3 flex-wrap">
+          <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-preview%2F&text=Preview%20your%20color%20palette%20on%20real%20UI%20components%20with%20this%20free%20tool" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+            <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
+          </a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fcolor-preview%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-preview%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+            <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+          </a>
+          <a href="https://wa.me/?text=Check%20out%20this%20free%20Color%20Usage%20Preview%20Tool%20https%3A%2F%2Fdevpalettes.com%2Fcolor-preview%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+          </a>
+          <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+            <i class="fas fa-link" aria-hidden="true"></i> Copy Link
+          </button>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <section class="glass-card p-8 shimmer-card mt-8 text-center" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Color & Design Tools</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your color workflow with these free tools:</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+          <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+          <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
+          <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
+          <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+          <a href="/color-diff-checker/" class="btn-secondary text-xs py-2 px-4">Color Difference Checker</a>
+          <a href="../blog/color-palettes-in-design/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
+        </div>
+      </section>
+
+      <!-- Trust Badge -->
+      <div class="text-center py-10 mt-4">
+        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <strong class="text-slate-800 dark:text-slate-200 text-sm"><a href="/" class="hover:text-emerald-500 transition-colors">DevPalettes</a></strong>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+        </div>
+      </div>
+
     </div>
   </main>
-  
-  <div id="footer-container"></div>
-  
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/color-preview.js"></script>
+
+  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/color-preview.js" defer></script>
 </body>
 </html>

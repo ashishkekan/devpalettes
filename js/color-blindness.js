@@ -216,6 +216,7 @@
       this.exampleBtn = document.getElementById('load-example-btn');
       this.severityBtns = document.querySelectorAll('.severity-btn');
       this.comparisonTable = document.getElementById('comparison-table');
+      this.simAnnouncer = document.getElementById('sim-announcer');
       
       // Contrast checker
       this.contrastFgInput = document.getElementById('contrast-fg-input');
@@ -255,9 +256,11 @@
           this.severityBtns.forEach(b => {
             b.classList.remove('border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
             b.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+            b.setAttribute('aria-pressed', 'false');
           });
           btn.classList.add('border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
           btn.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+          btn.setAttribute('aria-pressed', 'true');
           
           const severity = btn.dataset.severity;
           this.setSeverity(severity);
@@ -267,10 +270,33 @@
       // Contrast checker
       this.contrastFgInput.addEventListener('input', () => this.updateContrast());
       this.contrastBgInput.addEventListener('input', () => this.updateContrast());
+
+      // Copy link button
+      const copyLinkBtn = document.getElementById('copy-link-btn');
+      if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', () => {
+          const url = window.location.href;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(url).then(() => {
+              this.showToast('Link copied to clipboard!', 'success');
+            });
+          } else {
+            const ta = document.createElement('textarea');
+            ta.value = url;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); } catch(e) {}
+            document.body.removeChild(ta);
+            this.showToast('Link copied to clipboard!', 'success');
+          }
+        });
+      }
     }
     
     updateInputPreview(input, hex) {
-      const preview = input.parentElement.querySelector('.color-input-preview');
+      const preview = input.parentElement.querySelector('div[style*="background-color"]');
       if (preview) {
         preview.style.backgroundColor = hex;
       }
@@ -307,6 +333,14 @@
       
       // Update contrast checker
       this.updateContrast();
+
+      // Announce to screen readers
+      if (this.simAnnouncer) {
+        const severityLabel = this.severity === 0 ? 'normal' : 
+                              this.severity <= 0.3 ? 'mild' : 
+                              this.severity <= 0.5 ? 'moderate' : 'severe';
+        this.simAnnouncer.textContent = 'Simulation updated with ' + severityLabel + ' severity for ' + this.colors.length + ' colors.';
+      }
     }
     
     updateSimulationPreview(elementId, colors, type) {
@@ -338,6 +372,13 @@
       });
       
       element.style.background = `linear-gradient(135deg, ${simulatedColors.join(', ')})`;
+      
+      // Update accessible description
+      if (type) {
+        element.setAttribute('aria-label', type.charAt(0).toUpperCase() + type.slice(1) + ' simulation: ' + simulatedColors.join(', '));
+      } else {
+        element.setAttribute('aria-label', 'Normal vision: ' + simulatedColors.join(', '));
+      }
     }
     
     updateComparisonTable() {
@@ -357,31 +398,31 @@
         row.innerHTML = `
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${color}"></div>
+              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${color}" aria-hidden="true"></div>
               <span class="font-mono text-sm">${color}</span>
             </div>
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(protRgb.r, protRgb.g, protRgb.b)}"></div>
+              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(protRgb.r, protRgb.g, protRgb.b)}" aria-hidden="true"></div>
               <span class="font-mono text-sm text-slate-500">${Utils.rgbToHex(protRgb.r, protRgb.g, protRgb.b)}</span>
             </div>
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(deutRgb.r, deutRgb.g, deutRgb.b)}"></div>
+              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(deutRgb.r, deutRgb.g, deutRgb.b)}" aria-hidden="true"></div>
               <span class="font-mono text-sm text-slate-500">${Utils.rgbToHex(deutRgb.r, deutRgb.g, deutRgb.b)}</span>
             </div>
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(tritRgb.r, tritRgb.g, tritRgb.b)}"></div>
+              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(tritRgb.r, tritRgb.g, tritRgb.b)}" aria-hidden="true"></div>
               <span class="font-mono text-sm text-slate-500">${Utils.rgbToHex(tritRgb.r, tritRgb.g, tritRgb.b)}</span>
             </div>
           </td>
           <td class="py-3 px-4">
             <div class="flex items-center gap-3">
-              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(achroRgb.r, achroRgb.g, achroRgb.b)}"></div>
+              <div class="w-8 h-8 rounded-lg shadow-inner" style="background-color: ${Utils.rgbToHex(achroRgb.r, achroRgb.g, achroRgb.b)}" aria-hidden="true"></div>
               <span class="font-mono text-sm text-slate-500">${Utils.rgbToHex(achroRgb.r, achroRgb.g, achroRgb.b)}</span>
             </div>
           </td>
@@ -442,12 +483,12 @@
     
     loadExample() {
       const examples = [
-        ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51'], // Earthy Sunset
-        ['#003049', '#d62828', '#f77f00', '#fcbf49', '#eae2b7'], // Vibrant Retro
-        ['#606c38', '#283618', '#fefae0', '#dda15e', '#bc6c25'], // Forest Glow
-        ['#0d1b2a', '#1b263b', '#415a77', '#778da9', '#e0e1dd'], // Ocean Depth
-        ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff'], // Neon Pop
-        ['#f72585', '#7209b7', '#3a0ca3', '#4361ee', '#4cc9f0']  // Purple Dreams
+        ['#264653', '#2a9d8f', '#e9c46a', '#f4a261', '#e76f51'],
+        ['#003049', '#d62828', '#f77f00', '#fcbf49', '#eae2b7'],
+        ['#606c38', '#283618', '#fefae0', '#dda15e', '#bc6c25'],
+        ['#0d1b2a', '#1b263b', '#415a77', '#778da9', '#e0e1dd'],
+        ['#ffbe0b', '#fb5607', '#ff006e', '#8338ec', '#3a86ff'],
+        ['#f72585', '#7209b7', '#3a0ca3', '#4361ee', '#4cc9f0']
       ];
       
       this.colors = examples[Math.floor(Math.random() * examples.length)];
@@ -462,10 +503,11 @@
       const bgColor = type === 'success' ? 'bg-emerald-500' : 
                       type === 'error' ? 'bg-red-500' : 'bg-blue-500';
       
+      toast.setAttribute('role', 'status');
       toast.className = `${bgColor} text-white px-6 py-3 rounded-xl shadow-lg transform transition-all duration-300 translate-x-full`;
       toast.innerHTML = `
         <div class="flex items-center gap-3">
-          <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
+          <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}" aria-hidden="true"></i>
           <span>${message}</span>
         </div>
       `;

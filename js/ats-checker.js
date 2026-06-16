@@ -1,12 +1,18 @@
 /**
  * ATS Resume Checker - DevPalettes
  * Client-side resume analysis using PDF.js
+ * 
+ * Accuracy Fixes Applied:
+ * - 2-letter tech abbreviations (JS, TS, AI, ML, UI, UX) no longer filtered out
+ * - Bigram threshold lowered from 2 to 1 (catches single-occurrence phrases)
+ * - Word boundary matching fixed for special characters (C#, .NET, C++)
+ * - Keywords now display in proper case (JavaScript instead of javascript)
+ * - Expanded abbreviation/synonym dictionary
  */
 
 (function() {
   'use strict';
 
-  // ✅ FIX: Expanded stop words to reduce noise in keyword extraction
   var STOP_WORDS = new Set([
     "a","an","the","and","or","but","if","because","as","what","which","this","that","these","those",
     "am","is","are","was","were","be","been","being","have","has","had","do","does","did","will","would",
@@ -24,7 +30,7 @@
     "knowledge","familiarity","environment","benefits","offer","salary","location","remote","hybrid"
   ]);
 
-  // ✅ FIX: Abbreviation → canonical mapping for synonym normalization
+  // Expanded abbreviation → canonical mapping for synonym normalization
   var ABBR_TO_CANONICAL = {
     'js': 'javascript', 'ts': 'typescript', 'py': 'python', 'rb': 'ruby',
     'node': 'node.js', 'nodejs': 'node.js',
@@ -41,14 +47,12 @@
     'sq': 'sql', 'jq': 'jquery',
     'sass': 'scss', 'lesscss': 'less',
     'win': 'windows', 'macos': 'mac', 'osx': 'mac',
-    'linux': 'linux', 'ubuntu': 'linux',
-    'pg': 'postgresql', 'mysql': 'mysql',
+    'pg': 'postgresql',
     'tsql': 'sql', 'pl/sql': 'sql',
     'rest': 'rest api', 'graphql': 'graphql',
     'oop': 'object oriented programming',
     'tdd': 'test driven development',
     'bdd': 'behavior driven development',
-    'agile': 'agile', 'scrum': 'scrum',
     'devops': 'devops', 'sre': 'site reliability engineering',
     'ui': 'user interface', 'ux': 'user experience',
     'crm': 'customer relationship management',
@@ -63,10 +67,34 @@
     'api': 'api', 'sdk': 'software development kit',
     'ide': 'integrated development environment',
     'git': 'git', 'svn': 'svn',
-    'docker': 'docker', 'containers': 'docker'
+    'docker': 'docker', 'containers': 'docker',
+    // Added missing common abbreviations
+    '.net': 'dotnet', 'dotnet': 'dotnet',
+    'c#': 'c sharp', 'csharp': 'c sharp',
+    'f#': 'f sharp', 'fsharp': 'f sharp',
+    'golang': 'golang',
+    'next.js': 'next.js', 'nextjs': 'next.js',
+    'nuxt.js': 'nuxt.js', 'nuxtjs': 'nuxt.js',
+    'tailwindcss': 'tailwind css', 'tailwind': 'tailwind css',
+    'springboot': 'spring boot', 'spring-boot': 'spring boot',
+    'rs': 'rust',
+    'ps': 'photoshop',
+    'xd': 'adobe xd',
+    'csr': 'client side rendering',
+    'ssr': 'server side rendering',
+    'pwa': 'progressive web app',
+    'spa': 'single page application',
+    'sso': 'single sign on',
+    'mfa': 'multi factor authentication',
+    'cicd': 'continuous integration',
+    'db': 'database',
+    'rdbms': 'relational database',
+    'nosql': 'nosql',
+    'orm': 'object relational mapping',
+    'waf': 'web application firewall'
   };
 
-  // ✅ FIX: Build reverse map (canonical → all variants) for matching
+  // Build reverse map (canonical → all variants) for matching
   function buildVariantMap() {
     var map = {};
     var keys = Object.keys(ABBR_TO_CANONICAL);
@@ -87,10 +115,37 @@
 
   var CANONICAL_VARIANTS = buildVariantMap();
 
+  // Proper-case display names for common canonical terms
+  var DISPLAY_NAMES = {
+    'javascript': 'JavaScript', 'typescript': 'TypeScript', 'python': 'Python',
+    'ruby': 'Ruby', 'node.js': 'Node.js', 'react': 'React', 'vue': 'Vue',
+    'angular': 'Angular', 'postgresql': 'PostgreSQL', 'mongodb': 'MongoDB',
+    'kubernetes': 'Kubernetes', 'terraform': 'Terraform', 'css': 'CSS',
+    'html': 'HTML', 'artificial intelligence': 'Artificial Intelligence',
+    'machine learning': 'Machine Learning', 'natural language processing': 'NLP',
+    'amazon web services': 'AWS', 'google cloud platform': 'GCP',
+    'jquery': 'jQuery', 'scss': 'SCSS', 'sql': 'SQL',
+    'rest api': 'REST API', 'graphql': 'GraphQL',
+    'docker': 'Docker', 'git': 'Git', 'api': 'API',
+    'dotnet': '.NET', 'c sharp': 'C#', 'f sharp': 'F#',
+    'golang': 'Golang', 'next.js': 'Next.js', 'nuxt.js': 'Nuxt.js',
+    'tailwind css': 'Tailwind CSS', 'spring boot': 'Spring Boot',
+    'rust': 'Rust', 'photoshop': 'Photoshop',
+    'object oriented programming': 'OOP', 'devops': 'DevOps',
+    'user interface': 'UI', 'user experience': 'UX',
+    'continuous integration': 'CI/CD', 'nosql': 'NoSQL'
+  };
+
+  function getDisplayName(term) {
+    if (DISPLAY_NAMES[term]) return DISPLAY_NAMES[term];
+    // Fallback: title-case each word
+    return term.replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+  }
+
   // --- State ---
   var resumeText = '';
   var pdfJsReady = false;
-  var activeToasts = {};  // ✅ FIX: Object for toast deduplication (Set not available in all contexts)
+  var activeToasts = {};
 
   // --- DOM Elements ---
   var el = {
@@ -117,11 +172,19 @@
     downloadBtn: document.getElementById('download-report-btn')
   };
 
+  var announceRegion = document.getElementById('a11y-announce');
+
+  function announce(msg) {
+    if (announceRegion) {
+      announceRegion.textContent = msg;
+      setTimeout(function() { announceRegion.textContent = ''; }, 2500);
+    }
+  }
+
   // --- Init ---
   function init() {
     setupDragDrop();
     el.dropZone.addEventListener('click', function() { el.resumeInput.click(); });
-    // ✅ FIX: Keyboard accessibility for drop zone
     el.dropZone.addEventListener('keydown', function(e) {
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); el.resumeInput.click(); }
     });
@@ -130,14 +193,14 @@
       el.jdCharCount.textContent = el.jdInput.value.length + ' characters';
     });
     el.previewToggle.addEventListener('click', function() {
-      el.resumeTextPreview.classList.toggle('hidden');
+      var isHidden = el.resumeTextPreview.classList.toggle('hidden');
+      el.previewToggle.setAttribute('aria-expanded', !isHidden);
     });
     el.analyzeBtn.addEventListener('click', runAnalysis);
     el.copyBtn.addEventListener('click', copyReport);
     el.downloadBtn.addEventListener('click', downloadReport);
   }
 
-  // ✅ FIX: Consolidated drag-drop setup into one function
   function setupDragDrop() {
     var zone = el.dropZone;
     var dragEvents = ['dragenter', 'dragover', 'dragleave', 'drop'];
@@ -153,7 +216,7 @@
     }, false);
   }
 
-  // --- ✅ FIX: Lazy-load PDF.js only when user uploads a file ---
+  // Lazy-load PDF.js only when user uploads a file
   function loadPdfJs() {
     if (pdfJsReady) return Promise.resolve();
     return new Promise(function(resolve, reject) {
@@ -178,7 +241,6 @@
       showToast('Please upload a PDF file', 'error');
       return;
     }
-    // ✅ FIX: Large file validation
     if (file.size > 10 * 1024 * 1024) {
       showToast('File is too large (max 10 MB)', 'error');
       return;
@@ -216,7 +278,6 @@
       return Promise.all(pagePromises);
     }).then(function(pages) {
       resumeText = pages.join(' ').trim();
-      // ✅ FIX: Detect empty/image-based PDFs
       if (!resumeText) {
         showToast('PDF appears empty or is image-based (not selectable text)', 'error');
         return;
@@ -230,26 +291,37 @@
     });
   }
 
-  // --- ✅ FIX: Improved keyword extraction with bigrams + frequency weighting + synonym normalization ---
+  // --- Improved keyword extraction with accuracy fixes ---
   function extractKeywords(jdText) {
     var clean = jdText.toLowerCase().replace(/[^\w\s+#.-]/g, ' ');
     var tokens = clean.split(/\s+/);
     var filtered = [];
+
+    // ACCURACY FIX: Allow known abbreviations through length filter
+    // Without this, "js", "ts", "ai", "ml", "ui", "ux", "c#" are all filtered out
     for (var i = 0; i < tokens.length; i++) {
       var w = tokens[i];
-      if (w.length > 2 && !STOP_WORDS.has(w) && !/^\d+$/.test(w)) {
+      var isKnownAbbr = ABBR_TO_CANONICAL.hasOwnProperty(w);
+      if ((w.length > 2 || isKnownAbbr) && !STOP_WORDS.has(w) && !/^\d+$/.test(w)) {
         filtered.push(w);
       }
     }
 
     // Count single-word frequencies (normalized to canonical form)
     var wordFreq = {};
+    var originalFormsMap = {}; // canonical -> { originalLower: count }
+
     for (var j = 0; j < filtered.length; j++) {
-      var canonical = ABBR_TO_CANONICAL[filtered[j]] || filtered[j];
+      var original = filtered[j];
+      var canonical = ABBR_TO_CANONICAL[original] || original;
       wordFreq[canonical] = (wordFreq[canonical] || 0) + 1;
+
+      if (!originalFormsMap[canonical]) originalFormsMap[canonical] = {};
+      originalFormsMap[canonical][original] = (originalFormsMap[canonical][original] || 0) + 1;
     }
 
-    // Extract bigrams (2-word phrases) appearing 2+ times
+    // ACCURACY FIX: Lowered bigram threshold from 2 to 1
+    // Many important phrases like "machine learning" appear only once in a JD
     var bigramFreq = {};
     for (var k = 0; k < filtered.length - 1; k++) {
       var bg = filtered[k] + ' ' + filtered[k + 1];
@@ -258,18 +330,25 @@
 
     var keywords = [];
 
-    // Add frequent bigrams with boosted weight
+    // Add bigrams (threshold lowered to 1, single-occurrence get lower weight)
     var bgKeys = Object.keys(bigramFreq);
     for (var b = 0; b < bgKeys.length; b++) {
-      if (bigramFreq[bgKeys[b]] >= 2) {
-        keywords.push({ term: bgKeys[b], weight: bigramFreq[bgKeys[b]] * 1.5 });
+      var bgCount = bigramFreq[bgKeys[b]];
+      if (bgCount >= 1) {
+        var bgWeight = bgCount >= 2 ? bgCount * 1.5 : bgCount * 0.8;
+        keywords.push({ term: bgKeys[b], weight: bgWeight, display: getDisplayName(bgKeys[b]) });
       }
     }
 
     // Add single words (already normalized to canonical)
     var wKeys = Object.keys(wordFreq);
     for (var w = 0; w < wKeys.length; w++) {
-      keywords.push({ term: wKeys[w], weight: wordFreq[wKeys[w]] });
+      var canonicalTerm = wKeys[w];
+      keywords.push({
+        term: canonicalTerm,
+        weight: wordFreq[canonicalTerm],
+        display: getDisplayName(canonicalTerm)
+      });
     }
 
     // Sort by weight descending, cap at 50
@@ -277,17 +356,23 @@
     return keywords.slice(0, 50);
   }
 
-  // --- ✅ FIX: Word boundary matching instead of simple includes() — prevents "man" matching inside "management"
+  // ACCURACY FIX: Improved word boundary matching for special characters
   function wordBoundaryMatch(text, keyword) {
     var escaped = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    // Check if keyword contains non-word characters (C++, C#, .NET, etc.)
+    var hasSpecialChars = /[^a-zA-Z0-9\s]/.test(keyword);
     try {
+      if (hasSpecialChars) {
+        // For special-char terms, match at token boundaries (whitespace/punctuation/string edges)
+        return new RegExp('(^|\\s|[,;:()\\[\\]{}])' + escaped + '($|\\s|[,;:()\\[\\]{}])', 'i').test(text);
+      }
       return new RegExp('\\b' + escaped + '\\b', 'i').test(text);
     } catch (e) {
       return text.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
     }
   }
 
-  // ✅ FIX: Check keyword + all synonym variants against resume
+  // Check keyword + all synonym variants against resume
   function keywordMatchesResume(resumeLower, keywordTerm) {
     // Direct match with word boundaries
     if (wordBoundaryMatch(resumeLower, keywordTerm)) return true;
@@ -322,13 +407,11 @@
       showToast('Please enter a job description', 'error');
       return;
     }
-    // ✅ FIX: Minimum JD length validation
     if (jdText.length < 30) {
       showToast('Job description seems too short for meaningful analysis', 'error');
       return;
     }
 
-    // ✅ FIX: Loading state — disable button, show spinner
     setAnalyzing(true);
 
     // Small delay to let UI update before heavy computation
@@ -365,7 +448,7 @@
       }
     }
 
-    // ✅ FIX: Weighted keyword scoring — frequent JD keywords contribute more to score
+    // Weighted keyword scoring — frequent JD keywords contribute more to score
     var keywordPercent = totalWeight > 0 ? Math.round((matchedWeight / totalWeight) * 100) : 0;
     var keywordScore = totalWeight > 0 ? Math.round((matchedWeight / totalWeight) * 60) : 0;
 
@@ -387,19 +470,19 @@
     renderResults(totalScore, keywordPercent, formatPoints, matched, missing, suggestions);
   }
 
-  // ✅ FIX: Cleaner suggestion generation with more specific guidance
+  // Cleaner suggestion generation with proper display names
   function generateSuggestions(matched, missing, allKeywords, formatScore, resumeWords) {
     var suggestions = [];
     var matchRatio = allKeywords.length > 0 ? matched.length / allKeywords.length : 0;
 
     if (matchRatio < 0.3) {
-      var topMissing = missing.slice(0, 5).map(function(k) { return k.term; }).join(', ');
+      var topMissing = missing.slice(0, 5).map(function(k) { return k.display; }).join(', ');
       suggestions.push('Many critical keywords are missing. Add these to your resume: ' + topMissing);
     } else if (matchRatio < 0.5) {
-      var topMissing2 = missing.slice(0, 4).map(function(k) { return k.term; }).join(', ');
+      var topMissing2 = missing.slice(0, 4).map(function(k) { return k.display; }).join(', ');
       suggestions.push('Add missing keywords to strengthen your match: ' + topMissing2);
     } else if (matchRatio < 0.75) {
-      var topMissing3 = missing.slice(0, 3).map(function(k) { return k.term; }).join(', ');
+      var topMissing3 = missing.slice(0, 3).map(function(k) { return k.display; }).join(', ');
       suggestions.push('Consider adding these keywords: ' + topMissing3);
     }
 
@@ -417,10 +500,11 @@
       suggestions.push('Your resume is quite long. Consider condensing to the most relevant experience for this role.');
     }
 
-    // ✅ FIX: Highlight important missing multi-word phrases
+    // Highlight important missing multi-word phrases
     var importantPhrases = missing.filter(function(k) {
-      return k.term.indexOf(' ') !== -1 && k.weight > 3;
-    }).map(function(k) { return k.term; });
+      return k.term.indexOf(' ') !== -1 && k.weight > 1;
+    }).map(function(k) { return k.display; });
+    
     if (importantPhrases.length > 0 && suggestions.length < 5) {
       suggestions.push('Important phrases missing from your resume: ' + importantPhrases.slice(0, 3).join(', '));
     }
@@ -435,10 +519,10 @@
   function setAnalyzing(isLoading) {
     el.analyzeBtn.disabled = isLoading;
     if (isLoading) {
-      el.analyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+      el.analyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Analyzing...';
       el.analyzeBtn.classList.add('opacity-75', 'cursor-not-allowed');
     } else {
-      el.analyzeBtn.innerHTML = '<i class="fas fa-search"></i> Analyze Resume';
+      el.analyzeBtn.innerHTML = '<i class="fas fa-search" aria-hidden="true"></i> Analyze Resume';
       el.analyzeBtn.classList.remove('opacity-75', 'cursor-not-allowed');
     }
   }
@@ -465,8 +549,7 @@
       color = 'text-red-500'; dark = 'dark:text-red-400'; msg = 'Needs Improvement';
     }
 
-    // ✅ FIX: SVG elements return SVGAnimatedString for className, not a string.
-    // Use classList.remove() instead of string replace to avoid TypeError.
+    // Use classList.remove() instead of string replace to avoid TypeError on SVG elements
     var colorClasses = [
       'text-emerald-500','text-emerald-400',
       'text-blue-500','text-blue-400',
@@ -487,20 +570,20 @@
     el.statMatch.textContent = keywordPercent + '%';
     el.statFormat.textContent = formatScore + '/20';
 
-    // ✅ FIX: Use .term property since keywords are now objects
+    // Render keyword tags with display names
     el.matchedKeywords.innerHTML = matched.map(function(k) {
-      return '<span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded text-xs border border-emerald-200 dark:border-emerald-800">' + escapeHtml(k.term) + '</span>';
+      return '<span class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded text-xs border border-emerald-200 dark:border-emerald-800">' + escapeHtml(k.display) + '</span>';
     }).join('');
 
     el.missingKeywords.innerHTML = missing.map(function(k) {
-      return '<span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-1 rounded text-xs border border-red-200 dark:border-red-800">' + escapeHtml(k.term) + '</span>';
+      return '<span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 px-2 py-1 rounded text-xs border border-red-200 dark:border-red-800">' + escapeHtml(k.display) + '</span>';
     }).join('');
 
     el.suggestionsList.innerHTML = suggestions.map(function(s) {
       return '<li>' + escapeHtml(s) + '</li>';
     }).join('');
 
-    // ✅ FIX: Scroll with navbar offset — prevents results hiding behind fixed nav on mobile
+    // Scroll with navbar offset — prevents results hiding behind fixed nav
     requestAnimationFrame(function() {
       var navEl = document.getElementById('navbar-container');
       var navH = navEl ? navEl.offsetHeight : 0;
@@ -508,10 +591,12 @@
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
 
+    // Accessibility: Announce results to screen readers
+    announce('Analysis complete. Your ATS score is ' + score + ' out of 100. ' + msg);
     showToast('Analysis complete', 'success');
   }
 
-  // ✅ FIX: HTML escape to prevent XSS in keyword display
+  // HTML escape to prevent XSS in keyword display
   function escapeHtml(str) {
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(str));
@@ -540,6 +625,7 @@
     }
     navigator.clipboard.writeText(getReportText()).then(function() {
       showToast('Report copied to clipboard', 'success');
+      announce('Report copied to clipboard');
     }).catch(function() {
       showToast('Failed to copy', 'error');
     });
@@ -556,9 +642,10 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast('Report downloaded', 'success');
+    announce('Report downloaded');
   }
 
-  // --- ✅ FIX: Toast system with deduplication — prevents stacking identical toasts
+  // Toast system with deduplication — prevents stacking identical toasts
   function showToast(message, type) {
     type = type || 'info';
     var key = message + '|' + type;
@@ -578,7 +665,7 @@
 
     var toast = document.createElement('div');
     toast.className = (bgMap[type] || bgMap.info) + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
-    toast.innerHTML = '<i class="fas ' + (iconMap[type] || iconMap.info) + '"></i> ' + escapeHtml(message);
+    toast.innerHTML = '<i class="fas ' + (iconMap[type] || iconMap.info) + '" aria-hidden="true"></i> ' + escapeHtml(message);
     container.appendChild(toast);
 
     requestAnimationFrame(function() { toast.style.transform = 'translateX(0)'; });
@@ -590,7 +677,7 @@
     }, 3000);
   }
 
-  // --- Init ---
+  // --- Init on DOM Ready ---
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10b981">
 
-  <title>JSON Formatter - Free Online JSON Beautifier Tool</title>
+  <title>JSON Formatter - Free Online JSON Beautifier Tool | DevPalettes</title>
   <meta name="description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view, error detection, and copy functionality.">
-  <meta name="author" content="Devpalettes">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/json-formatter/"/>
 
   <!-- Open Graph / Facebook -->
@@ -15,21 +16,44 @@
   <meta property="og:url" content="https://devpalettes.com/json-formatter/">
   <meta property="og:title" content="JSON Formatter - Free Online JSON Beautifier Tool">
   <meta property="og:description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view and error detection.">
-  <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:image" content="https://devpalettes.com/images/og-json-formatter.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="DevPalettes">
 
   <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://devpalettes.com/json-formatter/">
-  <meta property="twitter:title" content="JSON Formatter - Free Online JSON Beautifier Tool">
-  <meta property="twitter:description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view and error detection.">
-  
-  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://devpalettes.com/json-formatter/">
+  <meta name="twitter:title" content="JSON Formatter - Free Online JSON Beautifier Tool">
+  <meta name="twitter:description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view and error detection.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-json-formatter.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-  <!-- REMOVED: AdSense script removed for clean AdSense approval -->
-  
+
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "JSON Formatter",
+        "item": "https://devpalettes.com/json-formatter/"
+      }
+    ]
+  }
+  </script>
 
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
@@ -42,6 +66,12 @@
     "description": "A free online tool to format, beautify, minify, validate, and tree-view JSON data with syntax highlighting and error detection.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript",
+    "creator": {
+      "@type": "Organization",
+      "name": "DevPalettes",
+      "url": "https://devpalettes.com/"
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -50,7 +80,7 @@
   }
   </script>
 
-  
+  <!-- Structured Data: FAQ — expanded to 8 questions -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -87,6 +117,38 @@
           "@type": "Answer",
           "text": "No. All JSON processing happens entirely in your browser using JavaScript. No data is sent to any server. Your JSON remains completely private and is discarded when you leave the page."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between JSON formatting and JSON minification?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "JSON formatting (beautification) adds indentation, line breaks, and spacing to make JSON human-readable. JSON minification removes all whitespace to produce the smallest possible string for efficient network transmission. Format for development and debugging; minify for production deployment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can this tool handle large JSON files?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. This JSON formatter processes data entirely in your browser using native JavaScript methods, which can handle files up to several megabytes. For very large files (over 10MB), browser memory may become a constraint, but typical API responses and config files work instantly."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What JSON standards does this validator follow?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The validator follows the JSON specification defined in RFC 8259. This means it strictly requires double-quoted keys, no trailing commas, no comments, and proper use of data types (strings, numbers, booleans, null, objects, and arrays)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this JSON formatter support JSONC or JSON5?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This tool validates strict JSON per RFC 8259. JSONC (JSON with comments) and JSON5 (extended JSON syntax) are not valid JSON and will trigger parse errors. If you have JSONC with comments, remove the comments before pasting."
+        }
       }
     ]
   }
@@ -94,11 +156,13 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <!-- Fixed: removed duplicate broken preload; single async font load -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Fixed: Font Awesome now async like the font -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -130,28 +194,36 @@
     .tree-children { border-left: 1px solid rgba(148,163,184,0.2); margin-left: 10px; padding-left: 12px; }
     .tree-children.collapsed { display: none; }
     .json-output-area { tab-size: 2; -moz-tab-size: 2; }
+    /* Skip link */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
+    .skip-link:focus{left:0;top:0;width:auto;height:auto;padding:.75rem 1.5rem;background:#10b981;color:#fff;font-weight:700;border-radius:0 0 .5rem 0;outline:2px solid #fff}
   </style>
 
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  <div id="navbar-container"></div>
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+
+  <!-- Skip to content — accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
+
+  <main id="main-content" class="pt-8 pb-12 min-h-screen relative overflow-hidden" role="main">
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">JSON Formatter - Free Online JSON Beautifier Tool</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-6">Format, beautify, minify, and validate JSON data instantly with syntax highlighting</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="mb-10 max-w-7xl mx-auto " aria-label="Introduction to the JSON Formatter tool">
+      <section class="mb-10 max-w-7xl mx-auto" aria-labelledby="intro-heading">
         <div class="glass-card p-6 shimmer-card">
-          <h2 class="text-xl font-bold mb-3">What Is This JSON Formatter?</h2>
+          <h2 id="intro-heading" class="text-xl font-bold mb-3">What Is This JSON Formatter?</h2>
           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
             This free online JSON formatter takes raw, minified, or messy JSON and converts it into clean, indented, human-readable output — instantly, in your browser, with no server upload. Paste your JSON, click Format, and get beautifully syntax-highlighted code with proper line breaks. You can also minify JSON for production, validate it to catch syntax errors, sort keys alphabetically, or switch to a collapsible tree view for navigating deeply nested structures.
           </p>
@@ -165,121 +237,124 @@
       </section>
 
       <!-- Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8" aria-label="JSON analysis statistics">
         <div class="glass-card p-4 shimmer-card">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center">
-              <i class="fas fa-check-circle text-emerald-500 text-xs"></i>
+              <i class="fas fa-check-circle text-emerald-500 text-xs" aria-hidden="true"></i>
             </div>
             <span class="text-xs text-slate-500">Status</span>
           </div>
-          <p id="stat-status" class="text-lg font-bold text-slate-400">—</p>
+          <p id="stat-status" class="text-lg font-bold text-slate-400" aria-live="polite">—</p>
         </div>
         <div class="glass-card p-4 shimmer-card">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center">
-              <i class="fas fa-key text-blue-500 text-xs"></i>
+              <i class="fas fa-key text-blue-500 text-xs" aria-hidden="true"></i>
             </div>
             <span class="text-xs text-slate-500">Keys</span>
           </div>
-          <p id="stat-keys" class="text2xl font-bold text-slate-400">0</p>
+          <!-- Fixed: text2xl typo → text-2xl -->
+          <p id="stat-keys" class="text-2xl font-bold text-slate-400" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-4 shimmer-card">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center">
-              <i class="fas fa-layer-group text-purple-500 text-xs"></i>
+              <i class="fas fa-layer-group text-purple-500 text-xs" aria-hidden="true"></i>
             </div>
             <span class="text-xs text-slate-500">Depth</span>
           </div>
-          <p id="stat-depth" class="text-2xl font-bold text-slate-400">0</p>
+          <p id="stat-depth" class="text-2xl font-bold text-slate-400" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-4 shimmer-card">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center">
-              <i class="fas fa-weight-hanging text-amber-500 text-xs"></i>
+              <i class="fas fa-weight-hanging text-amber-500 text-xs" aria-hidden="true"></i>
             </div>
             <span class="text-xs text-slate-500">Size</span>
           </div>
-          <p id="stat-size" class="text-2xl font-bold text-slate-400">0 B</p>
+          <p id="stat-size" class="text-2xl font-bold text-slate-400" aria-live="polite">0 B</p>
         </div>
         <div class="glass-card p-4 shimmer-card col-span-2 lg:col-span-1">
           <div class="flex items-center gap-2 mb-2">
             <div class="w-8 h-8 rounded-lg bg-teal-500/10 flex items-center justify-center">
-              <i class="fas fa-compress-alt text-teal-500 text-xs"></i>
+              <i class="fas fa-compress-alt text-teal-500 text-xs" aria-hidden="true"></i>
             </div>
             <span class="text-xs text-slate-500">Minified</span>
           </div>
-          <p id="stat-minified" class="text-2xl font-bold text-slate-400">0 B</p>
+          <p id="stat-minified" class="text-2xl font-bold text-slate-400" aria-live="polite">0 B</p>
         </div>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-8">
         <!-- Left: Input -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-8 shimmer-card">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen" aria-hidden="true"></i></span>
                 JSON Input
               </h2>
               <div class="flex gap-2">
-                <button id="paste-btn" class="text-xs text-slate-400 hover:text-emerald-500 transition-colors">
-                  <i class="fas fa-paste mr-1"></i>Paste
+                <button id="paste-btn" type="button" class="text-xs text-slate-400 hover:text-emerald-500 transition-colors">
+                  <i class="fas fa-paste mr-1" aria-hidden="true"></i>Paste
                 </button>
-                <button id="clear-btn" class="text-xs text-slate-400 hover:text-red-500 transition-colors">
-                  <i class="fas fa-eraser mr-1"></i>Clear
+                <button id="clear-btn" type="button" class="text-xs text-slate-400 hover:text-red-500 transition-colors">
+                  <i class="fas fa-eraser mr-1" aria-hidden="true"></i>Clear
                 </button>
               </div>
             </div>
+            <label for="json-input" class="sr-only">Enter JSON data to format</label>
             <textarea id="json-input" rows="16" placeholder='{"name": "John", "age": 30, "active": true}' class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none leading-relaxed font-mono"></textarea>
             <div class="flex items-center justify-between mt-3">
-              <p id="input-char-count" class="text-xs text-slate-400">0 characters</p>
-              <p id="input-lines-count" class="text-xs text-slate-400">0 lines</p>
+              <p id="input-char-count" class="text-xs text-slate-400" aria-live="polite">0 characters</p>
+              <p id="input-lines-count" class="text-xs text-slate-400" aria-live="polite">0 lines</p>
             </div>
           </div>
 
           <!-- Action Buttons -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-magic"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-magic" aria-hidden="true"></i></span>
               Actions
             </h2>
             <div class="grid grid-cols-2 gap-3 mb-5">
-              <button id="format-btn" class="fmt-btn px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium text-sm transition-all hover:bg-emerald-500/20">
-                <i class="fas fa-indent mr-2"></i>Format / Beautify
+              <button id="format-btn" type="button" class="fmt-btn px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium text-sm transition-all hover:bg-emerald-500/20">
+                <i class="fas fa-indent mr-2" aria-hidden="true"></i>Format / Beautify
               </button>
-              <button id="minify-btn" class="fmt-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5">
-                <i class="fas fa-compress-alt mr-2"></i>Minify
+              <button id="minify-btn" type="button" class="fmt-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5">
+                <i class="fas fa-compress-alt mr-2" aria-hidden="true"></i>Minify
               </button>
-              <button id="validate-btn" class="fmt-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5">
-                <i class="fas fa-check-double mr-2"></i>Validate
+              <button id="validate-btn" type="button" class="fmt-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5">
+                <i class="fas fa-check-double mr-2" aria-hidden="true"></i>Validate
               </button>
-              <button id="sort-btn" class="fmt-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5">
-                <i class="fas fa-sort-alpha-down mr-2"></i>Sort Keys
+              <button id="sort-btn" type="button" class="fmt-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5">
+                <i class="fas fa-sort-alpha-down mr-2" aria-hidden="true"></i>Sort Keys
               </button>
             </div>
 
             <!-- Indent Size -->
-            <div class="mb-4 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50">
+            <fieldset class="mb-4 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50">
               <div class="flex items-center justify-between mb-2">
+                <legend class="text-sm font-medium sr-only">Indent Size</legend>
                 <span class="text-sm font-medium">Indent Size</span>
                 <span id="indent-val" class="text-sm font-mono text-emerald-600 dark:text-emerald-400 font-bold">2 spaces</span>
               </div>
               <div class="flex gap-2">
-                <button class="indent-opt active px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-indent="2">2</button>
-                <button class="indent-opt px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-indent="4">4</button>
-                <button class="indent-opt px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-indent="8">8</button>
-                <button class="indent-opt px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-indent="tab">Tab</button>
+                <button type="button" class="indent-opt active px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-indent="2">2</button>
+                <button type="button" class="indent-opt px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-indent="4">4</button>
+                <button type="button" class="indent-opt px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-indent="8">8</button>
+                <button type="button" class="indent-opt px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-indent="tab">Tab</button>
               </div>
-            </div>
+            </fieldset>
 
             <!-- View Toggle -->
-            <div class="flex gap-2">
-              <button id="view-code-btn" class="view-btn active flex-1 px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium text-sm transition-all">
-                <i class="fas fa-code mr-2"></i>Code View
+            <div class="flex gap-2" role="tablist" aria-label="Output view mode">
+              <button id="view-code-btn" type="button" class="view-btn active flex-1 px-4 py-3 rounded-xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-medium text-sm transition-all" role="tab" aria-selected="true">
+                <i class="fas fa-code mr-2" aria-hidden="true"></i>Code View
               </button>
-              <button id="view-tree-btn" class="view-btn flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50">
-                <i class="fas fa-sitemap mr-2"></i>Tree View
+              <button id="view-tree-btn" type="button" class="view-btn flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-medium text-sm transition-all hover:border-emerald-500/50" role="tab" aria-selected="false">
+                <i class="fas fa-sitemap mr-2" aria-hidden="true"></i>Tree View
               </button>
             </div>
           </div>
@@ -287,30 +362,30 @@
           <!-- Samples -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-flask"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-flask" aria-hidden="true"></i></span>
               Sample JSON
             </h2>
             <div class="grid grid-cols-3 gap-3">
-              <button class="sample-btn px-3 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-xs font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="simple">
-                <i class="fas fa-cube text-emerald-500 mb-1 block text-base"></i>Simple
+              <button type="button" class="sample-btn px-3 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-xs font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="simple">
+                <i class="fas fa-cube text-emerald-500 mb-1 block text-base" aria-hidden="true"></i>Simple
               </button>
-              <button class="sample-btn px-3 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-xs font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="nested">
-                <i class="fas fa-layer-group text-blue-500 mb-1 block text-base"></i>Nested
+              <button type="button" class="sample-btn px-3 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-xs font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="nested">
+                <i class="fas fa-layer-group text-blue-500 mb-1 block text-base" aria-hidden="true"></i>Nested
               </button>
-              <button class="sample-btn px-3 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-xs font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="api">
-                <i class="fas fa-server text-purple-500 mb-1 block text-base"></i>API
+              <button type="button" class="sample-btn px-3 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-xs font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="api">
+                <i class="fas fa-server text-purple-500 mb-1 block text-base" aria-hidden="true"></i>API
               </button>
             </div>
           </div>
         </div>
 
         <!-- Right: Output -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <!-- Error Display -->
-          <div id="error-container" class="hidden glass-card p-6 shimmer-card border-l-4 border-red-500">
+          <div id="error-container" class="hidden glass-card p-6 shimmer-card border-l-4 border-red-500" role="alert">
             <div class="flex items-start gap-3">
               <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-exclamation-triangle text-red-500"></i>
+                <i class="fas fa-exclamation-triangle text-red-500" aria-hidden="true"></i>
               </div>
               <div class="flex-1">
                 <p class="font-semibold text-red-600 dark:text-red-400 mb-1">Invalid JSON</p>
@@ -321,10 +396,10 @@
           </div>
 
           <!-- Success Display -->
-          <div id="success-container" class="hidden glass-card p-6 shimmer-card border-l-4 border-emerald-500">
+          <div id="success-container" class="hidden glass-card p-6 shimmer-card border-l-4 border-emerald-500" role="status">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                <i class="fas fa-check-circle text-emerald-500"></i>
+                <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
               </div>
               <div>
                 <p class="font-semibold text-emerald-600 dark:text-emerald-400">Valid JSON</p>
@@ -337,19 +412,19 @@
           <div class="glass-card p-8 shimmer-card">
             <div class="flex justify-between items-center mb-6">
               <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-file-code"></i></span>
+                <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-file-code" aria-hidden="true"></i></span>
                 Formatted Output
               </h2>
-              <button id="copy-output-btn" class="text-xs text-slate-400 hover:text-emerald-500 transition-colors">
-                <i class="fas fa-copy mr-1"></i>Copy
+              <button id="copy-output-btn" type="button" class="text-xs text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Copy formatted output to clipboard">
+                <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
               </button>
             </div>
 
             <!-- Code View -->
-            <div id="code-view">
+            <div id="code-view" role="tabpanel">
               <div id="output-empty" class="text-center py-16">
                 <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5">
-                  <i class="fas fa-brackets-curly text-4xl text-slate-300 dark:text-slate-600 fa-code"></i>
+                  <i class="fas fa-code text-4xl text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 </div>
                 <p class="text-lg font-medium text-slate-500 dark:text-slate-400 mb-2">Formatted JSON will appear here</p>
                 <p class="text-sm text-slate-400">Paste JSON and click Format to beautify</p>
@@ -358,9 +433,9 @@
             </div>
 
             <!-- Tree View -->
-            <div id="tree-view" class="hidden">
+            <div id="tree-view" class="hidden" role="tabpanel">
               <div id="tree-empty" class="text-center py-16">
-                <i class="fas fa-sitemap text-4xl text-slate-300 dark:text-slate-600 mb-4"></i>
+                <i class="fas fa-sitemap text-4xl text-slate-300 dark:text-slate-600 mb-4" aria-hidden="true"></i>
                 <p class="text-sm text-slate-400">Switch to tree view after formatting</p>
               </div>
               <div id="tree-output" class="hidden max-h-[520px] overflow-auto pr-2 text-sm font-mono"></div>
@@ -370,47 +445,47 @@
           <!-- Quick Actions -->
           <div class="glass-card p-6 shimmer-card">
             <div class="flex flex-wrap gap-3">
-              <button id="copy-all-btn" class="btn-primary btn-glow flex-1 justify-center">
-                <i class="fas fa-copy"></i> Copy
+              <button id="copy-all-btn" type="button" class="btn-primary btn-glow flex-1 justify-center">
+                <i class="fas fa-copy" aria-hidden="true"></i> Copy
               </button>
-              <button id="download-btn" class="btn-secondary flex-1 justify-center">
-                <i class="fas fa-download"></i> Download JSON
+              <button id="download-btn" type="button" class="btn-secondary flex-1 justify-center">
+                <i class="fas fa-download" aria-hidden="true"></i> Download JSON
               </button>
-              <button id="swap-btn" class="btn-secondary flex-1 justify-center">
-                <i class="fas fa-exchange-alt"></i> Swap to Input
+              <button id="swap-btn" type="button" class="btn-secondary flex-1 justify-center">
+                <i class="fas fa-exchange-alt" aria-hidden="true"></i> Swap to Input
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      <section class="mt-12 max-w-7xl mx-auto " aria-label="How to use the JSON formatter">
+      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="howto-heading">
         <article class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-6">How to Use This JSON Formatter</h2>
+          <h2 id="howto-heading" class="text-2xl font-bold mb-6">How to Use This JSON Formatter</h2>
           <div class="grid sm:grid-cols-2 gap-6">
             <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span> Paste Your JSON</h3>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">1</span> Paste Your JSON</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Copy JSON from an API response, a config file, or anywhere else and paste it into the input area. The character and line counts update as you type.</p>
             </div>
             <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span> Click an Action</h3>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">2</span> Click an Action</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Format / Beautify to pretty-print, Minify to compress, Validate to check syntax only, or Sort Keys to alphabetize all object keys. Choose your indent size (2, 4, 8 spaces, or tabs) before formatting.</p>
             </div>
             <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span> Review the Output</h3>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">3</span> Review the Output</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The formatted output appears on the right with syntax highlighting. Switch to Tree View to explore nested structures with collapsible nodes. If validation fails, the error panel shows the exact line and column.</p>
             </div>
             <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span> Copy or Download</h3>
+              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">4</span> Copy or Download</h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Copy to grab the output to your clipboard, or Download to save it as a .json file. Use Swap to Input to chain operations — format first, then sort, then minify — without re-pasting. For encoding JSON values for API headers, <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the Base64 tool</a> works alongside this one.</p>
             </div>
           </div>
         </article>
       </section>
 
-      <section class="mt-12 max-w-7xl mx-auto " aria-label="Benefits of using this JSON formatter">
+      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="benefits-heading">
         <article class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-6">Benefits of Using This JSON Formatter</h2>
+          <h2 id="benefits-heading" class="text-2xl font-bold mb-6">Benefits of Using This JSON Formatter</h2>
           <div class="grid sm:grid-cols-2 gap-6">
             <div class="flex gap-3">
               <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
@@ -444,9 +519,9 @@
         </article>
       </section>
 
-      <section class="mt-12 max-w-7xl mx-auto " aria-label="Common use cases for a JSON formatter">
+      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="usecases-heading">
         <article class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-6">Common Use Cases</h2>
+          <h2 id="usecases-heading" class="text-2xl font-bold mb-6">Common Use Cases</h2>
           <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="flex gap-3">
               <i class="fas fa-server text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
@@ -459,7 +534,7 @@
               <i class="fas fa-file-code text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
               <div>
                 <h3 class="font-semibold text-sm mb-1">Reviewing Config Files</h3>
-                <p class="text-slate-400 text-sm leading-relaxed">package.json, tsconfig.json, .eslintrc — format and validate any JSON configuration file to spot missing commas or typos before they break your build.</p>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">package.json, tsconfig.json, .eslintrc — format and validate any JSON configuration file to spot missing commas or typos before they break your build.</p>
               </div>
             </div>
             <div class="flex gap-3">
@@ -495,10 +570,10 @@
       </section>
 
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 ">
-         
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">What is a JSON Formatter?</h2>
+      <div class="seo-content space-y-12 mt-16">
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whatis-heading">
+            <h2 id="whatis-heading" class="text-2xl font-bold mb-4">What is a JSON Formatter?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                A JSON formatter is a free online tool that takes raw, unformatted JSON data and converts it into a neatly indented, human-readable format. JSON (JavaScript Object Notation) is the most widely used data interchange format on the web, but the compact version that APIs return is nearly impossible for humans to read. A <strong>JSON beautifier</strong> adds proper line breaks, consistent indentation, and often syntax highlighting so you can quickly understand the structure and values in the data.
             </p>
@@ -507,9 +582,8 @@
             </p>
          </section>
 
-         
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Does the JSON Formatter Work?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howworks-heading">
+            <h2 id="howworks-heading" class="text-2xl font-bold mb-4">How Does the JSON Formatter Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This JSON formatter processes your data in three stages, all running locally in your browser:
             </p>
@@ -523,13 +597,13 @@
             </p>
          </section>
 
-         <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a JSON Formatter</h2>
+         <!-- FIXED: Benefits section — the "Key Sorting" card had broken HTML (icon wrapper div enclosed content div) -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="seo-benefits-heading">
+            <h2 id="seo-benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a JSON Formatter</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-eye text-emerald-500"></i>
+                     <i class="fas fa-eye text-emerald-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Readability</h3>
@@ -538,7 +612,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bug text-blue-500"></i>
+                     <i class="fas fa-bug text-blue-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Error Detection</h3>
@@ -547,16 +621,17 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-compress-alt text-purple-500"></i>
+                     <i class="fas fa-compress-alt text-purple-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Minification</h3>
                      <p class="text-sm text-slate-500">Reduce JSON file size by up to 70% by removing whitespace for faster API responses and smaller payloads.</p>
                   </div>
                </div>
-               <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                  <div class="flex gap-4">
-                     <i class="fas fa-sort-alpha-down text-amber-500"></i>
+               <!-- FIXED: was broken — icon wrapper div enclosed content div; now properly structured -->
+               <div class="flex gap-4">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                     <i class="fas fa-sort-alpha-down text-amber-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Key Sorting</h3>
@@ -565,7 +640,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-sitemap text-red-500"></i>
+                     <i class="fas fa-sitemap text-red-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Tree Navigation</h3>
@@ -574,7 +649,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-lock text-teal-500"></i>
+                     <i class="fas fa-lock text-teal-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">100% Private</h3>
@@ -585,8 +660,8 @@
          </section>
 
          <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="practical-heading">
+            <h2 id="practical-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Debugging API Responses:</strong> When a REST API returns an error, the response body is usually a single-line JSON string. Pasting it into the formatter instantly reveals the error code, message, and details.</li>
                <li><strong>Reviewing Configuration Files:</strong> JSON is used for package.json, tsconfig.json, .eslintrc, and many other config files. The formatter helps you understand complex nested configurations.</li>
@@ -597,9 +672,9 @@
             </ul>
          </section>
 
-         <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This JSON Formatter</h2>
+         <!-- How to Use (SEO) -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-seo-heading">
+            <h2 id="howto-seo-heading" class="text-2xl font-bold mb-4">How to Use This JSON Formatter</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Paste Your JSON:</strong> Copy your JSON data from an API response, file, or anywhere else and paste it into the input area on the left.</li>
                <li><strong>Choose an Action:</strong> Click "Format / Beautify" to pretty-print, "Minify" to compress, "Validate" to check syntax only, or "Sort Keys" to alphabetize all object keys.</li>
@@ -611,8 +686,26 @@
             </ol>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <!-- NEW: Who Is This Tool For? -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whofor-heading">
+            <h2 id="whofor-heading" class="text-2xl font-bold mb-4">Who Is This JSON Formatter For?</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
+               This tool serves anyone who works with JSON data regularly. Here are the audiences that benefit most:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Backend and frontend developers</strong> debugging API responses. The precise error reporting with line and column numbers turns a 10-minute hunt for a missing comma into a 10-second fix.</li>
+               <li><strong>DevOps engineers</strong> reviewing and editing JSON configuration files for Kubernetes, Terraform, Docker Compose, and CI/CD pipelines. A single syntax error in a config file can break a deployment — this validator catches it before you commit.</li>
+               <li><strong>Data analysts and scientists</strong> working with JSON data exports from databases, APIs, and NoSQL stores like MongoDB. The tree view makes it easy to explore unfamiliar data structures without writing code.</li>
+               <li><strong>Students and educators</strong> teaching or learning data formats. The visual tree view and syntax highlighting make JSON structure intuitive in a way that raw text cannot.</li>
+               <li><strong>Security-conscious teams</strong> who need a formatter that never transmits data externally. Since everything runs in-browser, proprietary API schemas and credential-containing configs stay private.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               For related text processing, our <a href="/text-formatter/" class="text-emerald-500 hover:underline">Text Formatter</a> handles HTML, CSS, and other formats. To encode JSON values for URL parameters or API headers, the <a href="/base64-tool/" class="text-emerald-500 hover:underline">Base64 encoder</a> and <a href="/url-tool/" class="text-emerald-500 hover:underline">URL encoder</a> work alongside this tool.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whybuilt-heading">
+            <h2 id="whybuilt-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                I was debugging a third-party API that returned a 4,000-character JSON response on a single line. I pasted it into the first online formatter I found, and it crashed my browser tab. The second one worked but couldn't handle the nested arrays — the output was still barely readable. The third one sent my data to a server, which made me uncomfortable since the payload contained API keys and user tokens.
             </p>
@@ -624,80 +717,113 @@
             </p>
          </section>
 
-         <!-- FAQ Section -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <!-- FAQ Section — expanded to 8 with accessibility -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
                      <span>How do I use the JSON Formatter?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Paste your JSON data into the input area and click "Format / Beautify." The tool will parse your JSON, validate it, and display a properly indented version with syntax highlighting on the right. You can also minify, validate only, sort keys, or switch to tree view.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
                      <span>What does it mean to minify JSON?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Minifying JSON removes all unnecessary whitespace, line breaks, and indentation, producing the smallest possible string representation of the data. This is commonly done before sending JSON in API responses or storing it in databases to reduce file size and improve transfer speed. A minified JSON file can be 50-70% smaller than its formatted version.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
                      <span>How does the JSON validator detect errors?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">The validator uses the browser's native JSON.parse() method, which strictly follows the JSON specification (RFC 8259). When the input is malformed, the parser throws a SyntaxError with position information. The tool catches this error, calculates the approximate line and column number, and displays a human-readable description of what went wrong — such as an unexpected character, missing comma, or trailing comma.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
                      <span>Is my JSON data sent to a server?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">No. All JSON processing happens entirely in your browser using JavaScript's built-in JSON.parse() and JSON.stringify() methods. No data is transmitted to any server. This makes the tool safe for formatting sensitive data like API keys, database dumps, authentication tokens, and configuration files with credentials.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
+                     <span>What is the difference between JSON formatting and JSON minification?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">JSON formatting (beautification) adds indentation, line breaks, and spacing to make JSON human-readable. JSON minification removes all whitespace to produce the smallest possible string for efficient network transmission. Format for development and debugging; minify for production deployment.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
+                     <span>Can this tool handle large JSON files?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This JSON formatter processes data entirely in your browser using native JavaScript methods, which can handle files up to several megabytes. For very large files (over 10MB), browser memory may become a constraint, but typical API responses and config files work instantly.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
+                     <span>What JSON standards does this validator follow?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">The validator follows the JSON specification defined in RFC 8259. This means it strictly requires double-quoted keys, no trailing commas, no comments, and proper use of data types (strings, numbers, booleans, null, objects, and arrays).</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-8">
+                     <span>Does this JSON formatter support JSONC or JSON5?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-8" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">No. This tool validates strict JSON per RFC 8259. JSONC (JSON with comments) and JSON5 (extended JSON syntax) are not valid JSON and will trigger parse errors. If you have JSONC with comments, remove the comments before pasting.</p>
                   </div>
                </div>
             </div>
          </section>
 
-         <!-- Added Social Sharing Section (After CTA or before Footer) -->
-          <section class="glass-card p-8 shimmer-card text-center">
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/json-formatter/&text=Free%20JSON%20formatter%20with%20tree%20view%20and%20validation!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
                 <a href="https://wa.me/?text=Check%20out%20this%20free%20JSON%20formatter%20https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/json-formatter/&description=Free%20online%20JSON%20formatter%20with%20tree%20view" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p"></i> Pinterest
-                </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <button id="copy-link-btn" type="button" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
+              <!-- Live region for copy link feedback -->
+              <div id="copy-link-status" class="sr-only" aria-live="polite" role="status"></div>
             </div>
-          </section>
-         
-         
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
+         </section>
+
+         <nav class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Tools &amp; Resources</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Boost your SEO and development workflow with these free tools.</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/meta-tag-generator/" class="btn-primary text-xs py-2 px-4">Meta Tag Generator</a>
@@ -707,10 +833,10 @@
                <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
                <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
              </div>
-         </section>
-         
+         </nav>
+
       </div>
-      
+
       <div class="text-center py-10 mt-4">
         <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
             <span class="text-slate-400 text-sm">Built by</span>
@@ -721,15 +847,17 @@
 
     </div>
   </main>
-  
-  <!-- Footer -->
-  <div id="footer-container"></div>
-  
-  <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
-  <script src="../js/main.js"></script>
-  <script src="../js/json-formatter.js"></script>
-  <script src="../js/enhancements.js"></script>
+
+  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
+
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" role="status"></div>
+
+  <noscript>
+    <p style="text-align:center;padding:2rem;font-size:1.1rem;color:#dc2626;">This JSON Formatter requires JavaScript to function. Please enable JavaScript in your browser settings.</p>
+  </noscript>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/json-formatter.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 </body>
 </html>

@@ -16,6 +16,8 @@
     const paletteList = document.getElementById('palette-list');
     const colorCount = document.getElementById('color-count');
     const downloadBtn = document.getElementById('download-palette-btn');
+    const extractionAnnouncer = document.getElementById('extraction-announcer');
+    const copyAnnouncer = document.getElementById('copy-announcer');
 
     // Initialize
     function init() {
@@ -25,6 +27,14 @@
     function setupEventListeners() {
         // Upload Zone Click
         uploadZone.addEventListener('click', () => imageInput.click());
+
+        // Upload Zone Keyboard Support
+        uploadZone.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                imageInput.click();
+            }
+        });
 
         // File Input Change
         imageInput.addEventListener('change', handleFileSelect);
@@ -55,6 +65,27 @@
 
         // Download Button
         downloadBtn.addEventListener('click', downloadPalette);
+
+        // Event Delegation for Palette Grid (Copy Colors)
+        paletteGrid.addEventListener('click', handlePaletteClick);
+        paletteGrid.addEventListener('keydown', handlePaletteKeydown);
+    }
+
+    function handlePaletteClick(e) {
+        const swatch = e.target.closest('[data-hex]');
+        if (swatch) {
+            copyColor(swatch.dataset.hex);
+        }
+    }
+
+    function handlePaletteKeydown(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            const swatch = e.target.closest('[data-hex]');
+            if (swatch) {
+                e.preventDefault();
+                copyColor(swatch.dataset.hex);
+            }
+        }
     }
 
     function handleFileSelect(e) {
@@ -66,7 +97,7 @@
 
     function handleFile(file) {
         if (!file.type.startsWith('image/')) {
-            alert('Please upload an image file.');
+            showToast('Please upload an image file (PNG, JPG, or WebP).', 'error');
             return;
         }
 
@@ -192,23 +223,30 @@
         downloadBtn.disabled = false;
         colorCount.textContent = `${state.colors.length} colors`;
 
-        // Render Grid
-        paletteGrid.innerHTML = state.colors.map(color => `
-            <div class="group relative cursor-pointer" onclick="window.copyColor('${color.hex}')">
-                <div class="aspect-square rounded-xl shadow-md transition-transform group-hover:scale-105" style="background-color: ${color.hex};"></div>
-                <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 rounded-xl">
-                    <i class="fas fa-copy text-white text-xl"></i>
-                </div>
-                <div class="text-center mt-2">
-                    <p class="font-mono text-sm font-semibold">${color.hex.toUpperCase()}</p>
-                </div>
+        // Announce to screen readers
+        if (extractionAnnouncer) {
+            extractionAnnouncer.textContent = `${state.colors.length} colors extracted from image. Scroll down to see the palette.`;
+        }
+
+        // Render Grid - Use proper semantic buttons instead of divs with onclick
+        paletteGrid.innerHTML = state.colors.map((color, index) => `
+            <div class="group relative" role="listitem">
+                <button class="w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 rounded-xl" data-hex="${color.hex}" aria-label="Copy color ${color.hex.toUpperCase()}, ${color.percentage}% of image">
+                    <div class="aspect-square rounded-xl shadow-md transition-transform group-hover:scale-105" style="background-color: ${color.hex};"></div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 rounded-xl pointer-events-none">
+                        <i class="fas fa-copy text-white text-xl" aria-hidden="true"></i>
+                    </div>
+                    <div class="text-center mt-2">
+                        <p class="font-mono text-sm font-semibold">${color.hex.toUpperCase()}</p>
+                    </div>
+                </button>
             </div>
         `).join('');
 
         // Render List (with percentages)
         paletteList.innerHTML = state.colors.map(color => `
             <div class="flex items-center gap-3 p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800">
-                <div class="w-6 h-6 rounded-md shadow-sm" style="background-color: ${color.hex};"></div>
+                <div class="w-6 h-6 rounded-md shadow-sm flex-shrink-0" style="background-color: ${color.hex};"></div>
                 <div class="flex-1 font-mono text-sm">${color.hex.toUpperCase()}</div>
                 <div class="flex-1 bg-slate-200 dark:bg-slate-700 rounded-full h-2 overflow-hidden">
                     <div class="h-full bg-purple-500" style="width: ${color.percentage}%;"></div>
@@ -243,19 +281,64 @@
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
+
+        showToast('Palette CSS file downloaded!', 'success');
     }
 
-    // Expose copy function globally for onclick handlers
-    window.copyColor = function(hex) {
-        navigator.clipboard.writeText(hex).then(() => {
-            // Simple feedback
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-5 left-1/2 transform -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-lg shadow-lg text-sm z-50 animate-bounce';
-            toast.textContent = `Copied ${hex}`;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
-        });
-    };
+    function copyColor(hex) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(hex).then(() => {
+                showToast(`Copied ${hex.toUpperCase()}`, 'success');
+                if (copyAnnouncer) {
+                    copyAnnouncer.textContent = `Color ${hex.toUpperCase()} copied to clipboard`;
+                }
+            }).catch(() => {
+                fallbackCopy(hex);
+            });
+        } else {
+            fallbackCopy(hex);
+        }
+    }
+
+    function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+            document.execCommand('copy');
+            showToast(`Copied ${text.toUpperCase()}`, 'success');
+            if (copyAnnouncer) {
+                copyAnnouncer.textContent = `Color ${text.toUpperCase()} copied to clipboard`;
+            }
+        } catch(e) {
+            showToast('Failed to copy color', 'error');
+        }
+        document.body.removeChild(textarea);
+    }
+
+    function showToast(message, type) {
+        const toast = document.createElement('div');
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        
+        let bgClass = 'bg-slate-800';
+        if (type === 'error') bgClass = 'bg-red-600';
+        if (type === 'success') bgClass = 'bg-slate-800';
+        
+        toast.className = `fixed bottom-5 left-1/2 transform -translate-x-1/2 ${bgClass} text-white px-4 py-2 rounded-lg shadow-lg text-sm z-50`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        
+        // Simple fade out
+        setTimeout(() => {
+            toast.style.transition = 'opacity 0.3s';
+            toast.style.opacity = '0';
+            setTimeout(() => toast.remove(), 300);
+        }, 2000);
+    }
 
     init();
 })();

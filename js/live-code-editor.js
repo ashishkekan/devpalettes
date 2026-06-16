@@ -1,6 +1,6 @@
 /**
  * Live Code Editor — Devpalettes
- * Self-contained IIFE. Depends on: CodeMirror 5, JSZip (optional).
+ * Self-contained IIFE. Depends on: CodeMirror 5, JSZip (lazy-loaded).
  * Exposes nothing global except via DOM event listeners.
  */
 (function () {
@@ -120,6 +120,10 @@
 
   var STORAGE_KEY = 'devpalettes-live-editor';
 
+  /* ADDED: JSZip lazy-loading state */
+  var jsZipLoading = false;
+  var jsZipReady = typeof JSZip !== 'undefined';
+
   /* ═══════════════════════════════════════
      DOM REFS
      ═══════════════════════════════════════ */
@@ -128,6 +132,8 @@
   var dom = {
     saveInd:    $('ed-save-ind'),
     moreMenu:   $('ed-more-menu'),
+    moreBtn:    $('ed-more-btn'),       /* ADDED */
+    conBtn:     $('ed-con-btn'),        /* moved up for convenience */
     panelL:     $('ed-panel-l'),
     panelR:     $('ed-panel-r'),
     drag:       $('ed-drag'),
@@ -137,7 +143,6 @@
     conDrag:    $('ed-con-drag'),
     conOut:     $('ed-con-out'),
     conBadge:   $('ed-con-badge'),
-    conBtn:     $('ed-con-btn'),
     conClear:   $('ed-con-clear'),
     fsModal:    $('ed-fs-modal'),
     fsFrame:    $('ed-fs-frame'),
@@ -202,7 +207,8 @@
     }
     var el = document.createElement('div');
     el.className = 'ed-toast-in glass-card rounded-xl px-4 py-2.5 shadow-xl shadow-black/10 dark:shadow-black/30 flex items-center gap-2 text-xs font-medium pointer-events-auto min-w-[180px]';
-    el.innerHTML = '<i class="' + (icon || 'fas fa-check-circle text-emerald-500') + '"></i><span>' + msg + '</span>';
+    el.setAttribute('role', 'alert');  /* ADDED: accessibility */
+    el.innerHTML = '<i class="' + (icon || 'fas fa-check-circle text-emerald-500') + '" aria-hidden="true"></i><span>' + msg + '</span>';
     dom.toastBox.appendChild(el);
     setTimeout(function () {
       el.classList.remove('ed-toast-in');
@@ -298,12 +304,15 @@
     dom.conPanel.classList.toggle('hidden', !conOpen);
     dom.conDrag.classList.toggle('hidden', !conOpen);
     dom.conBtn.classList.toggle('text-emerald-500', conOpen);
+    /* ADDED: Update aria-expanded */
+    dom.conBtn.setAttribute('aria-expanded', conOpen ? 'true' : 'false');
   }
 
   function clearConsole() {
     dom.conOut.innerHTML = '';
     conCount = 0;
     dom.conBadge.textContent = '0';
+    dom.conBadge.setAttribute('aria-label', '0 console messages');  /* ADDED */
     dom.conBadge.classList.add('hidden');
     dom.conBadge.classList.remove('flex');
   }
@@ -313,12 +322,15 @@
     var icons  = { log: 'fa-chevron-right', error: 'fa-circle-xmark', warn: 'fa-triangle-exclamation', info: 'fa-circle-info' };
     var row = document.createElement('div');
     row.className = 'flex items-start gap-2 py-1 px-1 rounded hover:bg-slate-100/50 dark:hover:bg-white/[0.02] ' + (colors[method] || colors.log);
-    row.innerHTML = '<i class="fas ' + (icons[method] || icons.log) + ' text-[9px] mt-1 opacity-60 flex-shrink-0"></i>'
+    row.setAttribute('role', 'listitem');  /* ADDED */
+    row.innerHTML = '<i class="fas ' + (icons[method] || icons.log) + ' text-[9px] mt-1 opacity-60 flex-shrink-0" aria-hidden="true"></i>'
       + '<span class="break-all leading-relaxed">' + esc(args.join(' ')) + '</span>';
     dom.conOut.appendChild(row);
     dom.conOut.scrollTop = dom.conOut.scrollHeight;
     conCount++;
-    dom.conBadge.textContent = conCount > 99 ? '99+' : conCount;
+    var countText = conCount > 99 ? '99+' : conCount;
+    dom.conBadge.textContent = countText;
+    dom.conBadge.setAttribute('aria-label', countText + ' console messages');  /* ADDED */
     dom.conBadge.classList.remove('hidden');
     dom.conBadge.classList.add('flex');
   }
@@ -341,6 +353,13 @@
       btn.classList.toggle('active', isActive);
       btn.classList.toggle('text-slate-500', !isActive);
       btn.classList.toggle('dark:text-slate-400', !isActive);
+      /* ADDED: Update ARIA attributes */
+      btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      if (isActive) {
+        btn.setAttribute('tabindex', '0');
+      } else {
+        btn.setAttribute('tabindex', '-1');
+      }
     });
     Object.keys(dom.wraps).forEach(function (key) {
       dom.wraps[key].classList.toggle('hidden', key !== tab);
@@ -364,6 +383,8 @@
       btn.classList.toggle('dark:text-emerald-400', isActive);
       btn.classList.toggle('text-slate-600', !isActive);
       btn.classList.toggle('dark:text-slate-400', !isActive);
+      /* ADDED: Update aria-pressed */
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
     dom.device.style.maxWidth = DEVICE_WIDTHS[device] || '100%';
     dom.device.style.boxShadow = DEVICE_SHADOWS[device] || 'none';
@@ -375,17 +396,24 @@
   /* ═══════════════════════════════════════
      FULLSCREEN
      ═══════════════════════════════════════ */
+  var previousFocus = null;  /* ADDED: focus management */
+
   function toggleFullscreen() {
     var hidden = dom.fsModal.classList.contains('hidden');
     if (hidden) {
+      previousFocus = document.activeElement;  /* ADDED */
       var c = getCode();
       dom.fsFrame.srcdoc = srcdoc(c.html, c.css, c.js);
       dom.fsModal.classList.remove('hidden');
+      dom.fsModal.setAttribute('aria-hidden', 'false');  /* ADDED */
       document.body.style.overflow = 'hidden';
+      dom.fsClose.focus();  /* ADDED: move focus into modal */
     } else {
       dom.fsModal.classList.add('hidden');
+      dom.fsModal.setAttribute('aria-hidden', 'true');  /* ADDED */
       dom.fsFrame.srcdoc = '';
       document.body.style.overflow = '';
+      if (previousFocus) previousFocus.focus();  /* ADDED: restore focus */
     }
   }
 
@@ -412,11 +440,33 @@
     toast('Downloaded index.html');
   }
 
+  /* CHANGED: Lazy-load JSZip instead of requiring it upfront */
   function downloadZip() {
-    if (typeof JSZip === 'undefined') {
-      toast('JSZip not loaded', 'fas fa-times-circle text-red-500');
+    if (jsZipReady) {
+      doZipExport();
       return;
     }
+    if (jsZipLoading) {
+      toast('JSZip is loading, please try again shortly', 'fas fa-spinner fa-spin text-blue-500');
+      return;
+    }
+    jsZipLoading = true;
+    toast('Loading ZIP library...', 'fas fa-spinner fa-spin text-blue-500');
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js';
+    s.onload = function () {
+      jsZipReady = true;
+      jsZipLoading = false;
+      doZipExport();
+    };
+    s.onerror = function () {
+      jsZipLoading = false;
+      toast('Failed to load JSZip', 'fas fa-times-circle text-red-500');
+    };
+    document.head.appendChild(s);
+  }
+
+  function doZipExport() {  /* ADDED: extracted from downloadZip */
     var c = getCode();
     var zip = new JSZip();
     zip.file('index.html',
@@ -471,12 +521,20 @@
   function toggleMenu() {
     menuOpen = !menuOpen;
     dom.moreMenu.classList.toggle('hidden', !menuOpen);
+    /* ADDED: Update aria-expanded */
+    dom.moreBtn.setAttribute('aria-expanded', menuOpen ? 'true' : 'false');
+    if (menuOpen) {
+      /* ADDED: Focus first menu item when menu opens */
+      var firstItem = dom.moreMenu.querySelector('.ed-menu-item');
+      if (firstItem) firstItem.focus();
+    }
   }
 
   function closeMenu() {
     if (!menuOpen) return;
     menuOpen = false;
     dom.moreMenu.classList.add('hidden');
+    dom.moreBtn.setAttribute('aria-expanded', 'false');  /* ADDED */
   }
 
   /* ═══════════════════════════════════════
@@ -490,6 +548,30 @@
       document.body.style.cursor = 'col-resize';
       document.body.style.userSelect = 'none';
       e.preventDefault();
+    });
+
+    /* ADDED: Keyboard support for drag handle */
+    dom.drag.addEventListener('keydown', function (e) {
+      var isVertical = window.innerWidth > 768;
+      var delta = 0;
+      if (e.key === 'ArrowLeft' && isVertical) delta = -2;
+      else if (e.key === 'ArrowRight' && isVertical) delta = 2;
+      else if (e.key === 'ArrowUp' && !isVertical) delta = -2;
+      else if (e.key === 'ArrowDown' && !isVertical) delta = 2;
+      if (delta === 0) return;
+      e.preventDefault();
+      if (isVertical) {
+        var pct = (dom.panelL.offsetWidth / dom.panelL.parentElement.offsetWidth) * 100 + delta;
+        pct = Math.max(20, Math.min(80, pct));
+        dom.panelL.style.width = pct + '%';
+      } else {
+        var pctH = (dom.panelL.offsetHeight / dom.panelL.parentElement.offsetHeight) * 100 + delta;
+        pctH = Math.max(20, Math.min(80, pctH));
+        dom.panelL.style.height = pctH + '%';
+      }
+      editors.html.refresh();
+      editors.css.refresh();
+      editors.js.refresh();
     });
 
     /* Console divider */
@@ -610,6 +692,67 @@
         closeMenu();
       }
     });
+
+    /* ADDED: Arrow-key navigation for tabs (ARIA tablist pattern) */
+    document.querySelector('[role="tablist"]').addEventListener('keydown', function (e) {
+      var tabs = Array.from(document.querySelectorAll('.ed-tab'));
+      var currentIndex = tabs.indexOf(document.activeElement);
+      if (currentIndex === -1) return;
+
+      var newIndex;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % tabs.length;
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        newIndex = 0;
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        newIndex = tabs.length - 1;
+      } else {
+        return;
+      }
+
+      tabs[newIndex].focus();
+      switchTab(tabs[newIndex].dataset.tab);
+    });
+
+    /* ADDED: Arrow-key navigation for menu items */
+    dom.moreMenu.addEventListener('keydown', function (e) {
+      var items = Array.from(dom.moreMenu.querySelectorAll('.ed-menu-item'));
+      var currentIndex = items.indexOf(document.activeElement);
+      if (currentIndex === -1) return;
+
+      var newIndex;
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % items.length;
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + items.length) % items.length;
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeMenu();
+        dom.moreBtn.focus();
+        return;
+      } else {
+        return;
+      }
+
+      items[newIndex].focus();
+    });
+
+    /* ADDED: Focus trap for fullscreen modal */
+    dom.fsModal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      if (!e.shiftKey && document.activeElement === dom.fsClose) {
+        e.preventDefault();
+        dom.fsClose.focus();  /* Single focusable element — keep focus there */
+      }
+    });
   }
 
   /* ═══════════════════════════════════════
@@ -683,6 +826,18 @@
     initDrag();
     initKeys();
     initThemeSync();
+
+    /* ADDED: Set initial ARIA states */
+    document.querySelectorAll('.ed-tab').forEach(function (btn) {
+      btn.setAttribute('aria-selected', btn.classList.contains('active') ? 'true' : 'false');
+      btn.setAttribute('tabindex', btn.classList.contains('active') ? '0' : '-1');
+    });
+    document.querySelectorAll('.ed-dev-btn').forEach(function (btn) {
+      btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
+    });
+    dom.conBtn.setAttribute('aria-expanded', 'false');
+    dom.moreBtn.setAttribute('aria-expanded', 'false');
+    dom.fsModal.setAttribute('aria-hidden', 'true');
   }
 
   if (document.readyState === 'loading') {

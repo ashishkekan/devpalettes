@@ -37,8 +37,16 @@
     statWarnings: document.getElementById('stat-warnings'),
     statStatus: document.getElementById('stat-status'),
     validationList: document.getElementById('validation-list'),
-    copyLinkBtn: document.getElementById('copy-link-btn')
+    copyLinkBtn: document.getElementById('copy-link-btn'),
+    srAnnouncer: document.getElementById('sr-announcer')
   };
+
+  // ── Screen Reader Announcements ──
+  function announce(message) {
+    if (els.srAnnouncer) {
+      els.srAnnouncer.textContent = message;
+    }
+  }
 
   // ── Helpers ──
   function showToast(message, type) {
@@ -48,16 +56,17 @@
     const colors = { success: 'bg-emerald-500', error: 'bg-red-500', info: 'bg-blue-500' };
     toast.className = `${colors[type] || colors.info} text-white px-5 py-3 rounded-xl shadow-lg text-sm font-medium flex items-center gap-2 transform translate-x-full transition-transform duration-300`;
     const icons = { success: 'fa-circle-check', error: 'fa-circle-xmark', info: 'fa-circle-info' };
-    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}"></i> ${message}`;
+    toast.innerHTML = `<i class="fas ${icons[type] || icons.info}" aria-hidden="true"></i> ${message}`;
+    toast.setAttribute('role', 'alert');
     container.appendChild(toast);
-    requestAnimationFrame(() => {
+    requestAnimationFrame(function () {
       toast.classList.remove('translate-x-full');
       toast.classList.add('translate-x-0');
     });
-    setTimeout(() => {
+    setTimeout(function () {
       toast.classList.remove('translate-x-0');
       toast.classList.add('translate-x-full');
-      setTimeout(() => toast.remove(), 300);
+      setTimeout(function () { toast.remove(); }, 300);
     }, 3000);
   }
 
@@ -67,24 +76,29 @@
     return d.innerHTML;
   }
 
-  function setStat(el, value, active) {
+  function setStat(el, value, active, ariaLabel) {
     if (!el) return;
     el.textContent = value;
     el.className = `text-3xl font-bold ${active ? 'text-slate-900 dark:text-slate-100' : 'text-slate-400'}`;
+    if (ariaLabel) el.setAttribute('aria-label', ariaLabel);
   }
 
   function updateValidation(checks) {
     const items = els.validationList.querySelectorAll('[data-check]');
-    items.forEach(item => {
+    items.forEach(function (item) {
       const key = item.getAttribute('data-check');
       const icon = item.querySelector('i');
       const text = item.querySelector('span');
       if (checks[key]) {
         icon.className = 'fas fa-circle-check text-[10px] text-emerald-500';
+        icon.setAttribute('aria-hidden', 'true');
         text.className = 'text-slate-700 dark:text-slate-300';
+        item.setAttribute('aria-label', text.textContent + ': passed');
       } else {
         icon.className = 'fas fa-circle text-[8px] text-slate-300 dark:text-slate-600';
+        icon.setAttribute('aria-hidden', 'true');
         text.className = 'text-slate-400';
+        item.setAttribute('aria-label', text.textContent + ': not checked');
       }
     });
   }
@@ -93,7 +107,7 @@
     try {
       const u = new URL(str);
       return u.protocol === 'http:' || u.protocol === 'https:';
-    } catch { return false; }
+    } catch (e) { return false; }
   }
 
   function normalizeURL(str) {
@@ -153,7 +167,7 @@
 
     // Extract raw meta HTML
     const rawLines = [];
-    head.querySelectorAll('meta, title, link[rel="canonical"], link[rel="alternate"], base').forEach(el => {
+    head.querySelectorAll('meta, title, link[rel="canonical"], link[rel="alternate"], base').forEach(function (el) {
       rawLines.push(el.outerHTML.trim());
     });
     const rawHtml = rawLines.join('\n');
@@ -222,9 +236,9 @@
     if (twSite) { result.twitterSite.value = twSite.getAttribute('content') || ''; result.twitterSite.status = 'pass'; }
 
     // Other meta tags
-    const knownNames = ['description','viewport','charset','robots','author','theme-color','twitter:card','twitter:title','twitter:description','twitter:image','twitter:site','twitter:creator'];
-    const knownProps = ['og:title','og:description','og:image','og:url','og:type','og:site_name','og:locale','og:image:width','og:image:height','og:image:alt'];
-    head.querySelectorAll('meta').forEach(meta => {
+    const knownNames = ['description', 'viewport', 'charset', 'robots', 'author', 'theme-color', 'twitter:card', 'twitter:title', 'twitter:description', 'twitter:image', 'twitter:site', 'twitter:creator'];
+    const knownProps = ['og:title', 'og:description', 'og:image', 'og:url', 'og:type', 'og:site_name', 'og:locale', 'og:image:width', 'og:image:height', 'og:image:alt'];
+    head.querySelectorAll('meta').forEach(function (meta) {
       const name = meta.getAttribute('name') || '';
       const prop = meta.getAttribute('property') || '';
       const httpEquiv = meta.getAttribute('http-equiv') || '';
@@ -236,16 +250,16 @@
     });
 
     // Other link tags
-    head.querySelectorAll('link[rel="alternate"], link[rel="icon"], link[rel="apple-touch-icon"], link[rel="stylesheet"], link[rel="preload"]').forEach(link => {
+    head.querySelectorAll('link[rel="alternate"], link[rel="icon"], link[rel="apple-touch-icon"], link[rel="stylesheet"], link[rel="preload"]').forEach(function (link) {
       const rel = link.getAttribute('rel') || '';
       const href = link.getAttribute('href') || '';
       const type = link.getAttribute('type') || '';
       if (href) {
-        result.otherLinks.push({ rel, href, type });
+        result.otherLinks.push({ rel: rel, href: href, type: type });
       }
     });
 
-    return { tags: result, rawHtml };
+    return { tags: result, rawHtml: rawHtml };
   }
 
   // ── Calculate Score & Warnings ──
@@ -262,15 +276,15 @@
       } else if (len > 0 && len < 30) {
         score += 12;
         tags.title.status = 'warn';
-        warnings.push({ tag: 'Title', msg: `Title is ${len} characters (recommended: 30-60). Short titles may not use SERP space effectively.` });
+        warnings.push({ tag: 'Title', msg: 'Title is ' + len + ' characters (recommended: 30-60). Short titles may not use SERP space effectively.' });
       } else if (len > 60 && len <= 70) {
         score += 14;
         tags.title.status = 'warn';
-        warnings.push({ tag: 'Title', msg: `Title is ${len} characters (recommended: 30-60). May be truncated in search results.` });
+        warnings.push({ tag: 'Title', msg: 'Title is ' + len + ' characters (recommended: 30-60). May be truncated in search results.' });
       } else {
         score += 6;
         tags.title.status = 'warn';
-        warnings.push({ tag: 'Title', msg: `Title is ${len} characters (recommended: 30-60). Likely to be truncated.` });
+        warnings.push({ tag: 'Title', msg: 'Title is ' + len + ' characters (recommended: 30-60). Likely to be truncated.' });
       }
     } else {
       tags.title.status = 'fail';
@@ -286,15 +300,15 @@
       } else if (len > 0 && len < 120) {
         score += 12;
         tags.description.status = 'warn';
-        warnings.push({ tag: 'Description', msg: `Description is ${len} characters (recommended: 120-160). Shorter snippets waste SERP space.` });
+        warnings.push({ tag: 'Description', msg: 'Description is ' + len + ' characters (recommended: 120-160). Shorter snippets waste SERP space.' });
       } else if (len > 160 && len <= 170) {
         score += 14;
         tags.description.status = 'warn';
-        warnings.push({ tag: 'Description', msg: `Description is ${len} characters (recommended: 120-160). May be truncated.` });
+        warnings.push({ tag: 'Description', msg: 'Description is ' + len + ' characters (recommended: 120-160). May be truncated.' });
       } else {
         score += 6;
         tags.description.status = 'warn';
-        warnings.push({ tag: 'Description', msg: `Description is ${len} characters (recommended: 120-160). Will likely be truncated.` });
+        warnings.push({ tag: 'Description', msg: 'Description is ' + len + ' characters (recommended: 120-160). Will likely be truncated.' });
       }
     } else {
       tags.description.status = 'fail';
@@ -321,38 +335,38 @@
 
     // OG Tags (max 20)
     const ogCore = ['ogTitle', 'ogDescription', 'ogImage', 'ogUrl', 'ogType'];
-    const ogPresent = ogCore.filter(k => tags[k].value).length;
+    const ogPresent = ogCore.filter(function (k) { return tags[k].value; }).length;
     if (ogPresent === 5) {
       score += 20;
-      ogCore.forEach(k => { tags[k].status = 'pass'; });
+      ogCore.forEach(function (k) { tags[k].status = 'pass'; });
     } else if (ogPresent >= 3) {
       score += 14;
-      ogCore.forEach(k => { tags[k].status = tags[k].value ? 'pass' : 'warn'; });
-      const missing = ogCore.filter(k => !tags[k].value).map(k => tags[k].label);
-      warnings.push({ tag: 'Open Graph', msg: `Missing OG tags: ${missing.join(', ')}. Social sharing previews may be incomplete.` });
+      ogCore.forEach(function (k) { tags[k].status = tags[k].value ? 'pass' : 'warn'; });
+      const missing = ogCore.filter(function (k) { return !tags[k].value; }).map(function (k) { return tags[k].label; });
+      warnings.push({ tag: 'Open Graph', msg: 'Missing OG tags: ' + missing.join(', ') + '. Social sharing previews may be incomplete.' });
     } else if (ogPresent >= 1) {
       score += 8;
-      ogCore.forEach(k => { tags[k].status = tags[k].value ? 'pass' : 'fail'; });
-      const missing = ogCore.filter(k => !tags[k].value).map(k => tags[k].label);
-      warnings.push({ tag: 'Open Graph', msg: `Most OG tags missing: ${missing.join(', ')}. Social sharing will use defaults.` });
+      ogCore.forEach(function (k) { tags[k].status = tags[k].value ? 'pass' : 'fail'; });
+      const missing = ogCore.filter(function (k) { return !tags[k].value; }).map(function (k) { return tags[k].label; });
+      warnings.push({ tag: 'Open Graph', msg: 'Most OG tags missing: ' + missing.join(', ') + '. Social sharing will use defaults.' });
     } else {
-      ogCore.forEach(k => { tags[k].status = 'fail'; });
+      ogCore.forEach(function (k) { tags[k].status = 'fail'; });
       warnings.push({ tag: 'Open Graph', msg: 'No Open Graph tags found. Social platforms will guess link previews.' });
     }
 
     // Twitter Tags (max 10)
     const twCore = ['twitterCard', 'twitterTitle', 'twitterImage'];
-    const twPresent = twCore.filter(k => tags[k].value).length;
+    const twPresent = twCore.filter(function (k) { return tags[k].value; }).length;
     if (twPresent === 3) {
       score += 10;
-      twCore.forEach(k => { tags[k].status = 'pass'; });
+      twCore.forEach(function (k) { tags[k].status = 'pass'; });
     } else if (twPresent >= 1) {
       score += 5;
-      twCore.forEach(k => { tags[k].status = tags[k].value ? 'pass' : 'warn'; });
-      const missing = twCore.filter(k => !tags[k].value).map(k => tags[k].label);
-      warnings.push({ tag: 'Twitter Card', msg: `Missing Twitter tags: ${missing.join(', ')}. Twitter will fall back to OG tags.` });
+      twCore.forEach(function (k) { tags[k].status = tags[k].value ? 'pass' : 'warn'; });
+      const missing = twCore.filter(function (k) { return !tags[k].value; }).map(function (k) { return tags[k].label; });
+      warnings.push({ tag: 'Twitter Card', msg: 'Missing Twitter tags: ' + missing.join(', ') + '. Twitter will fall back to OG tags.' });
     } else {
-      twCore.forEach(k => { tags[k].status = 'fail'; });
+      twCore.forEach(function (k) { tags[k].status = 'fail'; });
       warnings.push({ tag: 'Twitter Card', msg: 'No Twitter Card tags found. Twitter will use OG tags if available.' });
     }
 
@@ -370,12 +384,11 @@
       score += 5;
       tags.robots.status = 'pass';
       if (tags.robots.value.includes('noindex')) {
-        warnings.push({ tag: 'Robots', msg: `Robots directive: "${tags.robots.value}". Page is set to noindex — search engines won't index it.` });
+        warnings.push({ tag: 'Robots', msg: 'Robots directive: "' + tags.robots.value + '". Page is set to noindex — search engines won\'t index it.' });
       }
     }
-    // No penalty for missing robots (defaults to index, follow)
 
-    return { score: Math.min(100, score), warnings };
+    return { score: Math.min(100, score), warnings: warnings };
   }
 
   // ── Render Tags View ──
@@ -384,38 +397,39 @@
     const statusLabel = { pass: 'text-emerald-600 dark:text-emerald-400', warn: 'text-amber-600 dark:text-amber-400', fail: 'text-red-500' };
 
     function renderGroup(title, icon, entries) {
-      const items = entries.filter(e => e.value);
+      const items = entries.filter(function (e) { return e.value; });
       if (items.length === 0) return '';
-      let html = `<div class="mb-5"><h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="${icon} text-slate-400"></i>${title}</h3><div class="space-y-2">`;
-      items.forEach(e => {
+      let html = '<div class="mb-5"><h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="' + icon + ' text-slate-400" aria-hidden="true"></i>' + title + '</h3><div class="space-y-2">';
+      items.forEach(function (e) {
         const isUrl = e.value.startsWith('http');
         const displayVal = e.value.length > 120 ? e.value.substring(0, 120) + '...' : e.value;
-        html += `<div class="flex items-start gap-3 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
-          <i class="fas ${statusIcon[e.status] || statusIcon.fail} mt-0.5 text-xs flex-shrink-0"></i>
-          <div class="flex-1 min-w-0">
-            <span class="text-[10px] font-mono text-slate-400 block">${escapeHTML(e.label)}</span>
-            ${isUrl
-              ? `<a href="${escapeHTML(e.value)}" target="_blank" rel="noopener noreferrer" class="text-sm ${statusLabel[e.status] || ''} break-all hover:underline">${escapeHTML(displayVal)}</a>`
-              : `<span class="text-sm ${statusLabel[e.status] || ''} break-all">${escapeHTML(displayVal)}</span>`
-            }
-          </div>
-          <span class="text-[10px] text-slate-400 flex-shrink-0">${e.value.length} chars</span>
-        </div>`;
+        html += '<div class="flex items-start gap-3 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">' +
+          '<i class="fas ' + (statusIcon[e.status] || statusIcon.fail) + ' mt-0.5 text-xs flex-shrink-0" aria-hidden="true"></i>' +
+          '<div class="flex-1 min-w-0">' +
+          '<span class="text-[10px] font-mono text-slate-400 block">' + escapeHTML(e.label) + '</span>';
+        if (isUrl) {
+          html += '<a href="' + escapeHTML(e.value) + '" target="_blank" rel="noopener noreferrer" class="text-sm ' + (statusLabel[e.status] || '') + ' break-all hover:underline">' + escapeHTML(displayVal) + '</a>';
+        } else {
+          html += '<span class="text-sm ' + (statusLabel[e.status] || '') + ' break-all">' + escapeHTML(displayVal) + '</span>';
+        }
+        html += '</div>' +
+          '<span class="text-[10px] text-slate-400 flex-shrink-0">' + e.value.length + ' chars</span>' +
+          '</div>';
       });
       html += '</div></div>';
       return html;
     }
 
     function renderMissingGroup(title, icon, entries) {
-      const missing = entries.filter(e => !e.value);
+      const missing = entries.filter(function (e) { return !e.value; });
       if (missing.length === 0) return '';
-      let html = `<div class="mb-5"><h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-red-400"><i class="${icon}"></i>${title}</h3><div class="space-y-1.5">`;
-      missing.forEach(e => {
-        html += `<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">
-          <i class="fas ${statusIcon.fail} text-xs"></i>
-          <span class="text-xs font-mono text-red-500">${escapeHTML(e.label)}</span>
-          <span class="text-[10px] text-red-400 ml-auto">Missing</span>
-        </div>`;
+      let html = '<div class="mb-5"><h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-red-400"><i class="' + icon + '" aria-hidden="true"></i>' + title + '</h3><div class="space-y-1.5">';
+      missing.forEach(function (e) {
+        html += '<div class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-red-50 dark:bg-red-500/5 border border-red-100 dark:border-red-500/10">' +
+          '<i class="fas ' + statusIcon.fail + ' text-xs" aria-hidden="true"></i>' +
+          '<span class="text-xs font-mono text-red-500">' + escapeHTML(e.label) + '</span>' +
+          '<span class="text-[10px] text-red-400 ml-auto">Missing</span>' +
+          '</div>';
       });
       html += '</div></div>';
       return html;
@@ -425,40 +439,40 @@
 
     // Basic Meta
     const basicEntries = ['title', 'description', 'viewport', 'charset', 'canonical', 'robots', 'author', 'themeColor'];
-    html += renderGroup('Basic Meta Tags', 'fas fa-tags', basicEntries.map(k => tags[k]));
-    html += renderMissingGroup('Missing Basic Tags', 'fas fa-tags', basicEntries.map(k => tags[k]));
+    html += renderGroup('Basic Meta Tags', 'fas fa-tags', basicEntries.map(function (k) { return tags[k]; }));
+    html += renderMissingGroup('Missing Basic Tags', 'fas fa-tags', basicEntries.map(function (k) { return tags[k]; }));
 
     // Open Graph
     const ogEntries = ['ogTitle', 'ogDescription', 'ogImage', 'ogUrl', 'ogType', 'ogSiteName', 'ogLocale'];
-    html += renderGroup('Open Graph Tags', 'fab fa-facebook', ogEntries.map(k => tags[k]));
-    html += renderMissingGroup('Missing OG Tags', 'fab fa-facebook', ogEntries.map(k => tags[k]));
+    html += renderGroup('Open Graph Tags', 'fab fa-facebook', ogEntries.map(function (k) { return tags[k]; }));
+    html += renderMissingGroup('Missing OG Tags', 'fab fa-facebook', ogEntries.map(function (k) { return tags[k]; }));
 
     // Twitter
     const twEntries = ['twitterCard', 'twitterTitle', 'twitterDescription', 'twitterImage', 'twitterSite'];
-    html += renderGroup('Twitter Card Tags', 'fab fa-x-twitter', twEntries.map(k => tags[k]));
-    html += renderMissingGroup('Missing Twitter Tags', 'fab fa-x-twitter', twEntries.map(k => tags[k]));
+    html += renderGroup('Twitter Card Tags', 'fab fa-x-twitter', twEntries.map(function (k) { return tags[k]; }));
+    html += renderMissingGroup('Missing Twitter Tags', 'fab fa-x-twitter', twEntries.map(function (k) { return tags[k]; }));
 
     // Other
     if (tags.otherMeta.length > 0) {
-      html += `<div class="mb-5"><h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="fas fa-ellipsis text-slate-400"></i>Other Meta Tags</h3><div class="space-y-1.5">`;
-      tags.otherMeta.forEach(m => {
-        html += `<div class="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
-          <span class="text-[10px] font-mono text-slate-400">${escapeHTML(m.key)}</span>
-          <span class="text-xs text-slate-600 dark:text-slate-300 truncate flex-1">${escapeHTML(m.value.length > 100 ? m.value.substring(0, 100) + '...' : m.value)}</span>
-        </div>`;
+      html += '<div class="mb-5"><h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="fas fa-ellipsis text-slate-400" aria-hidden="true"></i>Other Meta Tags</h3><div class="space-y-1.5">';
+      tags.otherMeta.forEach(function (m) {
+        html += '<div class="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">' +
+          '<span class="text-[10px] font-mono text-slate-400">' + escapeHTML(m.key) + '</span>' +
+          '<span class="text-xs text-slate-600 dark:text-slate-300 truncate flex-1">' + escapeHTML(m.value.length > 100 ? m.value.substring(0, 100) + '...' : m.value) + '</span>' +
+          '</div>';
       });
       html += '</div></div>';
     }
 
     // Other Links
     if (tags.otherLinks.length > 0) {
-      html += `<div class="mb-2"><h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="fas fa-link text-slate-400"></i>Link Tags</h3><div class="space-y-1.5">`;
-      tags.otherLinks.slice(0, 10).forEach(l => {
-        html += `<div class="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">
-          <span class="text-[10px] font-mono text-blue-500">${escapeHTML(l.rel)}</span>
-          <span class="text-xs text-slate-500 truncate flex-1">${escapeHTML(l.href.length > 80 ? l.href.substring(0, 80) + '...' : l.href)}</span>
-          ${l.type ? `<span class="text-[10px] text-slate-400">${escapeHTML(l.type)}</span>` : ''}
-        </div>`;
+      html += '<div class="mb-2"><h3 class="text-sm font-bold mb-3 flex items-center gap-2"><i class="fas fa-link text-slate-400" aria-hidden="true"></i>Link Tags</h3><div class="space-y-1.5">';
+      tags.otherLinks.slice(0, 10).forEach(function (l) {
+        html += '<div class="flex items-center gap-3 px-3 py-1.5 rounded-lg bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-700/50">' +
+          '<span class="text-[10px] font-mono text-blue-500">' + escapeHTML(l.rel) + '</span>' +
+          '<span class="text-xs text-slate-500 truncate flex-1">' + escapeHTML(l.href.length > 80 ? l.href.substring(0, 80) + '...' : l.href) + '</span>' +
+          (l.type ? '<span class="text-[10px] text-slate-400">' + escapeHTML(l.type) + '</span>' : '') +
+          '</div>';
       });
       html += '</div></div>';
     }
@@ -468,35 +482,33 @@
 
   // ── Build Report Text ──
   function buildReport() {
-    let report = `META TAGS ANALYSIS REPORT\n`;
-    report += `${'='.repeat(50)}\n`;
-    report += `URL: ${state.url}\n`;
-    report += `SEO Score: ${state.score}/100\n`;
-    report += `Tags Found: ${Object.values(state.tags).filter(t => t && t.value).length}\n`;
-    report += `Warnings: ${state.warnings.length}\n`;
-    report += `${'='.repeat(50)}\n\n`;
+    let report = 'META TAGS ANALYSIS REPORT\n';
+    report += '==================================================\n';
+    report += 'URL: ' + state.url + '\n';
+    report += 'SEO Score: ' + state.score + '/100\n';
+    report += 'Tags Found: ' + Object.values(state.tags).filter(function (t) { return t && t.value; }).length + '\n';
+    report += 'Warnings: ' + state.warnings.length + '\n';
+    report += '==================================================\n\n';
 
-    // Tags
-    report += `EXTRACTED TAGS\n${'-'.repeat(30)}\n`;
-    const entries = Object.values(state.tags).filter(t => t && t.label);
-    entries.forEach(t => {
+    report += 'EXTRACTED TAGS\n------------------------------\n';
+    const entries = Object.values(state.tags).filter(function (t) { return t && t.label; });
+    entries.forEach(function (t) {
       if (t.value) {
-        report += `${t.label}: ${t.value}\n`;
+        report += t.label + ': ' + t.value + '\n';
       }
     });
 
     if (state.tags.otherMeta && state.tags.otherMeta.length > 0) {
-      report += `\nOTHER META TAGS\n${'-'.repeat(30)}\n`;
-      state.tags.otherMeta.forEach(m => {
-        report += `${m.key}: ${m.value}\n`;
+      report += '\nOTHER META TAGS\n------------------------------\n';
+      state.tags.otherMeta.forEach(function (m) {
+        report += m.key + ': ' + m.value + '\n';
       });
     }
 
-    // Warnings
     if (state.warnings.length > 0) {
-      report += `\nWARNINGS (${state.warnings.length})\n${'-'.repeat(30)}\n`;
-      state.warnings.forEach((w, i) => {
-        report += `${i + 1}. [${w.tag}] ${w.msg}\n`;
+      report += '\nWARNINGS (' + state.warnings.length + ')\n------------------------------\n';
+      state.warnings.forEach(function (w, i) {
+        report += (i + 1) + '. [' + w.tag + '] ' + w.msg + '\n';
       });
     }
 
@@ -510,6 +522,8 @@
       els.urlError.textContent = 'Please enter a URL';
       els.urlError.classList.remove('hidden');
       els.urlHint.classList.add('hidden');
+      els.urlInput.setAttribute('aria-describedby', 'url-error');
+      announce('Error: Please enter a URL');
       return;
     }
 
@@ -518,73 +532,83 @@
       els.urlError.textContent = 'Invalid URL format. Use https://example.com';
       els.urlError.classList.remove('hidden');
       els.urlHint.classList.add('hidden');
+      els.urlInput.setAttribute('aria-describedby', 'url-error');
+      announce('Error: Invalid URL format');
       return;
     }
 
     els.urlError.classList.add('hidden');
     els.urlHint.classList.remove('hidden');
+    els.urlInput.setAttribute('aria-describedby', 'url-hint');
     state.url = url;
 
-    setStat(els.statStatus, 'Fetching...', false);
+    setStat(els.statStatus, 'Fetching...', false, 'Status: Fetching');
     els.statStatus.className = 'text-3xl font-bold text-amber-500';
     els.analyzeBtn.disabled = true;
-    els.analyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analyzing...';
+    els.analyzeBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Analyzing...';
+    announce('Analyzing meta tags, please wait...');
 
     try {
       const html = await fetchHTML(url);
       state.html = html;
 
-      setStat(els.statStatus, 'Parsing...', false);
+      setStat(els.statStatus, 'Parsing...', false, 'Status: Parsing');
 
-      const { tags, rawHtml } = parseMetaTags(html);
-      state.tags = tags;
-      state.rawMetaHtml = rawHtml;
+      const parsed = parseMetaTags(html);
+      state.tags = parsed.tags;
+      state.rawMetaHtml = parsed.rawHtml;
 
-      const { score, warnings } = calculateScore(tags);
-      state.score = score;
-      state.warnings = warnings;
+      const result = calculateScore(parsed.tags);
+      state.score = result.score;
+      state.warnings = result.warnings;
       state.analyzed = true;
 
       // Stats
-      const scoreColor = score >= 80 ? 'text-emerald-500' : score >= 60 ? 'text-amber-500' : 'text-red-500';
-      els.statScore.textContent = score + '/100';
-      els.statScore.className = `text-3xl font-bold ${scoreColor}`;
+      const scoreColor = state.score >= 80 ? 'text-emerald-500' : state.score >= 60 ? 'text-amber-500' : 'text-red-500';
+      els.statScore.textContent = state.score + '/100';
+      els.statScore.className = 'text-3xl font-bold ' + scoreColor;
+      els.statScore.setAttribute('aria-label', 'SEO Score: ' + state.score + ' out of 100');
 
-      const tagCount = Object.values(tags).filter(t => t && t.value).length + (tags.otherMeta ? tags.otherMeta.length : 0);
-      setStat(els.statTags, tagCount, true);
+      const tagCount = Object.values(state.tags).filter(function (t) { return t && t.value; }).length + (state.tags.otherMeta ? state.tags.otherMeta.length : 0);
+      setStat(els.statTags, tagCount, true, tagCount + ' tags found');
 
-      const warnColor = warnings.length === 0 ? 'text-emerald-500' : warnings.length <= 3 ? 'text-amber-500' : 'text-red-500';
-      els.statWarnings.textContent = warnings.length;
-      els.statWarnings.className = `text-3xl font-bold ${warnColor}`;
+      const warnColor = state.warnings.length === 0 ? 'text-emerald-500' : state.warnings.length <= 3 ? 'text-amber-500' : 'text-red-500';
+      els.statWarnings.textContent = state.warnings.length;
+      els.statWarnings.className = 'text-3xl font-bold ' + warnColor;
+      els.statWarnings.setAttribute('aria-label', state.warnings.length + ' warnings');
 
-      setStat(els.statStatus, 'Done', false);
+      setStat(els.statStatus, 'Done', false, 'Status: Analysis complete');
       els.statStatus.className = 'text-3xl font-bold text-emerald-500';
 
       // Render
-      renderTags(tags);
-      els.rawContent.textContent = rawHtml || 'No meta tags found in the page head.';
+      renderTags(state.tags);
+      els.rawContent.textContent = state.rawMetaHtml || 'No meta tags found in the page head.';
 
       const report = buildReport();
       els.generatedCode.textContent = report.substring(0, 250) + (report.length > 250 ? '\n...' : '');
-      els.exportInfo.textContent = `${tagCount} tags extracted · ${warnings.length} warning${warnings.length !== 1 ? 's' : ''} · Score ${score}/100`;
+      els.exportInfo.textContent = tagCount + ' tags extracted \u00B7 ' + state.warnings.length + ' warning' + (state.warnings.length !== 1 ? 's' : '') + ' \u00B7 Score ' + state.score + '/100';
 
       // Validation
       updateValidation({
         'has-url': true,
-        'has-title': !!tags.title.value,
-        'has-description': !!tags.description.value,
-        'has-og-tags': !!tags.ogTitle.value,
-        'has-twitter-tags': !!tags.twitterCard.value,
-        'has-canonical': !!tags.canonical.value
+        'has-title': !!state.tags.title.value,
+        'has-description': !!state.tags.description.value,
+        'has-og-tags': !!state.tags.ogTitle.value,
+        'has-twitter-tags': !!state.tags.twitterCard.value,
+        'has-canonical': !!state.tags.canonical.value
       });
 
-      showToast(`Analysis complete — Score: ${score}/100`, score >= 60 ? 'success' : 'error');
+      const scoreMsg = state.score >= 80 ? 'excellent' : state.score >= 60 ? 'good' : 'needs improvement';
+      announce('Analysis complete. SEO Score: ' + state.score + ' out of 100, which is ' + scoreMsg + '. ' + state.warnings.length + ' warnings found.');
+
+      showToast('Analysis complete \u2014 Score: ' + state.score + '/100', state.score >= 60 ? 'success' : 'error');
 
     } catch (err) {
-      setStat(els.statStatus, 'Error', false);
+      setStat(els.statStatus, 'Error', false, 'Status: Error');
       els.statStatus.className = 'text-3xl font-bold text-red-500';
-      els.tagsContent.innerHTML = `<div class="text-center py-8"><i class="fas fa-triangle-exclamation text-3xl text-red-400 mb-3"></i><p class="text-sm text-red-500 font-medium">${escapeHTML(err.message)}</p><p class="text-xs text-slate-400 mt-1">Make sure the URL is publicly accessible and returns valid HTML.</p></div>`;
+      els.tagsContent.innerHTML = '<div class="text-center py-8"><i class="fas fa-triangle-exclamation text-3xl text-red-400 mb-3" aria-hidden="true"></i><p class="text-sm text-red-500 font-medium">' + escapeHTML(err.message) + '</p><p class="text-xs text-slate-400 mt-1">Make sure the URL is publicly accessible and returns valid HTML.</p></div>';
       showToast(err.message, 'error');
+      announce('Analysis failed: ' + err.message);
       updateValidation({
         'has-url': true,
         'has-title': false,
@@ -595,7 +619,7 @@
       });
     } finally {
       els.analyzeBtn.disabled = false;
-      els.analyzeBtn.innerHTML = '<i class="fas fa-magnifying-glass-chart"></i> Analyze Meta Tags';
+      els.analyzeBtn.innerHTML = '<i class="fas fa-magnifying-glass-chart" aria-hidden="true"></i> Analyze Meta Tags';
     }
   }
 
@@ -612,11 +636,12 @@
     els.urlInput.value = '';
     els.urlError.classList.add('hidden');
     els.urlHint.classList.remove('hidden');
+    els.urlInput.setAttribute('aria-describedby', 'url-hint');
 
-    setStat(els.statScore, '—', false);
-    setStat(els.statTags, '0', false);
-    setStat(els.statWarnings, '0', false);
-    setStat(els.statStatus, 'Idle', false);
+    setStat(els.statScore, '\u2014', false, 'SEO Score: not analyzed');
+    setStat(els.statTags, '0', false, 'Tags found: 0');
+    setStat(els.statWarnings, '0', false, 'Warnings: 0');
+    setStat(els.statStatus, 'Idle', false, 'Status: Idle');
     els.statStatus.className = 'text-3xl font-bold text-slate-400';
 
     els.tagsContent.innerHTML = '<span class="text-slate-400">Enter a URL and click "Analyze" to see extracted meta tags here</span>';
@@ -633,6 +658,7 @@
       'has-canonical': false
     });
 
+    announce('Analysis cleared');
     showToast('Cleared', 'info');
   }
 
@@ -640,13 +666,16 @@
   function copyReport() {
     if (!state.analyzed) {
       showToast('Analyze a URL first', 'error');
+      announce('Please analyze a URL first');
       return;
     }
     const report = buildReport();
-    navigator.clipboard.writeText(report).then(() => {
+    navigator.clipboard.writeText(report).then(function () {
       showToast('Report copied to clipboard', 'success');
-    }).catch(() => {
+      announce('Report copied to clipboard');
+    }).catch(function () {
       showToast('Failed to copy', 'error');
+      announce('Failed to copy report');
     });
   }
 
@@ -654,6 +683,7 @@
   function downloadReport() {
     if (!state.analyzed) {
       showToast('Analyze a URL first', 'error');
+      announce('Please analyze a URL first');
       return;
     }
     const report = buildReport();
@@ -661,13 +691,15 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    const hostname = (() => { try { return new URL(state.url).hostname; } catch { return 'page'; } })();
-    a.download = `meta-tags-${hostname}-${Date.now()}.txt`;
+    var hostname = 'page';
+    try { hostname = new URL(state.url).hostname; } catch (e) { /* keep default */ }
+    a.download = 'meta-tags-' + hostname + '-' + Date.now() + '.txt';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast('Report downloaded', 'success');
+    announce('Report downloaded');
   }
 
   // ── Event Listeners ──
@@ -683,6 +715,7 @@
   els.urlInput.addEventListener('input', function () {
     els.urlError.classList.add('hidden');
     els.urlHint.classList.remove('hidden');
+    els.urlInput.setAttribute('aria-describedby', 'url-hint');
   });
 
   els.copyRawBtn.addEventListener('click', function () {
@@ -690,38 +723,88 @@
       showToast('No raw HTML to copy', 'error');
       return;
     }
-    navigator.clipboard.writeText(state.rawMetaHtml).then(() => {
+    navigator.clipboard.writeText(state.rawMetaHtml).then(function () {
       showToast('Raw HTML copied', 'success');
+      announce('Raw HTML copied to clipboard');
     });
   });
 
-  // Preview Tabs
-  document.querySelectorAll('.preview-tab').forEach(tab => {
+  // ── Tab Keyboard Navigation (Accessibility) ──
+  (function initTabKeyboardNav() {
+    var tabList = document.querySelector('[role="tablist"]');
+    if (!tabList) return;
+    var tabs = tabList.querySelectorAll('[role="tab"]');
+
+    tabList.addEventListener('keydown', function (e) {
+      var currentIndex = Array.from(tabs).indexOf(document.activeElement);
+      if (currentIndex === -1) return;
+
+      var newIndex;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % tabs.length;
+      } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        newIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        newIndex = 0;
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        newIndex = tabs.length - 1;
+      }
+
+      if (newIndex !== undefined) {
+        tabs[newIndex].focus();
+        tabs[newIndex].click();
+      }
+    });
+  })();
+
+  // ── Preview Tabs ──
+  document.querySelectorAll('.preview-tab').forEach(function (tab) {
     tab.addEventListener('click', function () {
-      document.querySelectorAll('.preview-tab').forEach(t => {
+      document.querySelectorAll('.preview-tab').forEach(function (t) {
         t.classList.remove('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
         t.classList.add('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+        t.setAttribute('aria-selected', 'false');
+        t.setAttribute('tabindex', '-1');
       });
       this.classList.add('active-tab', 'border-emerald-500', 'bg-emerald-500/10', 'text-emerald-600', 'dark:text-emerald-400');
       this.classList.remove('border-slate-200', 'dark:border-slate-700', 'text-slate-600', 'dark:text-slate-400');
+      this.setAttribute('aria-selected', 'true');
+      this.setAttribute('tabindex', '0');
 
-      const view = this.getAttribute('data-view');
-      document.querySelectorAll('.preview-panel').forEach(p => p.classList.add('hidden'));
-      const panel = document.getElementById(`view-${view}`);
+      var view = this.getAttribute('data-view');
+      document.querySelectorAll('.preview-panel').forEach(function (p) { p.classList.add('hidden'); });
+      var panel = document.getElementById('view-' + view);
       if (panel) panel.classList.remove('hidden');
     });
   });
 
-  // Presets
-  document.querySelectorAll('.preset-btn').forEach(btn => {
+  // ── Presets ──
+  document.querySelectorAll('.preset-btn').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      const url = this.getAttribute('data-url');
+      var url = this.getAttribute('data-url');
       if (url) {
         els.urlInput.value = url;
         analyze();
       }
     });
   });
+
+  // ── Copy Link Button ──
+  if (els.copyLinkBtn) {
+    els.copyLinkBtn.addEventListener('click', function () {
+      var pageUrl = window.location.href;
+      navigator.clipboard.writeText(pageUrl).then(function () {
+        showToast('Link copied to clipboard', 'success');
+        announce('Page link copied to clipboard');
+      }).catch(function () {
+        showToast('Failed to copy link', 'error');
+      });
+    });
+  }
 
   // ── Init ──
   updateValidation({
@@ -733,7 +816,7 @@
     'has-canonical': false
   });
 
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
+  // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
   setTimeout(function initFaqToggles() {
     var faqToggles = document.querySelectorAll('.faq-toggle');
     if (faqToggles.length === 0) {
@@ -744,6 +827,7 @@
     faqToggles.forEach(function (toggle) {
       var clone = toggle.cloneNode(true);
       toggle.parentNode.replaceChild(clone, toggle);
+
       clone.addEventListener('click', function (e) {
         e.preventDefault();
         var content = this.nextElementSibling;
@@ -751,19 +835,31 @@
         if (!content) return;
 
         var isHidden = content.classList.contains('hidden');
+        var expanded = this.getAttribute('aria-expanded') === 'true';
+
         if (isHidden) {
           content.classList.remove('hidden');
           content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         } else {
           content.style.maxHeight = '0px';
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
           setTimeout(function () {
             content.classList.add('hidden');
             content.style.maxHeight = '';
           }, 300);
         }
       });
+
+      // Initialize aria-expanded from DOM state
+      var content = clone.nextElementSibling;
+      if (content && content.classList.contains('hidden')) {
+        clone.setAttribute('aria-expanded', 'false');
+      } else {
+        clone.setAttribute('aria-expanded', 'true');
+      }
     });
   }, 50);
 

@@ -4,24 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Free Color Palette Generator - Create Schemes & Export CSS</title>
-  <meta name="description" content="Generate free color palettes online. Create schemes, lock colors, and export CSS variables. No login required.">
-  <meta name="author" content="Devpalettes">
+  <title>Color Palette Generator (2025) — Free CSS Export, Lock & Save | DevPalettes</title>
+  <meta name="description" content="Free color palette generator with CSS export, color locking, and local saving. Generate harmonious 3–8 color schemes instantly. No login required.">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/palettes/"/>
+  <link rel="up" href="https://devpalettes.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/palettes/">
-  <meta property="og:title" content="Free Color Palette Generator - Create Schemes">
-  <meta property="og:description" content="Generate unlimited color palettes, lock your favorites, and export code instantly.">
+  <meta property="og:title" content="Free Color Palette Generator — CSS Export, Lock & Save">
+  <meta property="og:description" content="Generate unlimited color palettes, lock your favorites, and export CSS variables instantly. No login required.">
   <meta property="og:image" content="https://devpalettes.com/images/og-palette.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/palettes/">
-  <meta property="twitter:title" content="Color Palette Generator">
-  <meta property="twitter:description" content="Generate unlimited color palettes, lock your favorites, and export code instantly.">
+  <meta property="twitter:title" content="Free Color Palette Generator — CSS Export, Lock & Save">
+  <meta property="twitter:description" content="Generate unlimited color palettes, lock your favorites, and export CSS variables instantly.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -29,8 +33,7 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010" crossorigin="anonymous"></script>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
@@ -38,6 +41,28 @@
       document.documentElement.classList.add('dark');
     }
   </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Color Palette Generator",
+        "item": "https://devpalettes.com/palettes/"
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,7 +70,7 @@
     "name": "Color Palette Generator",
     "url": "https://devpalettes.com/palettes/",
     "logo": "https://devpalettes.com/images/devpalettes.png",
-    "description": "A free online tool to generate random color palettes, lock colors, and export to CSS or PNG.",
+    "description": "A free online tool to generate random color palettes, lock colors, and export to CSS, JSON, or PNG.",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
     "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
@@ -57,9 +82,11 @@
     "featureList": [
       "Random Color Generation",
       "Lock Colors",
-      "Export to CSS",
+      "Export to CSS Variables",
+      "Export to JSON",
       "Export to PNG",
-      "Save Palettes Locally"
+      "Save Palettes Locally",
+      "3 to 8 Color Slots"
     ]
   }
   </script>
@@ -74,7 +101,7 @@
         "name": "How do I export colors to CSS?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Click the 'Copy CSS' button. This copies CSS variables (e.g., --color-1: #FF5733) to your clipboard, ready to paste into your stylesheet."
+          "text": "Click the 'Copy CSS' button below the palette. This copies CSS custom properties (e.g., --color-1: #FF5733) to your clipboard, ready to paste into your stylesheet."
         }
       },
       {
@@ -82,7 +109,7 @@
         "name": "Can I save my palettes?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes! Click 'Save Palette' to store it in your browser's local storage. You can reload it anytime from the 'Saved Palettes' section."
+          "text": "Yes. Click 'Save Palette' to store it in your browser's local storage. You can reload or delete saved palettes anytime from the 'Saved Palettes' section below the generator."
         }
       },
       {
@@ -90,40 +117,82 @@
         "name": "Is this tool free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolutely. This is a free tool for designers and developers with no usage limits."
+          "text": "Yes. This is a completely free tool for designers and developers with no usage limits, no account required, and no hidden paywalls."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I lock colors in the palette?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Click the lock icon on any color block. Locked colors stay in place when you generate a new palette or press Spacebar, while unlocked colors change. Click the lock again to unlock."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many colors can a palette have?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The generator supports 3 to 8 color slots. Use the 'Add Color' and 'Remove Color' buttons to adjust. The default is 5 colors."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use generated palettes in commercial projects?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All generated color combinations are free to use in personal and commercial projects. Color palettes cannot be copyrighted — you own whatever you create with this tool."
         }
       }
     ]
   }
   </script>
+
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .color-block:focus-visible {
+      outline: 3px solid white;
+      outline-offset: -3px;
+      box-shadow: 0 0 0 6px rgba(0,0,0,0.3);
+      z-index: 2;
+      position: relative;
+    }
+    @media (forced-colors: active) {
+      .color-block:focus-visible {
+        outline: 3px solid Highlight;
+        box-shadow: none;
+      }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to main content</a>
+
   <div id="navbar-container"></div>
-  <main class="pt-6 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+
+  <main id="main-content" class="pt-6 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
-    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 5px;">
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+    <div class="max-w-7xl mx-auto py-2 sm:px-6 lg:px-8 relative z-10" style="padding: 20px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-2">Free Color Palette Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-2">
           Press <kbd class="px-2 py-1 bg-slate-200 dark:bg-slate-700 rounded text-xs">Space</kbd> to generate • Click colors to copy • Lock colors to keep them
         </p>
         <p class="text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-6">Free tool. No login required. Export to CSS.</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-8  shimmer-card mb-8">
-        <h2 class="text-2xl font-bold mb-4">What is a Color Palette Generator?</h2>
+      <section class="glass-card p-8 shimmer-card mb-8" aria-labelledby="what-is-heading">
+        <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is a Color Palette Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           A color palette generator is an online design tool that creates harmonious color combinations automatically. Instead of guessing which colors work together or manually adjusting values on a <a href="/color-wheel/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color wheel</a>, you get ready-to-use schemes in a single click. Each generated palette includes exact HEX codes that you can copy directly into your CSS, HTML, or design files — no conversion step needed.
         </p>
@@ -135,53 +204,53 @@
         </p>
       </section>
 
-      <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8 " style="min-height: 60vh;">
+      <div id="palette-container" class="flex gap-0 rounded-2xl overflow-hidden shadow-2xl mb-8" style="min-height: 60vh;" role="group" aria-label="Color palette — click any color to copy its hex code, use Tab to navigate">
         <!-- Colors rendered by JS -->
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-4 mb-8 ">
-        <button id="generate-btn" class="btn-primary btn-glow text-lg px-8 py-4">
-          <i class="fas fa-sync-alt"></i>
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-8">
+        <button id="generate-btn" class="btn-primary btn-glow text-lg px-8 py-4" aria-label="Generate new color palette">
+          <i class="fas fa-sync-alt" aria-hidden="true"></i>
           Generate
         </button>
-        <button id="add-color-btn" class="btn-secondary" title="Add color">
-          <i class="fas fa-plus"></i>
+        <button id="add-color-btn" class="btn-secondary" title="Add color" aria-label="Add a color slot">
+          <i class="fas fa-plus" aria-hidden="true"></i>
           Add Color
         </button>
-        <button id="remove-color-btn" class="btn-secondary" title="Remove color">
-          <i class="fas fa-minus"></i>
+        <button id="remove-color-btn" class="btn-secondary" title="Remove color" aria-label="Remove last color slot">
+          <i class="fas fa-minus" aria-hidden="true"></i>
           Remove Color
         </button>
       </div>
 
-      <div class="flex flex-wrap items-center justify-center gap-3 mb-12 ">
-        <button id="export-css-btn" class="btn-secondary text-sm">
-          <i class="fas fa-code"></i>
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-12">
+        <button id="export-css-btn" class="btn-secondary text-sm" aria-label="Copy palette as CSS variables">
+          <i class="fas fa-code" aria-hidden="true"></i>
           Copy CSS
         </button>
-        <button id="export-json-btn" class="btn-secondary text-sm">
-          <i class="fas fa-file-code"></i>
+        <button id="export-json-btn" class="btn-secondary text-sm" aria-label="Copy palette as JSON">
+          <i class="fas fa-file-code" aria-hidden="true"></i>
           Copy JSON
         </button>
-        <button id="export-png-btn" class="btn-secondary text-sm">
-          <i class="fas fa-image"></i>
+        <button id="export-png-btn" class="btn-secondary text-sm" aria-label="Download palette as PNG image">
+          <i class="fas fa-image" aria-hidden="true"></i>
           Export PNG
         </button>
-        <button id="save-palette-btn" class="btn-secondary text-sm">
-          <i class="fas fa-bookmark"></i>
+        <button id="save-palette-btn" class="btn-secondary text-sm" aria-label="Save palette to browser storage">
+          <i class="fas fa-bookmark" aria-hidden="true"></i>
           Save Palette
         </button>
       </div>
 
-      <div id="saved-palettes-section" class="hidden mb-12">
-        <h2 class="text-xl font-bold mb-4">Saved Palettes</h2>
-        <div id="saved-palettes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div id="saved-palettes-section" class="hidden mb-12" aria-labelledby="saved-heading">
+        <h2 id="saved-heading" class="text-xl font-bold mb-4">Saved Palettes</h2>
+        <div id="saved-palettes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" role="list" aria-label="Your saved palettes">
           <!-- Saved palettes rendered by JS -->
         </div>
       </div>
 
-      <section class="glass-card p-8 shimmer-card mb-12">
-        <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+      <section class="glass-card p-8 shimmer-card mb-12" aria-labelledby="why-built-heading">
+        <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           I built this tool because I kept hitting the same wall on every new project: spending 20 minutes in Figma picking colors, then another 10 converting them to CSS variables, then realizing two of the colors looked terrible next to each other on an actual page. I'd start over. Repeat. It was a dumb, repetitive problem that ate into my actual design time.
         </p>
@@ -193,9 +262,10 @@
         </p>
       </section>
 
-      <div class="seo-content space-y-12 mt-16 ">
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Color Palettes Improve Your Design Workflow</h2>
+      <div class="seo-content space-y-12 mt-16">
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="workflow-heading">
+            <h2 id="workflow-heading" class="text-2xl font-bold mb-4">How Color Palettes Improve Your Design Workflow</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                A well-constructed color palette is the foundation of every polished digital product. It creates visual consistency across pages, establishes brand recognition, and communicates hierarchy — guiding users toward important actions through deliberate color contrast. Without a defined palette, designs tend to accumulate random colors over time, leading to a disjointed, unprofessional appearance.
             </p>
@@ -206,12 +276,13 @@
                Once your palette is finalized, run it through a <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to make sure text and background pairings meet accessibility standards. A beautiful palette that fails contrast requirements can exclude users with low vision — so this step matters as much as the colors themselves.
             </p>
          </section>
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-heading">
+            <h2 id="how-to-heading" class="text-2xl font-bold mb-4">How to Use This Tool</h2>
             <div class="grid md:grid-cols-2 gap-6">
                <div>
                   <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
-                     <li><strong class="text-slate-800 dark:text-white">Generate:</strong> Press the "Spacebar" or click the Generate button to get new colors.</li>
+                     <li><strong class="text-slate-800 dark:text-white">Generate:</strong> Press the Spacebar or click the Generate button to get new colors.</li>
                      <li><strong class="text-slate-800 dark:text-white">Lock:</strong> Like a specific color? Click the lock icon to keep it while generating others.</li>
                      <li><strong class="text-slate-800 dark:text-white">Copy:</strong> Click on any color block to copy its HEX code to your clipboard.</li>
                   </ol>
@@ -226,8 +297,8 @@
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Common Use Cases for Generated Palettes</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases for Generated Palettes</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
                <li><strong>Website and app design:</strong> Establish a primary, secondary, and accent color system before writing a single line of CSS. Export directly as custom properties.</li>
                <li><strong>Brand identity projects:</strong> Quickly explore multiple color directions for a client, save the best candidates, and present them as PNG swatches.</li>
@@ -240,62 +311,141 @@
             </p>
          </section>
 
-         <section>
-            <h2 class="text-2xl font-bold mb-6 text-center">Why Use Our Palette Generator?</h2>
+         <section aria-labelledby="why-use-heading">
+            <h2 id="why-use-heading" class="text-2xl font-bold mb-6 text-center">Why Use Our Palette Generator?</h2>
             <div class="grid md:grid-cols-3 gap-6">
                <div class="glass-card p-6 text-center">
-                  <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-indigo-500">
+                  <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-indigo-500" aria-hidden="true">
                      <i class="fas fa-bolt"></i>
                   </div>
                   <h3 class="font-bold mb-2">Instant Inspiration</h3>
                   <p class="text-xs text-slate-500">Break creative blocks instantly with unique algorithm-generated combinations.</p>
                </div>
                <div class="glass-card p-6 text-center">
-                  <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-emerald-500">
+                  <div class="w-12 h-12 bg-emerald-100 dark:bg-emerald-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-emerald-500" aria-hidden="true">
                      <i class="fas fa-code"></i>
                   </div>
                   <h3 class="font-bold mb-2">Developer Ready</h3>
                   <p class="text-xs text-slate-500">Export clean CSS variables or JSON to use directly in your codebase.</p>
                </div>
                <div class="glass-card p-6 text-center">
-                  <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-rose-500">
+                  <div class="w-12 h-12 bg-rose-100 dark:bg-rose-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-rose-500" aria-hidden="true">
                      <i class="fas fa-lock"></i>
                   </div>
-                  <h3 class="font-bold mb-2">Lock & Build</h3>
+                  <h3 class="font-bold mb-2">Lock &amp; Build</h3>
                   <p class="text-xs text-slate-500">Keep your favorite colors locked while generating new accents around them.</p>
                </div>
             </div>
          </section>
 
-          <section class="glass-card p-8 shimmer-card text-center">
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="css-impl-heading">
+            <h2 id="css-impl-heading" class="text-2xl font-bold mb-4">How to Implement Generated Palettes in CSS</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">
+               The fastest way to use a generated palette is through CSS custom properties. Click "Copy CSS" in the toolbar above, then paste the output into your stylesheet. Here's what the result looks like in a real project:
+            </p>
+            <div class="bg-slate-900 rounded-lg p-6 overflow-x-auto mb-4">
+               <pre class="text-sm text-green-400"><code>/* Paste the exported variables into :root */
+:root {
+  --color-1: #3B82F6;
+  --color-2: #10B981;
+  --color-3: #F59E0B;
+  --color-4: #EF4444;
+  --color-5: #8B5CF6;
+}
+
+/* Reference them throughout your styles */
+body {
+  background-color: var(--color-1);
+  color: white;
+}
+
+.card {
+  background-color: var(--color-2);
+  border: 2px solid var(--color-3);
+}
+
+.btn-primary {
+  background-color: var(--color-5);
+}
+
+/* Dark mode override — swap the palette */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-1: #1E3A5F;
+    --color-2: #065F46;
+    --color-3: #92400E;
+    --color-4: #991B1B;
+    --color-5: #5B21B6;
+  }
+}</code></pre>
+            </div>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">
+               With this pattern, changing your entire site's color scheme means updating just the five variables in <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded">:root</code>. Every component that references the variables updates automatically. This is the same approach used by design systems like Shadcn, Radix, and Tailwind v4. For a deeper explanation, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN guide to CSS custom properties</a> covers edge cases and best practices.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400">
+               Need to convert a hex code to RGB, HSL, or another format before using it? The <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> handles instant format translation.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-5">
+               <div>
+                  <h3 class="font-semibold mb-1">How do I export colors to CSS?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Click the "Copy CSS" button below the palette. This copies CSS custom properties (e.g., <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded">--color-1: #FF5733</code>) to your clipboard, ready to paste into your stylesheet.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Can I save my palettes?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. Click "Save Palette" to store it in your browser's local storage. You can reload or delete saved palettes anytime from the "Saved Palettes" section below the generator.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Is this tool free?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This is a completely free tool for designers and developers with no usage limits, no account required, and no hidden paywalls.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How do I lock colors in the palette?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Click the lock icon on any color block. Locked colors stay in place when you generate a new palette or press Spacebar, while unlocked colors change. Click the lock again to unlock it.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How many colors can a palette have?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">The generator supports 3 to 8 color slots. Use the "Add Color" and "Remove Color" buttons to adjust. The default is 5 colors, which works well for most web projects.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Can I use generated palettes in commercial projects?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. All generated color combinations are free to use in personal and commercial projects. Color palettes cannot be copyrighted — you own whatever you create with this tool.</p>
+               </div>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/palettes/&text=Create%20beautiful%20color%20palettes%20instantly%20with%20DevPalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                <a href="https://wa.me/?text=Check%20out%20DevPalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p"></i> Pinterest
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/palettes/&description=Create%20beautiful%20color%20palettes%20instantly%20with%20DevPalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
                 </a>
                 <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
           </section>
 
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="explore-heading">
+            <h2 id="explore-heading" class="text-2xl font-bold mb-4">Explore More Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Once you have your palette, try these tools:</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
@@ -318,26 +468,28 @@
     </div>
   </main>
 
-  <div id="footer-container"></div>
+  <div id="footer-container" style="min-height: 200px;"></div>
 
-  <div id="export-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50">
+  <div id="export-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/50" role="dialog" aria-modal="true" aria-labelledby="export-modal-title">
     <div class="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-lg w-full max-h-[80vh] overflow-auto shimmer-card">
       <div class="flex justify-between items-center mb-4">
-        <h3 class="text-lg font-bold">Export Code</h3>
-        <button id="close-modal-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" aria-label="Close Modal Btn">
-          <i class="fas fa-times"></i>
+        <h3 id="export-modal-title" class="text-lg font-bold">Export Code</h3>
+        <button id="close-modal-btn" class="p-2 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg" aria-label="Close export dialog">
+          <i class="fas fa-times" aria-hidden="true"></i>
         </button>
       </div>
-      <pre id="export-code" class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg overflow-x-auto text-sm font-mono"></pre>
+      <pre id="export-code" class="bg-slate-100 dark:bg-slate-900 p-4 rounded-lg overflow-x-auto text-sm font-mono" role="textbox" aria-readonly="true" aria-label="Exported code"></pre>
       <button id="copy-export-btn" class="btn-primary btn-glow w-full mt-4 justify-center">
-        <i class="fas fa-copy"></i>
+        <i class="fas fa-copy" aria-hidden="true"></i>
         Copy to Clipboard
       </button>
     </div>
   </div>
 
-  <script src="../js/main.js"></script>
-  <script src="../js/palette.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <div id="clipboard-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/palette.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 </body>
 </html>

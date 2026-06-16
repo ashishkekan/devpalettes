@@ -3,30 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>HTML Minifier – Minify HTML Online Free</title>
-  <meta name="description" content="Minify HTML code instantly. Remove whitespace, comments, and unnecessary characters to reduce file size with this free online HTML minifier tool.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10b981">
+
+  <title>Free HTML Minifier – Minify HTML Online Instantly | DevPalettes</title>
+  <meta name="description" content="Free online HTML minifier. Instantly remove whitespace, comments, and unnecessary characters to reduce file size 10-30%. No sign-up — runs entirely in your browser.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/html-minifier/"/>
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/html-minifier/">
-  <meta property="og:title" content="HTML Minifier – Minify HTML Online Free">
-  <meta property="og:description" content="Minify HTML code instantly. Remove whitespace, comments, and unnecessary characters to reduce file size with this free tool.">
+  <meta property="og:title" content="Free HTML Minifier – Minify HTML Online Instantly">
+  <meta property="og:description" content="Free online HTML minifier. Instantly remove whitespace, comments, and unnecessary characters to reduce file size 10-30%. No sign-up required.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:site_name" content="DevPalettes">
 
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/html-minifier/">
-  <meta property="twitter:title" content="HTML Minifier – Minify HTML Online Free">
-  <meta property="twitter:description" content="Minify HTML code instantly. Remove whitespace, comments, and unnecessary characters to reduce file size with this free tool.">
-  
+  <meta property="twitter:title" content="Free HTML Minifier – Minify HTML Online Instantly">
+  <meta property="twitter:description" content="Free online HTML minifier. Instantly remove whitespace, comments, and unnecessary characters to reduce file size 10-30%. No sign-up required.">
+  <meta property="twitter:image" content="https://devpalettes.com/images/og-image.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
      crossorigin="anonymous"></script>
-  
+
+  <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,13 +40,35 @@
     "url": "https://devpalettes.com/html-minifier/",
     "logo": "https://devpalettes.com/images/devpalettes.png",
     "description": "A free online tool to minify HTML code. Remove whitespace, comments, and unnecessary characters to reduce HTML file size for faster page loading and better performance.",
-    "applicationCategory": "DesignApplication",
+    "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     }
+  }
+  </script>
+
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "HTML Minifier",
+        "item": "https://devpalettes.com/html-minifier/"
+      }
+    ]
   }
   </script>
 
@@ -96,42 +123,84 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="stylesheet" href="/css/tailwind.min.css" fetchpriority="high">
 
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      padding: 12px 24px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div id="navbar-container"></div>
-  
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+
+  <main id="main-content" class="pt-4 pb-12 min-h-screen relative overflow-hidden" aria-label="HTML Minifier Tool">
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <div class="text-center mb-10 " style="margin-top: 45px;">
+
+      <div class="text-center" style="margin-top: 60px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Online HTML Minifier – Minify HTML Free</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Minify HTML code instantly. Remove whitespace, comments, and unnecessary characters to reduce file size for faster loading</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">Minify HTML code instantly. Remove whitespace, comments, and unnecessary characters to reduce file size for faster loading</p>
+        <div class="flex flex-wrap justify-center gap-3 mb-6" role="list" aria-label="Key features">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm" role="listitem">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span>100% Free</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm" role="listitem">
+            <i class="fas fa-user-shield" aria-hidden="true"></i>
+            <span>No Sign-Up Required</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm" role="listitem">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span>Privacy First — No Data Sent to Servers</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm" role="listitem">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+            <span>Real-Time Processing</span>
+          </div>
+        </div>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <section class="max-w-7xl mx-auto mb-10 " aria-label="What is HTML minification">
+      <section class="max-w-7xl mx-auto mb-10" aria-labelledby="what-is-heading">
         <article class="glass-card p-6 sm:p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">What Is an HTML Minifier?</h2>
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What Is an HTML Minifier?</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
             An HTML minifier is a tool that removes unnecessary characters from HTML source code without changing how the page renders in a browser. It strips out whitespace (spaces, tabs, and newlines), HTML comments (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;!-- ... --&gt;</code>), optional quotation marks around attribute values, and empty attributes that serve no purpose. The result is a smaller file that downloads faster, parses quicker, and uses less bandwidth — while producing exactly the same visual output as the original.
           </p>
@@ -144,137 +213,141 @@
         </article>
       </section>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Minification statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-file-code text-emerald-500"></i>
             </div>
             <span class="text-sm text-slate-500">Original Size</span>
           </div>
-          <p id="stat-original" class="text-3xl font-bold text-slate-400">0 B</p>
+          <p id="stat-original" class="text-3xl font-bold text-slate-400" aria-live="polite">0 B</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-compress text-blue-500"></i>
             </div>
             <span class="text-sm text-slate-500">Minified Size</span>
           </div>
-          <p id="stat-minified" class="text-3xl font-bold text-slate-400">0 B</p>
+          <p id="stat-minified" class="text-3xl font-bold text-slate-400" aria-live="polite">0 B</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-percentage text-purple-500"></i>
             </div>
             <span class="text-sm text-slate-500">Reduction</span>
           </div>
-          <p id="stat-reduction" class="text-3xl font-bold text-slate-400">0%</p>
+          <p id="stat-reduction" class="text-3xl font-bold text-slate-400" aria-live="polite">0%</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-circle-check text-amber-500"></i>
             </div>
             <span class="text-sm text-slate-500">Status</span>
           </div>
-          <p id="stat-status" class="text-3xl font-bold text-slate-400">Idle</p>
+          <p id="stat-status" class="text-3xl font-bold text-slate-400" aria-live="polite">Idle</p>
         </div>
       </div>
 
       <div class="block md:grid md:grid-cols-2 gap-8">
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-pen-to-square"></i></span>
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-2" id="input-heading">
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm" aria-hidden="true"><i class="fas fa-pen-to-square"></i></span>
               HTML Input
             </h2>
             <div class="space-y-5">
               <div>
-                <label class="block text-sm font-semibold mb-2">Minification Options</label>
-                <div class="space-y-2.5">
+                <span id="options-group-label" class="block text-sm font-semibold mb-2">Minification Options</span>
+                <div class="space-y-2.5" role="group" aria-labelledby="options-group-label">
                   <label class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-whitespace" class="sr-only peer" checked>
-                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove whitespace</span>
                   </label>
                   <label class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-comments" class="sr-only peer" checked>
-                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove comments</span>
                   </label>
                   <label class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-optional-quotes" class="sr-only peer">
-                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove optional quotes</span>
                   </label>
                   <label class="flex items-center gap-3 cursor-pointer group">
                     <input type="checkbox" id="opt-empty-attrs" class="sr-only peer" checked>
-                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 rounded peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
+                    <div class="w-5 h-5 rounded-md bg-slate-300 dark:bg-slate-600 peer-focus:ring-2 peer-focus:ring-emerald-500/20 peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded after:h-4 after:w-4 after:transition-all peer-checked:bg-emerald-500 relative"></div>
                     <span class="text-sm text-slate-600 dark:text-slate-400 group-hover:text-slate-900 dark:group-hover:text-slate-100 transition-colors">Remove empty attributes</span>
                   </label>
                 </div>
               </div>
               <div>
-                <label class="block text-sm font-semibold mb-2">HTML Code</label>
-                <textarea id="html-input" rows="14" placeholder="Paste your HTML code here..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm font-mono resize-none"></textarea>
+                <label for="html-input" class="block text-sm font-semibold mb-2">HTML Code</label>
+                <textarea id="html-input" rows="14" placeholder="Paste your HTML code here..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm font-mono resize-none" aria-describedby="html-input-hint"></textarea>
                 <div class="flex justify-between mt-1.5">
-                  <p class="text-xs text-slate-400">Paste HTML source code to minify</p>
-                  <p id="html-input-count" class="text-xs text-slate-400">0 chars</p>
+                  <p id="html-input-hint" class="text-xs text-slate-400">Paste HTML source code to minify</p>
+                  <p id="html-input-count" class="text-xs text-slate-400" aria-live="polite">0 chars</p>
                 </div>
+                <p class="text-xs text-slate-400 dark:text-slate-500 mt-1 text-center">
+                  <i class="fas fa-lock mr-1" aria-hidden="true"></i>
+                  All data stays in your browser. Nothing is sent to any server.
+                </p>
               </div>
               <div class="pt-2 flex gap-3">
-                <button id="html-clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2">
-                  <i class="fas fa-rotate-left"></i> Clear All
+                <button id="html-clear-btn" class="btn-secondary text-xs py-2.5 px-4 flex items-center gap-2" aria-label="Clear all input and output">
+                  <i class="fas fa-rotate-left" aria-hidden="true"></i> Clear All
                 </button>
               </div>
             </div>
           </div>
 
-          <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-wand-magic-sparkles"></i></span>
+          <div class="glass-card p-8 shimmer-card" aria-labelledby="examples-heading">
+            <h2 id="examples-heading" class="text-xl font-bold mb-5 flex items-center gap-2">
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm" aria-hidden="true"><i class="fas fa-wand-magic-sparkles"></i></span>
               Quick Examples
             </h2>
             <p class="text-sm text-slate-500 mb-4">Try these sample HTML snippets to see minification in action</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="basic">
-                <i class="fas fa-code text-blue-500 mr-2"></i>Basic HTML
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="basic" aria-label="Load basic HTML example">
+                <i class="fas fa-code text-blue-500 mr-2" aria-hidden="true"></i>Basic HTML
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="comments">
-                <i class="fas fa-comment-slash text-purple-500 mr-2"></i>With Comments
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="comments" aria-label="Load HTML with comments example">
+                <i class="fas fa-comment-slash text-purple-500 mr-2" aria-hidden="true"></i>With Comments
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="inline">
-                <i class="fas fa-palette text-amber-500 mr-2"></i>Inline Styles
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="inline" aria-label="Load HTML with inline styles example">
+                <i class="fas fa-palette text-amber-500 mr-2" aria-hidden="true"></i>Inline Styles
               </button>
-              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="semantic">
-                <i class="fas fa-sitemap text-emerald-500 mr-2"></i>Semantic HTML
+              <button class="preset-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-preset="semantic" aria-label="Load semantic HTML example">
+                <i class="fas fa-sitemap text-emerald-500 mr-2" aria-hidden="true"></i>Semantic HTML
               </button>
             </div>
           </div>
         </div>
 
-        <div class="space-y-6 ">
-          <div class="glass-card p-8 shimmer-card">
+        <div class="space-y-6">
+          <div class="glass-card p-8 shimmer-card" aria-labelledby="output-heading">
             <div class="flex items-center justify-between mb-6">
-              <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-eye"></i></span>
+              <h2 id="output-heading" class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm" aria-hidden="true"><i class="fas fa-eye"></i></span>
                 Minified Output
               </h2>
-              <div class="flex gap-1.5">
-                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result">
-                  <i class="fas fa-file-lines mr-1"></i>Result
+              <div class="flex gap-1.5" role="group" aria-label="Output view toggle">
+                <button class="preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-view="result" aria-pressed="true">
+                  <i class="fas fa-file-lines mr-1" aria-hidden="true"></i>Result
                 </button>
-                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw">
-                  <i class="fas fa-code mr-1"></i>Raw
+                <button class="preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-view="raw" aria-pressed="false">
+                  <i class="fas fa-code mr-1" aria-hidden="true"></i>Raw
                 </button>
               </div>
             </div>
             <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4">
               <div id="view-result" class="preview-panel">
                 <div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2">
+                  <div class="px-4 py-2.5 border-b border-slate-200 dark:border-slate-700 flex items-center gap-2" aria-hidden="true">
                     <div class="flex gap-1.5">
                       <div class="w-3 h-3 rounded-full bg-red-400"></div>
                       <div class="w-3 h-3 rounded-full bg-amber-400"></div>
@@ -290,26 +363,26 @@
               <div id="view-raw" class="preview-panel hidden">
                 <div class="relative">
                   <pre id="html-raw-content" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[500px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all">Paste HTML code to see the raw minified output here</pre>
-                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy Code Inline">
-                    <i class="fas fa-copy"></i>
+                  <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy minified HTML code">
+                    <i class="fas fa-copy" aria-hidden="true"></i>
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="glass-card p-8 shimmer-card">
+          <div class="glass-card p-8 shimmer-card" aria-labelledby="export-heading">
             <div class="flex justify-between items-center mb-5">
-              <h2 class="text-xl font-bold flex items-center gap-2">
-                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-download"></i></span>
+              <h2 id="export-heading" class="text-xl font-bold flex items-center gap-2">
+                <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm" aria-hidden="true"><i class="fas fa-download"></i></span>
                 Export
               </h2>
               <div class="flex gap-2">
-                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3">
-                  <i class="fas fa-copy mr-1"></i>Copy
+                <button id="copy-tags-btn" class="btn-primary btn-glow text-xs py-2 px-3" aria-label="Copy minified HTML to clipboard">
+                  <i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy
                 </button>
-                <button id="download-file-btn" class="btn-secondary text-xs py-2 px-3">
-                  <i class="fas fa-file-arrow-down mr-1"></i>Download
+                <button id="download-file-btn" class="btn-secondary text-xs py-2 px-3" aria-label="Download minified HTML as file">
+                  <i class="fas fa-file-arrow-down mr-1" aria-hidden="true"></i>Download
                 </button>
               </div>
             </div>
@@ -319,34 +392,34 @@
             <p id="html-output-info" class="text-xs text-slate-400 mt-3">No output generated yet</p>
           </div>
 
-          <div class="glass-card p-6 shimmer-card">
-            <h3 class="font-bold mb-4 flex items-center gap-2">
-              <i class="fas fa-clipboard-check text-emerald-500"></i>
+          <div class="glass-card p-6 shimmer-card" aria-labelledby="validation-heading">
+            <h3 id="validation-heading" class="font-bold mb-4 flex items-center gap-2">
+              <i class="fas fa-clipboard-check text-emerald-500" aria-hidden="true"></i>
               Validation Checklist
             </h3>
-            <div id="validation-list" class="space-y-2.5">
-              <div class="flex items-center gap-3 text-sm" data-check="has-input">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+            <div id="validation-list" class="space-y-2.5" role="list" aria-label="Minification validation checks">
+              <div class="flex items-center gap-3 text-sm" data-check="has-input" role="listitem" aria-label="HTML input check: pending">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">HTML input is provided</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="has-tags">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="has-tags" role="listitem" aria-label="HTML tags check: pending">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Contains HTML tags</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="minified">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="minified" role="listitem" aria-label="Minification check: pending">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Minification completed</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="size-reduced">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="size-reduced" role="listitem" aria-label="Size reduction check: pending">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">File size reduced</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="no-errors">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="no-errors" role="listitem" aria-label="Error check: pending">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">No processing errors</span>
               </div>
-              <div class="flex items-center gap-3 text-sm" data-check="output-ready">
-                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>
+              <div class="flex items-center gap-3 text-sm" data-check="output-ready" role="listitem" aria-label="Output ready check: pending">
+                <i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
                 <span class="text-slate-400">Output is ready to copy</span>
               </div>
             </div>
@@ -354,9 +427,9 @@
         </div>
       </div>
 
-      <section class="mt-12 max-w-7xl mx-auto " aria-label="Why this tool was built">
+      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="why-built-heading">
         <article class="glass-card p-6 sm:p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">Why I Built This HTML Minifier</h2>
+          <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This HTML Minifier</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
             I used to run my HTML through online minifiers before every deploy, and it always felt like a hassle. Most tools had aggressive ads, some required creating an account, and a few would occasionally mangle inline JavaScript or strip whitespace from <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">&lt;pre&gt;</code> tags. I just wanted something fast, free, and predictable — paste code, get minified output, copy it. No login, no server upload, no surprises.
           </p>
@@ -369,9 +442,9 @@
         </article>
       </section>
 
-      <div class="seo-content space-y-12 mt-16 ">
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Does HTML Minification Work?</h2>
+      <div class="seo-content space-y-12 mt-16">
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-it-works-heading">
+            <h2 id="how-it-works-heading" class="text-2xl font-bold mb-4">How Does HTML Minification Work?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                This HTML minifier applies a series of text transformations to the input HTML, each targeting a specific type of removable content. As described on <a href="https://en.wikipedia.org/wiki/Minification_(programming)" target="_blank" rel="noopener noreferrer">Wikipedia's minification article</a>, the goal is to reduce HTML size by eliminating characters that are not required for execution:
             </p>
@@ -387,11 +460,11 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of HTML Minification</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of HTML Minification</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-gauge-high text-emerald-500"></i>
                   </div>
                   <div>
@@ -400,7 +473,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-chart-line text-blue-500"></i>
                   </div>
                   <div>
@@ -409,7 +482,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-server text-purple-500"></i>
                   </div>
                   <div>
@@ -418,7 +491,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-bolt text-amber-500"></i>
                   </div>
                   <div>
@@ -427,7 +500,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-shield-halved text-red-500"></i>
                   </div>
                   <div>
@@ -436,7 +509,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-mobile-screen text-teal-500"></i>
                   </div>
                   <div>
@@ -447,8 +520,8 @@
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This HTML Minifier</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
+            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This HTML Minifier</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Select Options:</strong> Choose which minification optimizations to apply using the checkboxes. "Remove whitespace" and "Remove comments" are enabled by default as they provide the most benefit. "Remove optional quotes" and "Remove empty attributes" offer additional savings but may affect edge cases.</li>
                <li><strong>Paste HTML Code:</strong> Paste your HTML source code into the textarea. You can paste a complete HTML document, an HTML fragment, or a partial template.</li>
@@ -461,8 +534,8 @@
             </ol>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Production Deployment:</strong> Minify HTML as part of your build process before deploying to production. Combined with <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS minification</a> and <a href="/js-minifier/" class="text-emerald-500 hover:underline">JavaScript minification</a>, this reduces total page weight and improves loading performance for all users.</li>
                <li><strong>Static Site Generation:</strong> When generating static HTML files from templates (Hugo, Jekyll, Eleventy), run the minifier on the output as a post-processing step to ensure all generated HTML is optimized.</li>
@@ -474,59 +547,59 @@
             </ul>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-1">
                      <span>What is HTML minification?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-heading">
                      <p class="text-sm text-slate-600 dark:text-slate-400">HTML minification is the process of removing unnecessary characters from HTML source code without changing its functionality. This includes removing whitespace (spaces, tabs, newlines), HTML comments, optional quotation marks, and redundant attributes. The result is a smaller file that downloads and parses faster but renders identically in the browser.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-2">
                      <span>Does minifying HTML affect functionality?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">No. HTML minification removes only non-functional characters like whitespace, comments, and optional quotes. The rendered output in the browser remains identical to the unminified version. All tags, attributes, content, and functionality are preserved exactly as written. The browser's HTML parser treats minified and unminified HTML identically.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-3">
                      <span>How much size reduction does HTML minification achieve?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">HTML minification typically reduces file size by 10-30%, depending on the original code. Well-formatted HTML with lots of indentation, newlines, and comments will see larger reductions of 25-35%. Minimal HTML with little whitespace may only see 5-10% reduction. Pages with inline CSS and JavaScript within the HTML can see even higher savings since those sections tend to have lots of whitespace.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-4">
                      <span>Should I minify HTML before deploying to production?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-4" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Yes. Minifying HTML before production deployment is a standard best practice for web performance optimization. Combined with CSS and JavaScript minification, it reduces total page weight, improves Time to First Byte (TTFB), and accelerates page rendering. Always keep unminified versions in your source control for development and debugging, and apply minification as an automated build step.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-5">
                      <span>Is it safe to remove HTML comments?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-5" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Yes, for production deployment. HTML comments serve no functional purpose for end users — they are developer documentation only. The one exception is conditional comments for legacy Internet Explorer (&lt;!--[if IE]&gt;), but these are rarely needed today as IE has been discontinued. Always keep unminified source files with comments in your version control system so you never lose the documentation.</p>
                   </div>
                </div>
             </div>
          </section>
-         
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Explore More Tools</h2>
+
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Explore More Tools</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have minified your HTML, try these related tools to optimize website performance:</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
@@ -541,32 +614,32 @@
             </div>
          </section>
 
-          <section class="glass-card p-8 my-16 shimmer-card text-center">
+          <section class="glass-card p-8 my-16 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
                 <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/html-minifier/&text=Minify%20HTML%20code%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
                 <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/html-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
                 <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/html-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
                 <a href="https://wa.me/?text=Check%20out%20this%20free%20HTML%20minifier%20https://devpalettes.com/html-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
           </section>
 
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-3">Free Tool for Developers</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="free-tool-heading">
+            <h2 id="free-tool-heading" class="text-2xl font-bold mb-3">Free Tool for Developers</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
                This HTML Minifier is a free tool for developers to minify HTML online free and optimize website performance. Reduce HTML size instantly without sending code to any server — all processing happens locally in your browser. If you find this tool helpful, consider linking to it from your blog, documentation, or project README to help other developers discover this free online HTML minifier and optimize website performance across the web.
             </p>
@@ -584,16 +657,16 @@
             </div>
           </div>
       </div>
-      
+
     </div>
   </main>
-  
+
   <!-- Footer -->
   <div id="footer-container"></div>
-  
+
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
   <script src="../js/main.js"></script>
   <script src="../js/html-minifier.js"></script>
   <script src="../js/enhancements.js"></script>

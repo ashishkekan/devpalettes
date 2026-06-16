@@ -130,7 +130,9 @@
     var toast = document.createElement('div');
     var bgColor = type === 'success' ? 'bg-emerald-500' : type === 'error' ? 'bg-red-500' : 'bg-blue-500';
     toast.className = 'px-4 py-3 rounded-xl text-white text-sm font-medium shadow-lg transform translate-x-full transition-transform duration-300 ' + bgColor;
-    toast.innerHTML = '<i class="fas fa-' + (type === 'success' ? 'check-circle' : type === 'error' ? 'times-circle' : 'info-circle') + ' mr-2"></i>' + message;
+    /* ADDED: role="alert" for accessibility */
+    toast.setAttribute('role', 'alert');
+    toast.innerHTML = '<i class="fas fa-' + (type === 'success' ? 'check-circle' : type === 'error' ? 'times-circle' : 'info-circle') + ' mr-2" aria-hidden="true"></i>' + message;
     container.appendChild(toast);
     requestAnimationFrame(function() {
       toast.style.transform = 'translateX(0)';
@@ -158,6 +160,8 @@
     ta.value = text;
     ta.style.position = 'fixed';
     ta.style.left = '-9999px';
+    /* ADDED: aria-hidden on offscreen textarea */
+    ta.setAttribute('aria-hidden', 'true');
     document.body.appendChild(ta);
     ta.select();
     try {
@@ -187,10 +191,10 @@
       var item = validationItems[i];
       var ok = item.check();
       if (ok) passed++;
-      html += '<div class="flex items-center gap-3 text-sm">';
+      html += '<div class="flex items-center gap-3 text-sm" role="listitem">';
       html += ok
-        ? '<i class="fas fa-check-circle text-emerald-500"></i>'
-        : '<i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600"></i>';
+        ? '<i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>'
+        : '<i class="fas fa-circle text-[8px] text-slate-300 dark:text-slate-600" aria-hidden="true"></i>';
       html += '<span class="' + (ok ? 'text-slate-700 dark:text-slate-200' : 'text-slate-400') + '">' + item.label + '</span>';
       html += '</div>';
     }
@@ -223,7 +227,7 @@
 
     if (includeTwitter) {
       tags.push('');
-      tags.push('');
+      tags.push('<!-- Twitter Card -->');
       tags.push('<meta name="twitter:card" content="' + escapeHtml(twitterType) + '">'); tagCount++;
       if (title) { tags.push('<meta name="twitter:title" content="' + escapeHtml(title) + '">'); tagCount++; }
       if (desc) { tags.push('<meta name="twitter:description" content="' + escapeHtml(desc) + '">'); tagCount++; }
@@ -276,7 +280,7 @@
 
     if (includeTwitter) {
       lines.push('');
-      lines.push('  ');
+      lines.push('  <!-- Twitter Card -->');
       lines.push('  <meta name="twitter:card" content="' + escapeHtml(twitterType) + '">');
       if (title) lines.push('  <meta name="twitter:title" content="' + escapeHtml(title) + '">');
       if (desc) lines.push('  <meta name="twitter:description" content="' + escapeHtml(desc) + '">');
@@ -290,9 +294,9 @@
   /* ========== PREVIEW UPDATE ========== */
   function setImagePreview(container, imageUrl) {
     if (imageUrl && isValidUrl(imageUrl)) {
-      container.innerHTML = '<img src="' + escapeHtml(imageUrl) + '" alt="OG Preview" class="w-full h-full object-cover" onerror="this.parentNode.innerHTML=\'<div class=\\\'text-center p-6\\\'><i class=\\\'fas fa-exclamation-triangle text-3xl text-amber-400 mb-2\\\'></i><p class=\\\'text-xs text-slate-400\\\'>Failed to load image</p></div>\'">';
+      container.innerHTML = '<img src="' + escapeHtml(imageUrl) + '" alt="OG Preview" class="w-full h-full object-cover" onerror="this.parentNode.innerHTML=\'<div class=\\\'text-center p-6\\\'><i class=\\\'fas fa-exclamation-triangle text-3xl text-amber-400 mb-2\\\' aria-hidden=\\\'true\\\'></i><p class=\\\'text-xs text-slate-400\\\'>Failed to load image</p></div>\'">';
     } else {
-      container.innerHTML = '<div class="text-center p-6"><i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2"></i><p class="text-xs text-slate-400">Image preview</p></div>';
+      container.innerHTML = '<div class="text-center p-6"><i class="fas fa-image text-3xl text-slate-300 dark:text-slate-500 mb-2" aria-hidden="true"></i><p class="text-xs text-slate-400">Image preview</p></div>';
     }
   }
 
@@ -314,7 +318,7 @@
     setImagePreview(el.twImage, image);
     el.twTitle.textContent = title;
     el.twDesc.textContent = desc;
-    el.twDomain.innerHTML = '<i class="fas fa-link text-[10px]"></i>' + escapeHtml(domain);
+    el.twDomain.innerHTML = '<i class="fas fa-link text-[10px]" aria-hidden="true"></i>' + escapeHtml(domain);
 
     // LinkedIn
     setImagePreview(el.liImage, image);
@@ -460,17 +464,21 @@
       });
     }
 
-    // Preview tabs
+    // Preview tabs — CHANGED: Added ARIA tab management and keyboard navigation
     var previewTabs = document.querySelectorAll('.preview-tab');
     for (var t = 0; t < previewTabs.length; t++) {
       previewTabs[t].addEventListener('click', function() {
         var platform = this.getAttribute('data-platform');
 
-        // Update tab styles
+        // Update tab styles and ARIA
         for (var j = 0; j < previewTabs.length; j++) {
           previewTabs[j].className = 'preview-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50';
+          previewTabs[j].setAttribute('aria-selected', 'false'); /* ADDED */
+          previewTabs[j].setAttribute('tabindex', '-1'); /* ADDED */
         }
         this.className = 'preview-tab active-tab px-3 py-1.5 rounded-lg text-xs font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all';
+        this.setAttribute('aria-selected', 'true'); /* ADDED */
+        this.setAttribute('tabindex', '0'); /* ADDED */
 
         // Show/hide panels
         var panels = document.querySelectorAll('.preview-panel');
@@ -479,9 +487,29 @@
         }
         document.getElementById('preview-' + platform).classList.remove('hidden');
       });
+
+      /* ADDED: Arrow key navigation for preview tabs */
+      previewTabs[t].addEventListener('keydown', function(e) {
+        var tabList = Array.from(previewTabs);
+        var currentIndex = tabList.indexOf(this);
+        var newIndex;
+
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          newIndex = (currentIndex + 1) % tabList.length;
+        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+          e.preventDefault();
+          newIndex = (currentIndex - 1 + tabList.length) % tabList.length;
+        } else {
+          return;
+        }
+
+        tabList[newIndex].focus();
+        tabList[newIndex].click();
+      });
     }
 
-    // FAQ toggles
+    // FAQ toggles — CHANGED: Added aria-expanded management and keyboard navigation
     var faqToggles = document.querySelectorAll('.faq-toggle');
     for (var f = 0; f < faqToggles.length; f++) {
       faqToggles[f].addEventListener('click', function() {
@@ -492,9 +520,34 @@
         if (isOpen) {
           content.classList.add('hidden');
           icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false'); /* ADDED */
         } else {
           content.classList.remove('hidden');
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true'); /* ADDED */
+        }
+      });
+
+      /* ADDED: Arrow key navigation for FAQ items */
+      faqToggles[f].addEventListener('keydown', function(e) {
+        var items = Array.from(faqToggles);
+        var currentIndex = items.indexOf(this);
+        var newIndex;
+
+        if (e.key === 'ArrowDown') {
+          e.preventDefault();
+          newIndex = (currentIndex + 1) % items.length;
+          items[newIndex].focus();
+        } else if (e.key === 'ArrowUp') {
+          e.preventDefault();
+          newIndex = (currentIndex - 1 + items.length) % items.length;
+          items[newIndex].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          items[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          items[items.length - 1].focus();
         }
       });
     }

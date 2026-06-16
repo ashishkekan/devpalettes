@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10b981">
 
   <title>Glassmorphism Generator – Free Frosted Glass CSS Tool | DevPalettes</title>
   <meta name="description" content="Free Glassmorphism Generator for creating frosted glass CSS effects. Customize blur, transparency, and borders visually. Copy production-ready CSS instantly.">
@@ -14,14 +16,38 @@
   <meta property="og:title" content="Glassmorphism Generator – Free Frosted Glass CSS Tool">
   <meta property="og:description" content="Create modern glassmorphism effects with CSS. Customize blur, transparency, and borders for stunning frosted glass UI.">
   <meta property="og:image" content="https://devpalettes.com/images/og-glass.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="DevPalettes">
 
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://devpalettes.com/glassmorphism-generator/">
-  <meta property="twitter:title" content="Free Glassmorphism Generator – Frosted Glass CSS Tool">
-  <meta property="twitter:description" content="Create modern glassmorphism effects with CSS. Customize blur, transparency, and borders.">
-  <meta property="twitter:image" content="https://devpalettes.com/images/og-glass.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://devpalettes.com/glassmorphism-generator/">
+  <meta name="twitter:title" content="Free Glassmorphism Generator – Frosted Glass CSS Tool">
+  <meta name="twitter:description" content="Create modern glassmorphism effects with CSS. Customize blur, transparency, and borders.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-glass.png">
 
-  
+  <!-- BreadcrumbList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Glassmorphism Generator",
+        "item": "https://devpalettes.com/glassmorphism-generator/"
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -32,7 +58,8 @@
     "applicationCategory": "DesignApplication",
     "creator": {
       "@type": "Organization",
-      "name": "DevPalettes"
+      "name": "DevPalettes",
+      "url": "https://devpalettes.com/"
     },
     "browserRequirements": "Requires JavaScript",
     "operatingSystem": "Any",
@@ -44,6 +71,7 @@
   }
   </script>
 
+  <!-- FAQPage Schema — expanded to 8 questions -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -80,6 +108,38 @@
           "@type": "Answer",
           "text": "The best settings usually involve a blur radius between 10px and 20px, a background opacity around 0.5 to 0.7, and a thin light border (1px) to simulate light refraction on the glass edge."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use glassmorphism with Tailwind CSS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Tailwind CSS includes backdrop-blur utilities (backdrop-blur-sm, backdrop-blur-md, backdrop-blur-lg) and bg-opacity classes that make it easy to build glassmorphism cards without writing custom CSS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between glassmorphism and neumorphism?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Glassmorphism uses transparency and blur to create a frosted glass look layered over backgrounds. Neumorphism uses paired light and dark shadows on a solid surface to create a soft, extruded plastic appearance. Glassmorphism emphasizes depth through layering; neumorphism emphasizes depth through shadow simulation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does glassmorphism affect website performance?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Backdrop-filter is GPU-accelerated in modern browsers, so a few glass elements perform well. However, using backdrop-filter on many large elements simultaneously—especially during scroll—can cause frame drops on lower-end mobile devices. Limit glass effects to specific UI components and test on real devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add glassmorphism to a navigation bar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Apply a semi-transparent background (e.g., rgba(255,255,255,0.6)), add backdrop-filter: blur(12px), include a thin bottom border, and set position: sticky or fixed. This creates a frosted header that lets page content show through as users scroll."
+        }
       }
     ]
   }
@@ -87,6 +147,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -94,39 +155,52 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
-
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
+
+  <!-- Critical: inline minimal Tailwind utilities used above fold -->
+  <style>
+    /* Anti-CLS: reserve space for preview container */
+    .preview-bg{min-height:350px}
+    /* Skip link */
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
+    .skip-link:focus{left:0;top:0;width:auto;height:auto;padding:.75rem 1.5rem;background:#10b981;color:#fff;font-weight:700;border-radius:0 0 .5rem 0;outline:2px solid #fff}
+  </style>
+
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  <div id="navbar-container"></div>
+
+  <!-- Skip to content — accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
   
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div id="particles-container"></div>
+  <main id="main-content" class="pt-10 pb-12 min-h-screen relative overflow-hidden" role="main">
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <div class="text-center mb-6 " style="margin-top: 45px;">
+      <div class="text-center mb-6" style="margin-top: 45px;">
         <h1 class="text-4xl font-bold mb-4">Glassmorphism Generator</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-6">Create stunning frosted glass CSS effects in seconds. Adjust blur, transparency, and borders visually — then copy production-ready code.</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-8 shimmer-card mb-10 ">
-        <h2 class="text-2xl font-bold mb-4">What is Glassmorphism?</h2>
+      <section class="glass-card p-8 shimmer-card mb-10" aria-labelledby="what-is-heading">
+        <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is Glassmorphism?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           Glassmorphism is a modern UI design trend that emphasizes transparency, blur, and layered interfaces to create a "frosted glass" visual effect. It gained popularity in 2020 and continues to be a dominant style in modern web interfaces. The style mimics the look of glass panels layered over a colorful background, creating depth and a sense of hierarchy. Unlike traditional flat design, glassmorphism adds dimensionality while maintaining clean aesthetics. According to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter" target="_blank" rel="noopener noreferrer">MDN's documentation on backdrop-filter</a>, this CSS property is the foundational building block that makes the entire glassmorphism technique possible.
         </p>
@@ -138,57 +212,58 @@
         </p>
       </section>
       
-      <div class="grid lg:grid-cols-2 gap-8">
+      <!-- Tool Controls + Preview — added parent H2 for heading hierarchy -->
+      <h2 id="customize-heading" class="sr-only">Customize Your Glass Effect</h2>
+
+      <div class="grid lg:grid-cols-2 gap-8" role="region" aria-labelledby="customize-heading">
         
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-6 shimmer-card">
              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
-                <i class="fas fa-adjust text-emerald-500"></i> Transparency
+                <i class="fas fa-adjust text-emerald-500" aria-hidden="true"></i> Transparency
              </h3>
              <div>
-                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Opacity: <span id="v-op">0.70</span></label>
-                <input type="range" id="gl-op" min="0" max="100" value="70" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                <label for="gl-op" class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Opacity: <span id="v-op" role="status">0.70</span></label>
+                <input type="range" id="gl-op" min="0" max="100" value="70" oninput="updateGlass()" onchange="updateGlass()" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" aria-valuetext="0.70" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
              </div>
           </div>
           
           <div class="glass-card p-6 shimmer-card">
              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
-                <i class="fas fa-water text-emerald-500"></i> Blur
+                <i class="fas fa-water text-emerald-500" aria-hidden="true"></i> Blur
              </h3>
              <div>
-                <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Blur: <span id="v-blur">16</span>px</label>
-                <input type="range" id="gl-blur" min="0" max="50" value="16" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                <label for="gl-blur" class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Blur: <span id="v-blur" role="status">16</span>px</label>
+                <input type="range" id="gl-blur" min="0" max="50" value="16" oninput="updateGlass()" onchange="updateGlass()" aria-valuemin="0" aria-valuemax="50" aria-valuenow="16" aria-valuetext="16 pixels" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
              </div>
           </div>
           
           <div class="glass-card p-6 shimmer-card">
              <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
-                <i class="fas fa-border-style text-emerald-500"></i> Border
+                <i class="fas fa-border-style text-emerald-500" aria-hidden="true"></i> Border
              </h3>
              <div class="grid grid-cols-2 gap-4">
                 <div>
-                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Size: <span id="v-brd">1</span>px</label>
-                   <input type="range" id="gl-brd" min="0" max="5" value="1" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                   <label for="gl-brd" class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Size: <span id="v-brd" role="status">1</span>px</label>
+                   <input type="range" id="gl-brd" min="0" max="5" value="1" oninput="updateGlass()" onchange="updateGlass()" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1" aria-valuetext="1 pixel" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
                 </div>
                 <div>
-                   <label class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Radius: <span id="v-rad">16</span>px</label>
-                   <input type="range" id="gl-rad" min="0" max="50" value="16" onchange="updateGlass()" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
+                   <label for="gl-rad" class="block text-sm font-medium mb-2 text-slate-600 dark:text-slate-400">Radius: <span id="v-rad" role="status">16</span>px</label>
+                   <input type="range" id="gl-rad" min="0" max="50" value="16" oninput="updateGlass()" onchange="updateGlass()" aria-valuemin="0" aria-valuemax="50" aria-valuenow="16" aria-valuetext="16 pixels" class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-emerald-500">
                 </div>
              </div>
           </div>
         </div>
         
-       
         <div class="space-y-6">
-           
-           <div class="glass-card p-0 shimmer-card overflow-hidden ">
+           <div class="glass-card p-0 shimmer-card overflow-hidden">
               <div class="p-4 border-b border-slate-100 dark:border-slate-700">
-                 <h3 class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
+                 <h3 id="preview-heading" class="font-bold text-sm text-slate-500 uppercase tracking-wider">Preview</h3>
               </div>
               
-              <div class="min-h-[350px] relative bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+              <div class="preview-bg relative bg-cover bg-center" role="img" aria-label="Live preview of the frosted glass effect over a mountain landscape background" style="background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=75');">
                  <div class="absolute inset-0 flex items-center justify-center p-8">
-                    <div id="glass-preview" class="w-full max-w-xs p-6 text-center transition-all duration-300">
+                    <div id="glass-preview" class="w-full max-w-xs p-6 text-center transition-all duration-300" aria-label="Glass card preview element">
                        <h4 class="text-xl font-bold mb-2">Glass Card</h4>
                        <p class="text-sm opacity-80">This is a frosted glass effect example.</p>
                     </div>
@@ -196,21 +271,22 @@
               </div>
            </div>
            
-           
-           <div class="glass-card p-6 shimmer-card ">
+           <div class="glass-card p-6 shimmer-card">
              <div class="flex justify-between items-center mb-2">
-                <h3 class="font-bold text-lg">CSS Code</h3>
-                <button onclick="copyCode()" class="btn-secondary text-xs py-2 px-4 copy-btn"><i class="fas fa-copy mr-1"></i>Copy</button>
+                <label for="code-output" class="font-bold text-lg">CSS Code</label>
+                <button onclick="copyCode()" type="button" class="btn-secondary text-xs py-2 px-4 copy-btn" aria-label="Copy CSS code to clipboard"><i class="fas fa-copy mr-1" aria-hidden="true"></i>Copy</button>
              </div>
-             <textarea id="code-output" readonly class="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none"></textarea>
+             <textarea id="code-output" readonly class="w-full h-48 bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 resize-none border-0 focus:outline-none" aria-label="Generated CSS code output"></textarea>
+             <!-- Live region for copy feedback -->
+             <div id="copy-status" class="sr-only" aria-live="polite" role="status"></div>
           </div>
         </div>
       </div>
       
-      <div class="mt-16 space-y-12 ">
+      <div class="mt-16 space-y-12">
 
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Glassmorphism Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-heading">
+            <h2 id="howto-heading" class="text-2xl font-bold mb-4">How to Use This Glassmorphism Generator</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Using this frosted glass CSS tool is straightforward — no sign-up, no install, no trial limits. Everything runs right in your browser. Here is how to get your glassmorphism CSS in under a minute:
             </p>
@@ -224,10 +300,27 @@
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
                If you need to build the layout structure that holds these glass elements, try our <a href="/css-grid-generator/" class="text-emerald-500 hover:underline">CSS Grid generator</a> or <a href="/flexbox/" class="text-emerald-500 hover:underline">Flexbox Playground</a> to set up your container structure first.
             </p>
-         </div>
+         </section>
+
+         <!-- NEW: Who Is This Tool For? -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whofor-heading">
+            <h2 id="whofor-heading" class="text-2xl font-bold mb-4">Who Is This Tool For?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               This glassmorphism generator is built for anyone who wants to add frosted glass UI effects without hand-coding CSS from scratch. Here are the audiences that benefit most:
+            </p>
+            <ul class="list-disc list-inside text-slate-600 dark:text-slate-400 space-y-2 mb-4">
+               <li><strong>Frontend developers</strong> who need production-ready glass CSS fast — slide, preview, copy, done. No switching between editor and browser.</li>
+               <li><strong>UI/UX designers</strong> prototyping interfaces in code. Use the generator to explore blur and opacity values before handing specs to engineers.</li>
+               <li><strong>Students and learners</strong> exploring modern CSS. The real-time preview helps you understand how each backdrop-filter parameter affects the visual result.</li>
+               <li><strong>Indie makers and freelancers</strong> building client sites who want that premium, polished look without spending time fiddling with DevTools.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Whether you are working on a personal portfolio, a SaaS dashboard, or a client landing page, this tool removes the guesswork from glassmorphism CSS. Pair it with our <a href="/gradient/" class="text-emerald-500 hover:underline">CSS gradient generator</a> to design the colorful backgrounds that make glass effects pop.
+            </p>
+         </section>
          
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How the Glassmorphism Generator Handles Backdrop-Filter</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="backdrop-heading">
+            <h2 id="backdrop-heading" class="text-2xl font-bold mb-4">How the Glassmorphism Generator Handles Backdrop-Filter</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                The <code>backdrop-filter</code> CSS property lets you apply graphical effects like blurring or color shifting to the area behind an element. The <code>blur()</code> function is the most critical component for glassmorphism. It blurs the content that appears behind the target element, creating the distinctive "frosted" look.
             </p>
@@ -238,10 +331,10 @@
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
                While most modern browsers support <code>backdrop-filter</code>, older versions may not render the effect. You can check real-time compatibility data on <a href="https://caniuse.com/css-backdrop-filter" target="_blank" rel="noopener noreferrer">Can I Use — backdrop-filter</a>. It is essential to use <code>-webkit-backdrop-filter</code> for broader Safari support. A common fallback is to provide a solid semi-transparent background color that looks acceptable even if the blur fails. If you are building complex layouts that combine glass effects with grid systems, our <a href="/css-grid-generator/" class="text-emerald-500 hover:underline">CSS Grid generator</a> can help you structure those layouts efficiently.
             </p>
-         </div>
+         </section>
 
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Use Cases in UI Design</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
+            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Use Cases in UI Design</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Glassmorphism is incredibly versatile. It is frequently used for navigation bars, card components, modals, and overlays. In operating system interfaces (like Windows 11 or macOS Big Sur), glass effects are used to separate foreground elements from the wallpaper. In web design, it is popular for dashboard interfaces and content-heavy sites where visual hierarchy is key.
             </p>
@@ -254,10 +347,10 @@
                <li><strong>Widgets:</strong> Dashboard widgets use glass to separate data layers.</li>
                <li><strong>Overlays:</strong> Information overlays on images or videos.</li>
             </ul>
-         </div>
+         </section>
 
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a Frosted Glass CSS Generator</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a Frosted Glass CSS Generator</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                The primary advantage of glassmorphism is the creation of visual hierarchy without obstructing the background. It adds depth to an interface, making it feel more tactile and interactive. The transparency allows for more creative use of background images and gradients, letting the artwork shine through while keeping the content legible.
             </p>
@@ -265,12 +358,12 @@
                Using a visual generator instead of hand-coding these values saves significant time. Instead of switching between your editor and browser, tweaking a pixel here and a percentage there, you slide a control and see the result immediately. The generated code includes vendor prefixes and fallbacks, so you do not have to remember them yourself.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Furthermore, it offers a fresh alternative to the standard flat or material design aesthetics. If you want to compare it with a different soft UI approach, our <a href="/neumorphism-generator/" class="text-emerald-500 hover:underline">neumorphism generator</a> lets you explore extruded plastic-style effects side by side. To see how this effect pairs with various color schemes, you can <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">learn color combinations</a> in our detailed guides. Adding subtle <a href="/box-shadow-generator/" class="text-emerald-500 hover:underline">box shadows</a> alongside your glass elements can further elevate the layered, three-dimensional feel of your interface.
+               Furthermore, it offers a fresh alternative to the standard flat or material design aesthetics. If you want to compare it with a different soft UI approach, our <a href="/neumorphism-generator/" class="text-emerald-500 hover:underline">neumorphism generator</a> lets you explore extruded plastic-style effects side by side. To see how this effect pairs with various color schemes, you can <a href="../blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">learn color combinations</a> in our detailed guides. Adding subtle <a href="/box-shadow-generator/" class="text-emerald-500 hover:underline">box shadows</a> alongside your glass elements can further elevate the layered, three-dimensional feel of your interface.
             </p>
-         </div>
+         </section>
 
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Best Practices and Performance Tips</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="bestpractices-heading">
+            <h2 id="bestpractices-heading" class="text-2xl font-bold mb-4">Best Practices and Performance Tips</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                While visually stunning, glassmorphism can be resource-intensive. Blurring large areas of the screen requires GPU acceleration. On mobile devices with lower performance, excessive use of <code>backdrop-filter</code> can lead to scrolling lag or battery drain. Limit the use of glass effects to specific interactive elements rather than entire containers.
             </p>
@@ -283,10 +376,10 @@
                <li>Test on mobile devices to ensure smooth scrolling.</li>
                <li>Use a thin, light border to enhance the "glass edge" effect.</li>
             </ul>
-         </div>
+         </section>
 
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whybuilt-heading">
+            <h2 id="whybuilt-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                I kept running into the same problem: I would find a gorgeous glassmorphism design on Dribbble or a tutorial, then spend twenty minutes fiddling with <code>backdrop-filter</code> values in DevTools trying to recreate it. It was always guesswork — change the blur, check the preview, change the opacity, check again. After doing this for the fifth project in a row, I figured there had to be a faster way.
             </p>
@@ -296,54 +389,73 @@
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
                If you find it useful, share it with a teammate or drop it in your dev Slack channel — that kind of word-of-mouth is what keeps me building and maintaining these free tools. And if there is a feature you wish it had, reach out. I read every suggestion.
             </p>
-         </div>
+         </section>
 
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <!-- Expanded FAQ — now 8 questions -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4">
                <div>
                   <h3 class="font-bold text-slate-800 dark:text-white">What is glassmorphism in CSS?</h3>
-                  <p class="text-sm text-slate-500 mt-1">Glassmorphism in CSS is a design style that uses transparency and blur effects (specifically backdrop-filter) to create a frosted glass appearance for UI elements.</p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Glassmorphism in CSS is a design style that uses transparency and blur effects (specifically backdrop-filter) to create a frosted glass appearance for UI elements.</p>
                </div>
                <div>
                   <h3 class="font-bold text-slate-800 dark:text-white">How to create a glass effect?</h3>
-                  <p class="text-sm text-slate-500 mt-1">To create a glass effect, apply a semi-transparent background color, use backdrop-filter: blur() for the blur effect, and add a subtle border with rounded corners.</p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">To create a glass effect, apply a semi-transparent background color, use backdrop-filter: blur() for the blur effect, and add a subtle border with rounded corners.</p>
                </div>
                <div>
                   <h3 class="font-bold text-slate-800 dark:text-white">Is backdrop-filter supported in all browsers?</h3>
-                  <p class="text-sm text-slate-500 mt-1">Backdrop-filter is supported in most modern browsers like Chrome, Edge, Safari, and Firefox. It is not supported in Internet Explorer. It is recommended to provide a fallback background for unsupported browsers.</p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Backdrop-filter is supported in most modern browsers like Chrome, Edge, Safari, and Firefox. It is not supported in Internet Explorer. It is recommended to provide a fallback background for unsupported browsers.</p>
                </div>
                <div>
                   <h3 class="font-bold text-slate-800 dark:text-white">What are the best settings for glass UI?</h3>
-                  <p class="text-sm text-slate-500 mt-1">The best settings usually involve a blur radius between 10px and 20px, a background opacity around 0.5 to 0.7, and a thin light border (1px) to simulate light refraction on the glass edge.</p>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">The best settings usually involve a blur radius between 10px and 20px, a background opacity around 0.5 to 0.7, and a thin light border (1px) to simulate light refraction on the glass edge.</p>
                </div>
-            </div>
-         </div>
-
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
-            <p class="text-slate-500 mb-4 text-sm">Help others discover this free Glassmorphism Generator by sharing it.</p>
-            <div class="flex items-center justify-center gap-3 flex-wrap">
-              <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/glassmorphism-generator/&text=Create%20stunning%20frosted%20glass%20CSS%20effects%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" title="Share this Glassmorphism Generator on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                <i class="fab fa-x-twitter"></i> Twitter
-              </a>
-              <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/glassmorphism-generator/" target="_blank" rel="noopener noreferrer" title="Share this Glassmorphism Generator on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                <i class="fab fa-facebook-f"></i> Facebook
-              </a>
-              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/glassmorphism-generator/" target="_blank" rel="noopener noreferrer" title="Share this Glassmorphism Generator on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                <i class="fab fa-linkedin-in"></i> LinkedIn
-              </a>
-              <a href="https://wa.me/?text=Check%20out%20this%20free%20Glassmorphism%20Generator%20https://devpalettes.com/glassmorphism-generator/" target="_blank" rel="noopener noreferrer" title="Share this Glassmorphism Generator on WhatsApp" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-              </a>
-              <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                <i class="fas fa-link"></i> Copy Link
-              </button>
+               <div>
+                  <h3 class="font-bold text-slate-800 dark:text-white">Can I use glassmorphism with Tailwind CSS?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Yes. Tailwind CSS includes backdrop-blur utilities (backdrop-blur-sm, backdrop-blur-md, backdrop-blur-lg) and bg-opacity classes that make it easy to build glassmorphism cards without writing custom CSS.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold text-slate-800 dark:text-white">What is the difference between glassmorphism and neumorphism?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Glassmorphism uses transparency and blur to create a frosted glass look layered over backgrounds. Neumorphism uses paired light and dark shadows on a solid surface to create a soft, extruded plastic appearance. Glassmorphism emphasizes depth through layering; neumorphism emphasizes depth through shadow simulation.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold text-slate-800 dark:text-white">Does glassmorphism affect website performance?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Backdrop-filter is GPU-accelerated in modern browsers, so a few glass elements perform well. However, using backdrop-filter on many large elements simultaneously—especially during scroll—can cause frame drops on lower-end mobile devices. Limit glass effects to specific UI components and test on real devices.</p>
+               </div>
+               <div>
+                  <h3 class="font-bold text-slate-800 dark:text-white">How do I add glassmorphism to a navigation bar?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Apply a semi-transparent background (e.g., rgba(255,255,255,0.6)), add backdrop-filter: blur(12px), include a thin bottom border, and set position: sticky or fixed. This creates a frosted header that lets page content show through as users scroll.</p>
+               </div>
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="font-bold text-2xl mb-6">Related Tools</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
+            <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
+            <p class="text-slate-500 mb-4 text-sm">Help others discover this free Glassmorphism Generator by sharing it.</p>
+            <div class="flex items-center justify-center gap-3 flex-wrap">
+              <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/glassmorphism-generator/&text=Create%20stunning%20frosted%20glass%20CSS%20effects%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" title="Share on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
+              </a>
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/glassmorphism-generator/" target="_blank" rel="noopener noreferrer" title="Share on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
+              </a>
+              <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/glassmorphism-generator/" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+              </a>
+              <a href="https://wa.me/?text=Check%20out%20this%20free%20Glassmorphism%20Generator%20https://devpalettes.com/glassmorphism-generator/" target="_blank" rel="noopener noreferrer" title="Share on WhatsApp" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+              </a>
+              <button id="copy-link-btn" type="button" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                <i class="fas fa-link" aria-hidden="true"></i> Copy Link
+              </button>
+            </div>
+            <!-- Live region for link copy feedback -->
+            <div id="copy-link-status" class="sr-only" aria-live="polite" role="status"></div>
+         </section>
+
+         <nav class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="font-bold text-2xl mb-6">Related Tools</h2>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/neumorphism-generator/" title="Neumorphism CSS Generator" class="btn-secondary text-xs py-2 px-4">Neumorphism Generator</a>
                <a href="/text-formatter/" title="Clean and format text online" class="btn-secondary text-xs py-2 px-4">Clean Up Text</a>
@@ -354,7 +466,7 @@
                <a href="/flexbox/" title="Experiment with Flexbox layouts" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
                <a href="/palettes/" title="Browse and create color palettes" class="btn-secondary text-xs py-2 px-4">Color Scheme Explorer</a>
             </div>
-         </section>
+         </nav>
 
          <div class="text-center py-10 mt-4">
             <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
@@ -366,9 +478,14 @@
       </div>
     </div>
   </main>
-  <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/glassmorphism-generator.js"></script>
-  <script src="../js/enhancements.js"></script>
+  <div id="footer-container" role="contentinfo"></div>
+
+  <noscript>
+    <p style="text-align:center;padding:2rem;font-size:1.1rem;color:#dc2626;">This Glassmorphism Generator requires JavaScript to function. Please enable JavaScript in your browser settings.</p>
+  </noscript>
+
+  <script src="../js/main.js" defer></script>
+  <script src="../js/glassmorphism-generator.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
 </body>
 </html>

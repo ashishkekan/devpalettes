@@ -15,17 +15,21 @@
   <meta property="og:title" content="SEO Analyzer - Free On-Page SEO Checker Tool">
   <meta property="og:description" content="Analyze your webpage SEO for free. Check meta tags, headings, images, links, Open Graph, and get an instant SEO score.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/seo-analyzer/">
   <meta property="twitter:title" content="SEO Analyzer - Free On-Page SEO Checker Tool">
   <meta property="twitter:description" content="Analyze your webpage SEO for free. Check meta tags, headings, images, links, Open Graph, and get an instant SEO score.">
+  <meta property="twitter:image" content="https://devpalettes.com/images/og-image.png">
   
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
@@ -55,7 +59,7 @@
         "name": "How do I use the SEO Analyzer?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Paste your webpage HTML source code into the input area and click 'Analyze SEO.' The tool scans your HTML for meta tags, headings, images, links, and other SEO elements, then generates a score with detailed findings and recommendations."
+          "text": "Right-click any webpage, select View Page Source, copy all the HTML code, and paste it into the analyzer input area. Click Analyze SEO to get a detailed report with your SEO score and specific recommendations for each element checked."
         }
       },
       {
@@ -63,15 +67,15 @@
         "name": "What does the SEO score mean?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The SEO score is a percentage from 0 to 100 based on how many recommended SEO best practices your page follows. A score above 80 is excellent, 60-79 is good, 40-59 needs improvement, and below 40 requires significant work."
+          "text": "The SEO score ranges from 0 to 100 and represents how many SEO best practices your page follows. A score of 80-100 means excellent optimization, 60-79 is good with minor issues, 40-59 needs noticeable improvements, and below 40 indicates significant SEO problems that should be addressed as a priority."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I analyze a live URL?",
+        "name": "Can I analyze a live URL directly?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Due to browser security restrictions (CORS), the tool cannot directly fetch live URLs. Instead, right-click any webpage, select 'View Page Source,' copy the HTML, and paste it into the analyzer. This gives you full control and works with any page including password-protected ones."
+          "text": "Due to browser security restrictions (CORS policy), the tool cannot directly fetch and analyze live URLs. Instead, you view the page source in your browser and paste the HTML. This approach works with any page including those behind login, and your data stays completely private since analysis runs entirely in your browser."
         }
       },
       {
@@ -79,8 +83,43 @@
         "name": "What SEO elements does the analyzer check?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The analyzer checks title tag, meta description, meta keywords, canonical URL, robots meta tag, H1-H6 heading hierarchy, image alt attributes, internal and external links, Open Graph tags, Twitter Card tags, content length, and URL structure."
+          "text": "The analyzer checks: title tag presence and length, meta description presence and length, meta keywords, canonical URL, robots meta tag, H1 heading presence and uniqueness, heading hierarchy H1 through H6 nesting, image alt attributes, internal and external link counts, Open Graph tags, Twitter Card tags, content length, HTML lang attribute, charset declaration, and viewport meta tag."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this SEO analyzer free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup, no account, and no limits on how many pages you analyze. Paste your HTML, get your score, and copy the report. All analysis runs locally in your browser with no data sent to any server."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://devpalettes.com/tools/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "SEO Analyzer",
+        "item": "https://devpalettes.com/seo-analyzer/"
       }
     ]
   }
@@ -92,40 +131,56 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+
   <script>
     if (localStorage.getItem('colorpallates-theme') === 'dark' || 
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
+
+  <style>
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .sr-only-focusable:focus,.sr-only.focus:not-sr-only{position:static;width:auto;height:auto;padding:0;margin:0;overflow:visible;clip:auto;white-space:normal}
+  </style>
+
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
 
-  <link rel="stylesheet" href="../css/styles.css">
-  <link rel="stylesheet" href="../css/animations.css">
+  <style>
+    textarea.txt-area { color: inherit !important; }
+  </style>
+
+  <link rel="preload" href="../css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
+  <link rel="preload" href="../css/animations.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="../css/animations.css"></noscript>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <!-- Skip to content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold focus:shadow-lg">Skip to main content</a>
+
   <!-- Navbar -->
   <div id="navbar-container"></div>
   
   <!-- Main Content -->
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
+  <main id="main-content" class="pt-8 pb-12 min-h-screen relative overflow-hidden">
     <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">SEO Analyzer - Free On-Page SEO Checker Tool</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-4">Analyze meta tags, headings, images, links, and get an instant SEO score with actionable tips</p>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8  max-w-7xl mx-auto">
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto">
         <h2 class="text-xl sm:text-2xl font-bold mb-3">What Is an SEO Analyzer?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           An SEO analyzer is a diagnostic tool that evaluates your webpage against established search engine optimization best practices. It scans the HTML source code of a page to check whether critical on-page SEO elements—like meta tags, heading structure, image alt attributes, and social media markup—are present, properly formatted, and optimized for search engines. Instead of guessing whether your page is SEO-ready, you get a clear pass/fail report on each element.
@@ -139,11 +194,11 @@
       </section>
 
       <!-- Score + Quick Stats Row -->
-      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8" role="status" aria-live="polite" aria-label="Analysis statistics">
         <div class="glass-card p-5 shimmer-card col-span-2 lg:col-span-1">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
-              <i class="fas fa-tachometer-alt text-emerald-500"></i>
+              <i class="fas fa-tachometer-alt text-emerald-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">SEO Score</span>
           </div>
@@ -152,7 +207,7 @@
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
-              <i class="fas fa-check-circle text-blue-500"></i>
+              <i class="fas fa-check-circle text-blue-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Passed</span>
           </div>
@@ -161,7 +216,7 @@
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
-              <i class="fas fa-exclamation-circle text-amber-500"></i>
+              <i class="fas fa-exclamation-circle text-amber-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Warnings</span>
           </div>
@@ -170,7 +225,7 @@
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center">
-              <i class="fas fa-times-circle text-red-500"></i>
+              <i class="fas fa-times-circle text-red-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Errors</span>
           </div>
@@ -179,7 +234,7 @@
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
-              <i class="fas fa-list text-purple-500"></i>
+              <i class="fas fa-list text-purple-500" aria-hidden="true"></i>
             </div>
             <span class="text-sm text-slate-500">Checks</span>
           </div>
@@ -189,27 +244,29 @@
 
       <div class="grid lg:grid-cols-2 gap-8">
         <!-- Left: Input -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-code"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-code" aria-hidden="true"></i></span>
               Page HTML Source
             </h2>
             <p class="text-sm text-slate-500 mb-4">Right-click any webpage → View Page Source → Copy all → Paste below</p>
-            <textarea id="html-input" class="txt-area" style="width: 100%;" rows="16" placeholder="<!DOCTYPE html>&#10;<html>&#10;<head>&#10;  <title>Your Page Title</title>&#10;  <meta name=&quot;description&quot; content=&quot;...&quot;>&#10;</head>&#10;<body>&#10;  <h1>Your Heading</h1>&#10;  <p>Your content...</p>&#10;</body>&#10;</html>" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none leading-relaxed font-mono"></textarea>
+            <p id="input-help-text" class="sr-only">Paste the full HTML source code of the webpage you want to analyze. Right-click any webpage, select View Page Source, copy all, and paste here.</p>
+            <label for="html-input" class="sr-only">HTML Source Code</label>
+            <textarea id="html-input" class="txt-area w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none leading-relaxed font-mono" style="width: 100%;" rows="16" placeholder="<!DOCTYPE html>&#10;<html>&#10;<head>&#10;  <title>Your Page Title</title>&#10;  <meta name=&quot;description&quot; content=&quot;...&quot;>&#10;</head>&#10;<body>&#10;  <h1>Your Heading</h1>&#10;  <p>Your content...</p>&#10;</body>&#10;</html>" aria-label="Paste your HTML source code here for SEO analysis" aria-describedby="input-help-text"></textarea>
             <div class="flex items-center justify-between mt-3">
               <p id="input-char-count" class="text-xs text-slate-400">0 characters</p>
               <div class="flex gap-2">
-                <button id="paste-btn" class="text-xs text-slate-400 hover:text-emerald-500 transition-colors">
-                  <i class="fas fa-paste mr-1"></i>Paste
+                <button id="paste-btn" type="button" class="text-xs text-slate-400 hover:text-emerald-500 transition-colors" aria-label="Paste HTML from clipboard">
+                  <i class="fas fa-paste mr-1" aria-hidden="true"></i>Paste
                 </button>
-                <button id="clear-btn" class="text-xs text-slate-400 hover:text-red-500 transition-colors">
-                  <i class="fas fa-eraser mr-1"></i>Clear
+                <button id="clear-btn" type="button" class="text-xs text-slate-400 hover:text-red-500 transition-colors" aria-label="Clear input">
+                  <i class="fas fa-eraser mr-1" aria-hidden="true"></i>Clear
                 </button>
               </div>
             </div>
-            <button id="analyze-btn" class="mt-5 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled>
-              <i class="fas fa-search-plus mr-2"></i>
+            <button id="analyze-btn" type="button" class="mt-5 w-full py-4 rounded-xl text-white font-bold text-lg bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl btn-glow" disabled aria-label="Analyze SEO of pasted HTML">
+              <i class="fas fa-search-plus mr-2" aria-hidden="true"></i>
               Analyze SEO
             </button>
           </div>
@@ -217,16 +274,16 @@
           <!-- Sample HTML -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-flask"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500 text-sm"><i class="fas fa-flask" aria-hidden="true"></i></span>
               Try a Sample
             </h2>
             <p class="text-sm text-slate-500 mb-4">Load a sample HTML to test the analyzer</p>
             <div class="grid grid-cols-2 gap-3">
-              <button class="sample-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="good">
-                <i class="fas fa-check text-emerald-500 mr-2"></i>Good SEO
+              <button type="button" class="sample-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="good" aria-label="Load sample HTML with good SEO">
+                <i class="fas fa-check text-emerald-500 mr-2" aria-hidden="true"></i>Good SEO
               </button>
-              <button class="sample-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="bad">
-                <i class="fas fa-times text-red-500 mr-2"></i>Bad SEO
+              <button type="button" class="sample-btn px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5" data-sample="bad" aria-label="Load sample HTML with poor SEO">
+                <i class="fas fa-times text-red-500 mr-2" aria-hidden="true"></i>Bad SEO
               </button>
             </div>
           </div>
@@ -234,32 +291,32 @@
           <!-- Analysis Categories Filter -->
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-5 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-filter"></i></span>
+              <span class="w-8 h-8 rounded-lg bg-purple-500/10 flex items-center justify-center text-purple-500 text-sm"><i class="fas fa-filter" aria-hidden="true"></i></span>
               Filter Results
             </h2>
-            <div class="flex flex-wrap gap-2">
-              <button class="cat-filter active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-cat="all">All</button>
-              <button class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="meta">Meta Tags</button>
-              <button class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="content">Content</button>
-              <button class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="images">Images</button>
-              <button class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="links">Links</button>
-              <button class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="social">Social</button>
-              <button class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="technical">Technical</button>
+            <div class="flex flex-wrap gap-2" role="group" aria-label="Filter results by category">
+              <button type="button" class="cat-filter active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-cat="all" aria-pressed="true">All</button>
+              <button type="button" class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="meta" aria-pressed="false">Meta Tags</button>
+              <button type="button" class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="content" aria-pressed="false">Content</button>
+              <button type="button" class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="images" aria-pressed="false">Images</button>
+              <button type="button" class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="links" aria-pressed="false">Links</button>
+              <button type="button" class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="social" aria-pressed="false">Social</button>
+              <button type="button" class="cat-filter px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-cat="technical" aria-pressed="false">Technical</button>
             </div>
           </div>
         </div>
 
         <!-- Right: Results -->
-        <div class="space-y-6 ">
+        <div class="space-y-6">
           <!-- Score Ring -->
           <div class="glass-card p-8 shimmer-card">
-            <div class="flex items-center gap-8">
+            <div class="flex items-center gap-8" role="status" aria-live="polite" aria-atomic="true">
               <div class="relative w-32 h-32 flex-shrink-0">
-                <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100">
+                <svg class="w-32 h-32 transform -rotate-90" viewBox="0 0 100 100" role="img" aria-label="SEO score indicator">
                   <circle cx="50" cy="50" r="42" stroke-width="8" fill="none" class="stroke-slate-200 dark:stroke-slate-700"/>
                   <circle id="score-ring" cx="50" cy="50" r="42" stroke-width="8" fill="none" stroke-linecap="round" class="transition-all duration-1000" stroke="#e2e8f0" stroke-dasharray="263.89" stroke-dashoffset="263.89"/>
                 </svg>
-                <span id="score-number" class="absolute inset-0 flex items-center justify-center text-3xl font-bold text-slate-400">—</span>
+                <span id="score-number" class="absolute inset-0 flex items-center justify-center text-3xl font-bold text-slate-400" aria-label="SEO score">—</span>
               </div>
               <div>
                 <p id="score-label" class="text-lg font-semibold text-slate-400">Awaiting analysis</p>
@@ -275,7 +332,7 @@
           <div id="empty-state" class="glass-card p-8 shimmer-card">
             <div class="text-center py-12">
               <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5">
-                <i class="fas fa-clipboard-check text-4xl text-slate-300 dark:text-slate-600"></i>
+                <i class="fas fa-clipboard-check text-4xl text-slate-300 dark:text-slate-600" aria-hidden="true"></i>
               </div>
               <p class="text-lg font-medium text-slate-500 dark:text-slate-400 mb-2">No analysis yet</p>
               <p class="text-sm text-slate-400">Paste your HTML source code and click Analyze to get a detailed SEO report</p>
@@ -283,9 +340,9 @@
           </div>
 
           <!-- Loading State -->
-          <div id="loading-state" class="hidden glass-card p-8 shimmer-card">
+          <div id="loading-state" class="hidden glass-card p-8 shimmer-card" role="status" aria-live="polite">
             <div class="text-center py-16">
-              <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
+              <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4" aria-hidden="true"></div>
               <p class="text-sm text-slate-500">Analyzing SEO elements...</p>
             </div>
           </div>
@@ -295,29 +352,27 @@
             <div class="glass-card p-6 shimmer-card">
               <div class="flex justify-between items-center mb-5">
                 <h2 class="text-xl font-bold">SEO Check Results</h2>
-                <button id="copy-report-btn" class="btn-primary btn-glow text-xs py-2 px-3">
-                  <i class="fas fa-copy"></i> Copy Report
+                <button id="copy-report-btn" type="button" class="btn-primary btn-glow text-xs py-2 px-3" aria-label="Copy SEO analysis report to clipboard">
+                  <i class="fas fa-copy" aria-hidden="true"></i> Copy Report
                 </button>
               </div>
-              <div id="checks-list" class="space-y-3 max-h-[600px] overflow-y-auto pr-1"></div>
+              <div id="checks-list" class="space-y-3 max-h-[600px] overflow-y-auto pr-1" role="list" aria-label="SEO check results"></div>
             </div>
 
             <!-- Detailed Findings -->
             <div class="glass-card p-6 shimmer-card">
               <h3 class="font-bold mb-4 flex items-center gap-2">
-                <i class="fas fa-info-circle text-blue-500"></i>
+                <i class="fas fa-info-circle text-blue-500" aria-hidden="true"></i>
                 Detailed Findings
               </h3>
-              <div id="findings-list" class="space-y-3 max-h-[400px] overflow-y-auto pr-1"></div>
+              <div id="findings-list" class="space-y-3 max-h-[400px] overflow-y-auto pr-1" role="list" aria-label="Detailed SEO findings"></div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-16 ">
-         
-         <!-- CHANGED: Original "What is an SEO Analyzer?" section removed from here — it was moved above the tool UI to create a content-first structure -->
+      <div class="seo-content space-y-12 mt-16">
          
          <section class="glass-card p-8 shimmer-card">
             <h2 class="text-2xl font-bold mb-4">How Does the SEO Analyzer Work?</h2>
@@ -344,7 +399,7 @@
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bug text-emerald-500"></i>
+                     <i class="fas fa-bug text-emerald-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Catch Issues Early</h3>
@@ -353,7 +408,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-tachometer-alt text-blue-500"></i>
+                     <i class="fas fa-tachometer-alt text-blue-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Measure Optimization Level</h3>
@@ -362,7 +417,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-share-alt text-purple-500"></i>
+                     <i class="fas fa-share-alt text-purple-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Social Preview Check</h3>
@@ -371,7 +426,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-universal-access text-amber-500"></i>
+                     <i class="fas fa-universal-access text-amber-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Accessibility Boost</h3>
@@ -380,7 +435,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-lock text-red-500"></i>
+                     <i class="fas fa-lock text-red-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Private and Secure</h3>
@@ -389,7 +444,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-file-alt text-teal-500"></i>
+                     <i class="fas fa-file-alt text-teal-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Exportable Reports</h3>
@@ -413,6 +468,116 @@
                <li><strong>Developer Handoff:</strong> Use the report as a checklist for developers to ensure every SEO requirement is implemented before deployment. Pair it with a <a href="/keyword-density-checker/" class="text-emerald-500 hover:underline font-medium">keyword density check</a> for a more complete content audit.</li>
                <li><strong>Content Management:</strong> Editors can verify that content management systems are outputting correct meta tags and heading structures for each published page, catching template bugs early.</li>
             </ul>
+         </section>
+
+         <!-- Common SEO Mistakes -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">Common SEO Mistakes This Analyzer Catches</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               After running thousands of pages through this analyzer, these are the most frequent issues that drag down SEO scores:
+            </p>
+            <div class="grid sm:grid-cols-2 gap-6">
+               <div class="p-4 rounded-xl border border-red-500/20 bg-red-500/5">
+                  <h3 class="font-semibold mb-2 text-red-600 dark:text-red-400"><i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>Missing Meta Description</h3>
+                  <p class="text-sm text-slate-500">Over 30% of analyzed pages lack a meta description. Without one, Google writes its own snippet — often poorly. A well-crafted description can increase click-through rates by 5-15%.</p>
+               </div>
+               <div class="p-4 rounded-xl border border-red-500/20 bg-red-500/5">
+                  <h3 class="font-semibold mb-2 text-red-600 dark:text-red-400"><i class="fas fa-exclamation-circle mr-2" aria-hidden="true"></i>Multiple H1 Tags</h3>
+                  <p class="text-sm text-slate-500">Many CMS themes output an H1 for the site title and another for the page heading. Search engines may struggle to determine the primary topic. Stick to exactly one H1 per page.</p>
+               </div>
+               <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+                  <h3 class="font-semibold mb-2 text-amber-600 dark:text-amber-400"><i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>Images Without Alt Text</h3>
+                  <p class="text-sm text-slate-500">Alt text is critical for image SEO and accessibility. Missing alt attributes mean Google cannot understand your images, and screen readers skip them entirely.</p>
+               </div>
+               <div class="p-4 rounded-xl border border-amber-500/20 bg-amber-500/5">
+                  <h3 class="font-semibold mb-2 text-amber-600 dark:text-amber-400"><i class="fas fa-exclamation-triangle mr-2" aria-hidden="true"></i>Skipped Heading Levels</h3>
+                  <p class="text-sm text-slate-500">Jumping from H1 to H3 without an H2 breaks the content hierarchy. This confuses both search engine crawlers and screen reader users who navigate by headings.</p>
+               </div>
+               <div class="p-4 rounded-xl border border-blue-500/20 bg-blue-500/5">
+                  <h3 class="font-semibold mb-2 text-blue-600 dark:text-blue-400"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>Incomplete Social Tags</h3>
+                  <p class="text-sm text-slate-500">Having og:title but missing og:image means Facebook and LinkedIn generate poor previews. Incomplete Twitter Cards lead to text-only shares that get fewer clicks.</p>
+               </div>
+               <div class="p-4 rounded-xl border border-blue-500/20 bg-blue-500/5">
+                  <h3 class="font-semibold mb-2 text-blue-600 dark:text-blue-400"><i class="fas fa-info-circle mr-2" aria-hidden="true"></i>No Canonical URL</h3>
+                  <p class="text-sm text-slate-500">Without a canonical tag, search engines may index multiple versions of the same page (http vs https, www vs non-www), diluting your ranking signals across duplicate URLs.</p>
+               </div>
+            </div>
+         </section>
+
+         <!-- SEO Checklist Reference -->
+         <section class="glass-card p-8 shimmer-card">
+            <h2 class="text-2xl font-bold mb-4">On-Page SEO Checklist Reference</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Use this checklist as a quick reference for the on-page SEO elements this analyzer evaluates. Each item links to the specific check performed and the best practice threshold.
+            </p>
+            <div class="overflow-x-auto">
+               <table class="w-full text-sm text-left" role="table">
+                  <thead>
+                     <tr class="border-b border-slate-200 dark:border-slate-700">
+                        <th scope="col" class="py-3 pr-4 font-semibold text-slate-700 dark:text-slate-300">Element</th>
+                        <th scope="col" class="py-3 pr-4 font-semibold text-slate-700 dark:text-slate-300">Best Practice</th>
+                        <th scope="col" class="py-3 font-semibold text-slate-700 dark:text-slate-300">Impact</th>
+                     </tr>
+                  </thead>
+                  <tbody class="text-slate-600 dark:text-slate-400">
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Title Tag</td>
+                        <td class="py-3 pr-4">50–60 characters, includes primary keyword</td>
+                        <td class="py-3"><span class="text-red-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Meta Description</td>
+                        <td class="py-3 pr-4">150–160 characters, compelling CTA</td>
+                        <td class="py-3"><span class="text-red-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">H1 Heading</td>
+                        <td class="py-3 pr-4">Exactly one per page, includes primary keyword</td>
+                        <td class="py-3"><span class="text-red-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Heading Hierarchy</td>
+                        <td class="py-3 pr-4">H1 → H2 → H3 in order, no skipped levels</td>
+                        <td class="py-3"><span class="text-amber-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Image Alt Text</td>
+                        <td class="py-3 pr-4">Descriptive alt on every image</td>
+                        <td class="py-3"><span class="text-amber-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Canonical URL</td>
+                        <td class="py-3 pr-4">Present and points to preferred URL</td>
+                        <td class="py-3"><span class="text-amber-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Open Graph Tags</td>
+                        <td class="py-3 pr-4">og:title, og:description, og:image, og:type</td>
+                        <td class="py-3"><span class="text-blue-500 font-semibold">Social</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Twitter Cards</td>
+                        <td class="py-3 pr-4">twitter:card, twitter:title, twitter:image</td>
+                        <td class="py-3"><span class="text-blue-500 font-semibold">Social</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Internal Links</td>
+                        <td class="py-3 pr-4">At least one link to another page on your site</td>
+                        <td class="py-3"><span class="text-amber-500 font-semibold">Medium</span></td>
+                     </tr>
+                     <tr class="border-b border-slate-100 dark:border-slate-800/50">
+                        <td class="py-3 pr-4 font-medium">Viewport Meta</td>
+                        <td class="py-3 pr-4">width=device-width, initial-scale=1.0</td>
+                        <td class="py-3"><span class="text-red-500 font-semibold">High</span></td>
+                     </tr>
+                     <tr>
+                        <td class="py-3 pr-4 font-medium">HTML Lang</td>
+                        <td class="py-3 pr-4">lang attribute on &lt;html&gt; element</td>
+                        <td class="py-3"><span class="text-amber-500 font-semibold">Medium</span></td>
+                     </tr>
+                  </tbody>
+               </table>
+            </div>
          </section>
 
          <!-- How to Use -->
@@ -451,48 +616,48 @@
             <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-1">
                      <span>How do I use the SEO Analyzer?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-answer-1" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Right-click any webpage, select "View Page Source," copy all the HTML code, and paste it into the analyzer input area. Click "Analyze SEO" to get a detailed report with your SEO score and specific recommendations for each element checked.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-2">
                      <span>What does the SEO score mean?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-answer-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">The SEO score ranges from 0 to 100 and represents how many SEO best practices your page follows. A score of 80-100 means excellent optimization, 60-79 is good with minor issues, 40-59 needs noticeable improvements, and below 40 indicates significant SEO problems that should be addressed as a priority.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-3">
                      <span>Can I analyze a live URL directly?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-answer-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Due to browser security restrictions (CORS policy), the tool cannot directly fetch and analyze live URLs. Instead, you view the page source in your browser and paste the HTML. This approach actually has advantages: it works with any page including those behind login, and your data stays completely private.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-4">
                      <span>What SEO elements does the analyzer check?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The analyzer checks: title tag (presence and length), meta description (presence and length), meta keywords, canonical URL, robots meta tag, H1 heading (presence and uniqueness), heading hierarchy (H1-H6 nesting), image alt attributes, internal link count, external link count, Open Graph tags (title, description, image, type, url), Twitter Card tags (card type, title, description, image), and overall content length.</p>
+                  <div id="faq-answer-4" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">The analyzer checks: title tag (presence and length), meta description (presence and length), meta keywords, canonical URL, robots meta tag, H1 heading (presence and uniqueness), heading hierarchy (H1-H6 nesting), image alt attributes, internal and external link counts, Open Graph tags (title, description, image, type, url), Twitter Card tags (card type, title, description, image), and overall content length, HTML lang attribute, charset declaration, and viewport meta tag.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-5">
                      <span>Is this SEO analyzer free to use?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes, completely free with no signup, no account, and no limits on how many pages you analyze. Paste your HTML, get your score, and copy the report — that is it.</p>
+                  <div id="faq-answer-5" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes, completely free with no signup, no account, and no limits on how many pages you analyze. Paste your HTML, get your score, and copy the report — that is it. All analysis runs locally in your browser so no data is ever sent to any server.</p>
                   </div>
                </div>
             </div>
@@ -531,13 +696,15 @@
   <div id="footer-container"></div>
   
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" aria-atomic="true"></div>
   
-  <script src="../js/main.js"></script>
-  <script src="../js/seo-analyzer.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script>
-    document.getElementById("html-input").style.color = "initial";
+  <script src="../js/main.js" defer></script>
+  <script src="../js/seo-analyzer.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script defer>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById("html-input").style.color = "initial";
+    });
   </script>
 </body>
 </html>

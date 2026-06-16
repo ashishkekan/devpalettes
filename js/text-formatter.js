@@ -11,6 +11,9 @@
   var actionLog = [];
   var MAX_HISTORY = 50;
 
+  /* ========== MODAL STATE ========== */
+  var modalResolve = null;
+
   /* ========== DOM CACHE ========== */
   var el = {
     input: document.getElementById('text-input'),
@@ -37,13 +40,28 @@
     statChars: document.getElementById('stat-chars'),
     statSentences: document.getElementById('stat-sentences'),
     statLines: document.getElementById('stat-lines'),
-    statParagraphs: document.getElementById('stat-paragraphs')
+    statParagraphs: document.getElementById('stat-paragraphs'),
+    /* Modal elements */
+    modal: document.getElementById('prefix-suffix-modal'),
+    modalTitle: document.getElementById('modal-title'),
+    modalInput: document.getElementById('modal-input'),
+    modalConfirm: document.getElementById('modal-confirm'),
+    modalCancel: document.getElementById('modal-cancel'),
+    modalBackdrop: document.getElementById('modal-backdrop'),
+    srAnnouncer: document.getElementById('sr-announcer')
   };
 
   /* ========== HELPERS ========== */
   function escapeHtml(s) {
     if (!s) return '';
     return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  /* Screen reader announcement */
+  function announce(msg) {
+    if (!el.srAnnouncer) return;
+    el.srAnnouncer.textContent = '';
+    setTimeout(function() { el.srAnnouncer.textContent = msg; }, 100);
   }
 
   function showToast(msg, type) {
@@ -53,7 +71,9 @@
     var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
     var t = document.createElement('div');
     t.className = bg + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
-    t.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(msg);
+    t.setAttribute('role', 'status');
+    t.setAttribute('aria-live', 'polite');
+    t.innerHTML = '<i class="fas ' + icon + '" aria-hidden="true"></i>' + escapeHtml(msg);
     c.appendChild(t);
     requestAnimationFrame(function() { t.style.transform = 'translateX(0)'; });
     setTimeout(function() {
@@ -66,6 +86,25 @@
     if (history.length >= MAX_HISTORY) history.shift();
     history.push(text);
     el.undoBtn.disabled = false;
+  }
+
+  /* ========== MODAL (replaces prompt()) ========== */
+  function showModal(title, defaultValue) {
+    return new Promise(function(resolve) {
+      modalResolve = resolve;
+      el.modalTitle.textContent = title;
+      el.modalInput.value = defaultValue || '';
+      el.modal.classList.remove('hidden');
+      el.modalInput.focus();
+    });
+  }
+
+  function closeModal(result) {
+    el.modal.classList.add('hidden');
+    if (modalResolve) {
+      modalResolve(result);
+      modalResolve = null;
+    }
   }
 
   /* ========== TEXT STATS ========== */
@@ -203,15 +242,11 @@
     });
   }
 
-  function addPrefix(text) {
-    var prefix = prompt('Enter prefix to add to each line:');
-    if (prefix === null) return text;
+  function addPrefixToLines(text, prefix) {
     return text.split('\n').map(function(line) { return prefix + line; }).join('\n');
   }
 
-  function addSuffix(text) {
-    var suffix = prompt('Enter suffix to add to each line:');
-    if (suffix === null) return text;
+  function addSuffixToLines(text, suffix) {
     return text.split('\n').map(function(line) { return line + suffix; }).join('\n');
   }
 
@@ -293,8 +328,7 @@
       case 'line-numbers': return addLineNumbers(text);
       case 'reverse-text': return reverseText(text);
       case 'strip-html': return stripHtml(text);
-      case 'add-prefix': return addPrefix(text);
-      case 'add-suffix': return addSuffix(text);
+      /* add-prefix and add-suffix handled via modal in event binding */
       default: return text;
     }
   }
@@ -325,16 +359,16 @@
 
   function renderHistory() {
     if (actionLog.length === 0) {
-      el.historyList.innerHTML = '<p class="text-sm text-slate-400 text-center py-6">No actions performed yet</p>';
+      el.historyList.innerHTML = '<p class="text-sm text-slate-500 text-center py-6">No actions performed yet</p>';
       return;
     }
     var html = '';
     for (var i = 0; i < actionLog.length; i++) {
       var item = actionLog[i];
       html += '<div class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-50 dark:bg-slate-800/30 text-sm">' +
-        '<i class="fas ' + item.icon + ' text-emerald-500 text-xs w-4 text-center"></i>' +
+        '<i class="fas ' + item.icon + ' text-emerald-500 text-xs w-4 text-center" aria-hidden="true"></i>' +
         '<span class="flex-1 text-slate-600 dark:text-slate-400">' + escapeHtml(item.label) + '</span>' +
-        '<span class="text-xs text-slate-400 font-mono">' + item.time + '</span></div>';
+        '<span class="text-xs text-slate-500 font-mono">' + item.time + '</span></div>';
     }
     el.historyList.innerHTML = html;
   }
@@ -345,6 +379,7 @@
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(text).then(function() {
         showToast('Copied to clipboard!', 'success');
+        announce('Text copied to clipboard');
       }).catch(function() { fallbackCopy(text); });
     } else {
       fallbackCopy(text);
@@ -356,11 +391,13 @@
     ta.value = text;
     ta.style.position = 'fixed';
     ta.style.left = '-9999px';
+    ta.setAttribute('aria-hidden', 'true');
     document.body.appendChild(ta);
     ta.select();
     try {
       document.execCommand('copy');
       showToast('Copied to clipboard!', 'success');
+      announce('Text copied to clipboard');
     } catch (e) {
       showToast('Failed to copy', 'error');
     }
@@ -379,6 +416,18 @@
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
     showToast('File downloaded!', 'success');
+    announce('File downloaded');
+  }
+
+  /* ========== COMMON ACTION HANDLER ========== */
+  function handleActionResult(result, action) {
+    el.input.value = result;
+    el.inputCharCount.textContent = result.length.toLocaleString() + ' characters';
+    setOutput(result);
+    addToLog(action);
+    var label = ACTION_LABELS[action] || action;
+    showToast(label + ' applied', 'success');
+    announce(label + ' applied');
   }
 
   /* ========== EVENT BINDING ========== */
@@ -398,6 +447,7 @@
       el.outputWrapper.classList.add('hidden');
       updateStats('');
       showToast('Cleared', 'success');
+      announce('Input cleared');
     });
 
     // Paste
@@ -409,6 +459,7 @@
           el.inputCharCount.textContent = text.length.toLocaleString() + ' characters';
           updateStats(text);
           showToast('Pasted from clipboard!', 'success');
+          announce('Text pasted from clipboard');
         }).catch(function() {
           showToast('Cannot access clipboard. Please paste manually.', 'error');
         });
@@ -426,6 +477,7 @@
       updateStats(prev);
       if (history.length === 0) el.undoBtn.disabled = true;
       showToast('Undone', 'success');
+      announce('Last action undone');
     });
 
     // Ctrl+Z
@@ -436,20 +488,62 @@
       }
     });
 
-    // Format buttons
+    // Format buttons — with modal support for prefix/suffix
     document.querySelectorAll('.fmt-btn').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var text = el.input.value;
         if (!text.trim()) { showToast('Please enter some text first', 'error'); return; }
         var action = this.getAttribute('data-action');
+
+        /* Prefix & Suffix use accessible modal instead of prompt() */
+        if (action === 'add-prefix' || action === 'add-suffix') {
+          var title = action === 'add-prefix' ? 'Enter prefix to add to each line' : 'Enter suffix to add to each line';
+          showModal(title, '').then(function(value) {
+            if (value === null) return; /* cancelled */
+            pushHistory(text);
+            var result = action === 'add-prefix' ? addPrefixToLines(text, value) : addSuffixToLines(text, value);
+            handleActionResult(result, action);
+          });
+          return;
+        }
+
         pushHistory(text);
         var result = applyAction(action, text);
-        el.input.value = result;
-        el.inputCharCount.textContent = result.length.toLocaleString() + ' characters';
-        setOutput(result);
-        addToLog(action);
-        showToast(ACTION_LABELS[action] + ' applied', 'success');
+        handleActionResult(result, action);
       });
+    });
+
+    // Modal events
+    el.modalConfirm.addEventListener('click', function() {
+      closeModal(el.modalInput.value);
+    });
+    el.modalCancel.addEventListener('click', function() {
+      closeModal(null);
+    });
+    el.modalBackdrop.addEventListener('click', function() {
+      closeModal(null);
+    });
+    el.modalInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        closeModal(el.modalInput.value);
+      } else if (e.key === 'Escape') {
+        closeModal(null);
+      }
+    });
+    /* Trap focus inside modal */
+    el.modal.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      var focusable = el.modal.querySelectorAll('button, input');
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     });
 
     // Find & Replace — live match count
@@ -460,7 +554,9 @@
         return;
       }
       var count = countMatches(el.input.value, find, el.caseSensitive.checked);
-      el.matchCount.textContent = count + ' match' + (count !== 1 ? 'es' : '');
+      var msg = count + ' match' + (count !== 1 ? 'es' : '');
+      el.matchCount.textContent = msg;
+      announce(msg);
     }
 
     el.findInput.addEventListener('input', updateMatchCount);
@@ -480,6 +576,7 @@
       addToLog('find-replace');
       updateMatchCount();
       showToast('Replacements done', 'success');
+      announce('Find and replace completed');
     });
 
     // Copy output
@@ -506,27 +603,35 @@
       el.inputCharCount.textContent = outputText.length.toLocaleString() + ' characters';
       updateStats(outputText);
       showToast('Swapped output to input', 'success');
+      announce('Output swapped to input');
     });
 
     // Clear history
     el.clearHistoryBtn.addEventListener('click', function() {
       actionLog = [];
       renderHistory();
+      announce('Action history cleared');
     });
 
-    // FAQ toggles
+    // FAQ toggles — with aria-expanded management
     document.querySelectorAll('.faq-toggle').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
         var isOpen = !content.classList.contains('hidden');
+
+        // Close all FAQ items
         document.querySelectorAll('.faq-toggle').forEach(function(b) {
           b.nextElementSibling.classList.add('hidden');
           b.querySelector('i').style.transform = 'rotate(0deg)';
+          b.setAttribute('aria-expanded', 'false');
         });
+
+        // Toggle clicked item
         if (!isOpen) {
           content.classList.remove('hidden');
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         }
       });
     });

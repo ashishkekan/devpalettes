@@ -3,34 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#10b981">
 
-  <title>Google Ranking Tracker Tool (Free Keyword Position Checker)</title>
-  <meta name="description" content="Track your keyword rankings with this free Google ranking tracker tool. Monitor positions, trends, and SEO performance easily.">
-  <meta name="author" content="Devpalettes">
+  <title>Free Google Ranking Tracker - Keyword Position Checker | DevPalettes</title>
+  <meta name="description" content="Free Google ranking tracker to monitor keyword positions, track ranking trends over time, and export data as CSV. No sign-up required — runs entirely in your browser.">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/google-ranking-tracker/"/>
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/google-ranking-tracker/">
-  <meta property="og:title" content="Google Ranking Tracker Tool (Free Keyword Position Checker)">
-  <meta property="og:description" content="Track your keyword rankings with this free Google ranking tracker tool. Monitor positions, trends, and SEO performance easily.">
+  <meta property="og:title" content="Free Google Ranking Tracker - Keyword Position Checker">
+  <meta property="og:description" content="Free Google ranking tracker to monitor keyword positions, track ranking trends over time, and export data as CSV. No sign-up required.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
+  <meta property="og:site_name" content="DevPalettes">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/google-ranking-tracker/">
-  <meta property="twitter:title" content="Google Ranking Tracker Tool (Free Keyword Position Checker)">
-  <meta property="twitter:description" content="Track your keyword rankings with this free Google ranking tracker tool. Monitor positions, trends, and SEO performance easily.">
-  
-  
+  <meta property="twitter:title" content="Free Google Ranking Tracker - Keyword Position Checker">
+  <meta property="twitter:description" content="Free Google ranking tracker to monitor keyword positions, track ranking trends over time, and export data as CSV. No sign-up required.">
+  <meta property="twitter:image" content="https://devpalettes.com/images/og-image.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9238470774864010"
      crossorigin="anonymous"></script>
-  
+
   <!-- Structured Data: WebApplication -->
   <script type="application/ld+json">
   {
@@ -40,7 +42,7 @@
     "url": "https://devpalettes.com/google-ranking-tracker/",
     "logo": "https://devpalettes.com/images/devpalettes.png",
     "description": "A free tool to track keyword rankings on Google, monitor position changes, and visualize SEO performance trends.",
-    "applicationCategory": "DesignApplication",
+    "applicationCategory": "BusinessApplication",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
@@ -50,7 +52,28 @@
   }
   </script>
 
-  
+  <!-- Structured Data: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Google Ranking Tracker",
+        "item": "https://devpalettes.com/google-ranking-tracker/"
+      }
+    ]
+  }
+  </script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -94,43 +117,84 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
   <link rel="preload" href="/css/tailwind.min.css" as="style">
-  <link rel="stylesheet" href="/css/tailwind.min.css">
+  <link rel="stylesheet" href="/css/tailwind.min.css" fetchpriority="high">
 
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      padding: 12px 24px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div id="navbar-container"></div>
-  
-  <main class="pt-8 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+
+  <main id="main-content" class="pt-8 pb-12 min-h-screen relative overflow-hidden" aria-label="Google Ranking Tracker Tool">
+    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+
+      <div class="text-center mb-8" style="margin-top: 50px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Google Ranking Tracker Tool</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Track your keyword rankings in real-time with position monitoring and trend analysis</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-4">Track your keyword rankings in real-time with position monitoring and trend analysis</p>
+        <div class="flex flex-wrap justify-center gap-3 mb-4" role="list" aria-label="Key features">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-sm" role="listitem">
+            <i class="fas fa-check-circle" aria-hidden="true"></i>
+            <span>100% Free</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 text-sm" role="listitem">
+            <i class="fas fa-user-shield" aria-hidden="true"></i>
+            <span>No Sign-Up Required</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-400 text-sm" role="listitem">
+            <i class="fas fa-lock" aria-hidden="true"></i>
+            <span>Privacy First — No Data Sent to Servers</span>
+          </div>
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-sm" role="listitem">
+            <i class="fas fa-download" aria-hidden="true"></i>
+            <span>Export to CSV</span>
+          </div>
+        </div>
         <div class="spectrum-line max-w-md mx-auto"></div>
       </div>
 
-      <section class="max-w-7xl mx-auto mb-10">
+      <section class="max-w-7xl mx-auto mb-10" aria-labelledby="what-is-heading">
         <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">What Is a Google Ranking Tracker?</h2>
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What Is a Google Ranking Tracker?</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
             A Google ranking tracker is an SEO tool that monitors where your webpages appear in Google search results for specific keywords. Instead of manually searching Google every day — and getting personalized results that don't reflect what real users see — a ranking tracker automates the process and records historical data so you can identify trends over time. It tells you whether you're moving up, sliding down, or holding steady for every keyword you care about.
           </p>
@@ -143,101 +207,107 @@
         </div>
       </section>
 
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8 ">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Keyword ranking statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-key text-emerald-500"></i>
             </div>
             <span class="text-sm text-slate-500">Total Keywords</span>
           </div>
-          <p id="stat-total" class="text-3xl font-bold">0</p>
+          <p id="stat-total" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-signal text-blue-500"></i>
             </div>
             <span class="text-sm text-slate-500">Avg Position</span>
           </div>
-          <p id="stat-avg" class="text-3xl font-bold">—</p>
+          <p id="stat-avg" class="text-3xl font-bold" aria-live="polite">—</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-trophy text-purple-500"></i>
             </div>
             <span class="text-sm text-slate-500">Top 10 Keywords</span>
           </div>
-          <p id="stat-top10" class="text-3xl font-bold">0</p>
+          <p id="stat-top10" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center" aria-hidden="true">
               <i class="fas fa-arrow-up text-amber-500"></i>
             </div>
             <span class="text-sm text-slate-500">Improving</span>
           </div>
-          <p id="stat-improving" class="text-3xl font-bold">0</p>
+          <p id="stat-improving" class="text-3xl font-bold" aria-live="polite">0</p>
         </div>
       </div>
 
-      <div class="glass-card p-6 mb-8  shimmer-card">
+      <div class="glass-card p-6 mb-8 shimmer-card">
         <div class="flex flex-col sm:flex-row gap-3 mb-4">
           <div class="flex-1 relative">
-            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-            <input type="text" id="keyword-input" placeholder="Enter a keyword to track (e.g., best seo tools)" class="w-full pl-11 pr-4 py-3.5 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
+            <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" aria-hidden="true"></i>
+            <label for="keyword-input" class="sr-only">Enter a keyword to track</label>
+            <input type="text" id="keyword-input" placeholder="Enter a keyword to track (e.g., best seo tools)" aria-label="Enter a keyword to track" class="w-full pl-11 pr-4 py-3.5 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
           </div>
-          <button id="track-btn" class="btn-primary btn-glow px-6 py-3.5 whitespace-nowrap">
-            <i class="fas fa-plus mr-2"></i>Track Keyword
+          <button id="track-btn" class="btn-primary btn-glow px-6 py-3.5 whitespace-nowrap" aria-label="Track keyword">
+            <i class="fas fa-plus mr-2" aria-hidden="true"></i>Track Keyword
           </button>
         </div>
+        <p class="text-xs text-slate-400 dark:text-slate-500 text-center mb-4">
+          <i class="fas fa-lock mr-1" aria-hidden="true"></i>
+          All data stays in your browser. Nothing is sent to any server.
+        </p>
         <div class="flex flex-col sm:flex-row gap-3 items-start sm:items-center justify-between">
-          <div class="flex gap-2 flex-wrap">
-            <button class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-filter="all">All</button>
-            <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-filter="top10">Top 10</button>
-            <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-filter="top50">Top 50</button>
+          <div class="flex gap-2 flex-wrap" role="group" aria-label="Filter keywords by position">
+            <button class="filter-btn active px-4 py-2 rounded-lg text-sm font-medium border-2 border-emerald-500 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 transition-all" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-filter="top10" aria-pressed="false">Top 10</button>
+            <button class="filter-btn px-4 py-2 rounded-lg text-sm font-medium border-2 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 transition-all hover:border-emerald-500/50" data-filter="top50" aria-pressed="false">Top 50</button>
           </div>
           <div class="flex gap-2">
             <div class="relative">
-              <i class="fas fa-filter absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-              <input type="text" id="search-keywords" placeholder="Search..." class="pl-8 pr-3 py-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 outline-none transition-all text-sm w-40">
+              <i class="fas fa-filter absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs" aria-hidden="true"></i>
+              <label for="search-keywords" class="sr-only">Search tracked keywords</label>
+              <input type="text" id="search-keywords" placeholder="Search..." aria-label="Search tracked keywords" class="pl-8 pr-3 py-2 rounded-lg border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 outline-none transition-all text-sm w-40">
             </div>
-            <button id="refresh-btn" class="w-9 h-9 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:border-emerald-500 hover:text-emerald-500 transition-all" title="Refresh data" aria-label="Refresh Btn">
-              <i class="fas fa-sync-alt text-sm"></i>
+            <button id="refresh-btn" class="w-9 h-9 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:border-emerald-500 hover:text-emerald-500 transition-all" title="Refresh data" aria-label="Refresh ranking data">
+              <i class="fas fa-sync-alt text-sm" aria-hidden="true"></i>
             </button>
-            <button id="export-csv-btn" class="w-9 h-9 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:border-emerald-500 hover:text-emerald-500 transition-all" title="Export CSV" aria-label="Export Csv Btn">
-              <i class="fas fa-file-csv text-sm"></i>
+            <button id="export-csv-btn" class="w-9 h-9 rounded-lg border-2 border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-500 hover:border-emerald-500 hover:text-emerald-500 transition-all" title="Export CSV" aria-label="Export ranking data as CSV">
+              <i class="fas fa-file-csv text-sm" aria-hidden="true"></i>
             </button>
           </div>
         </div>
       </div>
-      
+
       <div class="grid lg:grid-cols-5 gap-8 mb-8">
-        <div class="lg:col-span-3 glass-card p-8  shimmer-card">
+        <div class="lg:col-span-3 glass-card p-8 shimmer-card">
           <div class="flex justify-between items-center mb-6">
-            <h2 class="text-xl font-bold">Tracked Keywords</h2>
-            <span id="keyword-count-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500">0 keywords</span>
+            <h2 class="text-xl font-bold" id="tracked-heading">Tracked Keywords</h2>
+            <span id="keyword-count-badge" class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500" aria-live="polite">0 keywords</span>
           </div>
 
           <div id="empty-state" class="text-center py-16">
-            <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5">
+            <div class="w-20 h-20 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center mx-auto mb-5" aria-hidden="true">
               <i class="fas fa-chart-bar text-4xl text-slate-300 dark:text-slate-600"></i>
             </div>
             <p class="text-lg font-medium text-slate-500 dark:text-slate-400 mb-2">No keywords tracked yet</p>
             <p class="text-sm text-slate-400">Add your first keyword above to start monitoring rankings</p>
           </div>
 
-          <div id="loading-state" class="hidden text-center py-16">
-            <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4"></div>
+          <div id="loading-state" class="hidden text-center py-16" role="status">
+            <div class="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin mx-auto mb-4" aria-hidden="true"></div>
             <p class="text-sm text-slate-500">Fetching ranking data...</p>
           </div>
 
-          <div id="keywords-list" class="hidden space-y-3 max-h-[520px] overflow-y-auto pr-1"></div>
+          <div id="keywords-list" class="hidden space-y-3 max-h-[520px] overflow-y-auto pr-1" aria-labelledby="tracked-heading"></div>
 
           <div id="top-gaining" class="hidden mt-6 p-4 bg-emerald-500/5 rounded-xl border border-emerald-500/20">
             <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+              <div class="w-10 h-10 rounded-full bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                 <i class="fas fa-fire text-emerald-500"></i>
               </div>
               <div>
@@ -249,22 +319,22 @@
           </div>
         </div>
 
-        <div class="lg:col-span-2 glass-card p-8  shimmer-card">
-          <h2 class="text-xl font-bold mb-6">Ranking Trends</h2>
+        <div class="lg:col-span-2 glass-card p-8 shimmer-card">
+          <h2 class="text-xl font-bold mb-6" id="trends-heading">Ranking Trends</h2>
           <div id="chart-empty" class="flex flex-col items-center justify-center h-[300px]">
-            <i class="fas fa-chart-line text-4xl text-slate-300 dark:text-slate-600 mb-4"></i>
+            <i class="fas fa-chart-line text-4xl text-slate-300 dark:text-slate-600 mb-4" aria-hidden="true"></i>
             <p class="text-sm text-slate-400 text-center">Add keywords to see ranking trends</p>
           </div>
           <div id="chart-container" class="hidden">
-            <canvas id="ranking-chart" height="300"></canvas>
+            <canvas id="ranking-chart" width="400" height="300" role="img" aria-label="Line chart showing keyword ranking trends over time"></canvas>
           </div>
-          <div id="chart-legend" class="hidden mt-4 flex flex-wrap gap-2"></div>
+          <div id="chart-legend" class="hidden mt-4 flex flex-wrap gap-2" aria-label="Chart legend"></div>
         </div>
       </div>
 
-      <div class="seo-content space-y-12 mt-16 ">
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How Google Rankings Actually Work</h2>
+      <div class="seo-content space-y-12 mt-16">
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-rankings-heading">
+            <h2 id="how-rankings-heading" class="text-2xl font-bold mb-4">How Google Rankings Actually Work</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Google's search algorithm uses over 200 ranking factors to determine where a page appears in search results. The most significant factors include content relevance, backlink profile, page experience (Core Web Vitals), search intent match, and topical authority. When you publish a new page, Google initially tests it at various positions to gauge user engagement — a process SEOs sometimes call the "honeymoon period." After collecting enough data, the page settles into a ranking range that reflects its true competitive strength.
             </p>
@@ -276,11 +346,11 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Tracking Keyword Rankings</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Tracking Keyword Rankings</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-chart-line text-emerald-500"></i>
                   </div>
                   <div>
@@ -289,7 +359,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-exclamation-triangle text-blue-500"></i>
                   </div>
                   <div>
@@ -298,7 +368,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-bullseye text-purple-500"></i>
                   </div>
                   <div>
@@ -307,8 +377,8 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-competitor text-amber-500"></i>
+                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                     <i class="fas fa-users text-amber-500"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Competitor Comparison</h3>
@@ -316,7 +386,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-link text-red-500"></i>
                   </div>
                   <div>
@@ -325,7 +395,7 @@
                   </div>
                </div>
                <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
                      <i class="fas fa-tasks text-teal-500"></i>
                   </div>
                   <div>
@@ -336,9 +406,8 @@
             </div>
          </section>
 
-         <!-- How to Use (UNCHANGED content) -->
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Google Ranking Tracker</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
+            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Google Ranking Tracker</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Add Keywords:</strong> Type your target keyword in the input field and click "Track Keyword." You can add as many keywords as you need.</li>
                <li><strong>Review Positions:</strong> Each keyword shows its current Google position, change from the previous check, and last updated timestamp.</li>
@@ -351,8 +420,8 @@
             </ol>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Content Strategy:</strong> After publishing a new blog post targeting a specific keyword, track its position over weeks to measure content effectiveness.</li>
                <li><strong>SEO Client Reporting:</strong> Agencies use ranking trackers to create monthly reports showing keyword position improvements for clients.</li>
@@ -363,8 +432,8 @@
             </ul>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Ranking Tracker</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+            <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Ranking Tracker</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                I was managing SEO for a small SaaS product and spending $99/month on a popular ranking tracker. It was a good tool, but I only tracked about 30 keywords — maybe 15 of which actually mattered. The rest of the subscription was paying for features I never touched: competitor audits, site health scores, automated reports nobody on the team read. I kept thinking, "I just need to know where my keywords rank and whether they're moving up or down."
             </p>
@@ -376,50 +445,50 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-1">
                      <span>How do I track my Google keyword rankings?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-heading">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Enter your target keyword in the input field and click "Track Keyword." The tool adds it to your dashboard with a simulated position. You can monitor changes, filter by position range, and view trends over time on the chart.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-2">
                      <span>What is a good Google ranking position?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-2" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Positions 1-3 on the first page of Google receive the majority of clicks. A position in the top 10 (first page) is generally considered good. Positions 11-20 are on page two and receive significantly less traffic. Ideally, you want all your important keywords on page one.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-3">
                      <span>How often should I check my keyword rankings?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-3" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">For most websites, checking rankings weekly is sufficient. Daily checking can show too much noise from normal Google fluctuations. Monthly checks work well for established sites with stable rankings. New sites or pages should be checked more frequently during the first few months.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-4">
                      <span>Why did my keyword ranking drop suddenly?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300"></i>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div class="faq-content px-6 pb-4 hidden">
+                  <div id="faq-content-4" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Sudden ranking drops can be caused by Google algorithm updates, new competitors entering your space, technical issues like crawl errors or page speed problems, lost backlinks, or content becoming outdated. Check Google Search Console for manual actions or crawl issues first, then review whether competitors have published better content.</p>
                   </div>
                </div>
             </div>
          </section>
-         
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
+
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Tools &amp; Resources</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Boost your SEO and development workflow with these free tools.</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
@@ -441,20 +510,23 @@
               <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
             </div>
           </div>
-         
+
       </div>
-      
+
     </div>
   </main>
-  
+
   <!-- Footer -->
   <div id="footer-container"></div>
-  
+
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
   <script src="../js/main.js"></script>
   <script src="../js/enhancements.js"></script>
+
+  <!-- Chart.js loaded at end of body to prevent render-blocking -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
   <script>
   (function() {
@@ -531,7 +603,7 @@
       var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
       var t = document.createElement('div');
       t.className = bg + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
-      t.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(msg);
+      t.innerHTML = '<i class="fas ' + icon + '" aria-hidden="true"></i>' + escapeHtml(msg);
       c.appendChild(t);
       requestAnimationFrame(function() { t.style.transform = 'translateX(0)'; });
       setTimeout(function() {
@@ -663,7 +735,7 @@
 
       if (filtered.length === 0) {
         el.listContainer.classList.remove('hidden');
-        el.listContainer.innerHTML = '<div class="text-center py-10"><i class="fas fa-search text-2xl text-slate-300 dark:text-slate-600 mb-3"></i><p class="text-sm text-slate-400">No keywords match your filter</p></div>';
+        el.listContainer.innerHTML = '<div class="text-center py-10"><i class="fas fa-search text-2xl text-slate-300 dark:text-slate-600 mb-3" aria-hidden="true"></i><p class="text-sm text-slate-400">No keywords match your filter</p></div>';
         return;
       }
 
@@ -683,21 +755,21 @@
         }
 
         if (k.change > 0) {
-          changeHtml = '<span class="text-emerald-500 text-sm font-semibold"><i class="fas fa-arrow-up text-xs mr-1"></i>+' + k.change + '</span>';
+          changeHtml = '<span class="text-emerald-500 text-sm font-semibold"><i class="fas fa-arrow-up text-xs mr-1" aria-hidden="true"></i>+' + k.change + '</span>';
         } else if (k.change < 0) {
-          changeHtml = '<span class="text-red-500 text-sm font-semibold"><i class="fas fa-arrow-down text-xs mr-1"></i>' + k.change + '</span>';
+          changeHtml = '<span class="text-red-500 text-sm font-semibold"><i class="fas fa-arrow-down text-xs mr-1" aria-hidden="true"></i>' + k.change + '</span>';
         } else {
           changeHtml = '<span class="text-slate-400 text-sm">—</span>';
         }
 
         html += '<div class="group flex items-center gap-4 p-4 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-emerald-500/30 hover:bg-emerald-500/[0.02] transition-all">' +
-          '<div class="w-10 h-10 rounded-lg ' + posBadge + ' flex items-center justify-center font-bold text-sm flex-shrink-0">#' + k.position + '</div>' +
+          '<div class="w-10 h-10 rounded-lg ' + posBadge + ' flex items-center justify-center font-bold text-sm flex-shrink-0" aria-hidden="true">#' + k.position + '</div>' +
           '<div class="flex-1 min-w-0">' +
             '<p class="font-medium text-sm truncate">' + escapeHtml(k.keyword) + '</p>' +
-            '<p class="text-xs text-slate-400 mt-0.5"><i class="fas fa-clock mr-1"></i>' + k.lastUpdated + '</p>' +
+            '<p class="text-xs text-slate-400 mt-0.5"><i class="fas fa-clock mr-1" aria-hidden="true"></i>' + k.lastUpdated + '</p>' +
           '</div>' +
           changeHtml +
-          '<button data-remove="' + k.id + '" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 dark:text-slate-600 hover:text-red-500 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" title="Remove" aria-label="Remove"><i class="fas fa-trash-alt text-xs pointer-events-none"></i></button>' +
+          '<button data-remove="' + k.id + '" class="w-8 h-8 rounded-lg flex items-center justify-center text-slate-300 dark:text-slate-600 hover:text-red-500 hover:bg-red-500/10 opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" title="Remove ' + escapeHtml(k.keyword) + '" aria-label="Remove ' + escapeHtml(k.keyword) + ' from tracking"><i class="fas fa-trash-alt text-xs pointer-events-none" aria-hidden="true"></i></button>' +
         '</div>';
       });
 
@@ -801,7 +873,7 @@
       var legendHtml = '';
       topKw.forEach(function(k, i) {
         var color = chartColors[i % chartColors.length];
-        legendHtml += '<span class="inline-flex items-center gap-1.5 text-xs text-slate-500"><span class="w-3 h-3 rounded-full" style="background:' + color + '"></span>' + escapeHtml(k.keyword) + '</span>';
+        legendHtml += '<span class="inline-flex items-center gap-1.5 text-xs text-slate-500"><span class="w-3 h-3 rounded-full" style="background:' + color + '" aria-hidden="true"></span>' + escapeHtml(k.keyword) + '</span>';
       });
       el.chartLegend.innerHTML = legendHtml;
     }
@@ -849,9 +921,11 @@
         document.querySelectorAll('.filter-btn').forEach(function(b) {
           b.classList.remove('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
           b.classList.add('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+          b.setAttribute('aria-pressed', 'false');
         });
         this.classList.add('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
         this.classList.remove('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+        this.setAttribute('aria-pressed', 'true');
         currentFilter = this.getAttribute('data-filter');
         renderList();
       });
@@ -865,19 +939,25 @@
       }
     });
 
-    // FAQ toggles
+    // FAQ toggles with accessibility
     document.querySelectorAll('.faq-toggle').forEach(function(btn) {
       btn.addEventListener('click', function() {
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
         var isOpen = !content.classList.contains('hidden');
+
+        // Close all
         document.querySelectorAll('.faq-toggle').forEach(function(b) {
           b.nextElementSibling.classList.add('hidden');
           b.querySelector('i').style.transform = 'rotate(0deg)';
+          b.setAttribute('aria-expanded', 'false');
         });
+
+        // Open clicked if it was closed
         if (!isOpen) {
           content.classList.remove('hidden');
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
         }
       });
     });

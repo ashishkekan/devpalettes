@@ -5,24 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- SEO Meta Tags -->
-  <title>Brand Color Extractor – Get Colors from Image Instantly</title>
-  <meta name="description" content="Extract brand colors from any image or logo. Get HEX palettes instantly for design and branding.">
+  <title>Free Brand Color Extractor – Get Colors from Image Instantly</title>
+  <meta name="description" content="Free brand color extractor tool. Upload any image or logo to instantly extract dominant colors and generate a HEX palette for design, CSS, and branding.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/brand-color-extractor/">
   
-  <meta property="og:title" content="Brand Color Extractor – Get Colors from Image Instantly">
-  <meta property="og:description" content="Extract brand colors from any image or logo. Get HEX palettes instantly for design and branding.">
+  <meta property="og:title" content="Free Brand Color Extractor – Get Colors from Image Instantly">
+  <meta property="og:description" content="Free brand color extractor tool. Upload any image or logo to instantly extract dominant colors and generate a HEX palette for design, CSS, and branding.">
   <meta property="og:url" content="https://devpalettes.com/brand-color-extractor/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/brand-color-extractor-og.png">
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Brand Color Extractor – Get Colors from Image Instantly">
-  <meta name="twitter:description" content="Extract brand colors from any image or logo. Get HEX palettes instantly for design and branding.">
+  <meta name="twitter:title" content="Free Brand Color Extractor – Get Colors from Image Instantly">
+  <meta name="twitter:description" content="Free brand color extractor tool. Upload any image or logo to instantly extract dominant colors and generate a HEX palette for design, CSS, and branding.">
   <meta name="twitter:image" content="https://devpalettes.com/images/brand-color-extractor-og.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -40,6 +41,30 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      padding: 8px 16px;
+      background: #7c3aed;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 0 0 8px 8px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+    button:focus-visible,
+    [tabindex="0"]:focus-visible {
+      outline: 2px solid #7c3aed;
+      outline-offset: 2px;
+    }
+  </style>
+
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
   {
@@ -51,9 +76,15 @@
     "operatingSystem": "All",
     "creator": {
       "@type": "Organization",
-      "name": "Devpalettes"
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
     },
-    "description": "A tool to extract dominant colors from images and logos to create brand palettes."
+    "description": "Free brand color extractor tool. Upload any image or logo to instantly extract dominant colors and generate a HEX palette for design, CSS, and branding.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
   }
   </script>
   <script type="application/ld+json">
@@ -79,6 +110,47 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Use the Brand Color Extractor",
+    "description": "Step-by-step guide to extracting brand colors from any image using the Devpalettes tool.",
+    "totalTime": "PT30S",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Upload your image",
+        "text": "Click the upload zone or drag and drop an image file. PNG, JPG, and WebP formats are all supported."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Wait for analysis",
+        "text": "The tool scans the image pixels instantly in your browser — no loading spinner, no server round-trip."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Review the palette",
+        "text": "The extracted colors appear as swatches with their HEX codes and the percentage of the image each color occupies."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Copy individual colors",
+        "text": "Click any color swatch to copy its HEX value to your clipboard."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Download the palette",
+        "text": "Click the Download Palette button to save the full palette as a CSS file for reference."
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
       {
@@ -86,7 +158,7 @@
         "name": "How to extract colors from image?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "You can extract colors by uploading an image to a tool like this Brand Color Extractor. It analyzes the pixels to determine the most frequent and dominant colors, providing you with HEX codes."
+          "text": "You can extract colors by uploading an image to a tool like this Brand Color Extractor. It analyzes the pixels to determine the most frequent and dominant colors, providing you with HEX codes you can copy directly into CSS or design software."
         }
       },
       {
@@ -112,30 +184,41 @@
           "@type": "Answer",
           "text": "The dominant color is the color that occupies the largest area or has the most visual weight in an image. In logo design, this is usually the primary brand color that consumers associate with the company."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this brand color extractor free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup or account required. Upload your image, get your palette, and copy the codes — that is it. All processing happens in your browser with no data sent to any server."
+        }
       }
     ]
   }
   </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <div id="navbar-container"></div>
   
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div id="particles-container"></div>
+  <main id="main-content" role="main" class="pt-10 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer" aria-hidden="true" width="0" height="0"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
-      <div class="text-center mb-8 " style="margin-top: 45px;">
+      <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-4">Extract Brand Colors from Image Instantly</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-4">Upload an image or logo to extract dominant colors and generate a HEX palette.</p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8  max-w-7xl mx-auto">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3">What Is Brand Color Extraction?</h2>
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is Brand Color Extraction?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Brand color extraction is the process of analyzing an image — typically a logo or brand asset — to identify the dominant colors used within it. This technique is essential for designers and marketers who need to maintain visual consistency across websites, social media, and print materials. By identifying the specific HEX or RGB values of a brand's primary colors, you ensure that every touchpoint aligns with the established brand identity.
         </p>
@@ -149,61 +232,68 @@
       
       <div class="grid lg:grid-cols-3 gap-8">
         <!-- Controls -->
-        <div class="space-y-4 ">
-          <div class="glass-card p-6 shimmer-card">
-             <h3 class="font-bold mb-4 text-lg">Upload Image</h3>
+        <div class="space-y-4">
+          <div class="glass-card p-6 shimmer-card" aria-labelledby="upload-heading">
+             <h3 id="upload-heading" class="font-bold mb-4 text-lg">Upload Image</h3>
              <div class="space-y-4">
-                <div id="upload-zone" class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg p-8 text-center cursor-pointer hover:border-purple-500 transition-colors">
-                   <i class="fas fa-cloud-upload-alt text-4xl text-slate-400 mb-3"></i>
-                   <p class="text-sm text-slate-500">Drag & drop or click to upload</p>
-                   <input type="file" id="image-input" accept="image/*" class="hidden">
+                <div id="upload-zone" role="button" tabindex="0" aria-label="Upload image for color extraction. Click or press Enter to browse." class="border-2 border-dashed border-slate-300 dark:border-slate-600 rounded-lg p-8 text-center cursor-pointer hover:border-purple-500 transition-colors focus-visible:outline-2 focus-visible:outline-purple-500 focus-visible:outline-offset-2">
+                   <i class="fas fa-cloud-upload-alt text-4xl text-slate-400 mb-3" aria-hidden="true"></i>
+                   <p class="text-sm text-slate-500">Drag &amp; drop or click to upload</p>
+                   <label for="image-input" class="sr-only">Choose image file</label>
+                   <input type="file" id="image-input" accept="image/*" class="hidden" aria-describedby="upload-hint">
+                   <p id="upload-hint" class="text-xs text-slate-400 mt-2">Supports PNG, JPG, WebP</p>
                 </div>
                 <div id="preview-container" class="hidden">
                    <label class="block text-xs font-semibold text-slate-500 mb-2">Preview</label>
                    <div class="relative rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 aspect-video">
-                      <img id="image-preview" alt="Uploaded Preview" class="w-full h-full object-contain">
+                      <img id="image-preview" alt="Uploaded image preview for color extraction" class="w-full h-full object-contain">
                    </div>
                 </div>
              </div>
           </div>
           
           <div class="glass-card p-6">
-             <button id="download-palette-btn" disabled class="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2" aria-label="Download palette">
-                <i class="fas fa-download"></i> Download Palette
+             <button id="download-palette-btn" disabled class="w-full bg-purple-600 hover:bg-purple-700 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-download" aria-hidden="true"></i> Download Palette
              </button>
           </div>
         </div>
         
         <!-- Palette Display -->
-        <div class="lg:col-span-2 ">
-          <div class="glass-card p-6 h-full min-h-[400px]">
+        <div class="lg:col-span-2">
+          <div class="glass-card p-6 h-full min-h-[400px]" aria-labelledby="palette-heading">
              <div class="flex justify-between items-center mb-4">
-                <h3 class="font-bold text-lg">Extracted Palette</h3>
-                <span id="color-count" class="text-xs text-slate-500">0 colors</span>
+                <h3 id="palette-heading" class="font-bold text-lg">Extracted Palette</h3>
+                <span id="color-count" class="text-xs text-slate-500" aria-live="polite">0 colors</span>
              </div>
              
              <div id="empty-state" class="flex flex-col items-center justify-center h-64 text-slate-400">
-                <i class="fas fa-eye-dropper text-5xl mb-4"></i>
+                <i class="fas fa-eye-dropper text-5xl mb-4" aria-hidden="true"></i>
                 <p>Your extracted colors will appear here</p>
              </div>
              
-             <div id="palette-grid" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-4">
+             <div id="palette-grid" class="hidden grid grid-cols-2 sm:grid-cols-4 gap-4" role="list" aria-label="Extracted color swatches">
                 <!-- Colors injected via JS -->
              </div>
              
-             <div id="palette-list" class="hidden mt-6 space-y-3">
+             <div id="palette-list" class="hidden mt-6 space-y-3" aria-label="Color frequency breakdown">
                 <!-- Percentages injected via JS -->
              </div>
           </div>
         </div>
       </div>
 
-      <!-- SEO Content Section -->
-      <div class="max-w-7xl mx-auto my-16  space-y-12">
-         
-         <div class="glass-card p-8 shimmer-card prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+      <!-- Screen reader announcement zone for extraction results -->
+      <div id="extraction-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+      <!-- Screen reader announcement zone for copy feedback -->
+      <div id="copy-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
-            <h2 class="text-2xl font-bold mb-4">Why Extract Colors from Logos?</h2>
+      <!-- SEO Content Section -->
+      <div class="max-w-7xl mx-auto my-16 space-y-12">
+         
+         <section class="glass-card p-8 shimmer-card prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline" aria-labelledby="why-extract-heading">
+
+            <h2 id="why-extract-heading" class="text-2xl font-bold mb-4">Why Extract Colors from Logos?</h2>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed">Logos are the cornerstone of a brand's visual identity. Extracting colors from a logo is often the first step in building a comprehensive style guide. Here is why this is crucial:</p>
             <ul>
                <li><strong>Consistency:</strong> When building a website or designing marketing materials, you need the exact colors used in the logo to create a cohesive look. Mismatched shades of blue or red can make a brand look unprofessional.</li>
@@ -236,13 +326,12 @@
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed"><strong>Define Hierarchy:</strong> Not all colors in your palette should be used equally. Select one dominant color (usually the most frequent one in your logo) to represent your brand. Use secondary colors for accents, call-to-action buttons, or highlights.</p>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed"><strong>Consider Psychology:</strong> Colors evoke emotions. Blue often represents trust and professionalism, while red can signal excitement or urgency. Ensure the extracted colors align with your brand's messaging.</p>
             <p class="text-slate-600 dark:text-slate-300 leading-relaxed"><strong>Test in Context:</strong> A color that looks good in a logo might not work well as a website background. Always test your palette in real-world contexts. To see how these colors look as part of a full design system, turn them into <a href="/gradient/">CSS gradients</a> for hero sections and cards.</p>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed"><strong>Document Your Palette:</strong> Once you have finalized your colors, document them clearly. Include the HEX codes, RGB values, and usage guidelines. This ensures that anyone working with your brand has a clear reference point. For deeper insights, read our comprehensive guide on <a href="/blog/color-palettes-in-design/">building effective color palettes</a>.</p>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed"><strong>Document Your Palette:</strong> Once you have finalized your colors, document them clearly. Include the HEX codes, RGB values, and usage guidelines. This ensures that anyone working with your brand has a clear reference point. For deeper insights, read our comprehensive guide on <a href="../blog/color-palettes-in-design/">building effective color palettes</a>.</p>
 
-         </div>
+         </section>
 
-         <!-- ADDED: How to Use section -->
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Brand Color Extractor</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-heading">
+            <h2 id="howto-heading" class="text-2xl font-bold mb-4">How to Use This Brand Color Extractor</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
                Extracting a color palette from an image takes just a few seconds. Here is the step-by-step process:
             </p>
@@ -255,15 +344,14 @@
                <li><strong>Refine as needed:</strong> If the palette does not look right, try uploading a cropped version of the image that focuses on the key area. The tool analyzes whatever you give it — a tight crop produces more targeted results.</li>
                <li><strong>Implement in your project:</strong> Paste the HEX values into your CSS variables, design tokens, or style guide. Use the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> if you need RGB or HSL format instead.</li>
             </ol>
-         </div>
+         </section>
 
-         <!-- ADDED: Benefits section -->
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a Brand Color Extractor</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a Brand Color Extractor</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bullseye text-emerald-500"></i>
+                     <i class="fas fa-bullseye text-emerald-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Pixel-Perfect Accuracy</h3>
@@ -272,7 +360,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bolt text-blue-500"></i>
+                     <i class="fas fa-bolt text-blue-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Instant Results</h3>
@@ -281,7 +369,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-lock text-purple-500"></i>
+                     <i class="fas fa-lock text-purple-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">100% Private</h3>
@@ -290,7 +378,7 @@
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-code text-amber-500"></i>
+                     <i class="fas fa-code text-amber-500" aria-hidden="true"></i>
                   </div>
                   <div>
                      <h3 class="font-semibold mb-1">Developer-Ready Output</h3>
@@ -298,11 +386,10 @@
                   </div>
                </div>
             </div>
-         </div>
+         </section>
 
-         <!-- ADDED: "Why I Built This Tool" section for human trust signal -->
-         <div class="glass-card p-8 shimmer-card">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+            <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
                I was building a landing page for a client and needed their exact brand colors to match the design. The client sent a logo PNG but had no idea what HEX values were in it. I opened Photoshop, sampled a few pixels, and thought I had the right blue. When the site went live, the client immediately noticed the blue was slightly off compared to their printed materials. Turns out I had sampled a compressed artifact, not the actual brand color.
             </p>
@@ -312,33 +399,31 @@
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
                I keep this tool bookmarked and use it every time I start a new project. If it saves you from the same pixel-sampling mistake, it did its job. And if you find it useful, sharing it with a colleague is the best way to support free tools like this.
             </p>
-         </div>
+         </section>
 
-         <!-- Who Is This For Section — preserved -->
-         <div>
-            <h2 class="text-2xl font-bold mb-6 text-center">Who Is This For?</h2>
+         <section aria-labelledby="who-for-heading">
+            <h2 id="who-for-heading" class="text-2xl font-bold mb-6 text-center">Who Is This For?</h2>
             <div class="grid md:grid-cols-3 gap-6">
                <div class="glass-card p-6 text-center">
-                  <i class="fas fa-paint-brush text-3xl text-purple-500 mb-4"></i>
+                  <i class="fas fa-paint-brush text-3xl text-purple-500 mb-4" aria-hidden="true"></i>
                   <h3 class="font-bold mb-2">Graphic Designers</h3>
                   <p class="text-sm text-slate-600 dark:text-slate-400">Quickly sample client logos to create matching marketing materials.</p>
                </div>
                <div class="glass-card p-6 text-center">
-                  <i class="fas fa-code text-3xl text-purple-500 mb-4"></i>
+                  <i class="fas fa-code text-3xl text-purple-500 mb-4" aria-hidden="true"></i>
                   <h3 class="font-bold mb-2">Web Developers</h3>
                   <p class="text-sm text-slate-600 dark:text-slate-400">Generate CSS variables instantly from design assets.</p>
                </div>
                <div class="glass-card p-6 text-center">
-                  <i class="fas fa-bullhorn text-3xl text-purple-500 mb-4"></i>
+                  <i class="fas fa-bullhorn text-3xl text-purple-500 mb-4" aria-hidden="true"></i>
                   <h3 class="font-bold mb-2">Marketers</h3>
                   <p class="text-sm text-slate-600 dark:text-slate-400">Ensure brand consistency across social media and ad campaigns.</p>
                </div>
             </div>
-         </div>
+         </section>
 
-         <!-- FAQ Section -->
-         <div class="glass-card p-8">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+         <section class="glass-card p-8" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-5">
                <div>
                   <h3 class="font-bold text-lg mb-2">How to extract colors from image?</h3>
@@ -361,11 +446,10 @@
                   <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, completely free with no signup or account required. Upload your image, get your palette, and copy the codes — that is it. All processing happens in your browser with no data sent to any server.</p>
                </div>
             </div>
-         </div>
+         </section>
 
-         <!-- Related Tools -->
-         <section class="glass-card p-8 shimmer-card text-center">
-            <h2 class="text-2xl font-bold mb-4">Explore More Color & Design Tools</h2>
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="explore-heading">
+            <h2 id="explore-heading" class="text-2xl font-bold mb-4">Explore More Color &amp; Design Tools</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have your brand colors, these tools help you implement and refine them:</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
@@ -373,34 +457,32 @@
                <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
                <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
                <a href="/tailwind-color-palette-generator/" class="btn-secondary text-xs py-2 px-4">Tailwind Palette Builder</a>
-               <a href="/blog/color-palettes-in-design/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
+               <a href="../blog/color-palettes-in-design/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
             </div>
          </section>
 
-         <!-- Social Sharing Section -->
-         <!-- CHANGED: Updated share URLs to point to this specific tool page -->
-         <section class="glass-card p-8 shimmer-card text-center">
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/brand-color-extractor/&text=Extract%20brand%20colors%20from%20any%20image%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter"></i> Twitter
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fbrand-color-extractor%2F&text=Extract%20brand%20colors%20from%20any%20image%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter (opens in new tab)">
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/brand-color-extractor/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f"></i> Facebook
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fbrand-color-extractor%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook (opens in new tab)">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/brand-color-extractor/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in"></i> LinkedIn
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fbrand-color-extractor%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn (opens in new tab)">
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20brand%20color%20extractor%20https://devpalettes.com/brand-color-extractor/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+                <a href="https://wa.me/?text=Check%20out%20this%20free%20brand%20color%20extractor%20https%3A%2F%2Fdevpalettes.com%2Fbrand-color-extractor%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp (opens in new tab)">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/brand-color-extractor/&description=Free%20brand%20color%20extractor%20tool" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p"></i> Pinterest
+                <a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fdevpalettes.com%2Fbrand-color-extractor%2F&description=Free%20brand%20color%20extractor%20tool" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest (opens in new tab)">
+                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link"></i> Copy Link
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
             </div>
@@ -409,7 +491,7 @@
          <div class="text-center py-10 mt-4">
             <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
                 <span class="text-slate-400 text-sm">Built by</span>
-                <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+                <a href="https://devpalettes.com" class="text-slate-800 dark:text-slate-200 text-sm font-bold hover:underline">DevPalettes</a>
                 <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
             </div>
           </div>
@@ -419,8 +501,8 @@
     </div>
   </main>
   <div id="footer-container"></div>
-  <script src="../js/main.js"></script>
-  <script src="../js/enhancements.js"></script>
-  <script src="../js/brand-color-extractor.js"></script>
+  <script src="../js/main.js" defer></script>
+  <script src="../js/enhancements.js" defer></script>
+  <script src="../js/brand-color-extractor.js" defer></script>
 </body>
 </html>

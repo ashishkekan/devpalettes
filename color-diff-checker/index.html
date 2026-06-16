@@ -4,22 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="canonical" href="https://devpalettes.com/color-diff-checker/">
-  <meta name="description" content="Compare colors instantly. Check color difference, similarity, and find visually close colors for better UI design.">
+  <meta name="description" content="Free online color difference checker. Compare colors, find similar hex codes, and detect near-duplicate colors in your CSS instantly with Euclidean distance.">
   <meta name="author" content="Devpalettes">
-  
-  <title>Color Difference Checker – Compare & Find Similar Colors</title>
+  <meta name="robots" content="index, follow">
 
-  <meta property="og:title" content="Color Difference Checker – Compare & Find Similar Colors">
-  <meta property="og:description" content="Compare colors instantly. Check color difference, similarity, and find visually close colors for better UI design.">
+  <title>Free Color Difference Checker – Compare & Find Similar Colors Online</title>
+
+  <meta property="og:title" content="Free Color Difference Checker – Compare & Find Similar Colors Online">
+  <meta property="og:description" content="Free online color difference checker. Compare colors, find similar hex codes, and detect near-duplicate colors in your CSS instantly.">
   <meta property="og:url" content="https://devpalettes.com/color-diff-checker/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://devpalettes.com/images/devpalettes_zoom_180.png">
+  <meta property="og:image" content="https://devpalettes.com/images/og-color-diff-checker.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Devpalettes">
+  <meta property="og:locale" content="en_US">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Color Difference Checker – Compare & Find Similar Colors">
-  <meta name="twitter:description" content="Compare colors instantly. Check color difference, similarity, and find visually close colors for better UI design.">
-  <meta name="twitter:image" content="https://devpalettes.com/images/devpalettes_zoom_180.png">
-  
+  <meta name="twitter:title" content="Free Color Difference Checker – Compare & Find Similar Colors Online">
+  <meta name="twitter:description" content="Free online color difference checker. Compare colors and detect near-duplicate colors in your CSS instantly.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-color-diff-checker.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -30,17 +35,41 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
   <script>
-    if (localStorage.getItem('colorpallates-theme') === 'dark' || 
+    if (localStorage.getItem('colorpallates-theme') === 'dark' ||
        (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
   </script>
+
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
-
+  <link rel="preload" href="../css/styles.css" as="style">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
+
+  <!-- JSON-LD: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Color Difference Checker",
+        "item": "https://devpalettes.com/color-diff-checker/"
+      }
+    ]
+  }
+  </script>
 
   <!-- JSON-LD WebApplication -->
   <script type="application/ld+json">
@@ -48,9 +77,15 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Color Difference Checker",
-    "description": "Compare colors instantly. Check color difference, similarity, and find visually close colors for better UI design.",
+    "description": "Free online color difference checker. Compare colors, find similar hex codes, and detect near-duplicate colors in your CSS instantly.",
     "url": "https://devpalettes.com/color-diff-checker/",
     "applicationCategory": "DesignApplication",
+    "creator": {
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "browserRequirements": "Requires JavaScript",
     "operatingSystem": "Any",
     "offers": {
       "@type": "Offer",
@@ -60,7 +95,49 @@
   }
   </script>
 
-  <!-- JSON-LD FAQPage -->
+  <!-- JSON-LD HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Check Color Differences",
+    "description": "Step-by-step guide to comparing colors and finding similar hex codes using the color difference checker.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Gather Your Colors",
+        "text": "Copy the CSS variables, hex codes, or color list you want to check. You can paste an entire stylesheet — the tool extracts all valid color values automatically."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Paste Into the Input Area",
+        "text": "Paste your colors into the text field. The tool accepts HEX codes, RGB values, CSS custom properties, and comma-separated lists."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Run the Check",
+        "text": "Click the Check Color Difference button. The tool parses your input, converts every color to RGB, and calculates the Euclidean distance between each pair."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Review Results",
+        "text": "The results grid shows each color pair with visual swatches and the calculated difference score. A small number means the colors are nearly identical."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Fix Redundant Colors",
+        "text": "Replace colors that score below a noticeable threshold with more distinct alternatives, then re-check to confirm all colors are sufficiently different."
+      }
+    ]
+  }
+  </script>
+
+  <!-- JSON-LD FAQPage (expanded to match visible FAQ) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,7 +148,7 @@
         "name": "What is color difference?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Color difference is the mathematical measurement of how distinct two colors are from one another. It is often calculated using algorithms like Delta E (ΔE), which evaluates differences in lightness, chroma, and hue to determine if a human eye can perceive the distinction between two hex or RGB values."
+          "text": "Color difference is the mathematical measurement of how distinct two colors are from one another. It is often calculated using algorithms like Delta E, which evaluates differences in lightness, chroma, and hue to determine if a human eye can perceive the distinction between two hex or RGB values."
         }
       },
       {
@@ -95,7 +172,7 @@
         "name": "Why similar colors are bad for UI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Using colors that are too similar in a UI can cause cognitive load, confuse users, and harm accessibility. If buttons, links, and text lack sufficient color differentiation, users may struggle to identify interactive elements or distinguish between different states (like success and warning)."
+          "text": "Using colors that are too similar in a UI can cause cognitive load, confuse users, and harm accessibility. If buttons, links, and text lack sufficient color differentiation, users may struggle to identify interactive elements or distinguish between different states like success and warning."
         }
       },
       {
@@ -103,37 +180,128 @@
         "name": "How does this tool calculate color differences?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "This tool extracts the HEX codes from your input, converts them to RGB values, and calculates the Euclidean distance (a simplified but effective mathematical difference) in the RGB color space between your base color and the rest of the list."
+          "text": "This tool extracts the HEX codes from your input, converts them to RGB values, and calculates the Euclidean distance in the RGB color space between your base color and the rest of the list."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this color difference checker free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely free with no signup, API key, or usage limits. Paste your colors, see the results, and clean up your stylesheet. All calculations run in your browser with no data sent to any server."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good Delta E or RGB distance threshold?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "In RGB Euclidean distance, a value below 20 typically means two colors are nearly indistinguishable, 20–50 is a subtle difference, 50–100 is moderately different, and above 100 is clearly distinct. For Delta E (CIELAB), below 1.0 is imperceptible, 1–2 is barely noticeable, and above 5.0 is clearly different."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this tool work with CSS variables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The tool extracts any valid HEX color codes from your pasted text, including those inside CSS variable declarations like var(--primary: #FF5733). It ignores the CSS syntax and focuses on the hex values themselves, so you can paste an entire stylesheet and it will find all the colors."
         }
       }
     ]
   }
   </script>
+
+  <style>
+    /* Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      z-index: 9999;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Prevent CLS for navbar/footer */
+    #navbar-container {
+      min-height: 64px;
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .shimmer-card,
+      .gradient-blob,
+      #particles-container,
+      #hero-visualizer {
+        animation: none !important;
+        transition: none !important;
+      }
+      .spectrum-line {
+        animation: none !important;
+      }
+    }
+
+    /* Focus-visible */
+    :focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+    }
+
+    /* Screen-reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    /* Result card keyboard focus */
+    .color-result-card:focus {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
-  
-  <div id="navbar-container"></div>
-  
-  <main class="pt-10 pb-12 min-h-screen relative overflow-hidden">
-    <canvas id="hero-visualizer"></canvas>
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
-    
+
+  <!-- Skip to Content -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
+
+  <main id="main-content" class="pt-4 pb-12 min-h-screen relative overflow-hidden">
+    <canvas id="hero-visualizer" width="0" height="0" aria-hidden="true"></canvas>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
+    <div id="particles-container" aria-hidden="true"></div>
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      
-      <div class="text-center mb-8 " style="margin-top: 45px;">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-4">Color Difference Checker – Compare Similar Colors Instantly</h1>
+
+      <div class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-4">Color Difference Checker</h1>
         <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-4">
           Paste your CSS, list of colors, or palette codes below. Compare colors and find similarity between them instantly.
         </p>
-        <div class="spectrum-line max-w-md mx-auto"></div>
+        <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <!-- ADDED: Content-first SEO section ABOVE the tool UI -->
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8  max-w-7xl mx-auto">
-        <h2 class="text-xl sm:text-2xl font-bold mb-3">What Is Color Difference?</h2>
+      <!-- Content-first SEO section -->
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="what-is-diff-heading">
+        <h2 id="what-is-diff-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is Color Difference?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
           Color difference is the mathematical measurement of how distinct two colors are from one another. In digital design, every color can be broken down into numerical values like RGB or HEX. By comparing these values, we can calculate the exact distance between two colors in a color space. The most common metric is <a href="https://en.wikipedia.org/wiki/Color_difference" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Delta E (ΔE)</a>, which quantifies differences in human-perceivable lightness, chroma, and hue. A Delta E below 1.0 is imperceptible to the human eye, while anything above 5.0 is clearly visible.
         </p>
@@ -144,49 +312,52 @@
           If you need to <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">convert HEX to RGB</a> before comparing, or want to <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">generate a color palette</a> with well-spaced colors, those tools work alongside this one for a complete design workflow.
         </p>
       </section>
-      <!-- END ADDED -->
-      
-      <div class="glass-card p-6 shimmer-card mb-6 ">
+
+      <!-- Tool UI -->
+      <div class="glass-card p-6 shimmer-card mb-6" role="region" aria-label="Color difference tool">
         <div class="flex justify-between items-center mb-2">
-           <label class="text-sm font-semibold text-slate-500">Paste Colors / CSS</label>
-           <button onclick="clearInput()" class="text-xs text-slate-400 hover:text-red-500 transition-colors" aria-label="Clear Input"><i class="fas fa-times mr-1"></i>Clear</button>
+           <label for="input-area" class="text-sm font-semibold text-slate-500">Paste Colors / CSS</label>
+           <button onclick="clearInput()" class="text-xs text-slate-400 hover:text-red-500 transition-colors" aria-label="Clear input field"><i class="fas fa-times mr-1" aria-hidden="true"></i>Clear</button>
         </div>
-        <textarea 
-           id="input-area" 
-           rows="6" 
+        <textarea
+           id="input-area"
+           rows="6"
            class="w-full bg-slate-100 dark:bg-slate-800 border-none rounded-xl p-4 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
-           placeholder="Example:&#10;#FF5733, #FF5834, #00FF00&#10;var(--primary: #FFF);&#10;#FFF">
+           placeholder="Example:&#10;#FF5733, #FF5834, #00FF00&#10;var(--primary: #FFF);&#10;#FFF"
+           aria-describedby="input-help">
         </textarea>
-        
+        <p id="input-help" class="sr-only">Enter HEX color codes, CSS variables, or a comma-separated list of colors to compare.</p>
+
         <div class="flex gap-3 mt-4">
-           <button onclick="checkColorDifference()" class="btn-primary btn-glow flex-1 justify-center" aria-label="Check colors differences">
-              <i class="fas fa-search mr-2"></i>Check Color Difference
+           <button onclick="checkColorDifference()" class="btn-primary btn-glow flex-1 justify-center" aria-label="Check color differences">
+              <i class="fas fa-search mr-2" aria-hidden="true"></i>Check Color Difference
            </button>
         </div>
       </div>
-      
-      <div id="results-section" class="glass-card p-6 shimmer-card mb-8  hidden">
-         <h3 class="font-bold mb-4 text-lg flex items-center gap-2">
-            <i class="fas fa-clone text-sky-500"></i>
+
+      <div id="results-section" class="glass-card p-6 shimmer-card mb-8 hidden" role="region" aria-labelledby="results-heading">
+         <h3 id="results-heading" class="font-bold mb-4 text-lg flex items-center gap-2">
+            <i class="fas fa-clone text-sky-500" aria-hidden="true"></i>
             Color Differences
             <span id="count-badge" class="px-2 py-0.5 bg-sky-100 dark:bg-sky-900/30 text-sky-500 text-sm rounded-full ml-1">0</span>
          </h3>
-         
-         <div id="results-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+
+         <div id="results-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3" role="list" aria-label="Color comparison results">
          </div>
-         
+
          <div id="no-results" class="text-center py-8 hidden">
-            <i class="fas fa-check-circle text-4xl text-emerald-500 mb-3"></i>
+            <i class="fas fa-check-circle text-4xl text-emerald-500 mb-3" aria-hidden="true"></i>
             <p class="text-slate-500 font-medium">No duplicate colors found!</p>
          </div>
+         <!-- Live region for screen reader results announcement -->
+         <div id="results-status" class="sr-only" aria-live="polite"></div>
       </div>
 
       <!-- SEO Content Area -->
-      <div class="seo-content space-y-12 mt-8 ">
-         
-        <!-- CHANGED: "What is Color Difference?" removed from here — moved above tool UI. Section refocused on remaining sub-topics. -->
-        <section class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">How Color Similarity Works in Digital Design</h2>
+      <div class="seo-content space-y-12 mt-8">
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="similarity-heading">
+          <h2 id="similarity-heading" class="text-2xl font-bold mb-4">How Color Similarity Works in Digital Design</h2>
 
           <h3 class="text-lg font-semibold mb-2 mt-4">Why Similar Colors Create Bad UI</h3>
           <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
@@ -195,7 +366,7 @@
 
           <h3 class="text-lg font-semibold mb-2">How to Compare Colors Effectively</h3>
           <p class="text-slate-600 dark:text-slate-400 mb-4 text-sm leading-relaxed">
-            To compare colors effectively, never rely solely on your monitor. Screen calibration, ambient lighting, and individual eyesight all alter perception. Instead, use a mathematical color difference checker like this one. Paste your stylesheet or list of hex codes, and the tool will calculate the RGB Euclidean distance. This gives you an objective number to determine if two colors are too close. You should also <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> and contrast rules outlined by the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline font-medium">W3C WCAG contrast guidelines</a> to ensure your text-to-background ratios meet minimum standards. If you are working with gradients that blend similar colors, our <a href="/gradient/" class="text-emerald-500 hover:underline font-medium">CSS gradient generator</a> can help you visualize transitions before committing to code.
+            To compare colors effectively, never rely solely on your monitor. Screen calibration, ambient lighting, and individual eyesight all alter perception. Instead, use a mathematical color difference checker like this one. Paste your stylesheet or list of hex codes, and the tool will calculate the RGB Euclidean distance. This gives you an objective number to determine if two colors are too close. You should also <a href="../blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> and contrast rules outlined by the <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline font-medium">W3C WCAG contrast guidelines</a> to ensure your text-to-background ratios meet minimum standards. If you are working with gradients that blend similar colors, our <a href="/gradient/" class="text-emerald-500 hover:underline font-medium">CSS gradient generator</a> can help you visualize transitions before committing to code.
           </p>
 
           <h3 class="text-lg font-semibold mb-2">When to Use a Color Difference Checker</h3>
@@ -204,9 +375,9 @@
           </p>
         </section>
 
-        <!-- ADDED: How to Use section -->
-        <section class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">How to Use This Color Difference Checker</h2>
+        <!-- How to Use -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
+          <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Color Difference Checker</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
              Comparing colors takes just a few seconds. Here is the step-by-step process:
           </p>
@@ -220,13 +391,71 @@
           </ol>
         </section>
 
-        <!-- ADDED: Benefits section -->
-        <section class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">Benefits of Using a Color Difference Checker</h2>
+        <!-- NEW: Delta E / RGB Distance Thresholds -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="thresholds-heading">
+          <h2 id="thresholds-heading" class="text-2xl font-bold mb-4">Understanding Color Distance Thresholds</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             Not all color differences are equal. The numerical distance between two colors tells you how noticeable the difference is, but interpreting that number requires context. Here is a practical guide to RGB Euclidean distance thresholds and what they mean for your design decisions:
+          </p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left border-collapse">
+              <thead>
+                <tr class="border-b border-slate-200 dark:border-slate-700">
+                  <th class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">RGB Distance</th>
+                  <th class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Perception</th>
+                  <th class="py-3 px-4 font-semibold text-slate-700 dark:text-slate-300">Action</th>
+                </tr>
+              </thead>
+              <tbody class="text-slate-600 dark:text-slate-400">
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-3 px-4 font-mono">0 – 20</td>
+                  <td class="py-3 px-4">Nearly indistinguishable</td>
+                  <td class="py-3 px-4">Merge these colors — they serve no visual purpose as separate values</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-3 px-4 font-mono">20 – 50</td>
+                  <td class="py-3 px-4">Subtle difference</td>
+                  <td class="py-3 px-4">Keep only if the distinction is intentional (e.g., hover state darkening)</td>
+                </tr>
+                <tr class="border-b border-slate-100 dark:border-slate-800">
+                  <td class="py-3 px-4 font-mono">50 – 100</td>
+                  <td class="py-3 px-4">Moderately different</td>
+                  <td class="py-3 px-4">Usually acceptable as distinct colors, but verify with accessibility tools</td>
+                </tr>
+                <tr>
+                  <td class="py-3 px-4 font-mono">100+</td>
+                  <td class="py-3 px-4">Clearly distinct</td>
+                  <td class="py-3 px-4">No action needed — these colors are visually different</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+             Keep in mind that RGB Euclidean distance is a simplified metric. For more perceptually accurate results, the CIELAB Delta E formula accounts for how human vision perceives color differences non-uniformly — a distance of 50 in the red channel looks very different from 50 in the blue channel. For most design system audits and CSS cleanups, however, the RGB distance provides a fast, practical approximation that catches the vast majority of redundant colors.
+          </p>
+        </section>
+
+        <!-- NEW: Use Cases -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+          <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Use Cases for Color Comparison</h2>
+          <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Design system audits:</strong> Run your entire token file through the checker to find semantically different variables that resolve to nearly identical colors. Consolidating them keeps your system lean and consistent.</li>
+            <li><strong>Legacy CSS cleanup:</strong> Inherited stylesheets often accumulate dozens of slightly different grays, borders, and backgrounds over years of patches. Paste the whole file and instantly see which colors can be merged.</li>
+            <li><strong>Data visualization:</strong> Charts with 8+ data series need colors that are clearly distinguishable. The checker ensures no two series colors are too close, which is critical for colorblind users who rely on hue separation.</li>
+            <li><strong>Brand color validation:</strong> When a brand has multiple approved color variations (primary, primary-dark, primary-light), the checker confirms they are sufficiently spaced to serve their intended visual roles.</li>
+            <li><strong>Theme comparison:</strong> Compare your light and dark theme palettes side by side to verify that semantic mappings (success, warning, error) remain distinct in both modes.</li>
+            <li><strong>Accessibility reviews:</strong> Before a WCAG audit, run your UI colors through the checker to catch near-duplicates that may confuse users with low vision or color deficiency.</li>
+          </ul>
+          <p class="mt-4 text-slate-500 text-sm">After cleaning up your colors, use the <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">palette generator</a> to fill any gaps with well-spaced alternatives, and the <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline font-medium">contrast checker</a> to verify text readability.</p>
+        </section>
+
+        <!-- Benefits -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
+          <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a Color Difference Checker</h2>
           <div class="grid sm:grid-cols-2 gap-6 mt-6">
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-broom text-emerald-500"></i>
+                   <i class="fas fa-broom text-emerald-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Clean Up Redundant CSS</h3>
@@ -235,7 +464,7 @@
              </div>
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-universal-access text-blue-500"></i>
+                   <i class="fas fa-universal-access text-blue-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Improve Accessibility</h3>
@@ -244,7 +473,7 @@
              </div>
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-chart-bar text-purple-500"></i>
+                   <i class="fas fa-chart-bar text-purple-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Better Data Visualization</h3>
@@ -253,7 +482,7 @@
              </div>
              <div class="flex gap-4">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                   <i class="fas fa-objective-check text-amber-500"></i>
+                   <i class="fas fa-bullseye text-amber-500" aria-hidden="true"></i>
                 </div>
                 <div>
                    <h3 class="font-semibold mb-1">Objective, Not Subjective</h3>
@@ -263,9 +492,9 @@
           </div>
         </section>
 
-        <!-- ADDED: "Why I Built This Tool" section for human trust signal -->
-        <section class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+        <!-- Why I Built This -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+          <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
              I inherited a CSS file at work that had 47 different shades of gray. Not exaggerating — 47. Some were hex codes like #F5F5F5, others were #F4F4F4, and a few were #F6F6F6. They all looked the same on my screen, but every one of them was a separate variable with a different name. I spent an entire afternoon manually comparing hex values trying to figure out which ones I could safely merge.
           </p>
@@ -277,14 +506,14 @@
           </p>
         </section>
 
-        <!-- FAQ Section -->
-        <section class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-          
+        <!-- FAQ Section (expanded) -->
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+
           <div class="space-y-6">
             <div>
               <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-                <span class="text-sky-500 mt-1"><i class="fas fa-circle-question"></i></span>
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
                 What is color difference?
               </h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -294,7 +523,7 @@
 
             <div>
               <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-                <span class="text-sky-500 mt-1"><i class="fas fa-circle-question"></i></span>
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
                 How to compare two colors?
               </h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -304,7 +533,7 @@
 
             <div>
               <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-                <span class="text-sky-500 mt-1"><i class="fas fa-circle-question"></i></span>
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
                 What is a good color contrast?
               </h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -314,7 +543,7 @@
 
             <div>
               <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-                <span class="text-sky-500 mt-1"><i class="fas fa-circle-question"></i></span>
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
                 Why similar colors are bad for UI?
               </h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -324,7 +553,7 @@
 
             <div>
               <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-                <span class="text-sky-500 mt-1"><i class="fas fa-circle-question"></i></span>
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
                 How does this tool calculate color differences?
               </h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
@@ -334,19 +563,40 @@
 
             <div>
               <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
-                <span class="text-sky-500 mt-1"><i class="fas fa-circle-question"></i></span>
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
                 Is this color difference checker free?
               </h3>
               <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
                 Yes, completely free with no signup, API key, or usage limits. Paste your colors, see the results, and clean up your stylesheet — that is it. All calculations run in your browser with no data sent to any server.
               </p>
             </div>
+
+            <div>
+              <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+                What is a good RGB distance threshold?
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+                In RGB Euclidean distance, a value below 20 means the colors are nearly indistinguishable and should be merged. A distance of 20–50 is a subtle difference — keep both only if the distinction is intentional (like a hover state). Between 50–100 is moderately different, and above 100 is clearly distinct. For more perceptually accurate thresholds, Delta E (CIELAB) values below 1.0 are imperceptible, 1–2 is barely noticeable, and above 5.0 is clearly different.
+              </p>
+            </div>
+
+            <div>
+              <h3 class="text-base font-semibold mb-2 flex items-start gap-2">
+                <span class="text-sky-500 mt-1" aria-hidden="true"><i class="fas fa-circle-question"></i></span>
+                Does this tool work with CSS variables?
+              </h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed pl-7">
+                The tool extracts any valid HEX color codes from your pasted text, including those inside CSS variable declarations like var(--primary: #FF5733). It ignores the CSS syntax and focuses on the hex values themselves, so you can paste an entire stylesheet and it will find all the colors automatically.
+              </p>
+            </div>
+
           </div>
         </section>
 
         <!-- Related Tools -->
-        <section class="glass-card p-8 shimmer-card text-center">
-          <h2 class="text-2xl font-bold mb-4">Related Color & Design Tools</h2>
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+          <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Color & Design Tools</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have checked your color differences, try these tools to streamline your design workflow:</p>
           <div class="flex flex-wrap justify-center gap-3">
             <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
@@ -360,28 +610,28 @@
           </div>
         </section>
 
-        <!-- Social Sharing Section -->
-        <section class="glass-card p-8 shimmer-card text-center">
-          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
+        <!-- Social Sharing -->
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
+          <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
           <p class="text-slate-500 mb-4 text-sm">Found this color difference checker useful? Share it with your design and development community.</p>
           <div class="flex items-center justify-center gap-3 flex-wrap">
-            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/color-diff-checker/&text=Compare%20colors%20instantly%20%E2%80%93%20find%20similar%20colors%20in%20your%20CSS%20with%20this%20free%20tool" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-              <i class="fab fa-x-twitter"></i> Twitter
+            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-diff-checker%2F&text=Compare%20colors%20instantly%20%E2%80%93%20find%20similar%20colors%20in%20your%20CSS%20with%20this%20free%20tool" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+              <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
             </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/color-diff-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-              <i class="fab fa-facebook-f"></i> Facebook
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fcolor-diff-checker%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+              <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
             </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/color-diff-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-              <i class="fab fa-linkedin-in"></i> LinkedIn
+            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-diff-checker%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+              <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
             </a>
-            <a href="https://wa.me/?text=Check%20out%20this%20free%20color%20difference%20checker%20https://devpalettes.com/color-diff-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-              <i class="fab fa-whatsapp"></i> WhatsApp
+            <a href="https://wa.me/?text=Check%20out%20this%20free%20color%20difference%20checker%20https%3A%2F%2Fdevpalettes.com%2Fcolor-diff-checker%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
             </a>
-            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/color-diff-checker/&description=Free%20color%20difference%20checker%20tool%20for%20designers" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-              <i class="fab fa-pinterest-p"></i> Pinterest
+            <a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-diff-checker%2F&description=Free%20color%20difference%20checker%20tool%20for%20designers" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+              <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
             </a>
-            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-              <i class="fas fa-link"></i> Copy Link
+            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+              <i class="fas fa-link" aria-hidden="true"></i> Copy Link
             </button>
           </div>
         </section>
@@ -389,20 +639,20 @@
         <div class="text-center py-10 mt-4">
           <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
               <span class="text-slate-400 text-sm">Built by</span>
-              <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
+              <strong class="text-slate-800 dark:text-slate-200 text-sm"><a href="/" class="hover:text-emerald-500 transition-colors">DevPalettes</a></strong>
               <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
           </div>
         </div>
 
       </div>
-      
+
     </div>
   </main>
-  <div id="footer-container"></div>
+  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
 
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
-  
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
   <script src="../js/main.js" defer></script>
   <script src="../js/enhancements.js" defer></script>
   <script src="../js/color-diff-checker.js" defer></script>

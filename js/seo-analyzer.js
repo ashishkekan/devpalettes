@@ -46,13 +46,13 @@
   }
 
   function getTextContent(doc, selector) {
-    var el = doc.querySelector(selector);
-    return el ? el.getAttribute('content') || el.textContent.trim() : '';
+    var node = doc.querySelector(selector);
+    return node ? node.getAttribute('content') || node.textContent.trim() : '';
   }
 
   function getMetaContent(doc, name) {
-    var el = doc.querySelector('meta[name="' + name + '"]') || doc.querySelector('meta[property="' + name + '"]');
-    return el ? el.getAttribute('content') || '' : '';
+    var node = doc.querySelector('meta[name="' + name + '"]') || doc.querySelector('meta[property="' + name + '"]');
+    return node ? node.getAttribute('content') || '' : '';
   }
 
   function showToast(msg, type) {
@@ -62,7 +62,8 @@
     var icon = type === 'success' ? 'fa-check-circle' : type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
     var t = document.createElement('div');
     t.className = bg + ' text-white px-5 py-3 rounded-xl shadow-2xl text-sm font-medium transform translate-x-full transition-transform duration-300 flex items-center gap-2';
-    t.innerHTML = '<i class="fas ' + icon + '"></i>' + escapeHtml(msg);
+    t.setAttribute('role', 'alert');
+    t.innerHTML = '<i class="fas ' + icon + '" aria-hidden="true"></i>' + escapeHtml(msg);
     c.appendChild(t);
     requestAnimationFrame(function() { t.style.transform = 'translateX(0)'; });
     setTimeout(function() {
@@ -319,10 +320,10 @@
 
   /* ========== RENDERING ========== */
   function getStatusIcon(status) {
-    if (status === 'pass') return '<i class="fas fa-check-circle text-emerald-500"></i>';
-    if (status === 'warning') return '<i class="fas fa-exclamation-triangle text-amber-500"></i>';
-    if (status === 'error') return '<i class="fas fa-times-circle text-red-500"></i>';
-    return '<i class="fas fa-info-circle text-blue-500"></i>';
+    if (status === 'pass') return '<i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>';
+    if (status === 'warning') return '<i class="fas fa-exclamation-triangle text-amber-500" aria-hidden="true"></i>';
+    if (status === 'error') return '<i class="fas fa-times-circle text-red-500" aria-hidden="true"></i>';
+    return '<i class="fas fa-info-circle text-blue-500" aria-hidden="true"></i>';
   }
 
   function getStatusBg(status) {
@@ -330,6 +331,13 @@
     if (status === 'warning') return 'bg-amber-500/5 border-amber-500/20';
     if (status === 'error') return 'bg-red-500/5 border-red-500/20';
     return 'bg-blue-500/5 border-blue-500/20';
+  }
+
+  function getStatusLabel(status) {
+    if (status === 'pass') return 'Pass';
+    if (status === 'warning') return 'Warning';
+    if (status === 'error') return 'Error';
+    return 'Info';
   }
 
   function renderChecks(checks) {
@@ -342,16 +350,17 @@
 
     var html = '';
     filtered.forEach(function(c) {
-      html += '<div class="p-4 rounded-xl border ' + getStatusBg(c.status) + ' transition-all">' +
+      html += '<div class="p-4 rounded-xl border ' + getStatusBg(c.status) + ' transition-all" role="listitem">' +
         '<div class="flex items-start gap-3">' +
           '<span class="mt-0.5 flex-shrink-0">' + getStatusIcon(c.status) + '</span>' +
           '<div class="flex-1 min-w-0">' +
             '<div class="flex items-center gap-2 mb-1">' +
               '<span class="font-semibold text-sm">' + escapeHtml(c.label) + '</span>' +
               '<span class="text-xs px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400 capitalize">' + c.cat + '</span>' +
+              '<span class="sr-only">' + getStatusLabel(c.status) + '</span>' +
             '</div>' +
             '<p class="text-sm text-slate-600 dark:text-slate-400">' + escapeHtml(c.detail) + '</p>' +
-            (c.tip ? '<p class="text-xs text-slate-500 mt-1.5"><i class="fas fa-lightbulb text-amber-400 mr-1"></i>' + escapeHtml(c.tip) + '</p>' : '') +
+            (c.tip ? '<p class="text-xs text-slate-500 mt-1.5"><i class="fas fa-lightbulb text-amber-400 mr-1" aria-hidden="true"></i>' + escapeHtml(c.tip) + '</p>' : '') +
             (c.value ? '<p class="text-xs font-mono text-slate-400 mt-1.5 bg-slate-100 dark:bg-slate-800/50 px-2 py-1 rounded truncate">' + escapeHtml(c.value) + '</p>' : '') +
           '</div>' +
         '</div>' +
@@ -367,7 +376,7 @@
     }
     var html = '';
     findings.forEach(function(f) {
-      html += '<div class="flex items-start gap-3 py-2 border-b border-slate-100 dark:border-slate-800/50 last:border-0">' +
+      html += '<div class="flex items-start gap-3 py-2 border-b border-slate-100 dark:border-slate-800/50 last:border-0" role="listitem">' +
         '<span class="text-sm text-slate-500 flex-shrink-0 w-36">' + escapeHtml(f.label) + '</span>' +
         '<span class="text-sm font-mono text-slate-700 dark:text-slate-300 break-all">' + escapeHtml(f.value) + '</span>' +
       '</div>';
@@ -540,9 +549,11 @@
         document.querySelectorAll('.cat-filter').forEach(function(b) {
           b.classList.remove('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
           b.classList.add('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+          b.setAttribute('aria-pressed', 'false');
         });
         this.classList.add('active','border-emerald-500','bg-emerald-500/10','text-emerald-600','dark:text-emerald-400');
         this.classList.remove('border-slate-200','dark:border-slate-700','text-slate-600','dark:text-slate-400');
+        this.setAttribute('aria-pressed', 'true');
         currentFilter = this.getAttribute('data-cat');
         if (lastReport) renderChecks(lastReport.checks);
       });
@@ -565,26 +576,57 @@
       ta.value = text;
       ta.style.position = 'fixed';
       ta.style.left = '-9999px';
+      ta.setAttribute('aria-hidden', 'true');
       document.body.appendChild(ta);
       ta.select();
       try { document.execCommand('copy'); showToast('Report copied!', 'success'); }
       catch (e) { showToast('Failed to copy', 'error'); }
       document.body.removeChild(ta);
     }
+  }
 
-    // FAQ toggles
-    document.querySelectorAll('.faq-toggle').forEach(function(btn) {
-      btn.addEventListener('click', function() {
+  /* ========== FAQ TOGGLES ========== */
+  function initFaqToggles() {
+    var faqToggles = document.querySelectorAll('.faq-toggle');
+    if (faqToggles.length === 0) return;
+
+    faqToggles.forEach(function (toggle) {
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
         var content = this.nextElementSibling;
         var icon = this.querySelector('i');
-        var isOpen = !content.classList.contains('hidden');
-        document.querySelectorAll('.faq-toggle').forEach(function(b) {
-          b.nextElementSibling.classList.add('hidden');
-          b.querySelector('i').style.transform = 'rotate(0deg)';
+        if (!content) return;
+
+        var isHidden = content.classList.contains('hidden');
+        
+        // Close all other FAQ items
+        document.querySelectorAll('.faq-toggle').forEach(function (other) {
+          if (other !== toggle) {
+            var otherContent = other.nextElementSibling;
+            other.setAttribute('aria-expanded', 'false');
+            if (otherContent) {
+              otherContent.classList.add('hidden');
+              otherContent.style.maxHeight = '';
+            }
+            var otherIcon = other.querySelector('i');
+            if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+          }
         });
-        if (!isOpen) {
+
+        // Toggle current item
+        if (isHidden) {
           content.classList.remove('hidden');
+          content.style.maxHeight = content.scrollHeight + 'px';
           icon.style.transform = 'rotate(180deg)';
+          this.setAttribute('aria-expanded', 'true');
+        } else {
+          content.style.maxHeight = '0px';
+          icon.style.transform = 'rotate(0deg)';
+          this.setAttribute('aria-expanded', 'false');
+          setTimeout(function () {
+            content.classList.add('hidden');
+            content.style.maxHeight = '';
+          }, 300);
         }
       });
     });
@@ -593,6 +635,7 @@
   /* ========== INIT ========== */
   function init() {
     bindEvents();
+    initFaqToggles();
   }
 
   if (document.readyState === 'loading') {
@@ -600,39 +643,5 @@
   } else {
     init();
   }
-
-    // ─── FAQ Toggle (self-contained, works independently of enhancements.js) ───
-  setTimeout(function initFaqToggles() {
-    var faqToggles = document.querySelectorAll('.faq-toggle');
-    if (faqToggles.length === 0) {
-      setTimeout(initFaqToggles, 100);
-      return;
-    }
-
-    faqToggles.forEach(function (toggle) {
-      var clone = toggle.cloneNode(true);
-      toggle.parentNode.replaceChild(clone, toggle);
-      clone.addEventListener('click', function (e) {
-        e.preventDefault();
-        var content = this.nextElementSibling;
-        var icon = this.querySelector('i');
-        if (!content) return;
-
-        var isHidden = content.classList.contains('hidden');
-        if (isHidden) {
-          content.classList.remove('hidden');
-          content.style.maxHeight = content.scrollHeight + 'px';
-          icon.style.transform = 'rotate(180deg)';
-        } else {
-          content.style.maxHeight = '0px';
-          icon.style.transform = 'rotate(0deg)';
-          setTimeout(function () {
-            content.classList.add('hidden');
-            content.style.maxHeight = '';
-          }, 300);
-        }
-      });
-    });
-  }, 50);
 
 })();
