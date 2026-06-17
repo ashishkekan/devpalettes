@@ -1,22 +1,9 @@
+/* animations.css */
 /**
  * Visual Enhancement Styles
  * Devpalettes.com
- * Contains: Blobs, Particles, Spectrum Line, Scroll Animations, Shimmer Effects
+ * Contains: Blobs, Spectrum Line, Scroll Animations, Shimmer Effects
  */
-
-/* --- Hero Visualizer Canvas --- */
-#hero-visualizer {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.6;
-  pointer-events: none;
-}
-.dark #hero-visualizer {
-  opacity: 0.4;
-}
 
 /* --- Floating Gradient Blobs --- */
 .gradient-blob {
@@ -88,27 +75,6 @@
   100% { background-position: 200% 50%; }
 }
 
-/* --- Floating Particles --- */
-#particles-container {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 2;
-}
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  animation: particleFloat linear infinite;
-}
-@keyframes particleFloat {
-  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
-}
-
 /* --- Scroll Reveal Animations --- */
 .animate-on-scroll {
   opacity: 0;
@@ -131,9 +97,12 @@
   inset: 0;
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
   transform: translateX(-100%);
-  animation: shimmerEffect 3s ease-in-out infinite;
+  animation: none;
   pointer-events: none;
   z-index: 10;
+}
+.shimmer-card:hover::before {
+  animation: shimmerEffect 1s ease;
 }
 @keyframes shimmerEffect {
   0% { transform: translateX(-100%); }
@@ -167,7 +136,7 @@
 
 /* --- Responsive & Reduced Motion --- */
 @media (prefers-reduced-motion: reduce) {
-  .gradient-blob, .spectrum-line, .particle, .shimmer-card::before, .btn-glow::before {
+  .gradient-blob, .spectrum-line, .shimmer-card::before, .btn-glow::before {
     animation: none !important;
   }
   .animate-on-scroll {
@@ -183,5 +152,8 @@
   }
   .blob-1 { width: 250px; height: 250px; }
   .blob-2 { width: 200px; height: 200px; }
-  .blob-3 { width: 180px; height: 180px; }
+  .blob-3,
+  .blob-4 {
+    display: none;
+  }
 }

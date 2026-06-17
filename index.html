@@ -37,6 +37,7 @@
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Color+Emoji&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Color+Emoji&display=swap"></noscript>
   
+  <!-- TODO: Replace Font Awesome icon library with inline SVGs for better performance -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
@@ -175,9 +176,7 @@
   </style>
 
   <style>
-    #hero-visualizer{position:absolute;inset:0;width:100%;height:100%;z-index:0;opacity:.6;pointer-events:none}
-    .dark #hero-visualizer{opacity:.4}
-    .gradient-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;pointer-events:none;z-index:1;will-change:transform}
+    .gradient-blob{position:absolute;border-radius:50%;filter:blur(50px);opacity:.5;pointer-events:none;z-index:1;will-change:transform}
     .dark .gradient-blob{opacity:.3}
     .blob-1{width:400px;height:400px;background:linear-gradient(135deg,#10b981,#14b8a6);top:-100px;left:-100px;animation:blobFloat1 25s ease-in-out infinite}
     .blob-2{width:350px;height:350px;background:linear-gradient(135deg,#f97316,#ec4899);top:20%;right:-80px;animation:blobFloat2 28s ease-in-out infinite}
@@ -187,7 +186,7 @@
     @keyframes blobFloat2{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}33%{transform:translate(-80px,80px) scale(1.15) rotate(-60deg)}66%{transform:translate(-40px,-40px) scale(.85) rotate(-120deg)}}
     @keyframes blobFloat3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(80px,-60px) scale(1.2)}}
     @keyframes blobFloat4{0%,100%{transform:translate(0,0) scale(1) rotate(0deg)}25%{transform:translate(-60px,-40px) scale(1.1) rotate(30deg)}50%{transform:translate(30px,-80px) scale(.95) rotate(60deg)}75%{transform:translate(60px,-20px) scale(1.05) rotate(90deg)}}
-    .spectrum-line{height:4px;border-radius:2px;background:linear-gradient(90deg,#10b981 0%,#06b6d4 16%,#8b5cf6 32%,#ec4899 48%,#f97316 64%,#fbbf24 80%,#10b981 100%);background-size:200% 100%;animation:spectrumShift 4s linear infinite;box-shadow:0 0 20px rgba(16,185,129,.5),0 0 40px rgba(6,182,212,.3),0 0 60px rgba(139,92,246,.2);position:relative}
+    .spectrum-line{height:4px;border-radius:2px;background:linear-gradient(90deg,#10b981 0%,#06b6d4 16%,#8b5cf6 32%,#ec4899 48%,#f97316 64%,#fbbf24 80%,#10b981 100%);background-size:200% 100%;animation:spectrumShift 12s linear infinite;box-shadow:0 0 20px rgba(16,185,129,.5),0 0 40px rgba(6,182,212,.3),0 0 60px rgba(139,92,246,.2);position:relative}
     .spectrum-line::after{content:'';position:absolute;inset:-2px;background:inherit;filter:blur(8px);opacity:.6;border-radius:inherit}
     @keyframes spectrumShift{0%{background-position:0% 50%}100%{background-position:200% 50%}}
     .palette-block-enhanced{position:relative;transition:all .4s cubic-bezier(.34,1.56,.64,1);overflow:hidden}
@@ -204,19 +203,17 @@
     .palette-generating .palette-block-enhanced:nth-child(4){animation-delay:.15s}
     .palette-generating .palette-block-enhanced:nth-child(5){animation-delay:.2s}
     @keyframes paletteSlideUp{0%{opacity:0;transform:translateY(40px) scale(.9)}60%{opacity:1;transform:translateY(-10px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
-    #particles-container{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:2}
-    .particle{position:absolute;border-radius:50%;pointer-events:none;animation:particleFloat linear infinite}
-    @keyframes particleFloat{0%{transform:translateY(100vh) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-100vh) rotate(360deg);opacity:0}}
     .animate-on-scroll{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.34,1.56,.64,1)}
     .animate-on-scroll.animate-in{opacity:1;transform:translateY(0)}
     .shimmer-card{position:relative;overflow:hidden}
-    .shimmer-card::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.08) 50%,transparent 100%);transform:translateX(-100%);animation:shimmerEffect 3s ease-in-out infinite;pointer-events:none;z-index:10}
+    .shimmer-card::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.08) 50%,transparent 100%);transform:translateX(-100%);animation:none;pointer-events:none;z-index:10}
+    .shimmer-card:hover::before{animation:shimmerEffect 1s ease}
     @keyframes shimmerEffect{0%{transform:translateX(-100%)}50%,100%{transform:translateX(100%)}}
     .btn-glow::before{content:'';position:absolute;inset:-2px;background:linear-gradient(135deg,#10b981,#14b8a6,#10b981);border-radius:inherit;z-index:-1;opacity:0;transition:opacity .3s ease;filter:blur(10px)}
     .btn-glow:hover::before{opacity:.7;animation:glowPulse 2s ease-in-out infinite}
     @keyframes glowPulse{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.8;transform:scale(1.05)}}
-    @media(prefers-reduced-motion:reduce){.gradient-blob,.spectrum-line,.particle,.shimmer-card::before,.btn-glow::before{animation:none!important}.animate-on-scroll{opacity:1;transform:none}.palette-block-enhanced:hover{transform:none}}
-    @media(max-width:768px){.gradient-blob{filter:blur(60px);opacity:.4}.blob-1{width:250px;height:250px}.blob-2{width:200px;height:200px}.blob-3{width:180px;height:180px}.blob-4{width:150px;height:150px}.spectrum-line{height:3px}.palette-block-enhanced:hover{transform:scale(1.02)}}
+    @media(prefers-reduced-motion:reduce){.gradient-blob,.spectrum-line,.shimmer-card::before,.btn-glow::before{animation:none!important}.animate-on-scroll{opacity:1;transform:none}.palette-block-enhanced:hover{transform:none}}
+    @media(max-width:768px){.gradient-blob{filter:blur(35px);opacity:.25}.blob-1{width:250px;height:250px}.blob-2{width:200px;height:200px}.blob-3,.blob-4{display:none}.spectrum-line{height:3px}.palette-block-enhanced:hover{transform:scale(1.02)}}
   </style>
 
   <!-- Fallback if JavaScript is completely disabled -->
@@ -235,17 +232,16 @@
 
   <main id="main-content">
   <section class="relative min-h-screen flex items-center pb-[13.5rem] md:pt-10 md:pb-0 overflow-hidden gradient-padding" aria-label="Hero Introduction">
-    <canvas id="hero-visualizer" aria-hidden="true"></canvas>
     <div class="gradient-blob blob-1" aria-hidden="true"></div>
     <div class="gradient-blob blob-2" aria-hidden="true"></div>
     <div class="gradient-blob blob-3" aria-hidden="true"></div>
     <div class="gradient-blob blob-4" aria-hidden="true"></div>
-    <div id="particles-container" aria-hidden="true"></div>
     <div class="hero-pattern" aria-hidden="true"></div>
     <div class="grid-pattern" aria-hidden="true"></div>
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <div class="text-center max-w-7xl mx-auto">
         <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-700 dark:text-emerald-400 text-sm font-medium mb-8 animate-on-scroll">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fas fa-sparkles" aria-hidden="true"></i>
           <span>Trusted by 50,000+ designers</span>
         </div>
@@ -261,24 +257,29 @@
         </p>
         <div class="d-flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-on-scroll">
           <a href="#generator" class="btn-primary btn-glow w-full sm:w-auto justify-center">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-palette" aria-hidden="true"></i>
             Generate Palette
           </a>
           <a href="#explore" class="btn-secondary w-full sm:w-auto justify-center">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-compass" aria-hidden="true"></i>
             Explore Trends
           </a>
         </div>
         <div class="flex flex-wrap items-center justify-center gap-6 text-slate-400 text-sm animate-on-scroll">
           <div class="flex items-center gap-2">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
             <span>100% Free</span>
           </div>
           <div class="flex items-center gap-2">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
             <span>No Sign-up Required</span>
           </div>
           <div class="flex items-center gap-2">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
             <span>Export to CSS/JSON</span>
           </div>
@@ -305,14 +306,17 @@
         <div id="main-palette" class="grid grid-cols-5 gap-0 rounded-2xl overflow-hidden shadow-2xl mb-6" role="group" aria-label="Generated Palette" style="min-height:300px;"></div>
         <div class="flex flex-wrap items-center justify-center gap-4 animate-on-scroll">
           <button id="generate-btn" class="btn-primary btn-glow" aria-label="Generate new color palette">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-sync-alt" aria-hidden="true"></i>
             Generate Palette
           </button>
           <button id="export-css-btn" class="btn-secondary" aria-label="Export palette as CSS">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-code" aria-hidden="true"></i>
             Export CSS
           </button>
           <a href="/palettes/" class="btn-secondary" aria-label="Open full palette editor">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-expand" aria-hidden="true"></i>
             Open Editor
           </a>
@@ -339,6 +343,7 @@
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Earthy Sunset</h3>
             <div class="flex items-center gap-2 text-slate-500 text-sm">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-heart" aria-hidden="true"></i>
               <span>1.2k</span>
             </div>
@@ -355,6 +360,7 @@
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Vibrant Retro</h3>
             <div class="flex items-center gap-2 text-slate-500 text-sm">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-heart" aria-hidden="true"></i>
               <span>980</span>
             </div>
@@ -371,6 +377,7 @@
           <div class="flex justify-between items-center">
             <h3 class="font-semibold">Forest Glow</h3>
             <div class="flex items-center gap-2 text-slate-500 text-sm">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-heart" aria-hidden="true"></i>
               <span>2.1k</span>
             </div>
@@ -379,6 +386,7 @@
       </div>
       <div class="text-center mt-8 animate-on-scroll">
         <a href="/pastel-color-palettes/" class="btn-secondary">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fas fa-th-large" aria-hidden="true"></i>
           Browse Palettes
         </a>
@@ -397,23 +405,28 @@
           </p>
           <ul class="space-y-3 mb-8">
             <li class="flex items-center gap-3">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
               <span>Linear &amp; Radial gradients</span>
             </li>
             <li class="flex items-center gap-3">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
               <span>Unlimited color stops</span>
             </li>
             <li class="flex items-center gap-3">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
               <span>Precise angle control</span>
             </li>
             <li class="flex items-center gap-3">
+              <!-- TODO: Replace Font Awesome icon with SVG -->
               <i class="fas fa-check-circle text-emerald-500" aria-hidden="true"></i>
               <span>One-click CSS export</span>
             </li>
           </ul>
           <a href="/gradient/" class="btn-coral btn-glow">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-wand-magic-sparkles" aria-hidden="true"></i>
             Create Gradient
           </a>
@@ -437,6 +450,7 @@
       <div class="grid md:grid-cols-3 gap-8">
         <div class="glass-card p-8 text-center animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-universal-access text-3xl text-emerald-500"></i>
           </div>
           <h3 class="text-xl font-bold mb-3">Accessibility First</h3>
@@ -447,6 +461,7 @@
         </div>
         <div class="glass-card p-8 text-center animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-code text-3xl text-orange-500"></i>
           </div>
           <h3 class="text-xl font-bold mb-3">Developer Ready</h3>
@@ -457,6 +472,7 @@
         </div>
         <div class="glass-card p-8 text-center animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-image text-3xl text-blue-500"></i>
           </div>
           <h3 class="text-xl font-bold mb-3">Image Picker</h3>
@@ -478,6 +494,7 @@
       <div class="grid md:grid-cols-3 gap-8">
         <a href="/blog/color-psychology/" class="glass-card shimmer-card overflow-hidden group block animate-on-scroll">
           <div class="h-48 bg-gradient-to-br from-emerald-400 to-cyan-500 relative flex items-center justify-center" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-brain text-white/20 text-6xl"></i>
           </div>
           <div class="p-6">
@@ -489,6 +506,7 @@
         </a>
         <a href="/blog/best-color-combinations/" class="glass-card shimmer-card overflow-hidden group block animate-on-scroll">
           <div class="h-48 bg-gradient-to-br from-orange-400 to-pink-500 relative flex items-center justify-center" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-eye text-white/20 text-6xl"></i>
           </div>
           <div class="p-6">
@@ -500,6 +518,7 @@
         </a>
         <a href="/blog/color-palettes-in-design/" class="glass-card shimmer-card overflow-hidden group block animate-on-scroll">
           <div class="h-48 bg-gradient-to-br from-emerald-400 to-teal-500 relative flex items-center justify-center" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-palette text-white/20 text-6xl"></i>
           </div>
           <div class="p-6">
@@ -512,6 +531,7 @@
       </div>
       <div class="text-center mt-10 animate-on-scroll">
         <a href="/blog/" class="btn-secondary">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fas fa-newspaper" aria-hidden="true"></i> View All Articles
         </a>
       </div>
@@ -527,6 +547,7 @@
       <div class="grid md:grid-cols-3 gap-8">
         <a href="/palettes/" class="glass-card shimmer-card p-8 text-center group block animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-emerald-500/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-palette text-3xl text-emerald-500"></i>
           </div>
           <h3 class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">Color Palette Creator</h3>
@@ -535,6 +556,7 @@
         </a>
         <a href="/gradient/" class="glass-card shimmer-card p-8 text-center group block animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-orange-500/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-wand-magic-sparkles text-3xl text-orange-500"></i>
           </div>
           <h3 class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">Gradient Maker</h3>
@@ -543,6 +565,7 @@
         </a>
         <a href="/converter/" class="glass-card shimmer-card p-8 text-center group block animate-on-scroll">
           <div class="w-16 h-16 rounded-2xl bg-blue-500/10 flex items-center justify-center mx-auto mb-6" aria-hidden="true">
+            <!-- TODO: Replace Font Awesome icon with SVG -->
             <i class="fas fa-code text-3xl text-blue-500"></i>
           </div>
           <h3 class="text-xl font-bold mb-3 group-hover:text-emerald-500 transition-colors">Color Converter</h3>
@@ -559,21 +582,27 @@
       <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
       <div class="flex items-center justify-center gap-3 flex-wrap">
         <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com&text=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter (opens in new window)">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
         </a>
         <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook (opens in new window)">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
         </a>
         <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn (opens in new window)">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
         </a>
         <a href="https://wa.me/?text=Check%20out%20Devpalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp (opens in new window)">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
         </a>
         <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com&description=Create%20beautiful%20color%20palettes%20instantly%20with%20Devpalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest (opens in new window)">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
         </a>
         <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+          <!-- TODO: Replace Font Awesome icon with SVG -->
           <i class="fas fa-link" aria-hidden="true"></i> Copy Link
         </button>
       </div>
@@ -695,6 +724,7 @@
         Start generating beautiful color palettes in seconds. No sign-up required.
       </p>
       <a href="/palettes/" class="btn-primary btn-glow inline-flex">
+        <!-- TODO: Replace Font Awesome icon with SVG -->
         <i class="fas fa-palette" aria-hidden="true"></i>
         Start Creating for Free
       </a>
@@ -802,7 +832,11 @@
       }, 600);
     }
 
-    refreshPalettes();
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(refreshPalettes);
+    } else {
+      setTimeout(refreshPalettes, 1000);
+    }
 
     var generateBtn = document.getElementById('generate-btn');
     if (generateBtn) generateBtn.addEventListener('click', refreshPalettes);
@@ -837,12 +871,6 @@
 
     rIC(function initVisualEffects() {
       initScrollAnimations();
-      if (!prefersReducedMotion && !isMobile) {
-        rIC(initHeroVisualizer);
-        rIC(initParticles);
-        rIC(initSpectrumEnhancement);
-        rIC(initParallaxBlobs);
-      }
       initButtonEffects();
       initGradientEffects();
     });
@@ -860,107 +888,6 @@
         });
       }, { rootMargin: '0px 0px -10px 0px', threshold: 0.05 });
       document.querySelectorAll('.animate-on-scroll').forEach(function(el) { observer.observe(el); });
-    }
-
-    function initHeroVisualizer() {
-      var canvas = document.getElementById('hero-visualizer');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var animationId = null;
-      var time = 0;
-      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-      resize();
-      var resizeTimer;
-      window.addEventListener('resize', function() { clearTimeout(resizeTimer); resizeTimer = setTimeout(resize, 150); });
-      var waves = [
-        { y: 0.3, amplitude: 50, frequency: 0.01, speed: 0.02, color: 'rgba(16,185,129,0.15)' },
-        { y: 0.5, amplitude: 40, frequency: 0.015, speed: 0.025, color: 'rgba(6,182,212,0.12)' },
-        { y: 0.7, amplitude: 60, frequency: 0.008, speed: 0.018, color: 'rgba(139,92,246,0.1)' },
-        { y: 0.4, amplitude: 35, frequency: 0.012, speed: 0.022, color: 'rgba(249,115,22,0.08)' },
-        { y: 0.6, amplitude: 45, frequency: 0.01, speed: 0.028, color: 'rgba(236,72,153,0.1)' }
-      ];
-      function drawWave(wave, t) {
-        ctx.beginPath();
-        ctx.moveTo(0, canvas.height);
-        for (var x = 0; x <= canvas.width; x += 4) {
-          var y = canvas.height * wave.y + Math.sin(x * wave.frequency + t * wave.speed) * wave.amplitude + Math.sin(x * wave.frequency * 0.5 + t * wave.speed * 1.5) * wave.amplitude * 0.5;
-          ctx.lineTo(x, y);
-        }
-        ctx.lineTo(canvas.width, canvas.height);
-        ctx.closePath();
-        ctx.fillStyle = wave.color;
-        ctx.fill();
-      }
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        for (var i = 0; i < waves.length; i++) drawWave(waves[i], time);
-        time++;
-        animationId = requestAnimationFrame(animate);
-      }
-      animate();
-
-      var heroSection = document.querySelector('section[aria-label="Hero Introduction"]');
-      if (heroSection) {
-        var heroObserver = new IntersectionObserver(function(entries) {
-          if (entries[0].isIntersecting) {
-            if (!animationId) animate();
-          } else {
-            if (animationId) { cancelAnimationFrame(animationId); animationId = null; }
-          }
-        }, { threshold: 0 });
-        heroObserver.observe(heroSection);
-      }
-
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) { if (animationId) cancelAnimationFrame(animationId); animationId = null; }
-        else if (!animationId && heroSection && heroObserver) {} 
-      });
-    }
-
-    function initParticles() {
-      var container = document.getElementById('particles-container');
-      if (!container) return;
-      var colors = ['#10b981','#06b6d4','#8b5cf6','#f97316','#ec4899','#fbbf24'];
-      var count = Math.min(20, Math.floor(window.innerWidth / 80));
-      for (var i = 0; i < count; i++) {
-        var p = document.createElement('div');
-        p.className = 'particle';
-        var size = Math.random() * 5 + 3;
-        var color = colors[Math.floor(Math.random() * colors.length)];
-        p.style.cssText = 'width:' + size + 'px;height:' + size + 'px;background:' + color + ';left:' + (Math.random() * 100) + '%;animation-duration:' + (Math.random() * 15 + 20) + 's;animation-delay:' + (Math.random() * 10) + 's;opacity:' + (Math.random() * 0.5 + 0.3) + ';box-shadow:0 0 ' + (size * 2) + 'px ' + color;
-        container.appendChild(p);
-      }
-    }
-
-    function initSpectrumEnhancement() {
-      var sl = document.querySelector('.spectrum-line');
-      if (!sl) return;
-      document.addEventListener('mousemove', function(e) {
-        var rect = sl.getBoundingClientRect();
-        var x = (e.clientX - rect.left) / rect.width;
-        if (x >= 0 && x <= 1) {
-          var hue = x * 360;
-          sl.style.boxShadow = '0 0 20px hsla(' + hue + ',70%,50%,0.5),0 0 40px hsla(' + (hue + 30) + ',70%,50%,0.3),0 0 60px hsla(' + (hue + 60) + ',70%,50%,0.2)';
-        }
-      });
-    }
-
-    function initParallaxBlobs() {
-      var blobs = document.querySelectorAll('.gradient-blob');
-      var ticking = false;
-      document.addEventListener('mousemove', function(e) {
-        if (ticking) return;
-        ticking = true;
-        requestAnimationFrame(function() {
-          var x = (e.clientX / window.innerWidth - 0.5) * 20;
-          var y = (e.clientY / window.innerHeight - 0.5) * 20;
-          for (var i = 0; i < blobs.length; i++) {
-            var factor = (i + 1) * 0.5;
-            blobs[i].style.transform = 'translate(' + (x * factor) + 'px,' + (y * factor) + 'px)';
-          }
-          ticking = false;
-        });
-      });
     }
 
     function initButtonEffects() {
