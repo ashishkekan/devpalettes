@@ -55,32 +55,6 @@
   }
 
   /**
-   * Floating Particles
-   */
-  function initParticles() {
-    const container = document.getElementById('particles-container');
-    if (!container || prefersReducedMotion) return;
-
-    const colors = ['#10b981', '#06b6d4', '#8b5cf6', '#f97316', '#ec4899'];
-    
-    for (let i = 0; i < 15; i++) {
-      const p = document.createElement('div');
-      p.className = 'particle';
-      const size = Math.random() * 6 + 3;
-      p.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        background: ${colors[i % 5]};
-        left: ${Math.random() * 100}%;
-        animation-duration: ${Math.random() * 15 + 20}s;
-        animation-delay: ${Math.random() * 10}s;
-        opacity: ${Math.random() * 0.5 + 0.3};
-      `;
-      container.appendChild(p);
-    }
-  }
-
-  /**
    * Scroll Reveal Animations
    */
   function initScrollAnimations() {
