@@ -106,7 +106,6 @@
     .spectrum-line { height: 4px; border-radius: 2px; background: linear-gradient(90deg, #10b981 0%, #06b6d4 16%, #8b5cf6 32%, #ec4899 48%, #f97316 64%, #fbbf24 80%, #10b981 100%); background-size: 200% 100%; animation: spectrumShift 4s linear infinite; box-shadow: 0 0 20px rgba(16, 185, 129, 0.5), 0 0 40px rgba(6, 182, 212, 0.3); position: relative; }
     @keyframes spectrumShift { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
     
-    #particles-container { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 2; }
     .particle { position: absolute; border-radius: 50%; pointer-events: none; animation: particleFloat linear infinite; }
     @keyframes particleFloat { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; } }
     
@@ -127,11 +126,11 @@
   
   <main class="pt-20 pb-12 min-h-screen relative overflow-hidden">
     <!-- Visualizer Background -->
-    <canvas id="hero-visualizer"></canvas>
+    
     <div class="gradient-blob blob-1"></div>
     <div class="gradient-blob blob-2"></div>
     <div class="gradient-blob blob-3"></div>
-    <div id="particles-container"></div>
+    
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       
