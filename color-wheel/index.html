@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Color Wheel Tool – Color Harmony Generator</title>
-  <meta name="description" content="Free online color wheel tool to generate color harmonies instantly. Create complementary, triadic, analogous, and monochromatic schemes with HEX, RGB, HSL values.">
+  <title>Interactive Color Wheel – Free Harmony Tool</title>
+  <meta name="description" content="Generate color harmonies instantly with our free interactive color wheel. Create complementary, triadic, analogous schemes with HEX, RGB, HSL values.">
   <meta name="author" content="Devpalettes">
   <link rel="canonical" href="https://devpalettes.com/color-wheel/">
  
-  <meta property="og:title" content="Free Color Wheel Tool – Color Harmony Generator">
-  <meta property="og:description" content="Free online color wheel tool to generate color harmonies instantly. Create complementary, triadic, analogous, and monochromatic schemes.">
+  <meta property="og:title" content="Interactive Color Wheel – Free Harmony Tool">
+  <meta property="og:description" content="Generate color harmonies instantly with our free interactive color wheel. Create complementary, triadic, analogous schemes with HEX, RGB, HSL values.">
   <meta property="og:url" content="https://devpalettes.com/color-wheel/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/color-wheel-tool-preview.png">
+  <meta property="og:site_name" content="DevPalettes">
+  <meta property="og:locale" content="en_US">
   
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free Color Wheel Tool – Color Harmony Generator">
-  <meta name="twitter:description" content="Free online color wheel tool to generate color harmonies instantly. Create complementary, triadic, analogous, and monochromatic schemes.">
+  <meta name="twitter:title" content="Interactive Color Wheel – Free Harmony Tool">
+  <meta name="twitter:description" content="Generate color harmonies instantly with our free interactive color wheel. Create complementary, triadic, analogous schemes.">
   <meta name="twitter:image" content="https://devpalettes.com/images/color-wheel-tool-preview.png">
 
   <script type="application/ld+json">
@@ -29,6 +31,7 @@
     "url": "https://devpalettes.com/color-wheel/",
     "applicationCategory": "DesignApplication",
     "operatingSystem": "Any",
+    "browserRequirements": "Requires JavaScript and Canvas API support",
     "creator": {
       "@type": "Organization",
       "name": "Devpalettes",
@@ -56,7 +59,7 @@
       {
         "@type": "ListItem",
         "position": 2,
-        "name": "Color Wheel Tool",
+        "name": "Color Wheel",
         "item": "https://devpalettes.com/color-wheel/"
       }
     ]
@@ -109,7 +112,7 @@
         "name": "What is a color wheel?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A color wheel is a circular arrangement of colors that shows the relationships between primary, secondary, and tertiary colors. It is the foundation of color theory and helps designers understand how colors relate to each other, making it easier to create harmonious color combinations for any design project."
+          "text": "A color wheel is a circular arrangement of colors that shows the relationships between primary, secondary, and tertiary colors. It is the foundation of color theory and helps designers understand how colors relate to each other, making it easier to create harmonious color combinations."
         }
       },
       {
@@ -125,7 +128,7 @@
         "name": "How to choose color combinations?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Start by picking a base color on the color wheel, then apply a harmony rule like complementary for high contrast, analogous for a calm feel, or triadic for balanced vibrancy. Use an online color wheel tool to preview combinations instantly, then fine-tune saturation and lightness to match your project's mood."
+          "text": "Start by picking a base color on the color wheel, then apply a harmony rule like complementary for high contrast, analogous for a calm feel, or triadic for balanced vibrancy. Preview combinations instantly, then fine-tune saturation and lightness to match your project's mood."
         }
       },
       {
@@ -133,7 +136,7 @@
         "name": "What is the difference between complementary and analogous colors?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Complementary colors sit directly opposite each other on the color wheel (like blue and orange), creating high contrast and visual tension. Analogous colors sit next to each other (like blue, blue-green, and green), creating a smooth, cohesive, and calming look."
+          "text": "Complementary colors sit directly opposite each other on the color wheel (like blue and orange), creating high contrast. Analogous colors sit next to each other (like blue, blue-green, green), creating a smooth, cohesive, and calming look."
         }
       },
       {
@@ -141,10 +144,102 @@
         "name": "Is this color wheel tool free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, the Devpalettes color wheel tool is completely free to use. You can drag the marker, select any harmony rule, adjust lightness, and copy the generated HEX codes directly into your CSS or design project."
+          "text": "Yes, the Devpalettes color wheel tool is completely free. You can drag the marker, select any harmony rule, adjust lightness, and copy the generated HEX codes directly into your CSS or design project — no signup required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What harmony rule should I use for a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For most websites, analogous or monochromatic harmonies work best for backgrounds and layout elements because they create cohesion. Use complementary for your call-to-action button to make it pop. Triadic works well for brands that need energy. Compound (split-complementary) is a safe middle ground for professional interfaces."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use arrow keys on the color wheel?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. When the color wheel canvas is focused, use left and right arrow keys to adjust hue and up and down arrows to adjust saturation. This makes precise color selection possible without a mouse or touch screen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does the lightness slider do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The lightness slider adjusts the brightness of every color in your scheme simultaneously. Moving it left makes all colors darker, moving it right makes them lighter. This lets you evaluate the same harmony at different brightness levels without re-selecting colors on the wheel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is compound (split-complementary) harmony?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Compound harmony uses a base color plus the two colors adjacent to its direct complement. For example, if your base is blue (240°), its complement is orange (60°), and the compound colors are yellow-orange (30°) and red-orange (90°). This gives you contrast with less visual tension than a straight complementary pair."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I convert wheel colors to CSS variables?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Copy the HEX codes from the scheme panel and paste them into your CSS as custom properties. For example: --color-primary: #2A9D8F; --color-accent: #E76F51. Use the DevPalettes color converter to translate any value to RGB or HSL if needed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does the wheel work on mobile devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The wheel supports touch drag on iOS and Android. The canvas uses touch-action: none to prevent scroll interference while dragging, and the harmony buttons and lightness slider are sized for touch targets."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my exported scheme look different on another screen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Color appearance varies between screens due to different color profiles, gamma curves, and backlight technologies. A color that looks vivid on a calibrated monitor may appear washed out on an uncalibrated laptop. This is a display hardware issue, not a color wheel issue — the HEX values are mathematically identical."
         }
       }
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Devpalettes",
+    "url": "https://devpalettes.com",
+    "logo": "https://devpalettes.com/images/devpalettes.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Ashish Kekaan",
+      "url": "https://devpalettes.com/about/"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Support",
+      "email": "contact@devpalettes.com",
+      "url": "https://devpalettes.com/contact/",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Devpalettes",
+    "url": "https://devpalettes.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://devpalettes.com/tools/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
   
@@ -252,73 +347,21 @@
     }
     .copy-btn:hover { background: rgba(255,255,255,0.2); }
     .copy-btn:focus-visible { outline: 2px solid #10b981; outline-offset: 2px; }
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .dark .code-block {
+      border: 1px solid #1e293b;
+    }
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Interactive Color Wheel",
-    "description": "Free online color wheel tool to generate color harmonies instantly. Create complementary, triadic, analogous, and monochromatic schemes with HEX, RGB, HSL values.",
-    "url": "https://devpalettes.com/color-wheel/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Interactive Color Wheel",
-        "item": "https://devpalettes.com/color-wheel/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
 
@@ -407,7 +450,6 @@
           <div class="glass-card p-6 shimmer-card" aria-labelledby="scheme-heading">
             <h3 id="scheme-heading" class="font-bold mb-4 text-lg">Color Scheme</h3>
             <div id="scheme-output" class="space-y-2 max-h-80 overflow-y-auto" role="list" aria-label="Generated color scheme">
-               <!-- Generated by JS -->
             </div>
           </div>
           
@@ -419,7 +461,6 @@
         
       </div>
 
-      <!-- ARIA live region for color change announcements -->
       <div id="wheel-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
       <section class="glass-card p-8 mt-12 shimmer-card" aria-labelledby="why-heading">
@@ -435,120 +476,451 @@
         </p>
       </section>
 
-      <section class="mt-16" aria-labelledby="guide-heading">
-        <div class="glass-card p-8 shimmer-card">
-          <div class="prose dark:prose-invert max-w-none">
-            <h2 id="guide-heading" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How the Color Wheel Organizes Color Relationships</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              A color wheel arranges primary colors (red, yellow, blue), secondary colors (green, orange, purple), and tertiary colors in a continuous spectrum around a circle. The position of any color on the wheel tells you everything about how it relates to every other color — which ones will contrast sharply, which will blend smoothly, and which will create tension. This geometric predictability is what makes the wheel useful: instead of relying on subjective taste, you follow spatial relationships that have been validated by centuries of art and design practice. If you need to <a href="/converter/" class="text-emerald-500 hover:underline">convert colors between HEX, RGB, and HSL formats</a> after picking them from the wheel, a dedicated converter tool keeps your workflow smooth.
+      <div class="seo-content space-y-12 mt-16">
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+            <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use a Color Wheel Instead of Guessing?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Picking colors by eye and hoping they work together is a gamble. You might get lucky, but more often you end up with combinations that feel "almost right" but not quite — a blue that clashes with a green, or an orange that fights with a red. The color wheel eliminates this guesswork by making the relationships between colors spatial and mathematical. If two colors are opposite on the wheel, they'll contrast. If they're adjacent, they'll blend. These aren't subjective opinions — they're geometric facts you can see and verify.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The wheel also solves a specific communication problem. When a client says "make it warmer," or "give it more energy," those are spatial descriptions on the wheel. Warmer means shift toward red/orange. More energy means increase saturation or switch to a triadic scheme. Being able to make those adjustments visually, in real time, while the client watches, turns ambiguous feedback into precise actions. That's something a <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">palette generator</a> can't do because it's random — the wheel is intentional.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Finally, the wheel teaches you color theory by doing. After using it for a few projects, you start to internalize where colors sit relative to each other. You'll know that blue-green is always adjacent to blue, that orange is always opposite blue, and that pulling toward the center desaturates. That intuition becomes a permanent design skill that transfers to every tool and project you touch.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="text-2xl font-bold mb-4">Key Features</h2>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Six harmony modes:</strong> Analogous, monochromatic, triadic, complementary, compound (split-complementary), and shades. Each produces a different type of color relationship suited to different design contexts — from calm and cohesive to bold and energetic.</li>
+               <li><strong>Two-axis selection:</strong> Horizontal position on the wheel controls hue (the color family). Distance from the center controls saturation (how vivid vs. muted). This gives you independent control over both dimensions without needing separate sliders.</li>
+               <li><strong>Global lightness slider:</strong> Adjusts brightness across the entire scheme simultaneously, so you can evaluate the same harmony at different lightness levels without re-picking colors.</li>
+               <li><strong>Keyboard navigation:</strong> Arrow keys move the marker — left/right for hue, up/down for saturation. This enables precise selection to the degree, which is difficult to achieve with mouse or touch alone.</li>
+               <li><strong>Triple-format output:</strong> Every color in the scheme shows HEX, RGB, and HSL. Copy any format with one click. The JSON export includes all three formats for every color in the scheme.</li>
+               <li><strong>Touch-friendly:</strong> The canvas uses touch-action: none to prevent scroll interference while dragging. Works on phones and tablets without a stylus.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-it-works-heading">
+            <h2 id="how-it-works-heading" class="text-2xl font-bold mb-4">How the Color Wheel Renders</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The wheel is drawn on an HTML5 Canvas element using HSL color space. For each pixel on the canvas, the tool calculates the angle from the center (which maps to hue: 0° at the top, going clockwise through 360°) and the distance from the center (which maps to saturation: 0% at the center, 100% at the edge). Lightness is held constant during rendering and controlled separately by the slider.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               When you click or drag on the canvas, the tool converts the click coordinates into polar coordinates (angle and radius), maps them to hue and saturation, converts those to RGB for the marker display, and then applies the selected harmony rule to calculate the matching colors. Each harmony rule is a simple mathematical operation on the hue value: complementary adds 180°, triadic adds 120° and 240°, analogous adds ±30°, and so on.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The harmony markers that appear on the wheel are rendered as additional circles at the calculated hue positions, using the same saturation and lightness as your base color. This lets you visually verify that the harmony is correctly positioned before copying the values.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="stepbystep-heading">
+            <h2 id="stepbystep-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide</h2>
+            <ol class="list-decimal list-outside space-y-3 text-slate-600 dark:text-slate-400 ml-5">
+               <li><strong>Select a base color:</strong> Click anywhere on the wheel or drag the marker. Horizontal position sets the hue family; distance from center sets saturation.</li>
+               <li><strong>Choose a harmony rule:</strong> Click one of the six mode buttons. The scheme panel updates instantly — you'll see the harmony colors appear both on the wheel and in the sidebar list.</li>
+               <li><strong>Adjust brightness:</strong> Drag the lightness slider to make the entire scheme lighter or darker. This doesn't change the hue or saturation — only the lightness applied to all colors equally.</li>
+               <li><strong>Fine-tune with arrow keys:</strong> Click the canvas to focus it, then use arrow keys for precise adjustments. Left/right changes hue by 1° per keypress. Up/down changes saturation.</li>
+               <li><strong>Copy individual colors:</strong> Click "Copy" next to any color in the scheme panel to grab its value in the primary display format.</li>
+               <li><strong>Export the full scheme:</strong> Click "Export Scheme" to download all colors as JSON with HEX, RGB, and HSL for each.</li>
+            </ol>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="examples-heading">
+            <h2 id="examples-heading" class="text-2xl font-bold mb-4">Real World Examples</h2>
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">Example 1: SaaS Dashboard with Triadic Scheme</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               You're building a dashboard and need distinct colors for three chart series. Select a blue on the wheel (around 210°), switch to triadic mode, and you instantly get blue, yellow, and red — three maximally distinct colors that are guaranteed to be visually separable in a chart. Copy the HEX codes into your charting library config.
+            </p>
+            <div class="code-block mb-6" role="img" aria-label="CSS variables from a triadic color wheel scheme">:root {
+  --chart-1: #3B82F6;  /* Blue — base color at 217° */
+  --chart-2: #F59E0B;  /* Yellow — triadic at 337° */
+  --chart-3: #EF4444;  /* Red — triadic at 97° */
+}</div>
+
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">Example 2: Restaurant Website with Analogous Scheme</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               A farm-to-table restaurant wants a warm, organic feel. Select an orange-amber hue (around 35°), switch to analogous mode, and you get a range from warm yellow through orange to red-orange. These colors naturally evoke food, warmth, and earthiness — no manual curation needed.
+            </p>
+            <div class="code-block mb-6" role="img" aria-label="CSS for an analogous warm color scheme">.hero {
+  background: linear-gradient(135deg, #FCD34D, #F97316, #EA580C);
+  /* Yellow → Orange → Red-Orange — analogous from wheel */
+}
+.nav-link {
+  color: #9A3412; /* Deeper shade from the same hue family */
+}
+.nav-link:hover {
+  color: #F97316; /* Mid-range analogous color */
+}</div>
+
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">Example 3: Minimal Dashboard with Monochromatic Scheme</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               A financial app needs a serious, clean aesthetic. Pick a navy blue on the wheel, switch to monochromatic mode, and you get the same hue at different lightness levels — perfect for sidebar backgrounds, card surfaces, text, and borders. All colors share the same hue, so the interface feels unified without any risk of clashing.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
+            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Brand identity creation:</strong> Select a brand color on the wheel, generate a complementary accent for CTAs, and use analogous colors for secondary elements. The resulting palette is grounded in color theory rather than personal preference.</li>
+               <li><strong>Data visualization:</strong> Triadic and compound harmonies produce colors that are maximally distinct — essential for pie charts, bar charts, and multi-series line graphs where each dataset needs its own identifiable color.</li>
+               <li><strong>UI theming:</strong> Monochromatic schemes create clean, professional interfaces. Combine with the <a href="/dark-color-palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">dark palettes</a> approach by selecting a dark hue and using shades mode to generate the tonal range.</li>
+               <li><strong>Gradient design:</strong> Pick two analogous colors on the wheel and plug them into the <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradient generator</a> for smooth, naturally harmonious color transitions.</li>
+               <li><strong>Accessibility verification:</strong> Generate a scheme, then run the foreground/background pairs through the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to verify WCAG compliance before committing.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+            <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before and After: Wheel-Guided vs. Guessed Palette</h2>
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">Before: Colors picked without a wheel</h3>
+            <div class="code-block mb-4" role="img" aria-label="CSS with guessed colors that may not harmonize">:root {
+  --primary: #4F46E5;   /* Chosen because it looked nice */
+  --accent: #DC2626;    /* Picked for contrast, clashes slightly */
+  --surface: #F3F4F6;  /* Default gray, no relation to primary */
+  --text: #111827;     /* Too dark against the purple */
+}
+/* The accent fights the primary because red-purple
+   isn't a recognized harmony — it's just close enough
+   to be jarring without being intentionally chosen */</div>
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">After: Wheel-guided complementary palette</h3>
+            <div class="code-block mb-4" role="img" aria-label="CSS with wheel-derived complementary colors">:root {
+  --primary: #4F46E5;   /* Indigo — base at 239° */
+  --accent: #D97706;    /* Amber — complementary at 59° */
+  --surface: #EEF2FF;  /* Tinted blue — monochromatic of primary */
+  --text: #1E1B4B;     /* Deep indigo — dark monochromatic */
+}
+/* Every color relates to the primary through a
+   defined harmony rule — the palette feels intentional
+   and cohesive rather than coincidental */</div>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The difference isn't in the individual colors — both palettes use reasonable values. The difference is in the relationships between them. The "after" palette has a geometric logic that humans perceive as intentional design, even if they can't articulate why. That perception of intentionality is what separates professional color work from amateur color work.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="harmonies-detail-heading">
+            <h2 id="harmonies-detail-heading" class="text-2xl font-bold mb-4">Understanding Each Harmony Type</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A color wheel arranges primary colors (red, yellow, blue), secondary colors (green, orange, purple), and tertiary colors in a continuous spectrum around a circle. The position of any color on the wheel tells you everything about how it relates to every other color — which ones will contrast sharply, which will blend smoothly, and which will create tension.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               <strong>Complementary</strong> colors sit directly opposite each other — like blue and orange. This creates the strongest possible contrast, ideal for CTAs and alerts. Use it sparingly: one color dominant, its complement as an accent. Always verify with a <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a>.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               <strong>Analogous</strong> colors are neighbors on the wheel — like blue, blue-green, green. They create smooth, cohesive layouts perfect for backgrounds and <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradients</a>. Nature uses analogous harmony constantly: sunsets blend yellow through orange to red.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               <strong>Triadic</strong> uses three evenly spaced colors forming an equilateral triangle. It offers vibrant contrast with balance — no single color dominates. Let one color lead and use the other two as accents. If you want pre-made triadic palettes without the wheel, the <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">palette generator</a> produces them randomly.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               <strong>Monochromatic</strong> uses variations of a single hue by adjusting saturation and lightness — dark navy, medium blue, soft sky blue, pale ice blue. It's the easiest harmony to get right and creates sophisticated, clean interfaces. If you need to convert between the formats the wheel outputs, the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> handles HEX, RGB, and HSL translation.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               <strong>Compound</strong> (split-complementary) uses a base color plus the two colors adjacent to its complement. You get contrast with less tension than a straight complementary pair — ideal for professional, balanced designs. <strong>Shades</strong> keeps the same hue and saturation but varies only lightness, producing a clean tonal range for depth and hierarchy.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-detail-heading">
+            <h2 id="howto-detail-heading" class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Click or drag anywhere on the wheel to pick a base color — the horizontal position controls hue, and the distance from the center controls saturation. You can also use arrow keys when the wheel canvas is focused: left and right arrows change hue, up and down arrows change saturation. Then choose a harmony rule from the buttons above the wheel: the tool instantly calculates the matching colors and displays their HEX, RGB, and HSL values in the right panel. Use the lightness slider to adjust brightness across the entire scheme. When you find a combination you like, copy the HEX codes or click Export Scheme to save the full set as JSON.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+            <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices</h2>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Start with monochromatic for safety:</strong> If you're unsure which harmony to use, monochromatic never fails. It produces cohesive results by definition. Move to other harmonies once you understand the project's needs.</li>
+               <li><strong>Let one color dominate:</strong> In any multi-color scheme, one color should cover 60–70% of the visual area. The others are accents. The wheel gives you 5–7 colors — you don't have to use all of them.</li>
+               <li><strong>Check contrast for text pairs:</strong> The wheel tells you colors harmonize visually, but it doesn't check WCAG contrast ratios. Always run your text/background combinations through the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> before shipping.</li>
+               <li><strong>Test with the <a href="/color-blindness/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color blindness simulator</a>:</strong> Complementary schemes (especially red-green) can be indistinguishable to users with deuteranopia. If your palette uses red and green, verify it works without color vision.</li>
+               <li><strong>Document the harmony rule:</strong> When adding colors to a design system, note which harmony rule produced them. This lets another designer recreate or extend the palette later without guessing.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
+            <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Mistakes</h2>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Using all colors equally:</strong> A 5-color triadic scheme doesn't mean all five colors should appear equally. One dominates, two support, one accents, one reserves. Using all at equal visual weight creates visual noise.</li>
+               <li><strong>Ignoring saturation in the harmony:</strong> Two colors at the same hue position but different saturations can look like different colors entirely. Pay attention to where you are on the wheel's radius, not just the angle.</li>
+               <li><strong>Choosing harmony without considering context:</strong> Triadic works for playful brands; monochromatic works for corporate ones. The "best" harmony depends entirely on the project's mood and audience.</li>
+               <li><strong>Skipping the contrast check:</strong> A beautiful harmony from the wheel can still fail accessibility. Complementary colors, by definition, include pairs that may fail WCAG contrast for text. Always validate.</li>
+               <li><strong>Not adjusting lightness for the context:</strong> A scheme that looks great at 50% lightness may look washed out at 70% or too dark at 30%. Slide the lightness to match your actual background brightness.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+            <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The color wheel renders once on page load as a 320×320 Canvas image. That's roughly 80,000 pixels, each requiring an HSL-to-RGB conversion — a trivial computation that completes in under 50ms. The wheel is never re-rendered during interaction; instead, only the marker and harmony indicators are repositioned using CSS transforms, which are GPU-composited and cost nearly zero.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Dragging triggers continuous coordinate calculations and HSL conversions, but these are simple arithmetic operations — no image processing, no pixel manipulation, no network requests. Even on a low-end mobile device, the frame rate during drag stays well above 60fps.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The only scenario where performance could degrade is if you have dozens of color tool tabs open simultaneously, each running Canvas rendering loops. But in isolation, this tool is lighter than most animated ads that appear on similar pages.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="compatibility-heading">
+            <h2 id="compatibility-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The tool relies on the HTML5 Canvas API for wheel rendering and standard JavaScript for calculations:
+            </p>
+            <ul class="list-disc list-outside space-y-2 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Canvas 2D context:</strong> Supported in all modern browsers (Chrome 1+, Firefox 1.5+, Safari 2+, Edge 12+). No polyfills needed.</li>
+               <li><strong>Touch events:</strong> The wheel uses pointer events where available (Chrome 55+, Firefox 59+, Safari 13+) with touch-action: none to prevent scroll interference. Falls back to mouse events on older browsers.</li>
+               <li><strong>Arrow key navigation:</strong> Standard keyboard event handling, supported universally. The canvas must be focused (via Tab + Enter/Space) before arrow keys work.</li>
+               <li><strong>Clipboard API:</strong> The copy buttons use navigator.clipboard.writeText() with a fallback to document.execCommand('copy') for older browsers.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The color formats output by this tool (HEX, RGB, HSL) are supported in CSS in every browser going back over 15 years. No compatibility concerns with the generated values themselves.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+            <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The wheel canvas has role="application" with a descriptive aria-label explaining the keyboard controls. When you move the marker, the wheel-announcer div (aria-live="polite") announces the updated HSL values to screen reader users. This means a screen reader user can navigate to the wheel, use arrow keys to explore colors, and hear the hue/saturation values change as they go — even though they can't see the wheel visually.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The harmony buttons use role="group" with aria-pressed states, so screen readers announce which mode is active when you switch. The scheme panel uses role="list" with aria-label to provide context for the color rows. Each copy button has a specific aria-label describing what it copies.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The fundamental limitation is that color harmony is inherently visual — a screen reader can convey the numeric values but not whether the combination "looks good." For non-visual users, the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> provides the most practical workflow: enter a known good color's HSL values, then use the converter to check that your wheel-derived colors match.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+            <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Export to CSS custom properties:</strong> Copy each color's HEX code and organize them semantically. Name them by role, not by position — --color-primary, not --color-1.</li>
+            </ul>
+            <div class="code-block mb-4" role="img" aria-label="CSS variables derived from color wheel output">:root {
+  /* Triadic scheme from wheel: blue at 217° */
+  --color-primary: #3B82F6;
+  --color-accent:  #F59E0B;
+  --color-support: #EF4444;
+  --color-bg:      #F0F9FF; /* Light monochromatic tint */
+  --color-text:    #1E3A5F; /* Dark monochromatic shade */
+}</div>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Use the JSON export in build pipelines:</strong> The Export Scheme output can be consumed by design token tools like Style Dictionary to generate platform-specific outputs (CSS, iOS, Android) from a single source of truth.</li>
+               <li><strong>Pair with color-mix() for hover states:</strong> Modern CSS lets you mix a wheel-derived color with black or white for hover variants: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-sm font-mono">background: color-mix(in srgb, var(--color-primary) 80%, black)</code>.</li>
+               <li><strong>Store hue as a variable for easy theming:</strong> If your brand color might change, define just the hue as a CSS custom property and derive everything from it.</li>
+            </ul>
+            <div class="code-block" role="img" aria-label="CSS custom property theming using hue from the color wheel">:root {
+  --hue: 217;
+}
+.button {
+  background: hsl(var(--hue), 89%, 60%);
+}
+.button:hover {
+  background: hsl(var(--hue), 89%, 48%);
+}
+/* Change --hue to 160 and the whole theme shifts to teal */</div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+            <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 mb-4 ml-5">
+               <li><strong>Combine two harmony rules:</strong> Use the wheel to generate a complementary accent, then switch to analogous to build a background gradient. You're not limited to one rule per project — mix them for more complex palettes that still have geometric grounding.</li>
+               <li><strong>Use the wheel to reverse-engineer color schemes:</strong> If you see a website with a palette you like, identify the base color's hue (using the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">converter</a> to get the HSL), place it on the wheel, and try different harmony rules until you find the one that matches. Now you understand the design decision behind that palette and can modify it intentionally.</li>
+               <li><li>Create seasonal palettes by shifting hue ranges:</li>
+            </ul>
+            <div class="code-block mb-4" role="img" aria-label">/* Spring: 60° – 150° (yellow-green range) */
+/* Summer: 0° – 60° (yellow-orange range) */
+/* Autumn: 270° – 360° (red-orange range) */
+/* Winter: 200° – 270° (blue-purple range) */
+/* Pick a hue within the range, use analogous mode */</div>
+            <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 ml-5">
+               <li><li><strong>Validate with the <a href="/color-blindness/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color blindness simulator</a>:</strong> Run your wheel-generated palette through the simulator before finalizing. Red-green complementary pairs are the most common accessibility failure point in color wheel work.</li>
+               <li><strong>Use the wheel for dark mode:</strong> Select a dark blue, switch to shades mode, and generate a complete dark theme tonal range. The lightness slider lets you fine-tune the exact brightness levels for dark backgrounds.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="guide-heading">
+            <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Using the Color Wheel</h2>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Workflow: From Brand Color to Production Palette</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               In my own work, the color wheel is the second tool I open after receiving a brand brief — right after the <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color extractor</a>. If the client has reference photos, I extract their dominant colors first. Then I take the primary extracted color, find its hue on the wheel, and generate complementary and analogous schemes to see which direction feels right for the project. The extracted colors give me real-world grounding; the wheel gives me systematic expansion.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               I typically generate three or four different harmony schemes from the same base color, screenshot them all, and present them to the client with a brief rationale: "Option A is warm and energetic (analogous), Option B has strong contrast for CTAs (complementary), Option C is clean and professional (monochromatic)." Clients make better decisions when they can compare options side by side rather than evaluating one palette in isolation.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What Is Color Harmony?</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Color harmony refers to the technique of combining colors in a way that is visually pleasing and balanced. When colors are harmonious, they create a sense of order and balance for the viewer. Disharmonious colors, on the other hand, feel chaotic and unsettling. Harmony is achieved by following proven geometric relationships on the color wheel — these relationships have been studied for centuries and form the backbone of every good design system. Understanding harmony principles helps you move beyond guessing and start making intentional color decisions.
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Professional Tips for Client Presentations</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               When presenting a color scheme to a client, always show the colors in context. Don't just list HEX codes — render them in a simple wireframe or mockup. A triadic scheme looks abstract as swatches but immediately makes sense when you see it applied to a button, a card, and a chart. The wheel gives you the colors; your mockup gives them meaning.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               If the client asks for changes like "make it more sophisticated," that usually means switching from triadic to monochromatic. "Make it more fun" usually means shifting toward warmer hues or higher saturation. "Make it more professional" almost always means lower saturation and lighter values. These aren't hard rules, but they map surprisingly well to common client feedback.
             </p>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Types of Color Harmonies</h2>
-
-            <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800 dark:text-slate-200">Complementary</h3>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Complementary colors sit directly opposite each other on the color wheel — like blue and orange, or red and green. This pairing creates the strongest contrast possible, making it ideal for elements that need to stand out: call-to-action buttons, alerts, or important data points. The high contrast grabs attention instantly, but use it sparingly. Too much complementary contrast across an entire interface causes visual fatigue. A common pattern is to use one color as the dominant background and its complement as an accent. Always verify your combinations with a <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline">contrast checker</a> to meet accessibility standards.
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Team Collaboration</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               In a team, the wheel solves a communication problem. When a designer says "use a warm accent," the developer needs to know exactly what color that is. If both people are looking at the same wheel with the same base color, "warm accent" becomes "the color at the 30° mark on the analogous spectrum." It turns subjective language into a precise, shareable reference point.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The JSON export facilitates this. A designer generates a scheme, exports it, and commits it to the project repo under <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-sm font-mono">src/tokens/colors.json</code>. The developer imports those values into the build process. When the palette changes, it changes in one file and propagates everywhere. No Slack messages with HEX codes, no "is this the right blue?" questions.
             </p>
 
-            <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800 dark:text-slate-200">Analogous</h3>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Analogous colors are neighbors on the color wheel — like blue, blue-green, and green. Because they share similar hue families, analogous schemes feel naturally cohesive and calming. They are perfect for backgrounds, <a href="/gradient/" class="text-emerald-500 hover:underline">gradients</a>, and layouts where you want a smooth, flowing visual experience without sharp contrasts. Nature uses analogous harmony constantly: sunsets blend yellow to orange to red, forests transition green to teal to blue. This is why analogous palettes always feel organic and pleasing to the eye.
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Real Projects Where the Wheel Made the Difference</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               On a healthcare app, the existing color system was a mess — eight blues that were all slightly different, no documented relationships between them, and constant debates about which blue to use where. I took the primary blue, found it on the wheel at roughly 210°, generated a monochromatic scheme for the full tonal range, and replaced all eight blues with four purposeful shades. The interface instantly became more cohesive, and the team stopped arguing about colors because the scheme now had a documented logic.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               On an e-commerce site, the client's product photos were warm-toned but the UI was built with cool blues. The mismatch was subtle but noticeable — the interface felt disconnected from the products. I extracted a dominant warm color from a product photo, placed it on the wheel, generated an analogous warm scheme, and replaced the cool blues. The site immediately felt more cohesive, and the client said it "finally matches our brand" without being able to articulate what changed.
             </p>
 
-            <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800 dark:text-slate-200">Triadic</h3>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              A triadic scheme uses three colors evenly spaced around the color wheel, forming an equilateral triangle. Examples include red-yellow-blue or orange-green-purple. Triadic palettes offer vibrant contrast while maintaining balance — no single color dominates because they are all equally spaced. This makes triadic schemes popular for playful brands, illustrations, and interfaces that need energy without the aggression of complementary pairs. The key is to let one color lead and use the other two as supporting accents.
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Mistakes I Made Early On</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               My biggest mistake was treating the wheel as a one-time tool — generate a palette, copy the codes, close the tab. In reality, the wheel is most useful as an iterative exploration tool. I now keep it open alongside my code editor and return to it multiple times per project: first to find the base color, then to adjust saturation when the initial palette feels too vivid or too muted, then again to generate an accent color for a specific component.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Another mistake was ignoring the lightness slider. I'd generate a scheme at 50% lightness, copy the codes, paste them into CSS, and only then realize the colors were too dark or too light for my actual background. Now I adjust lightness to roughly match my page background before copying — dark backgrounds need lighter schemes, light backgrounds can handle the full range.
             </p>
 
-            <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800 dark:text-slate-200">Monochromatic</h3>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Monochromatic harmony uses variations of a single hue by adjusting saturation and lightness. A monochromatic blue palette might include dark navy, medium blue, soft sky blue, and pale ice blue. This scheme is the easiest to get right because all colors inherently share the same hue. It creates a clean, sophisticated look that works well for minimal interfaces, corporate dashboards, and any design where clarity matters more than excitement. If you want to generate pre-made palettes beyond what the wheel produces, try our <a href="/palettes/" class="text-emerald-500 hover:underline">palette generator</a> for instant inspiration.
-            </p>
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Productivity Tips</h3>
+            <ul class="list-disc list-outside space-y-2 text-slate-600 dark:text-slate-400 ml-5">
+               <li>Keep the wheel and the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">converter</a> in adjacent tabs. Generate harmonies on the wheel, then convert specific colors to different formats in the converter without switching context.</li>
+               <li>Screenshot the wheel with harmony markers visible before copying codes. The visual reference helps you remember which color was which when you're pasting them into CSS three hours later.</li>
+               <li>If you're building multiple pages with different moods, generate a separate wheel scheme for each page's tone. A landing page might use triadic (energetic), while the dashboard uses monochromatic (focused).</li>
+               <li>Use the arrow keys for final precision. Drag to get close, then tap-tap-tap the arrow keys to hit the exact hue you want. It's faster than trying to click a 1° slice on a 320px wheel with a mouse.</li>
+            </ul>
+         </section>
 
-            <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800 dark:text-slate-200">Compound and Shades</h3>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Compound harmony (also called split-complementary) uses a base color plus the two colors adjacent to its complement. This gives you the contrast of complementary colors with less tension — ideal for balanced, professional designs. Shades harmony keeps the same hue and saturation but varies only the lightness, producing a clean tonal range perfect for creating depth and hierarchy within a single-color family.
-            </p>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            <div class="space-y-6">
+              <div>
+                <h3 class="font-semibold text-base mb-2">What is a color wheel?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A color wheel is a circular arrangement of colors that shows the relationships between primary, secondary, and tertiary colors. It is the foundation of color theory and helps designers understand how colors relate to each other, making it easier to create harmonious combinations.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">What is color harmony?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Color harmony refers to the visually pleasing arrangement of colors based on their positions on the color wheel. Common types include complementary (opposite), analogous (adjacent), triadic (evenly spaced), and monochromatic (same hue, different lightness).</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">How to choose color combinations?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Pick a base color on the wheel, then apply a harmony rule: complementary for high contrast, analogous for calm cohesion, triadic for balanced vibrancy, or monochromatic for a clean tonal range. Preview instantly and fine-tune saturation and lightness to match your project's mood.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">What is the difference between complementary and analogous colors?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Complementary colors sit opposite on the wheel (blue/orange) and create high contrast. Analogous colors are neighbors (blue/blue-green/green) and create smooth, cohesive palettes. Complementary works for CTAs; analogous works for backgrounds and layouts.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">Is this color wheel tool free?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, completely free. Drag the marker, select any harmony rule, adjust lightness, and copy the generated HEX codes into your CSS or design project — no signup required.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">What harmony rule should I use for a website?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">For most websites, analogous or monochromatic work best for layouts because they create cohesion. Use complementary for your CTA button to make it stand out. Triadic works well for brands that need energy. Compound (split-complementary) is a safe middle ground for professional interfaces.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">Can I use arrow keys on the color wheel?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes. When the canvas is focused (Tab to it, then press Enter or Space), use left/right arrows for hue and up/down arrows for saturation. This enables precise color selection without a mouse.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">What does the lightness slider do?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">It adjusts the brightness of every color in your scheme simultaneously. Moving left darkens all colors; moving right lightens them. This lets you evaluate the same harmony at different brightness levels without re-selecting on the wheel.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">What is compound (split-complementary) harmony?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Compound uses a base color plus the two colors adjacent to its direct complement. If your base is blue (240°), the complement is orange (60°), and the compound colors are yellow-orange (30°) and red-orange (90°). You get contrast with less visual tension than a straight complementary pair.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">How do I convert wheel colors to CSS variables?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Copy the HEX codes from the scheme panel and define them as CSS custom properties. For example: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-xs font-mono">--color-primary: #2A9D8F; --color-accent: #E76F51;</code>. Use the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> to translate any value between HEX, RGB, and HSL.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">Does the wheel work on mobile devices?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes. The canvas supports touch drag on iOS and Android. It uses touch-action: none to prevent scroll interference while dragging, and all buttons are sized for touch targets.</p>
+              </div>
+              <div>
+                <h3 class="font-semibold text-base mb-2">Why does my scheme look different on another screen?</h3>
+                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Color appearance varies between screens due to different color profiles, gamma curves, and backlight technologies. The HEX values are mathematically identical — the difference is in display hardware calibration, not the color values themselves.</p>
+              </div>
+            </div>
+         </section>
 
-            <h2 class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Use This Color Wheel Tool</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Click or drag anywhere on the wheel to pick a base color — the horizontal position controls hue, and the distance from the center controls saturation. You can also use arrow keys when the wheel is focused: left and right arrows change hue, up and down arrows change saturation. Then choose a harmony rule from the buttons above the wheel: the tool instantly calculates the matching colors and displays their HEX, RGB, and HSL values on the right panel. Use the lightness slider to adjust brightness across the entire scheme. When you find a combination you like, copy the HEX codes directly into your CSS or design tool, or click Export Scheme to save the full set. The entire process takes seconds — no guesswork, no manual calculations.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ Section (matching schema) -->
-      <section class="glass-card p-8 mt-12 shimmer-card" aria-labelledby="faq-heading">
-        <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-        <div class="space-y-6">
-          <div>
-            <h3 class="font-semibold text-base mb-2">What is a color wheel?</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A color wheel is a circular arrangement of colors that shows the relationships between primary, secondary, and tertiary colors. It is the foundation of color theory and helps designers understand how colors relate to each other, making it easier to create harmonious color combinations for any design project.</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-base mb-2">What is color harmony?</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Color harmony refers to the visually pleasing arrangement of colors that work well together based on their positions on the color wheel. Common harmony types include complementary (opposite colors), analogous (adjacent colors), triadic (three evenly spaced colors), and monochromatic (variations of a single hue).</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-base mb-2">How to choose color combinations?</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Start by picking a base color on the color wheel, then apply a harmony rule like complementary for high contrast, analogous for a calm feel, or triadic for balanced vibrancy. Use an online color wheel tool to preview combinations instantly, then fine-tune saturation and lightness to match your project's mood.</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-base mb-2">What is the difference between complementary and analogous colors?</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Complementary colors sit directly opposite each other on the color wheel (like blue and orange), creating high contrast and visual tension. Analogous colors sit next to each other (like blue, blue-green, and green), creating a smooth, cohesive, and calming look. Complementary works well for CTAs; analogous works well for backgrounds and layouts.</p>
-          </div>
-          <div>
-            <h3 class="font-semibold text-base mb-2">Is this color wheel tool free?</h3>
-            <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, the Devpalettes color wheel tool is completely free to use. You can drag the marker, select any harmony rule, adjust lightness, and copy the generated HEX codes directly into your CSS or design project — no signup required.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="glass-card p-8 my-16 shimmer-card text-center" aria-labelledby="share-heading">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-          <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
-          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
-          <div class="flex items-center justify-center gap-3 flex-wrap">
-            <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F&text=Generate%20beautiful%20color%20harmonies%20with%20this%20free%20interactive%20color%20wheel!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter (opens in new tab)">
-              <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook (opens in new tab)">
-              <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-            </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn (opens in new tab)">
-              <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-            </a>
-            <a href="https://wa.me/?text=Check%20out%20this%20free%20interactive%20color%20wheel%20https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp (opens in new tab)">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-            </a>
-            <a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F&description=Free%20interactive%20color%20wheel%20for%20designers" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest (opens in new tab)">
-              <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
-            </a>
-            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
-              <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-            </button>
-          </div>
-        </div>
-      </section>
+          <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
+            <div class="max-w-7xl mx-auto px-4 text-center">
+              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
+              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
+              <div class="flex items-center justify-center gap-3 flex-wrap">
+                <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F&text=Generate%20beautiful%20color%20harmonies%20with%20this%20free%20interactive%20color%20wheel!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter (opens in new tab)">
+                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook (opens in new tab)">
+                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn (opens in new tab)">
+                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
+                </a>
+                <a href="https://wa.me/?text=Check%20out%20this%20free%20interactive%20color%20wheel%20https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp (opens in new tab)">
+                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
+                </a>
+                <a href="https://pinterest.com/pin/create/button/?url=https%3A%2F%2Fdevpalettes.com%2Fcolor-wheel%2F&description=Free%20interactive%20color%20wheel%20for%20designers" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest (opens in new tab)">
+                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
+                </a>
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
+                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
+                </button>
+              </div>
+            </div>
+          </section>
       
-      <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
-        <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Design Tools</h2>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your design workflow with these free tools built for creators and developers.</p>
-        <div class="flex flex-wrap justify-center gap-3">
-          <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
-          <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color from Image</a>
-          <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
-          <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-          <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
-          <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
-        </div>
-      </section>
+         
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Design Tools</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your design workflow with these free tools built for creators and developers.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
+               <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color from Image</a>
+               <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
+               <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
+               <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
+               <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
+               <a href="/dark-color-palettes/" class="btn-secondary text-xs py-2 px-4">Dark Palettes</a>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="articles-heading">
+            <h2 id="articles-heading" class="text-2xl font-bold mb-4">Related Articles</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Deepen your understanding of color theory and web color systems:</p>
+            <ul class="list-disc list-outside space-y-2 text-slate-600 dark:text-slate-400 ml-5">
+               <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN: CSS color values</a> — Complete reference for all CSS color formats including the newer color-mix() and oklch() functions.</li>
+               <li><a href="https://en.wikipedia.org/wiki/Color_theory" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Color Theory (Wikipedia)</a> — Historical and scientific foundation behind the color wheel, harmony rules, and perceptual color models.</li>
+               <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">WCAG 2.1 Contrast Minimum</a> — Why wheel-generated palettes still need contrast validation for text on colored backgrounds.</li>
+               <li><a href="https://web.dev/articles/color-contrast" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">web.dev: Color Contrast</a> — Practical guidance on choosing accessible color pairs for web interfaces.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+            <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The color wheel is the oldest and most validated tool in color theory, and this interactive version makes it immediately practical for web development. Instead of generating random palettes and hoping for the best, you start with geometric certainty: pick a hue, apply a harmony rule, and the math guarantees the colors work together. The lightness slider lets you adapt the scheme to your actual page brightness. The keyboard controls let you hit precise values. The export gets the colors into your codebase in seconds.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The real skill isn't knowing which harmony to use — it's knowing when to break the rules. Sometimes the wheel tells you to use complementary, but your design needs analogous. Sometimes monochromatic is technically correct but the project needs triadic energy. The wheel gives you the mathematically sound starting point; your judgment decides whether to follow it.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Combined with the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">converter</a> for format translation, the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> for accessibility validation, and the <a href="/palettes/" class="text-emerald-600 dark:text-emerald-400 hover:underline">palette generator</a> for random inspiration, the color wheel completes a four-tool color workflow that covers discovery, generation, validation, and production output.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" class="text-2xl font-bold mb-3">Explore Color Relationships Now</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Drag the wheel, pick a harmony, and get production-ready colors in seconds.</p>
+            <a href="#harmony-heading" class="btn-primary btn-glow inline-flex items-center gap-2">
+               <i class="fas fa-arrow-up" aria-hidden="true"></i> Jump to the Wheel
+            </a>
+         </section>
+
+      </div>
 
       <div class="text-center py-10 mt-4">
         <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
@@ -561,43 +933,6 @@
     </div>
   </main>
   
-  
-  <section class="adsense-tool-guide max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="glass-card p-8">
-      <h2>Practical Guide to Color Wheel</h2>
-      <p><strong>What this tool does:</strong> Explore complementary, analogous, triadic, and monochrome harmonies. It is built for quick browser-based workflows where the result should be visible, understandable, and easy to copy into a real project.</p>
-      <h3>Why use Color Wheel?</h3>
-      <p>Use Color Wheel when you want to reduce manual trial and error. Instead of switching between documentation, design software, code editors, and calculators, you can adjust the inputs here, inspect the output, and move the result into your project with fewer interruptions. This is especially useful when you are comparing alternatives, documenting a design decision, or preparing production-ready snippets for a team.</p>
-      <h3>How it works</h3>
-      <p>The tool reads the values you enter or select, updates the preview immediately, and formats the result for common web workflows. Where possible, processing happens in your browser so the interaction remains fast and private. The output is intentionally plain: copyable CSS, HTML, JSON, text, image data, or configuration values that can be reviewed before use.</p>
-      <h3>Step-by-step workflow</h3>
-      <ol>
-        <li>Open the tool and start with the default values to understand the available controls.</li>
-        <li>Replace the sample values with your project values, brand colors, text, image, URL, or layout settings.</li>
-        <li>Review the preview and generated output together so the visual result matches the copied code.</li>
-        <li>Copy or download the result, then test it inside your own project rather than assuming every context behaves the same.</li>
-        <li>Save important outputs in your project files, design system, or documentation so they are not dependent on browser storage.</li>
-      </ol>
-      <h3>Real-world examples</h3>
-      <p>A designer can use Color Wheel while preparing a design handoff, then paste the generated values into a style guide. A frontend developer can use it while prototyping a component and then adapt the output into existing class names, CSS variables, or framework conventions. A content or SEO specialist can use it to verify that generated metadata, text, or assets are consistent before publishing.</p>
-      <h3>Best practices</h3>
-      <ul>
-        <li>Keep the original source or input before applying destructive transformations such as minification or compression.</li>
-        <li>Use semantic names when moving generated values into production code.</li>
-        <li>Test output in at least one real page, not only inside the generator preview.</li>
-        <li>Check accessibility, readability, and responsive behavior when the output affects user interface design.</li>
-        <li>Document final values so teammates understand why a specific setting was chosen.</li>
-      </ul>
-      <h3>Common mistakes</h3>
-      <p>Common mistakes include copying output without reviewing it, using generated values in the wrong CSS property, forgetting browser compatibility, relying on localStorage as permanent storage, or applying visual effects without checking contrast and readability. Treat generated output as a strong starting point, then validate it in your own codebase.</p>
-      <h3>FAQ</h3>
-      <p><strong>Is Color Wheel free?</strong> Yes, the tool is free and does not require sign-up.</p>
-      <p><strong>Does it work on mobile?</strong> The page is responsive, though complex editing workflows are usually easier on a desktop or tablet.</p>
-      <p><strong>Can I use the output commercially?</strong> Yes, generated values and snippets can be used in personal and commercial work. Always review output for your own requirements.</p>
-      <h3>Related tools</h3>
-      <p><a href="/palettes/">Color Palette Generator</a> · <a href="/gradient/">CSS Gradient Generator</a> · <a href="/converter/">Color Converter</a> · <a href="/color-from-image/">Image Color Extractor</a></p>
-    </div>
-  </section>
   <div id="footer-container"></div>
   
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
