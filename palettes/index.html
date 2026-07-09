@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Color Palette Generator (2025) — Free CSS Export, Lock & Save | DevPalettes</title>
-  <meta name="description" content="Free color palette generator with CSS export, color locking, and local saving. Generate harmonious 3–8 color schemes instantly. No login required.">
+  <title>Color Palette Generator — Free CSS Export & Lock</title>
+  <meta name="description" content="Generate harmonious color palettes instantly. Lock favorites, export CSS variables, JSON, or PNG. Free tool for designers and developers — no login required.">
   <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/palettes/">
   <link rel="up" href="https://devpalettes.com/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/palettes/">
-  <meta property="og:title" content="Free Color Palette Generator — CSS Export, Lock & Save">
-  <meta property="og:description" content="Generate unlimited color palettes, lock your favorites, and export CSS variables instantly. No login required.">
+  <meta property="og:title" content="Color Palette Generator — Free CSS Export & Lock">
+  <meta property="og:description" content="Generate harmonious color palettes instantly. Lock favorites, export CSS variables, JSON, or PNG. No login required.">
   <meta property="og:image" content="https://devpalettes.com/images/og-palette.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="DevPalettes">
+  <meta property="og:locale" content="en_US">
 
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://devpalettes.com/palettes/">
-  <meta property="twitter:title" content="Free Color Palette Generator — CSS Export, Lock & Save">
-  <meta property="twitter:description" content="Generate unlimited color palettes, lock your favorites, and export CSS variables instantly.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://devpalettes.com/palettes/">
+  <meta name="twitter:title" content="Color Palette Generator — Free CSS Export & Lock">
+  <meta name="twitter:description" content="Generate harmonious color palettes instantly. Lock favorites, export CSS variables, JSON, or PNG.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,27 +44,6 @@
     if (localStorage.getItem('colorpallates-theme') === 'dark' || (!localStorage.getItem('colorpallates-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
       document.documentElement.classList.add('dark');
     }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Color Palette Generator",
-        "item": "https://devpalettes.com/palettes/"
-      }
-    ]
-  }
   </script>
 
   <script type="application/ld+json">
@@ -89,6 +70,69 @@
       "Export to PNG",
       "Save Palettes Locally",
       "3 to 8 Color Slots"
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://devpalettes.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Color Palette Generator",
+        "item": "https://devpalettes.com/palettes/"
+      }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Generate and Export a Color Palette",
+    "description": "Step-by-step instructions for creating a harmonious color palette using the DevPalettes generator and exporting it as CSS variables.",
+    "totalTime": "PT30S",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Generate colors",
+        "text": "Press the Spacebar or click the Generate button to create a new random color palette with 5 colors by default."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Lock colors you like",
+        "text": "Click the lock icon on any color block to lock it. Locked colors remain unchanged when you generate new palettes."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Adjust palette size",
+        "text": "Use the Add Color and Remove Color buttons to set your palette between 3 and 8 colors."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Copy or export",
+        "text": "Click any color to copy its HEX code, or use the toolbar buttons to export the full palette as CSS variables, JSON, or a PNG image."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Save for later",
+        "text": "Click Save Palette to store it in your browser's local storage. Saved palettes appear in the section below the generator."
+      }
     ]
   }
   </script>
@@ -143,10 +187,102 @@
         "name": "Can I use generated palettes in commercial projects?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. All generated color combinations are free to use in personal and commercial projects. Color palettes cannot be copyrighted — you own whatever you create with this tool."
+          "text": "Yes. All generated color combinations are free to use in personal and commercial projects. Color values themselves are mathematical and cannot be copyrighted."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are the generated colors accessible?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not automatically. The generator creates visually harmonious palettes, but you must verify that text and background combinations meet WCAG contrast requirements. Use DevPalettes' free contrast checker tool to validate your pairings."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is the palette generated — is it truly random?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The generator uses a pseudo-random algorithm seeded by the browser's crypto API to produce colors distributed across the full hue spectrum. While not following a strict color theory model like complementary or triadic, the distribution tends to produce visually balanced results because hues are spaced apart rather than clustered."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use this palette generator on mobile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool is fully responsive and works on mobile browsers. Tap any color to copy its HEX code. The lock, add, remove, and export buttons are all accessible on touch screens."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens to saved palettes if I clear my browser data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Saved palettes are stored in your browser's localStorage. Clearing browser data, using private/incognito mode, or switching browsers will erase them. Export important palettes as CSS or JSON files as a backup."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I generate palettes based on a specific color?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lock the specific color you want to build around, then keep generating. The unlocked slots will produce random colors that you can refine by locking promising candidates. For a more targeted approach, use the palette from color tool on DevPalettes, which generates harmonious schemes from a single starting color."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What format does the JSON export use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The JSON export produces a flat array of objects, each containing a name key (color-1, color-2, etc.) and a hex value. This format can be directly imported into JavaScript, consumed by build tools, or transformed into design tokens for platforms like Figma or iOS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I extract a palette from an image instead of generating randomly?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. DevPalettes has a separate Color from Image tool that analyzes any uploaded photo and extracts its dominant or vibrant colors as a palette. It's useful when you want colors inspired by a specific photograph, product shot, or mood board."
         }
       }
     ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Devpalettes",
+    "url": "https://devpalettes.com",
+    "logo": "https://devpalettes.com/images/devpalettes.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Ashish Kekaan",
+      "url": "https://devpalettes.com/about/"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Support",
+      "email": "contact@devpalettes.com",
+      "url": "https://devpalettes.com/contact/",
+      "availableLanguage": "English"
+    }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Devpalettes",
+    "url": "https://devpalettes.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://devpalettes.com/tools/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
   }
   </script>
 
@@ -169,73 +305,21 @@
         box-shadow: none;
       }
     }
+    .code-block {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1rem 1.25rem;
+      border-radius: 0.75rem;
+      font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .dark .code-block {
+      border: 1px solid #1e293b;
+    }
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Free Color Palette Generator",
-    "description": "Free color palette generator with CSS export, color locking, and local saving. Generate harmonious 3–8 color schemes instantly. No login required.",
-    "url": "https://devpalettes.com/palettes/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Free Color Palette Generator",
-        "item": "https://devpalettes.com/palettes/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-emerald-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg focus:text-sm focus:font-semibold">Skip to main content</a>
@@ -258,15 +342,15 @@
       </div>
 
       <section class="glass-card p-8 shimmer-card mb-8" aria-labelledby="what-is-heading">
-        <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is a Color Palette Generator?</h2>
+        <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What Is a Color Palette Generator?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          A color palette generator is an online design tool that creates harmonious color combinations automatically. Instead of guessing which colors work together or manually adjusting values on a <a href="/color-wheel/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color wheel</a>, you get ready-to-use schemes in a single click. Each generated palette includes exact HEX codes that you can copy directly into your CSS, HTML, or design files — no conversion step needed.
+          A color palette generator is a design utility that creates cohesive color combinations on demand. Instead of manually picking individual colors on a <a href="/color-wheel/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color wheel</a> or guessing which HEX values look good together, you get a complete scheme in a single action — each color provided as a copyable HEX code ready for CSS, HTML, or design tools.
         </p>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          This type of tool is essential for web developers building interfaces, graphic designers creating brand identities, and anyone who needs consistent color schemes across a project. Whether you're starting a new website from scratch, refreshing an existing design system, or just looking for fresh color inspiration, a palette generator eliminates the trial-and-error that usually slows down the creative process.
+          This particular generator produces random palettes distributed across the full hue spectrum, which means you'll get a spread of distinct colors rather than slight variations of the same tone. The lock mechanism is what turns randomness into a deliberate design process: you keep the colors that work, regenerate the ones that don't, and iterate until the palette feels right for your project.
         </p>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-          Our generator goes beyond basic randomization — you can lock colors you like, add or remove slots to match your layout needs, and export finished palettes as CSS custom properties, JSON objects, or PNG images. No account required, no downloads, no usage limits.
+          The export options — CSS custom properties, JSON, and PNG — are designed to eliminate the friction between "finding colors" and "using colors." In most workflows, there's a gap between the palette tool and your codebase where you manually transcribe values. This tool closes that gap by outputting exactly the format your project needs.
         </p>
       </section>
 
@@ -330,55 +414,149 @@
 
       <div class="seo-content space-y-12 mt-16">
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="workflow-heading">
-            <h2 id="workflow-heading" class="text-2xl font-bold mb-4">How Color Palettes Improve Your Design Workflow</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+            <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use a Color Palette Generator?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               A well-constructed color palette is the foundation of every polished digital product. It creates visual consistency across pages, establishes brand recognition, and communicates hierarchy — guiding users toward important actions through deliberate color contrast. Without a defined palette, designs tend to accumulate random colors over time, leading to a disjointed, unprofessional appearance.
+               Starting a design project without a defined palette is like writing code without a style guide — you can do it, but the result will be inconsistent. Every color decision made in isolation tends to drift over time. A developer picks blue for the navbar, then a slightly different blue for a card header, then another blue for links. By the third sprint, you have twelve blues and no system.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Using a generator speeds up the hardest part of the process: the initial selection. Instead of starting from a blank canvas, you begin with a curated set of colors that are mathematically balanced. From there, the lock-and-regenerate workflow lets you refine the palette interactively — keeping what works and swapping what doesn't until you have exactly the right combination.
+               A palette generator solves this by giving you a finite, bounded set of colors upfront. You don't have to decide what blue to use — you pick from the palette. This constraint actually accelerates design because it eliminates decision fatigue. When every component references the same five or six colors, the visual system holds together naturally across pages, components, and states.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Once your palette is finalized, run it through a <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to make sure text and background pairings meet accessibility standards. A beautiful palette that fails contrast requirements can exclude users with low vision — so this step matters as much as the colors themselves.
+               The lock-and-regenerate workflow is specifically designed for the reality that most designers don't accept the first palette they see. You'll typically lock one or two colors, generate twenty more variations, lock another, and converge on a final palette through iteration. That process takes about two minutes with this tool — compared to thirty minutes of manual adjustment in a color picker.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="text-2xl font-bold mb-4">Key Features</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Random generation with wide hue distribution:</strong> Colors are generated across the full 360° hue spectrum, so you get a diverse set rather than clustered similar tones. This makes the default output more immediately useful than pure random RGB values.</li>
+               <li><strong>Individual color locking:</strong> Each color slot has an independent lock toggle. Lock three colors and the remaining two will regenerate around them, letting you build a palette incrementally.</li>
+               <li><strong>Adjustable slot count (3–8):</strong> A 3-color palette works for minimal landing pages. An 8-color palette gives you enough range for complex dashboards with multiple chart series, status indicators, and semantic color roles.</li>
+               <li><strong>CSS custom property export:</strong> One click copies <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-1: #hex</code> declarations ready to paste into your <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">:root</code> block. No manual transcription.</li>
+               <li><strong>JSON export:</strong> Outputs a structured array that build tools, design token pipelines, and JavaScript configs can consume directly.</li>
+               <li><strong>PNG download:</strong> Renders the palette as a clean image you can drop into design documents, Slack threads, or Figma boards without screenshotting.</li>
+               <li><strong>Local storage persistence:</strong> Save palettes to your browser and reload them later. No account, no server — the data stays on your device.</li>
+               <li><strong>Click-to-copy on individual colors:</strong> Click any color block to copy its HEX code instantly. A live region announces the copy action for screen reader users.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-it-works-heading">
+            <h2 id="how-it-works-heading" class="text-2xl font-bold mb-4">How the Generation Algorithm Works</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               When you press Generate (or hit Spacebar), the tool uses the browser's <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">crypto.getRandomValues()</code> API to produce a cryptographically seeded random number for each unlocked color slot. Each number maps to a point in the HSL color space — specifically, a random hue (0–360°), a moderate-to-high saturation (50–85%), and a balanced lightness (35–65%) that ensures colors are neither too washed out nor too dark to read.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The saturation and lightness ranges are deliberately constrained. Fully random HSL values produce a lot of grays, near-blacks, and near-whites that aren't useful in a design palette. By narrowing the range to the "designer-friendly" zone — saturated enough to have character, light enough to serve as backgrounds or text colors — the generator produces palettes that are immediately usable rather than requiring extensive post-processing.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Locked colors are simply skipped during generation. The algorithm only produces new random values for unlocked slots, which is why locking three colors and generating produces consistent results for those three while varying the rest. Each generation is independent — there's no memory of previous palettes, which means you won't accidentally cycle back to a combination you've already seen (statistically unlikely with 16 million possible HEX values per slot).
             </p>
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-heading">
-            <h2 id="how-to-heading" class="text-2xl font-bold mb-4">How to Use This Tool</h2>
+            <h2 id="how-to-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide</h2>
             <div class="grid md:grid-cols-2 gap-6">
                <div>
                   <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
-                     <li><strong class="text-slate-800 dark:text-white">Generate:</strong> Press the Spacebar or click the Generate button to get new colors.</li>
-                     <li><strong class="text-slate-800 dark:text-white">Lock:</strong> Like a specific color? Click the lock icon to keep it while generating others.</li>
-                     <li><strong class="text-slate-800 dark:text-white">Copy:</strong> Click on any color block to copy its HEX code to your clipboard.</li>
+                     <li><strong class="text-slate-800 dark:text-white">Generate:</strong> Press the Spacebar or click the Generate button. You'll see 5 color blocks by default, each showing its HEX code.</li>
+                     <li><strong class="text-slate-800 dark:text-white">Evaluate:</strong> Look at the palette as a whole. Which colors could serve as your primary? Which might work as an accent? Which don't fit?</li>
+                     <li><strong class="text-slate-800 dark:text-white">Lock:</strong> Click the lock icon on colors you want to keep. They'll show a locked state visually.</li>
                   </ol>
                </div>
                <div>
                   <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400" start="4">
-                     <li><strong class="text-slate-800 dark:text-white">Adjust Size:</strong> Add or remove colors to fit your design needs (min 3, max 8).</li>
-                     <li><strong class="text-slate-800 dark:text-white">Export:</strong> Export your palette as CSS variables, JSON object, or a PNG image.</li>
-                     <li><strong class="text-slate-800 dark:text-white">Save:</strong> Save your favorite palettes locally for future reference.</li>
+                     <li><strong class="text-slate-800 dark:text-white">Regenerate:</strong> Press Spacebar again. Only unlocked colors change. Repeat this lock-and-regenerate cycle until satisfied.</li>
+                     <li><strong class="text-slate-800 dark:text-white">Adjust count:</strong> Add or remove slots if you need more or fewer colors than the default five.</li>
+                     <li><strong class="text-slate-800 dark:text-white">Export:</strong> Copy CSS for your stylesheet, JSON for your build process, or PNG for your design docs. Save the palette locally if you might need it again.</li>
                   </ol>
                </div>
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
-            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases for Generated Palettes</h2>
-            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Website and app design:</strong> Establish a primary, secondary, and accent color system before writing a single line of CSS. Export directly as custom properties.</li>
-               <li><strong>Brand identity projects:</strong> Quickly explore multiple color directions for a client, save the best candidates, and present them as PNG swatches.</li>
-               <li><strong>Presentation and slide decks:</strong> Generate a cohesive 3–4 color scheme so your slides look intentional rather than default-template.</li>
-               <li><strong>Data visualization:</strong> Build distinct, readable color series for charts and graphs where each data point needs to be visually separable.</li>
-               <li><strong>Marketing materials:</strong> Create on-brand social media graphics, email templates, and ad creatives using a locked palette that matches your website.</li>
-            </ul>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="examples-heading">
+            <h2 id="examples-heading" class="text-2xl font-bold mb-4">Real World Examples</h2>
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Example 1: SaaS Dashboard</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               You're building an analytics dashboard. You generate a 6-color palette and assign roles: the darkest color becomes the sidebar background, a mid-tone becomes the card surface, the lightest becomes the page background, and the remaining three become the primary action color, a success/state color, and a warning/state color.
+            </p>
+            <div class="code-block mb-6" role="img" aria-label="CSS variables for a SaaS dashboard palette">:root {
+  --sidebar-bg:    #1E293B;  /* Darkest — sidebar */
+  --surface:       #334155;  /* Cards, panels */
+  --page-bg:       #F1F5F9;  /* Lightest — background */
+  --primary:       #3B82F6;  /* Buttons, links */
+  --success:       #22C55E;  /* Positive states */
+  --warning:       #F59E0B;  /* Alert states */
+}</div>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Example 2: Content Blog</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
+               A blog needs fewer colors. You set the palette to 4 slots and generate until you find a combination where one color works as the background, one as the text color, one for links, and one for accents like blockquotes or code blocks. The simplicity of a 4-color palette forces discipline — every color earns its place.
+            </p>
+            <div class="code-block mb-6" role="img" aria-label="CSS variables for a blog palette">:root {
+  --bg:           #FFFBEB;  /* Warm cream */
+  --text:         #1C1917;  /* Near-black */
+  --link:         #B45309;  /* Warm amber */
+  --accent:       #78716C;  /* Muted stone */
+}</div>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Example 3: E-Commerce Product Page</h3>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               For backgrounds that need more depth, pair your flat palette colors with a <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradient generator</a> to create smooth transitions between your primary and secondary tones.
+               An e-commerce site needs colors for the header, product cards, pricing badges, add-to-cart buttons, and sale tags. A 5-color palette handles this cleanly. Lock the brand color first (the client's existing primary), then generate the remaining four to complement it. This hybrid approach — one known color plus generated accents — is one of the most practical ways to use this tool in client work.
             </p>
          </section>
 
-         <section aria-labelledby="why-use-heading">
-            <h2 id="why-use-heading" class="text-2xl font-bold mb-6 text-center">Why Use Our Palette Generator?</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Website and app design:</strong> Establish a primary, secondary, and accent color system before writing CSS. Export directly as custom properties and reference them throughout your component library.</li>
+               <li><strong>Brand identity exploration:</strong> Generate 10–15 palettes rapidly, save the best 3, and present them as PNG swatches to a client. Faster than creating full mockups for each color direction.</li>
+               <li><strong>Presentation design:</strong> Generate a cohesive 3–4 color scheme so your slides look intentional rather than default-template. Copy the HEX values into PowerPoint, Keynote, or Google Slides.</li>
+               <li><strong>Data visualization:</strong> Build distinct, readable color series for charts where each data point needs visual separation. A 6–8 color palette gives you enough range for most chart types.</li>
+               <li><strong>Marketing consistency:</strong> Generate a palette, share the PNG export with your marketing team, and use it as the canonical color reference for social graphics, email templates, and ad creatives.</li>
+               <li><strong>Design system onboarding:</strong> When a new developer joins a project, the exported CSS variables serve as immediate, usable documentation of the color system — no need to dig through Figma files.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               For backgrounds that need more depth than flat colors, pair your palette with a <a href="/gradient/" class="text-emerald-600 dark:text-emerald-400 hover:underline">gradient generator</a> to create smooth transitions between your primary and secondary tones.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+            <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before and After: From Scattered Colors to a System</h2>
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">Before: Colors scattered across CSS files</h3>
+            <div class="code-block mb-4" role="img" aria-label="Messy CSS with hardcoded color values">/* scattered across 4 files */
+.navbar { background: #2563eb; }
+.card { border: 1px solid #93c5fd; }
+.btn { background: #1d4ed8; }
+.btn:hover { background: #1e40af; }
+.footer { background: #1e3a5f; }
+.alert { color: #dc2626; }
+.success { color: #16a34a; }
+/* 6 different blues, no clear system */</div>
+            <h3 class="font-bold mb-2 text-slate-800 dark:text-slate-200">After: Clean palette from the generator</h3>
+            <div class="code-block mb-4" role="img" aria-label="Clean CSS using palette custom properties">:root {
+  --primary:      #3B82F6;
+  --primary-h:    #2563EB;
+  --border:       #93C5FD;
+  --surface-dark: #1E3A5F;
+  --danger:       #DC2626;
+  --success:      #16A34A;
+}
+.navbar  { background: var(--primary); }
+.card    { border: 1px solid var(--border); }
+.btn     { background: var(--primary); }
+.btn:hover { background: var(--primary-h); }
+.footer  { background: var(--surface-dark); }
+.alert   { color: var(--danger); }
+.success { color: var(--success); }
+/* One source of truth, easy to swap */</div>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The "before" example is what happens when developers pick colors inline without a palette. You get slight variations of the same hue scattered across files, making it impossible to update the color scheme without a find-and-replace that might miss something. The "after" version — generated here and exported as CSS — gives you a single <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-sm font-mono">:root</code> block that controls the entire visual identity. If the client wants a warmer blue, you change one variable and the whole site updates.
+            </p>
+         </section>
+
+         <section aria-labelledby="why-choose-heading">
+            <h2 id="why-choose-heading" class="text-2xl font-bold mb-6 text-center">Why Use Our Palette Generator?</h2>
             <div class="grid md:grid-cols-3 gap-6">
                <div class="glass-card p-6 text-center">
                   <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900/30 rounded-full flex items-center justify-center mx-auto mb-3 text-indigo-500" aria-hidden="true">
@@ -405,9 +583,9 @@
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="css-impl-heading">
-            <h2 id="css-impl-heading" class="text-2xl font-bold mb-4">How to Implement Generated Palettes in CSS</h2>
+            <h2 id="css-impl-heading" class="text-2xl font-bold mb-4">Implementing Generated Palettes in CSS</h2>
             <p class="text-slate-600 dark:text-slate-400 mb-4">
-               The fastest way to use a generated palette is through CSS custom properties. Click "Copy CSS" in the toolbar above, then paste the output into your stylesheet. Here's what the result looks like in a real project:
+               The fastest path from palette to production is CSS custom properties. Click "Copy CSS" and paste the output into your stylesheet's <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded">:root</code> block. From there, every component references the variables instead of hardcoded values.
             </p>
             <div class="bg-slate-900 rounded-lg p-6 overflow-x-auto mb-4">
                <pre class="text-sm text-green-400"><code>/* Paste the exported variables into :root */
@@ -446,11 +624,169 @@ body {
 }</code></pre>
             </div>
             <p class="text-slate-600 dark:text-slate-400 mb-4">
-               With this pattern, changing your entire site's color scheme means updating just the five variables in <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded">:root</code>. Every component that references the variables updates automatically. This is the same approach used by design systems like Shadcn, Radix, and Tailwind v4. For a deeper explanation, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN guide to CSS custom properties</a> covers edge cases and best practices.
+               With this pattern, changing your entire site's color scheme means updating just the variables in <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded">:root</code>. Every component that references the variables updates automatically. This is the same approach used by design systems like Shadcn, Radix, and Tailwind v4. For a deeper explanation, the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN guide to CSS custom properties</a> covers edge cases and inheritance behavior.
             </p>
             <p class="text-slate-600 dark:text-slate-400">
-               Need to convert a hex code to RGB, HSL, or another format before using it? The <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> handles instant format translation.
+               Need to convert a HEX code to RGB, HSL, or another format? The <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> handles instant format translation for any color in your palette.
             </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+            <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Assign semantic names immediately:</strong> Rename <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-1</code> to <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-primary</code>, <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-2</code> to <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-surface</code>, etc. Generic names create confusion the moment you have more than three colors.</li>
+               <li><strong>Validate contrast before committing:</strong> Use the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to verify that every text/background pair meets WCAG AA (4.5:1 for normal text, 3:1 for large text). A visually appealing palette can still fail accessibility.</li>
+               <li><strong>Test with the color blindness simulator:</strong> Run your palette through the <a href="/color-blindness/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color blindness simulator</a> to check for indistinguishable color pairs. Red/green combinations are the most common failure point.</li>
+               <li><strong>Don't use all colors equally:</strong> In a 5-color palette, one color should dominate (usually the background), two should support (text, borders), one should accent (buttons, links), and one should reserve for special states (errors, highlights).</li>
+               <li><strong>Generate a dark mode variant early:</strong> Don't wait until the end of the project. Generate a second palette for dark mode right after finalizing the light palette, export both as CSS variables, and set up the media query from the start.</li>
+               <li><strong>Save candidate palettes, not just the final one:</strong> Save 3–4 promising palettes during your exploration phase. You might realize two sprints in that palette #2 was actually better than the one you chose.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
+            <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Mistakes</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Accepting the first palette:</strong> The first generation is a starting point, not a final decision. Most good palettes emerge after 10–20 iterations of locking and regenerating. If the first result feels "fine," keep going — you'll likely find something better.</li>
+               <li><strong>Ignoring the lightness distribution:</strong> A palette where all five colors have similar lightness values will look flat and lack hierarchy. You need contrast between your background and foreground colors. If the generator gives you five mid-tone colors, regenerate until you get a mix of lights and darks.</li>
+               <li><strong>Using palette colors without testing on real content:</strong> Colors look different next to real text, images, and whitespace than they do in an isolated swatch view. Always paste your exported CSS into an actual page before finalizing.</li>
+               <li><strong>Too many colors:</strong> More colors doesn't mean a better design. Most well-designed interfaces use 3–5 colors. If you find yourself needing 8 colors, consider whether some of those roles could be served by opacity variations of fewer base colors.</li>
+               <li><strong>Relying solely on localStorage:</strong> Saved palettes survive browser restarts but not data clears or device switches. Export important palettes as CSS or JSON files and commit them to your project repo as a permanent record.</li>
+               <li><strong>Not checking color names for conflicts:</strong> If you're working on a brand project, check that your generated colors don't accidentally match a competitor's trademark colors. Use the <a href="/color-names-chart/" class="text-emerald-600 dark:text-emerald-400 hover:underline">HTML color names chart</a> to understand what standard names map to your values.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+            <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               This tool is extremely lightweight. The generation algorithm runs in under a millisecond — it's just a few random number calls and HSL-to-HEX conversions. There are no network requests, no API calls, no image processing. The entire tool is about 15KB of JavaScript (minified and gzipped), which loads and executes faster than most analytics scripts.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The PNG export is the only operation with meaningful computational cost, because it uses the Canvas API to render the palette and then calls <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">canvas.toBlob()</code> to create the image. On a modern device this takes under 100ms. On older mobile devices it might take 200–300ms — still imperceptible in practice.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Local storage operations (save/load/delete palettes) are synchronous but deal with tiny payloads — a 5-color palette as JSON is roughly 200 bytes. Even with 50 saved palettes, the total storage is under 10KB, well within the 5–10MB localStorage limit that browsers enforce.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="compatibility-heading">
+            <h2 id="compatibility-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The palette generator relies on standard web APIs that are universally supported:
+            </p>
+            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>CSS custom properties:</strong> Supported in all modern browsers (Chrome 49+, Firefox 31+, Safari 9.1+, Edge 15+). If you're supporting IE11, you'll need a PostCSS plugin like postcss-custom-properties to transform variables into static values.</li>
+               <li><strong>Canvas API (PNG export):</strong> Supported in all browsers going back over 15 years. The <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">toBlob()</code> method requires slightly newer versions (Chrome 50+, Firefox 19+, Safari 11+).</li>
+               <li><strong>crypto.getRandomValues():</strong> Supported in all modern browsers. Falls back to Math.random() in extremely old environments, though this is unlikely to matter in practice.</li>
+               <li><strong>localStorage:</strong> Available in all browsers with JavaScript enabled. Blocked in private/incognito mode in some Safari versions — the tool handles this gracefully with a try/catch that silently skips the save operation.</li>
+               <li><strong>Clipboard API:</strong> The copy-to-clipboard function uses <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">navigator.clipboard.writeText()</code> with a fallback to <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">document.execCommand('copy')</code> for older browsers. Copy works everywhere.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The tool is fully functional on mobile browsers including Chrome for Android, Safari for iOS, and Samsung Internet. Touch targets on the lock buttons and color blocks meet the 44×44px minimum recommended by Apple's Human Interface Guidelines.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+            <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The palette interface is keyboard-navigable. Each color block is focusable — press Tab to move between them, and press Enter or Space to copy the HEX code. The lock buttons are also in the tab order. Focus indicators use a high-contrast white outline with a dark shadow, which remains visible against both light and dark generated colors. A <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">@media (forced-colors: active)</code> rule ensures the focus outline uses the system highlight color for Windows High Contrast Mode users.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Copy actions are announced via an ARIA live region (<code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">aria-live="polite"</code>) so screen reader users know when a color has been copied to the clipboard. The export modal uses <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">role="dialog"</code> with <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">aria-modal="true"</code> and traps focus appropriately.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               One inherent limitation: the visual experience of seeing colors side by side cannot be fully conveyed to screen reader users. The tool provides the HEX codes as text, which screen readers can read aloud, but the aesthetic judgment of whether colors "look good together" remains a visual evaluation. This is a fundamental challenge for any color tool — we mitigate it by making the codes and copy actions fully accessible, even though the visual assessment cannot be.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+            <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Use JSON export in design token pipelines:</strong> If your team uses Style Dictionary, Figma Tokens, or a similar tool, the JSON output from this generator can serve as the source file. Write a small transform that maps <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">color-1</code> to semantic names and generates platform-specific outputs (CSS, iOS, Android).</li>
+               <li><strong>Create opacity variants from HSL:</strong> Take your palette's HEX values, convert them to HSL using the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a>, then create hover and disabled states by adjusting lightness instead of guessing new HEX codes.</li>
+               <li><strong>Combine with Tailwind's extend config:</strong> Paste your JSON export into <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">tailwind.config.js</code> under <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">extend.colors</code> to make your palette available as utility classes like <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">bg-color-1</code> and <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">text-color-3</code>.</li>
+               <li><strong>Use CSS color-mix() for state variants:</strong> Modern browsers support <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">color-mix(in srgb, var(--primary) 80%, black)</code> to create hover states without generating separate palette colors.</li>
+            </ul>
+            <div class="code-block" role="img" aria-label="Tailwind config example using exported palette colors">// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        palette: {
+          1: '#3B82F6',
+          2: '#10B981',
+          3: '#F59E0B',
+          4: '#EF4444',
+          5: '#8B5CF6',
+        }
+      }
+    }
+  }
+}
+// Now use: bg-palette-1, text-palette-3, border-palette-5</div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+            <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Build a palette around a brand color:</strong> If you have one known color (e.g., a client's brand blue), lock it in the first slot and generate the rest. The random distribution of the unlocked slots will naturally produce complementary and contrasting colors. If nothing clicks after 15–20 generations, unlock and try a different brand color placement — sometimes the brand color works better as an accent (slot 4 or 5) than as the primary (slot 1).</li>
+               <li><strong>Use the PNG export as a design contract:</strong> Download the palette image and pin it in your project's Slack channel or Notion doc. It becomes the single source of truth that designers and developers reference. When someone asks "what blue should I use for this new component?" the answer is in the PNG.</li>
+               <li><strong>Generate palettes for specific moods by filtering mentally:</strong> You can't control the exact output, but you can converge toward a mood by being selective about what you lock. Want warm? Lock warm colors (reds, oranges, yellows) and regenerate until the remaining slots also land in the warm range. Want monochrome? Lock two similar hues and keep regenerating — the algorithm will eventually produce variations close to your locked tones.</li>
+               <li><strong>Cross-reference with photo-based extraction:</strong> Generate a random palette here, then extract colors from a reference photo using the <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color from image</a> tool. Compare the two approaches — sometimes the random palette is more balanced, sometimes the photo-extracted one has more character. The best results often come from merging: take two colors from the photo extraction and three from the generator.</li>
+               <li><strong>Use saved palettes as a personal color library:</strong> Over time, your saved palettes become a curated collection of color combinations you've vetted. When a new project needs a starting point, check your library first before generating from scratch — you might find something perfect that you created months ago for a different context.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="guide-heading">
+            <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Color Palette Generation</h2>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Workflow: From Blank Canvas to Shipped Palette</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               In my own projects, I've found that the most effective palette workflow has three phases, not one. Phase one is rapid exploration — I generate 15–20 palettes in about two minutes, locking nothing, just getting a feel for what's possible. Phase two is convergence — I find one palette that's close to what I want, lock two or three colors from it, and generate 10 more variations around those anchors. Phase three is validation — I take the final palette, export it as CSS, paste it into the actual project, and check it against real content.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Most people skip phase one and go straight to locking, which means they're committing to colors too early. The rapid exploration phase trains your eye and often surfaces unexpected combinations that you wouldn't have found by locking the first acceptable color. I've landed on some of my best palettes from generation #17 — combinations I would have never constructed manually.
+            </p>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Professional Tips for Client Presentations</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               When presenting palettes to clients, never show a single option. Generate three distinct palettes, export each as a PNG, and present them side by side with a brief rationale: "Option A is warm and approachable, Option B is bold and technical, Option C is neutral and sophisticated." Clients don't want to evaluate colors in isolation — they want to make a directional choice between clear alternatives.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Include a mockup or wireframe with each palette applied, even if it's rough. Seeing colors on a layout communicates vastly more than swatches alone. You can generate the palette here, export the CSS, and paste it into a simple HTML wireframe in under five minutes. That small effort dramatically improves the quality of client feedback.
+            </p>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Team Collaboration</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The JSON export is the bridge between this tool and a team workflow. Commit the exported JSON to your repo under a path like <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">src/tokens/colors.json</code>. When the palette changes (and it will — design is iterative), update the JSON file and create a pull request. This gives the team a version-controlled history of color decisions, which is invaluable when someone asks "why did we change the primary from blue to teal?" six months later.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               For teams using Figma, the PNG export can be imported directly as a reference image in the design system file. Designers can use the eyedropper in Figma to sample from the PNG, ensuring they're using the exact same values that are in the code. This eliminates the classic disconnect where the design file shows one blue and the deployed site shows another.
+            </p>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Real Projects Where This Workflow Shined</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               On a fintech dashboard rebuild, the existing product had accumulated 23 different blues across its CSS. I generated a 5-color palette here, exported it as CSS variables, and over the course of three sprints replaced every hardcoded color with a variable reference. The diff was massive but each commit was safe because the visual change was incremental — swap one component at a time, verify it looks right, move to the next. By the end, we had one <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">:root</code> block controlling the entire color system.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               On a personal blog redesign, I generated a 4-color palette in about 90 seconds, exported it, and had the entire site styled in under an hour. The palette was simple enough that I never had to second-guess color choices while writing content — the constraint freed me to focus on writing instead of tweaking CSS.
+            </p>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Mistakes I Made Early On</h3>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               My biggest mistake was treating the generated palette names (<code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-1</code> through <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-5</code>) as permanent. Three months into a project, nobody on the team remembered which color was which. We'd have to look at the actual rendered page to figure out that <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">--color-3</code> was the "amber warning" color. Now I rename them to semantic names within 60 seconds of exporting — it takes almost no time and saves hours of confusion later.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Another mistake was generating palettes in isolation from the actual content. I'd pick a beautiful palette, build the UI, then add real photography and realize the palette clashed with the images. Now I gather all visual assets first — photos, illustrations, logos — and then generate the palette with those materials in mind. If the client has product photos with a lot of warm tones, I generate until I find a palette that complements warmth rather than fighting it.
+            </p>
+
+            <h3 class="font-bold mb-3 text-slate-800 dark:text-slate-200">Productivity Tips</h3>
+            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+               <li>Use the Spacebar shortcut aggressively. It's faster than moving the mouse to the Generate button, and the rapid-fire iteration builds visual intuition faster than careful, deliberate generation.</li>
+               <li>Set a timer for 2 minutes. Generate as many palettes as you can in that window without locking anything. When the timer goes off, review what you saw and pick the most promising one to refine.</li>
+               <li>Keep the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> open in a neighboring tab. Copy colors directly from the palette into the checker without switching context.</li>
+               <li>If you're working in VS Code, paste the exported CSS variables into a dedicated <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">colors.css</code> file and use CSS @import to pull it into your main stylesheet. This keeps color definitions isolated and easy to find.</li>
+               <li>Bookmark both this tool and the <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color from image</a> tool together. Use the generator for starting from scratch and the image tool for starting from inspiration — together they cover virtually every palette workflow.</li>
+            </ul>
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
@@ -478,7 +814,35 @@ body {
                </div>
                <div>
                   <h3 class="font-semibold mb-1">Can I use generated palettes in commercial projects?</h3>
-                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. All generated color combinations are free to use in personal and commercial projects. Color palettes cannot be copyrighted — you own whatever you create with this tool.</p>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. All generated color combinations are free to use in personal and commercial projects. Color values themselves are mathematical and cannot be copyrighted.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Are the generated colors accessible?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Not automatically. The generator creates visually harmonious palettes, but you must verify that text and background combinations meet WCAG contrast requirements. Use the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> to validate your pairings.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How is the palette generated — is it truly random?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">The generator uses a pseudo-random algorithm seeded by the browser's crypto API. While it doesn't follow a strict color theory model like complementary or triadic, the constrained saturation and lightness ranges tend to produce visually balanced results.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Can I use this on mobile?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. The tool is fully responsive. Tap any color to copy its HEX code. The lock, add, remove, and export buttons are all accessible on touch screens with appropriately sized tap targets.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What happens to saved palettes if I clear my browser data?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Saved palettes are stored in localStorage. Clearing browser data, using private/incognito mode, or switching browsers will erase them. Export important palettes as CSS or JSON files as a backup.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">How do I generate palettes based on a specific color?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Lock the specific color you want to build around, then keep generating. For a more targeted approach, use the <a href="/palette-from-color/" class="text-emerald-600 dark:text-emerald-400 hover:underline">palette from color</a> tool which generates harmonious schemes from a single starting color using color theory rules.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">What format does the JSON export use?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">A flat array of objects, each with a name key (color-1, color-2, etc.) and a hex value. This format can be directly imported into JavaScript, consumed by build tools, or transformed into design tokens for Figma or iOS.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Can I extract a palette from an image instead of generating randomly?</h3>
+                  <p class="text-sm text-slate-600 dark:text-slate-400">Yes. The <a href="/color-from-image/" class="text-emerald-600 dark:text-emerald-400 hover:underline">Color from Image</a> tool analyzes any uploaded photo and extracts its dominant or vibrant colors as a palette. It's useful when you want colors inspired by a specific photograph or mood board.</p>
                </div>
             </div>
          </section>
@@ -488,22 +852,22 @@ body {
               <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
               <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/palettes/&text=Create%20beautiful%20color%20palettes%20instantly%20with%20DevPalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
+                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/palettes/&text=Create%20beautiful%20color%20palettes%20instantly%20with%20DevPalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter (opens in new tab)">
                   <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
                 </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook (opens in new tab)">
                   <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
                 </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn (opens in new tab)">
                   <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
                 </a>
-                <a href="https://wa.me/?text=Check%20out%20DevPalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
+                <a href="https://wa.me/?text=Check%20out%20DevPalettes%20-%20Free%20Color%20Palette%20Generator%20https://devpalettes.com/palettes/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp (opens in new tab)">
                   <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
                 </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/palettes/&description=Create%20beautiful%20color%20palettes%20instantly%20with%20DevPalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
+                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/palettes/&description=Create%20beautiful%20color%20palettes%20instantly%20with%20DevPalettes!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest (opens in new tab)">
                   <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
                 </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
+                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
                   <i class="fas fa-link" aria-hidden="true"></i> Copy Link
                 </button>
               </div>
@@ -511,7 +875,7 @@ body {
           </section>
 
          <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="explore-heading">
-            <h2 id="explore-heading" class="text-2xl font-bold mb-4">Explore More Tools</h2>
+            <h2 id="explore-heading" class="text-2xl font-bold mb-4">Related Tools</h2>
             <p class="text-slate-500 mb-4 text-sm">Once you have your palette, try these tools:</p>
             <div class="flex flex-wrap justify-center gap-3">
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
@@ -519,7 +883,42 @@ body {
                <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
                <a href="/color-blindness/" class="btn-secondary text-xs py-2 px-4">Color Blindness Simulator</a>
                <a href="/color-names-chart/" class="btn-secondary text-xs py-2 px-4">HTML Color Names</a>
+               <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color from Image</a>
+               <a href="/palette-from-color/" class="btn-secondary text-xs py-2 px-4">Palette from Color</a>
+               <a href="/color-wheel/" class="btn-secondary text-xs py-2 px-4">Color Wheel</a>
             </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="articles-heading">
+            <h2 id="articles-heading" class="text-2xl font-bold mb-4">Related Articles</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">Deepen your understanding of color systems in web design:</p>
+            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+               <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN: Using CSS custom properties</a> — Complete reference for CSS variables, including inheritance, fallback values, and JavaScript manipulation.</li>
+               <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">WCAG 2.1 Contrast Minimum</a> — The official specification for minimum contrast ratios in accessible web interfaces.</li>
+               <li><a href="https://web.dev/articles/color-contrast" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">web.dev: Color Contrast</a> — Practical guidance on choosing and testing accessible color pairs for the web.</li>
+               <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">MDN: CSS color values</a> — Reference for all color formats in CSS including newer functions like <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-sm font-mono">color-mix()</code> and <code class="bg-slate-100 dark:bg-slate-800 px-1 rounded text-sm font-mono">oklch()</code>.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+            <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A color palette generator doesn't replace design judgment — it accelerates the process of getting from "no colors" to "good enough to test." The real design work happens after you export: assigning semantic roles, validating contrast, testing against real content, and refining lightness and saturation for specific contexts. This tool handles the first 80% in about two minutes so you can spend your time on the 20% that actually matters.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The lock-and-regenerate workflow is deliberately simple because palette selection is fundamentally an iterative, intuitive process — not an analytical one. You know a good palette when you see it; the tool's job is to show you enough options that you find it quickly. Combined with the <a href="/wcag-contrast-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">contrast checker</a> for validation and the <a href="/converter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">color converter</a> for format translation, you have a complete palette workflow from generation to production.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Whether you're starting a personal project from scratch, exploring color directions for a client, or cleaning up a legacy codebase with 23 different blues, this tool gets you to a clean, exportable palette faster than any other approach. Press Spacebar and see what happens.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" class="text-2xl font-bold mb-3">Generate Your Next Palette</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-6">Press Spacebar to start. Lock what you like. Export when it clicks.</p>
+            <a href="#palette-container" class="btn-primary btn-glow inline-flex items-center gap-2">
+               <i class="fas fa-arrow-up" aria-hidden="true"></i> Jump to the Generator
+            </a>
          </section>
 
       </div>
