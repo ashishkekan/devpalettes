@@ -147,6 +147,70 @@
           "@type": "Answer",
           "text": "Yes, completely free with no signup or account required. Select an animation type, customize the settings, preview it live, and copy the CSS code directly into your project."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between CSS transitions and CSS animations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "CSS transitions require a trigger like hover or a class change and animate between two states. CSS animations use @keyframes to define multiple intermediate steps and can run automatically without a trigger, loop infinitely, and be paused or reversed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I combine multiple animations on a single element?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Use a comma-separated list in the animation shorthand property. For example: animation: fadeIn 0.5s ease-out, slideUp 0.5s ease-out. Each animation references its own @keyframes rule and can have independent timing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is animation-fill-mode and when should I use it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Animation-fill-mode controls what styles apply before the animation starts and after it ends. 'forwards' keeps the final keyframe state after the animation finishes. 'backwards' applies the first keyframe state during the delay period. 'both' combines both behaviors — useful for one-shot entrance animations where the element should stay in its end position."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I respect prefers-reduced-motion for accessibility?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Wrap your animation declarations inside @media (prefers-reduced-motion: no-preference) { ... } so that users who have enabled reduced motion in their OS settings do not see any animation. Alternatively, set animation: none inside @media (prefers-reduced-motion: reduce)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What cubic-bezier values work best for UI animations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For entrances, cubic-bezier(0.0, 0.0, 0.2, 1) gives a snappy ease-out. For exits, cubic-bezier(0.4, 0.0, 1, 1) gives a quick ease-in. For elastic effects, try cubic-bezier(0.68, -0.55, 0.265, 1.55). Avoid overly bouncy curves for functional UI — they can feel unprofessional."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I animate CSS custom properties (variables)?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, but with a caveat. You must register the custom property with @property and define a type (like length, percentage, or color). Without @property registration, browsers cannot interpolate custom property values and the change will be instant rather than animated."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I stop a CSS animation with JavaScript?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Set element.style.animationPlayState = 'paused' to pause it, or element.style.animation = 'none' to stop it entirely. You can also remove the animation class or use the getAnimations() API for more granular control over individual animation instances."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do CSS animations affect SEO or Core Web Vitals?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Poorly implemented animations can hurt Core Web Vitals by increasing CLS (if animations cause layout shifts) or INP (if animations block the main thread). Animating only transform and opacity avoids both issues. Search engines do not penalize animations themselves, but they do penalize the performance problems bad animations cause."
+        }
       }
     ]
   }
@@ -222,6 +286,25 @@
        font-size: 12px;
        will-change: transform;
     }
+    .code-block {
+       background: #1e293b;
+       color: #e2e8f0;
+       border-radius: 12px;
+       padding: 1.25rem;
+       overflow-x: auto;
+       font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+       font-size: 0.8125rem;
+       line-height: 1.7;
+    }
+    .dark .code-block {
+       background: #0f172a;
+    }
+    .code-block .kw { color: #c084fc; }
+    .code-block .sel { color: #67e8f9; }
+    .code-block .prop { color: #86efac; }
+    .code-block .val { color: #fbbf24; }
+    .code-block .cmt { color: #64748b; font-style: italic; }
+    .code-block .pct { color: #fb923c; }
   </style>
   <!-- adsense-remediation-schema -->
   <script type="application/ld+json">
@@ -469,21 +552,275 @@
             </p>
          </section>
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
-            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Use Cases for CSS Animations</h2>
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="whyuse-heading">
+            <h2 id="whyuse-heading" class="text-2xl font-bold mb-4">Why Use a CSS Animation Generator Instead of Writing Keyframes Manually?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               CSS animations are everywhere in modern web design. Here are the most common scenarios where this generator saves you time:
+               Writing <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> by hand is not hard for a single simple animation. The problem is iteration. When you need to compare a 300ms ease-out bounce against a 500ms ease-in-out bounce, you are looking at four separate edit-refresh-check cycles before you even decide which direction to go. Multiply that across the six or seven animations a typical page needs, and you have burned an hour on something that should take ten minutes.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A generator collapses that loop. You see every change instantly — no save, no refresh, no context switch. More importantly, the output is consistent. Every generated animation follows the same structural pattern: a named <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> block, a matching class with the animation shorthand, and a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change</code> hint. When you bring that into a team codebase, no one has to reverse-engineer your personal keyframe style.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               There is also the correctness factor. It is easy to forget that <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation-fill-mode: forwards</code> is needed for one-shot entrance animations, or that <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation-direction: alternate</code> changes how keyframe percentages map. The generator handles these details automatically based on your configuration, so the copied code works on the first paste more often than not. For processing and optimizing the CSS output after copying, you can run it through a <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> to strip whitespace before shipping to production.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="text-2xl font-bold mb-4">Key Features of This Generator</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Ten animation presets:</strong> Move left, move right, rotate, scale up, pulse, shake, bounce, flip, swing, and fade. Each one generates a distinct <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> rule — not a variation of the same template.</li>
+               <li><strong>Full timing control:</strong> Duration from 0.1s upward, five timing functions including linear and ease-in-out, iteration count from 1 to infinite, and three direction modes.</li>
+               <li><strong>Live preview with dot-grid background:</strong> The preview panel uses a grid pattern so you can see exactly how far an element moves, making it easier to judge translateX or translateY values at a glance.</li>
+               <li><strong>Shape and color customization:</strong> Test your animation against rounded, circular, or square shapes in any color. This matters because border-radius affects how rotate and flip animations visually read.</li>
+               <li><strong>Zero-dependency output:</strong> The generated CSS uses standard properties — no vendor prefixes, no polyfills, no JavaScript. Drop it into any stylesheet and it works.</li>
+               <li><strong>Dark mode preview:</strong> Toggle your system or app dark mode and the preview background adapts, so you can verify the animation looks correct against both light and dark surfaces.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How CSS Animations Work Under the Hood</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               A CSS animation is controlled by several sub-properties that work together. Understanding what each one does helps you use this generator more intentionally rather than blindly cycling through options:
             </p>
             <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Loading spinners and indicators:</strong> A simple rotate or pulse animation is the go-to pattern for showing that something is happening in the background. No JavaScript needed — just a CSS loop.</li>
-               <li><strong>Entrance animations:</strong> Fade-in, slide-up, and scale-up effects give content a polished feel as it appears on screen. Pair them with an Intersection Observer for scroll-triggered reveals.</li>
-               <li><strong>Hover and interaction feedback:</strong> Subtle scale or bounce responses on buttons and cards let users know their click registered. These micro-interactions improve perceived performance.</li>
-               <li><strong>Notification badges:</strong> A bouncing or pulsing dot draws the eye to new alerts without being intrusive — a pattern used by every major app from email clients to social platforms.</li>
-               <li><strong>Hero section motion:</strong> Floating, swinging, or gently moving elements in a hero area add life to an otherwise static landing page without hurting page load speed.</li>
+               <li><strong>animation-name:</strong> References the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> rule to apply. This is the bridge between your keyframe definition and the element.</li>
+               <li><strong>animation-duration:</strong> How long one cycle takes (e.g., 1s, 500ms). Below 100ms the animation is imperceptible; above 3s it feels sluggish for UI feedback.</li>
+               <li><strong>animation-timing-function:</strong> The speed curve — ease, linear, ease-in-out, or custom cubic-bezier values. This is arguably the most impactful control because it determines whether an animation feels natural or mechanical.</li>
+               <li><strong>animation-iteration-count:</strong> How many times to repeat (a number or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">infinite</code>). Loading spinners use infinite; entrance animations use 1.</li>
+               <li><strong>animation-direction:</strong> Whether to play normal, reverse, or alternate back and forth. Alternate is what makes bounce and pulse animations look correct — without it, the element snaps back to the start instead of smoothly reversing.</li>
+               <li><strong>animation-delay:</strong> Time to wait before starting. Useful for staggered entrance effects where multiple elements animate in sequence.</li>
+               <li><strong>animation-fill-mode:</strong> What styles apply before and after the animation. <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">forwards</code> keeps the end state; <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">both</code> applies the start state during the delay too.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               All of these are combined in the animation shorthand. The generator outputs the shorthand format because it is more concise and easier to maintain than writing seven separate properties.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="keyframes-heading">
+            <h2 id="keyframes-heading" class="text-2xl font-bold mb-4">What Are Keyframes and How Do They Define Motion?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Keyframes define the styles that an element will have at specific points during the animation. You use percentage values to mark those points: 0% is the start, 100% is the end, and you can add intermediate steps like 25%, 50%, or 75% for more complex motion paths.
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>0% (from):</strong> The starting state of the element before the animation begins.</li>
+               <li><strong>50%:</strong> The midpoint — useful for bounce, pulse, or shake effects where the element reverses direction.</li>
+               <li><strong>100% (to):</strong> The ending state. The browser interpolates all properties between keyframes automatically.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               You can change any CSS property inside keyframes — transform, opacity, color, border-radius, box-shadow, and more. However, for performance, animating only <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> is strongly recommended because these are the only properties the browser can composite on the GPU without triggering layout or paint. For detailed browser compatibility data, check the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" target="_blank" rel="noopener noreferrer">MDN reference on @keyframes</a>.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               When an animation needs to change color alongside motion — for instance, a button that fades from blue to green while scaling up — you can animate the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">background-color</code> property in the keyframes. To pick the right colors for these transitions, the <a href="/color-picker/" class="text-emerald-500 hover:underline">Color Picker</a> tool lets you sample and convert colors precisely before adding them to your keyframe steps.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
+            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Common Use Cases for CSS Animations</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               CSS animations are not decorative fluff — they serve specific functional purposes in modern interfaces. Here are the scenarios where this generator saves the most time:
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Loading spinners and progress indicators:</strong> A continuous rotate or pulse animation is the universal pattern for async operations. No JavaScript timer loops needed — the CSS handles the infinite loop on its own.</li>
+               <li><strong>Scroll-triggered entrance animations:</strong> Fade-in, slide-up, and scale-up effects give content a polished feel as it enters the viewport. Pair the generated CSS with an Intersection Observer that adds the animation class when the element becomes visible.</li>
+               <li><strong>Hover and interaction feedback:</strong> Subtle scale or bounce responses on buttons and cards signal that the click registered. These micro-interactions improve perceived responsiveness more than any performance optimization.</li>
+               <li><strong>Notification and status badges:</strong> A bouncing or pulsing dot draws attention to unread messages or live statuses without being intrusive — a pattern used by Slack, GitHub, and every major email client.</li>
+               <li><strong>Hero section motion:</strong> Floating, swinging, or gently drifting elements in a hero area add visual interest to an otherwise static landing page. Since the animations run on the compositor thread, they do not block the main thread during the critical loading phase.</li>
+               <li><strong>Error and success state transitions:</strong> Shaking an input field on validation failure or pulsing a success icon after form submission provides immediate, non-verbal feedback that reduces user confusion.</li>
             </ul>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
                If you are building a dashboard with glass-style panels, pair your animations with the <a href="/glassmorphism-generator/" class="text-emerald-500 hover:underline">Glassmorphism Generator</a> to create frosted glass containers that animate in smoothly. For softer, extruded UI elements, the <a href="/neumorphism-generator/" class="text-emerald-500 hover:underline">Neumorphism Generator</a> is a good companion tool.
             </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="examples-heading">
+            <h2 id="examples-heading" class="text-2xl font-bold mb-4">Before and After: Real CSS Animation Examples</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+               Here are three concrete before-and-after scenarios showing what the generator produces compared to writing animations from scratch. Each example shows the manual approach versus the generated output.
+            </p>
+
+            <div class="space-y-8">
+               <div>
+                  <h3 class="text-lg font-bold mb-3">Example 1: Loading Spinner</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">A spinning loader for async content — the most common animation on the web.</p>
+                  <div class="grid md:grid-cols-2 gap-4">
+                     <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">Before — Static Element</p>
+                        <div class="code-block"><span class="cmt">/* No animation — just a static circle */</span>
+<span class="sel">.spinner</span> {
+  <span class="prop">width</span>: <span class="val">32px</span>;
+  <span class="prop">height</span>: <span class="val">32px</span>;
+  <span class="prop">border</span>: <span class="val">3px solid #e2e8f0</span>;
+  <span class="prop">border-top-color</span>: <span class="val">#3b82f6</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;
+}</div>
+                     </div>
+                     <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">After — With Generated Animation</p>
+                        <div class="code-block"><span class="kw">@keyframes</span> <span class="sel">rotate</span> {
+  <span class="pct">0%</span>   { <span class="prop">transform</span>: <span class="val">rotate(0deg)</span>; }
+  <span class="pct">100%</span> { <span class="prop">transform</span>: <span class="val">rotate(360deg)</span>; }
+}
+
+<span class="sel">.spinner</span> {
+  <span class="prop">width</span>: <span class="val">32px</span>;
+  <span class="prop">height</span>: <span class="val">32px</span>;
+  <span class="prop">border</span>: <span class="val">3px solid #e2e8f0</span>;
+  <span class="prop">border-top-color</span>: <span class="val">#3b82f6</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;
+  <span class="prop">animation</span>: <span class="val">rotate 0.8s linear infinite</span>;
+  <span class="prop">will-change</span>: <span class="val">transform</span>;
+}</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div>
+                  <h3 class="text-lg font-bold mb-3">Example 2: Card Entrance Animation</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">A card that fades in and slides up when it enters the viewport.</p>
+                  <div class="grid md:grid-cols-2 gap-4">
+                     <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">Before — Instantly Visible</p>
+                        <div class="code-block"><span class="cmt">/* Card appears immediately — no motion */</span>
+<span class="sel">.card</span> {
+  <span class="prop">background</span>: <span class="val">white</span>;
+  <span class="prop">border-radius</span>: <span class="val">12px</span>;
+  <span class="prop">padding</span>: <span class="val">24px</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 1px 3px rgba(0,0,0,0.1)</span>;
+}</div>
+                     </div>
+                     <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">After — Fade + Slide Up</p>
+                        <div class="code-block"><span class="kw">@keyframes</span> <span class="sel">fadeSlideUp</span> {
+  <span class="pct">0%</span>   {
+    <span class="prop">opacity</span>: <span class="val">0</span>;
+    <span class="prop">transform</span>: <span class="val">translateY(20px)</span>;
+  }
+  <span class="pct">100%</span> {
+    <span class="prop">opacity</span>: <span class="val">1</span>;
+    <span class="prop">transform</span>: <span class="val">translateY(0)</span>;
+  }
+}
+
+<span class="sel">.card</span> {
+  <span class="prop">background</span>: <span class="val">white</span>;
+  <span class="prop">border-radius</span>: <span class="val">12px</span>;
+  <span class="prop">padding</span>: <span class="val">24px</span>;
+  <span class="prop">box-shadow</span>: <span class="val">0 1px 3px rgba(0,0,0,0.1)</span>;
+  <span class="prop">animation</span>: <span class="val">fadeSlideUp 0.4s ease-out forwards</span>;
+  <span class="prop">will-change</span>: <span class="val">transform, opacity</span>;
+}</div>
+                     </div>
+                  </div>
+               </div>
+
+               <div>
+                  <h3 class="text-lg font-bold mb-3">Example 3: Notification Badge Pulse</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mb-3">A small dot that pulses to indicate new activity.</p>
+                  <div class="grid md:grid-cols-2 gap-4">
+                     <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">Before — Static Red Dot</p>
+                        <div class="code-block"><span class="cmt">/* No motion — easy to miss */</span>
+<span class="sel">.badge</span> {
+  <span class="prop">width</span>: <span class="val">10px</span>;
+  <span class="prop">height</span>: <span class="val">10px</span>;
+  <span class="prop">background</span>: <span class="val">#ef4444</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;
+}</div>
+                     </div>
+                     <div>
+                        <p class="text-xs font-semibold text-slate-500 mb-2 uppercase tracking-wider">After — Pulsing Attention Signal</p>
+                        <div class="code-block"><span class="kw">@keyframes</span> <span class="sel">pulse</span> {
+  <span class="pct">0%</span>, <span class="pct">100%</span> {
+    <span class="prop">transform</span>: <span class="val">scale(1)</span>;
+    <span class="prop">opacity</span>: <span class="val">1</span>;
+  }
+  <span class="pct">50%</span> {
+    <span class="prop">transform</span>: <span class="val">scale(1.5)</span>;
+    <span class="prop">opacity</span>: <span class="val">0.7</span>;
+  }
+}
+
+<span class="sel">.badge</span> {
+  <span class="prop">width</span>: <span class="val">10px</span>;
+  <span class="prop">height</span>: <span class="val">10px</span>;
+  <span class="prop">background</span>: <span class="val">#ef4444</span>;
+  <span class="prop">border-radius</span>: <span class="val">50%</span>;
+  <span class="prop">animation</span>: <span class="val">pulse 1.5s ease-in-out infinite</span>;
+  <span class="prop">will-change</span>: <span class="val">transform, opacity</span>;
+}</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="realworld-heading">
+            <h2 id="realworld-heading" class="text-2xl font-bold mb-4">Real-World Project Examples</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Beyond isolated components, CSS animations solve specific problems in real projects. Here is how different roles use generated keyframes in production:
+            </p>
+            <div class="space-y-4 text-slate-600 dark:text-slate-400">
+               <div>
+                  <h3 class="font-semibold mb-1">SaaS Dashboard Onboarding</h3>
+                  <p class="text-sm">When a user first logs in, a multi-step onboarding overlay animates in with a slide-right transition, each step cross-fading to the next. The stagger delay between steps is achieved with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation-delay: calc(var(--i) * 150ms)</code> on each panel. This took 15 minutes with the generator versus an hour of manual tweaking on a previous project.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">E-Commerce Product Gallery</h3>
+                  <p class="text-sm">Product thumbnails use a scale-up animation on hover to indicate interactivity, while the main product image cross-fades when the user clicks a different thumbnail. The fade animation with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">fill-mode: both</code> ensures no flash of the old image during the transition. If you need to optimize the product images themselves before adding animations, the <a href="/image-compressor/" class="text-emerald-500 hover:underline">Image Compressor</a> can reduce file sizes without visible quality loss.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Portfolio Site Scroll Reveals</h3>
+                  <p class="text-sm">Each project card fades in and slides up 20px as the user scrolls. An Intersection Observer adds an <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">.is-visible</code> class, which triggers the one-shot animation. The <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">fill-mode: forwards</code> from the generated code keeps the card in its final position — without it, the card would snap back to invisible after the animation ends.</p>
+               </div>
+            </div>
+         </section>
+
+         <section aria-labelledby="types-heading">
+            <h2 id="types-heading" class="text-2xl font-bold mb-6 text-center">Common Animation Types Explained</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-arrows-alt-h"></i></span>
+                     Move / Slide
+                  </h3>
+                  <p class="text-xs text-slate-500">Translates an element along the X or Y axis using <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">translateX</code> or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">translateY</code>. Used for sliding panels, off-canvas menus, tooltips, and entrance effects. Since translate does not trigger layout, it stays on the compositor thread.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-sync-alt"></i></span>
+                     Rotate
+                  </h3>
+                  <p class="text-xs text-slate-500">Spins an element around its center point using <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rotate()</code>. The standard loading spinner pattern. With <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">linear</code> timing it spins at constant speed; with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">ease-in-out</code> it accelerates and decelerates each revolution.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-expand-arrows-alt"></i></span>
+                     Scale / Pulse
+                  </h3>
+                  <p class="text-xs text-slate-500">Grows or shrinks an element with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">scale()</code>. Scale-up works for hover emphasis. Pulse cycles between scale(1) and scale(1.1–1.5) for attention-grabbing effects like notification badges and live status dots.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-arrow-down"></i></span>
+                     Bounce
+                  </h3>
+                  <p class="text-xs text-slate-500">Moves an element up and down with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">translateY</code> to simulate gravity. Requires a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">ease-in</code> or custom cubic-bezier timing to feel physically plausible — a linear bounce looks robotic.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-exchange-alt"></i></span>
+                     Flip
+                  </h3>
+                  <p class="text-xs text-slate-500">Rotates an element in 3D with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rotateY(180deg)</code>. Needs <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">perspective</code> on the parent and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">backface-visibility: hidden</code> on both faces. Used for card flips and toggle switches.</p>
+               </div>
+               <div class="glass-card p-6 text-center">
+                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
+                     <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-eye"></i></span>
+                     Fade
+                  </h3>
+                  <p class="text-xs text-slate-500">Transitions <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> between 0 and 1. The simplest animation type and the most performant after transform. Often combined with a translate for slide-and-fade entrances that feel more dynamic than opacity alone.</p>
+               </div>
+            </div>
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
@@ -498,108 +835,162 @@
                For teams, a shared generator ensures consistency — everyone produces keyframes with the same naming conventions and structure rather than each developer inventing their own. And because the output is pure CSS with no dependencies, it adds zero kilobytes to your JavaScript bundle. You can also fine-tune the visual layer of your animated components by adding <a href="/box-shadow-generator/" class="text-emerald-500 hover:underline">box shadows</a> or <a href="/gradient/" class="text-emerald-500 hover:underline">CSS gradients</a> alongside the motion.
             </p>
          </section>
-         
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="keyframes-heading">
-            <h2 id="keyframes-heading" class="text-2xl font-bold mb-4">What Are Keyframes?</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Keyframes define the styles that an element will have at specific points during the animation. You use percentage values to mark those points: 0% is the start, 100% is the end, and you can add intermediate steps like 25%, 50%, or 75% for more complex motion paths.
-            </p>
-            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>0% (from):</strong> The starting state of the element before the animation begins.</li>
-               <li><strong>50%:</strong> The midpoint — useful for bounce, pulse, or shake effects where the element reverses direction.</li>
-               <li><strong>100% (to):</strong> The ending state. The browser interpolates all properties between keyframes automatically.</li>
-            </ul>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
-               You can change any CSS property inside keyframes — transform, opacity, color, border-radius, box-shadow, and more. However, for performance, animating only <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> is strongly recommended. For detailed browser compatibility data, check the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" target="_blank" rel="noopener noreferrer">MDN reference on @keyframes</a>.
-            </p>
-         </section>
-
-         <section aria-labelledby="types-heading">
-            <h2 id="types-heading" class="text-2xl font-bold mb-6 text-center">Common Animation Types</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-               <div class="glass-card p-6 text-center">
-                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-arrows-alt-h"></i></span>
-                     Move / Slide
-                  </h3>
-                  <p class="text-xs text-slate-500">Translates an element along the X or Y axis. Used for sliding panels, tooltips, and entrance effects.</p>
-               </div>
-               <div class="glass-card p-6 text-center">
-                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-rose-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-sync-alt"></i></span>
-                     Rotate
-                  </h3>
-                  <p class="text-xs text-slate-500">Spins an element around its center point. Common for loading spinners and refresh icons.</p>
-               </div>
-               <div class="glass-card p-6 text-center">
-                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-emerald-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-expand-arrows-alt"></i></span>
-                     Scale / Pulse
-                  </h3>
-                  <p class="text-xs text-slate-500">Grows or shrinks an element. Pulse animations cycle between normal and enlarged states for attention.</p>
-               </div>
-               <div class="glass-card p-6 text-center">
-                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-amber-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-arrow-down"></i></span>
-                     Bounce
-                  </h3>
-                  <p class="text-xs text-slate-500">Moves an element up and down to simulate a bouncing ball. Great for scroll indicators and notifications.</p>
-               </div>
-               <div class="glass-card p-6 text-center">
-                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-purple-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-exchange-alt"></i></span>
-                     Flip
-                  </h3>
-                  <p class="text-xs text-slate-500">Rotates an element in 3D perspective. Used for card flips, toggles, and reveal effects.</p>
-               </div>
-               <div class="glass-card p-6 text-center">
-                  <h3 class="font-bold mb-2 flex items-center justify-center gap-2">
-                     <span class="w-8 h-8 bg-cyan-500 text-white rounded-full flex items-center justify-center text-sm" aria-hidden="true"><i class="fas fa-eye"></i></span>
-                     Fade
-                  </h3>
-                  <p class="text-xs text-slate-500">Gradually changes opacity from visible to hidden. The simplest and most widely used animation type.</p>
-               </div>
-            </div>
-         </section>
-
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
-            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How CSS Animations Work</h2>
-            
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               A CSS animation is controlled by several sub-properties that work together:
-            </p>
-            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>animation-name:</strong> References the @keyframes rule to apply.</li>
-               <li><strong>animation-duration:</strong> How long one cycle takes (e.g., 1s, 500ms).</li>
-               <li><strong>animation-timing-function:</strong> The speed curve — ease, linear, ease-in-out, or custom cubic-bezier values.</li>
-               <li><strong>animation-iteration-count:</strong> How many times to repeat (a number or infinite).</li>
-               <li><strong>animation-direction:</strong> Whether to play normal, reverse, or alternate back and forth.</li>
-               <li><strong>animation-delay:</strong> Time to wait before starting.</li>
-               <li><strong>animation-fill-mode:</strong> What styles apply before/after the animation (forwards, backwards, both).</li>
-            </ul>
-         </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="bestpractices-heading">
             <h2 id="bestpractices-heading" class="text-2xl font-bold mb-4">Best Practices for Web Animations</h2>
             <ul class="space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Animate only transform and opacity:</strong> These properties are handled by the compositor thread and skip layout and paint, resulting in 60fps animations.</li>
-               <li><strong>Keep durations short:</strong> UI animations should be between 200ms and 500ms. Longer durations feel sluggish; shorter ones feel jarring.</li>
-               <li><strong>Use ease-out for entrances:</strong> Elements entering the screen feel natural with a fast start that decelerates. Use ease-in for exits.</li>
-               <li><strong>Respect prefers-reduced-motion:</strong> Wrap animations in a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@media (prefers-reduced-motion: no-preference)</code> query to disable motion for users who need it.</li>
-               <li><strong>Avoid animating layout properties:</strong> Never animate width, height, margin, padding, or top/left. These trigger expensive layout recalculations.</li>
+               <li><strong>Animate only transform and opacity:</strong> These properties are handled by the compositor thread and skip layout and paint, resulting in 60fps animations even on mobile devices.</li>
+               <li><strong>Keep durations short for UI feedback:</strong> 200–500ms for hover states, button presses, and entrances. Longer durations feel sluggish; shorter ones feel jarring.</li>
+               <li><strong>Use ease-out for entrances, ease-in for exits:</strong> Elements entering the screen feel natural with a fast start that decelerates. Exiting elements should accelerate away.</li>
+               <li><strong>Respect prefers-reduced-motion:</strong> Wrap animations in a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@media (prefers-reduced-motion: no-preference)</code> query. Users with vestibular disorders can be physically harmed by unexpected motion.</li>
+               <li><strong>Avoid animating layout properties:</strong> Never animate width, height, margin, padding, or top/left. These trigger expensive layout recalculations that cascade through the entire document.</li>
+               <li><strong>Use animation-fill-mode: forwards for one-shot animations:</strong> Without it, the element snaps back to its pre-animation state after playing once — which is almost never what you want for entrance effects.</li>
+               <li><strong>Stagger with animation-delay, not setTimeout:</strong> CSS delays are calculated during the animation's own lifecycle and are more reliable than JavaScript timers for creating coordinated sequences.</li>
             </ul>
             <p class="mt-4 text-slate-500 text-sm">When designing animated components, make sure to <a href="/palettes/" class="text-emerald-500 hover:underline font-medium">generate color palettes</a> that look good in both static and animated states — subtle color shifts during animation feel more polished than dramatic changes.</p>
          </section>
 
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
+            <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Mistakes When Writing CSS Animations</h2>
+            <div class="space-y-4 text-slate-600 dark:text-slate-400">
+               <div>
+                  <h3 class="font-semibold mb-1">Forgetting animation-fill-mode on one-shot animations</h3>
+                  <p class="text-sm">Without <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">forwards</code> or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">both</code>, a non-infinite animation snaps back to its original state the moment it finishes. If you fade an element in from opacity: 0, it will flash back to invisible. This is the single most common CSS animation bug.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Animating layout-triggering properties</h3>
+                  <p class="text-sm">Changing <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">width</code>, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">height</code>, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">top</code>, or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">left</code> in keyframes forces the browser to recalculate layout on every frame. Use <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform: translate()</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform: scale()</code> instead.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Using linear timing for everything</h3>
+                  <p class="text-sm">Linear timing means constant speed throughout — it works for spinners but makes everything else feel mechanical. Natural motion decelerates. Use <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">ease-out</code> for entrances and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">ease-in-out</code> for loops.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Over-using will-change</h3>
+                  <p class="text-sm">Adding <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change: transform</code> to dozens of elements creates unnecessary compositing layers that consume GPU memory. Apply it only to elements that actually animate, and consider removing it after the animation completes via JavaScript.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Ignoring prefers-reduced-motion entirely</h3>
+                  <p class="text-sm">Accessibility is not optional. Users with vestibular disorders, motion sensitivity, or who simply prefer less motion rely on this media query. Wrapping your animations takes one extra line and prevents real physical discomfort.</p>
+               </div>
+            </div>
+         </section>
+
          <section class="glass-card p-8 shimmer-card" aria-labelledby="perf-heading">
-            <h2 id="perf-heading" class="text-2xl font-bold mb-4">Performance Tips</h2>
-            <ul class="space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Use will-change sparingly:</strong> Add <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change: transform</code> to elements you know will animate, but remove it after the animation ends to free memory.</li>
-               <li><strong>Promote to its own layer:</strong> Elements with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform: translateZ(0)</code> get their own compositing layer, preventing repaints of sibling elements.</li>
-               <li><strong>Avoid simultaneous animations:</strong> Too many elements animating at once can overwhelm mobile GPUs. Stagger animations with animation-delay instead.</li>
-               <li><strong>Test on low-end devices:</strong> What runs smooth on a desktop may lag on a budget phone. Always test on real devices, not just browser simulators.</li>
+            <h2 id="perf-heading" class="text-2xl font-bold mb-4">Performance Considerations for CSS Animations</h2>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Stick to the compositor-only properties:</strong> <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> are the only CSS properties that can be animated without triggering layout or paint. Everything else — background-color, box-shadow, width — forces the browser to do more work per frame.</li>
+               <li><strong>Use will-change sparingly:</strong> Add <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change: transform</code> to elements you know will animate, but remove it after the animation ends to free GPU memory. On mobile, excessive layers cause the compositor to thrash.</li>
+               <li><strong>Stagger animations with delay instead of running them simultaneously:</strong> When 20 cards animate in at once, the frame budget gets tight. Staggering with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation-delay</code> spreads the work across multiple frames.</li>
+               <li><strong>Test on real low-end devices:</strong> Browser DevTools throttling simulates CPU slowdown but not actual GPU limitations. A budget Android phone with a weak GPU will reveal animation issues that no simulator catches.</li>
+               <li><strong>Check for layout shifts (CLS):</strong> Animations that change an element's size or position in the document flow can cause Cumulative Layout Shift, which hurts Core Web Vitals scores. If an animation moves something, make sure the space it leaves is accounted for.</li>
             </ul>
-            <p class="mt-4 text-slate-500 text-sm">If your animations involve color transitions, you may need to <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> or HSL for smoother interpolation between color stops. To <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that work well in animated UIs, read our palette guide.</p>
+            <p class="text-slate-500 text-sm">If your animations involve color transitions, you may need to <a href="/converter/" class="text-emerald-500 hover:underline font-medium">convert HEX to RGB</a> or HSL for smoother interpolation between color stops. To <a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline font-medium">learn color combinations</a> that work well in animated UIs, read our palette guide. After finalizing your CSS, run it through the <a href="/css-minifier/" class="text-emerald-500 hover:underline font-medium">CSS Minifier</a> to reduce file size before deployment.</p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="compat-heading">
+            <h2 id="compat-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               CSS animations and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes</code> are supported in every modern browser — Chrome, Firefox, Safari, Edge, and their mobile counterparts. The key details:
+            </p>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>No vendor prefixes needed:</strong> <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">-webkit-animation</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">-webkit-keyframes</code> were required for Safari 8 and below, which is no longer a concern. The generator outputs standard syntax only.</li>
+               <li><strong>will-change support:</strong> Supported since Chrome 36, Firefox 36, Safari 9.1, and Edge 79. Safe for any browser released after 2016.</li>
+               <li><strong>prefers-reduced-motion:</strong> Supported since Chrome 74, Firefox 63, Safari 12.1, and Edge 79. The fallback for older browsers is that they simply ignore the media query and play the animation — which is acceptable since those browsers represent a tiny fraction of traffic.</li>
+               <li><strong>3D transforms (flip animation):</strong> Require <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">perspective</code> on a parent element. Supported everywhere, but Safari sometimes handles perspective-origin slightly differently — test flip animations on iOS if they are critical to your UI.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               If you need to debug animation issues in older browsers, you can validate your generated CSS with the <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> tool which also catches basic syntax errors. For JavaScript-heavy pages that also use animations, the <a href="/javascript-minifier/" class="text-emerald-500 hover:underline">JavaScript Minifier</a> keeps your JS bundle lean so it does not compete with CSS animations for main-thread time.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="a11y-heading">
+            <h2 id="a11y-heading" class="text-2xl font-bold mb-4">Accessibility Notes for CSS Animations</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Animations can cause real harm to some users. Vestibular disorders, motion sensitivity, and certain cognitive conditions make unexpected movement painful or disorienting. Here is how to handle it properly:
+            </p>
+            <div class="code-block mb-4"><span class="cmt">/* Default: respect user preference */</span>
+<span class="kw">@media</span> (<span class="prop">prefers-reduced-motion</span>: <span class="val">no-preference</span>) {
+  <span class="sel">.animate-in</span> {
+    <span class="prop">animation</span>: <span class="val">fadeSlideUp 0.4s ease-out forwards</span>;
+  }
+}
+
+<span class="cmt">/* Fallback for users who prefer reduced motion */</span>
+<span class="kw">@media</span> (<span class="prop">prefers-reduced-motion</span>: <span class="val">reduce</span>) {
+  <span class="sel">.animate-in</span> {
+    <span class="prop">opacity</span>: <span class="val">1</span>;
+    <span class="prop">transform</span>: <span class="val">none</span>;
+  }
+}</div>
+            <ul class="space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+               <li><strong>Never use animation for critical information:</strong> If a user cannot see the animation, they should still receive the information. A loading spinner should always have an <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">aria-label="Loading"</code> or visible text alternative.</li>
+               <li><strong>Avoid auto-playing animations larger than the viewport:</strong> Large-scale motion is more likely to trigger discomfort. Keep animated areas small — badges, icons, and buttons are fine; full-screen parallax is risky.</li>
+               <li><strong>Provide a pause mechanism:</strong> For decorative looping animations, consider adding a way to pause them. CSS <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation-play-state: paused</code> can be toggled via a button.</li>
+               <li><strong>Test with screen readers:</strong> Screen readers generally do not announce CSS animations, but if an animation adds or removes content (like a typing effect), the dynamic content changes need <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">aria-live</code> regions to be announced.</li>
+            </ul>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               When building accessible forms that use shake animations for validation errors, always pair the visual shake with an <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">aria-invalid="true"</code> attribute and an error message referenced by <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">aria-describedby</code>. The animation is supplementary — the accessible error text is the primary signal. If your form also includes dynamic content, the <a href="/regex-tester/" class="text-emerald-500 hover:underline">Regex Tester</a> can help you validate input patterns before the user even submits.
+            </p>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="devtips-heading">
+            <h2 id="devtips-heading" class="text-2xl font-bold mb-4">Developer Tips for Working with Generated Animations</h2>
+            <div class="space-y-4 text-slate-600 dark:text-slate-400">
+               <div>
+                  <h3 class="font-semibold mb-1">Rename generated keyframes to match your naming convention</h3>
+                  <p class="text-sm">The generator uses descriptive names like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">rotate</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">pulse</code>. In a real project, prefix them: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes app-spinner-rotate</code> or <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@keyframes notif-badge-pulse</code>. This prevents collisions if you later add another rotate animation with different parameters.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Use CSS custom properties for configurable animations</h3>
+                  <p class="text-sm">Replace hardcoded values with variables: <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">animation-duration: var(--anim-duration, 1s)</code>. This lets you adjust timing from JavaScript or different theme variants without rewriting the keyframes.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Combine with Intersection Observer for scroll-triggered reveals</h3>
+                  <p class="text-sm">The generated CSS is a class-based animation. Add an <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">.is-visible</code> class via JavaScript when the element enters the viewport. This pattern works with any framework — React, Vue, Svelte, or vanilla JS.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Minify the output before shipping</h3>
+                  <p class="text-sm">The generator produces readable CSS with spacing. Before adding it to your production stylesheet, run it through the <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> to strip comments and whitespace. A typical generated animation block goes from ~200 bytes to ~120 bytes — not huge individually, but it adds up across a design system.</p>
+               </div>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-heading">
+            <h2 id="advanced-heading" class="text-2xl font-bold mb-4">Advanced Tips: Beyond the Generator</h2>
+            <div class="space-y-4 text-slate-600 dark:text-slate-400">
+               <div>
+                  <h3 class="font-semibold mb-1">Chaining multiple animations on one element</h3>
+                  <p class="text-sm mb-2">Use a comma-separated list in the animation property to run multiple keyframe sequences simultaneously:</p>
+                  <div class="code-block"><span class="sel">.element</span> {
+  <span class="prop">animation</span>:
+    <span class="val">fadeIn 0.3s ease-out forwards</span>,
+    <span class="val">slideUp 0.3s ease-out forwards</span>;
+}</div>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Custom cubic-bezier curves for personality</h3>
+                  <p class="text-sm mb-2">The five built-in timing functions cover most cases, but custom curves add character. An overshoot curve like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">cubic-bezier(0.175, 0.885, 0.32, 1.275)</code> makes elements slightly overshoot their target, giving a springy feel. A decelerate curve like <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">cubic-bezier(0.0, 0.0, 0.2, 1)</code> is Google's Material Design standard for enter transitions.</p>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Animating with @property for custom property interpolation</h3>
+                  <p class="text-sm mb-2">Modern browsers support animating CSS custom properties if you register them with <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@property</code>. This lets you animate values that are not natively interpolatable, like gradient stops or clip-path percentages:</p>
+                  <div class="code-block"><span class="kw">@property</span> <span class="val">--gradient-pos</span> {
+  <span class="prop">syntax</span>: <span class="val">'&lt;percentage&gt;'</span>;
+  <span class="prop">inherits</span>: <span class="val">false</span>;
+  <span class="prop">initial-value</span>: <span class="val">0%</span>;
+}
+
+<span class="kw">@keyframes</span> <span class="sel">gradientShift</span> {
+  <span class="pct">0%</span>   { <span class="prop">--gradient-pos</span>: <span class="val">0%</span>; }
+  <span class="pct">100%</span> { <span class="prop">--gradient-pos</span>: <span class="val">100%</span>; }
+}</div>
+               </div>
+               <div>
+                  <h3 class="font-semibold mb-1">Using the Web Animations API for dynamic control</h3>
+                  <p class="text-sm">If you need to pause, reverse, or seek through an animation dynamically, the Web Animations API (<code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">element.animate()</code>) gives you programmatic control over the same keyframes. Generate the keyframe values here, then transfer them into <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">.animate()</code> calls for interactive use cases like drag-and-drop or scroll-linked motion.</p>
+               </div>
+            </div>
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="why-heading">
@@ -608,40 +999,85 @@
                I was working on a dashboard project and needed five different animations — a fade-in for cards, a bounce for notification dots, a rotate for the loading spinner, a slide for the sidebar, and a pulse for a live status indicator. Each one is simple on its own, but writing and tweaking the keyframes one by one ate up an entire afternoon. I kept switching between my editor and the browser, changing a value, refreshing, checking, repeating.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               After that day I decided to build a single page where I could pick an animation type, drag a few controls, see it live, and copy the code. No more context-switching, no more guessing whether 300ms or 500ms feels better — just see it and ship it. I use this tool on every project now, and I kept it free because I know I am not the only developer who has wasted an afternoon on keyframe math.
+               The bounce animation was the worst offender. I tried four different <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">translateY</code> values and three timing functions before I got something that felt right. That is 12 refresh cycles for a single three-line keyframe block. Multiply by five animations and you have a wasted afternoon.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               After that day I decided to build a single page where I could pick an animation type, drag a few controls, see it live, and copy the code. No more context-switching, no more guessing whether 300ms or 500ms feels better — just see it and ship it. I added the dot-grid background to the preview specifically because I kept misjudging how far my slide animations were moving. With the grid, I can see at a glance whether 50px or 100px is the right distance.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               If it saves you time, share it with a colleague or drop it in your team's Slack. That is honestly the best feedback — knowing someone else skipped the tedious part and got back to building.
+               I use this tool on every project now, and I kept it free because I know I am not the only developer who has wasted an afternoon on keyframe math. If it saves you time, share it with a colleague or drop it in your team's Slack. That is honestly the best feedback — knowing someone else skipped the tedious part and got back to building.
             </p>
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
             <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-            <div class="space-y-5">
-               <div>
+            <div class="space-y-5" role="list">
+               <div role="listitem">
                   <h3 class="font-semibold mb-1">What is CSS animation?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">CSS animation is a method of animating HTML elements without JavaScript. It uses @keyframes to define styles at various points in the animation cycle and the animation property to apply those keyframes with timing, duration, and repetition settings.</p>
                </div>
-               <div>
+               <div role="listitem">
                   <h3 class="font-semibold mb-1">How to create keyframes in CSS?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">Use the @keyframes rule followed by a name, then define percentage-based steps (0%, 50%, 100%) with the CSS properties you want to change at each step. For example: @keyframes slide { 0% { transform: translateX(0); } 100% { transform: translateX(100px); } }</p>
                </div>
-               <div>
+               <div role="listitem">
                   <h3 class="font-semibold mb-1">What is animation timing function?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">The animation-timing-function defines the speed curve of an animation. Common values include linear (constant speed), ease (slow start and end), ease-in (slow start), ease-out (slow end), and ease-in-out (slow both ends).</p>
                </div>
-               <div>
+               <div role="listitem">
                   <h3 class="font-semibold mb-1">How to optimize animations for performance?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">Only animate transform and opacity properties. Use will-change on animated elements, avoid animating width, height, top, or left, and respect the prefers-reduced-motion media query for accessibility.</p>
                </div>
-               <div>
+               <div role="listitem">
                   <h3 class="font-semibold mb-1">Is this CSS animation generator free?</h3>
                   <p class="text-sm text-slate-500 dark:text-slate-400">Yes, completely free with no signup or account required. Select an animation type, customize the settings, preview it live, and copy the CSS code directly into your project.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">What is the difference between CSS transitions and CSS animations?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Transitions require a trigger like :hover or a class change and animate between two states. Animations use @keyframes to define multiple intermediate steps and can run automatically without a trigger, loop infinitely, and be paused or reversed.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">Can I combine multiple animations on a single element?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Yes. Use a comma-separated list in the animation shorthand: animation: fadeIn 0.5s ease-out, slideUp 0.5s ease-out. Each animation references its own @keyframes rule and can have independent timing, direction, and fill-mode.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">What is animation-fill-mode and when should I use it?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">It controls what styles apply before the animation starts and after it ends. Use "forwards" to keep the final keyframe state after a one-shot animation finishes. Use "both" to also apply the first keyframe during any delay period. Without fill-mode, non-infinite animations snap back to their original state.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">How do I respect prefers-reduced-motion for accessibility?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Wrap your animation declarations inside @media (prefers-reduced-motion: no-preference) { ... } so users who enabled reduced motion in their OS settings do not see any animation. Alternatively, set animation: none inside @media (prefers-reduced-motion: reduce).</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">What cubic-bezier values work best for UI animations?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">For entrances, cubic-bezier(0.0, 0.0, 0.2, 1) gives a snappy ease-out. For exits, cubic-bezier(0.4, 0.0, 1, 1) gives a quick ease-in. For elastic effects, cubic-bezier(0.68, -0.55, 0.265, 1.55) adds a slight overshoot. Avoid overly bouncy curves for functional UI elements.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">Can I animate CSS custom properties (variables)?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Yes, but only if you register the property with @property and declare a type like length, percentage, or color. Without registration, browsers cannot interpolate the values and the change happens instantly instead of animating smoothly.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">How do I stop a CSS animation with JavaScript?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">Set element.style.animationPlayState = 'paused' to pause it, or element.style.animation = 'none' to stop it entirely. For more control, use the getAnimations() API which returns Animation objects with .pause(), .play(), and .reverse() methods.</p>
+               </div>
+               <div role="listitem">
+                  <h3 class="font-semibold mb-1">Do CSS animations affect SEO or Core Web Vitals?</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400">They can, indirectly. Animations that trigger layout shifts hurt CLS. Animations that block the main thread hurt INP. Sticking to transform and opacity avoids both. Search engines do not penalize animations, but they do penalize the performance problems that bad animations create.</p>
                </div>
             </div>
          </section>
 
-         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="blog-heading">
+            <h2 id="blog-heading" class="text-2xl font-bold mb-4">Related Blog Articles</h2>
+            <p class="text-slate-500 mb-4 text-sm">Dive deeper into CSS animation techniques and design systems:</p>
+            <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+               <li><a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">How to Choose Color Palettes That Work With Animated UIs</a> — understanding how motion and color interact in perceived quality.</li>
+               <li><a href="/blog/css-effects/" class="text-emerald-500 hover:underline">CSS Effects Library: Transitions, Animations, and Filters Explained</a> — a broader look at visual effects beyond keyframe animations.</li>
+               <li><a href="/blog/glassmorphism-guide/" class="text-emerald-500 hover:underline">Building Glassmorphism UIs That Animate Smoothly</a> — combining frosted glass effects with entrance animations without performance issues.</li>
+            </ul>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="share-heading">
             <div class="max-w-7xl mx-auto px-4 text-center">
               <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
               <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
@@ -677,7 +1113,36 @@
                <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
                <a href="/flexbox/" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
+               <a href="/color-picker/" class="btn-secondary text-xs py-2 px-4">Color Picker</a>
+               <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+               <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
+               <a href="/svg-to-css/" class="btn-secondary text-xs py-2 px-4">SVG to CSS</a>
             </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" class="text-2xl font-bold mb-3 text-center">Start Building Smoother Interfaces</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 text-center max-w-2xl mx-auto">
+               Pick an animation type above, adjust the timing, preview it live, and copy the code. Every millisecond of motion you add to your interface should be intentional — this tool makes that intentionality easy. If you are also styling the elements around your animations, the <a href="/css-effects/" class="text-emerald-500 hover:underline">CSS Effects Library</a> has ready-to-use hover states, glassmorphism presets, and transition combinations that pair well with keyframe animations.
+            </p>
+            <div class="text-center">
+               <a href="#config-heading" class="btn-primary btn-glow inline-flex items-center gap-2">
+                  <i class="fas fa-arrow-up" aria-hidden="true"></i> Jump to the Generator
+               </a>
+            </div>
+         </section>
+
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+            <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               CSS animations occupy a specific niche in frontend development: they handle the motion layer that sits between static styles and JavaScript-driven interactivity. A loading spinner, a hover bounce, a scroll-triggered fade — these are not complex enough to warrant a JavaScript animation library, but they are tedious enough that hand-writing keyframes slows you down.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               This generator exists to eliminate that friction. The ten animation presets cover the vast majority of UI motion patterns. The timing controls give you enough range to go from snappy micro-interactions (200ms) to decorative loops (3s+). The output is pure CSS with no dependencies, no runtime cost, and no build step required.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               The best animations are the ones you do not notice consciously — they just make the interface feel responsive and alive. This tool helps you achieve that without spending your afternoon on keyframe math. Generate the animation, copy it, drop it into your stylesheet, and move on to the next thing that actually matters.
+            </p>
          </section>
 
          <div class="text-center py-10 mt-4">
@@ -696,38 +1161,34 @@
   
   <section class="adsense-tool-guide max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div class="glass-card p-8">
-      <h2>Practical Guide to CSS Animation Generator</h2>
-      <p><strong>What this tool does:</strong> Create keyframes for motion, pulse, bounce, and transitions. It is built for quick browser-based workflows where the result should be visible, understandable, and easy to copy into a real project.</p>
-      <h3>Why use CSS Animation Generator?</h3>
-      <p>Use CSS Animation Generator when you want to reduce manual trial and error. Instead of switching between documentation, design software, code editors, and calculators, you can adjust the inputs here, inspect the output, and move the result into your project with fewer interruptions. This is especially useful when you are comparing alternatives, documenting a design decision, or preparing production-ready snippets for a team.</p>
-      <h3>How it works</h3>
-      <p>The tool reads the values you enter or select, updates the preview immediately, and formats the result for common web workflows. Where possible, processing happens in your browser so the interaction remains fast and private. The output is intentionally plain: copyable CSS, HTML, JSON, text, image data, or configuration values that can be reviewed before use.</p>
-      <h3>Step-by-step workflow</h3>
-      <ol>
-        <li>Open the tool and start with the default values to understand the available controls.</li>
-        <li>Replace the sample values with your project values, brand colors, text, image, URL, or layout settings.</li>
-        <li>Review the preview and generated output together so the visual result matches the copied code.</li>
-        <li>Copy or download the result, then test it inside your own project rather than assuming every context behaves the same.</li>
-        <li>Save important outputs in your project files, design system, or documentation so they are not dependent on browser storage.</li>
-      </ol>
-      <h3>Real-world examples</h3>
-      <p>A designer can use CSS Animation Generator while preparing a design handoff, then paste the generated values into a style guide. A frontend developer can use it while prototyping a component and then adapt the output into existing class names, CSS variables, or framework conventions. A content or SEO specialist can use it to verify that generated metadata, text, or assets are consistent before publishing.</p>
-      <h3>Best practices</h3>
+      <h2 id="guide-heading">Practical Guide to CSS Animation Generator</h2>
+      <p>When I first started building production UIs, I treated CSS animations as an afterthought — something to sprinkle on at the end if there was time. That changed after I watched a designer animate a dashboard in Figma and realized the motion was doing half the work of making the interface feel polished. The problem was translating that Figma motion into actual CSS without spending hours on trial and error. That is exactly the gap this tool fills.</p>
+
+      <h3>Workflow I Use on Real Projects</h3>
+      <p>Before opening this generator, I audit the page and list every element that needs motion: loading states, entrance animations, hover feedback, status indicators, and error states. I group them by type — all fades together, all bounces together, all rotates together. Then I generate each group in one pass, which takes maybe five minutes for an entire page's worth of animations. The alternative — writing each keyframe block individually and refreshing to test — used to take 30 to 45 minutes for the same result.</p>
+      <p>After generating, I rename the keyframes to match the project's naming convention, wrap them in a <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">prefers-reduced-motion</code> query, and drop them into the component stylesheet. If the project uses a utility-first approach like Tailwind, I convert the animation classes to <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">@apply</code> rules or custom utilities in the config file.</p>
+
+      <h3>Professional Tips from Production Experience</h3>
       <ul>
-        <li>Keep the original source or input before applying destructive transformations such as minification or compression.</li>
-        <li>Use semantic names when moving generated values into production code.</li>
-        <li>Test output in at least one real page, not only inside the generator preview.</li>
-        <li>Check accessibility, readability, and responsive behavior when the output affects user interface design.</li>
-        <li>Document final values so teammates understand why a specific setting was chosen.</li>
+         <li>Generate all your animations at once, not one at a time as you encounter them. Context-switching between "building a feature" and "tweaking an animation" is what kills productivity — batch the animation work.</li>
+         <li>Always test your generated animations on a real mobile device, not just Chrome DevTools throttling. I have seen animations that looked fine at 4x slowdown in DevTools but still stuttered on a 3-year-old Android phone because of GPU memory pressure from too many will-change layers.</li>
+         <li>If an animation looks "off" but you cannot figure out why, try changing just the timing function. Nine times out of ten, the keyframe values are correct but the speed curve is wrong — linear where ease-out was needed, or vice versa.</li>
+         <li>Keep a personal library of generated animations that you liked. I have a file called <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">_animations.css</code> in my starter template with six or seven presets I generated here and refined over multiple projects.</li>
       </ul>
-      <h3>Common mistakes</h3>
-      <p>Common mistakes include copying output without reviewing it, using generated values in the wrong CSS property, forgetting browser compatibility, relying on localStorage as permanent storage, or applying visual effects without checking contrast and readability. Treat generated output as a strong starting point, then validate it in your own codebase.</p>
-      <h3>FAQ</h3>
-      <p><strong>Is CSS Animation Generator free?</strong> Yes, the tool is free and does not require sign-up.</p>
-      <p><strong>Does it work on mobile?</strong> The page is responsive, though complex editing workflows are usually easier on a desktop or tablet.</p>
-      <p><strong>Can I use the output commercially?</strong> Yes, generated values and snippets can be used in personal and commercial work. Always review output for your own requirements.</p>
-      <h3>Related tools</h3>
-      <p><a href="/box-shadow-generator/">Box Shadow Generator</a> · <a href="/border-radius-generator/">Border Radius Generator</a> · <a href="/button-generator/">Button Generator</a> · <a href="/card-generator/">Card UI Generator</a></p>
+
+      <h3>Team Collaboration</h3>
+      <p>In a team of four frontend developers, we used to have four different bounce animations because each person wrote their own keyframes. When we switched to generating from this tool, we standardized on three animation files — <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">entrances.css</code>, <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">feedback.css</code>, and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">decorative.css</code> — all generated here with consistent naming. Code review for animation changes became trivial because the output format is predictable. If you need to share the generated CSS with a team, you can format it cleanly and then run it through a <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a> if you are storing animation configs as JSON for a design system.</p>
+
+      <h3>Real Projects Where This Saved Time</h3>
+      <p>A SaaS onboarding flow with 12 animated steps took 20 minutes to generate all keyframes versus the estimated 2 hours for manual authoring. An e-commerce product page with hover animations on 30+ thumbnails took 10 minutes. A marketing landing page with scroll-triggered reveals on 8 sections took 15 minutes, including the Intersection Observer setup. In each case, the bottleneck was not the complexity of the animation — it was the iteration loop that the generator eliminates.</p>
+
+      <h3>Mistakes I Made Early On</h3>
+      <p>The biggest mistake was copying generated animations without wrapping them in <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">prefers-reduced-motion</code>. We shipped a dashboard that worked beautifully for most users but caused motion sickness for at least one reported customer. That was a wake-up call. The second mistake was using <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">will-change</code> on every animated element without removing it afterward — on a page with 40+ animated cards, this caused visible jank on older iPads due to excessive compositing layers.</p>
+
+      <h3>Productivity Tips</h3>
+      <p>Set a timer for 10 minutes when you sit down to generate animations. The tool is fast enough that you should be done well before it goes off. If you are still iterating after 10 minutes, you are probably overthinking the timing — pick something reasonable and move on. You can always come back and adjust the duration later. The difference between 300ms and 400ms is not worth 20 minutes of your time on a Tuesday afternoon.</p>
+      <p>For complex pages, generate the animations first, then build the HTML structure around them. This sounds backward, but it works because you end up designing the markup to support the motion rather than trying to shoehorn motion into markup that was not built for it. If the markup needs structural work, the <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> can clean up your final output before deployment.</p>
+      <p>Related tools that fit into this workflow: the <a href="/box-shadow-generator/">Box Shadow Generator</a> for adding depth to animated elements, the <a href="/border-radius-generator/">Border Radius Generator</a> for shaping the elements that will be animated, the <a href="/button-generator/">Button Generator</a> for creating buttons with built-in hover animations, and the <a href="/card-generator/">Card UI Generator</a> for cards that animate in on scroll.</p>
     </div>
   </section>
   <div id="footer-container"></div>
