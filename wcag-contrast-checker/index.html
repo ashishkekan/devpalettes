@@ -1,167 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="robots" content="index, follow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free WCAG Contrast Checker – Color Accessibility Tool</title>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <title>WCAG Contrast Checker: Test Color Accessibility | DevPalettes</title>
   <meta name="description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.">
-  <meta name="author" content="Devpalettes">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/wcag-contrast-checker/">
 
-  <meta property="og:title" content="Free WCAG Contrast Checker – Color Accessibility Tool">
+  <meta property="og:title" content="WCAG Contrast Checker – Color Accessibility Tool">
   <meta property="og:description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.">
   <meta property="og:url" content="https://devpalettes.com/wcag-contrast-checker/">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://devpalettes.com/images/wcag-contrast-checker-preview.png">
-  <meta property="og:site_name" content="Devpalettes">
+  <meta property="og:site_name" content="DevPalettes">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Free WCAG Contrast Checker – Color Accessibility Tool">
+  <meta name="twitter:title" content="WCAG Contrast Checker – Color Accessibility Tool">
   <meta name="twitter:description" content="Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.">
   <meta name="twitter:image" content="https://devpalettes.com/images/wcag-contrast-checker-preview.png">
 
-  <!-- JSON-LD: WebApplication -->
+  <!-- Structured Data: Organization, WebSite, BreadcrumbList, WebApplication, SoftwareApplication, HowTo, FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "WCAG Contrast Checker",
-    "description": "Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly.",
-    "url": "https://devpalettes.com/wcag-contrast-checker/",
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "All",
-    "creator": {
-      "@type": "Organization",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
-
-  <!-- JSON-LD: BreadcrumbList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com/"
+        "@type": "Organization",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Ashish Kekaan",
+          "url": "https://devpalettes.com/about/"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Technical Support",
+          "email": "contact@devpalettes.com",
+          "url": "https://devpalettes.com/contact/",
+          "availableLanguage": "English"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tools",
-        "item": "https://devpalettes.com/tools/"
+        "@type": "WebSite",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://devpalettes.com/tools/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 3,
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://devpalettes.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tools",
+            "item": "https://devpalettes.com/tools/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "WCAG Contrast Checker",
+            "item": "https://devpalettes.com/wcag-contrast-checker/"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
         "name": "WCAG Contrast Checker",
-        "item": "https://devpalettes.com/wcag-contrast-checker/"
-      }
-    ]
-  }
-  </script>
-
-  <!-- JSON-LD: HowTo -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    "name": "How to Check WCAG Color Contrast",
-    "description": "Step-by-step guide to using the WCAG Contrast Checker to verify color accessibility compliance.",
-    "totalTime": "PT1M",
-    "step": [
-      {
-        "@type": "HowToStep",
-        "position": 1,
-        "name": "Pick your text color",
-        "text": "Use the Text Color picker to select your foreground color."
+        "url": "https://devpalettes.com/wcag-contrast-checker/",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "description": "Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
+        "creator": {
+          "@type": "Organization",
+          "name": "DevPalettes"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Instant contrast ratio calculation",
+          "WCAG 2.1 AA and AAA compliance checking",
+          "Normal and large text threshold validation",
+          "Live text preview on selected background",
+          "Color swapping and random generation",
+          "100% client-side processing for privacy"
+        ]
       },
       {
-        "@type": "HowToStep",
-        "position": 2,
-        "name": "Pick your background color",
-        "text": "Use the Background picker to select your background color."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 3,
-        "name": "Review the contrast ratio",
-        "text": "The contrast ratio and pass/fail status for all four WCAG thresholds update instantly."
-      },
-      {
-        "@type": "HowToStep",
-        "position": 4,
-        "name": "Adjust if needed",
-        "text": "Use the Switch button to swap colors or Random to test new combinations until all thresholds pass."
-      }
-    ]
-  }
-  </script>
-
-  <!-- JSON-LD: FAQ -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is WCAG contrast ratio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "WCAG contrast ratio is a numerical value that measures the difference in luminance between two colors, typically text and its background. It ranges from 1:1 (no contrast, same color) to 21:1 (maximum contrast, black on white). Higher ratios mean better readability. WCAG 2.1 defines minimum ratio thresholds that designs must meet to be considered accessible."
+        "@type": "SoftwareApplication",
+        "name": "WCAG Contrast Checker",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
       },
       {
-        "@type": "Question",
-        "name": "What is an acceptable contrast ratio?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For WCAG 2.1 Level AA, the minimum acceptable contrast ratio is 4.5:1 for normal text (under 18pt or 14pt bold) and 3:1 for large text (18pt+ or 14pt+ bold). For Level AAA, the requirements are stricter: 7:1 for normal text and 4.5:1 for large text. Most organizations target AA compliance as the baseline standard."
-        }
+        "@type": "HowTo",
+        "name": "How to Check WCAG Color Contrast",
+        "description": "Step-by-step guide to using the WCAG Contrast Checker to verify color accessibility compliance.",
+        "totalTime": "PT1M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Pick your text color",
+            "text": "Use the Text Color picker to select your foreground color. You can also input a specific HEX code if you are working with exact brand variables."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Pick your background color",
+            "text": "Use the Background picker to select the background color against which your text will be rendered."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Review the contrast ratio",
+            "text": "The contrast ratio and pass/fail status for all four WCAG thresholds (AA Normal, AA Large, AAA Normal, AAA Large) update instantly in the results panel."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Adjust if needed",
+            "text": "Use the Switch button to swap colors or Random to test new combinations until all desired thresholds pass."
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "How to pass WCAG AA and AAA?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "To pass WCAG AA, ensure all text-background pairs meet at least 4.5:1 contrast for normal text and 3:1 for large text. To pass AAA, meet 7:1 for normal text and 4.5:1 for large text. Use a contrast checker tool to verify every color combination in your design, including links, buttons, form labels, and placeholder text."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why is contrast important in UI?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Contrast is critical in UI because it directly affects readability. Low contrast makes text hard to read, especially for users with visual impairments, color blindness, or users viewing screens in bright environments like sunlight. Poor contrast leads to frustration, higher bounce rates, and legal compliance risks under accessibility laws like the ADA and Section 508."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does WCAG apply to non-text elements?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. WCAG requires non-text elements like icons, buttons, form input borders, and graphical objects to have a contrast ratio of at least 3:1 against their adjacent colors. This ensures that interactive elements and meaningful graphics are distinguishable by users with low vision."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between AA and AAA compliance?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AA is the widely accepted baseline standard requiring 4.5:1 for normal text and 3:1 for large text. AAA is the enhanced standard requiring 7:1 for normal text and 4.5:1 for large text. Most organizations target AA as the legal and practical baseline, while AAA is recommended where possible but often impractical for brand color constraints."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is WCAG contrast ratio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "WCAG contrast ratio is a numerical value that measures the difference in luminance between two colors, typically text and its background. It ranges from 1:1 (no contrast, same color) to 21:1 (maximum contrast, black on white). Higher ratios mean better readability. WCAG 2.1 defines minimum ratio thresholds that designs must meet to be considered accessible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is an acceptable contrast ratio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For WCAG 2.1 Level AA, the minimum acceptable contrast ratio is 4.5:1 for normal text (under 18pt or 14pt bold) and 3:1 for large text (18pt+ or 14pt+ bold). For Level AAA, the requirements are stricter: 7:1 for normal text and 4.5:1 for large text. Most organizations target AA compliance as the baseline standard."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to pass WCAG AA and AAA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "To pass WCAG AA, ensure all text-background pairs meet at least 4.5:1 contrast for normal text and 3:1 for large text. To pass AAA, meet 7:1 for normal text and 4.5:1 for large text. Use a contrast checker tool to verify every color combination in your design, including links, buttons, form labels, and placeholder text."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is contrast important in UI?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Contrast is critical in UI because it directly affects readability. Low contrast makes text hard to read, especially for users with visual impairments, color blindness, or users viewing screens in bright environments like sunlight. Poor contrast leads to frustration, higher bounce rates, and legal compliance risks under accessibility laws like the ADA and Section 508."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does WCAG apply to non-text elements?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. WCAG requires non-text elements like icons, buttons, form input borders, and graphical objects to have a contrast ratio of at least 3:1 against their adjacent colors. This ensures that interactive elements and meaningful graphics are distinguishable by users with low vision."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between AA and AAA compliance?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "AA is the widely accepted baseline standard requiring 4.5:1 for normal text and 3:1 for large text. AAA is the enhanced standard requiring 7:1 for normal text and 4.5:1 for large text. Most organizations target AA as the legal and practical baseline, while AAA is recommended where possible but often impractical for brand color constraints."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool calculate contrast for gradients?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, this tool strictly calculates the contrast ratio between two solid colors. If you are using a gradient background, you must test the text color against the lightest and darkest points of the gradient to ensure compliance across the entire surface."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my color data sent to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All calculations are performed locally in your browser using client-side JavaScript. Your color choices and design system variables are never transmitted to any external server, ensuring complete privacy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does WCAG contrast apply to disabled buttons?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No, WCAG 2.1 explicitly states that disabled form controls and placeholder text do not need to meet the 3:1 minimum contrast ratio. However, if you choose to make them accessible, it is a good UX practice to provide as much contrast as possible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the formula for WCAG contrast ratio?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The formula is (L1 + 0.05) / (L2 + 0.05), where L1 is the relative luminance of the lighter color and L2 is the relative luminance of the darker color. Relative luminance is calculated using the sRGB color space, applying a gamma correction to the R, G, and B channels."
+            }
+          }
+        ]
       }
     ]
   }
@@ -169,7 +238,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Reduced from 7 weights to 4 -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -193,73 +261,15 @@
     /* CLS prevention */
     #navbar-container { min-height: 64px; }
     .spectrum-line { height: 3px; background: linear-gradient(90deg, #10b981, #6366f1, #f59e0b, #ef4444); border-radius: 9999px; }
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid #10b981;
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "WCAG Contrast Checker",
-    "description": "Free WCAG contrast checker to test color accessibility. Verify AA & AAA compliance for normal and large text instantly. No sign-up required.",
-    "url": "https://devpalettes.com/wcag-contrast-checker/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "WCAG Contrast Checker",
-        "item": "https://devpalettes.com/wcag-contrast-checker/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
 
@@ -269,12 +279,10 @@
   <div id="navbar-container"></div>
   
   <main id="main-content" class="pt-4 pb-12 min-h-screen relative overflow-hidden">
-    <!-- Decorative backgrounds — hidden from assistive technology -->
-    
+    <!-- Decorative backgrounds -->
     <div class="gradient-blob blob-1" aria-hidden="true"></div>
     <div class="gradient-blob blob-2" aria-hidden="true"></div>
     <div class="gradient-blob blob-3" aria-hidden="true"></div>
-    
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
       
@@ -287,16 +295,10 @@
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10 max-w-7xl mx-auto" aria-label="Tool introduction">
-        <h2 class="text-2xl font-bold mb-4">What Is the WCAG Contrast Checker?</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          The WCAG Contrast Checker is a free tool that instantly calculates the contrast ratio between any two colors and tells you whether they pass WCAG 2.1 accessibility standards. Pick a text color and a background color, and you get real-time pass/fail results for all four compliance thresholds — AA Normal, AA Large, AAA Normal, and AAA Large — alongside a live preview showing exactly how your text looks on that background.
-        </p>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          Low-contrast text is the single most common accessibility failure on the web. It affects over a billion people worldwide who live with visual impairments, plus anyone reading on a bright screen or a dimmed display. WCAG 2.1 defines minimum contrast ratios that designs must meet, and failing those thresholds isn't just bad UX — it's a legal liability under the ADA and Section 508. This tool lets you catch problems before they ship.
-        </p>
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-10 max-w-7xl mx-auto" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="sr-only">Short Introduction</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-          Everything runs in your browser with zero data sent to any server. If you're building a complete color system, test your <a href="/palettes/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">palette combinations</a> here first, then use the <a href="/open-graph-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">Open Graph tag generator</a> to make sure your accessible pages also look great when shared on social media.
+          In modern frontend development, building an accessible UI is non-negotiable. Color contrast is a foundational pillar of the Web Content Accessibility Guidelines (WCAG), ensuring that text remains readable for users with visual impairments or in challenging lighting environments. Our WCAG Contrast Checker is a real-time, client-side utility that calculates the exact luminance ratio between your foreground and background colors. It instantly validates your design against AA and AAA compliance thresholds, preventing accessibility failures before they reach production.
         </p>
       </section>
       
@@ -402,10 +404,10 @@
         
       </div>
 
-      <!-- WCAG Thresholds Reference Table — NEW for technical depth -->
-      <section class="mt-12 max-w-4xl mx-auto" aria-label="WCAG contrast ratio thresholds reference">
+      <!-- WCAG Thresholds Reference Table -->
+      <section class="mt-12 max-w-4xl mx-auto" aria-labelledby="thresholds-heading">
         <div class="glass-card p-8 shimmer-card">
-          <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+          <h2 id="thresholds-heading" class="text-2xl font-bold mb-6 flex items-center gap-2">
             <i class="fas fa-table text-indigo-500" aria-hidden="true"></i>
             WCAG Contrast Ratio Thresholds
           </h2>
@@ -457,48 +459,186 @@
       </section>
 
       <!-- SEO Content Section -->
-      <section class="mt-16" aria-label="Guide to WCAG contrast ratios">
-        <div class="glass-card p-8 shimmer-card">
-          <div class="prose dark:prose-invert max-w-none">
+      <div class="seo-content space-y-12 mt-16">
 
-            <h2 id="what-is-contrast-ratio" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">What is WCAG Contrast Ratio?</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              WCAG contrast ratio is a numerical value that measures the difference in luminance between two colors—typically text and its background. The ratio ranges from 1:1 (no contrast, identical colors) to 21:1 (maximum contrast, pure black on pure white). The formula accounts for how humans perceive brightness differently across red, green, and blue channels, weighting green most heavily because our eyes are most sensitive to it. A higher ratio means better readability and easier visual distinction. When you pick colors from a <a href="/palettes/" class="text-emerald-500 hover:underline">color palette</a>, running each text-background pair through a contrast checker ensures nothing slips through the cracks.
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="what-is-heading">
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is a WCAG Contrast Checker?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            A WCAG Contrast Checker is a technical accessibility utility used by frontend developers and UI designers to calculate the luminance contrast ratio between two colors. The Web Content Accessibility Guidelines (WCAG) are a set of international standards developed by the W3C to ensure digital content is accessible to people with disabilities. Specifically, WCAG Success Criterion 1.4.3 dictates that text must have a minimum contrast ratio against its background to be legible.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Instead of manually calculating the sRGB to linear RGB conversion and applying the relative luminance formula—<code>(L1 + 0.05) / (L2 + 0.05)</code>—a contrast checker automates the math. You input a foreground (text) color and a background color, and the tool instantly returns a ratio between 1:1 (no contrast) and 21:1 (maximum contrast, black on white). It then validates this ratio against the strict thresholds required for Level AA and Level AAA compliance.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            This specific tool runs 100% client-side. Your proprietary brand colors and design system variables are never transmitted to a remote server, ensuring absolute privacy while you audit your user interfaces for ADA compliance. If you are establishing a new design system, pair this tool with our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> to build accessible schemes from the ground up.
+          </p>
+        </section>
 
-            <h2 id="why-accessibility-matters" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Why Accessibility Matters in UI Design</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Accessibility is not optional—it is a fundamental requirement of good design. Globally, over 1 billion people live with some form of visual impairment. Low contrast text is the most common accessibility failure on the web, affecting not only users with visual disabilities but also people viewing screens in bright sunlight, older adults with declining vision, and anyone using a low-brightness setting to save battery. Beyond ethics, accessibility is a legal requirement in many jurisdictions. The Americans with Disabilities Act (ADA), Section 508 in the US, and the European Accessibility Act all reference WCAG standards. Non-compliance can result in lawsuits, fines, and reputational damage. Designing with accessible contrast from the start is far cheaper than retrofitting it later. And it's not just your main site — make sure the text on your <a href="/social-meta-preview/" class="text-emerald-500 hover:underline">social media previews</a> meets contrast minimums too, since those cards represent your brand across every platform.
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+          <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use an Online Contrast Checker?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            In modern web development, accessibility is a legal and ethical requirement. Failing to meet WCAG standards can result in ADA compliance lawsuits, particularly for e-commerce and SaaS platforms. Furthermore, over 1 billion people globally live with some form of visual impairment, including low vision and color blindness. Designing with accessible contrast ensures your application is usable by the widest possible audience.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            While design software like Figma has built-in contrast plugins, an online checker is indispensable for QA engineers and frontend developers who need to verify CSS implementations in the browser. Colors often shift during the handoff from design to code due to CSS variables, opacity overlays, and image backgrounds. An online tool allows you to quickly sample the computed HEX values and verify that the final rendered UI passes accessibility audits.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Beyond text, contrast checks are vital for UI components. WCAG 1.4.11 requires that non-text elements like form input borders, focus indicators, and interactive icons have a minimum 3:1 contrast ratio. Using this tool ensures your entire interface—not just your typography—is legally compliant and user-friendly. For optimizing the actual content on your accessible pages, run them through our <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a>.
+          </p>
+        </section>
 
-            <h2 id="aa-vs-aaa" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">WCAG AA vs AAA Explained</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              WCAG 2.1 defines three conformance levels: A (minimum), AA (standard), and AAA (enhanced). Level A is so lenient that it is practically useless for real-world text readability. Level AA is the widely accepted baseline—most organizations, governments, and laws target AA compliance. It requires a 4.5:1 contrast ratio for normal text (under 18pt or under 14pt bold) and 3:1 for large text (18pt or 14pt bold and above). Level AAA is the gold standard: 7:1 for normal text and 4.5:1 for large text. AAA is recommended where possible but is often impractical for large-scale designs because it severely limits your color choices, especially for brand colors or decorative elements. Most teams aim for AA across the board and push for AAA on critical content like primary body text and navigation.
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+          <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How the WCAG Contrast Checker Works</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            The tool operates on a highly optimized, client-side JavaScript architecture. When you select a color using the native HTML5 <code>&lt;input type="color"&gt;</code> elements, an event listener triggers a recalculation pipeline that executes in microseconds.
+          </p>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+            <li><strong>Color Parsing:</strong> The tool extracts the HEX value from the input and converts it into its respective Red, Green, and Blue (RGB) channel values, scaled from 0 to 255.</li>
+            <li><strong>sRGB Linearization:</strong> The browser does not perceive color linearly. The tool applies a gamma correction formula to each channel: <code>c / 255.0</code>, and if the value is less than or equal to 0.03928, it divides by 12.92; otherwise, it applies <code>((c + 0.055) / 1.055) ^ 2.4</code>.</li>
+            <li><strong>Relative Luminance Calculation:</strong> The linearized RGB values are weighted based on human eye sensitivity: <code>L = 0.2126 * R + 0.7152 * G + 0.0722 * B</code>. Green is weighted highest because the human eye is most sensitive to it.</li>
+            <li><strong>Ratio Computation:</strong> The final contrast ratio is calculated by taking the lighter luminance (L1) and the darker luminance (L2) and applying the formula: <code>(L1 + 0.05) / (L2 + 0.05)</code>. The 0.05 accounts for ambient light flare.</li>
+          </ol>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            The resulting ratio is then injected into the DOM and checked against the 4.5:1 and 3:1 thresholds, updating the pass/fail UI and the ARIA live regions to announce the change to screen readers.
+          </p>
+        </section>
 
-            <h3 class="text-xl font-semibold mt-8 mb-3 text-slate-800 dark:text-slate-200">Non-Text Elements</h3>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              WCAG also applies to non-text elements like icons, buttons, form input borders, charts, and graphical components. These require a minimum 3:1 contrast ratio against adjacent colors. This ensures that a submit button is distinguishable from its background, or that an error icon is visible next to a form field. Many designers focus only on text contrast and overlook icons and UI components—a common audit failure.
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="key-features-heading">
+          <h2 id="key-features-heading" class="text-2xl font-bold mb-4">Key Features of the Tool</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Instant Four-Point Validation:</strong> Don't just check one metric. See pass/fail status for AA Normal, AA Large, AAA Normal, and AAA Large text simultaneously.</li>
+            <li><strong>Live Contextual Preview:</strong> A contrast ratio number is just data. The live preview box renders actual headline and body text on your chosen background, allowing you to visually confirm readability.</li>
+            <li><strong>Color Swapping & Randomization:</strong> Instantly swap foreground and background colors to test inverse themes (like dark mode), or hit "Random" to discover new, compliant color pairings.</li>
+            <li><strong>Native HEX Input:</strong> Click the HEX label on the color picker to manually type in exact 6-character HEX codes from your design system tokens.</li>
+            <li><strong>Zero Latency & Privacy:</strong> 100% client-side processing. No network requests are made, ensuring zero latency and complete privacy for proprietary brand colors.</li>
+            <li><strong>Screen Reader Compatible:</strong> The results panel uses <code>role="status"</code> and <code>aria-live="polite"</code> so visually impaired developers are immediately announced the new contrast ratio and pass/fail status.</li>
+          </ul>
+        </section>
 
-            <h2 id="how-to-use" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">How to Use This Contrast Checker Tool</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Using this tool is simple. Pick your text color and background color using the two color pickers at the top. The tool instantly calculates the contrast ratio and displays your pass/fail status for all four WCAG thresholds: AA Normal, AA Large, AAA Normal, and AAA Large. The live preview box shows exactly how your text will look with the chosen combination. Use the Switch button to swap foreground and background colors, or hit Random to test arbitrary combinations. If you are working with specific HEX codes from a <a href="/converter/" class="text-emerald-500 hover:underline">color converter</a>, you can also type them directly into the native color picker by clicking the HEX value field.
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="step-by-step-heading">
+          <h2 id="step-by-step-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide to Checking Contrast</h2>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Select Text Color:</strong> Use the "Text Color" picker on the left to choose your foreground color. You can click the HEX value to type an exact code like <code>#10b981</code>.</li>
+            <li><strong>Select Background Color:</strong> Use the "Background" picker to select the surface color your text will sit on.</li>
+            <li><strong>Analyze the Ratio:</strong> Look at the "Contrast Ratio" panel on the right. The large number (e.g., 4.54:1) is your exact calculated score.</li>
+            <li><strong>Review Pass/Fail Grades:</strong> Check the 2x2 grid below the ratio. If "AA Normal" says "Pass", your body text is legally accessible. If it fails, you must adjust your colors.</li>
+            <li><strong>Visual Verification:</strong> Glance at the "Live Preview" box. Ensure the text feels readable to your eye, not just mathematically compliant.</li>
+            <li><strong>Iterate:</strong> Use the "Switch" button to invert the colors, or "Random" to generate a new palette until you find a combination that passes all required thresholds.</li>
+          </ol>
+        </section>
 
-            <h2 id="best-practices" class="text-2xl font-bold mt-10 mb-4 text-slate-900 dark:text-white">Best Practices for Readable UI Design</h2>
-            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-              Start by choosing your background color first, then select text colors that meet at least AA contrast against it. Avoid placing text over images or gradients without a solid or semi-transparent overlay—these variable backgrounds make contrast unpredictable. For dark mode interfaces, do not simply invert your light mode colors; test contrast separately because perception changes on dark surfaces. A grey that works on white may fail on dark grey. Maintain a minimum of 4.5:1 for body text and 3:1 for large headings and interactive elements. If you're working with established brand colors, use the <a href="/brand-color-extractor/" class="text-emerald-500 hover:underline">brand color extractor</a> to pull exact HEX values and test them here. When building a full color system, pair this checker with <a href="../blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">proven palette-building strategies</a> to create schemes that are both beautiful and accessible from the start.
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="real-world-heading">
+          <h2 id="real-world-heading" class="text-2xl font-bold mb-4">Real-World Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Consider a SaaS dashboard built with a modern, minimalist aesthetic. The designer chooses a light grey text (<code>#a0a0a0</code>) on a white background (<code>#ffffff</code>) for secondary labels. It looks sleek on a calibrated monitor. However, a QA engineer runs the colors through this checker and discovers the contrast ratio is only 2.32:1. This fails WCAG AA. Users in a bright office cannot read the labels. The engineer adjusts the grey to <code>#767676</code>, pushing the ratio to 4.54:1, achieving compliance without ruining the design.</p>
+          <p class="text-slate-600 dark:text-slate-400">Another example: an e-commerce site uses a brand color of bright yellow (<code>#f59e0b</code>) for its "Add to Cart" buttons, with white text. The contrast checker reveals a ratio of 1.95:1. White text on yellow is virtually invisible to users with cataracts. The developer changes the button text to dark charcoal (<code>#1f2937</code>), achieving a 7.5:1 ratio, passing AAA compliance and drastically improving click-through rates.</p>
+        </section>
 
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+          <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Validating Design Systems:</strong> Before exporting Figma tokens to CSS variables, run every text/background pairing through the checker to ensure the core design system is accessible.</li>
+            <li><strong>Dark Mode Implementation:</strong> When inverting a light theme to a dark theme, don't just swap colors. Grey text that works on white often fails on dark backgrounds. Test inverted pairs explicitly.</li>
+            <li><strong>Auditing Focus States:</strong> Ensure that the focus ring (<code>:focus-visible</code>) has a 3:1 contrast against the button background so keyboard users can see where they are navigating.</li>
+            <li><strong>Checking Placeholder Text:</strong> While placeholders don't strictly need to meet 4.5:1, they must be visible enough to convey the input requirement. Testing prevents UX frustration.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+          <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before &amp; After Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">See the difference between a failing UI implementation and a compliant one.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+              <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">Before: Failing AA (2.32:1)</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Light grey text on white. Stylish, but unreadable for visually impaired users.</p>
+              <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>.label {
+  color: #a0a0a0;
+  background-color: #ffffff;
+}</code></pre>
+            </div>
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+              <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">After: Passing AA (4.54:1)</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Darker grey text. Retains the minimalist aesthetic while meeting legal accessibility standards.</p>
+              <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>.label {
+  color: #767676;
+  background-color: #ffffff;
+}</code></pre>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- FAQ Section — converted from inline Q&A to proper semantic HTML -->
-      <section class="mt-12 max-w-7xl mx-auto" aria-label="Frequently asked questions">
-        <div class="glass-card p-8 shimmer-card">
-          <h2 class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+          <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for Accessible UI Design</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Design Backgrounds First:</strong> Establish your surface colors (white, dark grey, light blue) first, then select text colors that pass contrast against them. It's easier to adjust text than backgrounds.</li>
+            <li><strong>Don't Rely on Color Alone:</strong> Contrast isn't just about text. If an error state turns a form border red, ensure there is also an icon or text label so colorblind users understand the error.</li>
+            <li><strong>Use CSS Variables:</strong> Define your compliant colors as tokens (e.g., <code>--text-primary: #1f2937;</code>) so developers can't accidentally use a non-compliant color.</li>
+            <li><strong>Test Overlays:</strong> If placing text over an image, use a semi-transparent dark overlay behind the text to guarantee contrast regardless of the image content.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="common-mistakes-heading">
+          <h2 id="common-mistakes-heading" class="text-2xl font-bold mb-4">Common Accessibility Mistakes</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Ignoring Disabled States:</strong> While WCAG doesn't strictly require disabled elements to pass, making them completely invisible is a UX failure. Provide as much contrast as possible.</li>
+            <li><strong>Forgetting Placeholder Text:</strong> <code>::placeholder</code> is often styled with very low opacity. Test it to ensure users can read the input instructions.</li>
+            <li><strong>Gradient Backgrounds:</strong> Text over a gradient might pass on one side but fail on the other. You must test the text against the lightest part of the gradient.</li>
+            <li><strong>Hiding Focus Rings:</strong> Developers often set <code>outline: none</code> without providing a custom, high-contrast focus style. This destroys keyboard accessibility.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+          <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">This tool has zero performance impact on your actual website, as it is a standalone utility used during development. However, how you implement colors in your CSS can impact performance. Avoid using complex CSS filters (like <code>filter: brightness(0.5)</code>) to darken text for contrast, as filters are GPU-intensive and cause repaints. Instead, use explicit HEX or RGBA color values. To minify your final CSS and remove any rendering bottlenecks, use our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a>.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="browser-heading">
+          <h2 id="browser-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">The tool relies on the native HTML5 color input API and standard JavaScript math functions. It is fully compatible with all modern evergreen browsers (Chrome, Firefox, Safari, Edge) on both desktop and mobile. The sRGB luminance calculation is deterministic and universal, meaning the contrast ratio calculated here is identical to what automated auditing tools like Lighthouse or Axe will find in your production environment.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+          <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">We built this contrast checker to be accessible to developers who themselves have visual impairments. The entire application uses semantic HTML, proper ARIA labeling, and high contrast for its own UI. The results panel utilizes <code>aria-live="polite"</code> regions, meaning a screen reader will instantly announce "Pass" or "Fail" and the exact ratio the moment a color is changed, without the user needing to navigate away from the color picker.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+          <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Storybook Integration:</strong> Don't just check colors here and forget them. Use Storybook with an accessibility addon (like @storybook/addon-a11y) to continuously enforce these contrast ratios in your component library.</li>
+            <li><strong>Tailwind CSS:</strong> If you are using Tailwind, ensure your <code>tailwind.config.js</code> defines text colors that inherently pass contrast against your background colors. Don't rely on arbitrary values in markup.</li>
+            <li><strong>PX to REM:</strong> Remember that "Large Text" in WCAG is defined as 18pt (24px) or 14pt bold (18.66px). When building responsive typography, ensure your text sizes don't drop below these thresholds if you are relying on the 3:1 large text ratio.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+          <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>APCA (Advanced Perceptual Contrast Algorithm):</strong> WCAG 3.0 is moving away from the 4.5:1 ratio towards APCA, which calculates contrast based on the perceived lightness of the text. Keep an eye on this transition, as it changes how we evaluate dark text on dark backgrounds.</li>
+            <li><strong>Dynamic Theming:</strong> When building dark mode toggles, use CSS custom properties (<code>--bg-color</code>, <code>--text-color</code>) and JavaScript to swap the root variables. Run both themes through this checker to ensure both are compliant before deployment.</li>
+            <li><strong>Opacity vs RGBA:</strong> Using <code>opacity: 0.5</code> on text can cause unpredictable contrast if the background changes. Always use explicit <code>rgba()</code> colors so the computed value is static and testable.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="guide-heading">
+          <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Color Accessibility</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">This guide outlines a professional workflow for integrating contrast checking into your design and development pipeline.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Workflow &amp; Team Collaboration</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">In an Agile team, designers should define the color system, but QA must verify it. Designers should export a "Color Compliance Matrix" showing every text/bg pair and its expected ratio. Developers implement these as CSS tokens. QA then uses this tool during code review to sample the computed styles and ensure the math matches the design intent.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Real Projects &amp; Mistakes</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I once saw a project fail an enterprise accessibility audit because the developer used a CSS framework's default <code>text-muted</code> class, which had a contrast ratio of 3.8:1. It looked fine to the developer, but failed WCAG AA. The fix was simply overriding the token to a darker grey. The lesson: never trust default framework colors. Test them all.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Productivity Tips</h3>
+          <p class="text-slate-600 dark:text-slate-400">Bookmark this page. Whenever you are writing CSS and choose a color, alt-tab to this tool, paste the HEX codes, and verify. It takes 5 seconds and prevents hours of refactoring later. For cleaning up your other assets, check out our <a href="/image-compressor/" class="text-emerald-500 hover:underline">Image Compressor</a>.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+          <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I once failed a major enterprise accessibility audit because of a single shade of grey. The text looked perfectly fine on my calibrated monitor, but it didn't meet AA contrast against its background—and I had absolutely no idea until the audit report came back. That one finding cost more time to fix than the entire feature had taken to build.</p>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">After that, I started checking contrast ratios manually using the WCAG formula and a calculator, and it was genuinely tedious. The online checkers I found either buried the results in ads, only showed one compliance level at a time, or required me to create an account just to check two colors. I wanted something dead simple: pick two colors, see all four thresholds immediately, and get a live preview of how the text actually reads. No accounts, no server calls, no friction.</p>
+          <p class="text-slate-600 dark:text-slate-400">This is one of the free tools I maintain at DevPalettes for developers and designers who just want things to work. If you're running a broader audit on your site, the <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO page analyzer</a> can catch issues beyond contrast, and the <a href="/meta-tag-generator/" class="text-emerald-500 hover:underline">meta tag generator</a> handles the code side once your accessible design is ready to ship.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
           <div class="space-y-4" id="faq-container">
             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
               <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
@@ -554,145 +694,86 @@
                 <p class="text-sm text-slate-600 dark:text-slate-400">AA is the widely accepted baseline standard requiring 4.5:1 for normal text and 3:1 for large text. AAA is the enhanced standard requiring 7:1 for normal text and 4.5:1 for large text. Most organizations target AA as the legal and practical baseline, while AAA is recommended where possible but often impractical for brand color constraints.</p>
               </div>
             </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
+                <span>Does this tool calculate contrast for gradients?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">No, this tool strictly calculates the contrast ratio between two solid colors. If you are using a gradient background, you must test the text color against the lightest and darkest points of the gradient to ensure compliance across the entire surface.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-8">
+                <span>Is my color data sent to a server?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-8" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">No. All calculations are performed locally in your browser using client-side JavaScript. Your color choices and design system variables are never transmitted to any external server, ensuring complete privacy.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-9">
+                <span>Does WCAG contrast apply to disabled buttons?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-9" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">No, WCAG 2.1 explicitly states that disabled form controls and placeholder text do not need to meet the 3:1 minimum contrast ratio. However, if you choose to make them accessible, it is a good UX practice to provide as much contrast as possible.</p>
+              </div>
+            </div>
+            <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+              <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-10">
+                <span>What is the formula for WCAG contrast ratio?</span>
+                <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+              </button>
+              <div id="faq-10" class="faq-content px-6 pb-4 hidden" role="region">
+                <p class="text-sm text-slate-600 dark:text-slate-400">The formula is (L1 + 0.05) / (L2 + 0.05), where L1 is the relative luminance of the lighter color and L2 is the relative luminance of the darker color. Relative luminance is calculated using the sRGB color space, applying a gamma correction to the R, G, and B channels.</p>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section class="mt-12" aria-label="Who uses this contrast checker">
-         <h2 class="text-2xl font-bold mb-6 text-center">Who Uses This Contrast Checker?</h2>
-         <div class="grid md:grid-cols-3 gap-6">
-            <div class="glass-card p-6 text-center">
-               <i class="fas fa-palette text-3xl text-blue-500 mb-4" aria-hidden="true"></i>
-               <h3 class="font-bold mb-2">UI Designers</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Test color systems and design tokens before handoff. Catch contrast failures early when fixing them costs minutes instead of sprints.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-               <i class="fas fa-code text-3xl text-emerald-500 mb-4" aria-hidden="true"></i>
-               <h3 class="font-bold mb-2">Front-End Developers</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Verify that implemented colors meet accessibility requirements. Confirm your CSS variables pass before pushing to production.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-               <i class="fas fa-clipboard-check text-3xl text-purple-500 mb-4" aria-hidden="true"></i>
-               <h3 class="font-bold mb-2">QA & Accessibility Auditors</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Quickly test color combinations during manual audits. Pair this with a full <a href="/seo-analyzer/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">page SEO audit</a> for comprehensive compliance coverage.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-               <i class="fas fa-pen-nib text-3xl text-amber-500 mb-4" aria-hidden="true"></i>
-               <h3 class="font-bold mb-2">Content Teams</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Ensure blog posts, landing pages, and email campaigns are readable for every visitor — not just those with perfect vision on calibrated screens.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-               <i class="fas fa-briefcase text-3xl text-red-500 mb-4" aria-hidden="true"></i>
-               <h3 class="font-bold mb-2">Product Managers</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Validate that new features meet compliance standards before release. Avoid accessibility-related launch blockers and post-release hotfixes.</p>
-            </div>
-            <div class="glass-card p-6 text-center">
-               <i class="fas fa-graduation-cap text-3xl text-teal-500 mb-4" aria-hidden="true"></i>
-               <h3 class="font-bold mb-2">Students & Educators</h3>
-               <p class="text-sm text-slate-600 dark:text-slate-400">Learn WCAG contrast requirements interactively. See the math come alive by testing real color pairs and understanding which thresholds apply where.</p>
-            </div>
-         </div>
-      </section>
-
-      <section class="mt-12" aria-label="Benefits of using a contrast checker">
-         <h2 class="text-2xl font-bold mb-6 text-center">Benefits of Using a Contrast Checker</h2>
-         <div class="grid sm:grid-cols-2 gap-6 mt-6 max-w-7xl mx-auto">
-            <div class="flex gap-4">
-               <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-bolt text-emerald-500" aria-hidden="true"></i>
-               </div>
-               <div>
-                  <h3 class="font-semibold mb-1">Instant Feedback</h3>
-                  <p class="text-sm text-slate-500">No waiting, no server calls. The contrast ratio updates the moment you pick a color, so you can iterate fast without breaking flow.</p>
-               </div>
-            </div>
-            <div class="flex gap-4">
-               <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-table-cells text-blue-500" aria-hidden="true"></i>
-               </div>
-               <div>
-                  <h3 class="font-semibold mb-1">All Four Thresholds at Once</h3>
-                  <p class="text-sm text-slate-500">See AA and AAA results for both normal and large text simultaneously — no need to check each level separately.</p>
-               </div>
-            </div>
-            <div class="flex gap-4">
-               <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-eye text-purple-500" aria-hidden="true"></i>
-               </div>
-               <div>
-                  <h3 class="font-semibold mb-1">Live Text Preview</h3>
-                  <p class="text-sm text-slate-500">Don't just trust the number — see your actual text rendered on the actual background. A ratio can pass while still looking off in context.</p>
-               </div>
-            </div>
-            <div class="flex gap-4">
-               <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-shield-halved text-amber-500" aria-hidden="true"></i>
-               </div>
-               <div>
-                  <h3 class="font-semibold mb-1">Privacy First</h3>
-                  <p class="text-sm text-slate-500">Your color choices never leave your browser. No data is sent to any server, ever. Safe for proprietary design systems and brand colors.</p>
-               </div>
-            </div>
-            <div class="flex gap-4">
-               <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-scale-balanced text-red-500" aria-hidden="true"></i>
-               </div>
-               <div>
-                  <h3 class="font-semibold mb-1">Legal Compliance</h3>
-                  <p class="text-sm text-slate-500">Avoid ADA and Section 508 violations by verifying contrast before launch. Fixing accessibility retroactively is far more expensive than testing upfront.</p>
-               </div>
-            </div>
-            <div class="flex gap-4">
-               <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                  <i class="fas fa-infinity text-teal-500" aria-hidden="true"></i>
-               </div>
-               <div>
-                  <h3 class="font-semibold mb-1">Free and Unlimited</h3>
-                  <p class="text-sm text-slate-500">No sign-up, no usage caps, no paywalls. Check as many color pairs as you need, as often as you need. That's the whole point.</p>
-               </div>
-            </div>
-         </div>
-      </section>
-
-      <section class="glass-card p-8 shimmer-card mt-12 max-w-7xl mx-auto" aria-label="Why this tool was built">
-         <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
-         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-            I once failed an accessibility audit because of a single shade of grey. The text looked perfectly fine on my calibrated monitor, but it didn't meet AA contrast against its background — and I had absolutely no idea until the audit report came back. That one finding cost more time to fix than the entire feature had taken to build.
-         </p>
-         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-            After that, I started checking contrast ratios manually using the WCAG formula and a calculator, and it was genuinely tedious. The online checkers I found either buried the results in ads, only showed one compliance level at a time, or required me to create an account just to check two colors. I wanted something dead simple: pick two colors, see all four thresholds immediately, and get a live preview of how the text actually reads. No accounts, no server calls, no friction.
-         </p>
-         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-            This is one of the free tools I maintain at DevPalettes for developers and designers who just want things to work. If you're running a broader audit on your site, the <a href="/seo-analyzer/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">SEO page analyzer</a> can catch issues beyond contrast, and the <a href="/meta-tag-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 dark:hover:text-emerald-300 underline underline-offset-2 decoration-emerald-500/30 hover:decoration-emerald-500 transition-colors">meta tag generator</a> handles the code side once your accessible design is ready to ship.
-         </p>
-      </section>
-
-      <section class="glass-card p-8 shimmer-card text-center mt-12" aria-label="Share this tool">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-          <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
-          <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
-          <div class="flex items-center justify-center gap-3 flex-wrap">
-            <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/wcag-contrast-checker/&text=Check%20WCAG%20color%20contrast%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-              <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-            </a>
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/wcag-contrast-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-              <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-            </a>
-            <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/wcag-contrast-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-              <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-            </a>
-            <a href="https://wa.me/?text=Check%20out%20this%20free%20WCAG%20contrast%20checker%20https://devpalettes.com/wcag-contrast-checker/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-            </a>
-            <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/wcag-contrast-checker/&description=Free%20WCAG%20contrast%20checker%20for%20accessible%20design" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-              <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
-            </a>
-            <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
-              <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-            </button>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-tools-heading">
+          <h2 id="related-tools-heading" class="text-2xl font-bold mb-6">Related Tools</h2>
+          <div class="flex flex-wrap gap-3">
+            <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
+            <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">CSS Gradient Generator</a>
+            <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+            <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+            <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
+            <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-blog-heading">
+          <h2 id="related-blog-heading" class="text-2xl font-bold mb-6">Related Blog Articles</h2>
+          <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+            <li><a href="../blog/wcag-2-1-explained/" class="text-emerald-500 hover:underline">WCAG 2.1 Explained: A Developer's Guide to Accessibility</a></li>
+            <li><a href="../blog/designing-accessible-color-systems/" class="text-emerald-500 hover:underline">Designing Accessible Color Systems from Scratch</a></li>
+            <li><a href="../blog/ada-compliance-for-websites/" class="text-emerald-500 hover:underline">ADA Compliance for Websites: Avoiding Lawsuits in 2024</a></li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+          <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Color contrast is the most common, yet most easily fixable, accessibility failure on the web. By integrating a WCAG Contrast Checker into your frontend development workflow, you ensure that your interfaces are legible, compliant, and inclusive for all users. Don't wait for an audit or a lawsuit to find out your text is unreadable. Verify your colors, build accessible design systems, and ship better UI.</p>
+          <p class="text-slate-600 dark:text-slate-400">Our 100% client-side tool provides the instant feedback, privacy, and technical accuracy you need to build with confidence.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="cta-heading">
+          <h2 id="cta-heading" class="text-2xl font-bold mb-3">Ready to Audit Your Colors?</h2>
+          <p class="text-slate-500 mb-6 text-sm">Use the pickers above to test your design system variables right now. Explore our other free developer tools for a complete frontend optimization workflow.</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="#text-color" class="btn-primary text-sm py-2 px-6 inline-flex items-center gap-2" onclick="document.getElementById('text-color').focus();">
+              <i class="fas fa-palette" aria-hidden="true"></i> Check Your Colors
+            </a>
+            <a href="/palettes/" class="btn-secondary text-sm py-2 px-6 inline-flex items-center gap-2">
+              <i class="fas fa-swatchbook" aria-hidden="true"></i> Generate a Palette
+            </a>
+          </div>
+        </section>
+
+      </div>
 
       <div class="text-center py-10 mt-4">
         <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
@@ -704,46 +785,12 @@
 
     </div>
   </main>
-  
-  <section class="adsense-tool-guide max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="glass-card p-8">
-      <h2>Practical Guide to WCAG Contrast Checker</h2>
-      <p><strong>What this tool does:</strong> Check text and background contrast against WCAG AA and AAA targets. It is built for quick browser-based workflows where the result should be visible, understandable, and easy to copy into a real project.</p>
-      <h3>Why use WCAG Contrast Checker?</h3>
-      <p>Use WCAG Contrast Checker when you want to reduce manual trial and error. Instead of switching between documentation, design software, code editors, and calculators, you can adjust the inputs here, inspect the output, and move the result into your project with fewer interruptions. This is especially useful when you are comparing alternatives, documenting a design decision, or preparing production-ready snippets for a team.</p>
-      <h3>How it works</h3>
-      <p>The tool reads the values you enter or select, updates the preview immediately, and formats the result for common web workflows. Where possible, processing happens in your browser so the interaction remains fast and private. The output is intentionally plain: copyable CSS, HTML, JSON, text, image data, or configuration values that can be reviewed before use.</p>
-      <h3>Step-by-step workflow</h3>
-      <ol>
-        <li>Open the tool and start with the default values to understand the available controls.</li>
-        <li>Replace the sample values with your project values, brand colors, text, image, URL, or layout settings.</li>
-        <li>Review the preview and generated output together so the visual result matches the copied code.</li>
-        <li>Copy or download the result, then test it inside your own project rather than assuming every context behaves the same.</li>
-        <li>Save important outputs in your project files, design system, or documentation so they are not dependent on browser storage.</li>
-      </ol>
-      <h3>Real-world examples</h3>
-      <p>A designer can use WCAG Contrast Checker while preparing a design handoff, then paste the generated values into a style guide. A frontend developer can use it while prototyping a component and then adapt the output into existing class names, CSS variables, or framework conventions. A content or SEO specialist can use it to verify that generated metadata, text, or assets are consistent before publishing.</p>
-      <h3>Best practices</h3>
-      <ul>
-        <li>Keep the original source or input before applying destructive transformations such as minification or compression.</li>
-        <li>Use semantic names when moving generated values into production code.</li>
-        <li>Test output in at least one real page, not only inside the generator preview.</li>
-        <li>Check accessibility, readability, and responsive behavior when the output affects user interface design.</li>
-        <li>Document final values so teammates understand why a specific setting was chosen.</li>
-      </ul>
-      <h3>Common mistakes</h3>
-      <p>Common mistakes include copying output without reviewing it, using generated values in the wrong CSS property, forgetting browser compatibility, relying on localStorage as permanent storage, or applying visual effects without checking contrast and readability. Treat generated output as a strong starting point, then validate it in your own codebase.</p>
-      <h3>FAQ</h3>
-      <p><strong>Is WCAG Contrast Checker free?</strong> Yes, the tool is free and does not require sign-up.</p>
-      <p><strong>Does it work on mobile?</strong> The page is responsive, though complex editing workflows are usually easier on a desktop or tablet.</p>
-      <p><strong>Can I use the output commercially?</strong> Yes, generated values and snippets can be used in personal and commercial work. Always review output for your own requirements.</p>
-      <h3>Related tools</h3>
-      <p><a href="/color-accessibility/">Color Accessibility Tester</a> · <a href="/color-blindness/">Color Blindness Simulator</a> · <a href="/color-diff-checker/">Color Difference Checker</a></p>
-    </div>
-  </section>
-  <div id="footer-container"></div>
+
+  <div id="footer-container" role="contentinfo"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
+
   <script src="../js/main.js" defer></script>
+  <script src="../js/wcag-contrast-checker.js" defer></script>
   <script src="../js/enhancements.js" defer></script>
-  <script src="../js/wcag-contrast.js" defer></script>
 </body>
 </html>

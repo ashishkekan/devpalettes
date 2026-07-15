@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#10b981">
 
   <!-- Primary Meta Tags -->
@@ -37,125 +37,251 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2390881516968474"
      crossorigin="anonymous"></script>
 
-  <!-- BreadcrumbList Schema -->
+  <!-- Comprehensive Structured Data -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "JavaScript Minifier",
-        "item": "https://devpalettes.com/js-minifier/"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "JavaScript Minifier",
-    "url": "https://devpalettes.com/js-minifier/",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "description": "A free online tool to minify JavaScript code. Remove whitespace, comments, and unnecessary characters to reduce JS file size for faster page loading with real-time preview.",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Any",
-    "browserRequirements": "Requires JavaScript",
-    "creator": {
+  [
+    {
+      "@context": "https://schema.org",
       "@type": "Organization",
-      "name": "DevPalettes",
-      "url": "https://devpalettes.com/"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
-
-  <!-- Structured Data: FAQ — expanded to 8 questions -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is JavaScript minification?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. This includes removing whitespace, line breaks, comments, and unnecessary semicolons. The result is a smaller file that downloads and parses faster but executes identically in the browser."
-        }
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com",
+      "logo": "https://devpalettes.com/images/devpalettes.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Ashish Kekaan",
+        "url": "https://devpalettes.com/about/"
       },
-      {
-        "@type": "Question",
-        "name": "Does JS minification break the code?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. JavaScript minification removes only non-functional characters. The browser executes the exact same code from minified and unminified files. All variables, functions, logic, and behavior are preserved. The only difference is the file size transmitted over the network."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much smaller does minified JS get?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "JavaScript minification typically reduces file size by 30-50%. Well-formatted code with lots of comments and indentation sees the largest reductions. Production-ready libraries like Lodash or D3 that are already minified will see minimal additional savings. Custom application code with extensive documentation often sees 40-60% reductions."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between minification and obfuscation?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Minification removes whitespace and comments but keeps variable and function names readable. Obfuscation additionally renames variables to short meaningless names (like a, b, c) to make the code harder to understand while keeping functionality intact. Minification is safe and recommended; obfuscation adds a layer of difficulty for reverse engineering but is not a security measure."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Should I use online minifiers or build tools?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For production, use build tools like Terser, esbuild, UglifyJS, or webpack's TerserPlugin as part of your build pipeline. Online minifiers are perfect for quick one-off minification, testing, or when you do not have a build system set up. Both approaches produce equivalent output."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I minify ES6 and modern JavaScript?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. This minifier works with ES6+ syntax including arrow functions, template literals, destructuring, classes, async/await, import/export statements, and spread operators. It protects template literal contents and string values from accidental modification during the minification process."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is my code sent to a server?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. This JavaScript minifier runs entirely in your browser. No code is sent to any server, and no data leaves your machine. All minification happens client-side using JavaScript, making it safe for proprietary or sensitive code."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What types of comments does this minifier remove?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "This minifier removes both single-line comments (// comment) and multi-line comments (/* comment */). It is careful to not match comment syntax inside string literals or regex patterns, so comments embedded in strings are preserved."
-        }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Support",
+        "email": "contact@devpalettes.com",
+        "url": "https://devpalettes.com/contact/",
+        "availableLanguage": "English"
       }
-    ]
-  }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://devpalettes.com/tools/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "JavaScript Minifier",
+      "url": "https://devpalettes.com/js-minifier/",
+      "logo": "https://devpalettes.com/images/devpalettes.png",
+      "description": "A free online tool to minify JavaScript code. Remove whitespace, comments, and unnecessary characters to reduce JS file size for faster page loading with real-time preview.",
+      "applicationCategory": "DesignApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "creator": {
+        "@type": "Organization",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com/"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Online JavaScript Minifier – Minify JS Free",
+      "description": "Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size with this free online JavaScript minifier tool.",
+      "url": "https://devpalettes.com/js-minifier/",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Devpalettes",
+        "url": "https://devpalettes.com"
+      },
+      "dateModified": "2026-07-06"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://devpalettes.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "JavaScript Minifier",
+          "item": "https://devpalettes.com/js-minifier/"
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How to Minify JavaScript Code",
+      "description": "Step-by-step guide to minifying JavaScript code using the DevPalettes JS Minifier.",
+      "totalTime": "PT1M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Paste Your JavaScript",
+          "text": "Paste your raw, unminified JavaScript code into the 'JavaScript Input' textarea on the left."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Select Minification Options",
+          "text": "Toggle the checkboxes to remove whitespace, comments, and unnecessary semicolons based on your requirements."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Review Minified Output",
+          "text": "View the minified code in the 'Minified Output' panel on the right. Check the stats to see the file size reduction."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Copy or Download",
+          "text": "Click the Copy button to copy the code to your clipboard, or Download to save it as a .min.js file."
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is JavaScript minification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. This includes removing whitespace, line breaks, comments, and unnecessary semicolons. The result is a smaller file that downloads and parses faster but executes identically in the browser."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does JS minification break the code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. JavaScript minification removes only non-functional characters. The browser executes the exact same code from minified and unminified files. All variables, functions, logic, and behavior are preserved. The only difference is the file size transmitted over the network."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much smaller does minified JS get?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JavaScript minification typically reduces file size by 30-50%. Well-formatted code with lots of comments and indentation sees the largest reductions. Production-ready libraries like Lodash or D3 that are already minified will see minimal additional savings. Custom application code with extensive documentation often sees 40-60% reductions."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between minification and obfuscation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Minification removes whitespace and comments but keeps variable and function names readable. Obfuscation additionally renames variables to short meaningless names (like a, b, c) to make the code harder to understand while keeping functionality intact. Minification is safe and recommended; obfuscation adds a layer of difficulty for reverse engineering but is not a security measure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use online minifiers or build tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For production, use build tools like Terser, esbuild, UglifyJS, or webpack's TerserPlugin as part of your build pipeline. Online minifiers are perfect for quick one-off minification, testing, or when you do not have a build system set up. Both approaches produce equivalent output."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I minify ES6 and modern JavaScript?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. This minifier works with ES6+ syntax including arrow functions, template literals, destructuring, classes, async/await, import/export statements, and spread operators. It protects template literal contents and string values from accidental modification during the minification process."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my code sent to a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This JavaScript minifier runs entirely in your browser. No code is sent to any server, and no data leaves your machine. All minification happens client-side using JavaScript, making it safe for proprietary or sensitive code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of comments does this minifier remove?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "This minifier removes both single-line comments (// comment) and multi-line comments (/* comment */). It is careful to not match comment syntax inside string literals or regex patterns, so comments embedded in strings are preserved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does minification replace the need for Gzip or Brotli?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Minification and compression serve different purposes. Minification reduces the source file size, while Gzip or Brotli compresses the file during transit over the network. You should use both: minify first, then let your server compress the minified file for maximum performance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are my template literals breaking during minification?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Poorly built minifiers collapse whitespace inside template literals (backticks). This tool protects string and template literal contents, meaning internal spaces are preserved. If your template literal breaks, ensure you aren't relying on implicit line breaks that require specific formatting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use this tool to minify JSON?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While JSON is technically valid JavaScript, it is highly recommended to use a dedicated JSON Formatter or Minifier tool to handle JSON data. This ensures object keys are handled correctly and prevents syntax errors specific to data interchange formats."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this tool support tree shaking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No, tree shaking (removing unused code) requires full AST parsing and is typically handled by bundlers like Webpack, Rollup, or Vite. This tool focuses on safe, text-level minification to reduce file size without altering code structure."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is ASI in JavaScript?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ASI stands for Automatic Semicolon Insertion. It is a feature of JavaScript that automatically inserts semicolons at the end of statements. This minifier can safely remove unnecessary semicolons based on ASI rules to save additional bytes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is minified JavaScript harder to debug?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, minified code is difficult to read. To solve this, you should always deploy source maps (.map files) alongside your minified JS. Browsers use source maps to map the minified code back to the original source for debugging."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I minify inline JavaScript in HTML?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, you can copy inline JavaScript from an HTML file, minify it here, and paste it back. For a more streamlined workflow, consider using an HTML Minifier that handles inline CSS and JS simultaneously."
+          }
+        }
+      ]
+    }
+  ]
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -181,72 +307,6 @@
     .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
     .skip-link:focus{left:0;top:0;width:auto;height:auto;padding:.75rem 1.5rem;background:#10b981;color:#fff;font-weight:700;border-radius:0 0 .5rem 0;outline:2px solid #fff}
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Online JavaScript Minifier – Minify JS Free",
-    "description": "Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size with this free online JavaScript minifier tool.",
-    "url": "https://devpalettes.com/js-minifier/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Online JavaScript Minifier – Minify JS Free",
-        "item": "https://devpalettes.com/js-minifier/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Skip to content -->
@@ -266,23 +326,23 @@
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <!-- Hero Section -->
-      <div class="text-center mb-10" style="margin-top: 45px;">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Online JavaScript Minifier – Minify JS Free</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size for faster page loading</p>
+      <header class="text-center mb-10" style="margin-top: 45px;">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Online JavaScript Minifier</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto">Minify JavaScript code instantly. Remove whitespace, comments, and unnecessary characters to reduce JS file size for faster page loading.</p>
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
-      </div>
+      </header>
 
       <section class="max-w-7xl mx-auto mb-10" aria-labelledby="what-is-heading">
-        <article class="glass-card p-6 sm:p-8 shimmer-card">
+        <article class="glass-card p-6 sm:p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
           <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What Is a JavaScript Minifier?</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-            A JavaScript minifier is a tool that removes unnecessary characters from JS source code without changing how the code executes. It strips out whitespace (spaces, tabs, and newlines), both single-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">// ...</code>) and multi-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/* ... */</code>), unnecessary semicolons, and empty lines. The result is a smaller JavaScript file that downloads faster, parses quicker, and uses less bandwidth — while executing identically in the browser.
+            A JavaScript minifier is a specialized development tool designed to compress JavaScript source code by eliminating non-essential characters. It targets whitespace (spaces, tabs, and newlines), single-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">// ...</code>), multi-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/* ... */</code>), unnecessary semicolons, and line breaks. The resulting compact file downloads significantly faster, parses more efficiently, and reduces overall bandwidth consumption — all while executing identically to the original source code in the browser.
           </p>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-            This tool performs lightweight text-level transformations that are fast and safe. Unlike full AST-based minifiers like Terser or esbuild, it doesn't rename variables, shorten property names, or tree-shake unused code. This makes it ideal for quick minification tasks where you want to reduce file size without changing any identifiers or code structure. For most well-formatted JavaScript, minification reduces file size by <strong>30–50%</strong>, with even higher savings on code that has extensive comments and documentation.
+            This particular tool performs lightweight, text-level transformations that prioritize speed and safety. Unlike full AST-based (Abstract Syntax Tree) minifiers like Terser or esbuild, it does not rename variables, shorten property names, or tree-shake unused code. This makes it an ideal solution for quick minification tasks where you need to reduce file size without altering identifiers or risking structural changes. For most well-formatted JavaScript, minification reduces file size by <strong>30–50%</strong>, with even higher savings on code containing extensive documentation.
           </p>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-            This JavaScript minifier runs entirely in your browser — no code is sent to any server. It protects string literals, template literals, and regex patterns from accidental modification. It's part of a broader performance toolkit that includes our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> and <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> for complete front-end optimization.
+            This JavaScript minifier operates entirely client-side within your browser — no code is ever transmitted to an external server. It actively protects string literals, template literals, and regex patterns from accidental modification. It is part of a broader performance toolkit available at DevPalettes, which includes our <a href="/css-minifier/">CSS Minifier</a> and <a href="/html-minifier/">HTML Minifier</a> for complete front-end optimization.
           </p>
         </article>
       </section>
@@ -510,7 +570,7 @@
       </div>
 
       <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="whybuilt-heading">
-        <article class="glass-card p-6 sm:p-8 shimmer-card">
+        <article class="glass-card p-6 sm:p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-p:text-slate-600 dark:prose-p:text-slate-400">
           <h2 id="whybuilt-heading" class="text-2xl font-bold mb-4">Why I Built This JavaScript Minifier</h2>
           <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
             Most online JS minifiers either try to do too much (full AST parsing, variable renaming) and occasionally break code, or they're so basic they don't protect strings properly. I once pasted a JavaScript file into a random minifier and it collapsed whitespace inside a template literal, turning <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">`hello world`</code> into <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">`helloworld`</code>. That kind of bug is insidious because it doesn't throw an error — it just silently breaks your UI.
@@ -527,17 +587,17 @@
       <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16">
 
-         <!-- What is -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="whatis-heading">
-            <h2 id="whatis-heading" class="text-2xl font-bold mb-4">What is JavaScript Minification?</h2>
+         <!-- Why use -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+            <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use a JavaScript Minifier?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. The JavaScript Minifier strips out whitespace (spaces, tabs, newlines), both single-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">// ...</code>) and multi-line comments (<code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/* ... */</code>), unnecessary semicolons, empty lines, and redundant spaces. The result is a compact JavaScript file that reduces JS size while executing identically in the browser. You can minify JS online free right here, and also try our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> and <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> for complete front-end optimization.
+               In modern web development, performance is not a feature; it is a requirement. Google's Core Web Vitals have firmly established page speed as a direct ranking factor. JavaScript is often the heaviest asset on a web page, consuming significant CPU time to parse, compile, and execute. Minifying your JavaScript is one of the simplest, most effective ways to reduce this burden.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Unlike full AST-based minifiers like Terser, UglifyJS, or esbuild, this tool performs lightweight text-level transformations that are fast and safe. It does not rename variables, shorten property names, tree-shake unused code, or rewrite syntax. According to <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a>, minification is one of the most effective ways to reduce JS size and optimize website performance. This makes it suitable for quick minification tasks where you want to reduce JS size online free without changing any identifiers or code structure. For a broader SEO perspective, check out our <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a> tool.
+               When you minify JS, you reduce the file size transmitted over the network. This directly improves Time to First Byte (TTFB) and First Contentful Paint (FCP). More importantly, smaller files parse faster in the browser's V8 or SpiderMonkey engine, reducing Total Blocking Time (TBT) and improving Time to Interactive (TTI). For mobile users on 3G or 4G networks, every kilobyte saved translates to milliseconds shaved off the load time.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               This JavaScript Minifier tool performs all optimization in your browser using JavaScript. No code is sent to any server. It protects string literals, template literals, and regex patterns from accidental modification, ensuring that your code remains fully functional after minification. It supports configurable options: you can choose which optimizations to apply and even opt to keep newlines for readability if needed. For formatting other web assets, try our <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a> or <a href="/meta-tag-generator/" class="text-emerald-500 hover:underline">Meta Tag Generator</a>.
+               Unlike <a href="/image-compressor/">Image Compression</a>, which alters visual fidelity, JavaScript minification is entirely lossless from a functional perspective. The browser executes the exact same logic. It simply does so with less overhead. Pairing this tool with our <a href="/css-minifier/">CSS Minifier</a> and <a href="/html-minifier/">HTML Minifier</a> ensures your entire front-end payload is optimized for peak performance.
             </p>
          </section>
 
@@ -556,74 +616,56 @@
                <li><strong>Empty Line Removal:</strong> Empty lines (lines containing only whitespace) are removed to save additional bytes.</li>
             </ol>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               For production-grade minification with variable renaming, tree shaking, and advanced optimizations, use build tools like Terser, esbuild, UglifyJS, or Rollup. Those tools parse the JavaScript into an AST (Abstract Syntax Tree) and can perform transformations that text-level minifiers cannot — like shortening variable names, removing unreachable code, inlining small functions, and merging duplicate declarations. Pair this with our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> for full asset optimization.
+               For production-grade minification with variable renaming, tree shaking, and advanced optimizations, use build tools like Terser, esbuild, UglifyJS, or Rollup. Those tools parse the JavaScript into an AST (Abstract Syntax Tree) and can perform transformations that text-level minifiers cannot — like shortening variable names, removing unreachable code, inlining small functions, and merging duplicate declarations. Pair this with our <a href="/css-minifier/">CSS Minifier</a> for full asset optimization.
             </p>
          </section>
 
-         <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
-            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of JavaScript Minification</h2>
+         <!-- Key Features -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="features-heading">
+            <h2 id="features-heading" class="text-2xl font-bold mb-4">Key Features of This Tool</h2>
             <div class="grid sm:grid-cols-2 gap-6 mt-6">
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
                      <i class="fas fa-gauge-high text-emerald-500" aria-hidden="true"></i>
                   </div>
                   <div>
-                     <h3 class="font-semibold mb-1">Faster Page Loading</h3>
-                     <p class="text-sm text-slate-500">Smaller JS files download faster, reducing render-blocking time. Since JavaScript is typically render-blocking, every kilobyte removed directly improves Time to Interactive (TTI) and First Input Delay (FID). Optimize images with our <a href="/image-compressor/" class="text-emerald-500 hover:underline">Image Compressor</a> for maximum speed.</p>
+                     <h3 class="font-semibold mb-1">Real-Time Processing</h3>
+                     <p class="text-sm text-slate-500">The minifier operates as you type. There are no "Submit" buttons to click. The output panel and statistics update instantly, allowing for rapid iteration and testing.</p>
                   </div>
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-chart-line text-blue-500" aria-hidden="true"></i>
+                     <i class="fas fa-shield-halved text-blue-500" aria-hidden="true"></i>
                   </div>
                   <div>
-                     <h3 class="font-semibold mb-1">Better Core Web Vitals</h3>
-                     <p class="text-sm text-slate-500">Reduced JS size contributes to improved Largest Contentful Paint (LCP) and Total Blocking Time (TBT), which are Google ranking factors and Lighthouse metrics. Check your scores with our <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a>.</p>
+                     <h3 class="font-semibold mb-1">100% Client-Side Security</h3>
+                     <p class="text-sm text-slate-500">Your code never leaves your browser. All parsing and minification happen locally on your machine, making it safe for proprietary, sensitive, or NDA-protected codebases.</p>
                   </div>
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-server text-purple-500" aria-hidden="true"></i>
+                     <i class="fas fa-quote-right text-purple-500" aria-hidden="true"></i>
                   </div>
                   <div>
-                     <h3 class="font-semibold mb-1">Lower Bandwidth Costs</h3>
-                     <p class="text-sm text-slate-500">For high-traffic websites, reducing JS file size by 30-50% translates to significant bandwidth savings. At scale, this can reduce hosting and CDN costs measurably.</p>
+                     <h3 class="font-semibold mb-1">String & Regex Protection</h3>
+                     <p class="text-sm text-slate-500">Unlike basic regex replacers, this tool tokenizes the input to protect the internal contents of strings, template literals, and regular expressions from accidental modification.</p>
                   </div>
                </div>
                <div class="flex gap-4">
                   <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bolt text-amber-500" aria-hidden="true"></i>
+                     <i class="fas fa-sliders text-amber-500" aria-hidden="true"></i>
                   </div>
                   <div>
-                     <h3 class="font-semibold mb-1">Faster Parsing</h3>
-                     <p class="text-sm text-slate-500">The browser's JavaScript engine parses fewer characters, reducing the time to construct the AST and execute the code. This reduces Total Blocking Time and speeds up page interactivity.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-shield-halved text-red-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Reduced Exposure</h3>
-                     <p class="text-sm text-slate-500">Removing comments strips developer notes, TODO markers, and internal references from production JS that visitors can view in page source, reducing accidental information leakage.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-mobile-screen text-teal-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Mobile Performance</h3>
-                     <p class="text-sm text-slate-500">Mobile users on slow connections benefit most from smaller JS files. Minify JS online free to help pages load within recommended time thresholds for better mobile experience.</p>
+                     <h3 class="font-semibold mb-1">Configurable Options</h3>
+                     <p class="text-sm text-slate-500">Toggle whitespace removal, comment stripping, semicolon removal, and line collapsing. Fine-tune the output to meet your specific deployment requirements.</p>
                   </div>
                </div>
             </div>
          </section>
 
-         <!-- How to Use -->
+         <!-- Step-by-step guide -->
          <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-heading">
-            <h2 id="howto-heading" class="text-2xl font-bold mb-4">How to Use This JavaScript Minifier</h2>
+            <h2 id="howto-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide to Minifying JS</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Select Options:</strong> "Remove whitespace" and "Remove comments" are enabled by default. "Remove unnecessary semicolons" is recommended for most JavaScript. "Keep newlines" disables whitespace collapse if you need a single-line-per-statement output.</li>
                <li><strong>Paste JavaScript Code:</strong> Paste your JavaScript source code into the textarea. You can paste a complete script file, a module, or any JS fragment including ES6+ syntax.</li>
@@ -632,202 +674,293 @@
                <li><strong>Check the Stats:</strong> The stats cards show original size, minified size, reduction percentage, and processing status. A reduction of 30-50% is typical for well-formatted JavaScript.</li>
                <li><strong>Verify the Validation:</strong> The checklist confirms that the input contains JavaScript, minification completed without errors, file size was reduced, and the output is ready to use.</li>
                <li><strong>Copy or Download:</strong> Click "Copy" to copy the minified JavaScript to your clipboard, or "Download" to save it as a .js file directly. Replace your production JavaScript file with the minified version.</li>
-               <li><strong>Keep Source Files:</strong> Always keep your original, unminified JavaScript in source control. Minification should be an automated build step, not a manual edit. Use build tools like webpack, Vite, or Rollup for production builds. You can also minify HTML with our <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> and encode URLs with the <a href="/url-tool/" class="text-emerald-500 hover:underline">URL Encoder</a>.</li>
+               <li><strong>Keep Source Files:</strong> Always keep your original, unminified JavaScript in source control. Minification should be an automated build step, not a manual edit. Use build tools like webpack, Vite, or Rollup for production builds. You can also minify HTML with our <a href="/html-minifier/">HTML Minifier</a> and encode URLs with the <a href="/url-tool/">URL Encoder</a>.</li>
             </ol>
          </section>
 
-         <!-- NEW: Who Is This Tool For? -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="whofor-heading">
-            <h2 id="whofor-heading" class="text-2xl font-bold mb-4">Who Is This JavaScript Minifier For?</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-               This tool serves a specific niche: developers who need fast, safe JavaScript minification without setting up a full build pipeline. Here are the audiences that benefit most:
+         <!-- Real World Examples & Use Cases -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
+            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Real World Examples & Common Use Cases</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Understanding how to minify JS is one thing; knowing when to apply it is another. Here are common scenarios where this tool excels:
             </p>
             <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Frontend developers</strong> deploying quick fixes or hot patches where spinning up a full build process is overkill. Paste the file, minify, download, deploy.</li>
-               <li><strong>Backend developers</strong> who occasionally touch frontend code and don't have webpack or Vite configured. This tool works instantly with zero configuration.</li>
-               <li><strong>WordPress and CMS site owners</strong> who want to reduce the size of custom JavaScript snippets in their theme without installing a plugin or modifying their build process.</li>
-               <li><strong>Students and educators</strong> teaching web performance concepts. The real-time stats and validation checklist make it easy to demonstrate the concrete impact of minification on file size.</li>
-               <li><strong>Security-conscious teams</strong> who need a minifier that runs entirely client-side. Since no code is transmitted to any server, proprietary or sensitive JavaScript never leaves the browser.</li>
+               <li><strong>WordPress & CMS Snippets:</strong> If you are adding custom JavaScript via a theme editor or a plugin like "Simple Custom CSS and JS", pasting minified code reduces the payload of your dynamically rendered HTML.</li>
+               <li><strong>Static Site Deployments:</strong> For sites built without a modern bundler (e.g., plain HTML/CSS/JS sites hosted on GitHub Pages or Netlify), manually minifying your <code>main.js</code> file before deployment ensures optimal load times.</li>
+               <li><strong>Email Templates & Inline Scripts:</strong> When embedding JavaScript in restrictive environments like HTML emails or legacy CMS WYSIWYG editors, minified code avoids formatting issues caused by auto-indentation tools.</li>
+               <li><strong>Quick Prototyping:</strong> If you are sharing a CodePen or JSFiddle link and want to obfuscate the logic slightly or reduce the character count, minification is a fast solution.</li>
+               <li><strong>Legacy Code Maintenance:</strong> When updating an old website that doesn't have a <code>package.json</code> or build pipeline, this tool modernizes the asset delivery without requiring a full infrastructure overhaul.</li>
             </ul>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               For full production workflows, this tool pairs naturally with our <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> and <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> to cover all three core front-end asset types. If you need to check your overall performance after minifying, the <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a> audits your page for common performance issues.
+               For larger single-page applications (SPAs) built with React, Vue, or Angular, you should rely on built-in minification provided by tools like Vite or Create React App. However, you can use this tool to inspect how minification affects specific snippets of your code or to compress standalone utility functions. To ensure your data structures are also optimized, check out our <a href="/json-formatter/">JSON Formatter</a>.
             </p>
          </section>
 
-         <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="usecases-heading">
-            <h2 id="usecases-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
+         <!-- Before & After Examples -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+            <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before & After Minification Examples</h2>
+            
+            <h3 class="text-xl font-bold mb-3 mt-6">Before Minification (Unminified JS)</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-2">This is a typical, well-documented JavaScript function:</p>
+            <pre class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto mb-6"><code>/**
+ * Calculates the total price including tax
+ * @param {number} price - The base price
+ * @param {number} taxRate - The tax percentage
+ */
+function calculateTotal(price, taxRate) {
+  // Ensure inputs are numbers
+  const basePrice = parseFloat(price);
+  const tax = parseFloat(taxRate);
+  
+  if (isNaN(basePrice) || isNaN(tax)) {
+    return 0;
+  }
+  
+  const total = basePrice + (basePrice * (tax / 100));
+  return total.toFixed(2);
+}</code></pre>
+
+            <h3 class="text-xl font-bold mb-3">After Minification (Minified JS)</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-2">The exact same code after passing through our minifier (saving over 50% in file size):</p>
+            <pre class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto"><code>function calculateTotal(e,t){const n=parseFloat(e),o=parseFloat(t);if(isNaN(n)||isNaN(o))return 0;const r=n+(n*(o/100));return r.toFixed(2)}</code></pre>
+            <p class="text-slate-600 dark:text-slate-400 mt-4">
+               Notice how all comments, excess whitespace, and unnecessary semicolons are stripped. The logic remains identical, but the browser has significantly less data to parse. Note: The variable renaming in the "After" example above simulates an AST minifier (like Terser). This specific tool focuses on safe text-level minification (stripping comments/whitespace) without renaming variables to ensure absolute safety.
+            </p>
+         </section>
+
+         <!-- Best Practices -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+            <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for JavaScript Minification</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Production Deployment:</strong> Minify JavaScript as part of your build process before deploying. Combined with <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML minification</a> and <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS minification</a>, this reduces total page weight and improves loading performance for all users.</li>
-               <li><strong>JavaScript Libraries:</strong> Frameworks like React, Vue, Angular, and jQuery ship with already-minified production builds. If you are not using a framework, use this tool to minify your custom JavaScript before serving it.</li>
-               <li><strong>Third-Party Scripts:</strong> Third-party scripts loaded from CDNs may not always be minified. Downloading, minifying, and self-hosting them gives you more control and sometimes better performance than the CDN version.</li>
-               <li><strong>Inline JavaScript:</strong> Inline scripts in HTML pages cannot be pre-minified. Use this tool to minify inline <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;script&gt;</code> blocks before publishing.</li>
-               <li><strong>Performance Auditing:</strong> Before running Lighthouse or PageSpeed Insights, minify your JavaScript to get an accurate performance score without being penalized for unminified resources. Validate your meta tags with our <a href="/meta-tag-generator/" class="text-emerald-500 hover:underline">Meta Tag Generator</a> for full SEO readiness.</li>
-               <li><strong>Email Newsletters:</strong> JavaScript embedded in email templates must be minified to reduce email file size and improve deliverability across email clients.</li>
-               <li><strong>AMP Pages:</strong> Accelerated Mobile Pages have strict size limits. Minifying your AMP JavaScript is essential for staying within the required thresholds for AMP validation.</li>
+               <li><strong>Always Keep Source Maps:</strong> Minified code is notoriously difficult to debug. Always generate and deploy source maps (.map files) alongside your minified JS. This allows browser dev tools to map the executed minified code back to your readable source.</li>
+               <li><strong>Never Edit Minified Code:</strong> Treat minified files as build artifacts. Never manually edit them. Always make changes in your source files, then re-minify. If you need to format minified code to read it, use a formatter or our <a href="/json-formatter/">JSON Formatter</a> for data structures.</li>
+               <li><strong>Automate in CI/CD:</strong> For production applications, minification should be an automated step in your CI/CD pipeline (using Webpack, Rollup, or Vite). Manual minification is only for quick fixes or simple sites.</li>
+               <li><strong>Combine with Compression:</strong> Minification reduces file size, but Gzip or Brotli compression reduces it further during transit. Ensure your server is configured to serve minified files with Brotli or Gzip encoding.</li>
+               <li><strong>Test Thoroughly:</strong> Although minification is safe, edge cases in ASI (Automatic Semicolon Insertion) can occasionally cause issues if semicolons are removed incorrectly. Always test your application's core functionality after deploying minified code.</li>
             </ul>
          </section>
 
-         <!-- FAQ Section — expanded to 8 questions with accessibility -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-            <div class="space-y-4" id="faq-container">
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
-                     <span>What is JavaScript minification?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-1-btn">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. This includes removing whitespace, line breaks, comments, unnecessary semicolons, empty lines, and redundant spaces. The result is a smaller file that downloads and parses faster but executes identically in the browser.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
-                     <span>Does JS minification break the code?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">No. JavaScript minification removes only non-functional characters. The browser executes the exact same code from minified and unminified files. All variables, functions, logic, and behavior are preserved. The only difference is the file size transmitted over the network. For production, pair this with a full minifier like Terser or UglifyJS for maximum optimization.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
-                     <span>How much smaller does minified JS get?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">JavaScript minification typically reduces file size by 30-50%. Well-formatted code with extensive comments and indentation sees the largest reductions. Production-ready libraries that are already minified will see minimal additional savings. Custom application code with documentation often sees 40-60% reductions.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
-                     <span>What is the difference between minification and obfuscation?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Minification removes whitespace and comments but keeps variable and function names readable. Obfuscation goes further by renaming variables to short meaningless names (like a, b, c) to make the code harder to understand while keeping functionality intact. Minification is safe and recommended for all production code; obfuscation adds a layer of difficulty for reverse engineering but is not a security measure. Professional tools like UglifyJS offer both options in one tool.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
-                     <span>Should I use an online minifier or a build tool?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">For production, use build tools like Terser, esbuild, UglifyJS, or webpack's TerserPlugin as part of your build pipeline. Online minifiers are perfect for quick one-off minification, testing, debugging, or when you do not have a build system. Both approaches produce equivalent output — build tools just automate the process.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
-                     <span>Can I minify ES6 and modern JavaScript?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This minifier works with ES6+ syntax including arrow functions, template literals, destructuring, classes, async/await, import/export statements, and spread operators. It protects template literal contents and string values from accidental modification during the minification process.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
-                     <span>Is my code sent to a server?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">No. This JavaScript minifier runs entirely in your browser. No code is sent to any server, and no data leaves your machine. All minification happens client-side using JavaScript, making it safe for proprietary or sensitive code.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-8">
-                     <span>What types of comments does this minifier remove?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-8" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">This minifier removes both single-line comments (<code>// comment</code>) and multi-line comments (<code>/* comment */</code>). It is careful to not match comment syntax inside string literals or regex patterns, so comments embedded in strings are preserved.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
-         
-         <!-- Related Tools -->
-         <nav class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
-            <h2 id="related-heading" class="text-2xl font-bold mb-4">Explore More Tools</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have minified your JavaScript, try these related tools to optimize website performance:</p>
-            <div class="flex flex-wrap justify-center gap-3">
-               <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
-               <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
-               <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
-               <a href="/base64-tool/" class="btn-secondary text-xs py-2 px-4">Base64 Encoder</a>
-               <a href="/url-tool/" class="btn-secondary text-xs py-2 px-4">URL Encoder</a>
-               <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
-               <a href="/text-formatter/" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
-               <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
-               <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
-            </div>
-         </nav>
-
-         <!-- Social Sharing Section -->
-         <section class="glass-card p-8 my-16 shimmer-card text-center" aria-labelledby="share-heading">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
-              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your development community.</p>
-              <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/js-minifier/&text=Minify%20JavaScript%20code%20instantly%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/js-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/js-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20JavaScript%20minifier%20https://devpalettes.com/js-minifier/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-                </a>
-                <button id="copy-link-btn" type="button" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
-                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-                </button>
-              </div>
-              <!-- Live region for copy link feedback -->
-              <div id="copy-link-status" class="sr-only" aria-live="polite" role="status"></div>
-            </div>
+         <!-- Common Mistakes -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
+            <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Mistakes During Minification</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Relying on Minification for Security:</strong> Minification is not obfuscation. It removes comments and whitespace, but variable names and logic are still easily readable. Never use minification to hide sensitive logic or "protect" intellectual property.</li>
+               <li><strong>Minifying JSON:</strong> JSON is a data format, not a programming language. While JSON is valid JavaScript, using a JS minifier on JSON can sometimes cause unexpected behavior. Use a dedicated JSON minifier or formatter instead.</li>
+               <li><strong>Breaking ASI:</strong> JavaScript's Automatic Semicolon Insertion can be tricky. If your code relies on starting a new line with <code>[</code>, <code>(</code>, or <code>`</code>, removing newlines during minification can merge two statements into one, causing runtime errors. This is why our tool includes a "Keep newlines" option.</li>
+               <li><strong>Not Testing in Target Browsers:</strong> If your minified code uses modern ES6+ syntax, ensure your target browsers support it. Minification does not transpile code. If you need to support older browsers, use Babel before minifying.</li>
+            </ul>
          </section>
 
-         <!-- Backlink Support Section -->
-         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="freetool-heading">
-            <h2 id="freetool-heading" class="text-2xl font-bold mb-3">Free Tool for Developers</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-               This JavaScript Minifier is a free tool for developers to minify JS online free and optimize website performance. Reduce JS size instantly without sending code to any server — all processing happens locally in your browser. If you find this tool helpful, consider linking to it from your blog, documentation, or project README to help other developers discover this free online JavaScript minifier and optimize website performance across the web.
+         <!-- Performance Considerations -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+            <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations & Browser Compatibility</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               JavaScript minification directly impacts two critical phases of the browser's rendering pipeline: <strong>Network Transfer</strong> and <strong>Parsing/Compilation</strong>. Smaller files download faster, especially on high-latency mobile networks. Once downloaded, the browser must parse the JS text into an Abstract Syntax Tree (AST) and compile it to machine code. Fewer characters mean the parser works less, reducing CPU time on the main thread.
             </p>
-            <div class="bg-slate-100 dark:bg-slate-800/60 rounded-xl p-4 text-left max-w-xl mx-auto">
-               <p class="text-xs text-slate-500 mb-2 font-semibold">Link to us:</p>
-               <code class="text-xs text-slate-600 dark:text-slate-300 break-all">&lt;a href="https://devpalettes.com/js-minifier/"&gt;JavaScript Minifier – Minify JS Online Free&lt;/a&gt;</code>
-            </div>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Regarding compatibility, minified JavaScript runs in <strong>all browsers</strong> exactly as the original code does. Because minification only removes non-functional characters, it does not alter the ECMAScript specification compliance of the code. Whether your users are on Chrome, Firefox, Safari, or Edge, the execution remains identical. The only requirement is that if your original code uses ES6+ features (like arrow functions or async/await), the target browser must support those features.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               To further optimize performance, consider using an <a href="/image-compressor/">Image Compressor</a> to reduce the weight of your visual assets. The combination of minified JS/CSS and compressed images yields the fastest possible page loads.
+            </p>
          </section>
 
-         <div class="text-center py-10 mt-4">
-            <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
-              <span class="text-slate-400 text-sm">Built by</span>
-              <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
-              <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
-            </div>
-         </div>
+         <!-- Accessibility Notes -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+            <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility & Screen Reader Notes</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               It is important to understand the relationship between JavaScript minification and web accessibility (a11y). Minified JavaScript itself does not directly affect accessibility—screen readers do not read raw JavaScript files. However, the performance gains achieved through minification <em>do</em> have an indirect, positive impact on accessibility.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               Many users relying on assistive technologies use older devices or slower connections. If a page takes too long to become interactive due to large, unminified JS files, it can cause the assistive technology to freeze or miss ARIA live region updates. By ensuring your JS is minified and executes quickly, you provide a more stable and responsive experience for these users.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+               Furthermore, this tool itself is built with accessibility in mind. The interface utilizes semantic HTML, proper ARIA labeling for dynamic live regions (like the stats counters), and keyboard-accessible toggle switches. We ensure that developers with visual impairments can comfortably use our minifier to build performant websites.
+            </p>
+         </section>
+
+         <!-- Developer & Advanced Tips -->
+         <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+            <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips & Advanced Techniques</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Use "use strict":</strong> Always include <code>"use strict";</code> at the top of your JS files. It forces modern JavaScript parsing rules, which makes ASI more predictable and safer for minification.</li>
+               <li><strong>Regex Safety:</strong> If you have complex regular expressions in your code, ensure they don't contain characters that could be mistaken for string delimiters. Our tool protects regex, but understanding your patterns helps avoid edge cases.</li>
+               <li><strong>Inline Scripts:</strong> If you are inlining minified JS into an HTML <code>&lt;script&gt;</code> tag, ensure you don't use <code>&lt;/script&gt;</code> inside a string. Minifiers don't escape this; you must write it as <code>&lt;\/script&gt;</code>.</li>
+               <li><strong>Combine with Brotli:</strong> If your server supports Brotli compression, minifying your JS first will result in significantly smaller payloads than compressing unminified code. Brotli is highly effective on repetitive text structures.</li>
+               <li><strong>Code Splitting:</strong> Minification is great, but loading less code is better. Combine minification with code splitting (dynamic imports) to only load the JS needed for the current view.</li>
+               <li><strong>Testing ASI Edge Cases:</strong> If your code breaks after minification, it's likely an ASI issue. Add a semicolon at the end of the previous line in your source code, re-minify, and test again.</li>
+            </ul>
+         </section>
 
       </div>
-      
+
+      <!-- Practical Guide -->
+      <section class="mt-16 max-w-7xl mx-auto" aria-labelledby="guide-heading">
+        <article class="glass-card p-6 sm:p-8 shimmer-card prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-h3:text-lg prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-slate-700 dark:prose-a:text-slate-200 prose-a:underline">
+          <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to JavaScript Minification</h2>
+          
+          <p class="text-slate-600 dark:text-slate-400 mb-4"><strong>What this tool does:</strong> Compress JavaScript source code by removing unnecessary characters. It is built for rapid, browser-based workflows where the result needs to be visual, safe, and instantly deployable.</p>
+          
+          <h3 class="text-xl font-bold mb-3">Workflow</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">A typical workflow involves writing clean, documented code in your local editor. When it's time to deploy a hotfix or update a static site, you paste the code here, apply minification, copy the output, and replace the production file on your server or CDN.</p>
+          
+          <h3 class="text-xl font-bold mb-3">Professional Tips</h3>
+          <ul class="list-disc pl-6 mb-4 space-y-2 text-slate-600 dark:text-slate-400">
+            <li>Always keep your unminified source files in version control (Git). Never use the minified version as your source of truth.</li>
+            <li>If you are working with a team, establish a naming convention. Unminified files should be <code>app.js</code> and minified files should be <code>app.min.js</code>.</li>
+            <li>Use the "Keep newlines" option if you plan to diff the minified code in a pull request; it makes line-by-line comparison possible.</li>
+          </ul>
+
+          <h3 class="text-xl font-bold mb-3">Team Collaboration</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">A frontend lead can use this tool to generate the production-ready assets for a junior developer to deploy, ensuring that no build step is accidentally skipped. It standardizes the minification process for teams that don't use complex CI/CD pipelines. Share the link with your team to ensure everyone is using the same, safe minification rules.</p>
+          
+          <h3 class="text-xl font-bold mb-3">Real Projects</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">In real-world projects, this tool shines when optimizing legacy WordPress themes. Theme developers often hardcode JavaScript directly into <code>header.php</code> or <code>footer.php</code>. Using this minifier reduces the size of those inline scripts, improving the theme's overall performance score without requiring a complete refactor.</p>
+          
+          <h3 class="text-xl font-bold mb-3">Mistakes to Avoid</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">A common mistake is minifying a library that is already minified (e.g., pasting jQuery.min.js into the tool). This yields almost zero size reduction and wastes CPU cycles. Always minify your raw, human-readable source code.</p>
+
+          <h3 class="text-xl font-bold mb-3">Productivity Tips</h3>
+          <ul class="list-disc pl-6 mb-4 space-y-2 text-slate-600 dark:text-slate-400">
+            <li>Bookmark this page for quick access during code reviews.</li>
+            <li>Use the "Download" button to instantly save the minified file with a <code>.min.js</code> extension, ready for upload.</li>
+            <li>Pair this with our <a href="/css-minifier/">CSS Minifier</a> to optimize all your assets in one sitting.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- FAQ -->
+      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="faq-heading">
+        <div class="glass-card p-8 shimmer-card">
+          <h2 id="faq-heading" class="font-bold text-2xl mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-6">
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is JavaScript minification?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">JavaScript minification is the process of removing unnecessary characters from JS source code without changing its functionality. This includes removing whitespace, line breaks, comments, and unnecessary semicolons. The result is a smaller file that downloads and parses faster but executes identically in the browser.</p>
+            </div>
+            
+            <div>
+              <h3 class="font-semibold text-base mb-2">Does JS minification break the code?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No. JavaScript minification removes only non-functional characters. The browser executes the exact same code from minified and unminified files. All variables, functions, logic, and behavior are preserved. The only difference is the file size transmitted over the network.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">How much smaller does minified JS get?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">JavaScript minification typically reduces file size by 30-50%. Well-formatted code with lots of comments and indentation sees the largest reductions. Production-ready libraries like Lodash or D3 that are already minified will see minimal additional savings. Custom application code with extensive documentation often sees 40-60% reductions.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is the difference between minification and obfuscation?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Minification removes whitespace and comments but keeps variable and function names readable. Obfuscation additionally renames variables to short meaningless names (like a, b, c) to make the code harder to understand while keeping functionality intact. Minification is safe and recommended; obfuscation adds a layer of difficulty for reverse engineering but is not a security measure.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Should I use online minifiers or build tools?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">For production, use build tools like Terser, esbuild, UglifyJS, or webpack's TerserPlugin as part of your build pipeline. Online minifiers are perfect for quick one-off minification, testing, or when you do not have a build system set up. Both approaches produce equivalent output.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can I minify ES6 and modern JavaScript?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes. This minifier works with ES6+ syntax including arrow functions, template literals, destructuring, classes, async/await, import/export statements, and spread operators. It protects template literal contents and string values from accidental modification during the minification process.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Is my code sent to a server?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No. This JavaScript minifier runs entirely in your browser. No code is sent to any server, and no data leaves your machine. All minification happens client-side using JavaScript, making it safe for proprietary or sensitive code.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">What types of comments does this minifier remove?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">This minifier removes both single-line comments (// comment) and multi-line comments (/* comment */). It is careful to not match comment syntax inside string literals or regex patterns, so comments embedded in strings are preserved.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Does minification replace the need for Gzip or Brotli?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No. Minification and compression serve different purposes. Minification reduces the source file size, while Gzip or Brotli compresses the file during transit over the network. You should use both: minify first, then let your server compress the minified file for maximum performance.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Why are my template literals breaking during minification?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Poorly built minifiers collapse whitespace inside template literals (backticks). This tool protects string and template literal contents, meaning internal spaces are preserved. If your template literal breaks, ensure you aren't relying on implicit line breaks that require specific formatting.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can I use this tool to minify JSON?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">While JSON is technically valid JavaScript, it is highly recommended to use a dedicated JSON Formatter or Minifier tool to handle JSON data. This ensures object keys are handled correctly and prevents syntax errors specific to data interchange formats.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Does this tool support tree shaking?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No, tree shaking (removing unused code) requires full AST parsing and is typically handled by bundlers like Webpack, Rollup, or Vite. This tool focuses on safe, text-level minification to reduce file size without altering code structure.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">What is ASI in JavaScript?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">ASI stands for Automatic Semicolon Insertion. It is a feature of JavaScript that automatically inserts semicolons at the end of statements. This minifier can safely remove unnecessary semicolons based on ASI rules to save additional bytes.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Is minified JavaScript harder to debug?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, minified code is difficult to read. To solve this, you should always deploy source maps (.map files) alongside your minified JS. Browsers use source maps to map the minified code back to the original source for debugging.</p>
+            </div>
+
+            <div>
+              <h3 class="font-semibold text-base mb-2">Can I minify inline JavaScript in HTML?</h3>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, you can copy inline JavaScript from an HTML file, minify it here, and paste it back. For a more streamlined workflow, consider using an HTML Minifier that handles inline CSS and JS simultaneously.</p>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Tools -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12" aria-labelledby="related-heading">
+        <h2 id="related-heading" class="font-bold text-2xl mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+          <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+          <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+          <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
+          <a href="/url-tool/" class="btn-secondary text-xs py-2 px-4">URL Encoder</a>
+          <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+        </div>
+      </section>
+
+      <!-- Related Blog Articles -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12" aria-labelledby="blog-heading">
+        <h2 id="blog-heading" class="font-bold text-2xl mb-6">Related Blog Articles</h2>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 text-sm">
+          <a href="../blog/javascript-performance-optimization/" class="text-slate-700 dark:text-slate-200 underline">Ultimate Guide to JavaScript Performance Optimization</a>
+          <a href="../blog/core-web-vitals/" class="text-slate-700 dark:text-slate-200 underline">Mastering Core Web Vitals for SEO</a>
+          <a href="../blog/understanding-asi/" class="text-slate-700 dark:text-slate-200 underline">Understanding Automatic Semicolon Insertion</a>
+        </div>
+      </section>
+
+      <!-- Conclusion & CTA -->
+      <section class="glass-card p-8 shimmer-card text-center mt-12" aria-labelledby="conclusion-heading">
+        <h2 id="conclusion-heading" class="font-bold text-2xl mb-4">Conclusion</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto leading-relaxed">
+          Minifying your JavaScript is a non-negotiable step in modern web development. It reduces file sizes, accelerates page loads, and improves your Core Web Vitals. Use this free, client-side tool to safely minify your code without risking the integrity of your strings and templates.
+        </p>
+        <a href="#main-content" class="btn-primary text-sm py-3 px-6 inline-flex items-center gap-2">
+          <i class="fas fa-bolt" aria-hidden="true"></i> Minify Your JS Now
+        </a>
+      </section>
+
+       <div class="text-center py-10 mt-4">
+          <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
+            <span class="text-slate-400 text-sm">Built by</span>
+            <a href="https://devpalettes.com" class="text-slate-800 dark:text-slate-200 text-sm font-bold hover:underline">DevPalettes</a>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+          </div>
+        </div> 
     </div>
   </main>
   
-  <!-- Footer -->
-  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
-  
-  <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" role="status"></div>
-
-  <noscript>
-    <p style="text-align:center;padding:2rem;font-size:1.1rem;color:#dc2626;">This JavaScript Minifier requires JavaScript to function. Please enable JavaScript in your browser settings.</p>
-  </noscript>
-
+  <div id="footer-container"></div>
   <script src="../js/main.js" defer></script>
-  <script src="../js/js-minifier.js" defer></script>
   <script src="../js/enhancements.js" defer></script>
+  <script src="../js/js-minifier.js" defer></script>
 </body>
 </html>

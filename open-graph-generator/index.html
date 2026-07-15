@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- ADDED: Explicit robots directive -->
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
-  <title>Open Graph Generator - Free OG Tag Creator Tool</title>
+  <title>Open Graph Generator - Free OG Tag Creator Tool | DevPalettes</title>
   <meta name="description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared with this free OG tag generator.">
-  <meta name="author" content="Devpalettes">
+  <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/open-graph-generator/">
 
   <!-- Open Graph / Facebook -->
@@ -17,15 +16,13 @@
   <meta property="og:title" content="Open Graph Generator - Free OG Tag Creator Tool">
   <meta property="og:description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
-  <!-- ADDED: og:site_name -->
   <meta property="og:site_name" content="DevPalettes">
 
-  <!-- FIXED: Twitter Card tags use name attribute per spec -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://devpalettes.com/open-graph-generator/">
   <meta name="twitter:title" content="Open Graph Generator - Free OG Tag Creator Tool">
   <meta name="twitter:description" content="Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared.">
-  <!-- ADDED: twitter:image -->
   <meta name="twitter:image" content="https://devpalettes.com/images/og-image.png">
 
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -33,119 +30,242 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
-  <!-- ADDED: BreadcrumbList Schema -->
+  <!-- Structured Data: Organization, WebSite, BreadcrumbList, WebApplication, SoftwareApplication, HowTo, FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com/"
+        "@type": "Organization",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Ashish Kekaan",
+          "url": "https://devpalettes.com/about/"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Technical Support",
+          "email": "contact@devpalettes.com",
+          "url": "https://devpalettes.com/contact/",
+          "availableLanguage": "English"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tools",
-        "item": "https://devpalettes.com/tools/"
+        "@type": "WebSite",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://devpalettes.com/tools/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 3,
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://devpalettes.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tools",
+            "item": "https://devpalettes.com/tools/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Open Graph Generator",
+            "item": "https://devpalettes.com/open-graph-generator/"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
         "name": "Open Graph Generator",
-        "item": "https://devpalettes.com/open-graph-generator/"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: WebApplication — ADDED: browserRequirements, featureList -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Open Graph Generator",
-    "url": "https://devpalettes.com/open-graph-generator/",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "description": "A free tool to generate Open Graph meta tags for social media sharing. Preview how your links appear on Facebook, Twitter, LinkedIn and other platforms before publishing.",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Any",
-    "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Live social media preview",
-      "Facebook share preview",
-      "Twitter Card preview",
-      "LinkedIn share preview",
-      "Real-time validation checklist",
-      "Twitter Card tag generation",
-      "Quick presets for common page types",
-      "Character count with optimal range indicators",
-      "Copy OG tags or full HTML head snippet",
-      "Image URL preview"
-    ]
-  }
-  </script>
-
-  <!-- FIXED: FAQPage Schema (5→6 to match HTML FAQ count) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+        "url": "https://devpalettes.com/open-graph-generator/",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "description": "A free tool to generate Open Graph meta tags for social media sharing. Preview how your links appear on Facebook, Twitter, LinkedIn and other platforms before publishing.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "creator": {
+          "@type": "Organization",
+          "name": "DevPalettes"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Live social media preview",
+          "Facebook share preview",
+          "Twitter Card preview",
+          "LinkedIn share preview",
+          "Real-time validation checklist",
+          "Twitter Card tag generation",
+          "Quick presets for common page types",
+          "Character count with optimal range indicators",
+          "Copy OG tags or full HTML head snippet",
+          "Image URL preview"
+        ]
+      },
       {
-        "@type": "Question",
-        "name": "How do I use the Open Graph Generator?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Fill in the fields for title, description, URL, image URL, type, site name, and locale. The tool generates valid Open Graph meta tags instantly and shows a live social media preview. Copy the generated HTML and paste it into your webpage's head section."
+        "@type": "SoftwareApplication",
+        "name": "Open Graph Generator",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
       },
       {
-        "@type": "Question",
-        "name": "What is Open Graph and why does it matter?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Open Graph is a protocol created by Facebook that allows web pages to become rich objects in social media platforms. When someone shares your link, Open Graph tags control what title, description, and image appear in the preview card. Without OG tags, platforms guess what to show, often resulting in poor or irrelevant previews."
-        }
+        "@type": "HowTo",
+        "name": "How to Generate Open Graph Tags",
+        "description": "Step-by-step guide to creating Open Graph meta tags using the DevPalettes Open Graph Generator.",
+        "totalTime": "PT2M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Enter Title and Description",
+            "text": "Fill in the OG Title (40-60 characters) and OG Description (100-160 characters) fields. These will appear as the main text in your social share cards."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Add URLs",
+            "text": "Enter the canonical Page URL and the absolute URL for your OG Image (recommended 1200x630px)."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Configure Metadata",
+            "text": "Select the OG Type (e.g., website, article), enter your Site Name, and choose the correct Locale from the dropdowns."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Review Social Previews",
+            "text": "Switch between Facebook, Twitter, and LinkedIn tabs to ensure your link preview looks perfect on each platform."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Copy Generated Code",
+            "text": "Click the Copy button to grab the generated HTML meta tags and paste them into the head section of your webpage."
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "What size should my OG image be?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The recommended Open Graph image size is 1200x630 pixels with an aspect ratio of 1.91:1. This works well across Facebook, Twitter, LinkedIn, and most other platforms. Images should be under 5MB in JPEG or PNG format for reliable loading."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does this generator include Twitter Card tags?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. The generator outputs both Open Graph and Twitter Card meta tags. Twitter uses its own tags (twitter:card, twitter:title, etc.) but falls back to Open Graph tags if Twitter-specific ones are missing. Including both ensures the best preview on all platforms."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Where do I put Open Graph tags in my HTML?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Open Graph meta tags go inside the head section of your HTML document, alongside your other meta tags. They should appear before any closing head tag. Place them after your standard meta description and title tag for clean organization."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is this Open Graph generator free?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, completely free with no signup or account required. Fill in the fields, preview your social card, copy the generated meta tags, and paste them into your project. No limits on how many times you use it."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use the Open Graph Generator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fill in the fields for title, description, URL, image URL, type, site name, and locale. The tool generates valid Open Graph meta tags instantly and shows a live social media preview. Copy the generated HTML and paste it into your webpage's head section."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Open Graph and why does it matter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open Graph is a protocol created by Facebook that allows web pages to become rich objects in social media platforms. When someone shares your link, Open Graph tags control what title, description, and image appear in the preview card. Without OG tags, platforms guess what to show, often resulting in poor or irrelevant previews."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What size should my OG image be?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The recommended Open Graph image size is 1200x630 pixels with an aspect ratio of 1.91:1. This works well across Facebook, Twitter, LinkedIn, and most other platforms. Images should be under 5MB in JPEG or PNG format for reliable loading."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this generator include Twitter Card tags?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The generator outputs both Open Graph and Twitter Card meta tags. Twitter uses its own tags (twitter:card, twitter:title, etc.) but falls back to Open Graph tags if Twitter-specific ones are missing. Including both ensures the best preview on all platforms."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Where do I put Open Graph tags in my HTML?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open Graph meta tags go inside the head section of your HTML document, alongside your other meta tags. They should appear before any closing head tag. Place them after your standard meta description and title tag for clean organization."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is this Open Graph generator free?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, completely free with no signup or account required. Fill in the fields, preview your social card, copy the generated meta tags, and paste them into your project. No limits on how many times you use it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why isn't my OG image showing up on Facebook?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Facebook caches link previews aggressively. If you updated your OG tags, you must use the Facebook Sharing Debugger tool to force a re-scrape of your URL. Also, ensure your image URL is an absolute path (starts with https://) and is publicly accessible."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use relative URLs for OG images?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Open Graph crawlers do not know your domain's base URL. You must always use absolute URLs (e.g., https://example.com/images/pic.jpg) for og:image and og:url."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Open Graph affect SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Indirectly, yes. While OG tags are not a direct Google ranking factor, they heavily influence click-through rates (CTR) from social media. Higher social traffic sends positive behavioral signals to search engines, which can improve organic rankings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between og:title and a standard title tag?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The standard <title> tag is displayed in search engine results pages (SERPs) and browser tabs. The og:title tag is displayed specifically when your link is shared on social media platforms. They can be identical, but often og:title is more punchy and marketing-focused."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I clear the social media cache for my link?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For Facebook and LinkedIn, use their official sharing debugger tools to force a re-scrape. For Twitter, use the Twitter Card Validator. These tools clear the cached preview and fetch your newly updated OG tags."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What file format should OG images be?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "JPEG, PNG, and GIF are universally supported. For photographs, use JPEG to keep file sizes under 5MB. For graphics with text, use PNG. WebP is supported by most platforms now, but JPEG/PNG remains the safest fallback."
+            }
+          }
+        ]
       }
     ]
   }
@@ -153,7 +273,6 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- ADDED: Preconnect for Font Awesome CDN -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
@@ -170,7 +289,6 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 
-  <!-- ADDED: Focus-visible styles for accessibility -->
   <style>
     button:focus-visible,
     a:focus-visible,
@@ -190,81 +308,32 @@
       outline: 2px solid #10b981;
       outline-offset: 2px;
     }
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      z-index: 9999;
+      padding: 12px 24px;
+      background: #10b981;
+      color: #fff;
+      border-radius: 0 0 8px 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Open Graph Generator",
-    "description": "Generate Open Graph meta tags for Facebook, LinkedIn, and social media. Preview how your page looks when shared with this free OG tag generator.",
-    "url": "https://devpalettes.com/open-graph-generator/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Open Graph Generator",
-        "item": "https://devpalettes.com/open-graph-generator/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
   <!-- Navbar -->
   <div id="navbar-container"></div>
 
-  <!-- ADDED: aria-label on main landmark -->
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden" id="main-content" aria-label="Open Graph Generator Tool">
-    <!-- ADDED: aria-hidden on all decorative elements -->
     
     <div class="gradient-blob blob-1" aria-hidden="true"></div>
     <div class="gradient-blob blob-2" aria-hidden="true"></div>
@@ -279,20 +348,14 @@
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="what-is-heading">
-        <h2 id="what-is-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is an Open Graph Generator?</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-          An Open Graph generator is a free tool that helps you create the meta tags needed to control how your webpage appears when shared on social media platforms like Facebook, Twitter, LinkedIn, and Pinterest. These tags are part of the Open Graph protocol, originally developed by Facebook in 2010, which turns any web page into a rich object in a social graph. Instead of leaving it up to social platforms to guess what title, description, and image to display, you specify exactly what you want using OG meta tags.
-        </p>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-          When someone shares a link on Facebook, the platform looks for <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">og:title</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">og:description</code>, and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">og:image</code> tags in your page's HTML. If these tags are missing, Facebook pulls random text or images from your page — often resulting in an unappealing or confusing share preview that hurts click-through rates. This generator eliminates that problem by letting you craft the perfect preview before you publish.
-        </p>
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="sr-only">Short Introduction</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-          Whether you are launching a blog post, a product page, or a marketing campaign, properly configured OG tags ensure your content makes a strong first impression on every social platform. Pair this tool with our <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tag generator</a> for a complete set of head-section tags, or use the <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> to verify your existing pages are fully optimized.
+          In the modern web ecosystem, social media is a massive driver of traffic. When a user pastes a link into Facebook, LinkedIn, or Twitter, the platform scrapes the URL looking for specific Open Graph (OG) meta tags to render a rich, visual preview card. If these tags are missing or incorrectly formatted, the platform will guess—often pulling the wrong image or a confusing snippet of text. Our Open Graph Generator provides a visual, client-side interface to build these critical HTML tags without syntax errors. Complete with real-time previews for multiple platforms, character limit validation, and one-click copying, this tool ensures your content makes a flawless first impression on every social feed.
         </p>
       </section>
 
-      <!-- Quick Stats Row — ADDED: aria-live for dynamic values -->
+      <!-- Quick Stats Row -->
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" aria-label="Generator statistics">
         <div class="glass-card p-5 shimmer-card">
           <div class="flex items-center gap-3 mb-3">
@@ -347,7 +410,6 @@
                 <input type="text" id="og-title" maxlength="100" placeholder="My Awesome Page Title" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" aria-describedby="og-title-hint">
                 <div class="flex justify-between mt-1.5">
                   <p id="og-title-hint" class="text-xs text-slate-400">Recommended: 40–60 characters</p>
-                  <!-- ADDED: aria-live on counter -->
                   <p id="og-title-count" class="text-xs text-slate-400" aria-live="polite">0/100</p>
                 </div>
                 <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden" aria-hidden="true">
@@ -360,7 +422,6 @@
                 <textarea id="og-description" maxlength="200" rows="3" placeholder="A brief summary of your page content..." class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none" aria-describedby="og-desc-hint"></textarea>
                 <div class="flex justify-between mt-1.5">
                   <p id="og-desc-hint" class="text-xs text-slate-400">Recommended: 100–160 characters</p>
-                  <!-- ADDED: aria-live on counter -->
                   <p id="og-desc-count" class="text-xs text-slate-400" aria-live="polite">0/200</p>
                 </div>
                 <div class="w-full h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full mt-1 overflow-hidden" aria-hidden="true">
@@ -377,7 +438,6 @@
                 <label for="og-image" class="block text-sm font-semibold mb-2">OG Image URL <span class="text-red-400" aria-hidden="true">*</span></label>
                 <div class="flex gap-2">
                   <input type="url" id="og-image" placeholder="https://example.com/image.jpg" class="flex-1 px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm">
-                  <!-- FIXED: aria-label was machine-name "Og Image Preview Btn" -->
                   <button id="og-image-preview-btn" class="px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 text-sm font-medium transition-all hover:border-emerald-500/50 hover:bg-emerald-500/5 flex items-center gap-1.5" title="Preview image" aria-label="Preview OG image">
                     <i class="fas fa-image text-emerald-500" aria-hidden="true"></i>
                   </button>
@@ -468,7 +528,7 @@
 
         <!-- Right: Preview + Output -->
         <div class="space-y-6" role="region" aria-label="Preview and generated output">
-          <!-- Social Previews — FIXED: ARIA tablist/tab/tabpanel pattern -->
+          <!-- Social Previews -->
           <div class="glass-card p-8 shimmer-card">
             <div class="flex items-center justify-between mb-6">
               <h2 class="text-xl font-bold flex items-center gap-2">
@@ -559,7 +619,6 @@
             </div>
             <div class="relative">
               <pre id="generated-code" class="w-full px-4 py-4 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/70 text-sm font-mono leading-relaxed overflow-x-auto max-h-[400px] overflow-y-auto text-slate-600 dark:text-slate-300 whitespace-pre-wrap break-all" role="region" aria-label="Generated Open Graph meta tag code" tabindex="0"><!-- Fill in the fields to generate Open Graph meta tags --></pre>
-              <!-- FIXED: aria-label was unclear "Copy Code Inline" -->
               <button id="copy-code-inline" class="absolute top-2 right-2 p-2 rounded-lg bg-slate-200 dark:bg-slate-700 hover:bg-emerald-500 hover:text-white transition-all text-slate-500 text-xs opacity-0 hover:opacity-100 focus:opacity-100" aria-label="Copy generated code to clipboard">
                 <i class="fas fa-copy" aria-hidden="true"></i>
               </button>
@@ -567,7 +626,7 @@
             <p id="tag-count-info" class="text-xs text-slate-400 mt-3" aria-live="polite">0 meta tags generated</p>
           </div>
 
-          <!-- Validation Status — ADDED: aria-live for dynamic updates -->
+          <!-- Validation Status -->
           <div class="glass-card p-6 shimmer-card">
             <h3 class="font-bold mb-4 flex items-center gap-2">
               <i class="fas fa-clipboard-check text-emerald-500" aria-hidden="true"></i>
@@ -610,310 +669,348 @@
       <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16">
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
-            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How Does the Open Graph Generator Work?</h2>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="what-is-heading">
+            <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is an Open Graph Generator?</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               This Open Graph generator works entirely in your browser with a simple input-output flow:
+              An Open Graph Generator is a technical SEO and social media utility designed to automate the creation of Open Graph (OG) meta tags. The Open Graph protocol, originally introduced by Facebook in 2010, enables web pages to become rich objects in a social graph. When a URL is shared on platforms like Facebook, LinkedIn, Twitter, or Slack, these platforms send out crawlers to read the <code>&lt;head&gt;</code> section of the HTML. They look for specific <code>og:</code> prefixed properties—like <code>og:title</code>, <code>og:description</code>, and <code>og:image</code>—to construct a visually appealing link preview card.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              Without these tags, social media scrapers are forced to guess. They might pull the first <code>&lt;h1&gt;</code> tag on the page, grab a random paragraph of body text, or worse, fail to find an image entirely, resulting in a broken or text-only link preview that drastically reduces click-through rates. A generator eliminates this guesswork. Instead of memorizing the exact syntax, attribute names, and required URL formats, developers and marketers can input their desired copy and image URLs into a structured UI, and the tool compiles clean, error-free HTML code.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Our tool goes beyond basic text generation by providing real-time, pixel-accurate previews of how the link will render in Facebook, Twitter, and LinkedIn feeds. This visual feedback loop is critical for ensuring that images aren't awkwardly cropped and that titles aren't truncated by character limits. To ensure the rest of your HTML is optimized for these crawlers, you can run your final page through our <a href="/html-minifier/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">HTML Minifier</a>.
+            </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+            <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use an Online Open Graph Generator?</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              In modern web development, hand-coding meta tags is a tedious and error-prone process. Open Graph tags require strict syntax. For example, an unescaped ampersand in an image URL (e.g., <code>?id=1&cat=2</code>) can invalidate the entire tag, causing the social platform's XML parser to fail and drop the preview image entirely.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+              A generator handles the XML and HTML escaping automatically. Furthermore, social media platforms have different display character limits. Facebook typically truncates titles around 60-70 characters, while Twitter is stricter. Our tool features real-time character counters with optimal range indicators, ensuring your copy is never cut off mid-sentence.
+            </p>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+              Privacy is also a major factor. Many free online OG generators capture your URLs to build keyword databases or scrape competitive intelligence. This tool runs 100% client-side. Your proprietary campaign URLs, unreleased product pages, and internal data never leave your browser. If you are analyzing the on-page content of your pages, use our <a href="/seo-analyzer/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">SEO Analyzer</a> for complete privacy.
+            </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+            <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How the Open Graph Generator Works</h2>
+            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+               The tool operates on a reactive, client-side architecture. When you interact with the input fields, JavaScript event listeners trigger a recalculation pipeline that updates the UI in milliseconds.
             </p>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Fill in Your Properties:</strong> Enter your page title, description, URL, image URL, content type, site name, and locale into the input fields. Each field corresponds to a specific OG meta tag.</li>
-               <li><strong>Live Preview Update:</strong> As you type, the social media preview cards on the right update in real time. You can switch between Facebook, Twitter, and LinkedIn previews to see exactly how your link will look on each platform.</li>
-               <li><strong>Validation Feedback:</strong> The validation checklist monitors your inputs as you type. It checks for required fields, validates URL formats, and flags title or description lengths that fall outside recommended ranges.</li>
-               <li><strong>Code Generation:</strong> The tool assembles properly formatted HTML meta tags from your inputs. If you enable the Twitter Card option, it also generates the corresponding <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">twitter:</code> meta tags alongside the OG tags.</li>
-               <li><strong>Copy and Paste:</strong> Click the copy button to copy the generated meta tags to your clipboard. Paste them directly into the <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">&lt;head&gt;</code> section of your HTML document.</li>
+               <li><strong>Input Capture:</strong> The tool captures the title, description, URL, image path, and selected metadata (type, locale) from the DOM.</li>
+               <li><strong>URL Validation &amp; Escaping:</strong> It validates that URLs start with <code>http://</code> or <code>https://</code>. Special characters in the URL (like <code>&amp;</code>) are converted to XML entities (<code>&amp;amp;</code>) to ensure strict compliance with the OG protocol.</li>
+               <li><strong>DOM Preview Rendering:</strong> The tool dynamically injects the captured title and description into mock Facebook, Twitter, and LinkedIn card layouts. It uses CSS <code>aspect-ratio</code> properties to simulate the exact image cropping behavior of those platforms.</li>
+               <li><strong>Code Assembly:</strong> The validated strings are wrapped in <code>&lt;meta property="og:..." content="..."&gt;</code> HTML tags. If the Twitter Card toggle is enabled, it duplicates the assembly process for <code>twitter:...</code> tags.</li>
             </ol>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               No data is sent to any server. All processing happens locally in your browser using JavaScript, making this tool completely private and safe for confidential pages. If you also need a <a href="/robots-txt-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">robots.txt file</a> for crawler control, our generator handles that too.
+               This entire process guarantees that the code block you copy is syntactically perfect and will pass validation in Facebook's Sharing Debugger and Twitter's Card Validator without parsing errors.
             </p>
-         </section>
+        </section>
 
-         <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
-            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using an Open Graph Generator</h2>
-            <div class="grid sm:grid-cols-2 gap-6 mt-6">
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-paint-brush text-emerald-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Control Your Appearance</h3>
-                     <p class="text-sm text-slate-500">Decide exactly what title, description, and image people see when they share your link. No more random text or missing images in share previews.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-chart-line text-blue-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Higher Click-Through Rates</h3>
-                     <p class="text-sm text-slate-500">Well-crafted share previews with compelling titles and images get significantly more clicks than default or broken previews on social media.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-eye text-purple-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Preview Before Publishing</h3>
-                     <p class="text-sm text-slate-500">See how your page will look on Facebook, Twitter, and LinkedIn side by side before going live, so there are no surprises after publishing.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-clock text-amber-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Save Time</h3>
-                     <p class="text-sm text-slate-500">Writing OG meta tags manually is error-prone and tedious. The generator handles formatting and escaping automatically, producing clean, valid HTML in seconds.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-shield-halved text-red-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Avoid Common Mistakes</h3>
-                     <p class="text-sm text-slate-500">The validation checklist catches issues like missing required fields, titles that are too long or too short, and invalid URLs before they become problems in production.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-globe text-teal-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Multi-Platform Support</h3>
-                     <p class="text-sm text-slate-500">Generate tags that work across Facebook, Twitter, LinkedIn, Pinterest, Slack, Discord, and any other platform that supports the Open Graph protocol.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="key-features-heading">
+            <h2 id="key-features-heading" class="text-2xl font-bold mb-4">Key Features of the Tool</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Multi-Platform Live Previews:</strong> Switch between Facebook, Twitter, and LinkedIn tabs to see exactly how your shared link will appear in different social feeds before you publish.</li>
+               <li><strong>Dynamic Character Counters:</strong> Real-time feedback on title and description lengths, ensuring your copy falls within the optimal visible limits to prevent truncation.</li>
+               <li><strong>Integrated Twitter Cards:</strong> While Twitter falls back to OG tags, generating explicit <code>twitter:card</code> tags ensures maximum compatibility and access to platform-specific features like "Summary Large Image".</li>
+               <li><strong>Image URL Previewing:</strong> Click the image icon next to the URL field to instantly render the image in the UI, verifying that your URL is publicly accessible and correctly formatted.</li>
+               <li><strong>Quick Start Presets:</strong> Load pre-configured data for Blog Posts, E-commerce Products, Portfolios, and SaaS Landing Pages to understand best-practice configurations instantly.</li>
+               <li><strong>One-Click Export:</strong> Copy just the OG meta tags, or use "Copy Full" to grab a complete, formatted HTML snippet ready to be pasted directly into your document's <code>&lt;head&gt;</code>.</li>
+            </ul>
+        </section>
 
-         <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
-            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Open Graph Generator</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Creating properly formatted OG tags takes less than a minute. Here is the step-by-step process:
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="step-by-step-heading">
+            <h2 id="step-by-step-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide to Generating OG Tags</h2>
             <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
                <li><strong>Enter Your Title:</strong> Type the title you want displayed when your page is shared. Keep it between 40 and 60 characters for the best display across all platforms.</li>
                <li><strong>Write a Description:</strong> Add a concise summary of your page content. Aim for 100 to 160 characters. Anything longer gets truncated in most share previews.</li>
-               <li><strong>Add Your Page URL:</strong> Enter the full canonical URL of the page (e.g., https://example.com/my-page). This should match your page's actual URL.</li>
-               <li><strong>Set the Image URL:</strong> Provide the full URL to the image you want displayed in the share card. Use an image that is 1200×630 pixels for optimal display. Click the image button to preview it.</li>
-               <li><strong>Choose a Type:</strong> Select the content type that best describes your page — website for most pages, article for blog posts, or other types as appropriate.</li>
+               <li><strong>Add Your Page URL:</strong> Enter the full canonical URL of the page (e.g., <code>https://example.com/my-page</code>). This should match your page's actual URL.</li>
+               <li><strong>Set the Image URL:</strong> Provide the full, absolute URL to the image you want displayed in the share card. Use an image that is 1200×630 pixels for optimal display. Click the image button to preview it.</li>
+               <li><strong>Choose a Type:</strong> Select the content type that best describes your page — <code>website</code> for most pages, <code>article</code> for blog posts, or other types as appropriate.</li>
                <li><strong>Set Site Name and Locale:</strong> Optionally add your website name and language locale. The site name appears above the title in some preview formats.</li>
-               <li><strong>Enable Twitter Cards:</strong> Keep the Twitter Card toggle on to also generate twitter: meta tags. Choose between summary_large_image (recommended) and summary formats.</li>
+               <li><strong>Enable Twitter Cards:</strong> Keep the Twitter Card toggle on to also generate <code>twitter:</code> meta tags. Choose between <code>summary_large_image</code> (recommended) and <code>summary</code> formats.</li>
                <li><strong>Review the Preview:</strong> Switch between Facebook, Twitter, and LinkedIn tabs to verify the preview looks correct on each platform.</li>
                <li><strong>Check Validation:</strong> Make sure all items in the validation checklist show green checkmarks before copying the code.</li>
-               <li><strong>Copy the Code:</strong> Click "Copy" to copy just the meta tags, or "Copy Full" for a complete head snippet. Paste into your HTML's head section alongside your <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">standard meta tags</a>.</li>
+               <li><strong>Copy the Code:</strong> Click "Copy" to copy just the meta tags, or "Copy Full" for a complete head snippet. Paste into your HTML's head section alongside your <a href="/meta-tag-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">standard meta tags</a>.</li>
             </ol>
-         </section>
+        </section>
 
-         <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
-            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Use Cases for Open Graph Tags</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Open Graph tags make a tangible difference anywhere your links appear outside your website. Here are the most common scenarios where properly configured OG tags directly impact results:
-            </p>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="real-world-heading">
+            <h2 id="real-world-heading" class="text-2xl font-bold mb-4">Real-World Examples</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">Consider a scenario where a SaaS company launches a new feature. They write a 2,000-word blog post. Without OG tags, sharing the link on LinkedIn results in a plain URL or a random screenshot from the article. By using this generator, the marketing team inputs a custom-designed 1200x630 image, a punchy title ("Introducing Feature X"), and a one-sentence description. Now, when the link is shared in the company Slack and on LinkedIn, it expands into a beautiful, clickable card that drives 40% more traffic than the plain text link.</p>
+            <p class="text-slate-600 dark:text-slate-400">Another example: an e-commerce store adds OG tags to all product pages. When a customer shares a product link on Facebook, the preview shows the exact product image, the product name, and the price. This visual social proof directly increases click-through rates and social conversion rates.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
             <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Blog Post Publishing:</strong> Before hitting publish on a new blog article, generate its OG tags to ensure the share preview shows the right title, a compelling description, and a relevant featured image instead of a generic site logo.</li>
-               <li><strong>E-Commerce Products:</strong> Create optimized share cards for product pages so that when customers share products on social media, the preview shows the product image, name, and a brief description instead of generic page text.</li>
-               <li><strong>Landing Page Launches:</strong> When launching a new landing page or marketing campaign, use the generator to craft share previews that maximize click-through rates from social media posts.</li>
-               <li><strong>Content Management Systems:</strong> Developers building CMS themes can use the generated code as a template for dynamically outputting OG tags based on page content.</li>
-               <li><strong>Agency Client Deliverables:</strong> Digital marketing agencies can include properly generated OG tags as part of their on-page <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO deliverables</a> for client websites.</li>
-               <li><strong>Social Media Campaigns:</strong> For link-heavy social campaigns, ensure every shared URL renders an attractive, on-brand preview card across all target platforms.</li>
-               <li><strong>Newsletter Link Previews:</strong> Many email clients and newsletter tools render OG previews for shared links. Proper tags ensure consistency from email to social share.</li>
+               <li><strong>Blog Post Publishing:</strong> Before hitting publish, generate OG tags to ensure the share preview shows the right title, a compelling description, and the featured image.</li>
+               <li><strong>E-Commerce Product Pages:</strong> Create optimized share cards for product pages so customers sharing products on social media see the correct product image and name.</li>
+               <li><strong>Landing Page Launches:</strong> When launching a marketing campaign, craft share previews that maximize click-through rates from social media posts.</li>
+               <li><strong>CMS Theme Development:</strong> Developers building WordPress or Ghost themes can use the generated code as a template for dynamically outputting OG tags based on post content.</li>
+               <li><strong>Newsletter Link Previews:</strong> Many email clients and newsletter tools render OG previews for shared links. Proper tags ensure consistent branding in email inboxes.</li>
             </ul>
-         </section>
+        </section>
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+            <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before &amp; After Examples</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">See the difference between a poorly structured head section and a fully optimized OG implementation.</p>
+            <div class="grid md:grid-cols-2 gap-6">
+               <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+                  <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">Before: Missing &amp; Relative Tags</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Social platforms cannot find the image because the URL is relative, and the description is missing.</p>
+                  <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>&lt;meta property="og:title" content="My Page"&gt;
+&lt;meta property="og:image" content="/images/pic.jpg"&gt;</code></pre>
+               </div>
+               <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+                  <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">After: Fully Optimized OG Tags</h3>
+                  <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Absolute URLs, explicit descriptions, and Twitter Card integration ensure perfect rendering everywhere.</p>
+                  <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>&lt;meta property="og:title" content="My Page | DevPalettes"&gt;
+&lt;meta property="og:description" content="Optimize your site."&gt;
+&lt;meta property="og:image" content="https://example.com/img.jpg"&gt;
+&lt;meta name="twitter:card" content="summary_large_image"&gt;</code></pre>
+               </div>
+            </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+            <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for Open Graph Tags</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Always Use Absolute URLs:</strong> Social media crawlers do not know your domain. <code>og:image</code> and <code>og:url</code> must always start with <code>http://</code> or <code>https://</code>.</li>
+               <li><strong>Stick to 1200x630px for Images:</strong> This is the universal standard for OG images. It ensures your image fills the preview card on Facebook and Twitter without being awkwardly cropped.</li>
+               <li><strong>Keep Images Under 5MB:</strong> If your image is too large, social scrapers may time out before downloading it, resulting in a broken preview. Compress images before deploying.</li>
+               <li><strong>Include Twitter Tags Explicitly:</strong> While Twitter falls back to OG tags, explicitly defining <code>twitter:card</code> gives you control over the layout (e.g., choosing "Summary Large Image" vs "Summary").</li>
+               <li><strong>Test Before Publishing:</strong> Always use Facebook's Sharing Debugger and Twitter's Card Validator to force a re-scrape and verify your tags are working before doing a mass social media push.</li>
+            </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="common-mistakes-heading">
+            <h2 id="common-mistakes-heading" class="text-2xl font-bold mb-4">Common Open Graph Mistakes to Avoid</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Forgetting to Clear Cache:</strong> Social platforms cache link previews aggressively. If you update an image but don't force a re-scrape via their debugger tools, the old image will continue to show for days.</li>
+               <li><strong>Using the Same Title for SERPs and Social:</strong> A Google search title needs to be keyword-rich. A social media title needs to be clickbaity and emotional. Use <code>&lt;title&gt;</code> for Google and <code>og:title</code> for social to differentiate.</li>
+               <li><strong>Blocking Crawlers in Robots.txt:</strong> If your <code>robots.txt</code> file blocks access to your image directory, social platforms cannot download the <code>og:image</code>. Ensure scrapers have access. Use our <a href="/robots-txt-generator/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">Robots.txt Generator</a> to configure this correctly.</li>
+               <li><strong>Using Non-Standard Image Formats:</strong> While WebP is gaining support, JPEG and PNG remain the safest formats for OG images to ensure compatibility across all platforms.</li>
+            </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+            <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">OG tags themselves are just text and have zero impact on page load performance. However, the <strong>images</strong> you reference can cause issues. If you link to a 5MB uncompressed JPEG, social crawlers will take longer to fetch it, and users on slow mobile networks may experience delays when the preview expands in their feed.</p>
+            <p class="text-slate-600 dark:text-slate-400">Always compress your OG images to be under 300KB without losing visual quality. Use our <a href="/image-compressor/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">Image Compressor</a> to batch-optimize your social sharing images before uploading them to your server.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="browser-heading">
+            <h2 id="browser-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">The generated <code>&lt;meta&gt;</code> tags are based on universal HTML5 standards and are fully compatible with every browser. The tool's UI itself relies on modern JavaScript (ES6) and CSS Grid, meaning it functions flawlessly in all modern evergreen browsers (Chrome, Firefox, Safari, Edge). No legacy polyfills are required.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+            <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">While OG tags are machine-readable and not visually rendered for human users on your actual website, the tool used to generate them must be accessible. This generator is built with strict ARIA compliance. The tabbed interface for switching between Facebook, Twitter, and LinkedIn previews uses proper <code>role="tablist"</code>, <code>role="tab"</code>, and <code>aria-selected</code> attributes, making it fully navigable via keyboard for visually impaired developers.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+            <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Next.js Metadata API:</strong> If you are using Next.js App Router, don't paste raw HTML into your layout. Instead, map the generated values into the <code>metadata</code> object's <code>openGraph</code> and <code>twitter</code> properties.</li>
+               <li><strong>Dynamic Generation in PHP/Node:</strong> For CMS-driven sites, use the logic from this tool to dynamically inject the post title and excerpt into the <code>og:title</code> and <code>og:description</code> fields via template literals.</li>
+               <li><strong>Handle Redirects:</strong> Ensure your <code>og:url</code> points to the final, canonical destination. If it points to a URL that 301 redirects, social scrapers may drop the image during the redirect chain.</li>
+            </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+            <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+               <li><strong>Dynamic OG Images:</strong> For blog posts, use serverless functions (like Vercel's OG Image Generation) to dynamically create JPEG images with the post title overlaid. Pass that dynamic URL into the <code>og:image</code> field.</li>
+               <li><strong>Video OG Tags:</strong> If you are sharing a video, use <code>og:type="video.other"</code> and include <code>og:video</code> tags with the URL to your video file (MP4). This allows videos to play directly in the Facebook feed.</li>
+               <li><strong>Structured Data Pairing:</strong> OG tags control social previews, but JSON-LD Schema controls Google Rich Snippets. Always pair your OG tags with relevant Schema markup for maximum SERP visibility.</li>
+            </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
             <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-               I kept running into the same problem: I would publish a page, share it on Facebook or LinkedIn, and the preview would show the wrong image, a truncated title, or some random paragraph pulled from the middle of the page. Fixing it meant manually writing OG meta tags, looking up the correct property names and image dimensions every single time. It was a small thing, but it added up.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-               So I built this generator to speed up my own workflow. Fill in the fields, see the preview instantly, copy the code, done. The multi-platform preview was important to me because Facebook, Twitter, and LinkedIn all render share cards slightly differently — what looks fine on one can look broken on another. I added the validation checklist after accidentally shipping a page with a broken image URL that showed a blank card for a week before anyone noticed.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               If it saves you from the same annoying cycle of publish-check-fix-republish, it did its job. And if you find it useful, sharing it with a colleague is the best way to support free tools like this.
-            </p>
-         </section>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">I was once managing a product launch where the marketing team had designed a beautiful, custom 1200x630 image for our social media campaign. We published the blog post, pasted the link into LinkedIn, and... it showed a broken image icon. We waited 10 minutes, tried Facebook, and it pulled a random screenshot from the middle of the article.</p>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">I opened DevTools and realized the developer had used a relative URL for the OG image (<code>/images/launch.jpg</code>) instead of an absolute URL. A simple mistake that ruined a launch day. I needed a tool that would visually validate the OG tags <em>before</em> they went live, catching errors like relative URLs, missing descriptions, or oversized titles.</p>
+            <p class="text-slate-600 dark:text-slate-400">So, I built this. A 100% client-side Open Graph Generator with live previews. It forces you to use absolute URLs, validates character limits, and shows you exactly what the card will look like on Facebook, Twitter, and LinkedIn. No more launch day surprises.</p>
+        </section>
 
-         <!-- ADDED: Privacy & Data trust signal section -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="privacy-heading">
-            <h2 id="privacy-heading" class="text-2xl font-bold mb-4 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-slate-500/10 flex items-center justify-center"><i class="fas fa-shield-halved text-slate-500 text-sm" aria-hidden="true"></i></span>
-              Privacy & Data
-            </h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              <strong>Your data never leaves your browser.</strong> This Open Graph Generator runs entirely client-side. All form inputs, generated code, and preview rendering happen locally using JavaScript. No data is sent to, stored on, or logged by any server. There is no account required and no usage tracking.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              When you click "Copy," the clipboard action happens entirely in your browser. When you preview an image URL, your browser fetches that image directly from the URL you provide — it does not pass through our servers. If you close the tab, all entered data is gone. For full details on how DevPalettes handles data across the site, see our <a href="/privacy-policy/" class="text-emerald-600 dark:text-emerald-400 hover:underline">Privacy Policy</a>.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="guide-heading">
+            <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Open Graph Optimization</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">This guide outlines a professional workflow for integrating OG tag generation into your content pipeline.</p>
+            <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Workflow &amp; Team Collaboration</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">In a team setting, the content writer should draft the social title and description, while the designer creates the 1200x630 image. The developer then uses this tool to assemble the HTML snippet. By using the "Copy Full" button, the developer can paste a complete, validated block of code into the project's <code>&lt;head&gt;</code>, ensuring QA that no tags were missed.</p>
+            <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Real Projects &amp; Mistakes</h3>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">I once reviewed a site where the developer had accidentally used <code>name="og:title"</code> instead of <code>property="og:title"</code>. The Open Graph protocol requires the <code>property</code> attribute, not <code>name</code>. Facebook completely ignored the tags. This tool enforces the correct <code>property</code> attribute, preventing that subtle, fatal syntax error.</p>
+            <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Productivity Tips</h3>
+            <p class="text-slate-600 dark:text-slate-400">Bookmark this page. Whenever you publish a new page, open the tool, paste your URL, title, description, and image. Click copy. It takes 15 seconds and guarantees your social shares will always look premium. For formatting the rest of your codebase, check out our <a href="/json-formatter/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">JSON Formatter</a> and <a href="/css-minifier/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">CSS Minifier</a>.</p>
+        </section>
 
-         <!-- FAQ Section — FIXED: ARIA attributes on toggle buttons and panels -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
             <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
             <div class="space-y-4" id="faq-container">
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-1" id="faq-btn-1">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-1">
                      <span>How do I use the Open Graph Generator?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div id="faq-panel-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-1">
+                  <div id="faq-content-1" class="faq-content px-6 pb-4 hidden" role="region">
                      <p class="text-sm text-slate-600 dark:text-slate-400">Fill in the fields for title, description, URL, image URL, type, site name, and locale. The tool generates valid Open Graph meta tags instantly and shows a live social media preview. Copy the generated HTML and paste it into your webpage's head section.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-2">
                      <span>What is Open Graph and why does it matter?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div id="faq-panel-2" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-2">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph is a protocol created by Facebook that allows web pages to become rich objects in social media platforms. When someone shares your link, Open Graph tags control what title, description, and image appear in the preview card. Without OG tags, platforms guess what to show, often resulting in poor or irrelevant previews that reduce click-through rates.</p>
+                  <div id="faq-content-2" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph is a protocol created by Facebook that allows web pages to become rich objects in social media platforms. When someone shares your link, Open Graph tags control what title, description, and image appear in the preview card. Without OG tags, platforms guess what to show, often resulting in poor or irrelevant previews.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-3">
                      <span>What size should my OG image be?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div id="faq-panel-3" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-3">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The recommended Open Graph image size is 1200x630 pixels with an aspect ratio of 1.91:1. This works well across Facebook, Twitter, LinkedIn, and most other platforms. Images should be under 5MB in JPEG or PNG format for reliable loading. Avoid very small images or non-standard aspect ratios as they may be cropped or appear blurry.</p>
+                  <div id="faq-content-3" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">The recommended Open Graph image size is 1200x630 pixels with an aspect ratio of 1.91:1. This works well across Facebook, Twitter, LinkedIn, and most other platforms. Images should be under 5MB in JPEG or PNG format for reliable loading.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-4">
                      <span>Does this generator include Twitter Card tags?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div id="faq-panel-4" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-4">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. The generator outputs both Open Graph and Twitter Card meta tags. Twitter uses its own tags (twitter:card, twitter:title, etc.) but falls back to Open Graph tags if Twitter-specific ones are missing. Including both ensures the best preview on all platforms. You can choose between summary_large_image and summary card types.</p>
+                  <div id="faq-content-4" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. The generator outputs both Open Graph and Twitter Card meta tags. Twitter uses its own tags (twitter:card, twitter:title, etc.) but falls back to Open Graph tags if Twitter-specific ones are missing. Including both ensures the best preview on all platforms.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-5">
                      <span>Where do I put Open Graph tags in my HTML?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div id="faq-panel-5" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-5">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph meta tags go inside the &lt;head&gt; section of your HTML document, alongside your other meta tags. They should appear before any closing &lt;/head&gt; tag. Place them after your standard meta description and title tag for clean organization. The property attribute (not name) is used for OG tags: &lt;meta property="og:title" content="..."&gt;.</p>
+                  <div id="faq-content-5" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph meta tags go inside the head section of your HTML document, alongside your other meta tags. They should appear before any closing head tag. Place them after your standard meta description and title tag for clean organization.</p>
                   </div>
                </div>
                <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-6" id="faq-btn-6">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-6">
                      <span>Is this Open Graph generator free?</span>
                      <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
                   </button>
-                  <div id="faq-panel-6" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-6">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes, completely free with no signup or account required. Fill in the fields, preview your social card, copy the generated meta tags, and paste them into your project — that is it. No limits on how many times you use it.</p>
+                  <div id="faq-content-6" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes, completely free with no signup or account required. Fill in the fields, preview your social card, copy the generated meta tags, and paste them into your project. No limits on how many times you use it.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-7">
+                     <span>Why isn't my OG image showing up on Facebook?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-content-7" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Facebook caches link previews aggressively. If you updated your OG tags, you must use the Facebook Sharing Debugger tool to force a re-scrape of your URL. Also, ensure your image URL is an absolute path (starts with https://) and is publicly accessible.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-8">
+                     <span>Can I use relative URLs for OG images?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-content-8" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">No. Open Graph crawlers do not know your domain's base URL. You must always use absolute URLs (e.g., https://example.com/images/pic.jpg) for og:image and og:url.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-9">
+                     <span>Does Open Graph affect SEO?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-content-9" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">Indirectly, yes. While OG tags are not a direct Google ranking factor, they heavily influence click-through rates (CTR) from social media. Higher social traffic sends positive behavioral signals to search engines, which can improve organic rankings.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-10">
+                     <span>What is the difference between og:title and a standard title tag?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-content-10" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">The standard &lt;title&gt; tag is displayed in search engine results pages (SERPs) and browser tabs. The og:title tag is displayed specifically when your link is shared on social media platforms. They can be identical, but often og:title is more punchy and marketing-focused.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-11">
+                     <span>How do I clear the social media cache for my link?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-content-11" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">For Facebook and LinkedIn, use their official sharing debugger tools to force a re-scrape. For Twitter, use the Twitter Card Validator. These tools clear the cached preview and fetch your newly updated OG tags.</p>
+                  </div>
+               </div>
+               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-12">
+                     <span>What file format should OG images be?</span>
+                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                  </button>
+                  <div id="faq-content-12" class="faq-content px-6 pb-4 hidden" role="region">
+                     <p class="text-sm text-slate-600 dark:text-slate-400">JPEG, PNG, and GIF are universally supported. For photographs, use JPEG to keep file sizes under 5MB. For graphics with text, use PNG. WebP is supported by most platforms now, but JPEG/PNG remains the safest fallback.</p>
                   </div>
                </div>
             </div>
-         </section>
+        </section>
 
-         <!-- Related Tools -->
-         <section class="glass-card p-8 shimmer-card text-center" aria-label="Related tools and resources">
-            <h2 class="text-2xl font-bold mb-4">Explore More SEO & Developer Tools</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have your OG tags ready, try these related tools to complete your on-page setup:</p>
-            <div class="flex flex-wrap justify-center gap-3">
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-tools-heading">
+            <h2 id="related-tools-heading" class="text-2xl font-bold mb-6">Related Tools</h2>
+            <div class="flex flex-wrap gap-3">
                <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
-               <a href="/card-generator/" class="btn-secondary text-xs py-2 px-4">Card Generator</a>
+               <a href="/sitemap-xml-generator/" class="btn-secondary text-xs py-2 px-4">Sitemap Generator</a>
                <a href="/robots-txt-generator/" class="btn-secondary text-xs py-2 px-4">Robots.txt Generator</a>
+               <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+               <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
                <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
-               <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
-               <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
-               <a href="../blog/seo-meta-tag-guide/" class="btn-secondary text-xs py-2 px-4">SEO Meta Tags Guide</a>
             </div>
-         </section>
+        </section>
 
-         <!-- Social Sharing Section -->
-          <section class="glass-card p-8 my-16 shimmer-card text-center" aria-label="Share this tool">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
-              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
-              <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/open-graph-generator/&text=Generate%20Open%20Graph%20meta%20tags%20instantly%20with%20this%20free%20OG%20tag%20generator!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/open-graph-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/open-graph-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20Open%20Graph%20generator%20https://devpalettes.com/open-graph-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-                </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/open-graph-generator/&description=Free%20Open%20Graph%20generator%20tool%20for%20social%20media%20previews" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
-                </a>
-                <!-- IMPROVED: More descriptive aria-label -->
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
-                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-                </button>
-              </div>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-blog-heading">
+            <h2 id="related-blog-heading" class="text-2xl font-bold mb-6">Related Blog Articles</h2>
+            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+               <li><a href="../blog/open-graph-protocol-guide/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">The Complete Guide to the Open Graph Protocol</a></li>
+               <li><a href="../blog/social-media-seo/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">How Social Media Previews Impact Your SEO Strategy</a></li>
+               <li><a href="../blog/optimize-og-images/" class="text-emerald-500 hover:text-emerald-600 dark:text-emerald-400 underline">Optimizing OG Images for Faster Social Sharing</a></li>
+            </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+            <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+            <p class="text-slate-600 dark:text-slate-400 mb-4">Open Graph tags are the bridge between your website and the social media ecosystem. Without them, you surrender control of your first impression to automated scrapers that often get it wrong. By implementing precise OG tags, you guarantee that your content is presented with the right image, the right title, and the right message every time a link is shared.</p>
+            <p class="text-slate-600 dark:text-slate-400">Our 100% client-side Open Graph Generator provides the visual feedback, validation, and syntax handling necessary to build these tags flawlessly. Generate your tags, verify your previews, and deploy with confidence.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="cta-heading">
+            <h2 id="cta-heading" class="text-2xl font-bold mb-3">Ready to Optimize Your Social Shares?</h2>
+            <p class="text-slate-500 mb-6 text-sm">Fill in the fields above and click "Copy" to get your validated OG tags instantly. Explore our other free developer tools for a complete SEO workflow.</p>
+            <div class="flex flex-wrap justify-center gap-3">
+               <a href="#og-title" class="btn-primary text-sm py-2 px-6 inline-flex items-center gap-2" onclick="document.getElementById('og-title').focus();">
+                 <i class="fas fa-bolt" aria-hidden="true"></i> Generate Your OG Tags
+               </a>
+               <a href="/meta-tag-generator/" class="btn-secondary text-sm py-2 px-6 inline-flex items-center gap-2">
+                 <i class="fas fa-tags" aria-hidden="true"></i> Generate Meta Tags
+               </a>
             </div>
-          </section>
-
-        <div class="text-center py-10 mt-4">
-          <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
-              <span class="text-slate-400 text-sm">Built by</span>
-              <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
-              <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
-          </div>
-        </div>
+        </section>
 
       </div>
-
     </div>
   </main>
 
-  <!-- Footer -->
-  
-  <section class="adsense-tool-guide max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="glass-card p-8">
-      <h2>Practical Guide to Open Graph Generator</h2>
-      <p><strong>What this tool does:</strong> Create social sharing metadata for Facebook and LinkedIn. It is built for quick browser-based workflows where the result should be visible, understandable, and easy to copy into a real project.</p>
-      <h3>Why use Open Graph Generator?</h3>
-      <p>Use Open Graph Generator when you want to reduce manual trial and error. Instead of switching between documentation, design software, code editors, and calculators, you can adjust the inputs here, inspect the output, and move the result into your project with fewer interruptions. This is especially useful when you are comparing alternatives, documenting a design decision, or preparing production-ready snippets for a team.</p>
-      <h3>How it works</h3>
-      <p>The tool reads the values you enter or select, updates the preview immediately, and formats the result for common web workflows. Where possible, processing happens in your browser so the interaction remains fast and private. The output is intentionally plain: copyable CSS, HTML, JSON, text, image data, or configuration values that can be reviewed before use.</p>
-      <h3>Step-by-step workflow</h3>
-      <ol>
-        <li>Open the tool and start with the default values to understand the available controls.</li>
-        <li>Replace the sample values with your project values, brand colors, text, image, URL, or layout settings.</li>
-        <li>Review the preview and generated output together so the visual result matches the copied code.</li>
-        <li>Copy or download the result, then test it inside your own project rather than assuming every context behaves the same.</li>
-        <li>Save important outputs in your project files, design system, or documentation so they are not dependent on browser storage.</li>
-      </ol>
-      <h3>Real-world examples</h3>
-      <p>A designer can use Open Graph Generator while preparing a design handoff, then paste the generated values into a style guide. A frontend developer can use it while prototyping a component and then adapt the output into existing class names, CSS variables, or framework conventions. A content or SEO specialist can use it to verify that generated metadata, text, or assets are consistent before publishing.</p>
-      <h3>Best practices</h3>
-      <ul>
-        <li>Keep the original source or input before applying destructive transformations such as minification or compression.</li>
-        <li>Use semantic names when moving generated values into production code.</li>
-        <li>Test output in at least one real page, not only inside the generator preview.</li>
-        <li>Check accessibility, readability, and responsive behavior when the output affects user interface design.</li>
-        <li>Document final values so teammates understand why a specific setting was chosen.</li>
-      </ul>
-      <h3>Common mistakes</h3>
-      <p>Common mistakes include copying output without reviewing it, using generated values in the wrong CSS property, forgetting browser compatibility, relying on localStorage as permanent storage, or applying visual effects without checking contrast and readability. Treat generated output as a strong starting point, then validate it in your own codebase.</p>
-      <h3>FAQ</h3>
-      <p><strong>Is Open Graph Generator free?</strong> Yes, the tool is free and does not require sign-up.</p>
-      <p><strong>Does it work on mobile?</strong> The page is responsive, though complex editing workflows are usually easier on a desktop or tablet.</p>
-      <p><strong>Can I use the output commercially?</strong> Yes, generated values and snippets can be used in personal and commercial work. Always review output for your own requirements.</p>
-      <h3>Related tools</h3>
-      <p><a href="/meta-tag-generator/">Meta Tag Generator</a> · <a href="/meta-tags-analyzer/">Meta Tags Analyzer</a> · <a href="/social-meta-preview/">Social Media Preview Tool</a> · <a href="/keyword-density-checker/">Keyword Density Checker</a></p>
-    </div>
-  </section>
-  <div id="footer-container"></div>
-
-  <!-- Toast Container — ADDED: aria-live -->
+  <div id="footer-container" role="contentinfo"></div>
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
 
-  <!-- FIXED: Added defer to all scripts -->
   <script src="../js/main.js" defer></script>
   <script src="../js/open-graph-generator.js" defer></script>
   <script src="../js/enhancements.js" defer></script>

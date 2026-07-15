@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- ADDED: Explicit robots directive -->
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 
   <title>Meta Tag Generator – Free SEO Meta Tags Tool | DevPalettes</title>
   <meta name="description" content="Free Meta Tag Generator with live Google preview, Open Graph, Twitter Cards, and SEO scoring. Create optimized meta tags instantly — copy production-ready HTML code.">
@@ -17,143 +16,254 @@
   <meta property="og:title" content="Meta Tag Generator – Free SEO Meta Tags Tool">
   <meta property="og:description" content="Free Meta Tag Generator with live Google preview, Open Graph, Twitter Cards, and SEO scoring. Create optimized meta tags instantly.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
-  <!-- ADDED: og:site_name -->
   <meta property="og:site_name" content="DevPalettes">
 
-  <!-- Twitter — FIXED: changed property→name per Twitter Card spec -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://devpalettes.com/meta-tag-generator/">
   <meta name="twitter:title" content="Free Meta Tag Generator – SEO Meta Tags Tool">
   <meta name="twitter:description" content="Free Meta Tag Generator with live Google preview, Open Graph, Twitter Cards, and SEO scoring.">
+  <meta name="twitter:image" content="https://devpalettes.com/images/og-image.png">
 
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
-  <!-- ADDED: BreadcrumbList Schema -->
+  <!-- Structured Data: Organization, WebSite, BreadcrumbList, WebApplication, SoftwareApplication, HowTo, FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com/"
+        "@type": "Organization",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Ashish Kekaan",
+          "url": "https://devpalettes.com/about/"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Technical Support",
+          "email": "contact@devpalettes.com",
+          "url": "https://devpalettes.com/contact/",
+          "availableLanguage": "English"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Tools",
-        "item": "https://devpalettes.com/tools/"
+        "@type": "WebSite",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://devpalettes.com/tools/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 3,
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://devpalettes.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tools",
+            "item": "https://devpalettes.com/tools/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Meta Tag Generator",
+            "item": "https://devpalettes.com/meta-tag-generator/"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
         "name": "Meta Tag Generator",
-        "item": "https://devpalettes.com/meta-tag-generator/"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Meta Tag Generator",
-    "url": "https://devpalettes.com/meta-tag-generator/",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "description": "A free tool to generate optimized HTML meta tags for SEO, including Open Graph and Twitter Card tags.",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Any",
-    "browserRequirements": "Requires JavaScript. Requires HTML5.",
-    "creator": {
-      "@type": "Organization",
-      "name": "DevPalettes"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "featureList": [
-      "Live Google search preview",
-      "Open Graph tag generation",
-      "Twitter Card tag generation",
-      "Real-time SEO scoring",
-      "Character count validation",
-      "Social media share preview",
-      "Download as HTML file",
-      "Auto-fill from basic tags"
-    ]
-  }
-  </script>
-
-  <!-- EXPANDED: FAQPage Schema (5→7 questions) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+        "url": "https://devpalettes.com/meta-tag-generator/",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "description": "A free tool to generate optimized HTML meta tags for SEO, including Open Graph and Twitter Card tags.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "creator": {
+          "@type": "Organization",
+          "name": "DevPalettes"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Live Google search preview",
+          "Open Graph tag generation",
+          "Twitter Card tag generation",
+          "Real-time SEO scoring",
+          "Character count validation",
+          "Social media share preview",
+          "Download as HTML file",
+          "Auto-fill from basic tags"
+        ]
+      },
       {
-        "@type": "Question",
-        "name": "How do I use the Meta Tag Generator?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Fill in your page title, description, keywords, and other fields. The tool instantly generates the HTML meta tag code that you can copy and paste into your webpage's head section."
+        "@type": "SoftwareApplication",
+        "name": "Meta Tag Generator",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
       },
       {
-        "@type": "Question",
-        "name": "What is the ideal length for a meta title and description?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The ideal meta title length is 50-60 characters to avoid truncation in search results. The ideal meta description length is 150-160 characters. Our tool shows real-time character counts to help you stay within these limits."
-        }
+        "@type": "HowTo",
+        "name": "How to Generate SEO Meta Tags",
+        "description": "Step-by-step guide to creating optimized HTML meta tags using the DevPalettes Meta Tag Generator.",
+        "totalTime": "PT2M",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Enter Basic Meta Tags",
+            "text": "Fill in your page title (50-60 characters), meta description (150-160 characters), keywords, and canonical URL in the Basic Meta Tags section."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Configure Open Graph",
+            "text": "Add your social media title, description, and image URL (1200x630px recommended) in the Open Graph Tags section for Facebook and LinkedIn sharing."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Setup Twitter Cards",
+            "text": "Select your card type and add Twitter-specific title, description, and image in the Twitter Card Tags section."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Review SEO Score & Previews",
+            "text": "Check the real-time SEO score on the right to ensure all checks pass. Review the Google search preview and social share previews to visualize the result."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 5,
+            "name": "Copy or Download Code",
+            "text": "Click the Copy button to copy the generated HTML meta tags to your clipboard, or Download to save them as an HTML file to paste into your project's head section."
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "What are Open Graph meta tags?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Open Graph meta tags control how your webpage appears when shared on social media platforms like Facebook, LinkedIn, and Discord. They define the title, description, image, and other properties shown in the shared link preview."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Why are meta tags important for SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Meta tags provide search engines with information about your webpage. The title tag and meta description directly influence click-through rates from search results. Proper meta tags help search engines understand your content and display it correctly to users."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between Open Graph and Twitter Card tags?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Open Graph tags were created by Facebook and are used by most social platforms. Twitter Card tags are specific to Twitter/X and use the twitter: prefix. Twitter falls back to Open Graph tags if Twitter-specific tags are not present."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do meta keywords still matter for SEO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Google has not used the meta keywords tag for ranking purposes since 2009. However, some smaller search engines and internal site search tools may still reference it. Including relevant keywords does not harm your page and can be useful for documentation purposes."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I use the same meta tags on every page?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Every page should have unique title tags and meta descriptions that accurately describe its specific content. Duplicate meta tags across pages can cause search engines to ignore them or display incorrect snippets. Use this generator to create tailored tags for each page individually."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use the Meta Tag Generator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Fill in your page title, description, keywords, and other fields. The tool instantly generates the HTML meta tag code that you can copy and paste into your webpage's head section."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the ideal length for a meta title and description?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The ideal meta title length is 50-60 characters to avoid truncation in search results. The ideal meta description length is 150-160 characters. Our tool shows real-time character counts to help you stay within these limits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What are Open Graph meta tags?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open Graph meta tags control how your webpage appears when shared on social media platforms like Facebook, LinkedIn, and Discord. They define the title, description, image, and other properties shown in the shared link preview."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are meta tags important for SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Meta tags provide search engines with information about your webpage. The title tag and meta description directly influence click-through rates from search results. Proper meta tags help search engines understand your content and display it correctly to users."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Open Graph and Twitter Card tags?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Open Graph tags were created by Facebook and are used by most social platforms. Twitter Card tags are specific to Twitter/X and use the twitter: prefix. Twitter falls back to Open Graph tags if Twitter-specific tags are not present."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do meta keywords still matter for SEO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Google has not used the meta keywords tag for ranking purposes since 2009. However, some smaller search engines and internal site search tools may still reference it. Including relevant keywords does not harm your page and can be useful for documentation purposes."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use the same meta tags on every page?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Every page should have unique title tags and meta descriptions that accurately describe its specific content. Duplicate meta tags across pages can cause search engines to ignore them or display incorrect snippets. Use this generator to create tailored tags for each page individually."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What size should an Open Graph (OG) image be?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The recommended size for an Open Graph image is 1200 x 630 pixels. This ensures your image displays clearly on Facebook, LinkedIn, and Twitter without being cropped or distorted. The image should be under 8MB in file size."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool generate JSON-LD structured data?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "This specific tool focuses on standard HTML meta tags, Open Graph, and Twitter Cards. For JSON-LD structured data (like Schema.org markup), you would typically use a dedicated structured data generator tool to create Article, Product, or FAQ schemas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is my canonical URL important?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A canonical URL tells search engines which version of a page is the master version, preventing duplicate content issues. If your page is accessible via multiple URLs, the canonical tag ensures that all SEO value is attributed to your chosen URL."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the robots meta tag do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The robots meta tag controls how search engines crawl and index your page. 'Index' allows the page to appear in search results, while 'Follow' allows crawlers to follow links on the page. You can use 'Noindex' or 'Nofollow' to restrict these actions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my data safe when using this generator?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, absolutely. This Meta Tag Generator runs entirely client-side in your browser. No data is sent to or stored on any server, ensuring complete privacy for your SEO strategies and website content."
+            }
+          }
+        ]
       }
     ]
   }
@@ -163,11 +273,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <!-- FIXED: Removed duplicate preload. Kept only the async onload pattern. -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
 
-  <!-- FIXED: Font Awesome now uses async onload pattern (was render-blocking) -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
@@ -183,7 +291,6 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
 
-  <!-- ADDED: Focus-visible styles for accessibility -->
   <style>
     button:focus-visible,
     a:focus-visible,
@@ -200,81 +307,13 @@
       outline-offset: -2px;
     }
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Meta Tag Generator",
-    "description": "Free Meta Tag Generator with live Google preview, Open Graph, Twitter Cards, and SEO scoring. Create optimized meta tags instantly — copy production-ready HTML code.",
-    "url": "https://devpalettes.com/meta-tag-generator/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Meta Tag Generator",
-        "item": "https://devpalettes.com/meta-tag-generator/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <!-- Navbar -->
   <div id="navbar-container"></div>
 
   <!-- Main Content -->
-  <!-- ADDED: aria-label on main landmark -->
   <main class="pt-8 pb-12 min-h-screen relative overflow-hidden" id="main-content" aria-label="Meta Tag Generator Tool">
-    <!-- ADDED: aria-hidden on all decorative elements -->
     
     <div class="gradient-blob blob-1" aria-hidden="true"></div>
     <div class="gradient-blob blob-2" aria-hidden="true"></div>
@@ -288,21 +327,14 @@
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
-      <section class="glass-card p-8 shimmer-card mb-10" aria-label="About Meta Tag Generator">
-        <h2 class="text-2xl font-bold mb-4">What is a Meta Tag Generator?</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          A meta tag generator is a free online tool that helps you create properly formatted HTML meta tags for your webpages. Meta tags are snippets of text placed in the <code class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-sm font-mono">&lt;head&gt;</code> section of your HTML document that describe the page's content to search engines and social media platforms. Without them, search engines guess what your page is about, and social platforms pull random text and images when your URL gets shared.
-        </p>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          Instead of manually writing each tag and worrying about correct syntax, character limits, and best practices, a meta tag generator handles all of that for you. You fill in your information, and the tool produces clean, copy-paste-ready code. This is especially useful for developers, SEO professionals, and content creators who need to optimize multiple pages efficiently. According to <a href="https://developers.google.com/search/docs/appearance/snippet" target="_blank" rel="noopener noreferrer">Google's documentation on search snippets</a>, the title tag and meta description are the two most important pieces of information that influence how your page appears in search results.
-        </p>
+      <section class="glass-card p-8 shimmer-card mb-10" aria-labelledby="intro-heading">
+        <h2 id="intro-heading" class="sr-only">Short Introduction</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-          This generator goes beyond basic tags — it includes Open Graph tags for Facebook and LinkedIn sharing, Twitter Card tags for X/Twitter previews, robots directives for crawl control, and a real-time SEO score that evaluates your entries as you type. If you are also auditing existing pages, you can pair this with the <a href="/keyword-density-checker/" class="text-emerald-500 hover:underline">keyword density checker</a> to make sure your meta content aligns with what is actually on the page.
+          In modern web development and SEO, metadata is your website's first impression. A well-crafted title tag and meta description can dramatically increase click-through rates from search engine results pages (SERPs). Furthermore, Open Graph and Twitter Card tags ensure your links look professional and visually appealing when shared across social media platforms like Facebook, LinkedIn, and X (Twitter). Our Meta Tag Generator provides a visual, client-side interface to build these critical HTML tags without syntax errors, complete with real-time character counting, SEO scoring, and live previews of exactly how your page will appear to users.
         </p>
       </section>
 
       <div class="block md:grid md:grid-cols-2 gap-8">
-        <!-- ADDED: aria-label on column landmark groups -->
         <div class="space-y-6" role="region" aria-label="Meta tag input fields">
           <div class="glass-card p-8 shimmer-card">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
@@ -313,22 +345,18 @@
             <div class="mb-5">
               <div class="flex justify-between items-center mb-2">
                 <label for="meta-title" class="font-medium text-sm">Page Title</label>
-                <!-- ADDED: aria-live on counter -->
                 <span id="title-counter" class="text-xs font-mono px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500" aria-live="polite">0 / 60</span>
               </div>
               <input type="text" id="meta-title" placeholder="Enter your page title (50-60 characters)" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm" maxlength="80" aria-describedby="title-feedback">
-              <!-- ADDED: aria-live on feedback -->
               <div id="title-feedback" class="text-xs mt-1.5 hidden" aria-live="polite"></div>
             </div>
 
             <div class="mb-5">
               <div class="flex justify-between items-center mb-2">
                 <label for="meta-description" class="font-medium text-sm">Meta Description</label>
-                <!-- ADDED: aria-live on counter -->
                 <span id="desc-counter" class="text-xs font-mono px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500" aria-live="polite">0 / 160</span>
               </div>
               <textarea id="meta-description" rows="3" placeholder="Enter your meta description (150-160 characters)" class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800/50 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 outline-none transition-all text-sm resize-none" maxlength="200" aria-describedby="desc-feedback"></textarea>
-              <!-- ADDED: aria-live on feedback -->
               <div id="desc-feedback" class="text-xs mt-1.5 hidden" aria-live="polite"></div>
             </div>
 
@@ -525,9 +553,7 @@
           </div>
         </div>
 
-        <!-- ADDED: aria-label on output column -->
         <div class="space-y-6" role="region" aria-label="Generated output and previews">
-          <!-- ADDED: aria-live on SEO score section -->
           <div class="glass-card p-8 shimmer-card" aria-live="polite" aria-label="SEO Score">
             <h2 class="text-xl font-bold mb-6 flex items-center gap-2">
               <span class="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500 text-sm"><i class="fas fa-chart-bar" aria-hidden="true"></i></span>
@@ -535,7 +561,6 @@
             </h2>
             <div class="flex items-center gap-6 mb-6">
               <div class="relative w-28 h-28 flex-shrink-0">
-                <!-- ADDED: aria-hidden on decorative SVG -->
                 <svg class="w-28 h-28 transform -rotate-90" viewBox="0 0 100 100" aria-hidden="true">
                   <circle cx="50" cy="50" r="42" stroke-width="8" fill="none" class="stroke-slate-200 dark:stroke-slate-700"/>
                   <circle id="score-ring" cx="50" cy="50" r="42" stroke-width="8" fill="none" stroke-linecap="round" class="transition-all duration-700" stroke="#e2e8f0" stroke-dasharray="263.89" stroke-dashoffset="263.89"/>
@@ -595,7 +620,6 @@
               </div>
             </div>
             <div class="relative">
-              <!-- ADDED: role, aria-label, tabindex for accessible code reading -->
               <pre id="generated-code" class="bg-slate-900 dark:bg-slate-950 text-emerald-400 rounded-xl p-5 text-sm font-mono overflow-x-auto max-h-[500px] overflow-y-auto leading-relaxed" role="region" aria-label="Generated HTML meta tag code" tabindex="0"><code><!-- Add your meta tags by filling in the fields on the left --></code></pre>
             </div>
           </div>
@@ -650,311 +674,347 @@
       </div>
 
       <div class="seo-content space-y-12 mt-16">
-         <section class="glass-card p-8 shimmer-card" aria-label="How the meta tag generator works">
-            <h2 class="text-2xl font-bold mb-4">How Does the Meta Tag Generator Work?</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               This meta tag generator works in real-time. As you type in each field, the tool immediately updates the generated HTML code and all preview sections. Here is the process behind the scenes:
-            </p>
-            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Input Collection:</strong> The tool captures values from all input fields including title, description, keywords, URLs, and checkbox states.</li>
-               <li><strong>Auto-Fill Logic:</strong> If you leave Open Graph or Twitter fields empty, the tool automatically uses your page title and description as fallback values, saving you time.</li>
-               <li><strong>Validation:</strong> Character counters and color-coded feedback show whether your title and description fall within SEO-recommended ranges.</li>
-               <li><strong>Code Generation:</strong> Based on your selections and the "Include Tags" checkboxes, the tool assembles only the meta tags you need in proper HTML format.</li>
-               <li><strong>Live Preview:</strong> Google search result preview and social share previews update instantly so you can see exactly how your page will appear online.</li>
-            </ol>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               All processing happens locally in your browser. No data is sent to any server, making this tool completely private and fast. If you want to validate your generated meta tags against a live page, you can also use <a href="https://developers.facebook.com/tools/debug/" target="_blank" rel="noopener noreferrer">Facebook's Sharing Debugger</a> or <a href="https://cards-dev.twitter.com/validator" target="_blank" rel="noopener noreferrer">Twitter's Card Validator</a> after publishing.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="what-is-heading">
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is a Meta Tag Generator?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            A Meta Tag Generator is a developer and SEO utility designed to automate the creation of HTML <code>&lt;meta&gt;</code> elements. Meta tags reside in the <code>&lt;head&gt;</code> section of your HTML document and provide metadata about the page to search engines (like Google) and social media platforms (like Facebook and Twitter). Without properly configured meta tags, search engines struggle to understand the context of your page, and social media shares appear as plain URLs without rich previews, significantly reducing click-through rates.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Instead of memorizing the exact syntax for Open Graph (<code>og:title</code>, <code>og:image</code>), Twitter Cards (<code>twitter:card</code>), and standard SEO tags (<code>meta name="description"</code>), a generator provides a structured UI. You input the data—title, description, image URL—and the tool compiles clean, error-free HTML code ready to be pasted into your project. According to <a href="https://developers.google.com/search/docs/appearance/snippet" target="_blank" rel="noopener noreferrer">Google's documentation on search snippets</a>, the title tag and meta description are the two most critical pieces of information that influence how your page appears in SERPs (Search Engine Results Pages).
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            This specific generator goes beyond basic SEO. It integrates a real-time SEO scoring system, character limit validation, and visual previews for both Google search results and social media newsfeeds. By offering immediate visual feedback, it ensures that your metadata is not only technically correct but also visually optimized for human engagement. If you are overhauling an entire site, you can pair this with our <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> to ensure your newly generated tags don't bloat your page size.
+          </p>
+        </section>
 
-         <section class="glass-card p-8 shimmer-card" aria-label="Benefits of using a meta tag generator">
-            <h2 class="text-2xl font-bold mb-4">Benefits of Using a Meta Tag Generator</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
-               Writing meta tags by hand is error-prone — a missing quotation mark or an extra space can break your entire snippet in search results. A generator eliminates those risks while also saving time and enforcing best practices automatically.
-            </p>
-            <div class="grid sm:grid-cols-2 gap-6">
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-clock text-emerald-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Save Time</h3>
-                     <p class="text-sm text-slate-500">Generate all your meta tags in seconds instead of writing each one manually. Auto-fill features eliminate repetitive typing.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-check-circle text-blue-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Avoid Errors</h3>
-                     <p class="text-sm text-slate-500">Eliminate syntax mistakes, missing quotes, and incorrect attribute names that can break your meta tags.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-eye text-purple-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Visual Previews</h3>
-                     <p class="text-sm text-slate-500">See exactly how your page will look in Google search results and social media shares before publishing.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-chart-line text-amber-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">SEO Optimization</h3>
-                     <p class="text-sm text-slate-500">Built-in character counters and SEO scoring help you create tags that maximize search visibility and click-through rates.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-lock text-red-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">100% Private</h3>
-                     <p class="text-sm text-slate-500">Everything runs in your browser. No data is collected, stored, or transmitted to any server.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-shield-alt text-teal-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Best Practices Built-In</h3>
-                     <p class="text-sm text-slate-500">The tool follows current SEO guidelines, including proper Open Graph and Twitter Card implementations.</p>
-                  </div>
-               </div>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+          <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use an Online Meta Tag Generator?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            In modern web development, efficiency and accuracy are paramount. Hand-coding meta tags for a 50-page website is tedious and prone to human error. A single missing quotation mark or an unclosed tag can break the entire <code>&lt;head&gt;</code> section, rendering your SEO efforts useless. An online generator mitigates these risks by handling the syntax while you focus on the content strategy.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Furthermore, SEO best practices are constantly evolving. Google's truncation limits for titles and descriptions change based on pixel width, not just character count. A good generator tool enforces these limits (usually 50-60 characters for titles, 150-160 for descriptions) with real-time feedback, preventing keyword stuffing and truncation. Our tool's SEO scoring algorithm checks for the presence of essential tags, ensuring you never accidentally launch a page missing a canonical URL or Open Graph image.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Finally, privacy is a significant concern for enterprise SEO teams. Many free online SEO tools capture your input data to build keyword databases or sell competitive intelligence. This Meta Tag Generator runs 100% client-side. Your proprietary page titles, upcoming campaign URLs, and strategic descriptions never leave your browser. For analyzing existing live pages, you can use our <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a>.
+          </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+          <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How the Meta Tag Generator Works</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            The tool operates on a reactive, client-side architecture using JavaScript. When you interact with the input fields, a series of event listeners trigger a recalculation pipeline that updates the UI in milliseconds.
+          </p>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+            <li><strong>Input Capture &amp; Auto-Fill:</strong> As you type in the "Page Title" or "Meta Description" fields, the tool captures these values. If the Open Graph or Twitter fields are left empty, the tool automatically mirrors the basic title and description, acting as a fallback mechanism to ensure social shares always have data.</li>
+            <li><strong>Validation &amp; SEO Scoring:</strong> The captured strings are evaluated for length. The tool calculates an SEO score based on specific criteria: Is the title between 50-60 characters? Is the description between 150-160 characters? Are canonical and OG image URLs present? The score updates dynamically, turning the circular progress ring green when optimal.</li>
+            <li><strong>DOM Preview Rendering:</strong> The tool updates the Google Search Preview by injecting the title and description into a mock search result layout. It truncates strings that exceed the visual limit, mimicking Google's actual SERP behavior. For social previews, it updates the mock Facebook and Twitter cards with the provided image URLs.</li>
+            <li><strong>Code Assembly:</strong> Based on the "Include Tags" checkboxes, the tool concatenates the validated strings into properly formatted HTML strings. It escapes special characters (like <code>&amp;</code> to <code>&amp;amp;</code>) to prevent XSS vulnerabilities and HTML parsing errors. The final string is injected into the <code>&lt;pre&gt;</code> code block for copying.</li>
+          </ol>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="key-features-heading">
+          <h2 id="key-features-heading" class="text-2xl font-bold mb-4">Key Features of the Tool</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Real-Time Google SERP Preview:</strong> Visualize exactly how your page title and URL will appear in Google search results before publishing, allowing you to optimize for maximum click-through rate.</li>
+            <li><strong>Social Media Card Previews:</strong> See live renders of how your link will look when shared on Facebook, LinkedIn, and X (Twitter), ensuring your images and titles aren't awkwardly cropped.</li>
+            <li><strong>Dynamic SEO Scoring:</strong> An algorithmic checklist evaluates the presence and length of your title, description, canonical URL, and social tags, giving you a 100-point score.</li>
+            <li><strong>Auto-Fill Logic:</strong> Save time by letting the tool automatically populate your Open Graph and Twitter fields with your basic SEO title and description.</li>
+            <li><strong>Robots Directives Control:</strong> Easily configure complex crawler directives like <code>noindex</code>, <code>nofollow</code>, <code>nosnippet</code>, and <code>noimageindex</code> without looking up the syntax.</li>
+            <li><strong>One-Click Export:</strong> Copy the entire block of formatted HTML to your clipboard, or download it as an <code>.html</code> file to hand off to a developer or paste directly into your CMS.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="step-by-step-heading">
+          <h2 id="step-by-step-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide to Generating Meta Tags</h2>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Enter Your Page Title:</strong> Type a compelling title between 50-60 characters. The green counter confirms you are within the optimal range for Google's display limits.</li>
+            <li><strong>Write Your Meta Description:</strong> Summarize your page content in 150-160 characters. Include relevant keywords and a call to action when possible to entice searchers to click.</li>
+            <li><strong>Set the Canonical URL:</strong> Paste the primary URL of your page. This prevents duplicate content issues if the page is accessible via multiple URLs.</li>
+            <li><strong>Configure Open Graph:</strong> Add an OG Image URL (1200x630px). If you leave the OG Title and Description blank, the tool will automatically use your basic SEO tags.</li>
+            <li><strong>Setup Twitter Cards:</strong> Choose a card type (Summary Large Image is recommended for articles) and add a Twitter-specific image if it differs from your OG image.</li>
+            <li><strong>Review the Previews:</strong> Look at the Google Search Preview and Social Share Preview on the right. Ensure nothing is truncated and the images load correctly.</li>
+            <li><strong>Copy and Implement:</strong> Click "Copy" to grab the generated HTML. Paste this code directly into the <code>&lt;head&gt;</code> section of your webpage.</li>
+          </ol>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="real-world-heading">
+          <h2 id="real-world-heading" class="text-2xl font-bold mb-4">Real-World Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Consider a scenario where an e-commerce store launches a new product line. Without proper meta tags, sharing the product page link on Instagram or Twitter results in a plain, unappealing URL. By using this generator, the marketing team inputs the product name, a catchy description, and a high-quality lifestyle image. Now, when the link is shared, it expands into a rich visual card with an "Add to Cart" implicit call to action, boosting social conversion rates by over 40%.</p>
+          <p class="text-slate-600 dark:text-slate-400">Another example is a SaaS company writing a technical blog post. The developer uses this tool to generate a precise <code>meta description</code> that matches the exact search intent of their target audience. When the page ranks on page 2 of Google, the optimized snippet earns a higher click-through rate, pushing it to page 1 through behavioral signals alone.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+          <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>New Website Launches:</strong> Generate meta tags for every page of a new site before going live to ensure search engines can properly index and display your content from day one.</li>
+            <li><strong>Blog Post Optimization:</strong> Create unique title tags and meta descriptions for each blog post to improve organic search visibility. Cross-check your keyword usage with the <a href="/keyword-density-checker/" class="text-emerald-500 hover:underline">keyword density checker</a>.</li>
+            <li><strong>E-commerce Product Pages:</strong> Add structured meta tags with product titles, descriptions, and Open Graph images to make product pages shareable on social media.</li>
+            <li><strong>Content Audits:</strong> During an SEO audit, quickly regenerate meta tags for underperforming pages that need fresh titles and descriptions.</li>
+            <li><strong>Social Media Campaigns:</strong> Prepare custom Open Graph and Twitter Card tags for landing pages tied to marketing campaigns so shared links look polished.</li>
+            <li><strong>Client Deliverables:</strong> Web agencies can use this tool to prepare meta tag packages for clients as part of on-page SEO services — the download button makes handoff easy.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+          <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before &amp; After Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">See the immediate impact of using a structured generator versus hand-coding a minimal head section.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+              <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">Before: Minimal HTML</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">A basic HTML head. It works, but social shares look broken and SEO context is missing.</p>
+              <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>&lt;head&gt;
+  &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;</code></pre>
             </div>
-         </section>
-
-         <section class="glass-card p-8 shimmer-card" aria-label="Practical use cases">
-            <h2 class="text-2xl font-bold mb-4">Practical Use Cases</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Meta tags are not a one-time setup — different pages and different campaigns need different tags. Here are the most common scenarios where this generator makes a real difference:
-            </p>
-            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>New Website Launch:</strong> Generate meta tags for every page of a new site before going live to ensure search engines can properly index and display your content from day one.</li>
-               <li><strong>Blog Post Optimization:</strong> Create unique title tags and meta descriptions for each blog post to improve organic search visibility and attract more readers. You can cross-check your keyword usage with the <a href="/keyword-density-checker/" class="text-emerald-500 hover:underline">keyword density checker</a> after writing.</li>
-               <li><strong>E-commerce Product Pages:</strong> Add structured meta tags with product titles, descriptions, and Open Graph images to make product pages shareable on social media and stand out in search results.</li>
-               <li><strong>Content Audits:</strong> During an SEO audit, quickly regenerate meta tags for underperforming pages that need fresh titles and descriptions. For a deeper dive, run those pages through the <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO analyzer</a> to find additional optimization opportunities.</li>
-               <li><strong>Social Media Campaigns:</strong> Prepare custom Open Graph and Twitter Card tags for landing pages tied to marketing campaigns so shared links look polished and get more clicks.</li>
-               <li><strong>Client Deliverables:</strong> Web agencies can use this tool to prepare meta tag packages for clients as part of on-page SEO services — the download button makes handoff easy.</li>
-            </ul>
-         </section>
-
-         <section class="glass-card p-8 shimmer-card" aria-label="How to use this tool">
-            <h2 class="text-2xl font-bold mb-4">How to Use This Meta Tag Generator</h2>
-            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Enter Your Page Title:</strong> Type a compelling title between 50-60 characters. The green counter confirms you are within the optimal range.</li>
-               <li><strong>Write Your Meta Description:</strong> Summarize your page content in 150-160 characters. Include relevant keywords and a call to action when possible.</li>
-               <li><strong>Add Keywords:</strong> List your target keywords separated by commas. While Google no longer uses the keywords meta tag for ranking, other search engines may still reference it.</li>
-               <li><strong>Set Your Canonical URL:</strong> Enter the full URL of your page to prevent duplicate content issues in search engines.</li>
-               <li><strong>Configure Open Graph Tags:</strong> Fill in OG title, description, and image URL. If left empty, these auto-fill from your basic meta tags.</li>
-               <li><strong>Set Up Twitter Cards:</strong> Choose a card type and add Twitter-specific title, description, and image.</li>
-               <li><strong>Review Previews:</strong> Check the Google search preview and social share previews to make sure everything looks correct before publishing.</li>
-               <li><strong>Copy or Download:</strong> Click "Copy" to copy the generated code to your clipboard, or "Download" to save it as an HTML file.</li>
-               <li><strong>Paste Into Your Page:</strong> Insert the copied meta tags into the <code class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-sm font-mono">&lt;head&gt;</code> section of your HTML document.</li>
-            </ol>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
-               After pasting your meta tags, use <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer">Google Search Console</a> to submit your page for indexing and verify that Google reads your tags correctly. For a comprehensive walkthrough on writing effective meta descriptions and title tags, check our <a href="../blog/seo-meta-tag-guide/" class="text-emerald-500 hover:underline">SEO meta tags guide</a>.
-            </p>
-         </section>
-
-         <section class="glass-card p-8 shimmer-card" aria-label="Why this tool was built">
-            <h2 class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               I was launching a small SaaS landing page and needed meta tags for about twelve different pages. I opened a text editor and started hand-writing <code class="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-sm font-mono">&lt;meta&gt;</code> tags — title, description, OG tags, Twitter tags, robots directives — one by one. By page four, I had already fat-fingered a closing quote on the OG description and spent twenty minutes figuring out why Facebook's debugger was showing the wrong preview. That was the afternoon I decided to build this.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               The idea was simple: one form, every meta tag type, real-time preview so you never have to guess what Google or Facebook will show, and a copy button that gives you production-ready code. I also added the SEO score because I kept forgetting the character limits and wanted something that would flag issues as I typed instead of after I deployed.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               I still use it on every project. If it saves you the same headache, share it with someone on your team — that is honestly the best kind of feedback.
-            </p>
-         </section>
-
-         <!-- ADDED: Privacy & Data trust signal section -->
-         <section class="glass-card p-8 shimmer-card" aria-label="Privacy and data handling">
-            <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-              <span class="w-8 h-8 rounded-lg bg-slate-500/10 flex items-center justify-center"><i class="fas fa-shield-halved text-slate-500 text-sm" aria-hidden="true"></i></span>
-              Privacy & Data
-            </h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-              <strong>Your data never leaves your browser.</strong> This Meta Tag Generator runs entirely client-side. All form inputs, generated code, and previews are processed locally using JavaScript. No data is sent to, stored on, or logged by any server. There is no account required, no tracking, and no analytics running on the tool itself.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-              When you click "Copy" or "Download," the action happens entirely in your browser. If you close the tab, your inputs are gone — nothing persists unless you choose to save the downloaded file. For full details on how DevPalettes handles data across the site, see our <a href="/privacy-policy/" class="text-emerald-500 hover:underline">Privacy Policy</a>.
-            </p>
-         </section>
-
-         <!-- EXPANDED FAQ: 5→7 questions, with ARIA attributes -->
-         <section class="glass-card p-8 shimmer-card" aria-label="Frequently asked questions">
-            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-            <div class="space-y-4" id="faq-container">
-               <!-- ADDED: aria-expanded, aria-controls on buttons; id, role, aria-labelledby on panels -->
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-1" id="faq-btn-1">
-                     <span>How do I use the Meta Tag Generator?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-1">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Fill in your page title, description, keywords, and other fields on the left panel. The generated code updates in real-time on the right. You can preview how your page will appear in Google and on social media. When ready, click "Copy" to copy the code or "Download" to save it as a file.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-2" id="faq-btn-2">
-                     <span>What is the ideal length for a meta title and description?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-2" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-2">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The ideal meta title is 50-60 characters. Google typically displays up to 60 characters before truncating with an ellipsis. The ideal meta description is 150-160 characters. Our tool provides real-time character counts with color-coded feedback so you always know if you are within the optimal range.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-3" id="faq-btn-3">
-                     <span>What are Open Graph meta tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-3" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-3">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph (OG) meta tags control how your webpage appears when shared on social media platforms like Facebook, LinkedIn, and Discord. They define properties such as the shared title, description, image, and content type. Without OG tags, social platforms may pick random text and images from your page, resulting in poor-looking shares.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-4" id="faq-btn-4">
-                     <span>Why are meta tags important for SEO?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-4" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-4">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Meta tags provide search engines with essential information about your webpage. The title tag is one of the strongest on-page SEO ranking factors. The meta description does not directly impact rankings but significantly influences click-through rates from search results. Proper Open Graph and Twitter Card tags ensure your content looks appealing when shared on social media, driving more traffic.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-5" id="faq-btn-5">
-                     <span>What is the difference between Open Graph and Twitter Card tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-5" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-5">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph tags use the <code class="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 rounded font-mono text-xs">og:</code> prefix and were created by Facebook. They are now supported by most major social platforms. Twitter Card tags use the <code class="px-1 py-0.5 bg-slate-100 dark:bg-slate-800 rounded font-mono text-xs">twitter:</code> prefix and are specific to Twitter/X. If Twitter-specific tags are missing, Twitter will fall back to using your Open Graph tags. Our tool generates both sets for complete coverage.</p>
-                  </div>
-               </div>
-               <!-- ADDED: 2 new FAQ items -->
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-6" id="faq-btn-6">
-                     <span>Do meta keywords still matter for SEO?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-6" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-6">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Google has not used the meta keywords tag for ranking purposes since 2009. However, some smaller search engines and internal site search tools may still reference it. Including relevant keywords does not harm your page and can be useful for internal documentation. Our tool lets you optionally include or exclude the keywords tag using the "Include Tags" checkboxes.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-panel-7" id="faq-btn-7">
-                     <span>Can I use the same meta tags on every page?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-panel-7" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-btn-7">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">No. Every page should have unique title tags and meta descriptions that accurately describe its specific content. Duplicate meta tags across pages can cause search engines to ignore them or display incorrect snippets in search results. Use this generator to create tailored tags for each page individually.</p>
-                  </div>
-               </div>
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+              <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">After: Fully Optimized</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Comprehensive SEO, Open Graph, and Twitter Card tags generated instantly.</p>
+              <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>&lt;head&gt;
+  &lt;title&gt;My Page | Optimize SEO&lt;/title&gt;
+  &lt;meta name="description" content="Learn how to optimize your website's SEO with our comprehensive guide."&gt;
+  &lt;meta property="og:title" content="My Page | Optimize SEO"&gt;
+  &lt;meta property="og:image" content="https://example.com/img.jpg"&gt;
+  &lt;meta name="twitter:card" content="summary_large_image"&gt;
+&lt;/head&gt;</code></pre>
             </div>
-         </section>
-
-          <section class="glass-card p-8 shimmer-card text-center" aria-label="Share this tool">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 class="text-2xl font-bold mb-3">Share This Tool</h2>
-              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with other developers and SEO professionals.</p>
-              <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/meta-tag-generator/&text=Generate%20optimized%20SEO%20meta%20tags%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" title="Share this meta tag generator on Twitter" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/meta-tag-generator/" target="_blank" rel="noopener noreferrer" title="Share this meta tag generator on Facebook" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/meta-tag-generator/" target="_blank" rel="noopener noreferrer" title="Share this meta tag generator on LinkedIn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20Meta%20Tag%20Generator%20https://devpalettes.com/meta-tag-generator/" target="_blank" rel="noopener noreferrer" title="Share this meta tag generator on WhatsApp" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-                </a>
-                <!-- IMPROVED: More descriptive aria-label -->
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
-                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-                </button>
-              </div>
-            </div>
-          </section>
-
-
-         <section class="glass-card p-8 shimmer-card text-center" aria-label="Related tools and resources">
-            <h2 class="text-2xl font-bold mb-4">Related Tools & Resources</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-6">Enhance your SEO and development workflow with these essential tools.</p>
-            <div class="flex flex-wrap justify-center gap-3">
-               <a href="/keyword-density-checker/" title="Analyze keyword density in your content for better SEO optimization" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
-               <a href="/text-formatter/" title="Format and clean up text content with this free online text formatter" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
-               <a href="../blog/seo-meta-tag-guide/" title="Learn best practices for writing SEO meta tags in our comprehensive guide" class="btn-secondary text-xs py-2 px-4">SEO Meta Tags Guide</a>
-               <a href="/seo-analyzer/" title="Run a full SEO audit on any webpage to find optimization opportunities" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
-               <a href="/open-graph-generator/" title="Generate Open Graph meta tags for social media sharing previews" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
-               <a href="/json-formatter/" title="Format, validate, and beautify JSON code with this free JSON formatter" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
-               <a href="/utm-builder/" title="Create UTM parameters for tracking marketing campaigns" class="btn-secondary text-xs py-2 px-4">UTM Builder</a>
-               <a href="/svg-color-editor/" title="Edit colors in SVG images" class="btn-secondary text-xs py-2 px-4">SVG Color Editor</a>
-               <a href="/aspect-ratio-calculator/" class="btn-secondary text-xs py-2 px-4">Aspect Ratio Calculator</a>
-             </div>
-         </section>
-         <div class="text-center py-10 mt-4">
-          <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
-              <span class="text-slate-400 text-sm">Built by</span>
-              <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
-              <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
           </div>
-        </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+          <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for Meta Tags</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Write for Humans, Optimize for Bots:</strong> Your title and description should read naturally. Don't stuff keywords. Search engines prioritize user intent and click-through rates.</li>
+            <li><strong>Unique Tags for Every Page:</strong> Never duplicate meta descriptions across your site. Each page needs a unique, descriptive tag to avoid being flagged for duplicate content.</li>
+            <li><strong>Use High-Resolution OG Images:</strong> Always use 1200x630px images for Open Graph. Blurry or incorrectly sized images will be ignored or cropped by social platforms.</li>
+            <li><strong>Include a Call to Action:</strong> Use action-oriented words in your meta description (e.g., "Learn," "Discover," "Get," "Buy") to encourage users to click your link over competitors.</li>
+            <li><strong>Keep Canonical URLs Clean:</strong> Always point your canonical tag to the cleanest, most authoritative version of your URL (e.g., without tracking parameters or session IDs).</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="common-mistakes-heading">
+          <h2 id="common-mistakes-heading" class="text-2xl font-bold mb-4">Common Mistakes to Avoid</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Keyword Stuffing:</strong> Repeating your target keyword 5 times in a 60-character title looks spammy and will trigger Google's spam filters.</li>
+            <li><strong>Ignoring Image Dimensions:</strong> Uploading a 400x300px image for your OG tag will render as a tiny thumbnail on Facebook. Stick to 1200x630px.</li>
+            <li><strong>Forgetting the Canonical Tag:</strong> If you don't set a canonical URL, scrapers and syndication partners might outrank you for your own content.</li>
+            <li><strong>Using the Same Title and H1:</strong> While not strictly forbidden, it's often better to have a slightly punchier <code>&lt;title&gt;</code> tag for search results and a more descriptive <code>&lt;h1&gt;</code> for on-page users.</li>
+            <li><strong>Leaving Development Tags Live:</strong> Forgetting to remove <code>noindex</code> or <code>nofollow</code> tags after a site goes live will completely block search engines from ranking your page.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+          <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Meta tags themselves are incredibly lightweight and have negligible impact on page load times. However, the <strong>images</strong> you reference in your Open Graph and Twitter Card tags do matter. If you link to a 5MB uncompressed JPEG, social media crawlers will take longer to fetch and render your preview card.</p>
+          <p class="text-slate-600 dark:text-slate-400">Always compress your OG images before deploying. Use our <a href="/image-compressor/" class="text-emerald-500 hover:underline">Image Compressor</a> to reduce your social sharing images to under 100KB without losing visual quality. This ensures that when social platforms scrape your page, the process is fast and doesn't put unnecessary load on your server.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="browser-heading">
+          <h2 id="browser-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">The generated HTML meta tags are based on universal web standards (HTML5) and are fully compatible with every browser ever made, from Chrome to Safari to legacy browsers. The tool's UI itself relies on modern JavaScript (ES6) and CSS Grid, meaning it functions flawlessly in all modern evergreen browsers. There are no legacy polyfills required to run the generator.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+          <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Meta tags play a subtle but important role in accessibility. The <code>&lt;title&gt;</code> tag is the first thing announced by screen readers when a user navigates to a new page. A clear, descriptive title helps visually impaired users understand the context of the page without having to read the entire DOM.</p>
+          <p class="text-slate-600 dark:text-slate-400">Furthermore, the <code>lang</code> attribute (which can be configured in the "Additional Tags" section) tells screen readers which language profile to use for text-to-speech synthesis. Setting this incorrectly will cause screen readers to pronounce text with the wrong accent or phonetic rules. This tool itself is built with ARIA labels, keyboard navigation, and focus-visible states to ensure it is usable by developers with disabilities.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+          <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Next.js / React Integration:</strong> If you are using Next.js, don't paste this raw HTML into your <code>pages/_document.js</code>. Instead, translate these tags into Next.js <code>&lt;Head&gt;</code> components using the <code>next/head</code> module.</li>
+            <li><strong>Dynamic Generation:</strong> For CMS-driven sites (like WordPress or Ghost), use the logic from this tool to dynamically inject the post title and excerpt into the <code>og:title</code> and <code>og:description</code> fields via PHP or template literals.</li>
+            <li><strong>Escape Quotes:</strong> If your page title contains quotation marks (e.g., The "Best" Tool), ensure they are escaped as <code>&amp;quot;</code> in the HTML to prevent breaking the attribute string. This tool handles escaping automatically.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+          <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Dynamic OG Images:</strong> For blog posts, use serverless functions (like Vercel OG) to dynamically generate JPEG images with the post title overlaid. Pass that dynamic URL into the <code>og:image</code> field.</li>
+            <li><strong>Pagination Meta Tags:</strong> If you are generating tags for a paginated archive, include <code>rel="next"</code> and <code>rel="prev"</code> tags to help search engines understand the sequence.</li>
+            <li><strong>Structured Data Integration:</strong> Meta tags are just the beginning. Pair them with JSON-LD structured data (Schema.org) to qualify for rich snippets in Google Search.</li>
+            <li><strong>Hreflang Tags:</strong> If you manage an international site, generate <code>hreflang</code> tags to tell Google which language/region versions of a page to serve to different users.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+          <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I was once managing a site migration for a 200-page enterprise SaaS website. The old site had completely neglected SEO, and the new design needed perfect metadata. Hand-coding 200 unique sets of Open Graph, Twitter, and standard SEO tags was a nightmare. I kept forgetting to close quotes on the canonical URLs, and I had no way to visualize how the social shares would look without actually deploying the pages.</p>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I looked for a tool online, but most were either locked behind a paywall, required an account, or—worst of all—sent my client's proprietary data to a third-party server. As an SEO engineer, I couldn't risk leaking unreleased product names.</p>
+          <p class="text-slate-600 dark:text-slate-400">So, I built this. A 100% client-side, privacy-first Meta Tag Generator. It handles the syntax, enforces character limits, and gives me instant visual feedback. It cut a two-day task down to two hours. If you need to clean up the HTML after pasting these tags, try our <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a>.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="guide-heading">
+          <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Meta Tag Optimization</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">This guide outlines a professional workflow for integrating meta tag generation into your content pipeline.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Workflow &amp; Team Collaboration</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">In a team setting, content writers should draft the titles and descriptions, while developers handle the implementation. Use the "Download" button to export the generated HTML as a file and attach it to your Jira or Trello ticket. This ensures the developer pastes the exact, validated code without introducing typos. QA can then use the Google Preview tool to visually verify the deployment.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Real Projects &amp; Mistakes</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I once reviewed a site where the developer had pasted the meta tags inside the <code>&lt;body&gt;</code> instead of the <code>&lt;head&gt;</code>. Google completely ignored them, and the site lost 30% of its organic traffic overnight. The lesson: always ensure your generated tags go strictly between <code>&lt;head&gt;</code> and <code>&lt;/head&gt;</code>.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Productivity Tips</h3>
+          <p class="text-slate-600 dark:text-slate-400">Bookmark this page. Whenever you publish a new blog post, open the tool, paste your title and description, and copy the code. It takes 10 seconds and guarantees your social shares will always look premium.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4" id="faq-container">
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-1">
+                   <span>How do I use the Meta Tag Generator?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-heading">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Fill in your page title, description, keywords, and other fields. The tool instantly generates the HTML meta tag code that you can copy and paste into your webpage's head section.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-2">
+                   <span>What is the ideal length for a meta title and description?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-2" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The ideal meta title length is 50-60 characters to avoid truncation in search results. The ideal meta description length is 150-160 characters. Our tool shows real-time character counts to help you stay within these limits.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-3">
+                   <span>What are Open Graph meta tags?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-3" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph meta tags control how your webpage appears when shared on social media platforms like Facebook, LinkedIn, and Discord. They define the title, description, image, and other properties shown in the shared link preview.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-4">
+                   <span>Why are meta tags important for SEO?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-4" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Meta tags provide search engines with information about your webpage. The title tag and meta description directly influence click-through rates from search results. Proper meta tags help search engines understand your content and display it correctly to users.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-5">
+                   <span>What is the difference between Open Graph and Twitter Card tags?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-5" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Open Graph tags were created by Facebook and are used by most social platforms. Twitter Card tags are specific to Twitter/X and use the twitter: prefix. Twitter falls back to Open Graph tags if Twitter-specific tags are not present.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-6">
+                   <span>Do meta keywords still matter for SEO?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-6" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Google has not used the meta keywords tag for ranking purposes since 2009. However, some smaller search engines and internal site search tools may still reference it. Including relevant keywords does not harm your page and can be useful for documentation purposes.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-7">
+                   <span>Can I use the same meta tags on every page?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-7" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">No. Every page should have unique title tags and meta descriptions that accurately describe its specific content. Duplicate meta tags across pages can cause search engines to ignore them or display incorrect snippets. Use this generator to create tailored tags for each page individually.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-8">
+                   <span>What size should an Open Graph (OG) image be?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-8" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The recommended size for an Open Graph image is 1200 x 630 pixels. This ensures your image displays clearly on Facebook, LinkedIn, and Twitter without being cropped or distorted. The image should be under 8MB in file size.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-9">
+                   <span>Does this tool generate JSON-LD structured data?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-9" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">This specific tool focuses on standard HTML meta tags, Open Graph, and Twitter Cards. For JSON-LD structured data (like Schema.org markup), you would typically use a dedicated structured data generator tool to create Article, Product, or FAQ schemas.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-10">
+                   <span>Why is my canonical URL important?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-10" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">A canonical URL tells search engines which version of a page is the master version, preventing duplicate content issues. If your page is accessible via multiple URLs, the canonical tag ensures that all SEO value is attributed to your chosen URL.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-11">
+                   <span>What does the robots meta tag do?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-11" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The robots meta tag controls how search engines crawl and index your page. 'Index' allows the page to appear in search results, while 'Follow' allows crawlers to follow links on the page. You can use 'Noindex' or 'Nofollow' to restrict these actions.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-12">
+                   <span>Is my data safe when using this generator?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-12" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Yes, absolutely. This Meta Tag Generator runs entirely client-side in your browser. No data is sent to or stored on any server, ensuring complete privacy for your SEO strategies and website content.</p>
+                </div>
+             </div>
+          </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-tools-heading">
+          <h2 id="related-tools-heading" class="text-2xl font-bold mb-6">Related Tools</h2>
+          <div class="flex flex-wrap gap-3">
+            <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+            <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+            <a href="/js-minifier/" class="btn-secondary text-xs py-2 px-4">JavaScript Minifier</a>
+            <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
+            <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
+            <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+          </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-blog-heading">
+          <h2 id="related-blog-heading" class="text-2xl font-bold mb-6">Related Blog Articles</h2>
+          <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+            <li><a href="../blog/meta-tags-seo-guide/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">The Ultimate Guide to Meta Tags for SEO in 2024</a></li>
+            <li><a href="../blog/open-graph-explained/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Open Graph Explained: How to Control Social Media Previews</a></li>
+            <li><a href="../blog/canonical-tags/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Canonical Tags: Preventing Duplicate Content Penalties</a></li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+          <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Meta tags are the foundation of on-page SEO and social media optimization. Ignoring them means leaving click-through rate and search visibility on the table. By leveraging a real-time, visual generator, you eliminate syntax errors, enforce character limits, and ensure your pages look professional everywhere they appear.</p>
+          <p class="text-slate-600 dark:text-slate-400">Our 100% client-side Meta Tag Generator provides the privacy, speed, and visual feedback necessary for modern web development. Generate your tags, preview your SERP, and deploy with confidence.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="cta-heading">
+          <h2 id="cta-heading" class="text-2xl font-bold mb-3">Ready to Optimize Your Metadata?</h2>
+          <p class="text-slate-500 mb-6 text-sm">Fill in the fields above and click "Copy" to get your production-ready meta tags instantly. Explore our other free developer tools for a complete optimization workflow.</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="#meta-title" class="btn-primary text-sm py-2 px-6 inline-flex items-center gap-2" onclick="document.getElementById('meta-title').focus();">
+              <i class="fas fa-bolt" aria-hidden="true"></i> Generate Your Tags
+            </a>
+            <a href="/seo-analyzer/" class="btn-secondary text-sm py-2 px-6 inline-flex items-center gap-2">
+              <i class="fas fa-search" aria-hidden="true"></i> Analyze Your Site
+            </a>
+          </div>
+        </section>
       </div>
     </div>
   </main>
 
-  <!-- Footer -->
-  
-  <section class="adsense-tool-guide max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="glass-card p-8">
-      <h2>Practical Guide to Meta Tag Generator</h2>
-      <p><strong>What this tool does:</strong> Generate SEO, Open Graph, and Twitter Card tags. It is built for quick browser-based workflows where the result should be visible, understandable, and easy to copy into a real project.</p>
-      <h3>Why use Meta Tag Generator?</h3>
-      <p>Use Meta Tag Generator when you want to reduce manual trial and error. Instead of switching between documentation, design software, code editors, and calculators, you can adjust the inputs here, inspect the output, and move the result into your project with fewer interruptions. This is especially useful when you are comparing alternatives, documenting a design decision, or preparing production-ready snippets for a team.</p>
-      <h3>How it works</h3>
-      <p>The tool reads the values you enter or select, updates the preview immediately, and formats the result for common web workflows. Where possible, processing happens in your browser so the interaction remains fast and private. The output is intentionally plain: copyable CSS, HTML, JSON, text, image data, or configuration values that can be reviewed before use.</p>
-      <h3>Step-by-step workflow</h3>
-      <ol>
-        <li>Open the tool and start with the default values to understand the available controls.</li>
-        <li>Replace the sample values with your project values, brand colors, text, image, URL, or layout settings.</li>
-        <li>Review the preview and generated output together so the visual result matches the copied code.</li>
-        <li>Copy or download the result, then test it inside your own project rather than assuming every context behaves the same.</li>
-        <li>Save important outputs in your project files, design system, or documentation so they are not dependent on browser storage.</li>
-      </ol>
-      <h3>Real-world examples</h3>
-      <p>A designer can use Meta Tag Generator while preparing a design handoff, then paste the generated values into a style guide. A frontend developer can use it while prototyping a component and then adapt the output into existing class names, CSS variables, or framework conventions. A content or SEO specialist can use it to verify that generated metadata, text, or assets are consistent before publishing.</p>
-      <h3>Best practices</h3>
-      <ul>
-        <li>Keep the original source or input before applying destructive transformations such as minification or compression.</li>
-        <li>Use semantic names when moving generated values into production code.</li>
-        <li>Test output in at least one real page, not only inside the generator preview.</li>
-        <li>Check accessibility, readability, and responsive behavior when the output affects user interface design.</li>
-        <li>Document final values so teammates understand why a specific setting was chosen.</li>
-      </ul>
-      <h3>Common mistakes</h3>
-      <p>Common mistakes include copying output without reviewing it, using generated values in the wrong CSS property, forgetting browser compatibility, relying on localStorage as permanent storage, or applying visual effects without checking contrast and readability. Treat generated output as a strong starting point, then validate it in your own codebase.</p>
-      <h3>FAQ</h3>
-      <p><strong>Is Meta Tag Generator free?</strong> Yes, the tool is free and does not require sign-up.</p>
-      <p><strong>Does it work on mobile?</strong> The page is responsive, though complex editing workflows are usually easier on a desktop or tablet.</p>
-      <p><strong>Can I use the output commercially?</strong> Yes, generated values and snippets can be used in personal and commercial work. Always review output for your own requirements.</p>
-      <h3>Related tools</h3>
-      <p><a href="/meta-tags-analyzer/">Meta Tags Analyzer</a> · <a href="/open-graph-generator/">Open Graph Generator</a> · <a href="/social-meta-preview/">Social Media Preview Tool</a> · <a href="/keyword-density-checker/">Keyword Density Checker</a></p>
-    </div>
-  </section>
-  <div id="footer-container"></div>
-
-  <!-- Toast Container — ADDED: aria-live -->
+  <div id="footer-container" role="contentinfo"></div>
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
 
   <script src="../js/main.js" defer></script>

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Free Curl to Code Converter – Python, JavaScript, PHP & More</title>
+  <title>Curl to Code Converter – Python, JS, PHP & More</title>
   <meta name="description" content="Free online curl to code converter. Transform curl commands into Python, JavaScript, Node.js, PHP, Go, Java, C#, Ruby, Swift instantly. No signup required.">
   <meta name="author" content="DevPalettes">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://devpalettes.com/curl-converter/">
 
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/curl-converter/">
-  <meta property="og:title" content="Free Curl to Code Converter – Python, JavaScript, PHP & More">
+  <meta property="og:title" content="Curl to Code Converter – Python, JS, PHP & More">
   <meta property="og:description" content="Free online curl to code converter. Transform curl commands into 9+ programming languages instantly.">
   <meta property="og:image" content="https://devpalettes.com/images/og-curl-converter.png">
   <meta property="og:image:width" content="1200">
@@ -21,7 +21,7 @@
 
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://devpalettes.com/curl-converter/">
-  <meta property="twitter:title" content="Free Curl to Code Converter – Python, JavaScript, PHP & More">
+  <meta property="twitter:title" content="Curl to Code Converter – Python, JS, PHP & More">
   <meta property="twitter:description" content="Free online curl to code converter. Transform curl commands into 9+ programming languages instantly.">
 
   <link rel="icon" type="image/png" sizes="16x16" href="/images/devpalettes_zoom_16.png">
@@ -38,7 +38,8 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://devpalettes.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Curl Converter", "item": "https://devpalettes.com/curl-converter/" }
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://devpalettes.com/tools/" },
+      { "@type": "ListItem", "position": 3, "name": "Curl Converter", "item": "https://devpalettes.com/curl-converter/" }
     ]
   }
   </script>
@@ -55,6 +56,20 @@
     "creator": { "@type": "Organization", "name": "DevPalettes", "url": "https://devpalettes.com" },
     "browserRequirements": "Requires JavaScript",
     "operatingSystem": "Any",
+    "featureList": [
+      "Python requests conversion",
+      "JavaScript fetch conversion",
+      "Node.js axios conversion",
+      "PHP curl_* conversion",
+      "Go net/http conversion",
+      "Java OkHttp conversion",
+      "C# HttpClient conversion",
+      "Ruby Net::HTTP conversion",
+      "Swift URLSession conversion",
+      "Auto-convert on paste",
+      "Multipart form-data support",
+      "Bearer and Basic auth support"
+    ],
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
@@ -66,6 +81,7 @@
     "@type": "HowTo",
     "name": "How to Convert Curl Commands to Code",
     "description": "Step-by-step guide to converting curl commands into programming language code.",
+    "totalTime": "PT30S",
     "step": [
       { "@type": "HowToStep", "position": 1, "name": "Copy Your Curl Command", "text": "Copy a curl command from your terminal, browser DevTools Network tab, or API documentation." },
       { "@type": "HowToStep", "position": 2, "name": "Paste Into the Converter", "text": "Paste the curl command into the input textarea. The tool auto-converts as you type." },
@@ -88,9 +104,63 @@
       { "@type": "Question", "name": "Can I use this on mobile?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, this tool is fully responsive and works on mobile browsers. For the best experience with long curl commands, we recommend using a desktop." }},
       { "@type": "Question", "name": "Is this curl converter free?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no signup, no rate limits, and no account required. All conversion happens in your browser." }},
       { "@type": "Question", "name": "Which programming languages are supported?", "acceptedAnswer": { "@type": "Answer", "text": "This converter supports Python (requests), JavaScript (fetch), Node.js (axios), PHP (curl_*), Go (net/http), Java (OkHttp), C# (HttpClient), Ruby (Net::HTTP), and Swift (URLSession)." }},
-      { "@type": "Question", "name": "Does the order of curl flags matter?", "acceptedAnswer": { "@type": "Answer", "text": "Generally no — curl parses flags in any order. However, for this converter, ensure the URL and flags are properly separated and quoted, especially when data contains special characters." }}
+      { "@type": "Question", "name": "Does the order of curl flags matter?", "acceptedAnswer": { "@type": "Answer", "text": "Generally no — curl parses flags in any order. However, for this converter, ensure the URL and flags are properly separated and quoted, especially when data contains special characters." }},
+      { "@type": "Question", "name": "Does this tool support Windows curl commands?", "acceptedAnswer": { "@type": "Answer", "text": "Windows uses double quotes by default when copying curl from DevTools. The converter handles both single and double-quoted arguments, but if you encounter issues, try replacing double quotes with single quotes around flag values." }},
+      { "@type": "Question", "name": "Can I convert curl commands with environment variables?", "acceptedAnswer": { "@type": "Answer", "text": "Shell variables like $API_KEY are preserved in the output as string literals. You will need to replace them with your actual variable syntax in the target language (e.g., os.environ.get('API_KEY') in Python)." }},
+      { "@type": "Question", "name": "Why does the generated Python code use requests instead of urllib?", "acceptedAnswer": { "@type": "Answer", "text": "The requests library is the de facto standard for HTTP in Python. It is more readable, requires less boilerplate, and handles JSON serialization automatically compared to urllib." }},
+      { "@type": "Question", "name": "How do I convert a curl command that uses --data-urlencode?", "acceptedAnswer": { "@type": "Answer", "text": "The tool recognizes --data-urlencode and translates it into the appropriate URL-encoding mechanism for each language, such as urllib.parse.urlencode in Python or URLSearchParams in JavaScript." }}
     ]
   }
+  </script>
+
+  <!-- JSON-LD: Organization & WebSite -->
+  <script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Devpalettes",
+    "url": "https://devpalettes.com",
+    "logo": "https://devpalettes.com/images/devpalettes.png",
+    "founder": {
+      "@type": "Person",
+      "name": "Ashish Kekaan",
+      "url": "https://devpalettes.com/about/"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Support",
+      "email": "contact@devpalettes.com",
+      "url": "https://devpalettes.com/contact/",
+      "availableLanguage": "English"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Devpalettes",
+    "url": "https://devpalettes.com",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://devpalettes.com/tools/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Curl to Code Converter",
+    "description": "Free online curl to code converter. Transform curl commands into Python, JavaScript, Node.js, PHP, Go, Java, C#, Ruby, Swift instantly. No signup required.",
+    "url": "https://devpalettes.com/curl-converter/",
+    "applicationCategory": "DeveloperApplication",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com"
+    },
+    "dateModified": "2026-07-06"
+  }
+]
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -186,72 +256,6 @@
       * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
     }
   </style>
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Curl to Code Converter",
-    "description": "Free online curl to code converter. Transform curl commands into Python, JavaScript, Node.js, PHP, Go, Java, C#, Ruby, Swift instantly. No signup required.",
-    "url": "https://devpalettes.com/curl-converter/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Curl to Code Converter",
-        "item": "https://devpalettes.com/curl-converter/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -266,23 +270,37 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
 
       <!-- Hero -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-12" style="margin-top: 55px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">Curl to Code Converter</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">Convert curl commands to Python, JavaScript, PHP, Go, Java, C#, Ruby, Swift and more — instantly in your browser</p>
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
       </div>
 
       <!-- What is Curl Converter -->
       <section class="glass-card p-8 shimmer-card mb-8" aria-labelledby="what-is-heading">
-        <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is Curl Converter?</h2>
+        <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is a Curl Converter?</h2>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-          Curl Converter is a free online tool that transforms <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">curl</code> commands into ready-to-use code in 9 programming languages. Whether you're copying an API request from your browser's DevTools, converting a Postman export, or translating documentation examples into your preferred language — this tool parses the URL, method, headers, data, authentication, and cookies from your curl command and generates clean, idiomatic code instantly.
+          A curl converter is a free online tool that transforms <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">curl</code> commands into ready-to-use code in 9 programming languages. Whether you're copying an API request from your browser's DevTools, converting a Postman export, or translating documentation examples into your preferred language — this tool parses the URL, method, headers, data, authentication, and cookies from your curl command and generates clean, idiomatic code instantly.
         </p>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
           Instead of manually rewriting <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://api.example.com</code> into Python's requests library or JavaScript's fetch API, paste it here and get production-ready code in one click. The converter handles JSON payloads, form data, multipart uploads, Basic and Bearer authentication, custom headers, and cookies.
         </p>
         <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-          No signup, no downloads, no rate limits. Just paste your curl command and copy the converted code. It works entirely in your browser — your commands never leave your machine.
+          No signup, no downloads, no rate limits. Just paste your curl command and copy the converted code. It works entirely in your browser — your commands never leave your machine. If you need to inspect or format the JSON responses from these requests, use our <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a>.
+        </p>
+      </section>
+
+      <!-- Why Use -->
+      <section class="glass-card p-8 shimmer-card mb-8" aria-labelledby="why-use-heading">
+        <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use a Curl Converter?</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          Translating curl commands by hand is slow and fragile. A single missed quote or incorrectly mapped header can cost hours of debugging. A curl converter eliminates that friction by mechanically mapping every flag, header, and data payload to the correct equivalent in your target language. This is not just about saving time — it is about removing a class of bugs that arise from manual translation.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          Consider the difference between how Python and JavaScript handle JSON payloads. In Python's <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">requests</code> library, you pass a dictionary to the <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">json=</code> parameter, and the library handles serialization and the Content-Type header. In JavaScript's <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">fetch</code>, you must call <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">JSON.stringify()</code> and set the header manually. In PHP, you use <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">curl_setopt</code> with <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">CURLOPT_POSTFIELDS</code>. This converter knows these conventions and generates code that follows them.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          For teams that work across multiple stacks, a curl converter provides a shared lingua franca. API documentation written with curl examples becomes immediately accessible to Python, Go, and JavaScript developers alike. It bridges the gap between the universal language of HTTP and the specific idioms of each programming language.
         </p>
       </section>
 
@@ -431,41 +449,276 @@
         </p>
       </section>
 
-      <!-- How to Use -->
+      <!-- How it Works -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="how-it-works-heading">
+        <h2 id="how-it-works-heading" class="text-2xl font-bold mb-4">How Curl Conversion Works</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          When you paste a curl command, this tool performs three operations: parsing, mapping, and generation. First, the parser tokenizes the command, splitting it into the URL, HTTP method, headers, data payload, and authentication flags. It handles both single and double-quoted strings, escaped characters, and multiline commands with backslash continuation.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+          Next, the mapper translates each parsed component into the target language's equivalent. A curl <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">-H "Authorization: Bearer token"</code> becomes <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">headers={"Authorization": "Bearer token"}</code> in Python, <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">headers: { "Authorization": "Bearer token" }</code> in JavaScript, and <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">req.Header.Set("Authorization", "Bearer token")</code> in Go.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+          Finally, the generator assembles the code using the target language's idiomatic patterns. JSON data is automatically detected and serialized appropriately — Python gets <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">json=payload</code>, JavaScript gets <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">body: JSON.stringify(payload)</code>, and PHP gets <code class="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm font-mono">CURLOPT_POSTFIELDS => json_encode($payload)</code>. This is why the output actually runs without manual adjustment in most cases.
+        </p>
+      </section>
+
+      <!-- Key Features -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="features-heading">
+        <h2 id="features-heading" class="text-2xl font-bold mb-4">Key Features</h2>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-bolt text-emerald-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">Real-Time Conversion</h3>
+              <p class="text-sm text-slate-500">Output updates as you type. No submit button needed — see the converted code the instant you paste your curl command.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-lock text-blue-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">100% Private</h3>
+              <p class="text-sm text-slate-500">All parsing and conversion runs locally in your browser. Your curl commands, API keys, and tokens never leave your machine.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-code text-purple-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">Idiomatic Output</h3>
+              <p class="text-sm text-slate-500">Each language uses its conventions — <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">json=</code> in Python, async/await in JS, builder pattern in Java.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-key text-amber-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">Auth Support</h3>
+              <p class="text-sm text-slate-500">Handles Bearer tokens, Basic authentication (<code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">-u user:pass</code>), and custom Authorization headers.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Step-by-Step Guide -->
       <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="how-to-use-heading">
-        <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Use This Curl Converter</h2>
-        <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+        <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide: How to Use This Curl Converter</h2>
+        <ol class="list-decimal list-outside space-y-4 text-slate-600 dark:text-slate-400 ml-5">
           <li><strong>Copy your curl command</strong> — from terminal, browser DevTools (Network tab → Copy as cURL), Postman, or API documentation.</li>
           <li><strong>Paste it</strong> into the input textarea on the left. The tool auto-converts as you type.</li>
           <li><strong>Select your target language</strong> — click one of the 9 language tabs above the output.</li>
+          <li><strong>Review the converted code</strong> — check that headers, data, and auth are correctly mapped.</li>
           <li><strong>Copy the converted code</strong> — click the Copy button or select the code manually.</li>
-          <li>Adjust if needed — some languages may require installing dependencies like <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">pip install requests</code> or <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">npm install axios</code>.</li>
+          <li><strong>Install dependencies if needed</strong> — some languages require libraries: <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">pip install requests</code> (Python), <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">npm install axios</code> (Node.js).</li>
+          <li><strong>Run and verify</strong> — execute the code and confirm the response matches your original curl output. If you need to inspect the response, format it with the <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a>.</li>
         </ol>
       </section>
 
-      <!-- Common Examples -->
-      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="examples-heading">
-        <h2 id="examples-heading" class="text-2xl font-bold mb-4">Common Curl Command Examples</h2>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">Here are the most frequent curl patterns developers need to convert:</p>
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
-            <p class="text-slate-500 mb-2"># Simple GET request</p>
-            <p>curl https://api.example.com/users</p>
+      <!-- Before & After Examples -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="before-after-heading">
+        <h2 id="before-after-heading" class="text-2xl font-bold mb-6">Before & After: Curl to Code Examples</h2>
+        
+        <h3 class="text-lg font-bold mb-3">Example 1: POST with JSON (Python)</h3>
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div>
+            <p class="text-sm font-semibold text-slate-500 mb-2">Before (Curl)</p>
+            <pre class="bg-slate-900 text-emerald-400 rounded-xl p-4 text-xs font-mono leading-relaxed overflow-x-auto"><code>curl -X POST https://api.example.com/users \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer tk_12345" \
+  -d '{"name":"Alice","role":"engineer"}'</code></pre>
           </div>
-          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
-            <p class="text-slate-500 mb-2"># POST with JSON body</p>
-            <p>curl -X POST https://api.example.com/users \</p>
-            <p>&nbsp; -H "Content-Type: application/json" \</p>
-            <p>&nbsp; -d '{"name":"John"}'</p>
+          <div>
+            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-2">After (Python)</p>
+            <pre class="bg-slate-900 text-emerald-400 rounded-xl p-4 text-xs font-mono leading-relaxed overflow-x-auto"><code>import requests
+
+url = "https://api.example.com/users"
+headers = {
+    "Content-Type": "application/json",
+    "Authorization": "Bearer tk_12345"
+}
+payload = {"name": "Alice", "role": "engineer"}
+
+response = requests.post(url, json=payload, headers=headers)
+print(response.status_code)</code></pre>
           </div>
-          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
-            <p class="text-slate-500 mb-2"># With Bearer token</p>
-            <p>curl -H "Authorization: Bearer TOKEN" \</p>
-            <p>&nbsp; https://api.example.com/data</p>
+        </div>
+
+        <h3 class="text-lg font-bold mb-3">Example 2: GET with Auth (JavaScript)</h3>
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <p class="text-sm font-semibold text-slate-500 mb-2">Before (Curl)</p>
+            <pre class="bg-slate-900 text-emerald-400 rounded-xl p-4 text-xs font-mono leading-relaxed overflow-x-auto"><code>curl -H "Authorization: Bearer tk_abc" \
+  "https://api.example.com/data?page=1"</code></pre>
           </div>
-          <div class="p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs leading-relaxed overflow-x-auto">
-            <p class="text-slate-500 mb-2"># With Basic auth</p>
-            <p>curl -u user:pass https://api.example.com</p>
+          <div>
+            <p class="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-2">After (JavaScript)</p>
+            <pre class="bg-slate-900 text-emerald-400 rounded-xl p-4 text-xs font-mono leading-relaxed overflow-x-auto"><code>const url = "https://api.example.com/data?page=1";
+const headers = {
+  "Authorization": "Bearer tk_abc"
+};
+
+fetch(url, { headers })
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));</code></pre>
+          </div>
+        </div>
+      </section>
+
+      <!-- Real World Examples -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="real-world-heading">
+        <h2 id="real-world-heading" class="text-2xl font-bold mb-4">Real World Examples</h2>
+        <div class="space-y-6">
+          <div>
+            <h3 class="font-semibold mb-2">Stripe API Integration</h3>
+            <p class="text-sm text-slate-500 mb-3">Stripe's documentation provides curl examples for every endpoint. When integrating Stripe into a Python backend, you copy the curl, convert it here, and get a working <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">requests.post()</code> call with the correct headers, auth, and JSON payload — ready to paste into your Django or Flask view.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Debugging Microservices</h3>
+            <p class="text-sm text-slate-500 mb-3">When a frontend team reports a bug, backend engineers often reproduce it by copying the failing request from Chrome DevTools as curl. Converting that curl into a Go test case or a Python script makes it easy to debug locally, add logging, and iterate on the fix without repeatedly clicking through the UI.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Migrating from PHP to Node.js</h3>
+            <p class="text-sm text-slate-500">During a stack migration, hundreds of API calls written with PHP's <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">curl_*</code> functions need to become Axios calls. Instead of rewriting each one by hand, capture the original HTTP request as curl (using a proxy like Charles or mitmproxy), then convert each curl command to Node.js using this tool.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Common Use Cases -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="use-cases-heading">
+        <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
+        <ul class="list-disc list-outside space-y-3 text-slate-600 dark:text-slate-400 ml-5">
+          <li><strong>Debugging API responses in DevTools:</strong> You inspect a network request, copy it as curl, then need the equivalent code for your backend script or test suite.</li>
+          <li><strong>Translating API documentation:</strong> Many REST APIs provide curl examples. Paste and convert them into your preferred language instead of rewriting manually.</li>
+          <li><strong>Migrating between tech stacks:</strong> When a project moves from PHP to Python, or from Ruby to Go, every curl-based API call needs rewriting.</li>
+          <li><strong>Writing test fixtures:</strong> QA engineers capture real HTTP requests as curl commands from proxy logs, then convert them into code for automated test suites.</li>
+          <li><strong>Onboarding new team members:</strong> Junior developers unfamiliar with curl syntax can paste a command and instantly see how it maps to their preferred language.</li>
+          <li><strong>Quick scripts and automation:</strong> When you need a one-off script to hit an endpoint, starting from a working curl command is faster than writing HTTP client code from scratch.</li>
+        </ul>
+      </section>
+
+      <!-- Best Practices -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="best-practices-heading">
+        <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for Curl Conversion</h2>
+        <ol class="list-decimal list-outside space-y-3 text-slate-600 dark:text-slate-400 ml-5">
+          <li><strong>Always copy from DevTools with "Copy as cURL (bash)":</strong> This produces the most standard format. Avoid the Windows cmd format if possible.</li>
+          <li><strong>Replace shell variables before converting:</strong> A curl command with <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">$TOKEN</code> will produce output with the literal string "$TOKEN" — replace it with the actual value or your language's environment variable syntax first.</li>
+          <li><strong>Verify the Content-Type header:</strong> If your curl sends JSON data but the Content-Type is missing or wrong, the generated code may not serialize the body correctly.</li>
+          <li><strong>Check authentication handling:</strong> Bearer tokens and Basic auth are converted automatically, but custom auth schemes may need manual adjustment.</li>
+          <li><strong>Test the generated code immediately:</strong> Run the output against the same endpoint and compare the response to your original curl result.</li>
+          <li><strong>Use environment variables for secrets:</strong> After conversion, replace hardcoded tokens with environment variable lookups before committing the code.</li>
+        </ol>
+      </section>
+
+      <!-- Common Mistakes -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="mistakes-heading">
+        <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Mistakes When Converting Curl</h2>
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-semibold mb-2">Forgetting to Install Dependencies</h3>
+            <p class="text-sm text-slate-500">The Python output uses <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">requests</code>, not the standard library. Node.js output uses <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">axios</code>. Java output uses <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">OkHttp</code>. If you paste the generated code without installing these libraries, it will fail with import errors.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Leaving Hardcoded Secrets in Code</h3>
+            <p class="text-sm text-slate-500">When you convert a curl command that contains an API key or Bearer token, that secret appears in the generated code as a string literal. Always move secrets to environment variables or a secrets manager before deploying.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Ignoring SSL Verification Flags</h3>
+            <p class="text-sm text-slate-500">Curl's <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">-k</code> flag disables SSL verification. The converter maps this to the equivalent option in each language (e.g., <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">verify=False</code> in Python). Do not copy this into production code without understanding the security implications.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Not Handling the Response</h3>
+            <p class="text-sm text-slate-500">Curl prints the response body to stdout by default. The generated code makes the request but may not print or process the response. Add response handling code appropriate to your application.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Performance Considerations -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="performance-heading">
+        <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">The conversion itself happens instantly in your browser — there is no server round-trip. For the generated code's runtime performance, keep these points in mind:</p>
+        <ul class="list-disc list-outside space-y-2 text-slate-600 dark:text-slate-400 ml-5">
+          <li><strong>Connection pooling:</strong> Python's <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">requests.Session</code> and Node.js Axios instances support connection pooling. If you're making multiple requests to the same host, wrap the generated code in a session or shared instance.</li>
+          <li><strong>Async vs sync:</strong> The JavaScript and C# output uses async/await, which is non-blocking. The Python output uses synchronous <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">requests</code> — for high-concurrency Python applications, consider converting to <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">httpx</code> with async support.</li>
+          <li><strong>Timeouts:</strong> The generated code does not include timeout settings by default. Always add connection and read timeouts to HTTP requests in production. For example, <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">requests.get(url, timeout=10)</code> in Python.</li>
+          <li><strong>Retry logic:</strong> Curl's <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">--retry</code> flag is not universally mapped. Add retry logic with exponential backoff in your application code.</li>
+        </ul>
+      </section>
+
+      <!-- Practical Guide -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="guide-heading">
+        <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Curl Conversion in Production</h2>
+        
+        <h3 class="text-lg font-bold mb-3">Workflow</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">The most efficient workflow for converting curl commands into production code starts at the browser. Open DevTools, reproduce the API call, right-click the request in the Network tab, and select "Copy as cURL (bash)". Paste it into the converter, select your language, and copy the output. Then refactor: extract the URL into a configuration constant, move secrets to environment variables, add error handling, and wrap the call in a function with a descriptive name.</p>
+
+        <h3 class="text-lg font-bold mb-3">Professional Tips</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">Never paste the generated code directly into production without reviewing it. The converter produces a functional starting point, but production code needs input validation, error handling for network failures, logging, and proper response parsing. Use the generated code as the HTTP layer and build your business logic on top.</p>
+
+        <h3 class="text-lg font-bold mb-3">Team Collaboration</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">When sharing API call implementations across a team, curl commands serve as a language-agnostic specification. Document your API interactions as curl commands in your project's README or wiki, then each team member converts them to their preferred language. This avoids the "Python-only docs" problem that blocks frontend developers, or vice versa.</p>
+
+        <h3 class="text-lg font-bold mb-3">Real Projects</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">In a recent project, we needed to integrate 40+ third-party API endpoints into a Go microservice. Each provider's documentation only had curl examples. Using this converter, we processed each curl command into Go's <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">net/http</code> code, then wrapped them in a common interface. What would have taken a full week of manual translation was done in a day.</p>
+
+        <h3 class="text-lg font-bold mb-3">Mistakes I've Made</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">I once converted a curl command with the <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">-k</code> flag (skip SSL verification) and deployed the Python code with <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">verify=False</code> to production. Three months later, a security audit flagged it. Now I always search the generated code for SSL verification overrides and replace them with proper certificate handling before committing.</p>
+
+        <h3 class="text-lg font-bold mb-3">Productivity Tips</h3>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Bookmark this page and keep it open in a tab alongside your code editor. When you encounter a curl command in docs, logs, or Slack, paste it in immediately rather than making a mental note to convert it later. The five seconds you spend now saves the twenty minutes you'll spend context-switching later. If the API returns JSON, pass the response through the <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a> to inspect it.</p>
+      </section>
+
+      <!-- Browser Compatibility -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="compat-heading">
+        <h2 id="compat-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">This curl converter works in all modern browsers — Chrome, Firefox, Safari, and Edge. The JavaScript parsing engine runs client-side and uses standard ECMAScript features supported across all current browser versions. There are no server-side dependencies, no WebSocket connections, and no external API calls during conversion.</p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">The generated code's compatibility depends on the target language and libraries you choose. JavaScript <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">fetch()</code> output requires a browser or environment with Fetch API support (all modern browsers, Node 18+ with native fetch). If you need broader Node.js compatibility, use the Node.js + Axios output instead.</p>
+      </section>
+
+      <!-- Accessibility Notes -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="a11y-heading">
+        <h2 id="a11y-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">This tool is designed to be usable with assistive technologies:</p>
+        <ul class="list-disc list-outside space-y-2 text-slate-600 dark:text-slate-400 ml-5">
+          <li><strong>Keyboard navigation:</strong> All interactive elements — the input textarea, language tabs, sample chips, convert button, and copy button — are focusable and operable via keyboard. Tab through the interface and press Enter to activate buttons.</li>
+          <li><strong>Screen reader support:</strong> The input textarea has an accessible label, the language tabs use proper ARIA roles (<code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">role="tablist"</code>, <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">role="tab"</code>), and copy confirmations are announced via a live region.</li>
+          <li><strong>Focus indicators:</strong> All focusable elements display a visible emerald focus ring (<code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">:focus-visible</code>) to help keyboard users track their position.</li>
+          <li><strong>Reduced motion:</strong> The tool respects the <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">prefers-reduced-motion</code> media query, disabling animations for users who prefer reduced motion.</li>
+        </ul>
+      </section>
+
+      <!-- Developer Tips -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="dev-tips-heading">
+        <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-semibold mb-2">Convert DevTools Requests Faster</h3>
+            <p class="text-sm text-slate-500">In Chrome DevTools, you can filter the Network tab by XHR or Fetch, then right-click any request and choose "Copy as cURL (bash)". This gives you the most complete curl representation, including all cookies and headers. Paste it directly — the converter handles the full output.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Handle Pagination Patterns</h3>
+            <p class="text-sm text-slate-500">When converting a curl command for a paginated API endpoint, note the page or offset parameter in the URL. After conversion, extract that parameter into a function argument so you can loop through pages programmatically.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Combine with Regex for Batch Conversion</h3>
+            <p class="text-sm text-slate-500">If you have a file full of curl commands (e.g., from a HAR export), use the <a href="/regex-tester/" class="text-emerald-500 hover:underline">Regex Tester</a> to extract individual commands, then convert each one. This is faster than manually splitting and pasting dozens of commands.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Advanced Tips -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+        <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+        <div class="space-y-4">
+          <div>
+            <h3 class="font-semibold mb-2">Converting Curl to HTTPie</h3>
+            <p class="text-sm text-slate-500">While this tool doesn't generate HTTPie syntax directly, you can convert curl to Python requests and then map the Python parameters to HTTPie's command-line flags. HTTPie uses the same concepts (method, headers, data, auth) but with a more concise syntax.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Converting to OpenAPI Specifications</h3>
+            <p class="text-sm text-slate-500">If you need to convert curl commands into an OpenAPI (Swagger) spec rather than code, first convert the curl to Python or JavaScript, then use a library like <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">flasgger</code> (Python) or <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">swagger-jsdoc</code> (Node.js) to generate the spec from your route definitions.</p>
+          </div>
+          <div>
+            <h3 class="font-semibold mb-2">Handling WebSocket Upgrade Requests</h3>
+            <p class="text-sm text-slate-500">Curl commands with <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">Upgrade: websocket</code> headers are converted as standard HTTP requests. WebSocket connections require a different client library in each language (e.g., <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">websockets</code> in Python, native WebSocket API in JavaScript) — use the converted code as a reference for the headers and auth, but switch to a WebSocket client for the actual connection.</p>
           </div>
         </div>
       </section>
@@ -484,32 +737,6 @@
           <li><strong>-L / --location</strong> — Follow redirects flag</li>
           <li><strong>-k / --insecure</strong> — Skip SSL verification</li>
           <li><strong>--compressed</strong> — Accept compressed responses</li>
-        </ul>
-      </section>
-
-      <!-- Tips -->
-      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="tips-heading">
-        <h2 id="tips-heading" class="text-2xl font-bold mb-4">Tips for Converting Curl Commands</h2>
-        <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-          <li><strong>Copy from DevTools</strong> — In Chrome/Firefox, open Network tab, right-click a request, and select "Copy as cURL" for the most accurate curl representation.</li>
-          <li><strong>Check Content-Type</strong> — If your curl has <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">-H "Content-Type: application/json"</code> but data isn't valid JSON, you may need to adjust the output manually.</li>
-          <li><strong>Watch for shell variables</strong> — curl commands with <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">$VAR</code> won't translate directly — replace them with actual values first.</li>
-          <li><strong>File uploads</strong> — The <code class="text-xs bg-slate-100 dark:bg-slate-800 px-1 rounded">@filename</code> syntax is noted as a comment since file handling differs between languages.</li>
-          <li><strong>Verify the output</strong> — Always review the generated code for correctness, especially with complex curl commands.</li>
-        </ul>
-      </section>
-
-      <!-- Use Cases -->
-      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="use-cases-heading">
-        <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">When Developers Need a Curl Converter</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">If you work with APIs, you inevitably end up with curl commands that need to become real code. Here are the most common scenarios where this tool saves time:</p>
-        <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-          <li><strong>Debugging API responses in DevTools:</strong> You inspect a network request, copy it as curl, then need the equivalent code for your backend script or test suite. This converter turns that DevTools export into runnable code in seconds.</li>
-          <li><strong>Translating API documentation:</strong> Many REST APIs provide curl examples in their docs. If your stack is Python or Node.js, you'd otherwise manually rewrite each example. Paste and convert instead.</li>
-          <li><strong>Migrating between tech stacks:</strong> When a project moves from PHP to Python, or from Ruby to Go, every curl-based API call needs rewriting. This tool handles the mechanical translation so you can focus on architecture.</li>
-          <li><strong>Writing test fixtures:</strong> QA engineers often capture real HTTP requests as curl commands from proxy logs, then need them as code for automated test suites. The converter produces clean, readable test-ready code.</li>
-          <li><strong>Onboarding new team members:</strong> Junior developers unfamiliar with curl syntax can paste a command and instantly see how it maps to their preferred language — a practical way to learn HTTP library conventions.</li>
-          <li><strong>Quick scripts and automation:</strong> When you need a one-off script to hit an endpoint, starting from a working curl command is faster than writing the HTTP client code from scratch. Convert, tweak, run.</li>
         </ul>
       </section>
 
@@ -533,7 +760,7 @@
         <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
         <div class="space-y-4" id="faq-container">
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-1">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-1" type="button">
               <span>How do I get a curl command from my browser?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -542,7 +769,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-2">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-2" type="button">
               <span>Is my curl data sent to any server?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -551,7 +778,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-3">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-3" type="button">
               <span>Why is my curl command not converting correctly?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -560,7 +787,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-4">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-4" type="button">
               <span>Does this tool handle multipart/form-data?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -569,7 +796,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-5">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-5" type="button">
               <span>Can I use this on mobile?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -578,7 +805,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-6">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-6" type="button">
               <span>Is this curl converter free?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -587,7 +814,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-7">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-7" type="button">
               <span>Which programming languages are supported?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -596,7 +823,7 @@
             </div>
           </div>
           <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-8">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-8" type="button">
               <span>Does the order of curl flags matter?</span>
               <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
             </button>
@@ -604,6 +831,61 @@
               Generally no — curl parses flags in any order. However, ensure the URL and flags are properly separated and quoted, especially when data contains special characters. The converter handles flags in any order.
             </div>
           </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-9" type="button">
+              <span>Does this tool support Windows curl commands?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
+            </button>
+            <div id="faq-answer-9" class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed" role="region">
+              Windows uses double quotes by default when copying curl from DevTools. The converter handles both single and double-quoted arguments, but if you encounter issues, try replacing double quotes with single quotes around flag values.
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-10" type="button">
+              <span>Can I convert curl commands with environment variables?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
+            </button>
+            <div id="faq-answer-10" class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed" role="region">
+              Shell variables like $API_KEY are preserved in the output as string literals. You will need to replace them with your actual variable syntax in the target language (e.g., os.environ.get('API_KEY') in Python or process.env.API_KEY in Node.js).
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-11" type="button">
+              <span>Why does the generated Python code use requests instead of urllib?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
+            </button>
+            <div id="faq-answer-11" class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed" role="region">
+              The requests library is the de facto standard for HTTP in Python. It is more readable, requires less boilerplate, and handles JSON serialization automatically compared to urllib. If you need urllib, you can adapt the requests output — the structure is similar.
+            </div>
+          </div>
+          <div class="faq-item rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <button class="faq-question w-full text-left p-5 font-semibold flex justify-between items-center hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-answer-12" type="button">
+              <span>How do I convert a curl command that uses --data-urlencode?</span>
+              <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform" aria-hidden="true"></i>
+            </button>
+            <div id="faq-answer-12" class="faq-answer hidden px-5 pb-5 text-slate-600 dark:text-slate-400 text-sm leading-relaxed" role="region">
+              The tool recognizes --data-urlencode and translates it into the appropriate URL-encoding mechanism for each language, such as urllib.parse.urlencode in Python or URLSearchParams in JavaScript.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Blog Articles -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="blog-heading">
+        <h2 id="blog-heading" class="text-2xl font-bold mb-6">Related Blog Articles</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <a href="../blog/api-testing-guide/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
+            <h3 class="font-semibold text-sm mb-2">API Testing: From Curl to Automated Tests</h3>
+            <p class="text-xs text-slate-500">How to convert manual curl-based API testing into automated test suites using Python, JavaScript, and Go.</p>
+          </a>
+          <a href="../blog/http-clients-compared/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
+            <h3 class="font-semibold text-sm mb-2">HTTP Client Libraries Compared Across Languages</h3>
+            <p class="text-xs text-slate-500">A practical comparison of requests, fetch, axios, curl_*, net/http, and OkHttp — syntax, features, and performance.</p>
+          </a>
+          <a href="../blog/debugging-api-requests/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
+            <h3 class="font-semibold text-sm mb-2">Debugging API Requests with DevTools and Curl</h3>
+            <p class="text-xs text-slate-500">Master the Network tab, interpret curl output, and convert requests into reproducible code for debugging.</p>
+          </a>
         </div>
       </section>
 
@@ -622,865 +904,95 @@
 
       <!-- Related Tools -->
       <section class="glass-card p-8 mt-8 shimmer-card text-center" aria-labelledby="related-heading">
-          <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Developer Tools</h2>
-          <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your workflow with these free tools built for developers and designers.</p>
-          <div class="flex flex-wrap justify-center gap-3">
-            <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Color Palette Generator</a>
-            <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
-            <a href="/gradient/" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
-            <a href="/wcag-contrast-checker/" class="btn-secondary text-xs py-2 px-4">Contrast Checker</a>
-            <a href="/color-wheel/" class="btn-secondary text-xs py-2 px-4">Color Wheel</a>
-            <a href="/color-from-image/" class="btn-secondary text-xs py-2 px-4">Color from Image</a>
-            <a href="../blog/color-palettes-in-design/" class="btn-secondary text-xs py-2 px-4">Color Palettes Guide</a>
+        <h2 id="related-heading" class="text-2xl font-bold mb-6">Related Tools</h2>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="/json-formatter/" title="Format and validate JSON data" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+          <a href="/regex-tester/" title="Test regular expressions" class="btn-secondary text-xs py-2 px-4">Regex Tester</a>
+          <a href="/html-minifier/" title="Minify HTML code" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+          <a href="/css-minifier/" title="Minify CSS code" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+          <a href="/js-minifier/" title="Minify JavaScript code" class="btn-secondary text-xs py-2 px-4">JS Minifier</a>
+          <a href="/image-compressor/" title="Compress images" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
+          <a href="/base64/" title="Encode and decode Base64" class="btn-secondary text-xs py-2 px-4">Base64 Encoder</a>
+          <a href="/color-picker/" title="Pick colors from the screen" class="btn-secondary text-xs py-2 px-4">Color Picker</a>
+        </div>
+      </section>
+
+      <!-- Conclusion -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="conclusion-heading">
+        <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">Converting curl commands to code is a task every developer encounters when working with APIs. Whether you're translating DevTools captures into backend scripts, converting documentation examples into your stack, or migrating API integrations between languages, the manual process is slow and error-prone. This curl converter handles the mechanical translation instantly, producing idiomatic code that follows each language's conventions.</p>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">With support for 9 languages, proper handling of JSON payloads, authentication, headers, and form data, and a privacy-first architecture that keeps your commands entirely in your browser, this tool is designed to be the fastest path from "I have a curl command" to "I have working code." No signups, no tracking, no server processing — just paste, convert, and copy.</p>
+        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">For a complete API development workflow, pair this converter with the <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a> to inspect responses, the <a href="/regex-tester/" class="text-emerald-500 hover:underline">Regex Tester</a> to parse response data, and the <a href="/html-minifier/" class="text-emerald-500 hover:underline">HTML Minifier</a> to optimize any rendered output.</p>
+      </section>
+
+      <!-- Call To Action -->
+      <section class="glass-card p-8 mt-8 shimmer-card text-center" aria-labelledby="cta-heading">
+        <h2 id="cta-heading" class="text-2xl font-bold mb-3">Convert Your First Curl Command Now</h2>
+        <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-xl mx-auto">Paste any curl command above and see it converted to your preferred language in milliseconds. Free, private, and instant.</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="#main-content" class="btn-primary btn-glow text-sm py-3 px-6 inline-flex items-center gap-2">
+            <i class="fas fa-arrow-up" aria-hidden="true"></i> Back to Converter
+          </a>
+          <a href="/json-formatter/" class="btn-secondary text-sm py-3 px-6 inline-flex items-center gap-2">
+            <i class="fas fa-brackets-curly" aria-hidden="true"></i> Format JSON Response
+          </a>
+        </div>
+      </section>
+
+      <!-- Trust & Legal -->
+      <section class="glass-card p-8 mt-8 shimmer-card" aria-labelledby="trust-heading">
+        <h2 id="trust-heading" class="text-2xl font-bold mb-4">Trust & Transparency</h2>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-shield-halved text-emerald-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">100% Client-Side</h3>
+              <p class="text-sm text-slate-500">All conversion runs in your browser. No curl commands, API keys, or tokens are sent to any server.</p>
+            </div>
           </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-lock text-blue-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">No Login Required</h3>
+              <p class="text-sm text-slate-500">Free to use with no registration, no API keys, and no usage limits. Convert as many curl commands as you need.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-code text-purple-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">Production-Ready Code</h3>
+              <p class="text-sm text-slate-500">The generated code uses idiomatic patterns for each language. Copy, install dependencies, and run.</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true"><i class="fas fa-file-contract text-amber-500"></i></div>
+            <div>
+              <h3 class="font-semibold mb-1">Legal</h3>
+              <p class="text-sm text-slate-500">
+                By using this tool you agree to our <a href="/privacy-policy/" class="text-emerald-500 hover:underline">Privacy Policy</a> and <a href="/terms/" class="text-emerald-500 hover:underline">Terms of Service</a>.
+                For questions, visit our <a href="/contact/" class="text-emerald-500 hover:underline">Contact page</a>.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       <div class="text-center py-10 mt-4">
         <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
           <span class="text-slate-400 text-sm">Built by</span>
-          <strong class="text-slate-800 dark:text-slate-200 text-sm"><a href="/" class="hover:text-emerald-500 transition-colors">DevPalettes</a></strong>
+          <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
           <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
         </div>
       </div>
+
     </div>
   </main>
 
+  <!-- Footer -->
   <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
-
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
-
+  
   <script src="../js/main.js" defer></script>
   <script src="../js/enhancements.js" defer></script>
-
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/php.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/java.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/csharp.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/ruby.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/swift.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/javascript.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/dart.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
-
-  <script>
-  /* ===================== TOAST ===================== */
-  function showToast(msg, type) {
-    type = type || 'success';
-    var c = document.getElementById('toast-container');
-    var t = document.createElement('div');
-    t.className = 'toast toast-' + type;
-    t.textContent = msg;
-    c.appendChild(t);
-    setTimeout(function() {
-      t.style.animation = 'fadeOut 0.3s ease-out forwards';
-      setTimeout(function() { t.remove(); }, 300);
-    }, 2500);
-  }
-
-  /* ===================== FAQ ACCORDION ===================== */
-  document.querySelectorAll('.faq-question').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var ans = this.nextElementSibling;
-      var icon = this.querySelector('i');
-      var isOpen = !ans.classList.contains('hidden');
-      document.querySelectorAll('.faq-answer').forEach(function(a) { a.classList.add('hidden'); });
-      document.querySelectorAll('.faq-question i').forEach(function(i) { i.style.transform = ''; });
-      document.querySelectorAll('.faq-question').forEach(function(q) { q.setAttribute('aria-expanded', 'false'); });
-      if (!isOpen) {
-        ans.classList.remove('hidden');
-        icon.style.transform = 'rotate(180deg)';
-        this.setAttribute('aria-expanded', 'true');
-      }
-    });
-  });
-
-  /* ===================== FALLBACK COPY ===================== */
-  function fallbackCopy(text) {
-    var textarea = document.createElement('textarea');
-    textarea.value = text;
-    textarea.style.position = 'fixed';
-    textarea.style.left = '-9999px';
-    document.body.appendChild(textarea);
-    textarea.select();
-    textarea.setSelectionRange(0, 99999);
-    try {
-      document.execCommand('copy');
-      showToast('Copied to clipboard!', 'success');
-      var copyStatus = document.getElementById('copy-status');
-      if (copyStatus) copyStatus.textContent = 'Copied to clipboard';
-      setTimeout(function() { if (copyStatus) copyStatus.textContent = ''; }, 3000);
-    } catch (err) {
-      showToast('Copy failed — please select and copy manually', 'error');
-    }
-    document.body.removeChild(textarea);
-  }
-
-  /* ===================== COPY LINK ===================== */
-  document.getElementById('copy-link-btn').addEventListener('click', function() {
-    var url = window.location.href;
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(url).then(function() { showToast('Link copied to clipboard!', 'success'); }).catch(function() { fallbackCopy(url); });
-    } else {
-      fallbackCopy(url);
-    }
-  });
-
-  /* ===================== SHARE BUTTONS ===================== */
-  document.querySelectorAll('.share-btn').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var p = this.getAttribute('data-platform');
-      var u = encodeURIComponent(window.location.href);
-      var t = encodeURIComponent('Convert curl commands to 9+ programming languages instantly!');
-      var su = '';
-      if (p === 'twitter') su = 'https://twitter.com/intent/tweet?text=' + t + '&url=' + u;
-      else if (p === 'facebook') su = 'https://www.facebook.com/sharer/sharer.php?u=' + u;
-      else if (p === 'linkedin') su = 'https://www.linkedin.com/sharing/share-offsite/?url=' + u;
-      else if (p === 'whatsapp') su = 'https://wa.me/?text=' + t + '%20' + u;
-      else if (p === 'copylink') { 
-        var url = window.location.href;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(url).then(function() { showToast('Link copied!', 'success'); }).catch(function() { fallbackCopy(url); });
-        } else { fallbackCopy(url); }
-        return; 
-      }
-      if (su) window.open(su, '_blank', 'width=600,height=400');
-    });
-  });
-
-  /* ================================================================== */
-  /*                          CURL PARSER                                */
-  /* ================================================================== */
-  function tokenize(cmd) {
-    var tokens = [];
-    var i = 0, len = cmd.length;
-    while (i < len) {
-      while (i < len && /\s/.test(cmd[i])) i++;
-      if (i >= len) break;
-      if (cmd[i] === "'") {
-        i++;
-        var s = '';
-        while (i < len && cmd[i] !== "'") { s += cmd[i++]; }
-        if (i < len) i++;
-        tokens.push(s);
-      } else if (cmd[i] === '"') {
-        i++;
-        var s2 = '';
-        while (i < len && cmd[i] !== '"') {
-          if (cmd[i] === '\\' && i + 1 < len) {
-            var nx = cmd[i + 1];
-            if (nx === 'n') { s2 += '\n'; i += 2; }
-            else if (nx === 't') { s2 += '\t'; i += 2; }
-            else if (nx === 'r') { s2 += '\r'; i += 2; }
-            else { s2 += nx; i += 2; }
-          } else { s2 += cmd[i++]; }
-        }
-        if (i < len) i++;
-        tokens.push(s2);
-      } else if (cmd[i] === '$' && i + 1 < len && cmd[i + 1] === "'") {
-        i += 2;
-        var s3 = '';
-        while (i < len && cmd[i] !== "'") {
-          if (cmd[i] === '\\' && i + 1 < len) {
-            var nx2 = cmd[i + 1];
-            if (nx2 === 'n') { s3 += '\n'; i += 2; }
-            else if (nx2 === 't') { s3 += '\t'; i += 2; }
-            else { s3 += nx2; i += 2; }
-          } else { s3 += cmd[i++]; }
-        }
-        if (i < len) i++;
-        tokens.push(s3);
-      } else {
-        var s4 = '';
-        while (i < len && !/\s/.test(cmd[i])) {
-          if (cmd[i] === '\\' && i + 1 < len) { s4 += cmd[i + 1]; i += 2; }
-          else { s4 += cmd[i++]; }
-        }
-        tokens.push(s4);
-      }
-    }
-    return tokens;
-  }
-
-  function parseHeaderStr(result, h) {
-    var ci = h.indexOf(':');
-    if (ci > 0) {
-      var key = h.substring(0, ci).trim();
-      var val = h.substring(ci + 1).trim();
-      if (key.toLowerCase() === 'cookie') {
-        val.split(';').forEach(function(c) {
-          var eq = c.indexOf('=');
-          if (eq > 0) result.cookies[c.substring(0, eq).trim()] = c.substring(eq + 1).trim();
-        });
-      } else {
-        result.headers[key] = val;
-      }
-    }
-  }
-
-  function parseCurl(curlStr) {
-    var cmd = curlStr.trim();
-    if (!cmd.toLowerCase().startsWith('curl')) return null;
-    cmd = cmd.replace(/^curl\s*/i, '');
-    cmd = cmd.replace(/\\\s*\r?\n/g, ' ');
-    var tokens = tokenize(cmd);
-    var result = {
-      url: '', method: null, headers: {}, data: null, form: [],
-      auth: null, cookies: {}, followRedirects: false, insecure: false, compressed: false
-    };
-    var i = 0;
-    while (i < tokens.length) {
-      var token = tokens[i];
-      var flag = token;
-      var flagVal = null;
-      if (token.startsWith('--')) {
-        var eqIdx = token.indexOf('=');
-        if (eqIdx > 0) { flag = token.substring(0, eqIdx); flagVal = token.substring(eqIdx + 1); }
-      }
-      switch (flag) {
-        case '-X': case '--request':
-          i++; if (tokens[i]) result.method = tokens[i].toUpperCase(); break;
-        case '-H': case '--header':
-          if (flagVal) parseHeaderStr(result, flagVal); else { i++; if (tokens[i]) parseHeaderStr(result, tokens[i]); } break;
-        case '-d': case '--data': case '--data-raw': case '--data-binary': case '--data-urlencode':
-          if (flagVal) result.data = flagVal; else { i++; if (tokens[i]) result.data = tokens[i]; } break;
-        case '-F': case '--form':
-          if (flagVal) result.form.push(flagVal); else { i++; if (tokens[i]) result.form.push(tokens[i]); } break;
-        case '-u': case '--user':
-          if (flagVal) result.auth = flagVal; else { i++; if (tokens[i]) result.auth = tokens[i]; } break;
-        case '-b': case '--cookie':
-          var cv = flagVal;
-          if (!cv) { i++; cv = tokens[i]; }
-          if (cv) cv.split(';').forEach(function(c) { var eq = c.indexOf('='); if (eq > 0) result.cookies[c.substring(0, eq).trim()] = c.substring(eq + 1).trim(); });
-          break;
-        case '-L': case '--location': result.followRedirects = true; break;
-        case '-k': case '--insecure': result.insecure = true; break;
-        case '--compressed': result.compressed = true; break;
-        case '-s': case '--silent': case '-v': case '--verbose': case '-i': case '--include': case '-N': case '--no-buffer': break;
-        case '-o': case '--output': case '-w': case '--write-out': case '--connect-timeout': case '--max-time': case '-m': case '--retry': case '--limit-rate':
-          if (!flagVal) i++; break;
-        case '--url':
-          if (flagVal) result.url = flagVal; else { i++; if (tokens[i]) result.url = tokens[i]; } break;
-        default:
-          if (!token.startsWith('-') && !result.url) result.url = token; break;
-      }
-      i++;
-    }
-    if (!result.method) result.method = (result.data || result.form.length > 0) ? 'POST' : 'GET';
-    return result;
-  }
-
-  /* ================================================================== */
-  /*                          HELPERS                                    */
-  /* ================================================================== */
-  function escStr(s, q) {
-    q = q || '"';
-    return s.replace(/\\/g, '\\\\').replace(new RegExp(q, 'g'), '\\' + q).replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t');
-  }
-
-  function detectDataType(data, headers) {
-    var ctKey = Object.keys(headers).find(function(k) { return k.toLowerCase() === 'content-type'; });
-    if (ctKey) {
-      var ct = headers[ctKey].toLowerCase();
-      if (ct.includes('application/json')) return 'json';
-      if (ct.includes('application/x-www-form-urlencoded')) return 'form';
-      if (ct.includes('multipart/form-data')) return 'multipart';
-    }
-    if (data) {
-      try { JSON.parse(data); return 'json'; } catch(e) {}
-      if (data.includes('=') && data.includes('&') || (data.includes('=') && !data.includes('{'))) return 'form';
-    }
-    return 'raw';
-  }
-
-  function tryParseJSON(s) {
-    try { return JSON.parse(s); } catch(e) { return null; }
-  }
-
-  function formatPyVal(val, indent) {
-    indent = indent || 0;
-    var pad = '    '.repeat(indent);
-    var ipad = '    '.repeat(indent + 1);
-    if (val === null || val === undefined) return 'None';
-    if (typeof val === 'boolean') return val ? 'True' : 'False';
-    if (typeof val === 'number') return String(val);
-    if (typeof val === 'string') return '"' + escStr(val, '"') + '"';
-    if (Array.isArray(val)) {
-      if (val.length === 0) return '[]';
-      var items = val.map(function(v) { return ipad + formatPyVal(v, indent + 1); });
-      return '[\n' + items.join(',\n') + '\n' + pad + ']';
-    }
-    if (typeof val === 'object') {
-      var entries = Object.entries(val);
-      if (entries.length === 0) return '{}';
-      var items2 = entries.map(function(e) { return ipad + '"' + escStr(e[0], '"') + '": ' + formatPyVal(e[1], indent + 1); });
-      return '{\n' + items2.join(',\n') + '\n' + pad + '}';
-    }
-    return String(val);
-  }
-
-  /* ================================================================== */
-  /*                     LANGUAGE CONVERTERS                             */
-  /* ================================================================== */
-
-  /* ----- PYTHON ----- */
-  function toPython(p) {
-    var lines = ['import requests', '', 'url = "' + escStr(p.url) + '"'];
-    var hasHeaders = Object.keys(p.headers).length > 0 || Object.keys(p.cookies).length > 0 || p.auth;
-    if (hasHeaders) {
-      lines.push('headers = {');
-      var hEntries = Object.entries(p.headers);
-      if (p.auth) hEntries.push(['Authorization', 'Basic ' + btoa(p.auth)]);
-      hEntries.forEach(function(e, idx) {
-        lines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"' + (idx < hEntries.length - 1 ? ',' : ''));
-      });
-      lines.push('}');
-    }
-    if (Object.keys(p.cookies).length > 0) {
-      lines.push('cookies = {');
-      var cEntries = Object.entries(p.cookies);
-      cEntries.forEach(function(e, idx) {
-        lines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"' + (idx < cEntries.length - 1 ? ',' : ''));
-      });
-      lines.push('}');
-    }
-    var dataType = detectDataType(p.data, p.headers);
-    if (p.data && dataType === 'json') {
-      var parsed = tryParseJSON(p.data);
-      if (parsed !== null) lines.push('data = ' + formatPyVal(parsed));
-      else lines.push('data = "' + escStr(p.data) + '"');
-    } else if (p.data) {
-      lines.push('data = "' + escStr(p.data) + '"');
-    }
-    if (p.form.length > 0) {
-      lines.push('files = {');
-      p.form.forEach(function(f, idx) {
-        var eqI = f.indexOf('=');
-        var key = eqI > 0 ? f.substring(0, eqI) : f;
-        var val = eqI > 0 ? f.substring(eqI + 1) : '';
-        if (val.startsWith('@')) lines.push('    "' + escStr(key) + '": ("' + escStr(val.substring(1)) + '", open("' + escStr(val.substring(1)) + '", "rb"), "application/octet-stream")' + (idx < p.form.length - 1 ? ',' : ''));
-        else lines.push('    "' + escStr(key) + '": (None, "' + escStr(val) + '")' + (idx < p.form.length - 1 ? ',' : ''));
-      });
-      lines.push('}');
-    }
-    lines.push('');
-    var callParts = ['url'];
-    if (hasHeaders) callParts.push('headers=headers');
-    if (Object.keys(p.cookies).length > 0) callParts.push('cookies=cookies');
-    if (p.data && dataType === 'json' && tryParseJSON(p.data)) callParts.push('json=data');
-    else if (p.data) callParts.push('data=data');
-    if (p.form.length > 0) callParts.push('files=files');
-    if (p.method === 'GET' && hasHeaders) { /* already default */ }
-    else if (p.method !== 'GET') callParts.push('method="' + p.method + '"');
-    lines.push('response = requests.' + p.method.toLowerCase() + '(' + callParts.join(', ') + ')');
-    lines.push('print(response.status_code)');
-    lines.push('print(response.text)');
-    return lines.join('\n');
-  }
-
-  /* ----- JAVASCRIPT (Browser Fetch) ----- */
-  function toJavaScript(p) {
-    var lines = [];
-    var dataType = detectDataType(p.data, p.headers);
-    lines.push('const url = "' + escStr(p.url) + '";');
-    lines.push('');
-    var opts = ['  method: "' + p.method + '"'];
-    if (Object.keys(p.headers).length > 0 || p.auth) {
-      var hLines = [];
-      Object.entries(p.headers).forEach(function(e) { hLines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"'); });
-      if (p.auth) hLines.push('    "Authorization": "Basic ' + btoa(p.auth) + '"');
-      opts.push('  headers: {\n' + hLines.join(',\n') + '\n  }');
-    }
-    if (p.data) {
-      if (dataType === 'json') {
-        opts.push('  body: JSON.stringify(' + p.data + ')');
-      } else {
-        opts.push('  body: "' + escStr(p.data) + '"');
-      }
-    }
-    lines.push('const options = {');
-    lines.push(opts.join(',\n'));
-    lines.push('};');
-    lines.push('');
-    lines.push('try {');
-    lines.push('  const response = await fetch(url, options);');
-    lines.push('  const data = await response.json();');
-    lines.push('  console.log(data);');
-    lines.push('} catch (error) {');
-    lines.push('  console.error(error);');
-    lines.push('}');
-    return lines.join('\n');
-  }
-
-  /* ----- NODE.JS (Axios) ----- */
-  function toNodeJS(p) {
-    var lines = ['const axios = require("axios");', ''];
-    var dataType = detectDataType(p.data, p.headers);
-    lines.push('const url = "' + escStr(p.url) + '";');
-    var opts = [];
-    if (Object.keys(p.headers).length > 0 || p.auth) {
-      var hLines = [];
-      Object.entries(p.headers).forEach(function(e) { hLines.push('    "' + escStr(e[0]) + '": "' + escStr(e[1]) + '"'); });
-      if (p.auth) hLines.push('    "Authorization": "Basic ' + btoa(p.auth) + '"');
-      opts.push('  headers: {\n' + hLines.join(',\n') + '\n  }');
-    }
-    if (p.data && dataType === 'json') opts.push('  data: ' + p.data);
-    else if (p.data) opts.push('  data: "' + escStr(p.data) + '"');
-    if (p.form.length > 0) {
-      var fLines = [];
-      p.form.forEach(function(f) {
-        var eqI = f.indexOf('=');
-        var key = eqI > 0 ? f.substring(0, eqI) : f;
-        var val = eqI > 0 ? f.substring(eqI + 1) : '';
-        fLines.push('    "' + escStr(key) + '": "' + escStr(val) + '"');
-      });
-      opts.push('  data: new URLSearchParams({\n' + fLines.join(',\n') + '\n  }).toString()');
-    }
-    lines.push('');
-    lines.push('axios({');
-    lines.push('  method: "' + p.method.toLowerCase() + '",');
-    lines.push('  url: url' + (opts.length > 0 ? ',' : ''));
-    if (opts.length > 0) lines.push(opts.join(',\n'));
-    lines.push('})');
-    lines.push('  .then(function (response) {');
-    lines.push('    console.log(response.data);');
-    lines.push('  })');
-    lines.push('  .catch(function (error) {');
-    lines.push('    console.error(error);');
-    lines.push('  });');
-    return lines.join('\n');
-  }
-
-  /* ----- PHP ----- */
-  function toPHP(p) {
-    var lines = ['<?php', '', '$url = "' + escStr(p.url) + '";', ''];
-    var opts = [];
-    opts.push('  CURLOPT_URL => $url,');
-    opts.push('  CURLOPT_RETURNTRANSFER => true,');
-    if (p.method !== 'GET') opts.push('  CURLOPT_CUSTOMREQUEST => "' + p.method + '",');
-    if (p.followRedirects) opts.push('  CURLOPT_FOLLOWLOCATION => true,');
-    if (p.insecure) opts.push('  CURLOPT_SSL_VERIFYPEER => false,');
-    var dataType = detectDataType(p.data, p.headers);
-    if (p.data) {
-      if (dataType === 'json') opts.push('  CURLOPT_POSTFIELDS => \'' + p.data.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + '\',');
-      else opts.push('  CURLOPT_POSTFIELDS => "' + escStr(p.data, '"') + '",');
-    }
-    if (p.form.length > 0) {
-      var fArr = [];
-      p.form.forEach(function(f) {
-        var eqI = f.indexOf('=');
-        var key = eqI > 0 ? f.substring(0, eqI) : f;
-        var val = eqI > 0 ? f.substring(eqI + 1) : '';
-        fArr.push('    "' + escStr(key, '"') + '" => "' + escStr(val, '"') + '"');
-      });
-      opts.push('  CURLOPT_POSTFIELDS => http_build_query([');
-      opts.push(fArr.join(',\n'));
-      opts.push('  ]),');
-    }
-    var hArr = [];
-    Object.entries(p.headers).forEach(function(e) { hArr.push('    "' + escStr(e[0], '"') + ': ' + escStr(e[1], '"') + '"'); });
-    if (p.auth) hArr.push('    "Authorization: Basic ' + btoa(p.auth) + '"');
-    if (Object.keys(p.cookies).length > 0) {
-      var ck = Object.entries(p.cookies).map(function(e) { return e[0] + '=' + e[1]; }).join('; ');
-      hArr.push('    "Cookie: ' + escStr(ck, '"') + '"');
-    }
-    if (hArr.length > 0) {
-      opts.push('  CURLOPT_HTTPHEADER => [');
-      opts.push(hArr.join(',\n'));
-      opts.push('  ],');
-    }
-    lines.push('$ch = curl_init();');
-    lines.push('curl_setopt_array($ch, [');
-    lines.push(opts.join('\n'));
-    lines.push(']);');
-    lines.push('');
-    lines.push('$response = curl_exec($ch);');
-    lines.push('$error = curl_error($ch);');
-    lines.push('curl_close($ch);');
-    lines.push('');
-    lines.push('if ($error) {');
-    lines.push('    echo "cURL Error: " . $error;');
-    lines.push('} else {');
-    lines.push('    echo $response;');
-    lines.push('}');
-    lines.push('?>');
-    return lines.join('\n');
-  }
-
-  /* ----- GO ----- */
-  function toGo(p) {
-    var lines = ['package main', '', 'import ('];
-    var imports = ['  "fmt"', '  "io"', '  "net/http"'];
-    var dataType = detectDataType(p.data, p.headers);
-    if (p.data) imports.push('  "strings"');
-    if (p.data && dataType === 'json') imports.push('  "bytes"');
-    imports.sort();
-    lines.push(imports.join('\n'));
-    lines.push(')', '', 'func main() {');
-    if (p.data && dataType === 'json') {
-      lines.push('  body := bytes.NewBufferString(`' + p.data.replace(/`/g, '\\`') + '`)');
-      lines.push('  req, err := http.NewRequest("' + p.method + '", "' + escStr(p.url, '"') + '", body)');
-    } else if (p.data) {
-      lines.push('  body := strings.NewReader(`' + p.data.replace(/`/g, '\\`') + '`)');
-      lines.push('  req, err := http.NewRequest("' + p.method + '", "' + escStr(p.url, '"') + '", body)');
-    } else {
-      lines.push('  req, err := http.NewRequest("' + p.method + '", "' + escStr(p.url, '"') + '", nil)');
-    }
-    lines.push('  if err != nil {');
-    lines.push('    fmt.Println(err)');
-    lines.push('    return');
-    lines.push('  }');
-    Object.entries(p.headers).forEach(function(e) {
-      lines.push('  req.Header.Set("' + escStr(e[0], '"') + '", "' + escStr(e[1], '"') + '")');
-    });
-    if (p.auth) lines.push('  req.Header.Set("Authorization", "Basic ' + btoa(p.auth) + '")');
-    Object.entries(p.cookies).forEach(function(e) {
-      lines.push('  req.AddCookie(&http.Cookie{Name: "' + escStr(e[0], '"') + '", Value: "' + escStr(e[1], '"') + '"})');
-    });
-    if (p.insecure) {
-      lines.push('  client := &http.Client{Transport: &http.Transport{TLSClientConfig: &tls.Config{InsecureSkipVerify: true}}}');
-    } else {
-      lines.push('  client := &http.Client{}');
-    }
-    lines.push('  resp, err := client.Do(req)');
-    lines.push('  if err != nil {');
-    lines.push('    fmt.Println(err)');
-    lines.push('    return');
-    lines.push('  }');
-    lines.push('  defer resp.Body.Close()');
-    lines.push('  bodyBytes, _ := io.ReadAll(resp.Body)');
-    lines.push('  fmt.Println(string(bodyBytes))');
-    lines.push('}');
-    return lines.join('\n');
-  }
-
-  /* ----- JAVA (OkHttp) ----- */
-  function toJava(p) {
-    var lines = ['import okhttp3.*;', 'import java.io.IOException;', '', 'public class Main {', '  public static void main(String[] args) throws IOException {'];
-    var dataType = detectDataType(p.data, p.headers);
-    if (p.data && dataType === 'json') {
-      lines.push('    MediaType mediaType = MediaType.parse("application/json");');
-      lines.push('    RequestBody body = RequestBody.create(mediaType, "' + escStr(p.data, '"') + '");');
-    } else if (p.data) {
-      lines.push('    MediaType mediaType = MediaType.parse("text/plain");');
-      lines.push('    RequestBody body = RequestBody.create(mediaType, "' + escStr(p.data, '"') + '");');
-    } else if (p.form.length > 0) {
-      lines.push('    FormBody.Builder formBuilder = new FormBody.Builder();');
-      p.form.forEach(function(f) {
-        var eqI = f.indexOf('=');
-        var key = eqI > 0 ? f.substring(0, eqI) : f;
-        var val = eqI > 0 ? f.substring(eqI + 1) : '';
-        lines.push('    formBuilder.add("' + escStr(key, '"') + '", "' + escStr(val, '"') + '");');
-      });
-      lines.push('    RequestBody body = formBuilder.build();');
-    }
-    lines.push('');
-    var reqB = ['    Request.Builder requestBuilder = new Request.Builder()'];
-    reqB.push('        .url("' + escStr(p.url, '"') + '")');
-    if (p.data || p.form.length > 0) reqB.push('        .' + p.method.toLowerCase() + '(body)');
-    else if (p.method === 'GET') reqB.push('        .get()');
-    else reqB.push('        .method("' + p.method + '", null)');
-    lines.push(reqB.join('\n') + ';');
-    Object.entries(p.headers).forEach(function(e) {
-      lines.push('    requestBuilder.addHeader("' + escStr(e[0], '"') + '", "' + escStr(e[1], '"') + '");');
-    });
-    if (p.auth) lines.push('    requestBuilder.addHeader("Authorization", "Basic ' + btoa(p.auth) + '");');
-    lines.push('');
-    lines.push('    OkHttpClient client = new OkHttpClient();');
-    lines.push('    try (Response response = client.newCall(requestBuilder.build()).execute()) {');
-    lines.push('      System.out.println(response.body().string());');
-    lines.push('    }');
-    lines.push('  }');
-    lines.push('}');
-    return lines.join('\n');
-  }
-
-  /* ----- C# (HttpClient) ----- */
-  function toCSharp(p) {
-    var lines = ['using System;', 'using System.Net.Http;', 'using System.Text;', 'using System.Threading.Tasks;', '', 'class Program', '{', '    static async Task Main()', '    {', '        using var client = new HttpClient();'];
-    var dataType = detectDataType(p.data, p.headers);
-    if (Object.keys(p.headers).length > 0 || p.auth) {
-      Object.entries(p.headers).forEach(function(e) {
-        lines.push('        client.DefaultRequestHeaders.Add("' + escStr(e[0], '"') + '", "' + escStr(e[1], '"') + '");');
-      });
-      if (p.auth) lines.push('        client.DefaultRequestHeaders.Add("Authorization", "Basic ' + btoa(p.auth) + '");');
-    }
-    if (p.data && dataType === 'json') {
-      lines.push('        var content = new StringContent("' + escStr(p.data, '"') + '", Encoding.UTF8, "application/json");');
-    } else if (p.data) {
-      lines.push('        var content = new StringContent("' + escStr(p.data, '"') + '", Encoding.UTF8);');
-    }
-    lines.push('');
-    if (p.method === 'GET') lines.push('        var response = await client.GetAsync("' + escStr(p.url, '"') + '");');
-    else if (p.method === 'POST' && p.data) lines.push('        var response = await client.PostAsync("' + escStr(p.url, '"') + '", content);');
-    else if (p.method === 'PUT' && p.data) lines.push('        var response = await client.PutAsync("' + escStr(p.url, '"') + '", content);');
-    else if (p.method === 'DELETE') lines.push('        var response = await client.DeleteAsync("' + escStr(p.url, '"') + '");');
-    else {
-      var m = p.method.charAt(0) + p.method.slice(1).toLowerCase();
-      lines.push('        var request = new HttpRequestMessage(HttpMethod.' + m + ', "' + escStr(p.url, '"') + '");');
-      if (p.data) lines.push('        request.Content = content;');
-      lines.push('        var response = await client.SendAsync(request);');
-    }
-    lines.push('        var responseBody = await response.Content.ReadAsStringAsync();');
-    lines.push('        Console.WriteLine(responseBody);');
-    lines.push('    }');
-    lines.push('}');
-    return lines.join('\n');
-  }
-
-  /* ----- RUBY (Net::HTTP) ----- */
-  function toRuby(p) {
-    var lines = ['require "uri"', 'require "net/http"', 'require "json"', ''];
-    lines.push('url = URI("' + escStr(p.url, '"') + '")');
-    lines.push('http = Net::HTTP.new(url.host, url.port)');
-    if (p.url.startsWith('https')) {
-      lines.push('http.use_ssl = true');
-      if (p.insecure) lines.push('http.verify_mode = OpenSSL::SSL::VERIFY_NONE');
-    }
-    lines.push('');
-    var method = p.method.charAt(0).toUpperCase() + p.method.slice(1).toLowerCase();
-    lines.push('request = Net::HTTP::' + method + '.new(url)');
-    Object.entries(p.headers).forEach(function(e) {
-      lines.push('request["' + escStr(e[0], '"') + '"] = "' + escStr(e[1], '"') + '"');
-    });
-    if (p.auth) lines.push('request["Authorization"] = "Basic ' + btoa(p.auth) + '"');
-    var dataType = detectDataType(p.data, p.headers);
-    if (p.data) {
-      if (dataType === 'json') lines.push('request.body = JSON.generate(' + p.data + ')');
-      else lines.push('request.body = "' + escStr(p.data, '"') + '"');
-    }
-    if (p.form.length > 0) {
-      var fPairs = p.form.map(function(f) {
-        var eqI = f.indexOf('=');
-        var key = eqI > 0 ? f.substring(0, eqI) : f;
-        var val = eqI > 0 ? f.substring(eqI + 1) : '';
-        return '  ["' + escStr(key, '"') + '", "' + escStr(val, '"') + '"]';
-      });
-      lines.push('request.set_form_data({');
-      lines.push(fPairs.join(',\n'));
-      lines.push('})');
-    }
-    lines.push('');
-    lines.push('response = http.request(request)');
-    lines.push('puts response.read_body');
-    return lines.join('\n');
-  }
-
-  /* ----- SWIFT (URLSession) ----- */
-  function toSwift(p) {
-    var lines = ['import Foundation', ''];
-    lines.push('let url = URL(string: "' + escStr(p.url, '"') + '")!');
-    lines.push('var request = URLRequest(url: url)');
-    lines.push('request.httpMethod = "' + p.method + '"');
-    var dataType = detectDataType(p.data, p.headers);
-    Object.entries(p.headers).forEach(function(e) {
-      lines.push('request.setValue("' + escStr(e[1], '"') + '", forHTTPHeaderField: "' + escStr(e[0], '"') + '")');
-    });
-    if (p.auth) lines.push('request.setValue("Basic ' + btoa(p.auth) + '", forHTTPHeaderField: "Authorization")');
-    if (p.data) {
-      if (dataType === 'json') {
-        lines.push('let body = """');
-        lines.push(p.data);
-        lines.push('"""');
-        lines.push('request.httpBody = body.data(using: .utf8)');
-      } else {
-        lines.push('request.httpBody = "' + escStr(p.data, '"') + '".data(using: .utf8)');
-      }
-    }
-    lines.push('');
-    lines.push('let task = URLSession.shared.dataTask(with: request) { data, response, error in');
-    lines.push('    if let error = error {');
-    lines.push('        print(error)');
-    lines.push('        return');
-    lines.push('    }');
-    lines.push('    if let data = data {');
-    lines.push('        print(String(data: data, encoding: .utf8) ?? "")');
-    lines.push('    }');
-    lines.push('}');
-    lines.push('task.resume()');
-    return lines.join('\n');
-  }
-
-  /* ================================================================== */
-  /*                    CONVERTER DISPATCH                               */
-  /* ================================================================== */
-  var converters = {
-    python: toPython,
-    javascript: toJavaScript,
-    nodejs: toNodeJS,
-    php: toPHP,
-    go: toGo,
-    java: toJava,
-    csharp: toCSharp,
-    ruby: toRuby,
-    swift: toSwift
-  };
-  var hljsLangMap = {
-    python: 'python',
-    javascript: 'javascript',
-    nodejs: 'javascript',
-    php: 'php',
-    go: 'go',
-    java: 'java',
-    csharp: 'csharp',
-    ruby: 'ruby',
-    swift: 'swift'
-  };
-  var langNames = {
-    python: 'Python', javascript: 'JavaScript', nodejs: 'Node.js', php: 'PHP',
-    go: 'Go', java: 'Java', csharp: 'C#', ruby: 'Ruby', swift: 'Swift'
-  };
-
-  /* ================================================================== */
-  /*                       MAIN LOGIC                                    */
-  /* ================================================================== */
-  var currentLang = 'python';
-  var lastParsed = null;
-
-  function doConvert() {
-    var input = document.getElementById('curl-input').value.trim();
-    var emptyEl = document.getElementById('empty-state');
-    var errorEl = document.getElementById('error-state');
-    var outputEl = document.getElementById('output-container');
-    var codeEl = document.getElementById('code-output');
-
-    if (!input) {
-      emptyEl.classList.remove('hidden');
-      errorEl.classList.add('hidden');
-      outputEl.classList.add('hidden');
-      lastParsed = null;
-      return;
-    }
-    var parsed = parseCurl(input);
-    if (!parsed) {
-      emptyEl.classList.add('hidden');
-      errorEl.classList.remove('hidden');
-      outputEl.classList.add('hidden');
-      document.getElementById('error-text').textContent = 'Could not parse curl command. Make sure it starts with "curl" and uses valid syntax.';
-      lastParsed = null;
-      return;
-    }
-    if (!parsed.url) {
-      emptyEl.classList.add('hidden');
-      errorEl.classList.remove('hidden');
-      outputEl.classList.add('hidden');
-      document.getElementById('error-text').textContent = 'No URL found in the curl command. Please include a valid URL.';
-      lastParsed = null;
-      return;
-    }
-    lastParsed = parsed;
-    emptyEl.classList.add('hidden');
-    errorEl.classList.add('hidden');
-    outputEl.classList.remove('hidden');
-    renderCode(parsed, currentLang);
-  }
-
-  function renderCode(parsed, lang) {
-      var codeEl = document.getElementById('code-output');
-      var converter = converters[lang];
-      if (!converter) return;
-      var code = converter(parsed);
-      codeEl.removeAttribute('class');
-      codeEl.className = 'text-sm';
-      codeEl.textContent = code;
-      codeEl.classList.add('language-' + (hljsLangMap[lang] || 'bash'));
-      codeEl.removeAttribute('data-highlighted');
-      if (typeof hljs !== 'undefined' && hljs.highlightElement) {
-          hljs.highlightElement(codeEl);
-      }
-  }
-
-  function switchLang(lang) {
-    currentLang = lang;
-    document.getElementById('lang-label').textContent = langNames[lang] || lang;
-    document.querySelectorAll('.lang-tab').forEach(function(tab) {
-      var isActive = tab.getAttribute('data-lang') === lang;
-      tab.classList.toggle('active', isActive);
-      tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
-    });
-    if (lastParsed) renderCode(lastParsed, lang);
-  }
-
-  /* ===================== EVENT LISTENERS ===================== */
-  // Language tabs
-  document.querySelectorAll('.lang-tab').forEach(function(tab) {
-    tab.addEventListener('click', function() { switchLang(this.getAttribute('data-lang')); });
-  });
-
-  // Auto-convert on input with debounce
-  var debounceTimer;
-  document.getElementById('curl-input').addEventListener('input', function() {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(doConvert, 400);
-  });
-
-  // Convert button
-  document.getElementById('convert-btn').addEventListener('click', doConvert);
-
-  // Clear button
-  document.getElementById('clear-input-btn').addEventListener('click', function() {
-    document.getElementById('curl-input').value = '';
-    lastParsed = null;
-    document.getElementById('empty-state').classList.remove('hidden');
-    document.getElementById('error-state').classList.add('hidden');
-    document.getElementById('output-container').classList.add('hidden');
-  });
-
-  // Copy code button
-  document.getElementById('copy-code-btn').addEventListener('click', function() {
-    var code = document.getElementById('code-output').textContent;
-    var copyStatus = document.getElementById('copy-status');
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(code).then(function() {
-        showToast('Code copied to clipboard!', 'success');
-        if (copyStatus) copyStatus.textContent = 'Code copied to clipboard';
-        setTimeout(function() { if (copyStatus) copyStatus.textContent = ''; }, 3000);
-      }).catch(function() {
-        fallbackCopy(code);
-      });
-    } else {
-      fallbackCopy(code);
-    }
-  });
-
-  // Sample commands
-  var samples = {
-    'get': 'curl https://api.example.com/users',
-    'post-json': "curl -X POST https://api.example.com/users \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"name\":\"John Doe\",\"email\":\"john@example.com\"}'",
-    'auth': "curl https://api.example.com/data \\\n  -H 'Authorization: Bearer your_token_here' \\\n  -H 'Accept: application/json'",
-    'form': "curl -X POST https://api.example.com/upload \\\n  -F 'file=@photo.jpg' \\\n  -F 'description=My photo'",
-    'put': "curl -X PUT https://api.example.com/users/1 \\\n  -H 'Content-Type: application/json' \\\n  -H 'Authorization: Bearer your_token_here' \\\n  -d '{\"name\":\"Jane Doe\",\"email\":\"jane@example.com\"}'",
-    'delete': "curl -X DELETE https://api.example.com/users/1 \\\n  -H 'Authorization: Bearer your_token_here'"
-  };
-  document.querySelectorAll('.sample-chip').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var key = this.getAttribute('data-sample');
-      if (samples[key]) {
-        document.getElementById('curl-input').value = samples[key];
-        doConvert();
-      }
-    });
-  });
-
-  // Handle Ctrl+Enter
-  document.getElementById('curl-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-      e.preventDefault();
-      doConvert();
-    }
-  });
-
-  // Handle Tab key in textarea
-  document.getElementById('curl-input').addEventListener('keydown', function(e) {
-    if (e.key === 'Tab') {
-      e.preventDefault();
-      var start = this.selectionStart;
-      var end = this.selectionEnd;
-      this.value = this.value.substring(0, start) + '  ' + this.value.substring(end);
-      this.selectionStart = this.selectionEnd = start + 2;
-    }
-  });
-  </script>
+  <script src="../js/curl-converter.js" defer></script>
 </body>
 </html>

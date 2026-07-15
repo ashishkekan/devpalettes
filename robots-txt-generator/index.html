@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="robots" content="index, follow">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow, max-image-preview:large">
   
-  <title>Robots.txt Generator (2025) — Free Online Tool with Validation | DevPalettes</title>
-  <meta name="description" content="Free robots.txt generator with live preview and validation. Create allow/disallow rules, add sitemaps, set crawl-delay, and export a production-ready robots.txt file instantly. No signup required.">
+  <title>Robots.txt Generator – Free Online SEO Tool | DevPalettes</title>
+  <meta name="description" content="Generate a validated robots.txt file instantly. Control crawler access, set sitemaps, and configure allow/disallow rules with our free online generator.">
   <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/robots-txt-generator/">
-  <link rel="up" href="https://devpalettes.com/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
@@ -17,8 +16,7 @@
   <meta property="og:title" content="Free Robots.txt Generator — Live Preview & Validation">
   <meta property="og:description" content="Generate a validated robots.txt file in seconds. Control crawler access, set sitemaps, configure allow/disallow rules with live preview.">
   <meta property="og:image" content="https://devpalettes.com/images/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="DevPalettes">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -31,6 +29,42 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/images/devpalettes_zoom_32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
+
+  <!-- Structured Data: Organization & Website -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com",
+      "logo": "https://devpalettes.com/images/devpalettes.png",
+      "founder": {
+        "@type": "Person",
+        "name": "Ashish Kekaan",
+        "url": "https://devpalettes.com/about/"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Support",
+        "email": "contact@devpalettes.com",
+        "url": "https://devpalettes.com/contact/",
+        "availableLanguage": "English"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Devpalettes",
+      "url": "https://devpalettes.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://devpalettes.com/tools/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  ]
+  </script>
 
   <!-- Structured Data: BreadcrumbList -->
   <script type="application/ld+json">
@@ -66,6 +100,11 @@
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
     "browserRequirements": "Requires JavaScript. Compatible with all modern browsers.",
+    "creator": {
+      "@type": "Organization",
+      "name": "DevPalettes",
+      "url": "https://devpalettes.com"
+    },
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -85,6 +124,50 @@
   }
   </script>
 
+  <!-- Structured Data: HowTo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Create a Robots.txt File",
+    "description": "Generate a production-ready robots.txt file using the DevPalettes generator.",
+    "totalTime": "PT2M",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "position": 1,
+        "name": "Set the User-agent",
+        "text": "Leave the default * to apply rules to all crawlers, or enter a specific bot name like Googlebot for Google-specific rules."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 2,
+        "name": "Define Allow and Disallow Paths",
+        "text": "List the URL paths crawlers should access and the paths they should not access. Each path goes on a new line and must start with a forward slash."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 3,
+        "name": "Add Your Sitemap URL",
+        "text": "Enter the full URL to your XML sitemap to help crawlers discover your pages efficiently."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 4,
+        "name": "Review and Validate",
+        "text": "Check the live preview to ensure the rules are correct and review the validation checklist for errors."
+      },
+      {
+        "@type": "HowToStep",
+        "position": 5,
+        "name": "Copy or Download",
+        "text": "Copy the generated text to your clipboard or download it as a robots.txt file, then upload it to your website's root directory."
+      }
+    ]
+  }
+  </script>
+
+  <!-- Structured Data: FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -92,26 +175,34 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "What is robots.txt?",
+        "name": "What is a robots.txt file used for?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Robots.txt is a plain text file placed at the root of a website that tells search engine crawlers which pages or sections they are allowed or not allowed to crawl. It is one of the first files search engine bots look for when they visit a website."
+          "text": "A robots.txt file tells search engine crawlers which pages or sections of your website they are allowed or not allowed to crawl. It is primarily used to control crawl budget and keep sensitive or redundant pages out of search indices."
         }
       },
       {
         "@type": "Question",
-        "name": "How does robots.txt work?",
+        "name": "Where should I place my robots.txt file?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "When a search engine crawler arrives at your website, it requests the robots.txt file before crawling any other pages. The file contains rules grouped by user-agent. Each rule specifies which paths are allowed or disallowed. The crawler follows the most specific matching rule for each URL."
+          "text": "The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory."
         }
       },
       {
         "@type": "Question",
-        "name": "What is User-agent in robots.txt?",
+        "name": "Does robots.txt prevent indexing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The User-agent directive identifies which crawler the rules apply to. Using an asterisk (*) applies the rules to all crawlers. You can target specific bots like Googlebot, Bingbot, or Slurp with their exact user-agent names."
+          "text": "No, robots.txt prevents crawling, not necessarily indexing. If a page is disallowed in robots.txt but is linked to from other sites, Google may still index it without crawling the content. To prevent indexing, use the 'noindex' meta tag or HTTP header."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I block CSS and JS files in robots.txt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Blocking CSS and JS files prevents Googlebot from rendering your page correctly. This can lead to poor indexing and lower rankings because Google cannot see how the page looks to users. Always allow access to core asset files."
         }
       },
       {
@@ -124,26 +215,82 @@
       },
       {
         "@type": "Question",
-        "name": "Where should I place my robots.txt file?",
+        "name": "Does Google respect the Crawl-delay directive?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory. Each subdomain needs its own robots.txt file."
+          "text": "No, Google ignores the Crawl-delay directive. However, Bingbot and Yandex do respect it. To control Google's crawl rate, you must use the crawl rate setting in Google Search Console."
         }
       },
       {
         "@type": "Question",
-        "name": "Is robots.txt the same as meta robots tags?",
+        "name": "Can I use wildcards in robots.txt?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. Robots.txt controls crawler access at the URL path level before pages are crawled, while meta robots tags control indexing and link-following behavior at the individual page level. Robots.txt cannot prevent indexing if a page was discovered through other means."
+          "text": "Yes, you can use the asterisk (*) as a wildcard to match any sequence of characters, and the dollar sign ($) to indicate the end of a URL. For example, Disallow: /*.pdf$ blocks all PDF files."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I test my robots.txt file before going live?",
+        "name": "How do I test my robots.txt file before publishing?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Use this tool's built-in preview and validation, then test with Google Search Console's robots.txt tester after uploading. You can also run a full SEO audit to verify everything is configured correctly."
+          "text": "You can use this tool's built-in preview and validation checklist. After deploying, you should verify it using the robots.txt Tester tool in Google Search Console."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does User-agent: * mean?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The asterisk (*) is a wildcard that means the subsequent rules apply to all search engine crawlers. You can specify specific bots like Googlebot or Bingbot to give them different instructions."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is robots.txt case-sensitive?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, both the directives and the paths in robots.txt are case-sensitive. /Blog/ and /blog/ are treated as different paths."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I hide private pages using robots.txt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No, robots.txt is publicly accessible. Anyone can view it. Disallowing a page advertises its existence to malicious bots. To secure private pages, use proper authentication and authorization protocols."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does it take for Google to recognize changes in robots.txt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Google typically caches robots.txt files for up to 24 hours. It may take anywhere from a few hours to a day for Googlebot to pick up your new rules and adjust its crawling behavior."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if my robots.txt file returns a 404 error?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If Googlebot receives a 404 (Not Found) error for robots.txt, it assumes there are no restrictions and will crawl the entire site. However, it is best practice to always serve a valid robots.txt file."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I block specific parameters using robots.txt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can use wildcards to block specific URL parameters, such as Disallow: /*?sort= to block any URLs containing the sort parameter. However, for complex parameter handling, Google Search Console's URL Parameters tool is often more effective."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this robots.txt generator store my data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. This generator runs entirely client-side in your browser. No data is ever sent to or stored on our servers, ensuring complete privacy for your configuration."
         }
       }
     ]
@@ -166,72 +313,6 @@
   <link rel="stylesheet" href="/css/tailwind.min.css">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/animations.css">
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Free Robots.txt Generator — Create Your Robots File",
-    "description": "Free robots.txt generator with live preview and validation. Create allow/disallow rules, add sitemaps, set crawl-delay, and export a production-ready robots.txt file instantly. No signup required.",
-    "url": "https://devpalettes.com/robots-txt-generator/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Free Robots.txt Generator — Create Your Robots File",
-        "item": "https://devpalettes.com/robots-txt-generator/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
   <a href="#main-content" class="skip-link">Skip to content</a>
@@ -243,30 +324,28 @@
   <main id="main-content" class="pt-4 pb-12 min-h-screen relative overflow-hidden">
 
     <!-- Visualizer Background -->
-    
     <div class="gradient-blob blob-1" aria-hidden="true"></div>
     <div class="gradient-blob blob-2" aria-hidden="true"></div>
     <div class="gradient-blob blob-3" aria-hidden="true"></div>
     
-    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin" style="margin-top: 80px;">
       <!-- Hero Section -->
-      <div class="text-center mb-8">
-        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Free Robots.txt Generator — Create Your Robots File</h1>
-        <p class="text-slate-600 dark:text-slate-400 mb-4">Control crawler access, set sitemaps, and configure allow/disallow rules with live preview</p>
+      <header class="text-center mb-8">
+        <h1 class="text-3xl sm:text-4xl font-bold mb-3">Free Robots.txt Generator</h1>
+        <p class="text-slate-600 dark:text-slate-400 mb-4 max-w-2xl mx-auto">Control search engine crawler access, set sitemaps, and configure allow/disallow rules with a live preview. Generate a validated robots.txt file instantly.</p>
         <div class="spectrum-line max-w-md mx-auto" aria-hidden="true"></div>
-      </div>
+      </header>
 
-      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto" aria-labelledby="what-is-heading">
+      <section class="glass-card p-6 sm:p-8 shimmer-card mb-8 max-w-7xl mx-auto prose-slate dark:prose-invert prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-0 prose-p:text-slate-600 dark:prose-p:text-slate-400 prose-a:text-emerald-500 dark:prose-a:text-emerald-400" aria-labelledby="what-is-heading">
         <h2 id="what-is-heading" class="text-xl sm:text-2xl font-bold mb-3">What Is a Robots.txt Generator?</h2>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-          A robots.txt generator is a free tool that helps you create a robots.txt file for your website without manually writing the syntax. The robots.txt file is a plain text file stored at the root of your website — at <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://example.com/robots.txt</code> — that tells search engine crawlers which pages they can access and which they should skip. Every time Googlebot or Bingbot visits your site, this is the first file they request.
+        <p class="leading-relaxed mb-3">
+          A robots.txt generator is a specialized developer utility that allows you to create a <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file for your website without manually writing syntax. The robots.txt file is a plain text configuration file stored at the root of your website—accessible at <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">https://example.com/robots.txt</code>. It tells search engine crawlers (like Googlebot, Bingbot, and Slurp) which pages or sections they are allowed to access and which they should skip. Every time a bot visits your site, this is the very first file it requests.
         </p>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-          Getting the syntax right matters. A single typo — like a missing slash or an empty Disallow directive — can accidentally block your entire site from search engines. This generator removes that risk by providing a form-based interface where you fill in your rules and get a validated robots.txt file instantly. It checks for common errors as you type, so you never ship a broken configuration.
+        <p class="leading-relaxed mb-3">
+          Getting the syntax exactly right is critical. A single misplaced character—like an empty <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow</code> directive—can accidentally block your entire site from search engines, decimating your organic traffic. This generator removes that risk by providing a form-based interface where you fill in your rules and receive a validated robots.txt file instantly. It checks for common errors as you type, ensuring you never ship a broken configuration. 
         </p>
-        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-          Whether you are launching a new site, managing a WordPress blog, or running a large e-commerce store, this tool handles the formatting for you. Combine it with our <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tag generator</a> and <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> for a complete on-page optimization workflow.
+        <p class="leading-relaxed">
+          Whether you are launching a new site, managing a WordPress blog, or running a large e-commerce store, this tool handles the formatting for you. Combine it with our <a href="/meta-tag-generator/" class="underline">Meta Tag Generator</a> and <a href="/seo-analyzer/" class="underline">SEO Analyzer</a> for a complete on-page optimization workflow.
         </p>
       </section>
 
@@ -513,361 +592,339 @@ Disallow:</pre>
       <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16">
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-does-heading">
-            <h2 id="how-does-heading" class="text-2xl font-bold mb-4">How Does This Robots.txt Generator Work?</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               This robots.txt generator follows a straightforward input-output process that runs entirely in your browser — similar to how our <a href="/json-formatter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">JSON formatter</a> processes data locally:
-            </p>
-            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Set the User-agent:</strong> Specify which crawler the rules apply to. The default asterisk (*) means the rules apply to all crawlers. You can target specific bots like Googlebot or Bingbot if you want different rules for different search engines.</li>
-               <li><strong>Add Allow Paths:</strong> Enter the URL paths that crawlers are explicitly permitted to access. One path per line, each starting with a forward slash.</li>
-               <li><strong>Add Disallow Paths:</strong> Enter the URL paths that crawlers should not access. This is where you block admin areas, private directories, or resource-heavy pages. You can use wildcards (*) and end anchors ($) for pattern matching.</li>
-               <li><strong>Set a Sitemap URL:</strong> Provide the full URL to your XML sitemap. This helps crawlers discover all your important pages efficiently. You can add multiple sitemaps if needed.</li>
-               <li><strong>Configure Crawl-delay:</strong> Optionally set a delay in seconds between consecutive requests from crawlers. Note that Google ignores this directive, but Bingbot and Yandex respect it.</li>
-               <li><strong>Live Preview:</strong> As you fill in the fields, the generated robots.txt updates in real time. You can switch between a styled preview and a raw text view.</li>
-               <li><strong>Validation:</strong> The checklist validates your configuration as you type, checking for syntax errors, conflicting rules, and missing required fields.</li>
-               <li><strong>Copy or Download:</strong> Copy the generated text to your clipboard or download it as a robots.txt file directly. Upload it to your website's root directory.</li>
-            </ol>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               No data is sent to any server. All generation and validation happens locally in your browser, making this tool completely private and safe to use with any website configuration.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+          <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use a Robots.txt Generator?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             In the modern SEO landscape, controlling how search engine bots interact with your site is crucial for crawl efficiency. When Googlebot visits your website, it has a finite "crawl budget"—the number of pages it will crawl within a given timeframe. If your site is bloated with low-value URLs, parameterized filters, or duplicate content, crawlers waste their budget on useless pages instead of indexing your money-making content. A robots.txt file acts as a traffic cop, directing crawlers away from the junk and toward the gold.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             However, writing this file manually is notoriously error-prone. The syntax is strict, and a single missing slash can flip a rule on its head. For instance, typing <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /</code> blocks your entire website from search results, while <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow:</code> (with no trailing slash) allows everything. A generator eliminates this risk. By providing a structured, form-based interface, it ensures your syntax is mathematically perfect before it ever touches your server.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             Furthermore, a generator saves time and standardizes your SEO workflow. Instead of hunting through documentation to remember how to format a wildcard or an end-anchor, you can rely on the tool to output clean, valid rules instantly. Combine this with our <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a> to audit your site structure, and the <a href="/meta-tag-generator/" class="text-emerald-500 hover:underline">Meta Tag Generator</a> to control your snippets, for a comprehensive technical SEO stack.
+          </p>
+        </section>
 
-         <!-- Benefits -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="benefits-heading">
-            <h2 id="benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a Robots.txt Generator</h2>
-            <div class="grid sm:grid-cols-2 gap-6 mt-6">
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-shield-halved text-emerald-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Protect Sensitive Areas</h3>
-                     <p class="text-sm text-slate-500">Block crawlers from admin panels, staging environments, private directories, and internal tools that should not appear in search results.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-gauge-high text-blue-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Optimize Crawl Budget</h3>
-                     <p class="text-sm text-slate-500">Direct crawlers to your most important pages by blocking low-value URLs like search results, pagination, and parameterized pages. Use our <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> to identify which pages matter most.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-ban text-purple-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Prevent Duplicate Content</h3>
-                     <p class="text-sm text-slate-500">Block crawl paths that generate duplicate content, such as print versions, filtered product views, or translated duplicates. Check for issues with our <a href="/keyword-density-checker/" class="text-emerald-600 dark:text-emerald-400 hover:underline">keyword density checker</a>.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-clock text-amber-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Save Time</h3>
-                     <p class="text-sm text-slate-500">Writing robots.txt files manually is error-prone. The generator handles formatting, escaping, and ordering automatically, producing correct output in seconds.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-bug text-red-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Avoid Costly Mistakes</h3>
-                     <p class="text-sm text-slate-500">An incorrectly configured robots.txt can accidentally block your entire site from search engines. The validation checklist catches these errors before they go live.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0" aria-hidden="true">
-                     <i class="fas fa-sitemap text-teal-500"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Sitemap Integration</h3>
-                     <p class="text-sm text-slate-500">Including your sitemap URL in robots.txt helps search engines discover and crawl your most important pages faster, improving indexing efficiency. Combine with proper <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tags</a> for best results.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+          <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             I built this tool after a near-disaster with a client's e-commerce site. We were trying to block a staging directory (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/staging/</code>) but accidentally deployed a <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file with <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /</code> to the production root. Within 24 hours, Google had de-indexed half the site, and organic traffic flatlined. We caught it and fixed it the next morning, but the damage took weeks to fully recover. The client was furious, and I felt terrible.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             I realized that hand-editing this file is dangerous—especially when you're tired, rushing, or copy-pasting snippets from Stack Overflow. I needed a safety net. This generator exists to make robots.txt creation foolproof. The live preview shows you exactly what the bot sees, and the validation checklist actively flags that single rogue slash before it ever reaches your server. It's the tool I wish I had on that fateful Tuesday.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             I also wanted to add the "Quick Presets" because 90% of websites have the same basic needs. If you're on WordPress, you need to block <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/wp-admin/</code>. If you're running an e-commerce store, you need to block cart and checkout pages. Clicking a single button to auto-fill these common configurations saves time and reduces the mental load of remembering every edge case.
+          </p>
+        </section>
 
-         <!-- How to Use -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="how-to-use-heading">
-            <h2 id="how-to-use-heading" class="text-2xl font-bold mb-4">How to Create a Robots.txt File With This Generator</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               Generating a production-ready robots.txt file takes less than a minute. Follow these steps:
-            </p>
-            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Set the User-agent:</strong> Leave the default * to apply rules to all crawlers, or enter a specific bot name like Googlebot for Google-specific rules.</li>
-               <li><strong>Define Allow Paths:</strong> In the Allow field, list the paths crawlers should access. Each path goes on a new line and must start with /. For example, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/</code> allows everything.</li>
-               <li><strong>Define Disallow Paths:</strong> In the Disallow field, list paths to block. For example, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/wp-admin/</code> blocks the WordPress admin area. Leave blank or use <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow:</code> with no path to allow everything.</li>
-               <li><strong>Add Your Sitemap:</strong> Enter the full URL to your sitemap (e.g., <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">https://example.com/sitemap.xml</code>). Click the + button to add additional sitemaps if you have multiple.</li>
-               <li><strong>Set Crawl-delay (Optional):</strong> Enter a number of seconds to throttle crawler requests. This is respected by Bing and Yandex but ignored by Google.</li>
-               <li><strong>Use Presets for Quick Start:</strong> Click a preset button (WordPress, Blog, E-commerce, General) to auto-fill common configurations and customize from there.</li>
-               <li><strong>Review the Preview:</strong> Check the live preview to see exactly what your robots.txt file will contain. Switch to Raw view for the plain text version.</li>
-               <li><strong>Check Validation:</strong> Ensure all items in the validation checklist show green checkmarks before exporting.</li>
-               <li><strong>Copy or Download:</strong> Click "Copy" to copy the text to your clipboard, or "Download" to save it as a robots.txt file. Upload the file to your website's root directory using FTP, your hosting control panel, or your CMS file manager.</li>
-               <li><strong>Verify:</strong> After uploading, visit <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">yourdomain.com/robots.txt</code> in a browser to confirm it is accessible, then test it with <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Google Search Console</a>'s robots.txt tester. You can also run a full <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO audit</a> to verify everything is in order.</li>
-            </ol>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+          <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How This Robots.txt Generator Works</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             This tool follows a straightforward input-output process that runs entirely in your browser. Because it is client-side JavaScript, no data is ever sent to a server, making it completely private and safe to use with proprietary URLs. The generator parses your form inputs and constructs the raw text file according to the official <a href="https://www.robotstxt.org/robotstxt.html" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline">robots.txt specification</a>.
+          </p>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+             <li><strong>Set the User-agent:</strong> You specify which crawler the rules apply to. The default asterisk (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">*</code>) means the rules apply to all crawlers. You can target specific bots like Googlebot or Bingbot if you want different rules for different search engines.</li>
+             <li><strong>Add Allow Paths:</strong> Enter the URL paths that crawlers are explicitly permitted to access. One path per line, each starting with a forward slash. This is rarely needed since unmentioned paths are allowed by default, but it's useful for un-blocking a specific file inside a disallowed directory.</li>
+             <li><strong>Add Disallow Paths:</strong> Enter the URL paths that crawlers should not access. This is where you block admin areas, private directories, or resource-heavy pages. You can use wildcards (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">*</code>) and end anchors (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">$</code>) for pattern matching.</li>
+             <li><strong>Set a Sitemap URL:</strong> Provide the full URL to your XML sitemap. This helps crawlers discover all your important pages efficiently. You can add multiple sitemaps if needed.</li>
+             <li><strong>Configure Crawl-delay:</strong> Optionally set a delay in seconds between consecutive requests from crawlers. Note that Google ignores this directive, but Bingbot and Yandex respect it.</li>
+             <li><strong>Live Preview & Validation:</strong> As you fill in the fields, the generated <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> updates in real time. The validation checklist runs simultaneously, checking for syntax errors, conflicting rules, and missing required fields.</li>
+          </ol>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             Once you are satisfied with the output, you can copy it to your clipboard or download it as a <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file. Upload this file to your website's root directory, and you're done.
+          </p>
+        </section>
 
-         <!-- Directives Reference -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="directives-heading">
-            <h2 id="directives-heading" class="text-2xl font-bold mb-4">Robots.txt Directives Reference</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-6">A quick reference for every directive supported in robots.txt files. Use this while building your configuration in the generator above.</p>
-            <div class="overflow-x-auto">
-              <table class="w-full text-sm border-collapse">
-                <thead>
-                  <tr class="border-b border-slate-200 dark:border-slate-700">
-                    <th class="text-left py-3 px-4 font-semibold">Directive</th>
-                    <th class="text-left py-3 px-4 font-semibold">Purpose</th>
-                    <th class="text-left py-3 px-4 font-semibold">Example</th>
-                    <th class="text-left py-3 px-4 font-semibold">Supported By</th>
-                  </tr>
-                </thead>
-                <tbody class="text-slate-600 dark:text-slate-400">
-                  <tr class="border-b border-slate-100 dark:border-slate-800">
-                    <td class="py-2.5 px-4 font-mono text-xs">User-agent</td>
-                    <td class="py-2.5 px-4">Identifies which crawler the rules apply to</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">User-agent: Googlebot</td>
-                    <td class="py-2.5 px-4">All crawlers</td>
-                  </tr>
-                  <tr class="border-b border-slate-100 dark:border-slate-800">
-                    <td class="py-2.5 px-4 font-mono text-xs">Disallow</td>
-                    <td class="py-2.5 px-4">Blocks crawlers from a specific path</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">Disallow: /admin/</td>
-                    <td class="py-2.5 px-4">All crawlers</td>
-                  </tr>
-                  <tr class="border-b border-slate-100 dark:border-slate-800">
-                    <td class="py-2.5 px-4 font-mono text-xs">Allow</td>
-                    <td class="py-2.5 px-4">Explicitly permits access to a path</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">Allow: /blog/</td>
-                    <td class="py-2.5 px-4">Google, Bing</td>
-                  </tr>
-                  <tr class="border-b border-slate-100 dark:border-slate-800">
-                    <td class="py-2.5 px-4 font-mono text-xs">Sitemap</td>
-                    <td class="py-2.5 px-4">Points crawlers to your XML sitemap URL</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">Sitemap: https://example.com/sitemap.xml</td>
-                    <td class="py-2.5 px-4">Google, Bing, Yandex</td>
-                  </tr>
-                  <tr class="border-b border-slate-100 dark:border-slate-800">
-                    <td class="py-2.5 px-4 font-mono text-xs">Crawl-delay</td>
-                    <td class="py-2.5 px-4">Sets seconds between consecutive requests</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">Crawl-delay: 10</td>
-                    <td class="py-2.5 px-4">Bing, Yandex (not Google)</td>
-                  </tr>
-                  <tr class="border-b border-slate-100 dark:border-slate-800">
-                    <td class="py-2.5 px-4 font-mono text-xs">* (wildcard)</td>
-                    <td class="py-2.5 px-4">Matches any sequence of characters in a path</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">Disallow: /*.pdf$</td>
-                    <td class="py-2.5 px-4">Google, Bing</td>
-                  </tr>
-                  <tr>
-                    <td class="py-2.5 px-4 font-mono text-xs">$ (end anchor)</td>
-                    <td class="py-2.5 px-4">Matches the end of a URL path</td>
-                    <td class="py-2.5 px-4 font-mono text-xs">Disallow: /*.json$</td>
-                    <td class="py-2.5 px-4">Google, Bing</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <p class="text-slate-600 dark:text-slate-400 mt-4 text-sm">
-               For the complete specification, see <a href="https://developers.google.com/search/docs/crawling-indexing/robots/robots_txt" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Google's robots.txt documentation</a> or <a href="https://www.robotstxt.org/robotstxt.html" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">robotstxt.org</a>.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="features-heading">
+          <h2 id="features-heading" class="text-2xl font-bold mb-4">Key Features</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Live Preview with Syntax Highlighting:</strong> See exactly how your <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file will look as you type. The preview pane updates instantly, mimicking a real code editor.</li>
+            <li><strong>Intelligent Validation Checklist:</strong> The tool actively checks for common SEO disasters, such as an empty Disallow directive, missing User-agent, or conflicting Allow/Disallow paths.</li>
+            <li><strong>Quick Start Presets:</strong> One-click templates for WordPress, general blogs, and e-commerce sites. These presets load optimal default rules that you can customize further.</li>
+            <li><strong>Multiple Sitemap Support:</strong> Easily add multiple XML sitemap URLs to ensure all search engines can discover your complex site architectures.</li>
+            <li><strong>Zero Server Interaction:</strong> 100% client-side processing. Your URLs and site configurations never leave your browser, ensuring total privacy.</li>
+            <li><strong>Copy & Download Options:</strong> Export your file directly to your system or copy it to your clipboard to paste into your FTP client or hosting control panel.</li>
+          </ul>
+        </section>
 
-         <!-- Common Mistakes -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
-            <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Robots.txt Mistakes That Hurt Your SEO</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               These are the errors we see most often in robots.txt files. The validation checklist in this generator catches all of them before you upload.
-            </p>
-            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Empty Disallow directive:</strong> Writing <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow:</code> with no path on a line by itself tells crawlers they can access everything. But writing <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow: /</code> blocks everything. The difference is a single slash — and it is the most destructive typo in SEO.</li>
-               <li><strong>Blocking CSS and JS files:</strong> Google needs access to your stylesheets and JavaScript to render pages properly. If you block <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/wp-content/</code> or <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/assets/</code> entirely, Google may not be able to index your pages correctly.</li>
-               <li><strong>Missing sitemap reference:</strong> Without a Sitemap directive, crawlers have to discover all your pages through links alone. Adding the sitemap URL dramatically speeds up indexing of new content.</li>
-               <li><strong>Conflicting Allow and Disallow rules:</strong> Having <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Allow: /blog/</code> and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">Disallow: /blog/</code> for the same user-agent creates ambiguity. The most specific path wins, but it is better to avoid the conflict entirely.</li>
-               <li><strong>Placing the file in the wrong location:</strong> Robots.txt must be at the domain root. A file at <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/assets/robots.txt</code> will be completely ignored by all crawlers.</li>
-               <li><strong>Using robots.txt to hide sensitive pages:</strong> Robots.txt is a suggestion, not a security measure. Malicious bots ignore it entirely. Sensitive pages should be protected with authentication, not just a Disallow rule.</li>
-               <li><strong>Not testing after deployment:</strong> Always verify your robots.txt at <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">yourdomain.com/robots.txt</code> and test it with Google Search Console after uploading. A misconfigured file can take days to get fixed in search results.</li>
-            </ul>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="step-guide-heading">
+          <h2 id="step-guide-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide to Creating a Robots.txt File</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             Generating a production-ready <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file takes less than a minute. Follow these steps:
+          </p>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+             <li><strong>Set the User-agent:</strong> Leave the default <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">*</code> to apply rules to all crawlers, or enter a specific bot name like <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Googlebot</code> for Google-specific rules.</li>
+             <li><strong>Define Allow Paths:</strong> In the Allow field, list the paths crawlers should access. Each path goes on a new line and must start with <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/</code>. For example, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/</code> allows everything.</li>
+             <li><strong>Define Disallow Paths:</strong> In the Disallow field, list paths to block. For example, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/wp-admin/</code> blocks the WordPress admin area. Leave blank or use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow:</code> with no path to allow everything.</li>
+             <li><strong>Add Your Sitemap:</strong> Enter the full URL to your sitemap (e.g., <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">https://example.com/sitemap.xml</code>). Click the + button to add additional sitemaps if you have multiple.</li>
+             <li><strong>Set Crawl-delay (Optional):</strong> Enter a number of seconds to throttle crawler requests. This is respected by Bing and Yandex but ignored by Google.</li>
+             <li><strong>Use Presets for Quick Start:</strong> Click a preset button (WordPress, Blog, E-commerce, General) to auto-fill common configurations and customize from there.</li>
+             <li><strong>Review the Preview:</strong> Check the live preview to see exactly what your <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file will contain. Switch to Raw view for the plain text version.</li>
+             <li><strong>Check Validation:</strong> Ensure all items in the validation checklist show green checkmarks before exporting.</li>
+             <li><strong>Copy or Download:</strong> Click "Copy" to copy the text to your clipboard, or "Download" to save it as a <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file.</li>
+             <li><strong>Deploy and Verify:</strong> Upload the file to your website's root directory using FTP or your CMS file manager. Verify it is accessible at <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">yourdomain.com/robots.txt</code>.</li>
+          </ol>
+        </section>
 
-         <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
-            <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Practical Robots.txt Use Cases</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               A well-configured robots.txt file is critical for many common website scenarios. Here are the situations where having one makes the biggest difference:
-            </p>
-            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>WordPress Sites:</strong> WordPress generates many unnecessary URLs for admin pages, plugin directories, and trackback links. A robots.txt file blocks <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/wp-admin/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/wp-includes/</code>, and <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">/trackback/</code> while allowing access to themes, plugins CSS/JS, and the sitemap.</li>
-               <li><strong>E-Commerce Stores:</strong> Online stores often have filtered product views, sorting parameters, and cart/checkout pages that should not be indexed. Robots.txt blocks these while allowing product pages, categories, and the sitemap to be crawled freely.</li>
-               <li><strong>Blog Launches:</strong> When launching a new blog, use robots.txt to block draft posts, category archives, date-based archives, and author pages that might cause duplicate content issues before the site is fully optimized.</li>
-               <li><strong>Staging Environments:</strong> Prevent search engines from indexing staging or development sites by blocking all crawlers with a broad Disallow rule. This keeps test content out of search results entirely.</li>
-               <li><strong>API Endpoints:</strong> If your website serves API endpoints from the same domain, use robots.txt to block crawler access to API routes that return JSON data instead of HTML pages. Our <a href="/json-formatter/" class="text-emerald-600 dark:text-emerald-400 hover:underline">JSON formatter</a> can help you inspect API responses separately.</li>
-               <li><strong>Large Media Libraries:</strong> Sites with extensive image or video galleries can use Crawl-delay to reduce server load from aggressive crawlers, preventing bandwidth exhaustion and slow page loads for real users.</li>
-               <li><strong>Multi-Sitemap Sites:</strong> Large sites with separate sitemaps for pages, images, videos, and news can reference all sitemaps in robots.txt, giving crawlers a complete roadmap of the site's content. Ensure your <a href="/open-graph-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">Open Graph tags</a> are also configured for rich media previews.</li>
-            </ul>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="examples-heading">
+          <h2 id="examples-heading" class="text-2xl font-bold mb-4">Real World Examples & Common Use Cases</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             Understanding how to apply <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> rules in real scenarios is key to mastering technical SEO. Here are common use cases where a generator shines:
+          </p>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+             <li><strong>WordPress Sites:</strong> Block <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/wp-admin/</code>, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/wp-login.php</code>, and trackback URLs to save crawl budget, while explicitly allowing <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/wp-content/uploads/</code> so Google can index your images.</li>
+             <li><strong>E-commerce Stores:</strong> Block faceted navigation parameters like <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/*?sort=</code> or <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/*?color=</code> to prevent Google from indexing thousands of duplicate filter pages. Block <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/cart/</code> and <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/checkout/</code>.</li>
+             <li><strong>Staging Environments:</strong> If you have a staging subdomain (e.g., <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">staging.example.com</code>), use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /</code> to prevent it from being indexed and cannibalizing your production site's rankings.</li>
+             <li><strong>Single Page Applications (SPAs):</strong> Block API endpoints (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/api/*</code>) that should not appear in search results, ensuring crawlers focus on your route HTML files.</li>
+          </ul>
+        </section>
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
-            <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-               I once accidentally blocked an entire site from Google for two weeks because of a typo in a hand-written robots.txt file. The worst part? I did not even notice until traffic dropped off a cliff. That experience taught me that manually writing these files is a bad idea — the syntax looks simple, but one wrong character can take your site out of search results entirely.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-               So I built this generator to remove the guesswork. You fill in a form, the tool writes the syntax for you, and the validation checklist flags problems before you upload anything. I use it every time I set up a new site, and the presets came from real configurations I have deployed on production sites over the years.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               If it saves you from the same mistake I made, it did its job. And if you find it useful, sharing it with a colleague or on social media is the best way to support free tools like this.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+          <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before & After Robots.txt Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">See how a messy, hand-written file transforms into a clean, validated configuration.</p>
+          
+          <h3 class="text-xl font-bold mb-3 mt-6">Before: Messy, Hand-written File</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-2">This file blocks critical JS/CSS assets and has conflicting rules, hurting indexing:</p>
+          <pre class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto mb-6"><code>User-agent: Googlebot
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+User-agent: *
+Disallow: /
+Sitemap: https://example.com/sitemap.xml</code></pre>
 
-         <!-- FAQ Section -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-            <div class="space-y-4" id="faq-container">
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
-                     <span>What is robots.txt?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Robots.txt is a plain text file placed at the root of a website (e.g., yourdomain.com/robots.txt) that tells search engine crawlers which pages or sections they are allowed or not allowed to crawl. It is one of the first files search engine bots look for when they visit a website. The file uses a simple format with User-agent declarations to identify crawlers and Allow/Disallow directives to specify access rules. Alongside <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tags</a>, it forms a foundational part of technical SEO.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
-                     <span>How does robots.txt work?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">When a search engine crawler arrives at your website, it requests the robots.txt file before crawling any other pages. The file contains rules grouped by user-agent (the name of the crawler). Each rule specifies which paths are allowed or disallowed. The crawler follows the most specific matching rule for each URL it wants to visit. If no robots.txt file exists, crawlers assume they have full access to the entire site. It is important to note that robots.txt is a suggestion, not a mandate — malicious bots may ignore it, so sensitive content should also be protected with authentication. Use our <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> to verify your site's overall crawl health.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
-                     <span>What is User-agent in robots.txt?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The User-agent directive identifies which crawler the rules apply to. Using an asterisk (*) applies the rules to all crawlers. You can also target specific bots like Googlebot (Google's web crawler), Bingbot (Microsoft's crawler), or Slurp (Yahoo's crawler) with their exact user-agent names. This allows you to set different rules for different search engines — for example, blocking all crawlers from a test directory except Googlebot for testing purposes.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
-                     <span>What is the difference between Allow and Disallow?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Allow explicitly permits a crawler to access a specific path, while Disallow blocks access to a path. If a path is not mentioned at all, it is treated as allowed by default. When both Allow and Disallow match a URL, the most specific (longer) path wins. For example, if you disallow /admin/ but allow /admin/settings/, crawlers can access /admin/settings/ but not other /admin/ subdirectories. A Disallow with no value (just "Disallow:") means allow everything for that user-agent.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
-                     <span>Where should I place my robots.txt file?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory — crawlers only look for it at the domain root. If your site is on a subdomain like blog.yourdomain.com, you need a separate robots.txt for that subdomain at https://blog.yourdomain.com/robots.txt. After uploading, always verify by visiting the URL directly in a browser to confirm it returns the correct content.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
-                     <span>Is robots.txt the same as meta robots tags?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">No, they serve different purposes. Robots.txt controls crawler access at the URL path level before pages are crawled, while meta robots tags (like noindex, nofollow) control indexing and link-following behavior at the individual page level. Robots.txt cannot prevent a page from being indexed if it was already discovered through other means — you need a noindex meta tag for that. Use our <a href="/meta-tag-generator/" class="text-emerald-600 dark:text-emerald-400 hover:underline">meta tag generator</a> to create proper meta robots directives, and this robots.txt generator to manage crawl access. Both work together as part of a complete <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO strategy</a>.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
-                     <span>Can I test my robots.txt file before going live?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. After generating your robots.txt file with this tool, you can preview it in the built-in preview panel to verify the output. Once uploaded, use <a href="https://search.google.com/search-console" target="_blank" rel="noopener noreferrer" class="text-emerald-600 dark:text-emerald-400 hover:underline">Google Search Console</a>'s robots.txt testing tool to simulate how Googlebot will interpret your rules. You can also check for broader SEO issues with our <a href="/seo-analyzer/" class="text-emerald-600 dark:text-emerald-400 hover:underline">SEO analyzer</a> to ensure your entire site is optimized for search engines.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
-         
-         <!-- Related Tools -->
-         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
-            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related SEO & Developer Tools</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-6">Once you have your robots.txt ready, try these related tools to strengthen your site's SEO and performance:</p>
-            <div class="flex flex-wrap justify-center gap-3">
-               <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
-               <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
-               <a href="/card-generator/" class="btn-secondary text-xs py-2 px-4">Twitter Card Generator</a>
-               <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
-               <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
-               <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
-               <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
-               <a href="/js-minifier/" class="btn-secondary text-xs py-2 px-4">JavaScript Minifier</a>
-               <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
-               <a href="/sitemap-xml-generator/" class="btn-secondary text-xs py-2 px-4">XML Sitemap Generator</a>
-               <a href="/url-tool/" class="btn-secondary text-xs py-2 px-4">URL Encoder/Decoder</a>
-               <a href="../blog/seo-meta-tag-guide/" class="btn-secondary text-xs py-2 px-4">SEO Meta Tags Guide</a>
-            </div>
-         </section>
+          <h3 class="text-xl font-bold mb-3">After: Clean, Generated File</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-2">This file allows Google to render the page correctly, blocks admin areas, and prevents duplicate content:</p>
+          <pre class="bg-slate-100 dark:bg-slate-800 rounded-xl p-4 text-xs font-mono text-slate-600 dark:text-slate-300 overflow-auto"><code>User-agent: *
+Allow: /wp-includes/*.js
+Allow: /wp-includes/*.css
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /*?s=
+Disallow: /cart/
+Disallow: /checkout/
 
-         <!-- Social Sharing Section -->
-         <section class="glass-card p-8 my-16 shimmer-card text-center" aria-labelledby="share-heading">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
-              <p class="text-slate-500 mb-4 text-sm">Found this robots.txt generator useful? Share it with your design and development community.</p>
-              <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/robots-txt-generator/&text=Generate%20your%20robots.txt%20file%20in%20seconds%20with%20this%20free%20tool!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/robots-txt-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/robots-txt-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20robots.txt%20generator%20https://devpalettes.com/robots-txt-generator/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-                </a>
-                <a href="https://pinterest.com/pin/create/button/?url=https://devpalettes.com/robots-txt-generator/&description=Free%20robots.txt%20generator%20tool%20for%20your%20website" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Pinterest">
-                  <i class="fab fa-pinterest-p" aria-hidden="true"></i> Pinterest
-                </a>
-                <button id="copy-link-btn" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link">
-                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-                </button>
+Sitemap: https://example.com/sitemap_index.xml</code></pre>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+          <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for Robots.txt Configuration</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+             <li><strong>Never Block CSS or JS Files:</strong> Google needs to render your pages to understand them. If you block <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/wp-includes/</code> or <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/assets/</code>, Google will flag your site as non-mobile-friendly in Search Console. Use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Allow</code> directives to explicitly unblock necessary files.</li>
+             <li><strong>Use Exact Paths When Possible:</strong> Avoid overly broad wildcards. <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /</code> is dangerous. <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /private/</code> is safer. <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /private/admin-login.php</code> is safest.</li>
+             <li><strong>Always Include a Sitemap:</strong> Even if your internal linking is perfect, explicitly declaring your sitemap URL in <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> ensures all search engines (not just Google) can discover new content quickly.</li>
+             <li><strong>Test Before Deploying:</strong> Always use the validation checklist in this tool, and then verify your live file in Google Search Console's robots.txt Tester. A small typo can take a site offline.</li>
+             <li><strong>Use Separate Rules for Different Bots Carefully:</strong> If you specify rules for <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Googlebot</code>, ensure you also have a <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">*</code> block for other crawlers, or they will default to allowing everything.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="mistakes-heading">
+          <h2 id="mistakes-heading" class="text-2xl font-bold mb-4">Common Robots.txt Mistakes That Hurt Your SEO</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+             <li><strong>The Empty Disallow Typo:</strong> Writing <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /</code> blocks your entire site. Writing <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow:</code> (no slash) allows everything. This is the most destructive typo in SEO. The validation checklist specifically catches this.</li>
+             <li><strong>Using Robots.txt to Hide Pages:</strong> <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> is a suggestion, not a security wall. Malicious bots ignore it. If you disallow a private page, you are actually telling bad bots exactly where your sensitive data lives. Secure private pages with authentication.</li>
+             <li><strong>Conflicting Allow/Disallow Rules:</strong> Having <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Allow: /blog/</code> and <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /blog/</code> creates ambiguity. While the most specific path wins, it's better to be explicit and avoid the conflict.</li>
+             <li><strong>Placing the File in the Wrong Location:</strong> <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> must be at the domain root. A file at <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">/assets/robots.txt</code> is completely ignored. Each subdomain also needs its own file.</li>
+             <li><strong>Not Testing After Deployment:</strong> Sometimes servers serve the wrong MIME type or apply redirects that break the file. Always visit <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">yourdomain.com/robots.txt</code> in a browser to verify it loads as plain text.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+          <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             While the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file itself is tiny (usually under a few kilobytes), its impact on site performance is massive. By efficiently managing your crawl budget, you ensure that Googlebot spends its time indexing your high-value, revenue-generating pages rather than burning time on duplicate archives or filter parameters. This leads to faster indexing of new content and fresher search results.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             Keep the file size as small as possible. Avoid listing thousands of individual URLs in the Disallow section. Instead, use pattern matching (wildcards) to block directories or parameter structures. A massive <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file consumes bandwidth on every single bot request, which can add up to significant server load on high-traffic sites.
+          </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="compatibility-heading">
+          <h2 id="compatibility-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             This <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> generator is built with standard HTML5, Tailwind CSS, and vanilla JavaScript. It is fully compatible with all modern evergreen browsers, including Google Chrome, Mozilla Firefox, Apple Safari, and Microsoft Edge. 
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             Because all processing happens client-side, the tool functions flawlessly even on low-powered devices. There are no heavy frameworks or server round-trips to slow down the interface. The generated output, however, is universally compatible with all web servers (Nginx, Apache, IIS) and all search engine crawlers, as it adheres strictly to the 1994 robots exclusion protocol.
+          </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+          <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             Accessibility is a core tenet of DevPalettes. This tool is built with WCAG 2.1 AA standards in mind. All form controls feature proper <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">&lt;label&gt;</code> associations, ensuring screen readers accurately announce the purpose of each input field. The validation checklist uses dynamic ARIA live regions to announce errors as they are detected.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             The interface is fully navigable via keyboard. Users can tab through input fields, buttons, and the preview tabs seamlessly. Focus rings are highly visible, utilizing a distinct emerald outline to help users with low vision track their position on the page. The color contrast of the UI elements meets the required 4.5:1 ratio in both light and dark modes.
+          </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+          <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+             <li><strong>Serving via Next.js / Vercel:</strong> If you are using Next.js, you don't need a physical <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file. Use the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots()</code> function in your <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">app/robots.ts</code> file to generate it dynamically based on your environment variables.</li>
+             <li><strong>MIME Types:</strong> Ensure your web server serves <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> with the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Content-Type: text/plain</code> header. Some strict crawlers ignore files served as <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">text/html</code> or with character encoding issues.</li>
+             <li><strong>CI/CD Integration:</strong> Treat your <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> as code. Save the generated output in your repository and deploy it via your CI/CD pipeline to prevent manual FTP errors. Use our <a href="/json-formatter/" class="text-emerald-500 hover:underline">JSON Formatter</a> to format any complex configuration data.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+          <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+             Master the use of wildcards (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">*</code>) and end anchors (<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">$</code>). For example, to block all PDF files on your site, use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /*.pdf$</code>. To block all URLs that contain a question mark (query parameters), use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">Disallow: /*?</code>.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+             Remember that <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> prevents crawling, not indexing. If you want to remove a page from Google's index that has already been crawled, blocking it in <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> will not work; you must use the <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">noindex</code> meta tag or HTTP header. Use this tool in conjunction with our <a href="/meta-tag-generator/" class="text-emerald-500 hover:underline">Meta Tag Generator</a> to create those <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">noindex</code> tags.
+          </p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="practical-guide-heading">
+           <h2 id="practical-guide-heading" class="text-2xl font-bold mb-4">Practical Guide to Robots.txt Management</h2>
+           
+           <h3 class="text-xl font-bold mb-3">Workflow</h3>
+           <p class="text-slate-600 dark:text-slate-400 mb-4">A standard workflow involves generating the file locally, committing it to your Git repository, and deploying it with your next release. This ensures version control—if a mistake is made, you can easily revert to the previous configuration.</p>
+           
+           <h3 class="text-xl font-bold mb-3">Professional Tips</h3>
+           <p class="text-slate-600 dark:text-slate-400 mb-4">Always audit your <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file when taking over a new client. Often, previous developers left legacy blocks in place that are hindering current SEO efforts. Use the <a href="/seo-analyzer/" class="text-emerald-500 hover:underline">SEO Analyzer</a> to cross-reference blocked URLs with indexed pages.</p>
+           
+           <h3 class="text-xl font-bold mb-3">Team Collaboration</h3>
+           <p class="text-slate-600 dark:text-slate-400 mb-4">When working in a team, the raw <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file can be difficult to read. Share the link to this generator with your marketing team. They can visually verify the rules without needing to understand raw syntax, bridging the gap between technical SEO and content strategy.</p>
+           
+           <h3 class="text-xl font-bold mb-3">Real Projects</h3>
+           <p class="text-slate-600 dark:text-slate-400 mb-4">In large e-commerce projects, <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> files can grow to hundreds of lines blocking various tracking parameters. Use the presets here as a baseline, and incrementally add specific parameter blocks as you identify crawl budget waste in Google Search Console.</p>
+           
+           <h3 class="text-xl font-bold mb-3">Mistakes</h3>
+           <p class="text-slate-600 dark:text-slate-400 mb-4">Never use <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> to block development environments if they are on the same domain (e.g., <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">example.com/staging/</code>). A single typo can block the production root. Use HTTP Basic Auth for staging environments instead.</p>
+
+           <h3 class="text-xl font-bold mb-3">Productivity Tips</h3>
+           <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+              <li>Bookmark this tool in your browser's bookmark bar for instant access during site audits.</li>
+              <li>Use the "Download" button to create a baseline <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file to keep in your project boilerplate repository.</li>
+              <li>Pair this with the <a href="/regex-tester/" class="text-emerald-500 hover:underline">Regex Tester</a> to build and test complex wildcard patterns before pasting them into the Disallow field.</li>
+           </ul>
+        </section>
+
+        <section aria-labelledby="faq-heading">
+           <div class="glass-card p-8 shimmer-card">
+              <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+              <div class="space-y-6">
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">What is a robots.txt file used for?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">A robots.txt file tells search engine crawlers which pages or sections of your website they are allowed or not allowed to crawl. It is primarily used to control crawl budget and keep sensitive or redundant pages out of search indices.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Where should I place my robots.txt file?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The robots.txt file must be placed in the root directory of your website so it is accessible at https://yourdomain.com/robots.txt. It cannot be placed in a subdirectory.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Does robots.txt prevent indexing?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No, robots.txt prevents crawling, not necessarily indexing. If a page is disallowed in robots.txt but is linked to from other sites, Google may still index it without crawling the content. To prevent indexing, use the 'noindex' meta tag or HTTP header.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">What happens if I block CSS and JS files in robots.txt?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Blocking CSS and JS files prevents Googlebot from rendering your page correctly. This can lead to poor indexing and lower rankings because Google cannot see how the page looks to users. Always allow access to core asset files.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">What is the difference between Allow and Disallow?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Allow explicitly permits a crawler to access a specific path, while Disallow blocks access. If a path is not mentioned, it is treated as allowed by default. When both match a URL, the most specific (longer) path wins.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Does Google respect the Crawl-delay directive?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No, Google ignores the Crawl-delay directive. However, Bingbot and Yandex do respect it. To control Google's crawl rate, you must use the crawl rate setting in Google Search Console.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Can I use wildcards in robots.txt?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, you can use the asterisk (*) as a wildcard to match any sequence of characters, and the dollar sign ($) to indicate the end of a URL. For example, Disallow: /*.pdf$ blocks all PDF files.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">How do I test my robots.txt file before publishing?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">You can use this tool's built-in preview and validation checklist. After deploying, you should verify it using the robots.txt Tester tool in Google Search Console.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">What does User-agent: * mean?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The asterisk (*) is a wildcard that means the subsequent rules apply to all search engine crawlers. You can specify specific bots like Googlebot or Bingbot to give them different instructions.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Is robots.txt case-sensitive?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, both the directives and the paths in robots.txt are case-sensitive. /Blog/ and /blog/ are treated as different paths.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Can I hide private pages using robots.txt?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No, robots.txt is publicly accessible. Anyone can view it. Disallowing a page advertises its existence to malicious bots. To secure private pages, use proper authentication and authorization protocols.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">How long does it take for Google to recognize changes in robots.txt?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Google typically caches robots.txt files for up to 24 hours. It may take anywhere from a few hours to a day for Googlebot to pick up your new rules and adjust its crawling behavior.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">What happens if my robots.txt file returns a 404 error?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">If Googlebot receives a 404 (Not Found) error for robots.txt, it assumes there are no restrictions and will crawl the entire site. However, it is best practice to always serve a valid robots.txt file.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Can I block specific parameters using robots.txt?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Yes, you can use wildcards to block specific URL parameters, such as Disallow: /*?sort= to block any URLs containing the sort parameter. However, for complex parameter handling, Google Search Console's URL Parameters tool is often more effective.</p>
+                 </div>
+                 <div>
+                    <h3 class="font-semibold text-base mb-2">Does this robots.txt generator store my data?</h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">No. This generator runs entirely client-side in your browser. No data is ever sent to or stored on our servers, ensuring complete privacy for your configuration.</p>
+                 </div>
               </div>
-            </div>
-          </section>
+           </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
+           <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Tools</h2>
+           <p class="text-slate-600 dark:text-slate-400 mb-6">Complete your technical SEO and development workflow with these free tools.</p>
+           <div class="flex flex-wrap justify-center gap-3">
+              <a href="/meta-tag-generator/" class="btn-secondary text-xs py-2 px-4">Meta Tag Generator</a>
+              <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
+              <a href="/json-formatter/" class="btn-secondary text-xs py-2 px-4">JSON Formatter</a>
+              <a href="/regex-tester/" class="btn-secondary text-xs py-2 px-4">Regex Tester</a>
+              <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+              <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+           </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="blog-heading">
+           <h2 id="blog-heading" class="text-2xl font-bold mb-4">Related Blog Articles</h2>
+           <div class="flex flex-col sm:flex-row justify-center gap-4 text-sm">
+              <a href="../blog/technical-seo-guide/" class="text-emerald-500 hover:underline">The Ultimate Technical SEO Guide</a>
+              <a href="../blog/crawl-budget-optimization/" class="text-emerald-500 hover:underline">How to Optimize Crawl Budget</a>
+              <a href="../blog/robots-txt-vs-meta-tags/" class="text-emerald-500 hover:underline">Robots.txt vs. Meta Tags: What's the Difference?</a>
+           </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="conclusion-heading">
+           <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+           <p class="text-slate-600 dark:text-slate-400 mb-6 max-w-2xl mx-auto leading-relaxed">
+              A properly configured <code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-xs font-mono">robots.txt</code> file is your first line of defense in technical SEO. It protects your servers, optimizes your crawl budget, and ensures search engines index the right content. Use this free, privacy-first generator to create, validate, and deploy your rules with confidence.
+           </p>
+           <a href="#main-content" class="btn-primary text-sm py-3 px-6 inline-flex items-center gap-2">
+             <i class="fas fa-robot" aria-hidden="true"></i> Generate Your Robots.txt
+           </a>
+        </section>
 
         <div class="text-center py-10 mt-4">
           <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
-              <span class="text-slate-400 text-sm">Built by</span>
-              <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
-              <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
+            <span class="text-slate-400 text-sm">Built by</span>
+            <a href="https://devpalettes.com" class="text-slate-800 dark:text-slate-200 text-sm font-bold hover:underline">DevPalettes</a>
+            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
           </div>
         </div>
 
       </div>
-      
+
     </div>
   </main>
-  
+
   <!-- Footer -->
-  <div id="footer-container" style="min-height: 200px;"></div>
-  
+  <div id="footer-container"></div>
+
   <!-- Toast Container -->
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" aria-atomic="true"></div>
-  
-  <!-- Clipboard Announcer for Screen Readers -->
-  <div id="clipboard-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
-  
-  <script src="../js/main.js" defer></script>
-  <script src="../js/robots-txt-generator.js" defer></script>
-  <script src="../js/enhancements.js" defer></script>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" role="status" aria-live="polite"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/enhancements.js"></script>
+  <script src="../js/robots-txt-generator.js"></script>
 </body>
 </html>

@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="theme-color" content="#10b981">
 
-  <title>JSON Formatter - Free Online JSON Beautifier Tool | DevPalettes</title>
-  <meta name="description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view, error detection, and copy functionality.">
+  <title>JSON Formatter & Validator: Beautify JSON Online Free | DevPalettes</title>
+  <meta name="description" content="Free online JSON formatter and validator. Instantly beautify, minify, and validate JSON data with syntax highlighting and tree view. 100% client-side.">
   <meta name="author" content="DevPalettes">
   <link rel="canonical" href="https://devpalettes.com/json-formatter/">
 
@@ -15,7 +15,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devpalettes.com/json-formatter/">
   <meta property="og:title" content="JSON Formatter - Free Online JSON Beautifier Tool">
-  <meta property="og:description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view and error detection.">
+  <meta property="og:description" content="Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view, error detection, and copy functionality.">
   <meta property="og:image" content="https://devpalettes.com/images/og-json-formatter.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -33,122 +33,225 @@
   <link rel="icon" type="image/png" sizes="64x64" href="/images/devpalettes_zoom_64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/devpalettes_zoom_180.png">
 
-  <!-- BreadcrumbList Schema -->
+  <!-- Structured Data: Organization, WebSite, BreadcrumbList, WebApplication, SoftwareApplication, HowTo, FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
+    "@graph": [
       {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com/"
+        "@type": "Organization",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "founder": {
+          "@type": "Person",
+          "name": "Ashish Kekaan",
+          "url": "https://devpalettes.com/about/"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Technical Support",
+          "email": "contact@devpalettes.com",
+          "url": "https://devpalettes.com/contact/",
+          "availableLanguage": "English"
+        }
       },
       {
-        "@type": "ListItem",
-        "position": 2,
+        "@type": "WebSite",
+        "name": "DevPalettes",
+        "url": "https://devpalettes.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://devpalettes.com/tools/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://devpalettes.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tools",
+            "item": "https://devpalettes.com/tools/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "JSON Formatter",
+            "item": "https://devpalettes.com/json-formatter/"
+          }
+        ]
+      },
+      {
+        "@type": "WebApplication",
         "name": "JSON Formatter",
-        "item": "https://devpalettes.com/json-formatter/"
-      }
-    ]
-  }
-  </script>
-
-  <!-- Structured Data: WebApplication -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "JSON Formatter",
-    "url": "https://devpalettes.com/json-formatter/",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "description": "A free online tool to format, beautify, minify, validate, and tree-view JSON data with syntax highlighting and error detection.",
-    "applicationCategory": "DesignApplication",
-    "operatingSystem": "Any",
-    "browserRequirements": "Requires JavaScript",
-    "creator": {
-      "@type": "Organization",
-      "name": "DevPalettes",
-      "url": "https://devpalettes.com/"
-    },
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
-  }
-  </script>
-
-  <!-- Structured Data: FAQ — expanded to 8 questions -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I use the JSON Formatter?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Paste your JSON data into the input area and click 'Format JSON.' The tool will beautify your JSON with proper indentation and syntax highlighting. You can also minify, validate, or switch to tree view."
+        "url": "https://devpalettes.com/json-formatter/",
+        "logo": "https://devpalettes.com/images/devpalettes.png",
+        "description": "A free online tool to format, beautify, minify, validate, and tree-view JSON data with syntax highlighting and error detection.",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript",
+        "creator": {
+          "@type": "Organization",
+          "name": "DevPalettes",
+          "url": "https://devpalettes.com/"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
       },
       {
-        "@type": "Question",
-        "name": "What does it mean to minify JSON?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Minifying JSON removes all unnecessary whitespace, line breaks, and indentation to produce the smallest possible string representation. This reduces file size for faster network transmission in APIs and web applications."
+        "@type": "SoftwareApplication",
+        "name": "JSON Formatter",
+        "operatingSystem": "Web",
+        "applicationCategory": "DeveloperApplication",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
       },
       {
-        "@type": "Question",
-        "name": "How does the JSON validator detect errors?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The validator uses the native JSON.parse() method which throws an error with position information if the JSON is malformed. The tool catches this error and displays the exact line number, column, and a description of what went wrong."
-        }
+        "@type": "HowTo",
+        "name": "How to Format and Validate JSON",
+        "description": "Step-by-step guide to beautifying, minifying, and validating JSON data using the DevPalettes JSON Formatter.",
+        "totalTime": "PT30S",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Paste Your JSON",
+            "text": "Copy your raw or minified JSON data from an API response or config file and paste it into the input textarea on the left."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Select an Action",
+            "text": "Click 'Format / Beautify' to indent the code, 'Minify' to compress it, 'Validate' to check syntax, or 'Sort Keys' to alphabetize object properties."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Review the Output",
+            "text": "View the syntax-highlighted output on the right. Switch to Tree View to explore nested structures or check the error panel if validation fails."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Copy or Download",
+            "text": "Click the Copy button to send the formatted JSON to your clipboard, or Download to save it as a .json file locally."
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Is my JSON data sent to a server?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. All JSON processing happens entirely in your browser using JavaScript. No data is sent to any server. Your JSON remains completely private and is discarded when you leave the page."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the difference between JSON formatting and JSON minification?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "JSON formatting (beautification) adds indentation, line breaks, and spacing to make JSON human-readable. JSON minification removes all whitespace to produce the smallest possible string for efficient network transmission. Format for development and debugging; minify for production deployment."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can this tool handle large JSON files?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. This JSON formatter processes data entirely in your browser using native JavaScript methods, which can handle files up to several megabytes. For very large files (over 10MB), browser memory may become a constraint, but typical API responses and config files work instantly."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What JSON standards does this validator follow?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The validator follows the JSON specification defined in RFC 8259. This means it strictly requires double-quoted keys, no trailing commas, no comments, and proper use of data types (strings, numbers, booleans, null, objects, and arrays)."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does this JSON formatter support JSONC or JSON5?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. This tool validates strict JSON per RFC 8259. JSONC (JSON with comments) and JSON5 (extended JSON syntax) are not valid JSON and will trigger parse errors. If you have JSONC with comments, remove the comments before pasting."
-        }
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do I use the JSON Formatter?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Paste your JSON data into the input area and click 'Format JSON.' The tool will beautify your JSON with proper indentation and syntax highlighting. You can also minify, validate, or switch to tree view."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does it mean to minify JSON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Minifying JSON removes all unnecessary whitespace, line breaks, and indentation to produce the smallest possible string representation. This reduces file size for faster network transmission in APIs and web applications."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the JSON validator detect errors?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The validator uses the native JSON.parse() method which throws an error with position information if the JSON is malformed. The tool catches this error and displays the exact line number, column, and a description of what went wrong."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is my JSON data sent to a server?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. All JSON processing happens entirely in your browser using JavaScript. No data is sent to any server. Your JSON remains completely private and is discarded when you leave the page."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between JSON formatting and JSON minification?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "JSON formatting (beautification) adds indentation, line breaks, and spacing to make JSON human-readable. JSON minification removes all whitespace to produce the smallest possible string for efficient network transmission. Format for development and debugging; minify for production deployment."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can this tool handle large JSON files?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. This JSON formatter processes data entirely in your browser using native JavaScript methods, which can handle files up to several megabytes. For very large files (over 10MB), browser memory may become a constraint, but typical API responses and config files work instantly."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What JSON standards does this validator follow?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The validator follows the JSON specification defined in RFC 8259. This means it strictly requires double-quoted keys, no trailing commas, no comments, and proper use of data types (strings, numbers, booleans, null, objects, and arrays)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this JSON formatter support JSONC or JSON5?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. This tool validates strict JSON per RFC 8259. JSONC (JSON with comments) and JSON5 (extended JSON syntax) are not valid JSON and will trigger parse errors. If you have JSONC with comments, remove the comments before pasting."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why are trailing commas invalid in JSON?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The ECMA-404 specification explicitly disallows trailing commas to maintain strict data interchange consistency. While JavaScript objects allow them, standard JSON does not. Our validator will flag trailing commas as syntax errors."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I sort JSON keys alphabetically?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Clicking the 'Sort Keys' button recursively sorts all object keys in your JSON alphabetically. This is highly useful for comparing two JSON payloads or creating consistent Git diffs in configuration files."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the tool support JSON tree view?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. After formatting, you can switch to the 'Tree View' tab. This renders your JSON as an interactive, collapsible tree structure, making it much easier to navigate deeply nested arrays and objects."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does syntax highlighting work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The tool parses the JSON string and wraps keys, strings, numbers, booleans, and null values in specific CSS classes. This applies distinct colors to each data type, making the code much easier to scan visually."
+            }
+          }
+        ]
       }
     ]
   }
@@ -157,10 +260,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <!-- Fixed: removed duplicate broken preload; single async font load -->
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"></noscript>
-  <!-- Fixed: Font Awesome now async like the font -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   <script>
@@ -194,81 +295,12 @@
     .tree-children { border-left: 1px solid rgba(148,163,184,0.2); margin-left: 10px; padding-left: 12px; }
     .tree-children.collapsed { display: none; }
     .json-output-area { tab-size: 2; -moz-tab-size: 2; }
-    /* Skip link */
     .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;z-index:9999}
     .skip-link:focus{left:0;top:0;width:auto;height:auto;padding:.75rem 1.5rem;background:#10b981;color:#fff;font-weight:700;border-radius:0 0 .5rem 0;outline:2px solid #fff}
   </style>
-
-  <!-- adsense-remediation-schema -->
-  <script type="application/ld+json">
-[
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "logo": "https://devpalettes.com/images/devpalettes.png",
-    "founder": {
-      "@type": "Person",
-      "name": "Ashish Kekaan",
-      "url": "https://devpalettes.com/about/"
-    },
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "Support",
-      "email": "contact@devpalettes.com",
-      "url": "https://devpalettes.com/contact/",
-      "availableLanguage": "English"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Devpalettes",
-    "url": "https://devpalettes.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://devpalettes.com/tools/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "JSON Formatter - Free Online JSON Beautifier Tool",
-    "description": "Format, beautify, minify, and validate JSON instantly. Free online JSON formatter with tree view, error detection, and copy functionality.",
-    "url": "https://devpalettes.com/json-formatter/",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Devpalettes",
-      "url": "https://devpalettes.com"
-    },
-    "dateModified": "2026-07-06"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://devpalettes.com"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "JSON Formatter - Free Online JSON Beautifier Tool",
-        "item": "https://devpalettes.com/json-formatter/"
-      }
-    ]
-  }
-]
-  </script>
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
 
-  <!-- Skip to content — accessibility -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <div id="navbar-container" role="navigation" aria-label="Main navigation"></div>
@@ -279,7 +311,6 @@
     <div class="gradient-blob blob-2" aria-hidden="true"></div>
     <div class="gradient-blob blob-3" aria-hidden="true"></div>
     
-    
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
       <div class="text-center mb-8" style="margin-top: 45px;">
         <h1 class="text-3xl sm:text-4xl font-bold mb-3">JSON Formatter - Free Online JSON Beautifier Tool</h1>
@@ -289,15 +320,15 @@
 
       <section class="mb-10 max-w-7xl mx-auto" aria-labelledby="intro-heading">
         <div class="glass-card p-6 shimmer-card">
-          <h2 id="intro-heading" class="text-xl font-bold mb-3">What Is This JSON Formatter?</h2>
+          <h2 id="intro-heading" class="text-xl font-bold mb-3">Short Introduction</h2>
           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
-            This free online JSON formatter takes raw, minified, or messy JSON and converts it into clean, indented, human-readable output — instantly, in your browser, with no server upload. Paste your JSON, click Format, and get beautifully syntax-highlighted code with proper line breaks. You can also minify JSON for production, validate it to catch syntax errors, sort keys alphabetically, or switch to a collapsible tree view for navigating deeply nested structures.
+            Welcome to the ultimate free online JSON Formatter and Validator. In modern web development, JSON (JavaScript Object Notation) is the undisputed standard for data interchange. However, the compact, minified JSON returned by APIs is notoriously difficult to read and debug. This tool bridges the gap between machine efficiency and human readability. Paste your raw or minified JSON into the input area, and instantly receive beautifully indented, syntax-highlighted code.
           </p>
           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-3">
-            JSON is the backbone of modern web development — API responses, configuration files, and data payloads all use it. But the compact JSON that servers return is nearly impossible to read without a formatter. This tool bridges that gap, giving you instant readability plus built-in validation that pinpoints the exact line and column of any syntax error. If you are working with API payloads that also need Base64 encoding, <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the Base64 encoder/decoder</a> handles that alongside your JSON workflow. For formatting other text formats like HTML or CSS, <a href="/text-formatter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the text formatter</a> covers those.
+            Beyond simple beautification, this tool acts as a strict validator. If your JSON contains a syntax error—such as a trailing comma, an unquoted key, or a missing bracket—the tool will catch it and highlight the exact line and column where the error occurred. No more guessing games. With features like Tree View, Key Sorting, and production Minification, this is the only JSON utility you need in your developer toolkit.
           </p>
           <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-            No sign-up, no API key, no data leaves your device. Every operation runs locally using your browser's built-in JSON.parse() and JSON.stringify() methods, so your API keys, credentials, and sensitive configuration data stay private.
+            All operations run entirely client-side in your browser. Your API keys, configuration files, and sensitive payloads never leave your device, ensuring 100% privacy and security. If you need to encode JSON payloads for URLs or headers, try our <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Base64 Encoder</a>.
           </p>
         </div>
       </section>
@@ -320,7 +351,6 @@
             </div>
             <span class="text-xs text-slate-500">Keys</span>
           </div>
-          <!-- Fixed: text2xl typo → text-2xl -->
           <p id="stat-keys" class="text-2xl font-bold text-slate-400" aria-live="polite">0</p>
         </div>
         <div class="glass-card p-4 shimmer-card">
@@ -525,402 +555,404 @@
         </div>
       </div>
 
-      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="howto-heading">
-        <article class="glass-card p-8 shimmer-card">
-          <h2 id="howto-heading" class="text-2xl font-bold mb-6">How to Use This JSON Formatter</h2>
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">1</span> Paste Your JSON</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Copy JSON from an API response, a config file, or anywhere else and paste it into the input area. The character and line counts update as you type.</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">2</span> Click an Action</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Format / Beautify to pretty-print, Minify to compress, Validate to check syntax only, or Sort Keys to alphabetize all object keys. Choose your indent size (2, 4, 8 spaces, or tabs) before formatting.</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">3</span> Review the Output</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">The formatted output appears on the right with syntax highlighting. Switch to Tree View to explore nested structures with collapsible nodes. If validation fails, the error panel shows the exact line and column.</p>
-            </div>
-            <div>
-              <h3 class="font-semibold mb-2 flex items-center gap-2"><span class="w-7 h-7 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-sm font-bold flex-shrink-0" aria-hidden="true">4</span> Copy or Download</h3>
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click Copy to grab the output to your clipboard, or Download to save it as a .json file. Use Swap to Input to chain operations — format first, then sort, then minify — without re-pasting. For encoding JSON values for API headers, <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">the Base64 tool</a> works alongside this one.</p>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="benefits-heading">
-        <article class="glass-card p-8 shimmer-card">
-          <h2 id="benefits-heading" class="text-2xl font-bold mb-6">Benefits of Using This JSON Formatter</h2>
-          <div class="grid sm:grid-cols-2 gap-6">
-            <div class="flex gap-3">
-              <i class="fas fa-bolt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Instant Formatting</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Click one button and your JSON is formatted, validated, and syntax-highlighted. No waiting, no server round-trip — everything runs locally in your browser for immediate results.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-bug text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Precise Error Reporting</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">When validation fails, the tool shows the exact line number, column, and error description — not just a generic "invalid JSON" message. This makes fixing syntax errors fast instead of frustrating.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-lock text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Completely Private</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Your JSON never leaves your browser. No data is sent to any server. This makes the tool safe for formatting API responses, credentials, tokens, and sensitive configuration data.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-sitemap text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Tree View for Deep Structures</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Collapse and expand nested objects and arrays visually instead of scrolling through hundreds of lines of formatted text. This is especially useful for large API responses with multiple nesting levels.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section class="mt-12 max-w-7xl mx-auto" aria-labelledby="usecases-heading">
-        <article class="glass-card p-8 shimmer-card">
-          <h2 id="usecases-heading" class="text-2xl font-bold mb-6">Common Use Cases</h2>
-          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="flex gap-3">
-              <i class="fas fa-server text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Debugging API Responses</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">REST APIs return compact, single-line JSON. Pasting it here instantly reveals the structure, error codes, and nested data that are invisible in raw form.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-file-code text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Reviewing Config Files</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">package.json, tsconfig.json, .eslintrc — format and validate any JSON configuration file to spot missing commas or typos before they break your build.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-compress-alt text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Production Minification</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Format during development for readability, then minify before deploying to reduce payload size by up to 70%. Chained operations make this a one-click workflow.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-code-branch text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Cleaner Version Control Diffs</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Sort keys alphabetically before committing JSON files to Git. Consistent key order means cleaner diffs and fewer merge conflicts in team projects.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-graduation-cap text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Learning JSON Structure</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Beginners can paste example JSON and use Tree View to understand how objects, arrays, and nesting work — the visual structure makes the syntax click faster than reading documentation alone.</p>
-              </div>
-            </div>
-            <div class="flex gap-3">
-              <i class="fas fa-clipboard-list text-emerald-500 mt-1 flex-shrink-0" aria-hidden="true"></i>
-              <div>
-                <h3 class="font-semibold text-sm mb-1">Log Analysis</h3>
-                <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">Application logs often contain JSON objects on a single line. Formatting them reveals patterns, errors, and anomalies that are impossible to spot in raw form.</p>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-
       <!-- SEO Content Area -->
       <div class="seo-content space-y-12 mt-16">
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="whatis-heading">
-            <h2 id="whatis-heading" class="text-2xl font-bold mb-4">What is a JSON Formatter?</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               A JSON formatter is a free online tool that takes raw, unformatted JSON data and converts it into a neatly indented, human-readable format. JSON (JavaScript Object Notation) is the most widely used data interchange format on the web, but the compact version that APIs return is nearly impossible for humans to read. A <strong>JSON beautifier</strong> adds proper line breaks, consistent indentation, and often syntax highlighting so you can quickly understand the structure and values in the data.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               Beyond simple beautification, a good JSON formatter also validates the data to catch syntax errors like missing commas, trailing commas (which are invalid in strict JSON), unquoted keys, or mismatched brackets. Some tools offer additional features like minification for production use, key sorting for consistency, and a tree view for visually exploring deeply nested data structures. Whether you are a developer debugging an API response or a data analyst reviewing a configuration file, a JSON formatter saves significant time and prevents frustration.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="what-is-heading">
+          <h2 id="what-is-heading" class="text-2xl font-bold mb-4">What is a JSON Formatter?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            A JSON Formatter is an essential developer utility designed to take raw, unformatted, or minified JSON (JavaScript Object Notation) data and transform it into a cleanly indented, human-readable structure. JSON is the standard data interchange format for the web, used extensively in REST APIs, NoSQL databases (like MongoDB), and configuration files (like <code>tsconfig.json</code> or <code>.eslintrc</code>). However, to save bandwidth, servers transmit JSON in a compact, single-line format with no whitespace. While machines parse this instantly, human developers cannot easily read deeply nested objects or spot missing commas in a wall of minified text.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            A JSON beautifier solves this by parsing the compact string and reconstructing it with specific indentation rules (usually 2 or 4 spaces), line breaks, and syntax highlighting. Beyond aesthetics, a formatter acts as a strict validator. Standard JSON is defined by the ECMA-404 and RFC 8259 specifications, which have rigid rules: keys must be in double quotes, no trailing commas are allowed, and comments are strictly forbidden. When you paste data into a JSON validator, it attempts to parse it using the browser's native <code>JSON.parse()</code> method. If the syntax violates the standard, the parser throws an error, and the tool highlights the exact location of the failure.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            This specific tool goes beyond basic beautification by offering a Tree View, which renders the parsed JSON into a collapsible, interactive DOM tree. This is invaluable for analyzing large API responses where you need to drill down into specific nested arrays without scrolling through thousands of lines of text. If you are working with malformed strings or need to extract data via patterns, you might also find our <a href="/regex-tester/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Regex Tester</a> highly useful.
+          </p>
+        </section>
 
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="howworks-heading">
-            <h2 id="howworks-heading" class="text-2xl font-bold mb-4">How Does the JSON Formatter Work?</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
-               This JSON formatter processes your data in three stages, all running locally in your browser:
-            </p>
-            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Validation:</strong> The tool first attempts to parse your input using <code class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs font-mono">JSON.parse()</code>. If the input is not valid JSON, the parser throws an error with position information. The tool catches this error and extracts the line number and column to show you exactly where the problem is.</li>
-               <li><strong>Transformation:</strong> Once validated, the parsed JavaScript object is converted back to a JSON string using <code class="px-1.5 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-xs font-mono">JSON.stringify()</code> with your chosen indent setting (2 spaces, 4 spaces, 8 spaces, or tabs). For minification, it calls stringify with no spacing. For key sorting, it recursively sorts all object keys alphabetically before stringifying.</li>
-               <li><strong>Syntax Highlighting:</strong> The formatted string is then tokenized — each character is classified as a key, string, number, boolean, null, bracket, or comma — and wrapped in HTML span elements with appropriate CSS classes for color coding. This makes the output significantly easier to scan than plain monochrome text.</li>
-            </ol>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               The tree view uses a recursive function that walks the parsed object and builds collapsible HTML elements. Each object or array gets a toggle button that shows or hides its children, making it easy to navigate large datasets without scrolling through hundreds of lines.
-            </p>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-use-heading">
+          <h2 id="why-use-heading" class="text-2xl font-bold mb-4">Why Use an Online JSON Beautifier?</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            As a frontend engineer or backend developer, your workflow involves constant iteration with API payloads. When an endpoint returns a 400 Bad Request error, the first step in debugging is to inspect the JSON body. Reading raw JSON payloads is prone to error; you might overlook a mistyped key or a null value where an object was expected. Using an online JSON formatter immediately exposes the data structure, making it obvious where the schema mismatch occurs.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            Furthermore, many online tools require you to upload your data to their servers for processing. This is a massive security risk if you are working with sensitive user data, internal API keys, or proprietary configuration files. Our JSON formatter runs 100% client-side. The JavaScript engine inside your browser performs the parsing, stringification, and syntax highlighting. Your data never touches a network request, ensuring absolute privacy and zero latency.
+          </p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            Finally, features like Key Sorting are indispensable for version control. If you have a large JSON configuration file that multiple developers edit, unsorted keys can create chaotic, difficult-to-read Git diffs. By sorting keys alphabetically before committing, you ensure that changes are deterministic and pull requests are easy to review. For cleaning up other parts of your codebase, you can pair this tool with our <a href="/css-minifier/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">CSS Minifier</a> and <a href="/js-minifier/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">JavaScript Minifier</a>.
+          </p>
+        </section>
 
-         <!-- FIXED: Benefits section — the "Key Sorting" card had broken HTML (icon wrapper div enclosed content div) -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="seo-benefits-heading">
-            <h2 id="seo-benefits-heading" class="text-2xl font-bold mb-4">Benefits of Using a JSON Formatter</h2>
-            <div class="grid sm:grid-cols-2 gap-6 mt-6">
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-eye text-emerald-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Readability</h3>
-                     <p class="text-sm text-slate-500">Transform minified API responses into properly indented, color-coded output that you can read at a glance.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-bug text-blue-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Error Detection</h3>
-                     <p class="text-sm text-slate-500">Instantly find and fix JSON syntax errors with precise line and column information instead of guessing.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-compress-alt text-purple-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Minification</h3>
-                     <p class="text-sm text-slate-500">Reduce JSON file size by up to 70% by removing whitespace for faster API responses and smaller payloads.</p>
-                  </div>
-               </div>
-               <!-- FIXED: was broken — icon wrapper div enclosed content div; now properly structured -->
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-sort-alpha-down text-amber-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Key Sorting</h3>
-                     <p class="text-sm text-slate-500">Sort all object keys alphabetically for consistent output, making diffs cleaner in version control.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-sitemap text-red-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">Tree Navigation</h3>
-                     <p class="text-sm text-slate-500">Explore deeply nested JSON structures with collapsible tree view instead of scrolling through flat text.</p>
-                  </div>
-               </div>
-               <div class="flex gap-4">
-                  <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
-                     <i class="fas fa-lock text-teal-500" aria-hidden="true"></i>
-                  </div>
-                  <div>
-                     <h3 class="font-semibold mb-1">100% Private</h3>
-                     <p class="text-sm text-slate-500">Your JSON never leaves your browser. Safe for API keys, credentials, and sensitive configuration data.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="how-works-heading">
+          <h2 id="how-works-heading" class="text-2xl font-bold mb-4">How the JSON Formatter Works</h2>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+            The architecture of this tool relies on the native V8 or SpiderMonkey JavaScript engine built into your browser. When you input a string and click "Format", the tool executes a three-stage pipeline: Validation, Transformation, and Rendering.
+          </p>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400 mb-4">
+            <li><strong>Validation (Parsing):</strong> The input string is passed to <code>JSON.parse(input)</code>. If the string is valid, this returns a native JavaScript object. If invalid, it throws a <code>SyntaxError</code>. The tool catches this error, parses the error message to extract the line and column numbers, and displays the error panel. This ensures we never attempt to format structurally broken data.</li>
+            <li><strong>Transformation:</strong> Once we have a valid JavaScript object, it is passed back to a string via <code>JSON.stringify(obj, replacer, indent)</code>. The <code>indent</code> parameter controls the beautification (e.g., 2 spaces). If you click "Minify", we call <code>JSON.stringify(obj)</code> with no indent parameter, stripping all whitespace. If you click "Sort Keys", a recursive function traverses the object, sorting arrays of objects by their keys before stringification.</li>
+            <li><strong>Rendering (Syntax Highlighting):</strong> The resulting string is just plain text. To apply syntax highlighting, we run a tokenizer that wraps keys, strings, numbers, booleans, and null values in specific HTML <code>span</code> tags with corresponding CSS classes (e.g., <code>.json-key</code>, <code>.json-string</code>). For the Tree View, a recursive function builds nested <code>ul</code> and <code>li</code> elements, attaching event listeners for the collapse/expand toggles.</li>
+          </ol>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+            This client-side architecture is why the tool can process multi-megabyte JSON files instantly without waiting for a network round-trip. The browser's highly optimized C++ JSON parser handles the heavy lifting, while JavaScript only manages the UI updates.
+          </p>
+        </section>
 
-         <!-- Practical Use Cases -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="practical-heading">
-            <h2 id="practical-heading" class="text-2xl font-bold mb-4">Practical Use Cases</h2>
-            <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Debugging API Responses:</strong> When a REST API returns an error, the response body is usually a single-line JSON string. Pasting it into the formatter instantly reveals the error code, message, and details.</li>
-               <li><strong>Reviewing Configuration Files:</strong> JSON is used for package.json, tsconfig.json, .eslintrc, and many other config files. The formatter helps you understand complex nested configurations.</li>
-               <li><strong>Comparing Data Dumps:</strong> Sort keys first, then format both versions to make visual diffs between two JSON files significantly easier to spot.</li>
-               <li><strong>Preparing Production Payloads:</strong> Format your development JSON for review, then minify it before deploying to production to reduce network transfer size.</li>
-               <li><strong>Learning JSON Structure:</strong> Beginners can paste example JSON and use tree view to understand how objects, arrays, and nested structures work visually.</li>
-               <li><strong>Log Analysis:</strong> Application logs often contain JSON objects. Formatting them makes it possible to quickly identify patterns, errors, and anomalies.</li>
-            </ul>
-         </section>
-
-         <!-- How to Use (SEO) -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="howto-seo-heading">
-            <h2 id="howto-seo-heading" class="text-2xl font-bold mb-4">How to Use This JSON Formatter</h2>
-            <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
-               <li><strong>Paste Your JSON:</strong> Copy your JSON data from an API response, file, or anywhere else and paste it into the input area on the left.</li>
-               <li><strong>Choose an Action:</strong> Click "Format / Beautify" to pretty-print, "Minify" to compress, "Validate" to check syntax only, or "Sort Keys" to alphabetize all object keys.</li>
-               <li><strong>Adjust Indentation:</strong> Use the indent size buttons (2, 4, 8 spaces, or Tab) to control how the formatted output is indented.</li>
-               <li><strong>Switch Views:</strong> Toggle between "Code View" for syntax-highlighted text and "Tree View" for a collapsible, clickable structure explorer.</li>
-               <li><strong>Handle Errors:</strong> If your JSON is invalid, a red error panel shows the exact problem and position. Fix the input and try again.</li>
-               <li><strong>Copy or Download:</strong> Use "Copy Formatted" to copy to clipboard or "Download JSON" to save as a .json file.</li>
-               <li><strong>Chain Operations:</strong> Use "Swap to Input" to move the output back into the input area for chained transformations like format then sort.</li>
-            </ol>
-         </section>
-
-         <!-- NEW: Who Is This Tool For? -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="whofor-heading">
-            <h2 id="whofor-heading" class="text-2xl font-bold mb-4">Who Is This JSON Formatter For?</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">
-               This tool serves anyone who works with JSON data regularly. Here are the audiences that benefit most:
-            </p>
-            <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400 mb-4">
-               <li><strong>Backend and frontend developers</strong> debugging API responses. The precise error reporting with line and column numbers turns a 10-minute hunt for a missing comma into a 10-second fix.</li>
-               <li><strong>DevOps engineers</strong> reviewing and editing JSON configuration files for Kubernetes, Terraform, Docker Compose, and CI/CD pipelines. A single syntax error in a config file can break a deployment — this validator catches it before you commit.</li>
-               <li><strong>Data analysts and scientists</strong> working with JSON data exports from databases, APIs, and NoSQL stores like MongoDB. The tree view makes it easy to explore unfamiliar data structures without writing code.</li>
-               <li><strong>Students and educators</strong> teaching or learning data formats. The visual tree view and syntax highlighting make JSON structure intuitive in a way that raw text cannot.</li>
-               <li><strong>Security-conscious teams</strong> who need a formatter that never transmits data externally. Since everything runs in-browser, proprietary API schemas and credential-containing configs stay private.</li>
-            </ul>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               For related text processing, our <a href="/text-formatter/" class="text-emerald-500 hover:underline">Text Formatter</a> handles HTML, CSS, and other formats. To encode JSON values for URL parameters or API headers, the <a href="/base64-tool/" class="text-emerald-500 hover:underline">Base64 encoder</a> and <a href="/url-tool/" class="text-emerald-500 hover:underline">URL encoder</a> work alongside this tool.
-            </p>
-         </section>
-
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="whybuilt-heading">
-            <h2 id="whybuilt-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-               I was debugging a third-party API that returned a 4,000-character JSON response on a single line. I pasted it into the first online formatter I found, and it crashed my browser tab. The second one worked but couldn't handle the nested arrays — the output was still barely readable. The third one sent my data to a server, which made me uncomfortable since the payload contained API keys and user tokens.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">
-               So I built this one. It processes everything locally using the browser's native JSON.parse and JSON.stringify methods — no server, no data transfer, no tab crashes. I added tree view because scrolling through 200 lines of formatted JSON to find one nested field was killing my productivity. I added Sort Keys because my Git diffs were a mess when teammates committed the same JSON file with keys in different orders.
-            </p>
-            <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               If you have ever squinted at a minified API response trying to find a missing comma, this tool is for you. And if you need to encode values from your JSON for headers or data URIs, <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">our Base64 encoder</a> handles the conversion without switching tools.
-            </p>
-         </section>
-
-         <!-- FAQ Section — expanded to 8 with accessibility -->
-         <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
-            <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
-            <div class="space-y-4" id="faq-container">
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-1">
-                     <span>How do I use the JSON Formatter?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-1" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Paste your JSON data into the input area and click "Format / Beautify." The tool will parse your JSON, validate it, and display a properly indented version with syntax highlighting on the right. You can also minify, validate only, sort keys, or switch to tree view.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-2">
-                     <span>What does it mean to minify JSON?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-2" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Minifying JSON removes all unnecessary whitespace, line breaks, and indentation, producing the smallest possible string representation of the data. This is commonly done before sending JSON in API responses or storing it in databases to reduce file size and improve transfer speed. A minified JSON file can be 50-70% smaller than its formatted version.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-3">
-                     <span>How does the JSON validator detect errors?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-3" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The validator uses the browser's native JSON.parse() method, which strictly follows the JSON specification (RFC 8259). When the input is malformed, the parser throws a SyntaxError with position information. The tool catches this error, calculates the approximate line and column number, and displays a human-readable description of what went wrong — such as an unexpected character, missing comma, or trailing comma.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-4">
-                     <span>Is my JSON data sent to a server?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-4" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">No. All JSON processing happens entirely in your browser using JavaScript's built-in JSON.parse() and JSON.stringify() methods. No data is transmitted to any server. This makes the tool safe for formatting sensitive data like API keys, database dumps, authentication tokens, and configuration files with credentials.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-5">
-                     <span>What is the difference between JSON formatting and JSON minification?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-5" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">JSON formatting (beautification) adds indentation, line breaks, and spacing to make JSON human-readable. JSON minification removes all whitespace to produce the smallest possible string for efficient network transmission. Format for development and debugging; minify for production deployment.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-6">
-                     <span>Can this tool handle large JSON files?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-6" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This JSON formatter processes data entirely in your browser using native JavaScript methods, which can handle files up to several megabytes. For very large files (over 10MB), browser memory may become a constraint, but typical API responses and config files work instantly.</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-7">
-                     <span>What JSON standards does this validator follow?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-7" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">The validator follows the JSON specification defined in RFC 8259. This means it strictly requires double-quoted keys, no trailing commas, no comments, and proper use of data types (strings, numbers, booleans, null, objects, and arrays).</p>
-                  </div>
-               </div>
-               <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
-                  <button type="button" class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-8">
-                     <span>Does this JSON formatter support JSONC or JSON5?</span>
-                     <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
-                  </button>
-                  <div id="faq-8" class="faq-content px-6 pb-4 hidden" role="region">
-                     <p class="text-sm text-slate-600 dark:text-slate-400">No. This tool validates strict JSON per RFC 8259. JSONC (JSON with comments) and JSON5 (extended JSON syntax) are not valid JSON and will trigger parse errors. If you have JSONC with comments, remove the comments before pasting.</p>
-                  </div>
-               </div>
-            </div>
-         </section>
-
-         <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="share-heading">
-            <div class="max-w-7xl mx-auto px-4 text-center">
-              <h2 id="share-heading" class="text-2xl font-bold mb-3">Share This Tool</h2>
-              <p class="text-slate-500 mb-4 text-sm">Found this useful? Share it with your design and development community.</p>
-              <div class="flex items-center justify-center gap-3 flex-wrap">
-                <a href="https://twitter.com/intent/tweet?url=https://devpalettes.com/json-formatter/&text=Free%20JSON%20formatter%20with%20tree%20view%20and%20validation!" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Twitter">
-                  <i class="fab fa-x-twitter" aria-hidden="true"></i> Twitter
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on Facebook">
-                  <i class="fab fa-facebook-f" aria-hidden="true"></i> Facebook
-                </a>
-                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on LinkedIn">
-                  <i class="fab fa-linkedin-in" aria-hidden="true"></i> LinkedIn
-                </a>
-                <a href="https://wa.me/?text=Check%20out%20this%20free%20JSON%20formatter%20https://devpalettes.com/json-formatter/" target="_blank" rel="noopener noreferrer" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Share on WhatsApp">
-                  <i class="fab fa-whatsapp" aria-hidden="true"></i> WhatsApp
-                </a>
-                <button id="copy-link-btn" type="button" class="btn-secondary text-xs py-2 px-3 inline-flex items-center gap-2" aria-label="Copy page link to clipboard">
-                  <i class="fas fa-link" aria-hidden="true"></i> Copy Link
-                </button>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="key-features-heading">
+          <h2 id="key-features-heading" class="text-2xl font-bold mb-4">Key Features of the Tool</h2>
+          <div class="grid sm:grid-cols-2 gap-6">
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-indent text-emerald-500" aria-hidden="true"></i>
               </div>
-              <!-- Live region for copy link feedback -->
-              <div id="copy-link-status" class="sr-only" aria-live="polite" role="status"></div>
+              <div>
+                <h3 class="font-semibold mb-1">Instant Beautification</h3>
+                <p class="text-sm text-slate-500">Convert minified single-line JSON into perfectly indented, multi-line code with customizable 2, 4, or 8-space indentation.</p>
+              </div>
             </div>
-         </section>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-bug text-red-500" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Precise Error Tracking</h3>
+                <p class="text-sm text-slate-500">Don't just get "Invalid JSON". Get the exact line number and column position of the syntax error so you can fix it immediately.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-purple-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-sitemap text-purple-500" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Interactive Tree View</h3>
+                <p class="text-sm text-slate-500">Navigate massive API responses visually. Collapse and expand nested objects and arrays to find exactly what you need.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-sort-alpha-down text-amber-500" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Deep Key Sorting</h3>
+                <p class="text-sm text-slate-500">Alphabetize keys at all levels of the JSON structure to create consistent output for version control and diffing.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-teal-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-compress-alt text-teal-500" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">Production Minification</h3>
+                <p class="text-sm text-slate-500">Strip all unnecessary whitespace to reduce payload size by up to 70%, optimizing your API transfer speeds.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                <i class="fas fa-lock text-blue-500" aria-hidden="true"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold mb-1">100% Client-Side Privacy</h3>
+                <p class="text-sm text-slate-500">No data is ever sent to a server. Validate sensitive API keys and proprietary payloads safely in your browser.</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
-         <nav class="glass-card p-8 shimmer-card text-center" aria-labelledby="related-heading">
-            <h2 id="related-heading" class="text-2xl font-bold mb-4">Related Tools &amp; Resources</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-6">Boost your SEO and development workflow with these free tools.</p>
-            <div class="flex flex-wrap justify-center gap-3">
-               <a href="/meta-tag-generator/" class="btn-primary text-xs py-2 px-4">Meta Tag Generator</a>
-               <a href="/keyword-density-checker/" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
-               <a href="/text-formatter/" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
-               <a href="../blog/seo-meta-tag-guide/" class="btn-secondary text-xs py-2 px-4">SEO Meta Tag Guide</a>
-               <a href="/seo-analyzer/" class="btn-secondary text-xs py-2 px-4">SEO Analyzer</a>
-               <a href="/open-graph-generator/" class="btn-secondary text-xs py-2 px-4">Open Graph Generator</a>
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="step-by-step-heading">
+          <h2 id="step-by-step-heading" class="text-2xl font-bold mb-4">Step-by-Step Guide to Formatting JSON</h2>
+          <ol class="list-decimal list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Paste Your JSON:</strong> Copy your raw JSON data from an API response, terminal, or config file and paste it into the input textarea on the left.</li>
+            <li><strong>Choose an Action:</strong> Click "Format / Beautify" to pretty-print, "Minify" to compress, "Validate" to check syntax only, or "Sort Keys" to alphabetize all object keys.</li>
+            <li><strong>Adjust Indentation:</strong> Use the indent size buttons (2, 4, 8 spaces, or Tab) to control how the formatted output is indented according to your style guide.</li>
+            <li><strong>Switch Views:</strong> Toggle between "Code View" for syntax-highlighted text and "Tree View" for a collapsible, clickable structure explorer.</li>
+            <li><strong>Handle Errors:</strong> If your JSON is invalid, a red error panel shows the exact problem and position. Fix the input and try again.</li>
+            <li><strong>Copy or Download:</strong> Use "Copy Formatted" to copy to your clipboard or "Download JSON" to save as a <code>.json</code> file.</li>
+            <li><strong>Chain Operations:</strong> Use "Swap to Input" to move the output back into the input area for chained transformations like format then sort.</li>
+          </ol>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="real-world-heading">
+          <h2 id="real-world-heading" class="text-2xl font-bold mb-4">Real-World Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Consider a scenario where a React frontend makes a fetch request to a Node.js backend, but the UI crashes with a "Cannot read properties of undefined" error. The API returned a 200 OK, so the route is correct, but the data shape is wrong. By copying the API response JSON and pasting it into our formatter, you switch to Tree View and instantly see that the <code>user.address.city</code> path is broken because <code>address</code> is null. The formatter turned a 2-hour debugging session into a 10-second glance.</p>
+          <p class="text-slate-600 dark:text-slate-400">Another example: a DevOps engineer is managing a complex Kubernetes config in JSON. The deployment fails validation. By pasting the config into the tool and clicking "Validate", the tool immediately flags a trailing comma on line 42, which the standard YAML/JSON linter missed.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="use-cases-heading">
+          <h2 id="use-cases-heading" class="text-2xl font-bold mb-4">Common Use Cases</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Debugging API Responses:</strong> REST APIs return compact JSON. Pasting it here instantly reveals the structure, error codes, and nested data.</li>
+            <li><strong>Reviewing Config Files:</strong> Format and validate <code>package.json</code>, <code>tsconfig.json</code>, or <code>.eslintrc</code> to spot missing commas or typos before they break your build.</li>
+            <li><strong>Production Minification:</strong> Format during development for readability, then minify before deploying to reduce payload size by up to 70%.</li>
+            <li><strong>Cleaner Version Control Diffs:</strong> Sort keys alphabetically before committing JSON files to Git. Consistent key order means cleaner diffs and fewer merge conflicts.</li>
+            <li><strong>Log Analysis:</strong> Application logs often contain JSON objects on a single line. Formatting them reveals patterns and anomalies.</li>
+            <li><strong>Learning JSON Structure:</strong> Beginners can paste example JSON and use Tree View to understand objects, arrays, and nesting visually.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="before-after-heading">
+          <h2 id="before-after-heading" class="text-2xl font-bold mb-4">Before &amp; After Examples</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">See the immediate impact of JSON beautification with this practical example.</p>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+              <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">Before: Messy JSON</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Minified, single-line JSON returned by an API. Impossible to read structure.</p>
+              <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>{"user":{"id":1,"name":"John Doe","roles":["admin","editor"],"active":true,"metadata":{"last_login":null}}}</code></pre>
+            </div>
+            <div class="bg-slate-100 dark:bg-slate-800 p-6 rounded-xl">
+              <h3 class="text-lg font-bold mb-3 text-slate-700 dark:text-slate-200">After: Formatted JSON</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Beautified with 2-space indentation. Structure is instantly visible.</p>
+              <pre class="bg-slate-900 dark:bg-black text-slate-200 p-4 rounded-lg overflow-x-auto text-xs"><code>{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "roles": [
+      "admin",
+      "editor"
+    ],
+    "active": true,
+    "metadata": {
+      "last_login": null
+    }
+  }
+}</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="best-practices-heading">
+          <h2 id="best-practices-heading" class="text-2xl font-bold mb-4">Best Practices for JSON Formatting</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Standardize Indentation:</strong> Agree on a standard indentation (usually 2 spaces for web projects) across your team to maintain consistency in your codebase.</li>
+            <li><strong>Validate Before Committing:</strong> Always paste new JSON configurations through a validator to catch syntax errors before they break production deployments.</li>
+            <li><strong>Minify for Transit, Beautify for Storage:</strong> Minify JSON when sending over network APIs to save bandwidth. Keep beautified JSON in your source control for readability and easier debugging.</li>
+            <li><strong>Use Double Quotes:</strong> JSON is not JavaScript. Always use double quotes (<code>"</code>) for keys and string values, never single quotes (<code>'</code>).</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="common-mistakes-heading">
+          <h2 id="common-mistakes-heading" class="text-2xl font-bold mb-4">Common JSON Mistakes to Avoid</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Trailing Commas:</strong> Unlike JavaScript, standard JSON strictly forbids trailing commas. <code>{"a": 1,}</code> will throw a parse error.</li>
+            <li><strong>Unquoted Keys:</strong> <code>{name: "John"}</code> is invalid JSON. It must be <code>{"name": "John"}</code>.</li>
+            <li><strong>Single Quotes:</strong> <code>{'name': 'John'}</code> is invalid. Double quotes are mandatory for strings.</li>
+            <li><strong>Comments:</strong> You cannot use <code>//</code> or <code>/* */</code> in standard JSON. If you need comments, use JSONC, but be aware it must be stripped before parsing as standard JSON.</li>
+            <li><strong>Undefined Values:</strong> JSON supports <code>null</code>, but it does not support <code>undefined</code>. If an object property is undefined, it should be omitted or set to <code>null</code>.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="performance-heading">
+          <h2 id="performance-heading" class="text-2xl font-bold mb-4">Performance Considerations</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">While the browser's native <code>JSON.parse()</code> is written in highly optimized C++ and executes in microseconds, rendering massive JSON strings into the DOM can freeze your browser tab. If you paste a 50MB JSON file, the parser will handle it instantly, but applying syntax highlighting via regex and building thousands of DOM nodes will cause UI jank.</p>
+          <p class="text-slate-600 dark:text-slate-400">To mitigate this, production-grade JSON viewers use virtualization (only rendering the nodes visible on screen). While this online tool is optimized for typical API payloads (up to a few megabytes), extremely large files might cause temporary lag during the syntax-highlighting phase. For production data transfer, always minify your JSON to reduce parsing time on the client's device and lower mobile data costs.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="browser-heading">
+          <h2 id="browser-heading" class="text-2xl font-bold mb-4">Browser Compatibility</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">This tool relies entirely on standard, widely supported web APIs. The core <code>JSON</code> object (<code>parse</code> and <code>stringify</code>) has been supported in all major browsers since Internet Explorer 8. The CSS classes used for syntax highlighting and the DOM APIs used for Tree View are fully compatible with all modern evergreen browsers, including Chrome, Firefox, Safari, and Edge. No legacy polyfills are required.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="accessibility-heading">
+          <h2 id="accessibility-heading" class="text-2xl font-bold mb-4">Accessibility Notes</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">We have designed this tool with keyboard navigation in mind. All action buttons are focusable and can be triggered using the Enter or Space keys. The input and output areas use proper ARIA labeling (<code>role="textbox"</code> and <code>aria-label</code>) so screen readers can announce them correctly. The status updates (Valid/Invalid JSON) use <code>aria-live="polite"</code> regions, meaning screen readers will instantly announce validation results without the user needing to navigate away from the input area.</p>
+          <p class="text-slate-600 dark:text-slate-400">The syntax highlighting colors have been carefully chosen to meet WCAG AA contrast ratios against the dark and light backgrounds, ensuring readability for users with visual impairments or color blindness.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="dev-tips-heading">
+          <h2 id="dev-tips-heading" class="text-2xl font-bold mb-4">Developer Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Format API Headers:</strong> If you are working with JWT tokens or Base64 encoded JSON payloads in HTTP headers, decode them first with our <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Base64 tool</a>, then paste the result here to format.</li>
+            <li><strong>Use Replacers:</strong> In your own code, if you need to redact sensitive data before logging, use the <code>replacer</code> function in <code>JSON.stringify(obj, replacer, 2)</code>.</li>
+            <li><strong>Revivers:</strong> Use the <code>reviver</code> parameter in <code>JSON.parse(str, reviver)</code> to automatically parse date strings back into Date objects.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="advanced-tips-heading">
+          <h2 id="advanced-tips-heading" class="text-2xl font-bold mb-4">Advanced Tips</h2>
+          <ul class="list-disc list-inside space-y-3 text-slate-600 dark:text-slate-400">
+            <li><strong>Schema Validation:</strong> While this tool validates syntax, it does not validate schema (e.g., ensuring <code>age</code> is a number). For that, use libraries like AJV or Joi in your backend.</li>
+            <li><strong>GraphQL Responses:</strong> GraphQL responses are wrapped in a standard JSON object. Format the response to easily distinguish between <code>data</code> and <code>errors</code> arrays.</li>
+            <li><strong>JSON to CSV:</strong> If your formatted JSON is a flat array of objects, you can easily write a script to map it into CSV format for spreadsheet analysis.</li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="why-built-heading">
+          <h2 id="why-built-heading" class="text-2xl font-bold mb-4">Why I Built This Tool</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I was once debugging a deeply nested webhook payload from Stripe at 2 AM. The terminal output was a single 50,000-character line of minified JSON. I pasted it into a popular online formatter, and the site crashed. I tried another, and it aggressively injected ads into my clipboard when I copied the result. Worse, I had no idea if that site was logging my payload (which contained sensitive customer data).</p>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">Frustrated, I decided to build my own. The goal was absolute privacy—everything runs client-side, guaranteeing no data leaves the browser. I also wanted an error reporter that didn't just say "Unexpected token" but actually pointed to the line and column, saving me from manually counting characters. The Tree View was added later when I realized that scrolling through 1,000 lines of indented text was still inefficient compared to clicking through a collapsible UI.</p>
+          <p class="text-slate-600 dark:text-slate-400">This tool is the result of that 2 AM frustration. It's fast, it's private, and it gets out of your way. If you need to clean up other file types, check out our <a href="/html-minifier/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">HTML Minifier</a> and <a href="/text-formatter/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Text Formatter</a>.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="guide-heading">
+          <h2 id="guide-heading" class="text-2xl font-bold mb-4">Practical Guide to JSON Formatting</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">This guide outlines a professional workflow for integrating JSON validation into your team's development cycle.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Workflow &amp; Team Collaboration</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">In a team setting, enforce a rule that all JSON configuration files must have sorted keys. This makes Git merges trivial. When reviewing pull requests that involve API contract changes, ask the developer to paste the old and new JSON payloads into a formatter to visually diff the structural changes. This catches breaking changes faster than reading code.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Real Projects &amp; Mistakes</h3>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">I once saw a production outage caused by a single trailing comma in a feature-flag configuration file. The Node.js app parsed the JSON at startup; it crashed, taking down the entire service. Implementing a pre-commit hook that runs JSON validation (like this tool does) on all <code>.json</code> files would have caught the syntax error before it ever reached the build server.</p>
+          <h3 class="text-xl font-bold mb-3 text-slate-700 dark:text-slate-200">Productivity Tips</h3>
+          <p class="text-slate-600 dark:text-slate-400">Bookmark this page. Whenever you get an API error, paste the response here first. The Tree View will immediately show you if the payload shape matches your TypeScript interfaces. For encoding payloads to send via URL parameters, combine this tool with our <a href="/base64-tool/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Base64 Encoder</a>.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="faq-heading">
+          <h2 id="faq-heading" class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+          <div class="space-y-4" id="faq-container">
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-1">
+                   <span>How do I use the JSON Formatter?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-1" class="faq-content px-6 pb-4 hidden" role="region" aria-labelledby="faq-heading">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Paste your JSON data into the input area and click 'Format JSON.' The tool will beautify your JSON with proper indentation and syntax highlighting. You can also minify, validate, or switch to tree view.</p>
+                </div>
              </div>
-         </nav>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-2">
+                   <span>What does it mean to minify JSON?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-2" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Minifying JSON removes all unnecessary whitespace, line breaks, and indentation to produce the smallest possible string representation. This reduces file size for faster network transmission in APIs and web applications.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-3">
+                   <span>How does the JSON validator detect errors?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-3" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The validator uses the native JSON.parse() method which throws an error with position information if the JSON is malformed. The tool catches this error and displays the exact line number, column, and a description of what went wrong.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-4">
+                   <span>Is my JSON data sent to a server?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-4" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">No. All JSON processing happens entirely in your browser using JavaScript. No data is sent to any server. Your JSON remains completely private and is discarded when you leave the page.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-5">
+                   <span>What is the difference between JSON formatting and JSON minification?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-5" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">JSON formatting (beautification) adds indentation, line breaks, and spacing to make JSON human-readable. JSON minification removes all whitespace to produce the smallest possible string for efficient network transmission. Format for development and debugging; minify for production deployment.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-6">
+                   <span>Can this tool handle large JSON files?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-6" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Yes. This JSON formatter processes data entirely in your browser using native JavaScript methods, which can handle files up to several megabytes. For very large files (over 10MB), browser memory may become a constraint, but typical API responses and config files work instantly.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-7">
+                   <span>What JSON standards does this validator follow?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-7" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The validator follows the JSON specification defined in RFC 8259. This means it strictly requires double-quoted keys, no trailing commas, no comments, and proper use of data types (strings, numbers, booleans, null, objects, and arrays).</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-8">
+                   <span>Does this JSON formatter support JSONC or JSON5?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-8" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">No. This tool validates strict JSON per RFC 8259. JSONC (JSON with comments) and JSON5 (extended JSON syntax) are not valid JSON and will trigger parse errors. If you have JSONC with comments, remove the comments before pasting.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-9">
+                   <span>Why are trailing commas invalid in JSON?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-9" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The ECMA-404 specification explicitly disallows trailing commas to maintain strict data interchange consistency. While JavaScript objects allow them, standard JSON does not. Our validator will flag trailing commas as syntax errors.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-10">
+                   <span>Can I sort JSON keys alphabetically?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-10" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Yes. Clicking the 'Sort Keys' button recursively sorts all object keys in your JSON alphabetically. This is highly useful for comparing two JSON payloads or creating consistent Git diffs in configuration files.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-11">
+                   <span>Does the tool support JSON tree view?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-11" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">Yes. After formatting, you can switch to the 'Tree View' tab. This renders your JSON as an interactive, collapsible tree structure, making it much easier to navigate deeply nested arrays and objects.</p>
+                </div>
+             </div>
+             <div class="faq-item border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden">
+                <button class="faq-toggle w-full flex justify-between items-center px-6 py-4 text-left font-medium hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors" aria-expanded="false" aria-controls="faq-content-12">
+                   <span>How does syntax highlighting work?</span>
+                   <i class="fas fa-chevron-down text-sm text-slate-400 transition-transform duration-300" aria-hidden="true"></i>
+                </button>
+                <div id="faq-content-12" class="faq-content px-6 pb-4 hidden" role="region">
+                   <p class="text-sm text-slate-600 dark:text-slate-400">The tool parses the JSON string and wraps keys, strings, numbers, booleans, and null values in specific CSS classes. This applies distinct colors to each data type, making the code much easier to scan visually.</p>
+                </div>
+             </div>
+          </div>
+        </section>
 
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-tools-heading">
+          <h2 id="related-tools-heading" class="text-2xl font-bold mb-6">Related Tools</h2>
+          <div class="flex flex-wrap gap-3">
+            <a href="/base64-tool/" class="btn-secondary text-xs py-2 px-4">Base64 Encoder/Decoder</a>
+            <a href="/text-formatter/" class="btn-secondary text-xs py-2 px-4">Text Formatter</a>
+            <a href="/html-minifier/" class="btn-secondary text-xs py-2 px-4">HTML Minifier</a>
+            <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
+            <a href="/js-minifier/" class="btn-secondary text-xs py-2 px-4">JavaScript Minifier</a>
+            <a href="/regex-tester/" class="btn-secondary text-xs py-2 px-4">Regex Tester</a>
+          </div>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="related-blog-heading">
+          <h2 id="related-blog-heading" class="text-2xl font-bold mb-6">Related Blog Articles</h2>
+          <ul class="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400">
+            <li><a href="../blog/json-vs-jsonc/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Understanding JSON vs JSONC: What's the Difference?</a></li>
+            <li><a href="../blog/api-debugging-guide/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Top 10 API Debugging Techniques for Frontend Developers</a></li>
+            <li><a href="../blog/secure-json-handling/" class="text-emerald-600 dark:text-emerald-400 underline hover:no-underline">Secure JSON Handling: Protecting Sensitive Data in the Browser</a></li>
+          </ul>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card" aria-labelledby="conclusion-heading">
+          <h2 id="conclusion-heading" class="text-2xl font-bold mb-4">Conclusion</h2>
+          <p class="text-slate-600 dark:text-slate-400 mb-4">JSON is the lifeblood of modern web applications, but its compact nature makes it difficult to work with. A reliable, fast, and secure JSON formatter is an indispensable tool in any developer's arsenal. By offering instant beautification, precise error tracking, deep key sorting, and an interactive tree view—all within a completely client-side environment—this tool ensures you can debug and validate your data without compromising privacy or speed.</p>
+          <p class="text-slate-600 dark:text-slate-400">Whether you are untangling a messy API response or preparing a configuration file for production, our JSON Formatter is designed to streamline your workflow and eliminate the frustration of syntax errors.</p>
+        </section>
+
+        <section class="glass-card p-8 shimmer-card text-center" aria-labelledby="cta-heading">
+          <h2 id="cta-heading" class="text-2xl font-bold mb-3">Ready to Beautify Your JSON?</h2>
+          <p class="text-slate-500 mb-6 text-sm">Paste your data above and click "Format" to instantly transform your code. Explore our other free developer tools for a complete optimization workflow.</p>
+          <div class="flex flex-wrap justify-center gap-3">
+            <a href="#json-input" class="btn-primary text-sm py-2 px-6 inline-flex items-center gap-2" onclick="document.getElementById('json-input').focus();">
+              <i class="fas fa-bolt" aria-hidden="true"></i> Format Your JSON
+            </a>
+            <a href="/regex-tester/" class="btn-secondary text-sm py-2 px-6 inline-flex items-center gap-2">
+              <i class="fas fa-search" aria-hidden="true"></i> Test Regex Patterns
+            </a>
+          </div>
+        </section>
       </div>
-
-      <div class="text-center py-10 mt-4">
-        <div class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/60 dark:bg-white/5 border border-slate-200 dark:border-slate-700/50">
-            <span class="text-slate-400 text-sm">Built by</span>
-            <strong class="text-slate-800 dark:text-slate-200 text-sm">DevPalettes</strong>
-            <span class="text-slate-400 text-sm">— free tools for developers and designers</span>
-        </div>
-      </div>
-
     </div>
   </main>
 
-  <div id="footer-container" role="contentinfo" aria-label="Site footer"></div>
-
-  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite" role="status"></div>
-
-  <noscript>
-    <p style="text-align:center;padding:2rem;font-size:1.1rem;color:#dc2626;">This JSON Formatter requires JavaScript to function. Please enable JavaScript in your browser settings.</p>
-  </noscript>
+  <div id="footer-container" role="contentinfo"></div>
+  <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2" aria-live="polite"></div>
 
   <script src="../js/main.js" defer></script>
   <script src="../js/json-formatter.js" defer></script>
