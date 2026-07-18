@@ -610,7 +610,7 @@
                You can change any CSS property inside keyframes — transform, opacity, color, border-radius, box-shadow, and more. However, for performance, animating only <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">transform</code> and <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">opacity</code> is strongly recommended because these are the only properties the browser can composite on the GPU without triggering layout or paint. For detailed browser compatibility data, check the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes" target="_blank" rel="noopener noreferrer">MDN reference on @keyframes</a>.
             </p>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               When an animation needs to change color alongside motion — for instance, a button that fades from blue to green while scaling up — you can animate the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">background-color</code> property in the keyframes. To pick the right colors for these transitions, the <a href="/color-picker/" class="text-emerald-500 hover:underline">Color Picker</a> tool lets you sample and convert colors precisely before adding them to your keyframe steps.
+               When an animation needs to change color alongside motion — for instance, a button that fades from blue to green while scaling up — you can animate the <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">background-color</code> property in the keyframes. To pick the right colors for these transitions, the <a href="/color-wheel/" class="text-emerald-500 hover:underline">Color Picker</a> tool lets you sample and convert colors precisely before adding them to your keyframe steps.
             </p>
          </section>
 
@@ -900,7 +900,7 @@
                <li><strong>3D transforms (flip animation):</strong> Require <code class="bg-slate-200 dark:bg-slate-700 px-1 rounded">perspective</code> on a parent element. Supported everywhere, but Safari sometimes handles perspective-origin slightly differently — test flip animations on iOS if they are critical to your UI.</li>
             </ul>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-               If you need to debug animation issues in older browsers, you can validate your generated CSS with the <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> tool which also catches basic syntax errors. For JavaScript-heavy pages that also use animations, the <a href="/javascript-minifier/" class="text-emerald-500 hover:underline">JavaScript Minifier</a> keeps your JS bundle lean so it does not compete with CSS animations for main-thread time.
+               If you need to debug animation issues in older browsers, you can validate your generated CSS with the <a href="/css-minifier/" class="text-emerald-500 hover:underline">CSS Minifier</a> tool which also catches basic syntax errors. For JavaScript-heavy pages that also use animations, the <a href="/js-minifier/" class="text-emerald-500 hover:underline">JavaScript Minifier</a> keeps your JS bundle lean so it does not compete with CSS animations for main-thread time.
             </p>
          </section>
 
@@ -1072,8 +1072,6 @@
             <p class="text-slate-500 mb-4 text-sm">Dive deeper into CSS animation techniques and design systems:</p>
             <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
                <li><a href="/blog/color-palettes-in-design/" class="text-emerald-500 hover:underline">How to Choose Color Palettes That Work With Animated UIs</a> — understanding how motion and color interact in perceived quality.</li>
-               <li><a href="/blog/css-effects/" class="text-emerald-500 hover:underline">CSS Effects Library: Transitions, Animations, and Filters Explained</a> — a broader look at visual effects beyond keyframe animations.</li>
-               <li><a href="/blog/glassmorphism-guide/" class="text-emerald-500 hover:underline">Building Glassmorphism UIs That Animate Smoothly</a> — combining frosted glass effects with entrance animations without performance issues.</li>
             </ul>
          </section>
 
@@ -1113,17 +1111,17 @@
                <a href="/palettes/" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
                <a href="/converter/" class="btn-secondary text-xs py-2 px-4">Color Converter</a>
                <a href="/flexbox/" class="btn-secondary text-xs py-2 px-4">Flexbox Playground</a>
-               <a href="/color-picker/" class="btn-secondary text-xs py-2 px-4">Color Picker</a>
+               <a href="/color-wheel/" class="btn-secondary text-xs py-2 px-4">Color Picker</a>
                <a href="/css-minifier/" class="btn-secondary text-xs py-2 px-4">CSS Minifier</a>
                <a href="/image-compressor/" class="btn-secondary text-xs py-2 px-4">Image Compressor</a>
-               <a href="/svg-to-css/" class="btn-secondary text-xs py-2 px-4">SVG to CSS</a>
+               <a href="/svg-to-png/" class="btn-secondary text-xs py-2 px-4">SVG to CSS</a>
             </div>
          </section>
 
          <section class="glass-card p-8 shimmer-card" aria-labelledby="cta-heading">
             <h2 id="cta-heading" class="text-2xl font-bold mb-3 text-center">Start Building Smoother Interfaces</h2>
             <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-6 text-center max-w-2xl mx-auto">
-               Pick an animation type above, adjust the timing, preview it live, and copy the code. Every millisecond of motion you add to your interface should be intentional — this tool makes that intentionality easy. If you are also styling the elements around your animations, the <a href="/css-effects/" class="text-emerald-500 hover:underline">CSS Effects Library</a> has ready-to-use hover states, glassmorphism presets, and transition combinations that pair well with keyframe animations.
+               Pick an animation type above, adjust the timing, preview it live, and copy the code. Every millisecond of motion you add to your interface should be intentional — this tool makes that intentionality easy. If you are also styling the elements around your animations, the <a href="/css-effects-library/" class="text-emerald-500 hover:underline">CSS Effects Library</a> has ready-to-use hover states, glassmorphism presets, and transition combinations that pair well with keyframe animations.
             </p>
             <div class="text-center">
                <a href="#config-heading" class="btn-primary btn-glow inline-flex items-center gap-2">

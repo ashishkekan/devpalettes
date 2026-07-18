@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const hslL = document.getElementById('hsl-l');
   const hslOutput = document.getElementById('hsl-output');
   const colorPreview = document.getElementById('color-preview');
-  const colorPicker = document.getElementById('color-picker');
+  const colorPicker = document.getElementById('color-wheel');
   const harmoniesContainer = document.getElementById('harmonies');
   const toastLiveRegion = document.getElementById('toast-live-region');
 

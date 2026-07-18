@@ -365,7 +365,7 @@
             The bigger advantage is iteration speed. When you are prototyping a dashboard or a music player UI and need to test ten different shadow depths across six components, doing it manually in a code editor means flipping back and forth between your CSS file and the browser, editing hex values, and refreshing. With this generator, you see changes live, compare raised versus pressed states with a single toggle, and copy the final CSS only when you are satisfied. It turns a ten-minute per-component task into a ten-second one.
           </p>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-            For teams, the generator creates a shared reference. Instead of committing shadow values to memory or a design token file, designers and developers can point to the same configuration: "Use distance 12, blur 16, intensity 15 on #e0e5ec." That consistency is hard to maintain when everyone calculates shadows by eye. If you are building a full design system, pair this with the <a href="/palette-generator/" class="text-slate-700 dark:text-slate-200 underline">palette generator</a> to establish your base colors first, then generate neumorphic tokens on top.
+            For teams, the generator creates a shared reference. Instead of committing shadow values to memory or a design token file, designers and developers can point to the same configuration: "Use distance 12, blur 16, intensity 15 on #e0e5ec." That consistency is hard to maintain when everyone calculates shadows by eye. If you are building a full design system, pair this with the <a href="/palettes/" class="text-slate-700 dark:text-slate-200 underline">palette generator</a> to establish your base colors first, then generate neumorphic tokens on top.
           </p>
         </article>
       </section>
@@ -738,7 +738,7 @@
             <li><strong>Keep shadow distance moderate.</strong> Values between 8px and 20px look natural. Anything beyond 30px appears exaggerated and breaks the soft UI illusion.</li>
             <li><strong>Set blur larger than distance.</strong> If your distance is 12px, use a blur of at least 16px. This keeps shadow edges soft and prevents hard lines that contradict the soft UI aesthetic.</li>
             <li><strong>Limit neumorphism to key interactive elements.</strong> Applying raised shadows to every card, heading, and divider on a page creates visual noise. Reserve the effect for buttons, toggles, inputs, and focal components.</li>
-            <li><strong>Ensure text contrast meets WCAG AA.</strong> Because the element background matches the page background, text inside neumorphic elements must have sufficient contrast on its own. Use a <a href="/color-picker/" class="text-slate-700 dark:text-slate-200 underline">color picker</a> to verify contrast ratios.</li>
+            <li><strong>Ensure text contrast meets WCAG AA.</strong> Because the element background matches the page background, text inside neumorphic elements must have sufficient contrast on its own. Use a <a href="/color-wheel/" class="text-slate-700 dark:text-slate-200 underline">color picker</a> to verify contrast ratios.</li>
             <li><strong>Add visible focus indicators.</strong> Neumorphic shadows alone do not provide adequate focus indication for keyboard users. Always pair them with a distinct focus ring using <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">:focus-visible</code>.</li>
             <li><strong>Use CSS transitions for state changes.</strong> Animate between raised and pressed states with <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-700 text-xs font-mono">transition: box-shadow 0.2s ease</code> for a smooth, tactile interaction.</li>
           </ol>
@@ -1008,7 +1008,7 @@ module.exports = {
           <h2 class="text-2xl font-bold mb-4">Skeuomorphism vs. Neumorphism: What's Different?</h2>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">Skeuomorphic design aims to replicate real-world objects in digital form — think of the leather-textured calendar in early iOS or the wooden bookshelf in older iBooks. It relies heavily on textures, gradients, and detailed imagery to create convincing physical metaphors. Neumorphism strips away all ornamentation. There are no textures, no realistic materials, no photographic elements. Instead, it achieves a physical feel through pure shadow geometry on flat, monochrome surfaces.</p>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed mb-3">Where skeuomorphism can feel cluttered and dated, neumorphism feels clean and contemporary. Where flat design can feel sterile and lifeless, neumorphism adds subtle dimensionality without visual noise. The trade-off is that neumorphism works best in controlled environments with consistent background colors — it is less forgiving than flat design when elements overlap or when backgrounds vary across a layout.</p>
-          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Flat design, by contrast, uses no shadows or dimensionality at all. It relies on color, borders, and spacing for visual hierarchy. Neumorphism sits between flat and skeuomorphic: it borrows the monochrome minimalism of flat design and the depth cues of skeuomorphism, creating a hybrid that feels both modern and tactile. For purely decorative depth without the neumorphic constraint of matching backgrounds, the <a href="/css-effects/" class="text-slate-700 dark:text-slate-200 underline">CSS effects library</a> offers a broader range of shadow and depth styles.</p>
+          <p class="text-slate-600 dark:text-slate-400 leading-relaxed">Flat design, by contrast, uses no shadows or dimensionality at all. It relies on color, borders, and spacing for visual hierarchy. Neumorphism sits between flat and skeuomorphic: it borrows the monochrome minimalism of flat design and the depth cues of skeuomorphism, creating a hybrid that feels both modern and tactile. For purely decorative depth without the neumorphic constraint of matching backgrounds, the <a href="/css-effects-library/" class="text-slate-700 dark:text-slate-200 underline">CSS effects library</a> offers a broader range of shadow and depth styles.</p>
         </article>
       </section>
 
@@ -1162,11 +1162,11 @@ module.exports = {
               <h3 class="font-semibold text-sm mb-2">Color Palettes in Design: A Practical Guide</h3>
               <p class="text-xs text-slate-500">Learn how to build color systems that work with soft UI and neumorphic interfaces, including neutral foundation selection.</p>
             </a>
-            <a href="../blog/css-shadow-design/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
+            <a href="../blog/box-shadow-generator-guide/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
               <h3 class="font-semibold text-sm mb-2">CSS Shadow Design: From Basics to Neumorphism</h3>
               <p class="text-xs text-slate-500">A deep dive into box-shadow techniques including dual shadows, inset effects, and the math behind neumorphic depth.</p>
             </a>
-            <a href="../blog/dark-mode-design/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
+            <a href="../blog/dark-mode-color-guide/" class="block p-4 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-emerald-400 dark:hover:border-emerald-500 transition-colors">
               <h3 class="font-semibold text-sm mb-2">Dark Mode Design: Adapting Soft UI for Dark Surfaces</h3>
               <p class="text-xs text-slate-500">How to adjust neumorphic shadows, intensity, and background values for dark mode without losing depth perception.</p>
             </a>
@@ -1222,10 +1222,10 @@ module.exports = {
           <a href="/gradient/" title="Create beautiful CSS gradients with live preview" class="btn-secondary text-xs py-2 px-4">Gradient Generator</a>
           <a href="/page-builder/" title="Build responsive page layouts with a drag-and-drop editor" class="btn-secondary text-xs py-2 px-4">Page Builder</a>
           <a href="/keyword-density-checker/" title="Analyze keyword frequency in your content for SEO" class="btn-secondary text-xs py-2 px-4">Keyword Density Checker</a>
-          <a href="/palette-generator/" title="Generate harmonious color palettes for your projects" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
-          <a href="/color-picker/" title="Pick colors from anywhere on your screen" class="btn-secondary text-xs py-2 px-4">Color Picker</a>
-          <a href="/css-effects/" title="Browse a library of CSS effects and animations" class="btn-secondary text-xs py-2 px-4">CSS Effects Library</a>
-          <a href="/svg-to-css/" title="Convert SVG icons to CSS data URIs" class="btn-secondary text-xs py-2 px-4">SVG to CSS</a>
+          <a href="/palettes/" title="Generate harmonious color palettes for your projects" class="btn-secondary text-xs py-2 px-4">Palette Generator</a>
+          <a href="/color-wheel/" title="Pick colors from anywhere on your screen" class="btn-secondary text-xs py-2 px-4">Color Picker</a>
+          <a href="/css-effects-library/" title="Browse a library of CSS effects and animations" class="btn-secondary text-xs py-2 px-4">CSS Effects Library</a>
+          <a href="/svg-to-png/" title="Convert SVG icons to CSS data URIs" class="btn-secondary text-xs py-2 px-4">SVG to CSS</a>
         </div>
       </section>
 
@@ -1240,7 +1240,7 @@ module.exports = {
             The key to using neumorphism well is restraint. Apply it to interactive controls and focal elements, not to every surface on the page. Pair it with strong text contrast, visible focus indicators, and ARIA states for accessibility. Test in both light and dark modes. And if you need more shadow flexibility — multiple layers, spread radius, or independent shadow colors — the <a href="/box-shadow-generator/" class="text-slate-700 dark:text-slate-200 underline">box shadow generator</a> picks up where this tool leaves off.
           </p>
           <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-            Whether you are prototyping a music player, building a smart home dashboard, or experimenting with soft UI in a personal project, this generator gives you the CSS you need without the friction. Combine it with the <a href="/palette-generator/" class="text-slate-700 dark:text-slate-200 underline">palette generator</a> for your base colors, the <a href="/button-generator/" class="text-slate-700 dark:text-slate-200 underline">button generator</a> for interactive states, and the <a href="/gradient/" class="text-slate-700 dark:text-slate-200 underline">gradient generator</a> for complementary backgrounds — and you have a complete soft UI workflow that runs entirely in your browser.
+            Whether you are prototyping a music player, building a smart home dashboard, or experimenting with soft UI in a personal project, this generator gives you the CSS you need without the friction. Combine it with the <a href="/palettes/" class="text-slate-700 dark:text-slate-200 underline">palette generator</a> for your base colors, the <a href="/button-generator/" class="text-slate-700 dark:text-slate-200 underline">button generator</a> for interactive states, and the <a href="/gradient/" class="text-slate-700 dark:text-slate-200 underline">gradient generator</a> for complementary backgrounds — and you have a complete soft UI workflow that runs entirely in your browser.
           </p>
         </article>
       </section>
