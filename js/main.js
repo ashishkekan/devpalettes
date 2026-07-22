@@ -1048,19 +1048,6 @@ function renderFooter() {
           </div>
         </div>
 
-        <div class="flex justify-center my-6">
-          <a href="https://sellwithboost.com"
-            target="_blank"
-            rel="noopener noreferrer external">
-              <img
-                  src="https://sellwithboost.com/badge/listing-dark.svg"
-                  alt="Listed on Sell With Boost"
-                  loading="lazy"
-                  width="160"
-                  height="40">
-          </a>
-        </div>
-        
         <div class="border-t border-slate-200 dark:border-slate-800 mt-8 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <a href="/" class="flex items-center gap-2 group mb-4 sm:mb-0">
             <div class="flex items-center gap-2 sm:gap-3 group cursor-pointer">

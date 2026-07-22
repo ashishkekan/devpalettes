@@ -69,20 +69,21 @@
   <link rel="stylesheet" href="../css/animations.css">
 </head>
 <body class="bg-slate-50 dark:bg-[#0c0f14] text-slate-900 dark:text-slate-100">
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-emerald-500 focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Skip to main content</a>
   <div id="navbar-container"></div>
-  <main class="pt-20 pb-12 min-h-screen relative overflow-hidden">
+  <main id="main-content" class="pt-20 pb-12 min-h-screen relative overflow-hidden">
     
-    <div class="gradient-blob blob-1"></div>
-    <div class="gradient-blob blob-2"></div>
-    <div class="gradient-blob blob-3"></div>
+    <div class="gradient-blob blob-1" aria-hidden="true"></div>
+    <div class="gradient-blob blob-2" aria-hidden="true"></div>
+    <div class="gradient-blob blob-3" aria-hidden="true"></div>
     
     
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 div-margin">
-      <div class="text-center mb-12 ">
+      <header class="text-center mb-12">
         <h1 class="text-3xl sm:text-4xl font-bold mb-6">Help Center: Guides & Support</h1>
         <p class="text-slate-600 dark:text-slate-400 mb-2 max-w-3xl mx-auto">Find quick answers or get in touch with our support team.</p>
         <p class="text-emerald-600 dark:text-emerald-400 text-sm font-medium mb-6">Free tools. No login required.</p>
-        <div class="spectrum-line max-w-md mx-auto mb-6"></div>
+        <div class="spectrum-line max-w-md mx-auto mb-6" aria-hidden="true"></div>
         
         <!-- Intro Paragraph -->
         <div class="max-w-2xl mx-auto mb-8">
@@ -90,14 +91,14 @@
              Welcome to the Devpalettes Help Center. Access tutorials for our color tools, read our <a href="/blog/" class="text-emerald-500 hover:underline">Design Blog</a> for tips, or visit our <a href="/faq/" class="text-emerald-500 hover:underline">FAQ</a> for instant answers.
           </p>
         </div>
-      </div>
+      </header>
       
-      <!-- Quick Links Grid -->
-      <div class="grid md:grid-cols-2 gap-6 max-w-7xl mx-auto mb-12 ">
-        <a href="/faq/" class="glass-card p-6 shimmer-card group hover:scale-105 transition-transform">
+      <!-- Quick Links Navigation -->
+      <nav aria-label="Quick help links" class="grid md:grid-cols-2 gap-6 max-w-7xl mx-auto mb-12">
+        <a href="/faq/" class="glass-card p-6 shimmer-card group hover:scale-105 transition-transform" aria-label="Visit the FAQ page for frequently asked questions">
           <div class="flex items-start gap-4">
             <div class="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-question-circle text-blue-500 text-xl"></i>
+              <i class="fas fa-question-circle text-blue-500 text-xl" aria-hidden="true"></i>
             </div>
             <div>
               <h3 class="text-lg font-bold mb-1 group-hover:text-emerald-500 transition-colors">FAQ</h3>
@@ -106,10 +107,10 @@
           </div>
         </a>
 
-        <a href="/contact/" class="glass-card p-6 shimmer-card group hover:scale-105 transition-transform">
+        <a href="/contact/" class="glass-card p-6 shimmer-card group hover:scale-105 transition-transform" aria-label="Contact our support team directly">
           <div class="flex items-start gap-4">
             <div class="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center flex-shrink-0">
-              <i class="fas fa-envelope text-emerald-500 text-xl"></i>
+              <i class="fas fa-envelope text-emerald-500 text-xl" aria-hidden="true"></i>
             </div>
             <div>
               <h3 class="text-lg font-bold mb-1 group-hover:text-emerald-500 transition-colors">Contact Us</h3>
@@ -117,30 +118,119 @@
             </div>
           </div>
         </a>
-      </div>
+      </nav>
       
       <!-- Knowledge Base -->
-      <div class="glass-card p-8  shimmer-card max-w-7xl mx-auto">
-        <h2 class="text-2xl font-bold mb-6 text-center">Popular Topics</h2>
+      <section aria-labelledby="popular-topics-heading" class="glass-card p-8 shimmer-card max-w-7xl mx-auto">
+        <h2 id="popular-topics-heading" class="text-2xl font-bold mb-6 text-center">Popular Topics</h2>
         <div class="grid sm:grid-cols-2 gap-4">
            <a href="/palettes/" class="block p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-             <h4 class="font-semibold mb-1">Using the Palette Generator</h4>
+             <h3 class="font-semibold mb-1">Using the Palette Generator</h3>
              <p class="text-xs text-slate-500">Learn how to create custom palettes.</p>
            </a>
            <a href="/converter/" class="block p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-             <h4 class="font-semibold mb-1">Color Formats Explained</h4>
+             <h3 class="font-semibold mb-1">Color Formats Explained</h3>
              <p class="text-xs text-slate-500">Convert between HEX, RGB, HSL.</p>
            </a>
            <a href="/color-blindness/" class="block p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-             <h4 class="font-semibold mb-1">Color Blindness</h4>
+             <h3 class="font-semibold mb-1">Color Blindness</h3>
              <p class="text-xs text-slate-500">Understand how color blindness affects design.</p>
            </a>
            <a href="/gradient/" class="block p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors">
-             <h4 class="font-semibold mb-1">Gradient Generator</h4>
+             <h3 class="font-semibold mb-1">Gradient Generator</h3>
              <p class="text-xs text-slate-500">Create stunning gradients for your designs.</p>
            </a>
         </div>
-      </div>
+      </section>
+
+      <!-- Getting Started -->
+      <section aria-labelledby="getting-started-heading" class="glass-card p-8 shimmer-card max-w-7xl mx-auto mt-6">
+        <h2 id="getting-started-heading" class="text-2xl font-bold mb-4">Getting Started</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          Welcome to the Devpalettes Help Center, your central hub for <strong>guides</strong>, <strong>support</strong>, and tutorials covering every free color tool we offer. Whether you are building a brand identity, designing a user interface, or exploring color theory, our Help Center provides the documentation you need to get productive quickly. No account is required, and every utility runs entirely in your browser.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          Start with our <a href="/palettes/" class="text-emerald-500 hover:underline">Color Palette Generator</a> to build harmonious schemes, or jump into the <a href="/gradient/" class="text-emerald-500 hover:underline">gradient builder</a> for smooth, multi-stop transitions. If you need to translate values between formats, the <a href="/converter/" class="text-emerald-500 hover:underline">Color Converter</a> handles HEX, RGB, and HSL instantly. For deeper reading, browse <a href="/blog/" class="text-emerald-500 hover:underline">our blog</a> where we publish in-depth articles on color theory and accessibility.
+        </p>
+      </section>
+
+      <!-- Using Devpalettes Tools -->
+      <section aria-labelledby="using-tools-heading" class="glass-card p-8 shimmer-card max-w-7xl mx-auto mt-6">
+        <h2 id="using-tools-heading" class="text-2xl font-bold mb-4">Using Devpalettes Tools</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-6">
+          Each tool in our Help Center is free, requires no sign-up, and works on both desktop and mobile browsers. Below is a quick overview of the four core workflows available on the platform.
+        </p>
+
+        <article class="mb-6">
+          <h3 class="text-lg font-bold mb-2"><i class="fas fa-palette text-emerald-500 mr-2" aria-hidden="true"></i>Color Palette Generator</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Generate palettes from a single base color or explore curated combinations. Adjust hue, saturation, and lightness, then export as CSS variables, Tailwind config, or JSON. Lock individual swatches while you randomize the rest of the set. Visit the <a href="/palettes/" class="text-emerald-500 hover:underline">palette generator</a> to start creating.
+          </p>
+        </article>
+
+        <article class="mb-6">
+          <h3 class="text-lg font-bold mb-2"><i class="fas fa-fill-drip text-emerald-500 mr-2" aria-hidden="true"></i>Gradient Generator</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Build linear and radial gradients with unlimited color stops. Copy the generated CSS, adjust angles visually, and preview results under both light and dark themes. Try the <a href="/gradient/" class="text-emerald-500 hover:underline">gradient tool</a> to design smooth color transitions.
+          </p>
+        </article>
+
+        <article class="mb-6">
+          <h3 class="text-lg font-bold mb-2"><i class="fas fa-exchange-alt text-emerald-500 mr-2" aria-hidden="true"></i>Color Converter</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Paste any HEX, RGB, HSL, or named CSS color to receive every equivalent representation instantly. The <a href="/converter/" class="text-emerald-500 hover:underline">converter</a> also surfaces the nearest accessible color name for quick reference.
+          </p>
+        </article>
+
+        <article>
+          <h3 class="text-lg font-bold mb-2"><i class="fas fa-adjust text-emerald-500 mr-2" aria-hidden="true"></i>Contrast Checker</h3>
+          <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            Verify that foreground and background pairs meet WCAG AA and AAA thresholds. The <a href="/wcag-contrast-checker/" class="text-emerald-500 hover:underline">contrast checker</a> references the official <a href="https://www.w3.org/WAI/WCAG21/quickref/" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline" aria-label="W3C WCAG 2.1 Quick Reference (opens in a new tab)">W3C WCAG 2.1 Quick Reference <i class="fas fa-external-link-alt text-xs ml-1" aria-hidden="true"></i></a> so you can ship accessible interfaces with confidence. Learn more about vision differences on our <a href="/color-blindness/" class="text-emerald-500 hover:underline">color vision guide</a>.
+          </p>
+        </article>
+      </section>
+
+      <!-- Common Questions -->
+      <section aria-labelledby="common-questions-heading" class="glass-card p-8 shimmer-card max-w-7xl mx-auto mt-6">
+        <h2 id="common-questions-heading" class="text-2xl font-bold mb-4">Common Questions</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          Many users ask similar questions about our tools. Popular topics include how palettes are exported, whether any data is stored on our servers, and how the <a href="/color-wheel/" class="text-emerald-500 hover:underline">Color Wheel</a> determines complementary colors. For instant answers, visit our <a href="/faq/" class="text-emerald-500 hover:underline">FAQ page</a>, which we update regularly based on questions received through our Help Center support channels.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          You can also browse <a href="/blog/" class="text-emerald-500 hover:underline">step-by-step tutorials</a> on our blog for detailed walkthroughs of each feature, including advanced techniques for palette creation and color format conversion.
+        </p>
+      </section>
+
+      <!-- Troubleshooting -->
+      <section aria-labelledby="troubleshooting-heading" class="glass-card p-8 shimmer-card max-w-7xl mx-auto mt-6">
+        <h2 id="troubleshooting-heading" class="text-2xl font-bold mb-4">Troubleshooting</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          If a tool in our Help Center behaves unexpectedly, try these steps first:
+        </p>
+        <ul class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 list-disc list-inside space-y-1">
+          <li>Clear your browser cache and reload the page.</li>
+          <li>Disable extensions that modify stylesheets.</li>
+          <li>Update to a modern, supported browser version.</li>
+          <li>Review <a href="/blog/" class="text-emerald-500 hover:underline">release notes</a> on our blog for recent platform changes.</li>
+        </ul>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          To report a bug, use our <a href="/contact/" class="text-emerald-500 hover:underline">contact form</a> and include your browser version, the tool URL, and a short description of the issue. Bug reports help us improve the platform for everyone.
+        </p>
+      </section>
+
+      <!-- Contact Support -->
+      <section aria-labelledby="contact-support-heading" class="glass-card p-8 shimmer-card max-w-7xl mx-auto mt-6">
+        <h2 id="contact-support-heading" class="text-2xl font-bold mb-4">Contact Support</h2>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          Our Help Center is designed to be self-serve, but our support team is happy to help if you need personalized assistance. Whether you have a feature request, a partnership inquiry, or a question not covered in our <strong>guides</strong>, reach out through the <a href="/contact/" class="text-emerald-500 hover:underline">Contact page</a>.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+          Before contacting us, please review our <a href="/about/" class="text-emerald-500 hover:underline">About page</a> to learn about our mission, and consult our <a href="/privacy-policy/" class="text-emerald-500 hover:underline">Privacy Policy</a>, <a href="/terms/" class="text-emerald-500 hover:underline">Terms of Service</a>, and <a href="/cookie-policy/" class="text-emerald-500 hover:underline">Cookie Policy</a> for legal details. Additional technical references are available on <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer" class="text-emerald-500 hover:underline" aria-label="MDN Web Docs (opens in a new tab)">MDN Web Docs <i class="fas fa-external-link-alt text-xs ml-1" aria-hidden="true"></i></a>.
+        </p>
+        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          The Devpalettes Help Center is continuously expanding. Bookmark this page and check back as we add more <strong>guides</strong> and <strong>support</strong> resources for designers and developers.
+        </p>
+      </section>
     </div>
   </main>
   <div id="footer-container"></div>
