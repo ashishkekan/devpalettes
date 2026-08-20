@@ -655,7 +655,7 @@ const NAV_CATEGORIES = [
     label: 'Color Tools',
     tools: [
       { label: 'Extract Colors from Image', path: 'color-from-image/' },
-      { label: 'AI Color Palette Generator', path: 'palettes/' },
+      { label: 'Color Palette Generator', path: 'palettes/' },
       { label: 'CSS Gradient Generator', path: 'gradient/' },
       { label: 'HEX to RGB Color Converter', path: 'converter/' },
       { label: 'Interactive Color Wheel Tool', path: 'color-wheel/' },
