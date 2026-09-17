@@ -3,6 +3,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import urljoin, urlsplit, unquote
 import json
+import re
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
@@ -10,6 +11,21 @@ import xml.etree.ElementTree as ET
 ROOT = Path(__file__).resolve().parents[1]
 ORIGIN = 'https://devpalettes.com'
 errors = []
+redirects = json.loads((ROOT / 'scripts/legacy-redirects.json').read_text())
+
+def url_path(path):
+    relative = path.relative_to(ROOT).as_posix()
+    return '/' + (relative[:-10] if relative.endswith('index.html') else relative)
+
+def check_url(value, context):
+    u = urlsplit(value)
+    if u.netloc != 'devpalettes.com':
+        return
+    if '//' in unquote(u.path):
+        errors.append(f'{context}: repeated slash in URL {value}')
+    dest = ROOT / unquote(u.path).lstrip('/')
+    if u.path and dest.is_dir() and not u.path.endswith('/'):
+        errors.append(f'{context}: directory URL needs trailing slash: {value}')
 
 class Page(HTMLParser):
     def __init__(self, path):
@@ -18,6 +34,9 @@ class Page(HTMLParser):
         self.scripts = []
         self.current = None
         self.canonical = None
+        self.refresh = None
+        self.robots = ''
+        self.links = set()
 
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
@@ -25,12 +44,20 @@ class Page(HTMLParser):
             self.current = [attrs, '']
         if tag == 'link' and attrs.get('rel') == 'canonical':
             self.canonical = attrs.get('href')
+        if tag == 'meta' and attrs.get('http-equiv', '').lower() == 'refresh':
+            self.refresh = attrs.get('content', '')
+        if tag == 'meta' and attrs.get('name', '').lower() == 'robots':
+            self.robots = attrs.get('content', '').lower()
         values = [attrs[k] for k in ('href', 'src', 'poster') if attrs.get(k)]
         if tag == 'meta' and attrs.get('property', attrs.get('name', '')) in ('og:image', 'twitter:image', 'og:url', 'twitter:url'):
             values.append(attrs.get('content', ''))
         for value in values:
-            u = urlsplit(urljoin(ORIGIN + '/' + self.path.relative_to(ROOT).as_posix(), value))
+            resolved = urljoin(ORIGIN + '/' + self.path.relative_to(ROOT).as_posix(), value)
+            check_url(resolved, self.path.relative_to(ROOT))
+            u = urlsplit(resolved)
             if u.netloc == 'devpalettes.com':
+                if tag == 'a':
+                    self.links.add(u.path or '/')
                 dest = ROOT / unquote(u.path).lstrip('/')
                 if dest.is_dir():
                     dest /= 'index.html'
@@ -53,18 +80,33 @@ locs = [el.text for el in ET.parse(ROOT / 'sitemap.xml').iter('{http://www.sitem
 if len(locs) != len(set(locs)):
     errors.append('Duplicate sitemap URLs')
 script_count = 0
+parsed = {}
 for path in pages:
     page = Page(path)
     page.feed(path.read_text())
-    if path.name.startswith('google'):
+    route = url_path(path)
+    parsed[route] = page
+    if re.fullmatch(r'google[a-f0-9]+\.html', path.name):
         continue  # Search Console verification file
-    if path.relative_to(ROOT).as_posix() != 'sitemap/index.html':
+    if route in redirects:
+        target = redirects[route]
+        if page.canonical != ORIGIN + target or page.refresh != '0; url=' + target:
+            errors.append(f'{route}: redirect must go immediately to {target}, with matching canonical')
+        if target in redirects or target == route:
+            errors.append(f'{route}: redirect chain or loop')
+        if ORIGIN + route in locs:
+            errors.append(f'{route}: redirect must not appear in sitemap')
+        if ORIGIN + target not in locs:
+            errors.append(f'{route}: redirect target must be in sitemap')
+    else:
         relative = path.relative_to(ROOT).as_posix()
-        expected = ORIGIN + '/' + (relative[:-10] if relative.endswith('index.html') else relative)
+        expected = ORIGIN + route
         if page.canonical != expected:
             errors.append(f'{relative}: canonical should be {expected}')
         if expected not in locs:
             errors.append(f'{relative}: missing from sitemap')
+        if page.refresh or 'noindex' in page.robots or 'none' in page.robots.split(','):
+            errors.append(f'{relative}: canonical page redirects or blocks indexing')
     for attrs, code in page.scripts:
         kind = attrs.get('type', '')
         if attrs.get('src') or kind == 'text/plain':
@@ -86,12 +128,31 @@ for path in (ROOT / 'js').glob('*.js'):
     if result.returncode:
         errors.append(result.stderr)
 for loc in locs:
+    check_url(loc, 'sitemap.xml')
+    if urlsplit(loc).netloc != 'devpalettes.com' or urlsplit(loc).scheme != 'https':
+        errors.append(f'Unexpected sitemap origin: {loc}')
     dest = ROOT / urlsplit(loc).path.lstrip('/')
     if dest.is_dir():
         dest /= 'index.html'
     if not dest.is_file():
         errors.append(f'Sitemap points to missing file: {loc}')
+    elif urlsplit(loc).path not in parsed or parsed[urlsplit(loc).path].canonical != loc:
+        errors.append(f'Sitemap URL does not match page canonical: {loc}')
+for route in redirects:
+    if route not in parsed:
+        errors.append(f'Missing legacy redirect page: {route}')
+# Verify discovery through static anchors, not only JavaScript-generated menus.
+reachable, pending = set(), ['/']
+while pending:
+    route = pending.pop()
+    if route in reachable or route not in parsed:
+        continue
+    reachable.add(route)
+    pending.extend(parsed[route].links - reachable)
+for loc in locs:
+    if urlsplit(loc).path not in reachable:
+        errors.append(f'No static navigation path from homepage: {loc}')
 if errors:
     print('\n'.join(errors))
     sys.exit(1)
-print(f'PASS: {len(pages)} HTML files, {script_count} scripts, JSON-LD, local links/assets, canonicals, {len(locs)} sitemap URLs and consent gating.')
+print(f'PASS: {len(pages)} HTML files, {script_count} scripts, JSON-LD, local links/assets, canonicals, {len(locs)} sitemap URLs, {len(redirects)} redirects, static discovery and consent gating.')
