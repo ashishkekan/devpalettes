@@ -54,7 +54,7 @@
   
   window.generatePalette = function() {
     var hex = picker.value;
-    var baseRgb = var baseRgb || hexToRgb(hex);
+    var baseRgb = hexToRgb(hex);
     
     var container = document.getElementById('palette-container');
     container.className = 'contents grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-12';

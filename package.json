@@ -3,7 +3,8 @@
   "private": true,
   "description": "Build tooling for Devpalettes static site (Tailwind CSS compile only).",
   "scripts": {
-    "build:tailwind": "tailwindcss -c tailwind.config.js -i ./src/tailwind.css -o ./css/tailwind.min.css --minify"
+    "build:tailwind": "tailwindcss -c tailwind.config.js -i ./src/tailwind.css -o ./css/tailwind.min.css --minify",
+    "test": "python3 scripts/check-site.py && node scripts/check-consent.cjs"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
@@ -11,4 +12,3 @@
     "tailwindcss": "^3.4.17"
   }
 }
-

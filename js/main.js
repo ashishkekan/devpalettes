@@ -8,8 +8,11 @@
 // ==========================================
 
 const ThemeManager = {
+  getSaved() {
+    try { return localStorage.getItem('colorpallates-theme'); } catch { return null; }
+  },
   init() {
-    const savedTheme = localStorage.getItem('colorpallates-theme');
+    const savedTheme = this.getSaved();
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
@@ -17,7 +20,7 @@ const ThemeManager = {
     }
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('colorpallates-theme')) {
+      if (!this.getSaved()) {
         document.documentElement.classList.toggle('dark', e.matches);
       }
     });
@@ -25,7 +28,7 @@ const ThemeManager = {
   
   toggle() {
     const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('colorpallates-theme', isDark ? 'dark' : 'light');
+    try { localStorage.setItem('colorpallates-theme', isDark ? 'dark' : 'light'); } catch {}
   }
 };
 
@@ -35,12 +38,15 @@ const ThemeManager = {
 
 const CookieConsent = {
   STORAGE_KEY: 'devpalettes-cookie-consent-v1',
+  _choice: null,
 
   get() {
+    if (this._choice) return this._choice;
     try { return localStorage.getItem(this.STORAGE_KEY); } catch { return null; }
   },
 
   set(value) {
+    this._choice = value;
     try { localStorage.setItem(this.STORAGE_KEY, value); } catch {}
   },
 
@@ -68,7 +74,7 @@ const CookieConsent = {
     } catch {}
 
     if (!allowed) {
-      ['_ga', '_ga_G-F252PEQ1JC', '_gid', '_gat', '__gads', '__gpi', '__gpi_optout'].forEach((c) => {
+      ['_ga', '_ga_F252PEQ1JC', '_gid', '_gat', '__gads', '__gpi', '__gpi_optout'].forEach((c) => {
         this._deleteCookie(c);
       });
     }
@@ -76,6 +82,16 @@ const CookieConsent = {
 
   hide() {
     document.getElementById('cookie-consent')?.remove();
+  },
+
+  reject() {
+    this.set('rejected');
+    this._applyGoogleConsent('rejected');
+    this.hide();
+    // A loaded third-party script cannot be unloaded. Restart with consent denied.
+    if (document.querySelector('script[data-adsense-loader], script[data-gtag-loader]')) {
+      window.location.reload();
+    }
   },
 
   show() {
@@ -119,9 +135,7 @@ const CookieConsent = {
 
     wrapper.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
-        CookieConsent.set('rejected');
-        CookieConsent._applyGoogleConsent('rejected');
-        CookieConsent.hide();
+        CookieConsent.reject();
         return;
       }
       if (e.key === 'Tab') {
@@ -147,11 +161,10 @@ const CookieConsent = {
         this.set('accepted');
         this._applyGoogleConsent('accepted');
         ThirdPartyAnalytics.load();
+        ThirdPartyAds.load();
         this.hide();
       } else if (action === 'reject') {
-        this.set('rejected');
-        this._applyGoogleConsent('rejected');
-        this.hide();
+        this.reject();
       }
     });
 
@@ -162,7 +175,10 @@ const CookieConsent = {
     const choice = this.get();
     if (choice === 'accepted' || choice === 'rejected') {
       this._applyGoogleConsent(choice);
-      if (choice === 'accepted') ThirdPartyAnalytics.load();
+      if (choice === 'accepted') {
+        ThirdPartyAnalytics.load();
+        ThirdPartyAds.load();
+      }
       return;
     }
     window[`ga-disable-G-F252PEQ1JC`] = true;
@@ -178,10 +194,14 @@ const ThirdPartyAnalytics = {
   _loaded: false,
 
   load() {
-    if (this._loaded) return;
+    if (this._loaded || CookieConsent.get() !== 'accepted') return;
     this._loaded = true;
 
     const run = () => {
+      if (CookieConsent.get() !== 'accepted') {
+        this._loaded = false;
+        return;
+      }
       if (document.querySelector('script[data-gtag-loader]')) return;
 
       window.dataLayer = window.dataLayer || [];
@@ -201,16 +221,35 @@ const ThirdPartyAnalytics = {
       s.src = 'https://www.googletagmanager.com/gtag/js?id=G-F252PEQ1JC';
       s.setAttribute('data-gtag-loader', 'true');
       s.onload = () => {
+        if (CookieConsent.get() !== 'accepted') return;
         try {
           window.gtag('js', new Date());
           window.gtag('config', 'G-F252PEQ1JC');
         } catch {}
       };
+      s.onerror = () => { s.remove(); this._loaded = false; };
       document.head.appendChild(s);
     };
 
     const rIC = window.requestIdleCallback || function(cb){ return setTimeout(cb, 250); };
     rIC(run);
+  }
+};
+
+// The site banner is not a Google-certified CMP. Configure the publisher's
+// certified CMP in AdSense Privacy & messaging for regions requiring it.
+const ThirdPartyAds = {
+  load() {
+    if (CookieConsent.get() !== 'accepted' || document.querySelector('script[data-adsense-loader]')) return;
+    const marker = document.querySelector('script[data-adsense-src]');
+    if (!marker) return;
+    const script = document.createElement('script');
+    script.async = true;
+    script.crossOrigin = 'anonymous';
+    script.src = marker.getAttribute('data-adsense-src');
+    script.setAttribute('data-adsense-loader', 'true');
+    script.onerror = () => script.remove();
+    document.head.appendChild(script);
   }
 };
 
@@ -1140,6 +1179,10 @@ document.addEventListener('DOMContentLoaded', () => {
   KeyboardShortcuts.init();
 
   document.addEventListener('click', (e) => {
+    if (e.target.closest('[data-cookie-settings]')) {
+      e.preventDefault();
+      CookieConsent.show();
+    }
     if (e.target.closest('#theme-toggle')) {
       ThemeManager.toggle();
     }
