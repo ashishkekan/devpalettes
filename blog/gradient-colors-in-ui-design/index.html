@@ -116,7 +116,7 @@
   <link rel="preload" href="/css/tailwind.min.css" as="style">
   <link rel="stylesheet" href="/css/tailwind.min.css">
 
-  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/styles.css?v=20261006">
   <link rel="stylesheet" href="../../css/animations.css">
   <meta name="google-adsense-account" content="ca-pub-2390881516968474">
 </head>
@@ -197,6 +197,22 @@
             Gradients are a versatile tool in a designer's toolkit. They add personality and depth that flat colors cannot. By understanding the types and using the right tools, you can implement them effectively. Ready to design? Use our <a href="/gradient/" class="text-emerald-500 hover:underline">Gradient Generator</a> to build your next background.
           </p>
         </div>
+      <section class="editorial-content guide-workshop" aria-labelledby="gradient-example"><p class="section-eyebrow">Build and check</p>
+        <h2 id="gradient-example">A gradient header that still reads clearly</h2>
+        <p>In the <a href="/gradient/">gradient builder</a>, start with two stops, <code>#0f172a</code> and <code>#334155</code>, at 135 degrees. Use a solid white headline and keep the text area away from busy imagery. Two stops are easier to evaluate than a long sequence of unrelated hues.</p>
+        <pre><code>.example-header {
+  background-color: #0f172a;
+  background-image: linear-gradient(135deg, #0f172a, #334155);
+  color: #ffffff;
+  padding: clamp(1.5rem, 4vw, 4rem);
+}</code></pre><p>The solid background remains a fallback if the gradient declaration is unavailable. The fluid padding leaves room for the heading on a narrow screen without assigning it a fixed height. This is example CSS for your own project, not a required setting in the generator.</p>
+        <h3>Check more than the endpoints</h3>
+        <p>Text can overlap an intermediate shade, especially when a headline wraps on mobile. Inspect the lightest area underneath the text and test its contrast. If a bright stop passes behind the text, move that stop, add a solid text panel or choose a less variable background. A gradient looking attractive does not establish accessibility.</p>
+        <ul><li>Preview at a narrow phone width and a wide desktop width; the same angle crosses different parts of the text.</li>
+          <li>Keep a visible focus indicator for any link or button placed on the gradient.</li>
+          <li>Check hover and active states separately if the gradient is used on a button.</li>
+          <li>Use a static gradient when motion does not help the task; animation adds another state to verify.</li></ul><p>Use the <a href="/wcag-contrast-checker/">contrast checker</a> for individual color pairs and the <a href="https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html" target="_blank" rel="noopener noreferrer">W3C contrast guidance</a> to understand the requirements. Test the final rendered design as well as the exported snippet.</p>
+        </section>
       </article>
 
       <!-- SEO ADDITION: Social Sharing Section -->
@@ -267,7 +283,7 @@
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
 
-  <script src="../../js/main.js"></script>
-  <script src="../../js/enhancements.js"></script>
+  <script src="../../js/main.js?v=20261006"></script>
+  <script src="../../js/enhancements.js?v=20261006"></script>
 </body>
 </html>

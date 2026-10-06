@@ -276,11 +276,6 @@
     });
   }
 
-  // ─── Shorten Button (placeholder) ───
-  document.getElementById('shorten-btn').addEventListener('click', function () {
-    showToast('URL shortening requires an API key — coming soon', 'info');
-  });
-
   // ─── Copy Helper ───
   function copyToClipboard(text, message) {
     if (navigator.clipboard && navigator.clipboard.writeText) {

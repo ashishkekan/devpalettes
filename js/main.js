@@ -118,7 +118,7 @@ const CookieConsent = {
               <a href="/cookie-policy/" class="text-emerald-500 hover:underline font-medium">Cookie Policy</a>.
             </p>
           </div>
-          <div class="d-flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center shrink-0">
+          <div class="flex flex-col sm:flex-row gap-2 sm:gap-3 sm:items-center shrink-0">
             <a href="/cookie-policy/" class="btn-secondary text-sm py-2 px-4 justify-center" aria-label="Learn more about cookies">Learn more</a>
             <button type="button" class="btn-secondary text-sm py-2 px-4 justify-center" data-consent="reject">Reject</button>
             <button type="button" class="btn-primary btn-glow text-sm py-2 px-4 justify-center" data-consent="accept">Accept</button>
@@ -728,7 +728,7 @@ const NAV_CATEGORIES = [
     tools: [
       { label: 'Meta Tags Generator Tool', path: 'meta-tag-generator/' },
       { label: 'SEO Analyzer Tool', path: 'seo-analyzer/' },
-      { label: 'Google Ranking Tracker', path: 'google-ranking-tracker/' },
+      { label: 'Keyword Ranking Simulator', path: 'google-ranking-tracker/' },
       { label: 'Open Graph Meta Generator', path: 'open-graph-generator/' },
       { label: 'Robots.txt Generator Tool', path: 'robots-txt-generator/' },
       { label: 'XML Sitemap Generator', path: 'sitemap-xml-generator/' },
@@ -1135,20 +1135,21 @@ function renderAuthorBio(author = 'Devpalettes Team', date = null) {
   const container = document.getElementById('author-bio-container');
   if (!container) return;
 
-  const displayDate = date || new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+  // Display a revision date only when the page supplies one.
+  const displayDate = date || container.dataset.updated;
 
   container.innerHTML = `
     <div class="glass-card p-4 sm:p-6 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 mt-6 sm:mt-8 not-prose">
       <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-500 flex items-center justify-center text-white text-xl sm:text-2xl font-bold shadow-lg flex-shrink-0">
-        CPH
+        DP
       </div>
-      <div class="flex-1 texflex items-center gap-2 sm:gap-3 group cursor-pointert-center sm:text-left">
+      <div class="flex-1 text-center sm:text-left">
         <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mb-1">Written by</p>
         <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">${author}</h4>
-        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center sm:justify-start gap-2">
+        ${displayDate ? `<p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1 flex items-center justify-center sm:justify-start gap-2">
           <i class="far fa-calendar-alt"></i>
           Updated on ${displayDate}
-        </p>
+        </p>` : ''}
         <p class="text-slate-600 dark:text-slate-400 text-xs sm:text-sm mt-2">
           Devpalettes Team creates tools and resources for designers and developers worldwide.
         </p>

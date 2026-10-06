@@ -72,7 +72,7 @@
   <link rel="stylesheet" href="/css/tailwind.min.css">
 
   
-  <link rel="stylesheet" href="../../css/styles.css">
+  <link rel="stylesheet" href="../../css/styles.css?v=20261006">
   <link rel="stylesheet" href="../../css/animations.css">
   <meta name="google-adsense-account" content="ca-pub-2390881516968474">
 </head>
@@ -154,6 +154,19 @@
             Mastering color formats makes you a better developer. It reduces friction between design and code. Don't memorize the math—use tools. Try our <a href="/converter/" class="text-emerald-500 hover:underline">Color Converter</a> to handle your daily conversions.
           </p>
         </div>
+      <section class="editorial-content guide-workshop" aria-labelledby="conversion-example"><p class="section-eyebrow">Try it yourself</p>
+        <h2 id="conversion-example">One color, three equivalent representations</h2>
+        <p>Enter <code>#336699</code> in the <a href="/converter/">color converter</a>. Split the hexadecimal value into the pairs 33, 66 and 99. In decimal these are 51, 102 and 153, so the RGB representation is <code>rgb(51, 102, 153)</code>. Its HSL representation is approximately <code>hsl(210, 50%, 40%)</code>. Copy each value into the same CSS property: the visible color should remain the same.</p>
+        <pre><code>.example-card {
+  color: #336699;
+  border-color: rgb(51, 102, 153);
+  background-color: hsl(210, 50%, 96%);
+}</code></pre><p>The background deliberately uses a different lightness. Converting a format preserves the color; editing lightness creates a new one. Do not interpret the 40% HSL lightness as a contrast score or a measurement of perceived brightness.</p>
+        <h3>When the result looks different</h3>
+        <ul><li>Check for transparency: a translucent color is blended with whatever is behind it. A solid HEX value cannot reproduce every translucent appearance on every background.</li>
+          <li>Check the CSS cascade: inspect the computed color to see whether a later rule, a hover state or an inherited value overrides your pasted value.</li>
+          <li>Small round-trip differences can result from rounding channel values. Compare the actual swatch, not only the number of decimal places.</li></ul><p>After conversion, test the foreground and background together in the <a href="/wcag-contrast-checker/">contrast checker</a>. Changing HEX to RGB alone cannot fix poor contrast. For syntax and supported color spaces, consult the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value" target="_blank" rel="noopener noreferrer">MDN CSS color reference</a>.</p>
+        </section>
       </article>
 
       <!-- SEO ADDITION: Social Sharing Section -->
@@ -224,7 +237,7 @@
   <!-- Toast Container -->
   <div id="toast-container" class="fixed bottom-6 right-6 z-50 space-y-2"></div>
   
-  <script src="../../js/main.js"></script>
-  <script src="../../js/enhancements.js"></script>
+  <script src="../../js/main.js?v=20261006"></script>
+  <script src="../../js/enhancements.js?v=20261006"></script>
 </body>
 </html>

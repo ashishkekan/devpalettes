@@ -1,7 +1,7 @@
 /**
  * Visual Enhancement Scripts
  * Devpalettes.com
- * Common animations: Visualizer, Particles, Scroll Animations, Parallax
+ * Common animations: Visualizer, Scroll Animations, Parallax
  */
 
 (function() {
@@ -93,7 +93,6 @@
    */
   function init() {
     initHeroVisualizer();
-    initParticles();
     initScrollAnimations();
     initParallaxBlobs();
   }

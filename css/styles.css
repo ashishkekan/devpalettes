@@ -478,9 +478,8 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transform: translateY(-50%) rotate(-45deg);
 }
 
-/* ✅ ADD THIS BLOCK BACK */
 /* Ensure hamburger never shows on desktop (fallback if utility CSS order changes) */
-@media (min-width: 769px) {
+@media (min-width: 1024px) {
   .hamburger {
     display: none !important;
   }
@@ -750,4 +749,103 @@ section[aria-label="Call to action"] {
   .copy-btn {
     width: 30%;
   }
+}
+
+/* Editorial polish: shared surfaces, readable guides and small-screen controls. */
+:root {
+  --text-muted: #64748b;
+  --glass-border: rgba(148, 163, 184, 0.24);
+}
+.dark {
+  --text-muted: #94a3b8;
+  --glass-border: rgba(148, 163, 184, 0.18);
+}
+html { scroll-padding-top: 6rem; }
+body { line-height: 1.65; }
+h1, h2, h3 { letter-spacing: -0.025em; text-wrap: balance; }
+main :where(p, li) { overflow-wrap: anywhere; }
+main :where(.grid, .flex) > * { min-width: 0; }
+main :where(input:not([type="range"]):not([type="checkbox"]):not([type="radio"]), select, textarea) { max-width: 100%; }
+main pre { max-width: 100%; overflow-x: auto; }
+.glass-card {
+  border-color: var(--glass-border);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.025);
+}
+.glass-card:hover { transform: none; box-shadow: 0 8px 24px var(--shadow-color); }
+main .shimmer-card::before { display: none; }
+.navbar { border-bottom: 1px solid var(--border-color); box-shadow: 0 2px 12px var(--shadow-color); }
+.navbar > div { max-width: 1440px; }
+.navbar .text-cyan-400 { color: var(--text-primary); }
+.btn-primary, .btn-secondary { min-height: 44px; justify-content: center; }
+.btn-glow { animation: none; box-shadow: 0 3px 10px rgba(16, 185, 129, 0.12); }
+.section-eyebrow {
+  color: #047857;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.dark .section-eyebrow { color: #6ee7b7; }
+.home-page section[aria-label="Hero Introduction"] { min-height: auto; padding: 9rem 0 4rem; }
+.home-page section[aria-label="Hero Introduction"] h1 { max-width: 18ch; margin-inline: auto; line-height: 1.08; }
+.home-page section[aria-label="Hero Introduction"] .gradient-blob { opacity: 0.1; }
+.home-page section[aria-label="Hero Introduction"] .div-margin { margin-top: 0; }
+.workflow-section { padding: 3rem 0 4rem; border-block: 1px solid var(--border-color); background: var(--bg-secondary); }
+.workflow-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: 2rem; }
+.workflow-heading h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; line-height: 1.2; }
+.workflow-heading > p { max-width: 34ch; color: var(--text-secondary); }
+.workflow-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.workflow-card { display: flex; flex-direction: column; gap: 1rem; padding: 1.75rem; border: 1px solid var(--border-color); border-radius: 16px; background: var(--bg-primary); transition: border-color 0.2s; }
+.workflow-card:hover { border-color: var(--accent-dark); }
+.workflow-number { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; color: var(--text-secondary); }
+.workflow-card h3 { font-size: 1.2rem; font-weight: 650; line-height: 1.35; }
+.workflow-card p { color: var(--text-secondary); font-size: 0.95rem; }
+.workflow-link { margin-top: auto; font-size: 0.85rem; font-weight: 600; color: #047857; }
+.dark .workflow-link { color: #6ee7b7; }
+.editorial-content { color: var(--text-secondary); line-height: 1.85; }
+.editorial-content :where(h2,h3) { color: var(--text-primary); font-weight: 700; }
+.editorial-content h3 { font-size: 1.2rem; margin-block: 1.5rem 0.65rem; }
+.editorial-content p + p { margin-top: 1rem; }
+.editorial-content :where(ol,ul) { padding-left: 1.4rem; margin-block: 1rem; }
+.editorial-content ol { list-style: decimal; }
+.editorial-content ul { list-style: disc; }
+.editorial-content li + li { margin-top: 0.6rem; }
+.editorial-content a, .tool-notice a { color: #047857; text-decoration: underline; text-underline-offset: 3px; }
+.dark .editorial-content a, .dark .tool-notice a { color: #6ee7b7; }
+.editorial-content pre { padding: 1.25rem; margin-block: 1.5rem; border-radius: 12px; background: var(--bg-tertiary); font-size: 0.85rem; }
+.guide-workshop { margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid var(--border-color); }
+.guide-workshop h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); line-height: 1.3; margin-bottom: 1rem; }
+.tool-notice { border-left: 3px solid var(--accent-dark); padding: 0.75rem 1rem; margin-block: 1rem; background: var(--accent-light); color: var(--text-secondary); font-size: 0.85rem; }
+#cookie-consent > div { max-height: 75dvh; overflow-y: auto; margin-inline: auto; background: var(--bg-secondary); }
+@media (min-width: 768px) and (max-width: 1199px) {
+  .navbar .nav-links { gap: 0.7rem; }
+  .navbar [data-dropdown-button] { font-size: 0.72rem; }
+}
+/* Seven navigation categories need the compact menu on tablet widths too. */
+@media (max-width: 1023px) {
+  .navbar .nav-links { display: none; }
+  .navbar .hamburger { display: block; width: 44px; height: 44px; }
+  .navbar .hamburger span { width: 24px; left: 10px; }
+  .navbar .hamburger:not(.active) span:first-child { top: 12px; }
+  .navbar .hamburger:not(.active) span:last-child { bottom: 12px; }
+  #mobile-menu { display: block; }
+}
+@media (max-width: 767px) {
+  .home-page section[aria-label="Hero Introduction"] { padding: 7.5rem 0 3rem; }
+  .workflow-heading { display: block; }
+  .workflow-heading > p { margin-top: 1rem; }
+  .workflow-grid { grid-template-columns: minmax(0, 1fr); }
+  .workflow-card { padding: 1.4rem; }
+  .glass-card.p-8 { padding: 1.25rem; }
+  main .glass-card > .flex.justify-between { flex-wrap: wrap; gap: 0.75rem; }
+  main :where(input:not([type="range"]), textarea, select) { font-size: 16px; }
+  #main-palette .color-block { padding-inline: 0.25rem; }
+  #cookie-consent .btn-primary, #cookie-consent .btn-secondary { width: 100%; }
+  #cookie-consent [data-consent] { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .animate-on-scroll { opacity: 1 !important; transform: none !important; }
 }
